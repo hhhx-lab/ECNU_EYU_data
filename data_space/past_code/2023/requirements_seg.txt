@@ -1,0 +1,20 @@
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+monai
+nilearn
+nibabel
+matplotlib
+einops
+tqdm
+SimpleITK
+connected-components-3d
+
+# This repository uses the bundled nnU-Net v2 and MedNeXt sources.
+# Install from the 2023 repository root with:
+#   pip install -r requirements_seg.txt
+# or install the local packages manually:
+#   pip install -e Segmentation_Tasks/nnUNet_install
+#   pip install -e Segmentation_Tasks/mednext
+-e Segmentation_Tasks/nnUNet_install
+-e Segmentation_Tasks/mednext

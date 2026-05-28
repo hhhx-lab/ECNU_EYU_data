@@ -1,0 +1,163 @@
+constants:
+  input_name_schema: &input_name_schema "BraTS-GLI-{id:05d}-000"
+  challenge: &challenge "Inpainting"
+  challenge_manuscript:
+    2024: &challenge_manuscript_2024 "https://arxiv.org/abs/2305.08992" # same as 2023
+    2023: &challenge_manuscript_2023 "https://arxiv.org/abs/2305.08992"
+  years:
+    2025: &year_2025 2025
+    2024: &year_2024 2024
+    2023: &year_2023 2023
+  ranks:
+    1st: &rank_1 1st
+    2nd: &rank_2 2nd
+    3rd: &rank_3 3rd
+
+algorithms:
+
+  ######## 2025 Algorithms ########
+
+  BraTS25_1A:
+    meta:
+      authors: Juexin Zhang, et al.
+      paper: N/A
+      challenge: *challenge
+      challenge_manuscript: N/A
+      rank: *rank_1
+      year: *year_2025
+    run_args:
+      docker_image: brainles/brats25_inpainting_ying_weng:latest
+      input_name_schema: *input_name_schema
+
+  BraTS25_1B:
+    meta:
+      authors: André Ferreira, et al.
+      paper: N/A
+      challenge: *challenge
+      challenge_manuscript: N/A
+      rank: *rank_1
+      year: *year_2025
+    run_args:
+      docker_image: brainles/brats25_inpainting_faking_it:latest
+      input_name_schema: *input_name_schema
+      requires_root: true
+
+  BraTS25_2:
+    meta:
+      authors: Juhyung Ha, et al.
+      paper: N/A
+      challenge: *challenge
+      challenge_manuscript: N/A
+      rank: *rank_2
+      year: *year_2025
+    run_args:
+      docker_image: brainles/brats25_inpainting_iu_brats:latest
+      input_name_schema: *input_name_schema
+
+  ######## 2024 Algorithms ########
+
+  BraTS24_1:
+    meta:
+      authors: Juexin Zhang, et al.
+      paper: https://arxiv.org/abs/2507.18126
+      challenge: *challenge
+      challenge_manuscript: *challenge_manuscript_2024
+      rank: *rank_1
+      year: *year_2024
+    run_args:
+      docker_image: brainles/brats24_inpainting_ying_weng:latest
+      input_name_schema: *input_name_schema
+      requires_root: false
+      parameters_file: true
+      cpu_compatible: true
+    additional_files:
+      record_id: "14230865"
+      param_name: ["checkpoint_path"]
+
+  BraTS24_2:
+    meta:
+      authors: André Ferreira, et al.
+      paper: https://arxiv.org/html/2411.04630v2
+      challenge: *challenge
+      challenge_manuscript: *challenge_manuscript_2024
+      rank: *rank_2
+      year: *year_2024
+    run_args:
+      docker_image: brainles/brats24_inpainting_faking_it:latest
+      input_name_schema: *input_name_schema
+      requires_root: false
+      parameters_file: false
+      shm_size: "4gb"
+
+  BraTS24_3:
+    meta:
+      authors: Alicia Durrer, et al.
+      paper: N/A
+      challenge: *challenge
+      challenge_manuscript: *challenge_manuscript_2024
+      rank: *rank_3
+      year: *year_2024
+    run_args:
+      docker_image: brainles/brats24_inpainting_smint:latest
+      input_name_schema: *input_name_schema
+      requires_root: false
+      parameters_file: true
+    additional_files:
+      record_id: "14231079"
+      param_path: ["savedmodel395000.pt"]
+
+  ######## 2023 Algorithms ########
+
+  BraTS23_1:
+    meta:
+      authors: Juexin Zhang, et al.
+      paper: https://doi.org/10.1007/978-3-031-76163-8_21
+      challenge: *challenge
+      challenge_manuscript: *challenge_manuscript_2023
+      rank: *rank_1
+      year: *year_2023
+    run_args:
+      docker_image: brainles/brats23_inpainting_ying_weng:latest
+      input_name_schema: *input_name_schema
+      requires_root: false
+      parameters_file: true
+      cpu_compatible: true
+    additional_files:
+      record_id: "13382922"
+      param_name: ["checkpoint_path"]
+
+  BraTS23_2:
+    meta:
+      authors: Alicia Durrer, et al.
+      paper: https://doi.org/10.48550/arXiv.2402.17307
+      challenge: *challenge
+      challenge_manuscript: *challenge_manuscript_2023
+      rank: *rank_2
+      year: *year_2023
+    run_args:
+      docker_image: brainles/brats23_inpainting_domaso
+      input_name_schema: *input_name_schema
+      requires_root: true
+      parameters_file: true
+    additional_files:
+      record_id: "13383452"
+      param_path: ["savedmodel2850000.pt"]
+
+  BraTS23_3:
+    meta:
+      authors: Jiayu Huo, et al.
+      paper: https://doi.org/10.1007/978-3-031-76163-8_1
+      challenge: *challenge
+      challenge_manuscript: *challenge_manuscript_2023
+      rank: *rank_3
+      year: *year_2023
+    run_args:
+      docker_image: brainles/brats23_inpainting_medsegctrl
+      input_name_schema: *input_name_schema
+      requires_root: true
+      parameters_file: true
+      cpu_compatible: true
+    additional_files:
+      record_id: "13383287"
+      param_name: ["weight_path"]
+      param_path: ["epoch-19-step-197499.ckpt"]
