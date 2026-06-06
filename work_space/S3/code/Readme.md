@@ -23,7 +23,7 @@ pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorc
 pip install monai[all]==1.3.0 nibabel einops timm tensorboardX ml-collections scipy tqdm
 ```
 
-# 数据准备
+## 数据准备
 从 BraTS 2025 MET Challenge 官网 下载 MICCAI-LH-BraTS2025-MET-Challenge-Training.zip，解压得到文件夹 MICCAI-LH-BraTS2025-MET-Challenge-Training/
 确保每个病例文件夹内的文件命名格式如下：
 
@@ -36,7 +36,7 @@ BraTS-MET-xxxxx-xxx-seg.nii.gz
 ```
 之后将所有 BraTS-MET-* 文件夹放在同一顶层目录中。如果存在 UCSD - Training 等子目录，请将其中的 BraTS-MET-* 文件夹移出到顶层，并删除空目录。
 
-# 生成全量数据训练/验证集划分
+## 生成全量数据训练/验证集划分
 
 运行 make_split.py 脚本，它会自动扫描数据目录，随机划分 80% 病例为训练集（fold=1），20% 为验证集（fold=0），并生成 full_split.json。
 
@@ -59,7 +59,7 @@ python make_split.py
 注意：fold=1 为训练集，fold=0 为验证集。脚本使用随机种子 42，保证可复现。
 
 
-# 全量数据训练（200 epochs）
+## 全量数据训练（200 epochs）
 使用上一步生成的 full_split.json 启动全量训练。
 ```bash
 nohup python main.py \
@@ -92,7 +92,7 @@ tail -f train_full.log
 | `--gpu` | `0` | GPU 编号 |
 
 
-# 输出结果
+## 输出结果
 训练过程中，每 --val_every 个 epoch 会输出：
 验证损失
 
@@ -104,7 +104,7 @@ AUC（F1 曲线下面积）
 
 最佳模型（验证 Dice 最高）会被保存为 {logdir}/best_model_dice.pth。
 
-# 常见问题
+## 常见问题
 1. FileNotFoundError: No such file or directory:
 检查 --data_dir 路径是否正确。
 确认病例文件夹内文件命名是否与代码中的模态列表 ["t1n","t1c","t2w","t2f"] 一致。官方数据即为该格式，无需修改。
