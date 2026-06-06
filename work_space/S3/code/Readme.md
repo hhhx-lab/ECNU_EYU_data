@@ -23,7 +23,7 @@ pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorc
 pip install monai[all]==1.3.0 nibabel einops timm tensorboardX ml-collections scipy tqdm
 ```
 
-# 环境配置
+# 数据准备
 从 BraTS 2025 MET Challenge 官网 下载 MICCAI-LH-BraTS2025-MET-Challenge-Training.zip，解压得到文件夹 MICCAI-LH-BraTS2025-MET-Challenge-Training/
 确保每个病例文件夹内的文件命名格式如下：
 
@@ -34,7 +34,7 @@ BraTS-MET-xxxxx-xxx-t2w.nii.gz
 BraTS-MET-xxxxx-xxx-t2f.nii.gz   
 BraTS-MET-xxxxx-xxx-seg.nii.gz
 ```
-将所有 BraTS-MET-* 文件夹放在同一顶层目录中。如果存在 UCSD - Training 等子目录，请将其中的 BraTS-MET-* 文件夹移出到顶层，并删除空目录。
+之后将所有 BraTS-MET-* 文件夹放在同一顶层目录中。如果存在 UCSD - Training 等子目录，请将其中的 BraTS-MET-* 文件夹移出到顶层，并删除空目录。
 
 # 生成全量数据训练/验证集划分
 
