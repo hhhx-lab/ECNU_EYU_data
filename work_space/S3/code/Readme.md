@@ -78,8 +78,8 @@ nohup python main.py \
 tail -f train_full.log
 ```
 
-重要参数说明
-```
+### 重要参数说明
+
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
 | `--data_dir` | 必填 | 数据根目录（包含所有 BraTS-MET-* 文件夹） |
@@ -90,7 +90,6 @@ tail -f train_full.log
 | `--val_every` | `10` | 每多少个 epoch 验证一次 |
 | `--out_channels` | `5` | 输出通道数（固定为 5，对应背景 + 4 类标签） |
 | `--gpu` | `0` | GPU 编号 |
-```
 
 
 # 输出结果
