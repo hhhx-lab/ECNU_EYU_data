@@ -10,7 +10,7 @@
 | `trainer.py` | 训练/验证核心逻辑。包含训练循环、验证循环、Dice 计算、小病灶检测指标（F1/AUC）计算、模型保存。 |
 | `make_split.py` | 生成训练/验证集划分 JSON 文件。将数据目录下所有病例随机分为 80% 训练（`fold=1`）和 20% 验证（`fold=0`），输出 `full_split.json`。 |
 | `utils/data_utils.py` | 数据加载工具。适配原始数据名称，根据 JSON 中的 `fold` 字段自动划分训练集和验证集。 |
-
+| `utils/__init__.py` | 标识 utils 为 Python 包（空文件）。 |
 
 ## 环境配置
 
