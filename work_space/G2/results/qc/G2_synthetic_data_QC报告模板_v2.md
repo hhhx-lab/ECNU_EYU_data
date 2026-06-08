@@ -1,0 +1,126 @@
+# G2 Synthetic Data QC 报告模板 v2
+
+报告日期：YYYY-MM-DD
+报告人：G2
+生成批次：`run_id`
+QC 规则版本：`G2_synthetic_data_QC规则策略_v2.md`
+结论：`accepted_for_training / accepted_for_ablation_only / needs_regeneration / rejected`
+
+## 1. 批次信息
+
+| 项目 | 内容 |
+|---|---|
+| generation_run_id |  |
+| generator_name |  |
+| generator_checkpoint |  |
+| generator_git_commit |  |
+| generation_mode |  |
+| source_manifest |  |
+| requested_num_synthetic |  |
+| delivered_case_count |  |
+| generation_date |  |
+
+## 2. 交付完整性
+
+| 检查项 | 结果 | 备注 |
+|---|---|---|
+| `synthetic_generation_manifest.csv` 是否存在 |  |  |
+| `generation_log.jsonl` 是否存在 |  |  |
+| 每例 `metadata.json` 是否存在 |  |  |
+| checkpoint/seed/source 是否可追溯 |  |  |
+| 文件命名是否一致 |  |  |
+
+## 3. 单例 QC 统计
+
+| 指标 | 数量 |
+|---|---:|
+| delivered cases |  |
+| readable cases |  |
+| hard rejected cases |  |
+| manual review required cases |  |
+| manual review passed cases |  |
+| accepted cases |  |
+| rejected cases |  |
+
+## 4. 强制拒绝原因
+
+| 拒绝原因 | 病例数 | 病例示例 |
+|---|---:|---|
+| missing modality/seg |  |  |
+| unreadable NIfTI |  |  |
+| geometry mismatch |  |  |
+| NaN/Inf or constant image |  |  |
+| illegal label values |  |  |
+| non-integer label |  |  |
+| empty mask not allowed |  |  |
+| source not allowed |  |  |
+| validation leakage |  |  |
+| severe artifact |  |  |
+| missing provenance |  |  |
+
+## 5. source 与泄漏检查
+
+| 检查项 | 结果 |
+|---|---:|
+| source 不在 real_train_manifest 的病例数 |  |
+| source final_qc_pass 非 True 的病例数 |  |
+| source 来自固定 val fold 的病例数 |  |
+| source 来自 official validation 的病例数 |  |
+| 复用真实病例 ID 的 synthetic 数 |  |
+| validation leakage 总数 |  |
+
+结论：validation leakage 必须为 `0`。
+
+## 6. 标签与 lesion 分布
+
+| 指标 | 数值 |
+|---|---:|
+| accepted cases |  |
+| 含 NETC 病例数 |  |
+| 含 SNFH 病例数 |  |
+| 含 ET 病例数 |  |
+| 含 RC 病例数 |  |
+| lesion component 总数 |  |
+| tiny lesion 数 |  |
+| small lesion 数 |  |
+| large lesion 数 |  |
+| 每例 lesion 数 p50/p95/p99/max |  |
+| component volume p50/p95/p99/max |  |
+
+## 7. 人工复查结果
+
+| 病例 | 复查原因 | 复查结论 | 备注 |
+|---|---|---|---|
+|  |  |  |  |
+
+## 8. teacher model 检查
+
+| 指标 | 数值 |
+|---|---:|
+| teacher model |  |
+| mean teacher dice |  |
+| mean lesion count diff |  |
+| large lesion missed by teacher |  |
+| teacher 异常需复查病例数 |  |
+
+说明：teacher 结果只作为辅助 QC，不单独决定是否拒绝。
+
+## 9. nnU-Net integrity check
+
+| 项目 | 结果 |
+|---|---|
+| real+synth dataset id |  |
+| dataset.json 是否正确 |  |
+| imagesTr/labelsTr 数量是否匹配 |  |
+| `nnUNetv2_plan_and_preprocess --verify_dataset_integrity` |  |
+| 失败原因 |  |
+
+## 10. 结论与后续动作
+
+最终结论：
+
+后续动作：
+
+1.
+2.
+3.
