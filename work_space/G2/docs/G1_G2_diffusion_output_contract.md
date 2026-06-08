@@ -188,9 +188,10 @@ generation_mode = local_insertion_gligan_compatible
 4. 以插入中心为中心裁剪 `96x96x96` ROI。
 5. 把 label crop 修正为不出脑、不覆盖已有 lesion。
 6. 对每个模态构造 noisy crop。
+
 7. G1 diffusion 接收 noisy crop + label channels，输出 reconstructed crop。
 8. G2 或 G1 wrapper 将 reconstructed crop 融合回完整 source case。
-9. 输出完整 synthetic case 的四模态和 `seg`。
+9.  输出完整 synthetic case 的四模态和 `seg`。
 
 ### 6.2 tensor 形状
 

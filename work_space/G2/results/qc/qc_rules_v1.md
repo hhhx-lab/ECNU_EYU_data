@@ -12,6 +12,7 @@
 8. 2D/slice-stitching 结果在 z 轴严重断裂。
 9. 缺少 `synthetic_generation_manifest.csv` 或 `generation_log.jsonl`，且无法补建。
 
+
 ## 需要人工复查
 
 1. tiny lesion 数量异常高。
