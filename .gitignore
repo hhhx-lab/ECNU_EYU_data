@@ -31,3 +31,24 @@ outputs/tmp/
 *.nrrd
 *.mha
 *.mhd
+
+# G1 往年方案导入包：只提交源码/配置/文本，排除权重、数据和运行产物
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pt
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pth
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.ckpt
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pkl
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pdf
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.png
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.jpg
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.jpeg
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/__pycache__/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pyc
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/*egg-info/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/Checkpoint/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/DataSet/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/New_DataSet/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/predictions/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/results/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/runs/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/metadata/
+work_space/G1/code/BraTS_2023_2024_solutions-main/**/nnUNet_results/
