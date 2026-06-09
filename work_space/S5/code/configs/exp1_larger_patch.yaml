@@ -1,0 +1,55 @@
+# =============================================================================
+# SegMamba BraTS 2026 Training Configuration
+# =============================================================================
+# 实验1: 更大 Patch Size - 192³
+# 优先级: 🔴 第一
+# 原因: 30G显存支持192³，收益最大
+# =============================================================================
+
+data_dir: "./data/fullres/train"
+max_epoch: 100
+batch_size: 2
+val_every: 2
+num_gpus: 1
+device: "cuda:0"
+seed: 123
+
+# 增大 patch size，从 128³ -> 192³
+roi_size: [192, 192, 192]
+
+model:
+  in_chans: 4
+  out_chans: 5
+  depths: [2, 2, 2, 2]
+  feat_size: [48, 96, 192, 384]
+
+optimizer:
+  type: "SGD"
+  lr: 0.01
+  weight_decay: 0.00003
+  momentum: 0.99
+  nesterov: true
+
+scheduler:
+  type: "poly"
+
+augmentation: true
+
+inference:
+  roi_size: [192, 192, 192]
+  sw_batch_size: 1
+  overlap: 0.5
+
+loss_type: "ce_dice"
+
+loss:
+  ce_weight: 1.0
+  dice_weight: 1.0
+  focal_weight: 0.0
+  focal_alpha: 1.0
+  focal_gamma: 2.0
+  ce_class_weights: null
+  use_background_weight: true
+
+evaluation:
+  small_lesion_threshold_mm3: 27.0

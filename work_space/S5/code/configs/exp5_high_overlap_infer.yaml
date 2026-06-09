@@ -1,0 +1,55 @@
+# =============================================================================
+# SegMamba BraTS 2026 Training Configuration
+# =============================================================================
+# 实验5: 高重叠推理
+# 优先级: 🟢 第三
+# 原因: 只影响推理，不用重新训练
+# =============================================================================
+
+data_dir: "./data/fullres/train"
+max_epoch: 100
+batch_size: 2
+val_every: 2
+num_gpus: 1
+device: "cuda:0"
+seed: 123
+
+roi_size: [128, 128, 128]
+
+model:
+  in_chans: 4
+  out_chans: 5
+  depths: [2, 2, 2, 2]
+  feat_size: [48, 96, 192, 384]
+
+optimizer:
+  type: "SGD"
+  lr: 0.01
+  weight_decay: 0.00003
+  momentum: 0.99
+  nesterov: true
+
+scheduler:
+  type: "poly"
+
+augmentation: true
+
+inference:
+  roi_size: [128, 128, 128]
+  sw_batch_size: 1
+  # 提高推理重叠率: 0.5 -> 0.75
+  overlap: 0.75
+
+loss_type: "ce_dice"
+
+loss:
+  ce_weight: 1.0
+  dice_weight: 1.0
+  focal_weight: 0.0
+  focal_alpha: 1.0
+  focal_gamma: 2.0
+  ce_class_weights: null
+  use_background_weight: true
+
+evaluation:
+  small_lesion_threshold_mm3: 27.0

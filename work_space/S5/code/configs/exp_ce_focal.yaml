@@ -1,0 +1,51 @@
+# =============================================================================
+# SegMamba 配置 - CE + Focal Loss
+# 适用于小病灶多、类别极度不平衡的情况
+# =============================================================================
+
+data_dir: "./data/fullres/train"
+
+max_epoch: 100
+batch_size: 2
+val_every: 2
+num_gpus: 1
+device: "cuda:0"
+seed: 123
+
+roi_size: [128, 128, 128]
+
+model:
+  in_chans: 4
+  out_chans: 5
+  depths: [2, 2, 2, 2]
+  feat_size: [48, 96, 192, 384]
+
+optimizer:
+  type: "SGD"
+  lr: 0.01
+  weight_decay: 0.00003
+  momentum: 0.99
+  nesterov: true
+
+scheduler:
+  type: "poly"
+
+augmentation: true
+
+inference:
+  roi_size: [128, 128, 128]
+  sw_batch_size: 1
+  overlap: 0.5
+
+evaluation:
+  small_lesion_threshold_mm3: 27.0
+
+# 损失函数配置 - CE + Focal
+loss_type: "ce_focal"
+loss:
+  ce_weight: 1.0
+  dice_weight: 0.0
+  focal_weight: 1.0
+  focal_alpha: 1.0
+  focal_gamma: 2.0
+  use_background_weight: true
