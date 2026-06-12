@@ -1,0 +1,50 @@
+seed: 42
+
+data:
+
+  train_split: /root/autodl-tmp/brats2026/data/splits/train_full.txt
+
+  val_split: /root/autodl-tmp/brats2026/data/splits/val_full.txt
+
+  data_root: /root/autodl-tmp/brats2026/data/extracted/MICCAI-LH-BraTS2025-MET-Challenge-Training
+
+model:
+
+  in_channels: 4
+
+  tumor_classes: 4
+
+  rc_classes: 2
+
+train:
+
+  epochs: 300
+
+  batch_size: 2
+
+  lr: 0.0003
+
+  num_workers: 8
+
+  amp: true
+
+  resume: /root/autodl-tmp/brats2026/experiments/checkpoints_full/latest.pth
+
+  patch_size:
+    - 96
+    - 96
+    - 96
+
+checkpoint:
+
+  save_dir: /root/autodl-tmp/brats2026/experiments/checkpoints_full
+
+  save_every: 10
+
+logging:
+
+  tensorboard_dir: /root/autodl-tmp/brats2026/experiments/tensorboard_full
+
+inference:
+
+  output_dir: /root/autodl-tmp/brats2026/experiments/predictions_full
