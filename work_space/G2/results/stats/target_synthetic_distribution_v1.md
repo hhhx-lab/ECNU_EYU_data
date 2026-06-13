@@ -1,6 +1,6 @@
 # G2 Target Synthetic Distribution v1
 
-生成日期：2026-05-31
+生成日期：2026-06-14
 
 ## 真实分布参考
 

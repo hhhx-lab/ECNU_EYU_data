@@ -1,6 +1,6 @@
 # G2 Pretraining Checklist Execution Summary
 
-生成日期：2026-05-31
+生成日期：2026-06-14
 
 ## 已在本机完成
 
@@ -40,7 +40,12 @@
 - `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv`
 - `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/dataset.json`
 - `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/splits/splits_final_fold0_realval.json`
+- `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/manifests/synthetic_generation_manifest_template_g1.csv`
+- `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/manifests/synthetic_normalized_mapping_template.csv`
 - `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/qc/qc_metrics_template.csv`
+- `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/qc/qc_metrics_template_v2.csv`
+- `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/qc/diffusion_quality_metrics_template.csv`
+- `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/qc/qc_case_review_template.csv`
 - `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/qc/qc_rules_v1.md`
 - `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/reports/ablation_plan_template.md`
 - `/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/reports/G2_synthetic_data_quality_report_template.md`

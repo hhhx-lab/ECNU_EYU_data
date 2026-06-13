@@ -1,475 +1,520 @@
-# G2 Synthetic Data QC 规则策略 v2
+# G2 Synthetic Data QC 规则策略 v2（G1 raw output 适配版）
 
-生成日期：2026-06-08
-适用对象：G2 数据报告、G1 diffusion/GliGAN-compatible synthetic output、S1/S2 real+synth nnU-Net 训练入口
-主结论：G2 的 QC 目标不是证明生成图像“看起来好”，而是证明 synthetic data 在文件、空间、标签、病灶、来源、分布、可复现性和训练可用性上足够可靠，不会污染真实验证 fold，不会把生成错误伪装成数据增强。
+更新日期：2026-06-13
+适用对象：G2 数据报告、G1 diffusion/GliGAN-compatible raw output、S1/S2 real+synth nnU-Net 训练入口
+主结论：G2 的 QC 目标不是证明生成图像“像真的”，而是证明 G1 raw output 能被 G2 变成可追溯、无泄漏、空间合法、标签合法、病灶合理、训练可用、消融有价值的数据资产。
 
-## 1. QC 依据
+## 1. QC 总原则
 
-### 1.1 2026 Task1 任务约束
+1. 先检查能不能训练，再评价质量好不好。
+2. 先硬拒绝，再人工复查，再批次分级，最后用真实验证 fold 判断是否有用。
+3. G1 第一阶段可以输出 legacy raw case；G2 负责接收、标准化、QC、manifest 和训练导出。
+4. 缺少 metadata 不是第一阶段直接拒绝理由，但 source、checkpoint、seed、label_kind、run_id 无法恢复时必须拒绝。
+5. validation leakage、非法 label、几何错配、不可读 NIfTI、严重 ROI 方块伪影，是不可妥协底线。
 
-BraTS 2026 Task1 是脑转移瘤检测与分割任务，关注治疗前和治疗后病例。任务要求模型自动检测并分割不同大小的脑转移瘤、周围水肿和切除腔。
+## 2. 2026 Task1 对 QC 的约束
 
-| 项目 | 2026 要求 | 对 G2 QC 的影响 |
+| 项目 | 2026 要求 | G2 QC 影响 |
 |---|---|---|
-| 模态 | `t1n/t1c/t2w/t2f` 四模态 MRI | synthetic case 必须四模态齐全 |
-| 标签 | `{0,1,2,3,4}` | 任何非法 label 都强制拒绝 |
-| 标签 1 | NETC | 需要检查与 ET/SNFH 的空间关系是否合理 |
-| 标签 2 | SNFH | 需要检查是否形成合理周围 FLAIR 高信号 |
-| 标签 3 | ET | 需要重点检查 t1c 上是否有合理增强对应 |
-| 标签 4 | RC | 只应出现在治疗后/切除腔语境，第一轮不凭空生成 |
-| tiny lesion | `<27 mm3` 有临床相关性 | 不能简单删除 tiny lesion，但要防止生成过量假阳性 |
-| 分割重点 | `>275 mm3` lesion 用于分割评估 | large lesion 的 label 和边界必须尤其稳 |
-| 数据空间 | 原生空间和 SRI24 空间混合 | 不能要求所有病例固定 shape；只能要求病例内部几何一致 |
-| 真实验证 | 官方 validation 无公开 label | 不能作为 synthetic source，不能进入训练 |
+| 模态 | `t1n/t1c/t2w/t2f` | 每例四模态必须齐全 |
+| 标签 | `{0,1,2,3,4}` | `seg` 只能含合法整数值 |
+| label 1 | NETC | 应与 tumour core 结构一致 |
+| label 2 | SNFH | 应在 t2f/t2w 上有合理高信号语境 |
+| label 3 | ET | 应在 t1c 上有增强语境 |
+| label 4 | RC | 只能在治疗后/真实 RC 语境下谨慎生成 |
+| tiny lesion | `<27 mm3` 有临床意义 | 不能简单删除，但要防止噪点化 |
+| segmentation lesion | `>275 mm3` 影响 Dice/NSD | large lesion 边界和模态一致性必须稳 |
+| 数据空间 | native/T1C/SRI24 混合 | 不要求跨病例统一 shape，只要求病例内一致 |
+| validation | 不公开 label | 不可作为 source，不可进入训练 |
 
-### 1.2 当前本地数据事实
-
-当前 G2 已完成真实数据扫描：
+## 3. 当前真实数据参考
 
 | 项目 | 数值 |
 |---|---:|
 | 本地带标签训练病例 | 1296 |
-| final QC pass 训练病例 | 1295 |
-| final QC fail 训练病例 | 1 |
+| corrected overlay 后 final QC pass | 1295 |
+| corrected overlay 后 final QC fail | 1 |
 | 官方 validation 病例 | 179 |
-| real-only 固定 fold train/val | 1036 / 259 |
+| fixed fold0 train / val | 1036 / 259 |
 | 真实 lesion component 总数 | 9793 |
-| tiny/small/large lesion 数 | 3788 / 3922 / 2083 |
-| 含 RC 的真实训练病例 | 167 |
+| tiny / small / large lesion 数 | 3788 / 3922 / 2083 |
+| 含 RC 真实训练病例 | 167 |
+| G1 96 ROI source 候选 | 472 |
 
-已知必须排除的真实病例：
+已知排除：
 
 | 病例 | 原因 |
 |---|---|
 | `BraTS-MET-01094-002` | corrected overlay 后仍含非法 label value `6` |
 
-已知 corrected label 处理：
+## 4. QC 分层
 
-| 病例 | 处理 |
-|---|---|
-| `BraTS-MET-01094-003` | 使用官方 corrected label |
-| `BraTS-MET-01184-002` | 使用官方 corrected label 修正原始非法 label `8` |
-
-### 1.3 往年方法给今年的 QC 启发
-
-| 来源 | 可复用经验 | 今年调整 |
-|---|---|---|
-| 2023 GliGAN/rGANs | synthetic data 可以显著扩充训练，但必须保留 source、seed、生成方式和 split 控制 | 今年 diffusion 也必须沿用 manifest/log 追溯 |
-| 2023 split 说明 | validation set 只含真实数据，且不能用 validation source 生成 synthetic 放回训练 | 今年固定 `splits_final_fold0_realval.json`，synthetic 只进 train 侧 |
-| 2023 nnU-Net | 训练前运行 `nnUNetv2_plan_and_preprocess --verify_dataset_integrity` | 今年 real+synth 数据集物化后必须跑同等检查 |
-| nnU-Net 数据格式 | 每例所有通道与 label 必须同几何；通道顺序固定；seg 是整数 map | 写入 hard reject |
-| BraTS 2025 工具链 | 输入需要标准命名和 sanity check；默认 shape 警告不能代替拒绝 | 今年 MET 混合空间，shape 非 `240x240x155` 只记录，不拒绝 |
-| 2026 自定义 loss | lesion-wise Dice/NSD、connected component 对任务很重要 | QC 必须输出 lesion-level 统计，不只看病例级 label 体积 |
-
-## 2. QC 总流程
-
-每一批 synthetic data 都按以下顺序检查。前一层失败，不进入后一层训练评估。
-
-| 层级 | 名称 | 目的 | 输出 |
+| 层级 | 名称 | 目的 | 失败后动作 |
 |---:|---|---|---|
-| L0 | 交付完整性检查 | 确认 G1 交付可追溯、可复现 | run manifest、log、metadata 完整性 |
-| L1 | 文件与命名检查 | 确认每例四模态和 seg 齐全 | file check table |
-| L2 | NIfTI header 与几何检查 | 确认同一病例内 shape/spacing/affine 一致 | geometry metrics |
-| L3 | 数组与标签合法性检查 | 确认无 NaN/Inf、label 值域正确 | value metrics |
-| L4 | source 与 split 泄漏检查 | 确认只从允许训练病例生成 | leakage report |
-| L5 | lesion-level 结构检查 | 确认 lesion 数、体积、bbox、label 组合合理 | lesion metrics |
-| L6 | 生成痕迹与图像质量检查 | 查 ROI 边界、z 轴断裂、强度异常 | artifact metrics + review list |
-| L7 | teacher/segmenter 一致性检查 | 用分割模型粗查 label 是否离谱 | teacher metrics |
-| L8 | 批次分布检查 | 确认 synthetic 分布没有偏离真实数据太多 | batch distribution report |
-| L9 | nnU-Net 物化检查 | 确认 accepted 数据能进入训练 | verify_dataset_integrity 结果 |
-| L10 | 消融放行检查 | 用真实验证 fold 判断是否采用 | real-only vs real+synth 对比 |
+| L0 | raw delivery intake | 接收 G1 legacy raw output | 缺关键追踪则拒绝或修复 |
+| L1 | 文件完整性 | 检查四模态 + seg | 缺文件强制拒绝 |
+| L2 | NIfTI 可读性与几何 | 检查 shape/spacing/affine | 病例内不一致强制拒绝 |
+| L3 | 数组与 label 合法性 | 检查 NaN/Inf/常数图/label 值域 | 非法强制拒绝 |
+| L4 | source 与泄漏 | 检查 source、fold、official validation | 泄漏强制拒绝 |
+| L5 | G1 ROI 插入一致性 | 检查 ROI、非 ROI、source 回填 | 严重错误强制拒绝 |
+| L6 | lesion-level 结构 | 检查体积、数量、bbox、label 组合 | 异常复查或拒绝 |
+| L7 | 多模态医学一致性 | 检查 t1c/t2f/t2w/t1n 对应关系 | 异常复查 |
+| L8 | 扩散生成痕迹 | 检查边界、z 连续、强度漂移、模式塌缩 | 严重伪影拒绝 |
+| L9 | teacher model 辅助 | 用 real-only 分割模型发现离谱样本 | 异常复查 |
+| L10 | batch distribution | 检查整批 synthetic 分布 | 偏差大则降级 |
+| L11 | nnU-Net integrity | 检查训练入口 | 不通过整批不可训练 |
+| L12 | real validation ablation | 判断是否真正有用 | 指标受损则回滚 |
 
-## 3. L0 交付完整性检查
+## 5. L0 raw delivery intake
 
-### 3.1 G1 每批必须交付
+### 5.1 G1 raw run 最低内容
+
+每个 run 至少应有：
 
 ```text
-synthetic_raw/
-  run_YYYYMMDD_HHMM_modelname/
-    synthetic_generation_manifest.csv
-    generation_log.jsonl
-    run_metadata.json
-    SYN-MET-000001/
-      SYN-MET-000001-t1n.nii.gz
-      SYN-MET-000001-t1c.nii.gz
-      SYN-MET-000001-t2w.nii.gz
-      SYN-MET-000001-t2f.nii.gz
-      SYN-MET-000001-seg.nii.gz
-      metadata.json
+run_id/
+  generation_config.json            # 强烈建议
+  generation_log.jsonl              # 强烈建议
+  synthetic_generation_manifest.csv # 可由 G2 补建
+  <raw_case_id>/
+    <raw_case_id>-scan_t1.nii.gz 或 <raw_case_id>-t1n.nii.gz
+    <raw_case_id>-scan_t1ce.nii.gz 或 <raw_case_id>-t1c.nii.gz
+    <raw_case_id>-scan_t2.nii.gz 或 <raw_case_id>-t2w.nii.gz
+    <raw_case_id>-scan_flair.nii.gz 或 <raw_case_id>-t2f.nii.gz
+    <raw_case_id>-seg.nii.gz
 ```
 
-### 3.2 必查字段
+### 5.2 G2 可自动恢复的信息
 
-| 字段 | 必须性 | 说明 |
-|---|---|---|
-| `case_id` | 必需 | synthetic ID，不得复用真实 BraTS ID |
-| `source_case_id` | 必需 | 真实 source 病例 |
-| `generation_run_id` | 必需 | 本批次唯一 ID |
-| `generator_name` | 必需 | 生成器名称 |
-| `generator_checkpoint` | 必需 | checkpoint 路径或版本 |
-| `generator_git_commit` | 建议 | 生成代码版本 |
-| `generation_mode` | 必需 | local_insertion、full_case、2.5D 等 |
-| `seed` | 必需 | 可复现随机种子 |
-| `source_manifest_version` | 必需 | 使用哪个 G2 manifest |
-| `label_strategy` | 必需 | label 如何生成或修改 |
-| `roi_bbox_ijk` | local insertion 必需 | 插入区域 bbox |
-| `allow_empty_mask` | 条件必需 | 空 mask 必须显式允许 |
+G2 可以从 raw case 目录名恢复：
 
-### 3.3 判定
+1. `source_case_id`
+2. `label_kind`
+3. `label_index`
+4. `synthetic_raw_id`
 
-| 情况 | 判定 |
+G2 可以从 NIfTI 恢复：
+
+1. output shape
+2. spacing
+3. affine hash
+4. dtype
+5. label values
+
+### 5.3 G2 不能可靠恢复的信息
+
+以下信息必须来自 G1 config/log/manifest，否则不能进入 accepted：
+
+1. generator checkpoint。
+2. seed。
+3. label channel 数。
+4. noise type。
+5. source CSV 版本。
+6. generation mode。
+7. 如果目录名不可解析，则 source case。
+
+## 6. L1 文件完整性
+
+每例必须有：
+
+| 语义 | 接收后缀 |
 |---|---|
-| 缺 `metadata.json`，但 run manifest 能完整恢复 | 人工复查 |
-| 缺 `metadata.json` 且 run manifest 也不能恢复 | 强制拒绝 |
-| 缺 seed/checkpoint/run_id/source_case_id | 强制拒绝 |
-| synthetic ID 与目录/文件名不一致 | 强制拒绝 |
-
-## 4. L1 文件与命名检查
-
-每个 synthetic case 必须有 5 个 NIfTI：
-
-| 文件 | 含义 |
-|---|---|
-| `{case_id}-t1n.nii.gz` | pre-contrast T1 |
-| `{case_id}-t1c.nii.gz` | post-contrast T1 |
-| `{case_id}-t2w.nii.gz` | T2 |
-| `{case_id}-t2f.nii.gz` | T2 FLAIR |
-| `{case_id}-seg.nii.gz` | segmentation label |
-
-检查标准：
-
-1. 文件名必须与目录名 `case_id` 一致。
-2. 后缀必须是 `.nii.gz`。
-3. 不允许有重复模态。
-4. 不允许缺少任一模态。
-5. 不允许用真实病例 ID 作为 synthetic case ID。
-
-判定：
-
-| 问题 | 判定 |
-|---|---|
-| 缺任一模态或 seg | 强制拒绝 |
-| 文件损坏无法读取 | 强制拒绝 |
-| 额外文件不影响读取但命名混乱 | 人工复查 |
-
-## 5. L2 NIfTI header 与几何检查
-
-### 5.1 同一病例内必须一致
-
-对 `t1n/t1c/t2w/t2f/seg` 读取：
-
-1. `shape`
-2. `spacing`
-3. `affine`
-4. `orientation`
-5. `dtype`
-
-强制标准：
-
-| 项目 | 标准 |
-|---|---|
-| shape | 五个文件完全一致 |
-| spacing | 五个文件逐轴一致，容差 `<=1e-5` |
-| affine | 五个文件 `np.allclose(atol=1e-4)` |
-| orientation | 五个文件一致 |
-| header 可读性 | nibabel/SimpleITK 能读 header 和数组 |
-
-### 5.2 跨病例不要求统一 shape
-
-今年 MET 数据包含原生空间和 SRI24 空间，真实病例 shape/spacing 本来就不统一。因此：
-
-1. shape 不是 `240x240x155` 不拒绝。
-2. spacing 不是 `1,1,1` 不拒绝。
-3. 但 synthetic case 必须继承 source case 的空间，或在 metadata 中明确说明目标空间和 resampling 方法。
-
-判定：
-
-| 问题 | 判定 |
-|---|---|
-| 同一病例内 shape/spacing/affine 不一致 | 强制拒绝 |
-| 与 source case 空间差异但无 metadata 说明 | 强制拒绝 |
-| 与 source case 空间差异且有清晰 resampling 说明 | 人工复查 |
-
-## 6. L3 数组与标签合法性检查
-
-### 6.1 图像数组检查
-
-每个模态检查：
-
-| 项目 | 标准 |
-|---|---|
-| NaN/Inf | 不允许 |
-| 全零或常数图 | 不允许 |
-| dtype | 记录，不强制统一 |
-| 强度范围 | 记录 min/p1/p50/p99/max |
-| 非零体素比例 | 与 source case 差异过大则人工复查 |
+| T1 native | `t1n` 或 `scan_t1` |
+| T1 contrast | `t1c` 或 `scan_t1ce` |
+| T2 | `t2w` 或 `scan_t2` |
+| FLAIR | `t2f` 或 `scan_flair` |
+| segmentation | `seg` |
 
 强制拒绝：
 
-1. 出现 NaN/Inf。
-2. 图像全零或常数。
-3. 数组维度不是 3D。
-4. 数组 shape 与 header 不一致。
+1. 缺任一模态。
+2. 缺 `seg`。
+3. 同一语义模态重复且无法判断使用哪个。
+4. 文件扩展名不是 `.nii.gz` 或无法读取。
 
-### 6.2 label 检查
+## 7. L2 NIfTI 几何
 
-每个 `seg` 检查：
+同一 synthetic case 内，五个文件必须：
 
-| 项目 | 标准 |
-|---|---|
-| 整数性 | 所有非空体素必须是整数 |
-| 值域 | 只能是 `{0,1,2,3,4}` |
-| 空 mask | 第一轮默认不接受，除非 metadata 显式允许 |
-| label dtype | 可为 float/int，但值必须整数 |
+1. shape 完全一致。
+2. spacing 逐轴一致，容差 `<=1e-5`。
+3. affine `np.allclose(atol=1e-4)`。
+4. orientation 一致。
+5. 都是 3D volume。
 
-强制拒绝：
-
-1. label 值域包含 `5/6/8/255` 等非法值。
-2. label 存在非整数浮点值，例如 `1.5`。
-3. label 全空且未允许。
-
-## 7. L4 source 与 split 泄漏检查
-
-### 7.1 source 允许条件
-
-synthetic source 必须满足：
-
-1. 存在于 `work_space/G2/results/manifests/real_train_manifest.csv`。
-2. `final_qc_pass=True`。
-3. 不在 `splits/splits_final_fold0_realval.json` 的 `val` 列表中。
-4. 不来自官方 `Validation/` 目录。
-5. 不使用已排除病例 `BraTS-MET-01094-002`。
-
-### 7.2 泄漏定义
-
-以下都算泄漏：
-
-1. 用固定真实验证 fold 的病例生成 synthetic，然后放入训练。
-2. 用官方 validation 病例生成 synthetic。
-3. synthetic ID 复用真实 ID，导致训练/验证无法区分。
-4. metadata 中 source 缺失，无法排除泄漏。
+跨病例不要求统一 shape，因为 2026 MET 数据本身存在不同空间。
 
 判定：
 
 | 问题 | 判定 |
 |---|---|
-| source 来自固定 val fold | 强制拒绝 |
-| source 来自官方 validation | 强制拒绝 |
-| source 不在 G2 manifest | 强制拒绝 |
-| source 缺失无法追溯 | 强制拒绝 |
+| 病例内 shape 不一致 | 强制拒绝 |
+| 病例内 spacing 不一致 | 强制拒绝 |
+| 病例内 affine 不一致 | 强制拒绝 |
+| 与 source case 几何不一致且无说明 | 强制拒绝 |
+| 与 source case 几何不一致但有 resampling 说明 | 人工复查 |
 
-## 8. L5 lesion-level 结构检查
+## 8. L3 数组与 label 合法性
 
-### 8.1 连通组件定义
+### 8.1 图像数组
 
-QC 时把所有非背景标签 `{1,2,3,4}` 的并集作为 lesion mask，做 3D connected component 分析。每个 component 记录：
+每个模态记录：
 
-1. `lesion_id`
-2. `component_labels`
-3. `component_volume_mm3`
-4. `volume_bucket`
-5. `bbox_ijk`
-6. `center_ijk`
-7. 是否含 NETC/SNFH/ET/RC
+1. min / p1 / p50 / p99 / max。
+2. mean / std。
+3. nonzero ratio。
+4. NaN/Inf。
+5. 是否常数图。
 
-### 8.2 体积分档
+强制拒绝：
 
-| 分档 | 标准 | 说明 |
-|---|---|---|
-| tiny | `<27 mm3` | 检测任务关心，不能简单丢弃 |
-| small | `27-275 mm3` | 检测和分割之间的过渡 |
-| large | `>275 mm3` | 分割指标重点 |
+1. NaN/Inf。
+2. 全零或常数图。
+3. 维度不是 3D。
+4. 图像数组和 header shape 不一致。
 
-### 8.3 真实分布参考
-
-| 指标 | 当前真实训练参考 |
-|---|---:|
-| lesion component 总数 | 9793 |
-| tiny/small/large | 3788 / 3922 / 2083 |
-| 每例 lesion 数 p50/p90/p95/p99/max | 3 / 16 / 28 / 56 / 393 |
-| component volume p50/p95/p99/max | 44.9 / 3983.8 / 15212.6 / 96166.5 mm3 |
-
-### 8.4 单例判定
-
-| 情况 | 判定 |
-|---|---|
-| lesion bbox 超出图像边界 | 强制拒绝 |
-| lesion 与脑外全零背景大面积重叠 | 强制拒绝 |
-| lesion 数 `>28` | 人工复查 |
-| lesion 数 `>56` | 高优先级人工复查 |
-| tiny lesion 占比 `>35%` | 人工复查 |
-| 最小 lesion `<1 mm3` | 人工复查 |
-| 最大 lesion `>15213 mm3` | 人工复查 |
-| label 组合极罕见 | 人工复查 |
-
-注意：不能因为 tiny lesion 小就自动拒绝。2026 Task1 明确 tiny lesion 有临床意义；G2 要拒绝的是明显生成噪点、脑外假阳性、无法追溯的异常 tiny lesion。
-
-## 9. L6 图像质量与生成痕迹检查
-
-### 9.1 自动检查指标
-
-| 指标 | 检查方式 | 判定 |
-|---|---|---|
-| ROI boundary jump | 比较 bbox 内外边界强度差 | 明显硬边则人工复查或拒绝 |
-| z continuity | 比较相邻 slice lesion 面积和强度变化 | 严重断裂强制拒绝 |
-| brain mask overlap | 用四模态非零区域近似脑区 | lesion 大量在脑外则拒绝 |
-| source-synthetic intensity drift | 比较 source 与 synthetic 的 p1/p50/p99 | 极端偏离人工复查 |
-| modality consistency | lesion 在 t1c/t2f 上是否有合理表现 | 不合理人工复查 |
-
-### 9.2 人工看图清单
-
-每批至少抽查：
-
-1. 所有 hard reject 临界病例。
-2. 所有 manual review 病例。
-3. accepted 病例随机抽查不少于 `max(10, accepted_count*10%)`。
-4. 所有 RC synthetic。
-5. tiny lesion 比例最高的前 20 例。
-6. 最大 lesion 体积前 20 例。
-
-看图时至少查看：
-
-1. `t1c + ET` overlay。
-2. `t2f + SNFH` overlay。
-3. `t1n/t1c/t2w/t2f` 四模态同切片。
-4. sagittal/coronal/axial 三方向。
-5. ROI 边界前后若干 slice。
-
-## 10. L7 teacher/segmenter 一致性检查
-
-teacher model 不是最终真理，只是辅助发现离谱样本。建议使用 real-only baseline 或 S1/S2 的初版 nnU-Net。
-
-记录指标：
-
-| 指标 | 含义 |
-|---|---|
-| `teacher_dice_label_1..4` | 每个 label 的 Dice |
-| `teacher_lesion_count_diff` | teacher lesion 数与 synthetic label lesion 数差 |
-| `teacher_missing_large_lesion_count` | teacher 漏掉的 large lesion 数 |
-| `teacher_extra_large_lesion_count` | teacher 多出的 large lesion 数 |
-| `teacher_nsd_label_1..4` | 可选 NSD |
-
-判定建议：
-
-1. teacher 与 label 完全不一致时人工复查。
-2. large lesion 被 teacher 完全漏掉时人工复查。
-3. teacher 指标低不能单独强制拒绝，因为 synthetic 可能是困难样本；但必须进入报告。
-
-## 11. L8 批次分布检查
-
-单例通过不代表整批可用。整批 accepted synthetic 必须和真实分布保持受控差异。
-
-### 11.1 必报分布
-
-1. label combination 分布。
-2. tiny/small/large lesion 分布。
-3. 每例 lesion 数分布。
-4. RC case 比例。
-5. source case 使用次数分布。
-6. source institution/space 分布，如果 manifest 可推断。
-7. generation_mode 分布。
-8. checkpoint/seed 覆盖情况。
-
-### 11.2 批次阈值
-
-| 项目 | 第一轮标准 |
-|---|---|
-| accepted synthetic 总数 | 不超过真实训练病例 25%，即约 323 例 |
-| 每个 source case | 默认最多 accepted 1 例 |
-| validation leakage | 必须为 0 |
-| hard reject rate | 目标 `<=5%` |
-| manual review unresolved | 必须为 0 |
-| tiny lesion 占比 | 默认 `<=35%` |
-| RC synthetic | 只能来自真实 RC source |
-| 缺 metadata accepted 数 | 必须为 0 |
-
-## 12. L9 nnU-Net 物化检查
-
-accepted synthetic 合并入训练前，必须建立单独 real+synth dataset，不要污染 real-only Dataset260。
+### 8.2 label
 
 检查：
 
-1. `imagesTr/{case_id}_0000.nii.gz` 对应 t1n。
-2. `imagesTr/{case_id}_0001.nii.gz` 对应 t1c。
-3. `imagesTr/{case_id}_0002.nii.gz` 对应 t2w。
-4. `imagesTr/{case_id}_0003.nii.gz` 对应 t2f。
-5. `labelsTr/{case_id}.nii.gz` 对应 seg。
-6. `dataset.json` channel_names 与 label 定义正确。
-7. `numTraining` 与实际病例数一致。
+1. 是否整数。
+2. 值域是否属于 `{0,1,2,3,4}`。
+3. 是否空 mask。
+4. 各 label 体积。
+
+强制拒绝：
+
+1. 非整数 label。
+2. 出现 `5/6/8/255` 等非法值。
+3. 空 mask 且 metadata/config 没有允许。
+
+## 9. L4 source 与泄漏
+
+source 必须：
+
+1. 在 `real_train_manifest.csv` 中存在。
+2. `final_qc_pass=True`。
+3. 不在 fixed fold0 validation。
+4. 不来自 official validation。
+5. 不是已排除病例。
+6. 如果使用 G1 96 ROI 模式，应来自 `usable_for_gligan96=True` 候选。
+
+强制拒绝：
+
+| 情况 | 原因 |
+|---|---|
+| source 来自 fixed val fold | 训练/验证泄漏 |
+| source 来自 official validation | 官方验证集泄漏 |
+| source 缺失 | 不可追溯 |
+| source 不在 G2 manifest | 不可控 |
+| synthetic ID 复用真实训练 ID | 容易混淆训练资产 |
+
+## 10. L5 G1 ROI 插入一致性
+
+G1 当前是局部 ROI 生成，因此 G2 必须检查 ROI 相关指标。
+
+### 10.1 必查指标
+
+| 指标 | 含义 | 判定 |
+|---|---|---|
+| `roi_bbox_available` | manifest/log 是否给出 ROI | 缺失则复查 |
+| `roi_inside_image` | ROI 是否在图像内 | 否则拒绝 |
+| `lesion_inside_roi_ratio` | 新 lesion 是否落在 ROI 内 | 过低拒绝 |
+| `nonroi_change_ratio` | 非 ROI 区域是否被改动 | 高于阈值复查/拒绝 |
+| `source_existing_lesion_overlap` | 是否覆盖原有 lesion | 未声明则拒绝 |
+| `brain_mask_overlap_ratio` | lesion 是否在脑内 | 过低拒绝 |
+
+### 10.2 推荐阈值
+
+第一轮 smoke 阶段：
+
+1. `nonroi_change_ratio <= 0.001`。
+2. `brain_mask_overlap_ratio >= 0.98`。
+3. `lesion_inside_roi_ratio >= 0.99`。
+4. `source_existing_lesion_overlap=0`，除非 `generation_mode=real_label_regeneration`。
+
+## 11. L6 lesion-level 结构
+
+### 11.1 连通域定义
+
+把 `{1,2,3,4}` 的并集作为 lesion mask，做 3D connected component。
+
+每个 component 记录：
+
+1. lesion id。
+2. labels present。
+3. volume mm3。
+4. tiny/small/large bucket。
+5. bbox。
+6. center。
+7. 是否含 RC。
+
+### 11.2 体积分档
+
+| 档位 | 标准 |
+|---|---|
+| tiny | `<27 mm3` |
+| small | `27-275 mm3` |
+| large | `>275 mm3` |
+
+### 11.3 单例判定
+
+| 情况 | 判定 |
+|---|---|
+| bbox 超出图像 | 强制拒绝 |
+| lesion 大面积在脑外 | 强制拒绝 |
+| lesion 数 `>28` | 人工复查 |
+| lesion 数 `>56` | 高优先级复查 |
+| tiny ratio `>35%` | 人工复查 |
+| 最小 lesion `<1 mm3` | 人工复查 |
+| 最大 lesion `>15213 mm3` | 人工复查 |
+| RC 出现在无 RC 语境 | 人工复查或拒绝 |
+
+tiny lesion 不是噪声的同义词；G2 拒绝的是不可解释的生成噪点，而不是所有 tiny lesion。
+
+## 12. L7 多模态医学一致性
+
+### 12.1 自动指标
+
+| 指标 | 目的 |
+|---|---|
+| `et_t1c_contrast_ratio` | ET 在 t1c 上是否有合理增强 |
+| `snfh_t2f_contrast_ratio` | SNFH 在 t2f 上是否有高信号语境 |
+| `snfh_t2w_contrast_ratio` | SNFH 在 t2w 上是否合理 |
+| `rc_t1n_t2f_profile_score` | RC 语境是否异常 |
+| `cross_modality_roi_corr` | 四模态 ROI 是否空间一致 |
+| `label_modality_alignment_score` | label 与图像异常是否对齐 |
+
+### 12.2 人工复查触发
+
+1. label 有 ET，但 t1c 完全没有对应增强。
+2. label 有 SNFH，但 t2f/t2w 与周围组织无差别或边界极硬。
+3. 四模态 lesion 位置不一致。
+4. RC 大量出现但 source 或 label_kind 无 RC 依据。
+
+## 13. L8 扩散生成质量
+
+这一层专门衡量 G1 diffusion 生成质量。
+
+### 13.1 局部质量
+
+| 指标 | 说明 | 趋势 |
+|---|---|---|
+| `roi_boundary_mae` | ROI 边界内外强度差 | 越低越好 |
+| `roi_boundary_gradient_jump` | 边界梯度跳变 | 越低越好 |
+| `z_continuity_score` | 相邻 slice 面积/强度连续性 | 越高越好 |
+| `intensity_drift_p50` | synthetic 与 source 中位数漂移 | 越低越好 |
+| `artifact_block_score` | 方块伪影疑似程度 | 越低越好 |
+
+### 13.2 多样性与复制风险
+
+| 指标 | 说明 |
+|---|---|
+| `synth_synth_ms_ssim` | 同批 synthetic 过高提示模式塌缩 |
+| `source_synth_roi_ssim` | ROI 与 source 原图过高可能没生成出新病灶 |
+| `label_source_synth_roi_ssim` | 借用真实 label 时检查是否复制原病例影像 |
+| `nearest_real_roi_feature_distance` | synthetic 是否过度接近某真实病例 ROI |
+| `duplicate_hash_hit` | 是否存在重复样本 |
+
+### 13.3 医学 feature 级指标
+
+可以使用 FID/MMD，但不能直接用 ImageNet Inception FID。
+
+允许路线：
+
+1. 使用 real-only segmentation encoder 提取 3D ROI feature。
+2. 使用医学 MRI 自监督 encoder。
+3. 使用团队训练的 3D feature extractor。
+
+指标：
+
+1. `feature_fid_medical`。
+2. `feature_mmd_medical`。
+3. `roi_feature_distance_p50`。
+
+这些指标只做辅助，不作为单独放行标准。
+
+## 14. L9 teacher model 辅助
+
+teacher model 建议使用 real-only nnU-Net baseline。
+
+记录：
+
+1. `teacher_dice_label_1..4`
+2. `teacher_nsd_label_1..4`
+3. `teacher_lesion_count_diff`
+4. `teacher_missing_large_lesion_count`
+5. `teacher_extra_large_lesion_count`
+
+判定：
+
+1. teacher 完全找不到 large lesion，人工复查。
+2. teacher 预测与 synthetic label 完全相反，人工复查。
+3. teacher 分数低不能单独拒绝，因为 synthetic 可能是困难样本。
+4. teacher 异常必须写入报告。
+
+## 15. L10 batch distribution
+
+整批 synthetic 通过标准：
+
+| 指标 | 第一轮标准 |
+|---|---|
+| validation leakage | 必须为 0 |
+| hard reject rate | 目标 `<=5%` |
+| unresolved manual review | 必须为 0 |
+| accepted synthetic 总量 | 第一轮不超过 real train 25% |
+| 每个 source accepted 数 | 默认最多 1 |
+| tiny lesion ratio | 默认 `<=35%`，超出需解释 |
+| RC synthetic | 只来自真实 RC 语境 |
+| source 分布 | 不集中于少数病例 |
+| checkpoint 分布 | 能按 checkpoint 分层追溯 |
+
+必须报告：
+
+1. label combination 分布。
+2. tiny/small/large 分布。
+3. 每例 lesion 数分布。
+4. source case 使用次数。
+5. label_kind 分布。
+6. generation_mode 分布。
+7. checkpoint/seed 覆盖。
+8. reject reason 分布。
+
+## 16. L11 nnU-Net integrity
+
+accepted synthetic 导出后必须检查：
+
+1. `imagesTr/{case_id}_0000.nii.gz = t1n`
+2. `imagesTr/{case_id}_0001.nii.gz = t1c`
+3. `imagesTr/{case_id}_0002.nii.gz = t2w`
+4. `imagesTr/{case_id}_0003.nii.gz = t2f`
+5. `labelsTr/{case_id}.nii.gz = seg`
+6. `dataset.json` channel_names 正确。
+7. `numTraining` 与实际一致。
 8. 运行 `nnUNetv2_plan_and_preprocess -d {dataset_id} --verify_dataset_integrity`。
 
-只要 nnU-Net integrity check 不通过，该批不能进入训练。
+不通过 integrity check 的批次不能进入训练。
 
-## 13. L10 消融放行检查
+## 17. L12 real validation ablation
 
-QC 只能证明数据“可用”，不能证明“有用”。最终采用 synthetic data 必须看真实验证 fold。
+QC 证明数据“能用”，ablation 证明数据“有用”。
 
-最低消融：
+最低实验：
 
 | 实验 | 训练数据 | 验证 |
 |---|---|---|
-| real-only baseline | 真实 train fold | 固定真实 val fold |
-| real+synth smoke | 真实 train fold + smoke accepted synthetic | 同一 val fold |
-| real+synth low ratio | 真实 train fold + 少量 accepted synthetic | 同一 val fold |
-| real+synth policy ablation | 不同 generation policy | 同一 val fold |
+| real-only | fixed train real | fixed real val |
+| real+synth smoke | fixed train real + smoke accepted | fixed real val |
+| real+synth low ratio | fixed train real + 0.25x synth | fixed real val |
+| policy ablation | 不同 G1 checkpoint/label_kind/noise_type | fixed real val |
 
 采用标准：
 
-1. real+synth 不能显著降低 Dice、NSD、lesion F1。
-2. tiny lesion 检测指标若提升，但 large lesion 分割明显下降，需要单独讨论，不自动采用。
-3. RC 指标若受损，RC synthetic 必须回滚或单独降权。
-4. 最终报告必须包含 real-only 对照。
+1. Dice/NSD 不明显下降。
+2. lesion-wise F1/AUC 不下降。
+3. tiny lesion recall 不下降，最好提升。
+4. large lesion segmentation 不被牺牲。
+5. RC 指标不被 synthetic 拉坏。
+6. 若 synthetic 只改善某类病灶，报告必须限制使用结论。
 
-## 14. QC 结果文件建议
+## 18. 单例分级标准
 
-每批 synthetic data 建议输出：
+| 等级 | 名称 | 标准 | 动作 |
+|---|---|---|---|
+| A | excellent | 硬检查全过，ROI 自然，多模态一致，teacher 无异常，人工抽查优秀 | 可训练，可展示 |
+| B | accepted | 硬检查全过，无严重伪影，指标可接受 | 可训练 |
+| C | ablation_only | 硬检查全过，但分布/teacher/视觉质量需验证 | 只做消融 |
+| D | needs_regeneration | 可追溯但质量问题可由 G1 重跑修复 | 回传 G1 |
+| F | rejected | 泄漏、非法 label、几何错误、严重伪影、不可追溯 | 不使用 |
+
+## 19. 怎么证明“质量非常优秀”
+
+一批数据只有满足以下证据，才能在报告中写“质量非常优秀”：
+
+1. `validation_leakage_count=0`。
+2. `hard_reject_rate<=5%`。
+3. `manual_review_unresolved_count=0`。
+4. `excellent_or_accepted_ratio>=90%`。
+5. `label_values_valid_rate=100%`。
+6. `geometry_consistent_rate=100%`。
+7. `nifti_readable_rate=100%`。
+8. `roi_boundary_pass_rate>=95%`。
+9. `z_continuity_pass_rate>=95%`。
+10. `modality_consistency_pass_rate>=90%`。
+11. `batch_distribution_status=controlled`。
+12. `nnunet_integrity_pass=True`。
+13. real+synth ablation 不降低核心指标，并至少在一个目标指标上有提升或稳定收益。
+
+如果没有第 13 条，只能说“QC 质量优秀”，不能说“训练价值优秀”。
+
+## 20. 人工复查规则
+
+每批必须复查：
+
+1. 所有 hard reject 临界病例。
+2. 所有 manual review 病例。
+3. accepted 病例随机抽查不少于 `max(10, accepted_count * 10%)`。
+4. 所有 RC synthetic。
+5. tiny lesion ratio 最高的前 20 例。
+6. 最大 lesion 体积前 20 例。
+7. teacher 异常前 20 例。
+
+每例至少查看：
+
+1. `t1c + ET` overlay。
+2. `t2f + SNFH` overlay。
+3. 四模态同切片。
+4. axial/coronal/sagittal 三方向。
+5. ROI 边界前后 slice。
+
+## 21. 输出文件
+
+每批 run 输出：
 
 ```text
 qc/
   qc_metrics_{run_id}.csv
+  diffusion_quality_metrics_{run_id}.csv
   qc_case_review_{run_id}.csv
   qc_batch_summary_{run_id}.json
   G2_synthetic_data_quality_report_{run_id}.md
-  accepted_synthetic_manifest_{run_id}.csv
-  rejected_synthetic_manifest_{run_id}.csv
+manifests/
+  synthetic_candidate_manifest_{run_id}.csv
+  synthetic_accepted_manifest_{run_id}.csv
+  synthetic_rejected_manifest_{run_id}.csv
 ```
 
-## 15. 数据报告必须回答的问题
+## 22. 数据报告必须回答
 
-每份数据报告必须明确回答：
+1. 这批数据由哪个 G1 checkpoint 生成。
+2. 使用哪个 G2 source CSV。
+3. 生成了多少例，成功读取多少例。
+4. G2 能否恢复 source、seed、label_kind、ROI。
+5. 是否存在 validation leakage。
+6. label 是否全部合法。
+7. geometry 是否全部一致。
+8. ROI 边界是否自然。
+9. z 轴是否连续。
+10. 多模态是否合理。
+11. lesion 分布是否可控。
+12. teacher 是否发现异常。
+13. 人工复查结论是什么。
+14. 最终 accepted/rejected/needs_regeneration 各多少。
+15. 是否通过 nnU-Net integrity。
+16. 是否允许进入 real+synth 消融。
+17. ablation 后是否证明它真的有用。
 
-1. 这批 synthetic data 是谁生成的，用哪个 checkpoint 和 seed。
-2. 生成了多少例，成功读取多少例。
-3. 有多少例强制拒绝，拒绝原因是什么。
-4. 有多少例需要人工复查，复查结论是什么。
-5. 最终 accepted 多少例。
-6. 是否存在 validation leakage，数量是否为 0。
-7. label 值域是否全部合法。
-8. shape/spacing/affine 是否病例内一致。
-9. lesion 数、体积、tiny/small/large 分布是否合理。
-10. RC 是否只来自真实 RC source。
-11. 是否通过 nnU-Net integrity check。
-12. 是否允许进入 real+synth 消融。
-
-## 16. 最终结论模板
-
-报告结论只能使用以下四类：
-
-| 结论 | 使用条件 |
-|---|---|
-| `accepted_for_training` | 单例硬检查通过，人工复查完成，批次分布可控，nnU-Net integrity 通过 |
-| `accepted_for_ablation_only` | 基本可用，但分布、teacher 或视觉质量仍需通过受控消融确认 |
-| `needs_regeneration` | metadata、生成痕迹、局部质量或可复现性有问题，但可由 G1 重跑修复 |
-| `rejected` | 存在泄漏、非法 label、几何错误、严重伪影或不可追溯问题 |
-
-## 17. 当前第一轮建议
+## 23. 第一轮建议
 
 1. G1 先交 10-20 个 smoke cases。
-2. G2 对 smoke cases 跑完整 L0-L9 QC。
-3. smoke 通过后再生成 100-300 个候选。
-4. 第一轮 accepted synthetic 不超过 323 例。
-5. 不做 full-case 从零生成进入主训练；优先 local insertion 或 source-conditioned diffusion。
+2. G2 对 smoke cases 跑 L0-L11。
+3. smoke 通过后生成 100-300 个候选。
+4. 第一轮 accepted synthetic 不超过真实训练病例 25%。
+5. 不做 full-case 从零生成进入主训练。
 6. 不凭空生成 RC。
-7. 不使用 official validation，也不使用固定真实 val fold source。
-8. 所有 accepted synthetic 都必须能追溯到 source、checkpoint、seed、generation_mode 和 QC 版本。
+7. 不使用 official validation 或 fixed real val source。
+8. 所有 accepted synthetic 必须完整追踪 source、checkpoint、seed、generation_mode 和 QC 版本。
+
+## 24. 一句话
+
+G2 的 QC 不是“挑好看的图”，而是把 G1 的 raw diffusion output 变成有证据链的数据资产；没有证据链的 synthetic data，不管视觉上多像，都不能进入训练。

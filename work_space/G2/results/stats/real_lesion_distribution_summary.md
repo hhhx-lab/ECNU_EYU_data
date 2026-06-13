@@ -1,6 +1,6 @@
 # G2 Real Lesion Distribution Summary
 
-生成日期：2026-05-31
+生成日期：2026-06-14
 
 ## 关键结果
 

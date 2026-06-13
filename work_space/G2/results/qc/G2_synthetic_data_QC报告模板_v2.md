@@ -26,8 +26,8 @@ QC 规则版本：`G2_synthetic_data_QC规则策略_v2.md`
 |---|---|---|
 | `synthetic_generation_manifest.csv` 是否存在 |  |  |
 | `generation_log.jsonl` 是否存在 |  |  |
-| 每例 `metadata.json` 是否存在 |  |  |
-| checkpoint/seed/source 是否可追溯 |  |  |
+| 每例 `metadata.json` 是否存在，或 G2 是否能从 manifest/log 恢复核心字段 |  |  |
+| checkpoint/seed/source/label_kind 是否可追溯 |  |  |
 | 文件命名是否一致 |  |  |
 
 ## 3. 单例 QC 统计
@@ -105,7 +105,22 @@ QC 规则版本：`G2_synthetic_data_QC规则策略_v2.md`
 
 说明：teacher 结果只作为辅助 QC，不单独决定是否拒绝。
 
-## 9. nnU-Net integrity check
+## 9. 扩散生成质量专项
+
+| 指标 | 数值 | 结论 |
+|---|---:|---|
+| ROI boundary pass rate |  |  |
+| z continuity pass rate |  |  |
+| modality consistency pass rate |  |  |
+| source-synth ROI similarity 异常数 |  |  |
+| synth-synth MS-SSIM 异常数 |  |  |
+| duplicate/hash 命中数 |  |  |
+| medical feature FID/MMD 是否仅作辅助 |  |  |
+| excellent / accepted / ablation_only / rejected |  |  |
+
+结论：只有 hard gate 通过、ROI 边界自然、z 轴连续、多模态一致、无明显复制风险，并且人工复查完成后，才能称为“QC 质量优秀”。只有 real+synth 消融不伤害真实验证指标并带来稳定收益，才能称为“训练价值优秀”。
+
+## 10. nnU-Net integrity check
 
 | 项目 | 结果 |
 |---|---|
@@ -115,7 +130,7 @@ QC 规则版本：`G2_synthetic_data_QC规则策略_v2.md`
 | `nnUNetv2_plan_and_preprocess --verify_dataset_integrity` |  |
 | 失败原因 |  |
 
-## 10. 结论与后续动作
+## 11. 结论与后续动作
 
 最终结论：
 
