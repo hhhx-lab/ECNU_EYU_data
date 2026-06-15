@@ -81,14 +81,14 @@ def ensure_dirs(results_root: Path) -> dict[str, Path]:
 
 def write_readme_files(results_root: Path, dirs: dict[str, Path]) -> None:
     readmes = {
-        results_root / "README.md": "# G2 Results\n\n本目录保存 G2 在模型训练完成前已经能在本机完成的小型结果文件。现在这里同时承接真实数据清单、G1 兼容 source 表、synthetic intake 结果、QC 报告和进度索引；NIfTI 大数据、nnU-Net 大量预处理缓存和正式 synthetic 影像都不复制到仓库。\n",
-        dirs["nnunet_raw_root"] / "README.md": "# nnunet_raw\n\n这里是 nnU-Net 原始数据的轻量入口。当前仓库只放占位说明、dataset.json 和路径契约，不放正式大体积影像。`Dataset260_BraTS2026_MET_RealOnly/` 记录 real-only 基线；synthetic intake 通过 G2 产出 accepted/rejected、QC 和 batch summary 后，再决定是否另起新的 dataset id。\n\n本目录的核心职责是把 `manifests/nnunet_case_mapping_realonly.csv` 和未来 synthetic accepted 映射变成训练机上的物化动作说明，而不是在仓库里复制影像本体。\n",
-        dirs["manifests"] / "README.md": "# Manifests\n\n保存真实训练/验证清单、corrected overlay、G1 兼容 source CSV、synthetic intake 自动补建清单，以及 accepted/rejected 的最终索引文件。\n",
+        results_root / "README.md": "# G2 Results\n\n本目录保存 G2 的轻量结果文件：真实数据清单、G1 source 表、synthetic intake 模板、QC 策略、官方指标模板和进度索引。NIfTI 大数据、nnU-Net 预处理缓存、正式 synthetic 影像和临时 smoke run 产物都不放进仓库。\n\n正式入口：`../code/g2_synthetic_raw_intake_qc.py` 接收 G1 raw run，`../code/g2_materialize_nnunet_dataset.py` 转 nnU-Net raw，`../code/g2_official_mets_metrics_parser.py` 解析或校验 2026 Task1 官方字段。\n",
+        dirs["nnunet_raw_root"] / "README.md": "# nnunet_raw\n\n这里是 nnU-Net 原始数据的轻量入口。当前仓库只放占位说明、dataset.json 和路径契约，不放正式大体积影像。`Dataset260_BraTS2026_MET_RealOnly/` 记录 real-only 基线；正式 real+synth 由 `../code/g2_materialize_nnunet_dataset.py` 在训练机物化。\n",
+        dirs["manifests"] / "README.md": "# Manifests\n\n保存真实训练/验证清单、corrected overlay、G1 兼容 source CSV、synthetic intake 模板，以及正式 G1 批次到来后生成的 accepted/rejected 索引文件。旧 smoke run 演示输出不保留。\n",
         dirs["stats"] / "README.md": "# Stats\n\n保存真实 label/lesion 分布、synthetic 目标分布、batch 级统计摘要，以及后续抽样分析所需的小型数表。\n",
-        dirs["qc"] / "README.md": "# QC\n\n保存 synthetic data 质量控制规则、逐例指标模板、扩散质量专项模板、人工复查表头，以及 run 级自动 QC 输出。\n",
+        dirs["qc"] / "README.md": "# QC\n\n保存 synthetic data 质量控制规则、逐例指标模板、扩散质量专项模板、人工复查表头、官方 leaderboard 对齐模板，以及正式 run 级自动 QC 输出。\n",
         dirs["splits"] / "README.md": "# Splits\n\n保存固定真实验证 fold，供 real-only、real+synth 和后续所有消融复用。\n",
-        dirs["reports"] / "README.md": "# Reports\n\n保存路径检查、数据 QC、执行总结、进度报告和团队沟通文档源稿。\n",
-        dirs["nnunet_raw"] / "README.md": "# Dataset260_BraTS2026_MET_RealOnly\n\n本目录当前只保存 `dataset.json` 和映射说明，不复制或软链接全量 NIfTI。需要正式训练时，由 S1/S2 根据 `manifests/nnunet_case_mapping_realonly.csv` 在训练机器上物化数据集并运行 nnU-Net 预处理。synthetic accepted 结果会另起 dataset id，不混进这个 real-only 占位目录。\n",
+        dirs["reports"] / "README.md": "# Reports\n\n保存路径检查、数据 QC、执行总结、进度报告、消融模板和团队沟通文档源稿。临时 smoke run 质量报告不保留。\n",
+        dirs["nnunet_raw"] / "README.md": "# Dataset260_BraTS2026_MET_RealOnly\n\n本目录当前只保存 `dataset.json` 和映射说明，不复制或软链接全量 NIfTI。需要正式训练时，由 S1/S2 根据 `manifests/nnunet_case_mapping_realonly.csv` 在训练机器上物化数据集并运行 nnU-Net 预处理。synthetic accepted 结果另起 dataset id，不混进这个 real-only 占位目录。\n",
     }
     for path, text in readmes.items():
         path.write_text(text, encoding="utf-8")
@@ -1149,11 +1149,13 @@ def write_progress_report(
         "code/.gitkeep": "code 目录占位文件，保证空目录被版本控制保留。",
         "data/.gitkeep": "data 目录占位文件，保留未来数据放置点。",
         "results/.gitkeep": "results 根目录占位文件，保留结果区目录结构。",
-        "code/g2_pretraining_audit.py": "单入口脚本：真实数据基线扫描、synthetic raw intake、legacy suffix 归一、manifest 自动补建、QC、accepted/rejected 导出与进度报告生成。",
+        "code/g2_pretraining_audit.py": "基础审计脚本：真实数据基线扫描、模板刷新、source CSV、real-only mapping、可选 synthetic intake 与进度报告生成。",
+        "code/g2_synthetic_raw_intake_qc.py": "正式 G1 raw run 接收脚本：生成 candidate/accepted/rejected manifest、QC CSV、diffusion quality、batch summary 和质量报告。",
+        "code/g2_materialize_nnunet_dataset.py": "nnU-Net 物化脚本：把 real mapping 与 accepted synthetic manifest 转成 dataset.json、materialization manifest，并支持 manifest-only/symlink/copy。",
+        "code/g2_official_mets_metrics_parser.py": "官方指标代理脚本：解析 BraTS_evaluation Panoptica JSON 或校验 CSV 是否包含 2026 Task1 leaderboard 字段。",
         "docs/G1_G2_diffusion_output_contract.md": "G1 raw output 与 G2 适配边界的主契约，定义 raw 命名、source CSV、manifest 字段和最低 smoke 标准。",
         "docs/G2_G1适配执行清单.md": "按执行顺序拆解 G2 先准备什么、G1 输出后 G2 做什么、如何形成 QC 结果与回传。",
         "docs/G2_数据生成与质量控制实施方案.md": "总方案，解释 G2 为什么是 adapter/auditor/publisher，以及 raw intake 到 nnU-Net 导出的全链路。",
-        "docs/G2_数据生成与质量控制实现难度评估.md": "实现难度与风险说明，帮助确认哪些字段可以自动恢复，哪些必须由 G1 给出。",
         "docs/G2_模型训练完成前可执行工作清单.md": "训练前能立即执行的工作清单，属于 G2 的下一步行动仓库。",
         "results/README.md": "results 区总说明，说明这里承接清单、统计、QC、报告和 nnU-Net 轻量契约，不放大体积影像。",
         "results/README.md": "results 总说明，概括本目录只保存轻量产物，不保存大体积 NIfTI。",
@@ -1165,7 +1167,6 @@ def write_progress_report(
         "results/manifests/real_train_manifest_raw.csv": "原始训练病例扫描表，保留 raw seg 与基础 QC 证据。",
         "results/manifests/real_validation_manifest.csv": "官方 validation 路径与结构检查表，绝不作为 synthetic source。",
         "results/manifests/synthetic_generation_manifest_template_g1.csv": "G1 raw output 或 G2 补建时使用的 synthetic manifest 表头模板。",
-        "results/manifests/synthetic_normalized_mapping_g2_synthetic_smoke_run_20260614.csv": "本次 smoke run 的逐模态标准化映射表，说明 raw 文件如何映射为 2026 后缀和 nnU-Net 目标文件名。",
         "results/manifests/synthetic_normalized_mapping_template.csv": "逐模态标准化映射模板，定义 raw source、normalized target 与 nnU-Net target 的对应关系。",
         "results/manifests/使用说明.md": "清单区的手工说明，解释每张 CSV 在 G1/G2/S1/S2 流程里的作用。",
         "results/nnunet_raw/README.md": "nnU-Net raw 根目录说明，说明这里是训练机物化入口，不在仓库保存正式大体积影像。",
@@ -1178,19 +1179,18 @@ def write_progress_report(
         "results/qc/README.md": "QC 目录总说明，定义这里是 synthetic data 质量闸门，不是训练代码。",
         "results/qc/G2_synthetic_data_QC报告模板_v2.md": "每批 synthetic run 的正式报告模板。",
         "results/qc/G2_synthetic_data_QC规则策略_v2.md": "v2 QC 主标准，定义 L0-L12、硬拒绝、人工复查和放行规则。",
+        "results/qc/G2_official_metrics_alignment_QC_strategy_2026-06-15.md": "官方指标对齐策略，说明 G2 QC 与官方 leaderboard 字段如何衔接。",
+        "results/qc/official_leaderboard_metrics_template.csv": "官方 leaderboard 同款字段模板，用于 real-only 与 real+synth 训练后验收。",
         "results/qc/diffusion_quality_metrics_template.csv": "扩散质量专项指标表头，覆盖 ROI、边界、z 连续性、teacher 与相似性。",
         "results/qc/UCSD_T2W_内容异常检查报告_2026-06-14.md": "UCSD Training 的 t2w 人工/自动核查记录，属于真实数据健康检查参考。",
+        "results/qc/official_t2w_gzip_header_audit_2026-06-15.csv": "官方训练集 T2W gzip header 全量 audit，一例一行记录 fake 判定证据。",
+        "results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv": "官方训练集 t2w gzip header 原始文件名含 fake 的病例清单。",
+        "results/qc/official_non000_t2w_cases_2026-06-15.csv": "非 000 编号病例辅助清单，只用于追踪编号分布，不作为 fake T2W 判据。",
         "results/qc/qc_case_review_template.csv": "人工复查记录表头，用于视觉审查与复核结论。",
-        "results/qc/qc_metrics_template.csv": "旧版 QC 表头，保留兼容。",
         "results/qc/qc_metrics_template_v2.csv": "新版逐例总 QC 表头，当前 synthetic intake 的主要机器可读输出。",
-        "results/qc/qc_rules_v1.md": "旧版规则文档，保留兼容与历史对照。",
         "results/qc/使用说明.md": "QC 目录使用说明，解释模板、规则和报告怎么串起来。",
         "results/reports/README.md": "报告目录总说明，承接路径检查、QC 汇总、进度报告与模板。",
         "results/reports/G2_progress_report.md": "G2 主进度报告，汇总当前完成度、文件索引和下一步计划。",
-        "results/reports/G2_synthetic_intake_progress_report.md": "synthetic intake 运行索引，专门记录一次 intake 的 manifest / QC / report 产物。",
-        "results/reports/G2_训练前数据准备与G1方案对接总结.docx": "当前总结的 Word 版，可直接发队友或导师。",
-        "results/reports/G2_训练前数据准备与G1方案对接总结.md": "当前总结的 Markdown 源稿。",
-        "results/reports/G2_synthetic_data_quality_report_template.md": "synthetic 批次质量报告模板。",
         "results/reports/ablation_plan_template.md": "real-only / real+synth 的消融模板。",
         "results/reports/g2_pretraining_execution_summary.md": "训练前数据准备的执行摘要。",
         "results/reports/local_data_paths_check.md": "本机外部数据路径检查结果。",
@@ -1213,25 +1213,25 @@ def write_progress_report(
             for path in paths:
                 rel = path.relative_to(g2_root).as_posix() if path.is_relative_to(g2_root) else path.as_posix()
                 if title == "synthetic_generation_manifest":
-                    file_notes[rel] = "本次 smoke run 自动补建的主清单，承接 G1 legacy raw output 与 G2 标准化字段。"
+                    file_notes[rel] = "本次 synthetic run 自动补建的主清单，承接 G1 legacy raw output 与 G2 标准化字段。"
                 elif title == "synthetic_candidate_manifest":
-                    file_notes[rel] = "本次 smoke run 的候选合并清单，保留原始输入与 QC 判定对照。"
+                    file_notes[rel] = "本次 synthetic run 的候选合并清单，保留原始输入与 QC 判定对照。"
                 elif title == "synthetic_accepted_manifest":
-                    file_notes[rel] = "本次 smoke run 的通过清单，包含进入训练或仅用于消融的样本。"
+                    file_notes[rel] = "本次 synthetic run 的通过清单，包含进入训练或仅用于消融的样本。"
                 elif title == "synthetic_rejected_manifest":
-                    file_notes[rel] = "本次 smoke run 的拒绝清单，记录未通过的候选和拒绝原因。"
+                    file_notes[rel] = "本次 synthetic run 的拒绝清单，记录未通过的候选和拒绝原因。"
                 elif title == "synthetic_normalized_mapping":
-                    file_notes[rel] = "本次 smoke run 的逐模态标准化映射表，连接 raw legacy/native 文件、2026 标准文件和 nnU-Net 目标路径。"
+                    file_notes[rel] = "本次 synthetic run 的逐模态标准化映射表，连接 raw legacy/native 文件、2026 标准文件和 nnU-Net 目标路径。"
                 elif title == "qc_metrics":
-                    file_notes[rel] = "本次 smoke run 的逐例 QC 主表，记录每个样本的 pass/review/reject 判定。"
+                    file_notes[rel] = "本次 synthetic run 的逐例 QC 主表，记录每个样本的 pass/review/reject 判定。"
                 elif title == "diffusion_quality_metrics":
-                    file_notes[rel] = "本次 smoke run 的扩散质量专项表，记录 ROI、边界、z 连续性等专项指标。"
+                    file_notes[rel] = "本次 synthetic run 的扩散质量专项表，记录 ROI、边界、z 连续性等专项指标。"
                 elif title == "qc_case_review":
-                    file_notes[rel] = "本次 smoke run 的人工复核表，记录需要视觉复查的病例。"
+                    file_notes[rel] = "本次 synthetic run 的人工复核表，记录需要视觉复查的病例。"
                 elif title == "qc_batch_summary":
-                    file_notes[rel] = "本次 smoke run 的批次汇总 JSON，提供机器可读统计结果。"
+                    file_notes[rel] = "本次 synthetic run 的批次汇总 JSON，提供机器可读统计结果。"
                 elif title == "quality_report":
-                    file_notes[rel] = "本次 smoke run 的质量报告正文，汇总生成、接收和 QC 结论。"
+                    file_notes[rel] = "本次 synthetic run 的质量报告正文，汇总生成、接收和 QC 结论。"
     entry_files = [
         "README.md",
         "task_assignment.md",
@@ -1242,12 +1242,17 @@ def write_progress_report(
     ]
     # Keep this report in the user-facing "8 folders"口径.
     folders = [
-        ("1. code", "code", ["code/.gitkeep", "code/g2_pretraining_audit.py"]),
+        ("1. code", "code", [
+            "code/.gitkeep",
+            "code/g2_pretraining_audit.py",
+            "code/g2_synthetic_raw_intake_qc.py",
+            "code/g2_materialize_nnunet_dataset.py",
+            "code/g2_official_mets_metrics_parser.py",
+        ]),
         ("2. docs", "docs", [
             "docs/G1_G2_diffusion_output_contract.md",
             "docs/G2_G1适配执行清单.md",
             "docs/G2_数据生成与质量控制实施方案.md",
-            "docs/G2_数据生成与质量控制实现难度评估.md",
             "docs/G2_模型训练完成前可执行工作清单.md",
         ]),
         ("3. results/manifests", "results/manifests", [
@@ -1258,13 +1263,8 @@ def write_progress_report(
             "results/manifests/real_train_manifest.csv",
             "results/manifests/real_train_manifest_raw.csv",
             "results/manifests/real_validation_manifest.csv",
-            "results/manifests/synthetic_accepted_manifest_g2_synthetic_smoke_run_20260614.csv",
-            "results/manifests/synthetic_candidate_manifest_g2_synthetic_smoke_run_20260614.csv",
-            "results/manifests/synthetic_generation_manifest_g2_synthetic_smoke_run_20260614.csv",
             "results/manifests/synthetic_generation_manifest_template_g1.csv",
-            "results/manifests/synthetic_normalized_mapping_g2_synthetic_smoke_run_20260614.csv",
             "results/manifests/synthetic_normalized_mapping_template.csv",
-            "results/manifests/synthetic_rejected_manifest_g2_synthetic_smoke_run_20260614.csv",
             "results/manifests/使用说明.md",
         ]),
         ("4. results/stats", "results/stats", [
@@ -1280,16 +1280,15 @@ def write_progress_report(
             "results/qc/README.md",
             "results/qc/G2_synthetic_data_QC报告模板_v2.md",
             "results/qc/G2_synthetic_data_QC规则策略_v2.md",
+            "results/qc/G2_official_metrics_alignment_QC_strategy_2026-06-15.md",
             "results/qc/UCSD_T2W_内容异常检查报告_2026-06-14.md",
-            "results/qc/diffusion_quality_metrics_g2_synthetic_smoke_run_20260614.csv",
             "results/qc/diffusion_quality_metrics_template.csv",
-            "results/qc/qc_batch_summary_g2_synthetic_smoke_run_20260614.json",
-            "results/qc/qc_case_review_g2_synthetic_smoke_run_20260614.csv",
+            "results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv",
+            "results/qc/official_leaderboard_metrics_template.csv",
+            "results/qc/official_non000_t2w_cases_2026-06-15.csv",
+            "results/qc/official_t2w_gzip_header_audit_2026-06-15.csv",
             "results/qc/qc_case_review_template.csv",
-            "results/qc/qc_metrics_g2_synthetic_smoke_run_20260614.csv",
-            "results/qc/qc_metrics_template.csv",
             "results/qc/qc_metrics_template_v2.csv",
-            "results/qc/qc_rules_v1.md",
             "results/qc/使用说明.md",
         ]),
         ("6. results/splits", "results/splits", [
@@ -1300,11 +1299,6 @@ def write_progress_report(
         ("7. results/reports", "results/reports", [
             "results/reports/README.md",
             "results/reports/G2_progress_report.md",
-            "results/reports/G2_synthetic_data_quality_report_g2_synthetic_smoke_run_20260614.md",
-            "results/reports/G2_synthetic_data_quality_report_template.md",
-            "results/reports/G2_synthetic_intake_progress_report.md",
-            "results/reports/G2_训练前数据准备与G1方案对接总结.docx",
-            "results/reports/G2_训练前数据准备与G1方案对接总结.md",
             "results/reports/ablation_plan_template.md",
             "results/reports/g2_pretraining_execution_summary.md",
             "results/reports/local_data_paths_check.md",
@@ -2045,19 +2039,6 @@ def write_dataset_json(path: Path) -> None:
 
 
 def write_templates(dirs: dict[str, Path]) -> None:
-    qc_header = [
-        "case_id", "source_case_id", "generation_run_id", "generator_checkpoint", "seed",
-        "generation_mode", "has_all_modalities", "has_seg", "shape_consistent",
-        "spacing_consistent", "affine_valid", "has_nan_or_inf", "label_values_valid",
-        "label_is_integer", "empty_mask", "lesion_count", "min_lesion_volume_mm3",
-        "max_lesion_volume_mm3", "tiny_lesion_count", "small_lesion_count",
-        "large_lesion_count", "roi_boundary_score", "z_continuity_score",
-        "teacher_dice", "teacher_lesion_count_diff", "qc_pass", "qc_reject_reason",
-        "manual_review_required",
-    ]
-    with (dirs["qc"] / "qc_metrics_template.csv").open("w", encoding="utf-8", newline="") as f:
-        csv.writer(f, lineterminator="\n").writerow(qc_header)
-
     synthetic_manifest_header = [
         "synthetic_raw_id", "synthetic_final_id", "nnunet_case_id", "source_case_id", "source_split",
         "label_kind", "label_index", "label_source_case_id", "label_component_id", "label_generator_checkpoint",
@@ -2119,6 +2100,20 @@ def write_templates(dirs: dict[str, Path]) -> None:
     with (dirs["qc"] / "qc_metrics_template_v2.csv").open("w", encoding="utf-8", newline="") as f:
         csv.writer(f, lineterminator="\n").writerow(qc_v2_header)
 
+    official_leaderboard_header = [
+        "submission_id", "date", "participant_team",
+        "lesionwise_dsc_mean_et", "lesionwise_nsd_mean_et",
+        "lesionwise_dsc_mean_rc", "lesionwise_nsd_mean_rc",
+        "lesionwise_dsc_mean_tc", "lesionwise_nsd_mean_tc",
+        "lesionwise_dsc_mean_wt", "lesionwise_nsd_mean_wt",
+        "small_instance_tp_et", "small_instance_fn_et", "small_instance_fp_et", "small_instance_f1_et",
+        "small_instance_tp_tc", "small_instance_fn_tc", "small_instance_fp_tc", "small_instance_f1_tc",
+        "small_instance_tp_wt", "small_instance_fn_wt", "small_instance_fp_wt", "small_instance_f1_wt",
+        "small_instance_tp_rc", "small_instance_fn_rc", "small_instance_fp_rc", "small_instance_f1_rc",
+    ]
+    with (dirs["qc"] / "official_leaderboard_metrics_template.csv").open("w", encoding="utf-8", newline="") as f:
+        csv.writer(f, lineterminator="\n").writerow(official_leaderboard_header)
+
     diffusion_header = [
         "synthetic_raw_id", "synthetic_final_id", "source_case_id", "generation_run_id", "generator_name",
         "generator_checkpoint", "modality", "label_kind", "label_channels", "rc_policy", "noise_type",
@@ -2147,45 +2142,6 @@ def write_templates(dirs: dict[str, Path]) -> None:
     with (dirs["qc"] / "qc_case_review_template.csv").open("w", encoding="utf-8", newline="") as f:
         csv.writer(f, lineterminator="\n").writerow(review_header)
 
-    (dirs["qc"] / "qc_rules_v1.md").write_text(
-        """# G2 Synthetic QC Rules v1
-
-## 强制拒绝
-
-1. 缺少任一模态或 `seg.nii.gz`。
-2. 四模态与 `seg` 的 shape、spacing 或 affine 明显不一致。
-3. 图像含 NaN/Inf，或 label 非整数。
-4. label 值域不在 `{0,1,2,3,4}`。
-5. label 全空且 manifest 未显式允许空 mask。
-6. synthetic lesion 出现在脑外全零背景区。
-7. 插入 ROI 边界出现明显方块断层。
-8. 2D/slice-stitching 结果在 z 轴严重断裂。
-9. 缺少 `synthetic_generation_manifest.csv` 或 `generation_log.jsonl`，且无法补建。
-
-## 需要人工复查
-
-1. tiny lesion 数量异常高。
-2. ET/NETC 与 SNFH 空间关系不合理。
-3. RC 在非术后语境下大量出现。
-4. teacher model 与 synthetic label 差异极大。
-
-## 只记录不拒绝
-
-1. FID、MS-SSIM 等生成质量指标。
-2. teacher model Dice。
-3. lesion-wise count difference。
-
-## lesion 分档
-
-1. `tiny_lt_27mm3`
-2. `small_27_to_275mm3`
-3. `large_gt_275mm3`
-
-最终是否采用 synthetic data，以真实验证 fold 上的分割和检测消融结果为准。
-""",
-        encoding="utf-8",
-    )
-
     (dirs["reports"] / "ablation_plan_template.md").write_text(
         """# G2 Synthetic Data Ablation Plan Template
 
@@ -2210,41 +2166,18 @@ def write_templates(dirs: dict[str, Path]) -> None:
 
 ## 记录指标
 
-Dice、NSD、lesion-wise F1/AUC、tiny/small/large 分档表现、false positive components、NETC/SNFH/ET/RC 分项表现。
+主指标必须对齐官方 leaderboard：ET/RC/TC/WT 的 lesionwise DSC/NSD，以及 ET/TC/WT/RC 的 small-instance TP/FN/FP/F1。HD95、AUC、NETC/SNFH/ET/RC 单类均值只能作为内部辅助分析。
+
+| 指标组 | 字段 |
+|---|---|
+| lesionwise segmentation | `lesionwise_dsc_mean_et/rc/tc/wt`, `lesionwise_nsd_mean_et/rc/tc/wt` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_et` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_tc` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_wt` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_rc` |
 """,
         encoding="utf-8",
     )
-
-    (dirs["reports"] / "G2_synthetic_data_quality_report_template.md").write_text(
-        """# G2 Synthetic Data Quality Report Template
-
-## 1. 本轮生成概况
-
-## 2. G1 checkpoint 与生成配置
-
-## 3. 候选病例、通过病例与拒绝病例
-
-## 4. 拒绝原因分布
-
-## 5. label 与 lesion 分布
-
-## 6. tiny/small/large lesion 分布
-
-## 7. 多模态图像质量检查
-
-## 8. teacher model 一致性
-
-## 9. nnU-Net 转换结果
-
-## 10. 下游消融结果
-
-## 11. 已知问题
-
-## 12. 下一轮给 G1/G2/S1/S2 的建议
-""",
-        encoding="utf-8",
-    )
-
 
 def write_path_check(data_root: Path, train_root: Path, val_root: Path, corrected_root: Path, report_path: Path) -> None:
     items = [
@@ -2506,13 +2439,12 @@ def main() -> None:
     outputs.extend([
         dirs["manifests"] / "synthetic_generation_manifest_template_g1.csv",
         dirs["manifests"] / "synthetic_normalized_mapping_template.csv",
-        dirs["qc"] / "qc_metrics_template.csv",
         dirs["qc"] / "qc_metrics_template_v2.csv",
+        dirs["qc"] / "official_leaderboard_metrics_template.csv",
         dirs["qc"] / "diffusion_quality_metrics_template.csv",
         dirs["qc"] / "qc_case_review_template.csv",
-        dirs["qc"] / "qc_rules_v1.md",
+        dirs["qc"] / "G2_synthetic_data_QC报告模板_v2.md",
         dirs["reports"] / "ablation_plan_template.md",
-        dirs["reports"] / "G2_synthetic_data_quality_report_template.md",
     ])
     write_execution_summary(dirs, outputs)
     outputs.append(dirs["reports"] / "g2_pretraining_execution_summary.md")

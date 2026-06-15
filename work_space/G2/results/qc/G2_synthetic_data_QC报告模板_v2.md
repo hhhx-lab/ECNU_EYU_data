@@ -98,7 +98,7 @@ QC 规则版本：`G2_synthetic_data_QC规则策略_v2.md`
 | 指标 | 数值 |
 |---|---:|
 | teacher model |  |
-| mean teacher dice |  |
+| mean teacher Dice/NSD proxy |  |
 | mean lesion count diff |  |
 | large lesion missed by teacher |  |
 | teacher 异常需复查病例数 |  |
@@ -120,7 +120,36 @@ QC 规则版本：`G2_synthetic_data_QC规则策略_v2.md`
 
 结论：只有 hard gate 通过、ROI 边界自然、z 轴连续、多模态一致、无明显复制风险，并且人工复查完成后，才能称为“QC 质量优秀”。只有 real+synth 消融不伤害真实验证指标并带来稳定收益，才能称为“训练价值优秀”。
 
-## 10. nnU-Net integrity check
+## 10. 官方指标对齐验收
+
+本节只在 S1/S2 训练出预测后填写。字段必须对齐 `official_leaderboard_metrics_template.csv`。
+
+| 实验 | lesionwise_dsc_mean_et | lesionwise_nsd_mean_et | lesionwise_dsc_mean_rc | lesionwise_nsd_mean_rc | lesionwise_dsc_mean_tc | lesionwise_nsd_mean_tc | lesionwise_dsc_mean_wt | lesionwise_nsd_mean_wt |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| real-only |  |  |  |  |  |  |  |  |
+| real+synth |  |  |  |  |  |  |  |  |
+| delta |  |  |  |  |  |  |  |  |
+
+| 实验 | small_instance_tp_et | small_instance_fn_et | small_instance_fp_et | small_instance_f1_et | small_instance_tp_tc | small_instance_fn_tc | small_instance_fp_tc | small_instance_f1_tc |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| real-only |  |  |  |  |  |  |  |  |
+| real+synth |  |  |  |  |  |  |  |  |
+| delta |  |  |  |  |  |  |  |  |
+
+| 实验 | small_instance_tp_wt | small_instance_fn_wt | small_instance_fp_wt | small_instance_f1_wt | small_instance_tp_rc | small_instance_fn_rc | small_instance_fp_rc | small_instance_f1_rc |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| real-only |  |  |  |  |  |  |  |  |
+| real+synth |  |  |  |  |  |  |  |  |
+| delta |  |  |  |  |  |  |  |  |
+
+判定：
+
+1. 官方核心字段是否下降：
+2. small-instance FN 是否增加：
+3. small-instance FP 是否显著增加：
+4. 本批 synthetic 是否允许进入主训练：
+
+## 11. nnU-Net integrity check
 
 | 项目 | 结果 |
 |---|---|
@@ -130,7 +159,7 @@ QC 规则版本：`G2_synthetic_data_QC规则策略_v2.md`
 | `nnUNetv2_plan_and_preprocess --verify_dataset_integrity` |  |
 | 失败原因 |  |
 
-## 11. 结论与后续动作
+## 12. 结论与后续动作
 
 最终结论：
 

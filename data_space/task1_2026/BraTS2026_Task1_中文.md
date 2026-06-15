@@ -154,7 +154,8 @@ BraTS 2026 Data Access Team：https://www.synapse.org/Team:3586605
 按病灶计算的检测指标包括：
 
 1. F1 score，即精确率和召回率的调和平均数，用于判断算法是否倾向于过分割或欠分割。
-2. 在不同检测阈值下得到多个 F1 分数，并基于这些 F1 分数计算 AUC。
+
+2026-06-15 复核说明：官方 Evaluation wiki 中 “AUC over multiple F1 scores” 已处于注释块中，当前 Results leaderboard 没有 AUC 字段。因此当前主报告不应把 AUC 作为官方主指标。
 
 检测评估会应用于一个 MRI 研究中的每一个单独病灶。对于挑战的检测分支，页面将病灶定义为一个集合性术语，包含强化肿瘤、非强化肿瘤核心和切除腔。
 
@@ -201,7 +202,16 @@ Project SynID：syn74773222
 
 ## 结果
 
-Results 区域显示：Coming soon。
+2026-06-15 复核：Results 区域已显示 Validation Leaderboard，当前字段包括：
+
+- `lesionwise_dsc_mean_et`, `lesionwise_nsd_mean_et`
+- `lesionwise_dsc_mean_rc`, `lesionwise_nsd_mean_rc`
+- `lesionwise_dsc_mean_tc`, `lesionwise_nsd_mean_tc`
+- `lesionwise_dsc_mean_wt`, `lesionwise_nsd_mean_wt`
+- `small_instance_tp/fn/fp/f1_et`
+- `small_instance_tp/fn/fp/f1_tc`
+- `small_instance_tp/fn/fp/f1_wt`
+- `small_instance_tp/fn/fp/f1_rc`
 
 ## 页脚与相关链接
 

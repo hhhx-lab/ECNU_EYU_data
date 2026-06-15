@@ -154,7 +154,8 @@ The task uses subject-wise segmentation metrics:
 The lesion-wise detection metrics are:
 
 1. F1 score, the harmonic mean of precision and recall. It is used to understand whether an algorithm tends to over-segment or under-segment.
-2. AUC over multiple F1 scores calculated at different detection threshold values.
+
+Update checked on 2026-06-15: the "AUC over multiple F1 scores" text is currently inside an HTML comment in the official Evaluation wiki, and the current Results leaderboard does not expose an AUC column. Therefore AUC should not be treated as the active official headline metric.
 
 Detection evaluation is applied to every lesion within an MRI study. For the detection arm, the page defines a lesion as a collective term covering Enhancing Tumor, Non-enhancing Tumor Core, and Resection Cavity.
 
@@ -201,7 +202,16 @@ Available submission actions shown on the page:
 
 ## Results
 
-The Results section says: Coming soon.
+Update checked on 2026-06-15: the Results section now shows a Validation Leaderboard. The active displayed fields include:
+
+- `lesionwise_dsc_mean_et`, `lesionwise_nsd_mean_et`
+- `lesionwise_dsc_mean_rc`, `lesionwise_nsd_mean_rc`
+- `lesionwise_dsc_mean_tc`, `lesionwise_nsd_mean_tc`
+- `lesionwise_dsc_mean_wt`, `lesionwise_nsd_mean_wt`
+- `small_instance_tp/fn/fp/f1_et`
+- `small_instance_tp/fn/fp/f1_tc`
+- `small_instance_tp/fn/fp/f1_wt`
+- `small_instance_tp/fn/fp/f1_rc`
 
 ## Footer and Related Links
 

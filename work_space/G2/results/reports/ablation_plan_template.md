@@ -21,4 +21,12 @@
 
 ## 记录指标
 
-Dice、NSD、lesion-wise F1/AUC、tiny/small/large 分档表现、false positive components、NETC/SNFH/ET/RC 分项表现。
+主指标必须对齐官方 leaderboard：ET/RC/TC/WT 的 lesionwise DSC/NSD，以及 ET/TC/WT/RC 的 small-instance TP/FN/FP/F1。HD95、AUC、NETC/SNFH/ET/RC 单类均值只能作为内部辅助分析。
+
+| 指标组 | 字段 |
+|---|---|
+| lesionwise segmentation | `lesionwise_dsc_mean_et/rc/tc/wt`, `lesionwise_nsd_mean_et/rc/tc/wt` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_et` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_tc` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_wt` |
+| small-instance detection | `small_instance_tp/fn/fp/f1_rc` |
