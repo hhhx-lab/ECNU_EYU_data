@@ -5,3 +5,4 @@
 ## 子目录
 
 - `nnunet_custom/`：nnU-Net 自定义 Trainer、loss 和评估相关脚本。
+- `BraTS_evaluation/`：官方 BraTS evaluation 仓库快照，用于核查 2026 Task 1 MET 评估配置、parser 和 leaderboard 指标口径。

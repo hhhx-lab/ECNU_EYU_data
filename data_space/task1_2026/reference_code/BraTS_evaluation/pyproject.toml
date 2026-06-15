@@ -1,0 +1,40 @@
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+
+[tool.poetry]
+name = "BraTS_evaluation"
+version = "0.0.0"               # will be overwritten by poetry-dynamic-versioning but needs to be set
+description ="Official package to compute metrics for the BraTS segmentation challenges."
+license = "AGPL-3.0"
+
+authors = [
+  "Florian Kofler <florian.kofler@tum.de>",
+  "Erik Großkopf <erik.grosskopf@uni-tuebingen.de>",
+]
+
+maintainers = [
+  "Florian Kofler <florian.kofler@tum.de>",
+  "Erik Großkopf <erik.grosskopf@uni-tuebingen.de>",
+]
+
+readme = "README.md"
+repository = "https://github.com/BraTS/BraTS_evaluation"
+#documentation = ""
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+panoptica = ">=2.1.0"
+pandas = "^2.0"
+SimpleITK = "^2.2.2"
+nibabel = "^5.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2"
+
+[tool.poetry.scripts]
+brats-evaluate = "brats_evaluation.evaluation:main"
+brats-parse-metrics = "brats_evaluation.metrics_parser:main"
