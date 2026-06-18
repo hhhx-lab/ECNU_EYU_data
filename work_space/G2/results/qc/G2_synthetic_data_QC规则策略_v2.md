@@ -114,6 +114,21 @@ run_id/
     <raw_case_id>-seg.nii.gz
 ```
 
+对于 G1 缺 T2W 补全模式，G2 也接受下面这种 completion 目录：
+
+```text
+run_root/
+  BraTS-MET-00554-000/
+    BraTS-MET-00554-000-t1n.nii.gz
+    BraTS-MET-00554-000-t1c.nii.gz
+    BraTS-MET-00554-000-t2f.nii.gz
+    BraTS-MET-00554-000-seg.nii.gz
+    BraTS-MET-00554-000-t2w.nii.gz
+```
+
+此时 `case_dir` 直接视为 `source_case_id`，`label_kind=completion`，`label_index=0`。
+completion 模式下，G2 不再要求 source 出现在 `g1_gligan_source_cases_v1.csv`，也不再要求 `usable_for_gligan96=True`；但 source 必须仍能在真实数据 manifest 中追溯到，且真实数据侧 final QC 通过。
+
 ### 5.2 G2 可自动恢复的信息
 
 G2 可以从 raw case 目录名恢复：
@@ -620,6 +635,7 @@ python work_space/G2/code/g2_official_mets_metrics_parser.py parse-json \
 | L0 | seed | 读 config/log/manifest | 可追踪 | 不能 accepted |
 | L0 | label_channels | 读 config/log/manifest | 2026 推荐 4 | 3 channel 只能 ablation/review |
 | L0 | rc_policy | 读 config/log/manifest | 明确 RC 处理方式 | RC case 进入 review |
+| L0 | completion source 归属 | 查 source_case 是否在 real train/validation manifest，且是否 final QC pass | 可追溯 | 不可追溯 hard reject |
 | L1 | 四模态完整 | 查 `t1n/t1c/t2w/t2f` 或 `scan_t1/scan_t1ce/scan_t2/scan_flair` | 全部存在 | hard reject |
 | L1 | seg 完整 | 查 `seg.nii.gz` | 存在 | hard reject |
 | L1 | suffix scheme | 识别 native/legacy/mixed | native 或 legacy | mixed hard reject |
@@ -679,7 +695,7 @@ python work_space/G2/code/g2_official_mets_metrics_parser.py parse-json \
 | 输出 | 进入训练 | 进入消融 | 回传 G1 | 说明 |
 |---|---|---|---|---|
 | `accepted_for_training` | 是 | 是 | 不需要 | 可进入主 real+synth 候选 |
-| `accepted_for_ablation_only` | 否 | 是 | 可选 | 只用于受控实验，不进主训练 |
+| `accepted_for_ablation_only` | 否 | 是 | 可选 | 质量通过，但 source 不进主训练，只用于受控实验 |
 | `needs_regeneration` | 否 | 否 | 是 | G1 可根据原因重跑 |
 | `rejected` | 否 | 否 | 是 | 泄漏、非法、不可追溯或严重质量错误 |
 

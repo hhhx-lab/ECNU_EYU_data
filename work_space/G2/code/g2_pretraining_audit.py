@@ -39,6 +39,8 @@ GLIGAN_KEYS = {
     "scan_t1": "t1n",
 }
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
+DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
+DEFAULT_DATA_ROOT = os.environ.get("G2_DATA_ROOT", "")
 REAL_TRAIN_EMPTY_COLUMNS = [
     "case_id", "split_source", "case_dir",
     "t1n_path", "t1c_path", "t2w_path", "t2f_path", "raw_seg_path",
@@ -230,6 +232,14 @@ def read_csv_if_exists(path: Path) -> pd.DataFrame:
         return pd.DataFrame()
 
 
+def load_fake_t2w_case_ids(results_root: Path) -> set[str]:
+    fake_path = results_root / "qc" / "official_fake_t2w_cases_by_gzip_header_2026-06-15.csv"
+    fake_df = read_csv_if_exists(fake_path)
+    if fake_df.empty or "case_id" not in fake_df.columns:
+        return set()
+    return set(fake_df["case_id"].astype(str))
+
+
 def recursive_find_value(data: object, key: str) -> object | None:
     if isinstance(data, dict):
         if key in data:
@@ -249,6 +259,13 @@ def recursive_find_value(data: object, key: str) -> object | None:
 def parse_synthetic_case_name(name: str) -> dict[str, object]:
     match = re.match(r"^(?P<source_case_id>.+?)_(?P<label_kind>[^_]+)_label_(?P<label_index>\d+)$", name)
     if not match:
+        if re.match(r"^BraTS-MET-\d{5}-\d{3}$", name):
+            return {
+                "parsed": True,
+                "source_case_id": name,
+                "label_kind": "completion",
+                "label_index": 0,
+            }
         return {"parsed": False, "source_case_id": "", "label_kind": "", "label_index": ""}
     return {
         "parsed": True,
@@ -363,6 +380,7 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
     val_df = read_csv_if_exists(manifests_dir / "real_validation_manifest.csv")
     g1_df = read_csv_if_exists(manifests_dir / "g1_gligan_source_cases_v1.csv")
     mapping_df = read_csv_if_exists(manifests_dir / "nnunet_case_mapping_realonly.csv")
+    fake_t2w_case_ids = load_fake_t2w_case_ids(results_root)
     split_path = splits_dir / "splits_final_fold0_realval.json"
     split_data = []
     if split_path.exists():
@@ -390,25 +408,34 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
         "train_lookup": train_lookup,
         "val_lookup": val_lookup,
         "g1_lookup": g1_lookup,
+        "fake_t2w_case_ids": fake_t2w_case_ids,
     }
 
 
-def build_source_status(source_case_id: str, ctx: dict[str, object]) -> dict[str, object]:
+def build_source_status(source_case_id: str, ctx: dict[str, object], label_kind: str = "") -> dict[str, object]:
     train_lookup = ctx["train_lookup"]  # type: ignore[assignment]
     val_lookup = ctx["val_lookup"]  # type: ignore[assignment]
     g1_lookup = ctx["g1_lookup"]  # type: ignore[assignment]
     split_val_ids = ctx["split_val_ids"]  # type: ignore[assignment]
     source_to_nn = ctx["source_to_nn"]  # type: ignore[assignment]
+    fake_t2w_case_ids = ctx.get("fake_t2w_case_ids", set())  # type: ignore[assignment]
 
     train_row = train_lookup.get(source_case_id, {})
     val_row = val_lookup.get(source_case_id, {})
     g1_row = g1_lookup.get(source_case_id, {})
     nn_id = source_to_nn.get(source_case_id, "")
     in_fixed_val_fold = bool(nn_id and nn_id in split_val_ids)
-    final_qc_pass = bool(train_row.get("final_qc_pass", False))
+    final_qc_pass = bool(train_row.get("final_qc_pass", val_row.get("final_qc_pass", False)))
     usable_for_gligan96 = bool(g1_row.get("usable_for_gligan96", False))
     allowed_as_synthetic_source = bool(g1_row.get("allowed_as_synthetic_source", usable_for_gligan96))
-    source_is_allowed = bool(train_row) and final_qc_pass and not bool(val_row) and not in_fixed_val_fold and allowed_as_synthetic_source
+    completion_mode = label_kind == "completion"
+    source_is_fake_t2w_case = source_case_id in fake_t2w_case_ids
+    if completion_mode:
+        source_is_allowed = bool(train_row or val_row) and final_qc_pass
+        source_allowed_for_training = bool(train_row) and final_qc_pass and not bool(val_row) and not in_fixed_val_fold
+    else:
+        source_is_allowed = bool(train_row) and final_qc_pass and not bool(val_row) and not in_fixed_val_fold and allowed_as_synthetic_source
+        source_allowed_for_training = source_is_allowed
     return {
         "source_row": train_row,
         "val_row": val_row,
@@ -417,6 +444,9 @@ def build_source_status(source_case_id: str, ctx: dict[str, object]) -> dict[str
         "source_in_real_train_manifest": bool(train_row),
         "source_final_qc_pass": final_qc_pass,
         "source_usable_for_gligan96": usable_for_gligan96,
+        "source_allowed_for_training": source_allowed_for_training,
+        "source_is_fake_t2w_case": source_is_fake_t2w_case,
+        "source_completion_mode": completion_mode,
         "source_in_fixed_val_fold": in_fixed_val_fold,
         "source_from_official_validation": bool(val_row),
         "source_is_allowed": source_is_allowed,
@@ -496,7 +526,7 @@ def summarize_case_quality(
     source_case_id = str(parsed.get("source_case_id") or run_ctx.get("source_case_id") or "")
     label_kind = str(parsed.get("label_kind") or "")
     label_index = int(parsed.get("label_index") or 0)
-    source_info = build_source_status(source_case_id, run_ctx) if source_case_id else {
+    source_info = build_source_status(source_case_id, run_ctx, label_kind=label_kind) if source_case_id else {
         "source_row": {},
         "val_row": {},
         "g1_row": {},
@@ -504,6 +534,9 @@ def summarize_case_quality(
         "source_in_real_train_manifest": False,
         "source_final_qc_pass": False,
         "source_usable_for_gligan96": False,
+        "source_allowed_for_training": False,
+        "source_is_fake_t2w_case": False,
+        "source_completion_mode": label_kind == "completion",
         "source_in_fixed_val_fold": False,
         "source_from_official_validation": False,
         "source_is_allowed": False,
@@ -571,6 +604,9 @@ def summarize_case_quality(
         "source_in_real_train_manifest": source_info["source_in_real_train_manifest"],
         "source_final_qc_pass": source_info["source_final_qc_pass"],
         "source_usable_for_gligan96": source_info["source_usable_for_gligan96"],
+        "source_allowed_for_training": source_info["source_allowed_for_training"],
+        "source_is_fake_t2w_case": source_info["source_is_fake_t2w_case"],
+        "source_completion_mode": source_info["source_completion_mode"],
         "source_in_fixed_val_fold": source_info["source_in_fixed_val_fold"],
         "source_from_official_validation": source_info["source_from_official_validation"],
         "source_is_allowed": source_info["source_is_allowed"],
@@ -908,10 +944,11 @@ def summarize_case_quality(
         rows["teacher_extra_large_lesion_count"] = ""
 
     # Decide QC outcome.
+    completion_mode = bool(rows.get("source_completion_mode")) or str(rows.get("label_kind", "")) == "completion"
     hard_reject_reasons: list[str] = []
     if not rows["source_is_allowed"]:
         hard_reject_reasons.append("source_not_allowed")
-    if rows["validation_leakage"]:
+    if rows["validation_leakage"] and not completion_mode:
         hard_reject_reasons.append("validation_leakage")
     if rows["has_nan_or_inf"]:
         hard_reject_reasons.append("image_has_nan_or_inf")
@@ -939,6 +976,10 @@ def summarize_case_quality(
     review_reasons: list[str] = []
     if output_scheme == "legacy_gligan":
         review_reasons.append("legacy_suffix_normalized")
+    if completion_mode and rows["validation_leakage"]:
+        review_reasons.append("completion_source_not_training_allowed")
+    if completion_mode and not rows["source_is_fake_t2w_case"]:
+        review_reasons.append("completion_source_not_marked_fake_t2w")
     if not rows["source_shape_match"]:
         review_reasons.append("source_shape_mismatch")
     if rows["roi_bbox_available"] is False:
@@ -1157,7 +1198,6 @@ def write_progress_report(
         "docs/G2_G1适配执行清单.md": "按执行顺序拆解 G2 先准备什么、G1 输出后 G2 做什么、如何形成 QC 结果与回传。",
         "docs/G2_数据生成与质量控制实施方案.md": "总方案，解释 G2 为什么是 adapter/auditor/publisher，以及 raw intake 到 nnU-Net 导出的全链路。",
         "docs/G2_模型训练完成前可执行工作清单.md": "训练前能立即执行的工作清单，属于 G2 的下一步行动仓库。",
-        "results/README.md": "results 区总说明，说明这里承接清单、统计、QC、报告和 nnU-Net 轻量契约，不放大体积影像。",
         "results/README.md": "results 总说明，概括本目录只保存轻量产物，不保存大体积 NIfTI。",
         "results/manifests/README.md": "清单区说明，解释真实清单、source CSV、synthetic intake manifest 与 accepted/rejected 输出。",
         "results/manifests/corrected_label_overlay.csv": "真实训练病例的 corrected label 覆盖记录，说明哪些病例在最终 manifest 中替换了原始 seg。",
@@ -1168,14 +1208,9 @@ def write_progress_report(
         "results/manifests/real_validation_manifest.csv": "官方 validation 路径与结构检查表，绝不作为 synthetic source。",
         "results/manifests/synthetic_generation_manifest_template_g1.csv": "G1 raw output 或 G2 补建时使用的 synthetic manifest 表头模板。",
         "results/manifests/synthetic_normalized_mapping_template.csv": "逐模态标准化映射模板，定义 raw source、normalized target 与 nnU-Net target 的对应关系。",
-        "results/manifests/使用说明.md": "清单区的手工说明，解释每张 CSV 在 G1/G2/S1/S2 流程里的作用。",
         "results/nnunet_raw/README.md": "nnU-Net raw 根目录说明，说明这里是训练机物化入口，不在仓库保存正式大体积影像。",
-        "results/nnunet_raw/使用说明.md": "nnU-Net raw 区总说明，强调这里只放轻量占位与契约，不放正式影像。",
         "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/README.md": "real-only 数据集占位说明，表示当前只保存 dataset.json 与路径契约。",
         "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/dataset.json": "nnU-Net dataset.json 草案，定义四模态顺序与五类标签。",
-        "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/使用说明.md": "Dataset260 real-only 占位目录说明，指导 S1/S2 根据 mapping 表在训练机生成 imagesTr 和 labelsTr。",
-        "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/imagesTr/使用说明.md": "imagesTr 目录说明，解释训练机上如何物化四模态图像。",
-        "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/labelsTr/使用说明.md": "labelsTr 目录说明，解释训练机上如何放置 seg。",
         "results/qc/README.md": "QC 目录总说明，定义这里是 synthetic data 质量闸门，不是训练代码。",
         "results/qc/G2_synthetic_data_QC报告模板_v2.md": "每批 synthetic run 的正式报告模板。",
         "results/qc/G2_synthetic_data_QC规则策略_v2.md": "v2 QC 主标准，定义 L0-L12、硬拒绝、人工复查和放行规则。",
@@ -1188,25 +1223,19 @@ def write_progress_report(
         "results/qc/official_non000_t2w_cases_2026-06-15.csv": "非 000 编号病例辅助清单，只用于追踪编号分布，不作为 fake T2W 判据。",
         "results/qc/qc_case_review_template.csv": "人工复查记录表头，用于视觉审查与复核结论。",
         "results/qc/qc_metrics_template_v2.csv": "新版逐例总 QC 表头，当前 synthetic intake 的主要机器可读输出。",
-        "results/qc/使用说明.md": "QC 目录使用说明，解释模板、规则和报告怎么串起来。",
         "results/reports/README.md": "报告目录总说明，承接路径检查、QC 汇总、进度报告与模板。",
         "results/reports/G2_progress_report.md": "G2 主进度报告，汇总当前完成度、文件索引和下一步计划。",
         "results/reports/ablation_plan_template.md": "real-only / real+synth 的消融模板。",
-        "results/reports/g2_pretraining_execution_summary.md": "训练前数据准备的执行摘要。",
         "results/reports/local_data_paths_check.md": "本机外部数据路径检查结果。",
         "results/reports/real_data_qc_summary.md": "真实训练数据 QC 汇总。",
-        "results/reports/使用说明.md": "报告目录使用说明，解释不同报告的定位。",
         "results/splits/README.md": "固定真实验证 fold 的说明。",
         "results/splits/splits_final_fold0_realval.json": "当前固定 fold0 的 train/val 划分。",
-        "results/splits/使用说明.md": "split 文件的使用说明。",
         "results/stats/README.md": "统计区说明，解释 label/lesion 分布与 synthetic 目标分布。",
         "results/stats/real_label_distribution.csv": "真实训练病例级 label 体素与体积分布。",
         "results/stats/real_lesion_distribution.csv": "真实 lesion component 级分布。",
         "results/stats/real_lesion_distribution_summary.json": "机器可读统计摘要。",
         "results/stats/real_lesion_distribution_summary.md": "人可读统计摘要。",
         "results/stats/target_synthetic_distribution_v1.md": "第一轮 synthetic 目标分布与生成限制。",
-        "results/stats/使用说明.md": "统计区使用说明。",
-        "results/使用说明.md": "results 根目录总使用说明，帮助快速定位各子目录作用。",
     }
     if intake_index:
         for title, paths in intake_index:
@@ -1238,7 +1267,6 @@ def write_progress_report(
         "data/.gitkeep",
         "results/.gitkeep",
         "results/README.md",
-        "results/使用说明.md",
     ]
     # Keep this report in the user-facing "8 folders"口径.
     folders = [
@@ -1252,6 +1280,7 @@ def write_progress_report(
         ("2. docs", "docs", [
             "docs/G1_G2_diffusion_output_contract.md",
             "docs/G2_G1适配执行清单.md",
+            "docs/G1_G2_服务器训练推理QC运行手册.md",
             "docs/G2_数据生成与质量控制实施方案.md",
             "docs/G2_模型训练完成前可执行工作清单.md",
         ]),
@@ -1265,7 +1294,6 @@ def write_progress_report(
             "results/manifests/real_validation_manifest.csv",
             "results/manifests/synthetic_generation_manifest_template_g1.csv",
             "results/manifests/synthetic_normalized_mapping_template.csv",
-            "results/manifests/使用说明.md",
         ]),
         ("4. results/stats", "results/stats", [
             "results/stats/README.md",
@@ -1274,7 +1302,6 @@ def write_progress_report(
             "results/stats/real_lesion_distribution_summary.json",
             "results/stats/real_lesion_distribution_summary.md",
             "results/stats/target_synthetic_distribution_v1.md",
-            "results/stats/使用说明.md",
         ]),
         ("5. results/qc", "results/qc", [
             "results/qc/README.md",
@@ -1289,30 +1316,22 @@ def write_progress_report(
             "results/qc/official_t2w_gzip_header_audit_2026-06-15.csv",
             "results/qc/qc_case_review_template.csv",
             "results/qc/qc_metrics_template_v2.csv",
-            "results/qc/使用说明.md",
         ]),
         ("6. results/splits", "results/splits", [
             "results/splits/README.md",
             "results/splits/splits_final_fold0_realval.json",
-            "results/splits/使用说明.md",
         ]),
         ("7. results/reports", "results/reports", [
             "results/reports/README.md",
             "results/reports/G2_progress_report.md",
             "results/reports/ablation_plan_template.md",
-            "results/reports/g2_pretraining_execution_summary.md",
             "results/reports/local_data_paths_check.md",
             "results/reports/real_data_qc_summary.md",
-            "results/reports/使用说明.md",
         ]),
         ("8. results/nnunet_raw", "results/nnunet_raw", [
             "results/nnunet_raw/README.md",
-            "results/nnunet_raw/使用说明.md",
             "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/README.md",
             "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/dataset.json",
-            "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/使用说明.md",
-            "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/imagesTr/使用说明.md",
-            "results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly/labelsTr/使用说明.md",
         ]),
     ]
     lines = [
@@ -1466,7 +1485,8 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
     for idx, case_dir in enumerate(case_dirs, start=1):
         parsed = parse_synthetic_case_name(case_dir.name)
         source_case_id = str(parsed.get("source_case_id") or "")
-        source_info = build_source_status(source_case_id, ctx) if source_case_id else {
+        label_kind = str(parsed.get("label_kind") or "")
+        source_info = build_source_status(source_case_id, ctx, label_kind=label_kind) if source_case_id else {
             "source_row": {},
             "val_row": {},
             "g1_row": {},
@@ -1474,6 +1494,9 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
             "source_in_real_train_manifest": False,
             "source_final_qc_pass": False,
             "source_usable_for_gligan96": False,
+            "source_allowed_for_training": False,
+            "source_is_fake_t2w_case": False,
+            "source_completion_mode": label_kind == "completion",
             "source_in_fixed_val_fold": False,
             "source_from_official_validation": False,
             "source_is_allowed": False,
@@ -2053,6 +2076,7 @@ def write_templates(dirs: dict[str, Path]) -> None:
         "insert_center_z", "roi_x_min", "roi_x_max", "roi_y_min", "roi_y_max", "roi_z_min", "roi_z_max",
         "source_shape_x", "source_shape_y", "source_shape_z", "output_shape_x", "output_shape_y",
         "output_shape_z", "status", "error_type", "error_message", "qc_status", "qc_reject_reason",
+        "source_allowed_for_training", "source_is_fake_t2w_case", "source_completion_mode",
         "accepted_for_training", "accepted_for_ablation_only", "needs_regeneration",
     ]
     with (dirs["manifests"] / "synthetic_generation_manifest_template_g1.csv").open("w", encoding="utf-8", newline="") as f:
@@ -2080,7 +2104,8 @@ def write_templates(dirs: dict[str, Path]) -> None:
         "affine_hash_seg", "shape_consistent", "spacing_consistent", "affine_consistent", "orientation_consistent",
         "source_shape_match", "has_nan_or_inf", "image_is_constant", "label_is_integer", "label_values",
         "label_values_valid", "empty_mask", "allow_empty_mask", "source_in_real_train_manifest",
-        "source_final_qc_pass", "source_usable_for_gligan96", "source_in_fixed_val_fold",
+        "source_final_qc_pass", "source_usable_for_gligan96", "source_allowed_for_training",
+        "source_is_fake_t2w_case", "source_completion_mode", "source_in_fixed_val_fold",
         "source_from_official_validation", "source_is_allowed", "case_id_reuses_real_id", "validation_leakage",
         "roi_bbox_available", "insert_center_x", "insert_center_y", "insert_center_z", "roi_x_min", "roi_x_max",
         "roi_y_min", "roi_y_max", "roi_z_min", "roi_z_max", "roi_inside_image", "nonroi_change_ratio",
@@ -2319,55 +2344,23 @@ def write_target_distribution(dirs: dict[str, Path], label_df: pd.DataFrame, les
     (dirs["stats"] / "target_synthetic_distribution_v1.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def write_execution_summary(dirs: dict[str, Path], outputs: list[Path]) -> None:
-    lines = [
-        "# G2 Pretraining Checklist Execution Summary",
-        "",
-        f"生成日期：{RUN_DATE}",
-        "",
-        "## 已在本机完成",
-        "",
-        "1. 外部训练集、验证集、corrected labels 路径检查。",
-        "2. 训练集 raw manifest。",
-        "3. validation manifest，并标记不可作为 synthetic source。",
-        "4. corrected label overlay。",
-        "5. overlay 后 final train manifest。",
-        "6. label 值域统计与非法标签排查。",
-        "7. lesion connected component 统计与 tiny/small/large 分档。",
-        "8. G1 GliGAN-compatible source CSV。",
-        "9. nnU-Net real-only 映射表与 dataset.json 草案。",
-        "10. 固定 fold0 split。",
-        "11. synthetic QC 模板、消融模板、报告模板。",
-        "",
-        "## 暂缓项",
-        "",
-        "1. 不在本机复制或软链接 31GB 训练 NIfTI 到 nnU-Net raw 目录。",
-        "2. 不在本机运行 `nnUNetv2_plan_and_preprocess`。",
-        "3. 不在本机训练 GliGAN/diffusion 或执行在线 batch 生成。",
-        "4. 不在本机生成大量 synthetic NIfTI。",
-        "",
-        "## 产物列表",
-        "",
-    ]
-    for path in outputs:
-        lines.append(f"- `{path}`")
-    (dirs["reports"] / "g2_pretraining_execution_summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", default="/Users/hwaigc/比赛+课题/ECNU-NYU2026/2026的task1以及数据")
-    parser.add_argument("--results-root", default="/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results")
+    parser.add_argument("--data-root", default=DEFAULT_DATA_ROOT, help="Raw BraTS Task1 data root. Alternatively set G2_DATA_ROOT.")
+    parser.add_argument("--results-root", default=str(DEFAULT_RESULTS_ROOT))
     parser.add_argument("--force", action="store_true", help="Re-scan NIfTI data even if cached CSV files exist.")
     parser.add_argument("--synthetic-run-root", default="", help="Optional G1 synthetic run directory to intake.")
     parser.add_argument("--synthetic-run-id", default="", help="Optional run id override for synthetic intake.")
     args = parser.parse_args()
 
-    data_root = Path(args.data_root)
+    if not args.data_root:
+        raise SystemExit("missing --data-root. Pass the raw Task1 data root or set G2_DATA_ROOT.")
+
+    data_root = Path(args.data_root).expanduser().resolve()
     train_root = data_root / "MICCAI-LH-BraTS2025-MET-Challenge-Training"
     validation_root = data_root / "Validation"
     corrected_root = data_root / "MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels"
-    results_root = Path(args.results_root)
+    results_root = Path(args.results_root).expanduser().resolve()
     dirs = ensure_dirs(results_root)
     write_readme_files(results_root, dirs)
     outputs: list[Path] = []
@@ -2446,9 +2439,6 @@ def main() -> None:
         dirs["qc"] / "G2_synthetic_data_QC报告模板_v2.md",
         dirs["reports"] / "ablation_plan_template.md",
     ])
-    write_execution_summary(dirs, outputs)
-    outputs.append(dirs["reports"] / "g2_pretraining_execution_summary.md")
-
     baseline_summary = {
         "generation_run_id": "real_baseline",
         "case_count": int(len(raw_df)),

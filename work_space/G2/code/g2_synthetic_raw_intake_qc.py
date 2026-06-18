@@ -2,9 +2,10 @@
 """G2 entry point for G1 synthetic raw intake and QC.
 
 This is a thin, explicit wrapper around the shared G2 audit utilities. Use it
-when G1 hands over a GliGAN-compatible diffusion run folder. It creates the
-candidate manifest, accepted/rejected manifests, QC tables, diffusion-quality
-tables, and a batch report under work_space/G2/results.
+when G1 hands over either a legacy GliGAN-compatible diffusion run folder or a
+completion-style `data/output/<case_id>/` folder. It creates the candidate
+manifest, accepted/rejected manifests, QC tables, diffusion-quality tables, and
+a batch report under work_space/G2/results.
 """
 
 from __future__ import annotations
@@ -21,7 +22,7 @@ from g2_pretraining_audit import (
 )
 
 
-DEFAULT_RESULTS_ROOT = Path("/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results")
+DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 
 
 def main() -> None:

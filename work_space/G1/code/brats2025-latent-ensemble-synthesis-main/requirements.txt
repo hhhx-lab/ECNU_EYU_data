@@ -1,0 +1,26 @@
+# ============================================================
+# Latent-Space Ensemble Synthesis of Missing Brain Tumor MRI
+# BraTS Challenge 2025
+# ============================================================
+# Python >= 3.10
+# Compatible with CUDA 12.x (adjust torch index-url accordingly)
+
+# ---------- Deep Learning Framework ----------
+torch>=2.0.0,<2.8.0
+torchvision>=0.15.0
+
+# ---------- Medical Imaging ----------
+# MONAI >= 1.4 required for monai.apps.generation.maisi (MAISI VAE)
+monai>=1.4.0
+nibabel>=5.0.0
+# TotalSegmentator (optional, only needed if --compute_bmask is used)
+TotalSegmentator>=2.0.0
+
+# ---------- Data Processing ----------
+numpy>=1.24.0,<2.0.0
+pandas>=2.0.0
+Pillow>=10.0.0
+
+# ---------- Progress Bar & Logging ----------
+tqdm>=4.65.0
+tensorboard>=2.13.0

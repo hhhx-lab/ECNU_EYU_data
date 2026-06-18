@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Materialize G2 real/synthetic manifests into an nnU-Net raw dataset.
 
-Default mode is manifest-only so this script is safe to run on a laptop. On the
-training machine, use --mode symlink or --mode copy after checking disk space.
+Default mode is manifest-only so this script is safe to run on a laptop. By
+default it only includes synthetic rows accepted for training; pass
+--include-ablation-only explicitly if you want the controlled ablation rows too.
+On the training machine, use --mode symlink or --mode copy after checking disk
+space.
 """
 
 from __future__ import annotations
@@ -15,7 +18,7 @@ import shutil
 from pathlib import Path
 
 
-DEFAULT_RESULTS_ROOT = Path("/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results")
+DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 CHANNEL_ORDERS = {
     "g2_official": ["t1n", "t1c", "t2w", "t2f"],
     "s2_current": ["t1c", "t1n", "t2f", "t2w"],
@@ -39,7 +42,7 @@ def write_csv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) 
             writer.writerow(row)
 
 
-def source_for(row: dict[str, str], modality: str) -> str:
+def source_for(row: dict[str, str], modality: str) -> str | None:
     candidates = [
         f"{modality}_source_path",
         f"normalized_{modality}_path",
@@ -51,10 +54,12 @@ def source_for(row: dict[str, str], modality: str) -> str:
     for value in values:
         if Path(value).exists():
             return value
-    return values[0] if values else ""
+    return values[0] if values else None
 
 
-def link_or_copy(src: Path, dst: Path, mode: str, overwrite: bool) -> str:
+def link_or_copy(src: Path | None, dst: Path, mode: str, overwrite: bool) -> str:
+    if src is None:
+        return "missing_source"
     if mode == "manifest-only":
         return "planned"
     if not src.exists():
@@ -82,6 +87,7 @@ def build_rows(
     channel_order: list[str],
     mode: str,
     overwrite: bool,
+    include_ablation_only: bool,
 ) -> tuple[list[dict[str, object]], int]:
     materialized: list[dict[str, object]] = []
     included_cases = 0
@@ -97,12 +103,13 @@ def build_rows(
         if row_type == "synthetic":
             accepted = row.get("accepted_for_training", "").lower() in {"true", "1", "yes"}
             ablation = row.get("accepted_for_ablation_only", "").lower() in {"true", "1", "yes"}
-            if not (accepted or ablation):
+            if not (accepted or (include_ablation_only and ablation)):
                 continue
         included_cases += 1
 
         for channel_idx, modality in enumerate(channel_order):
-            src = Path(source_for(row, modality))
+            source_path = source_for(row, modality)
+            src = Path(source_path) if source_path else None
             dst = dataset_dir / "imagesTr" / f"{case_id}_{channel_idx:04d}.nii.gz"
             action = link_or_copy(src, dst, mode, overwrite)
             materialized.append(
@@ -111,13 +118,14 @@ def build_rows(
                     "row_type": row_type,
                     "modality": modality,
                     "nnunet_channel": f"{channel_idx:04d}",
-                    "source_path": str(src),
+                    "source_path": source_path or "",
                     "target_path": str(dst),
                     "action": action,
                 }
             )
 
-        src = Path(source_for(row, "seg"))
+        source_path = source_for(row, "seg")
+        src = Path(source_path) if source_path else None
         dst = dataset_dir / "labelsTr" / f"{case_id}.nii.gz"
         action = link_or_copy(src, dst, mode, overwrite)
         materialized.append(
@@ -126,7 +134,7 @@ def build_rows(
                 "row_type": row_type,
                 "modality": "seg",
                 "nnunet_channel": "label",
-                "source_path": str(src),
+                "source_path": source_path or "",
                 "target_path": str(dst),
                 "action": action,
             }
@@ -148,6 +156,11 @@ def main() -> None:
     parser.add_argument("--channel-order", choices=sorted(CHANNEL_ORDERS), default="g2_official")
     parser.add_argument("--mode", choices=["manifest-only", "symlink", "hardlink", "copy"], default="manifest-only")
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument(
+        "--include-ablation-only",
+        action="store_true",
+        help="Also include accepted_for_ablation_only synthetic rows. Default excludes them from the main training dataset.",
+    )
     args = parser.parse_args()
 
     results_root = Path(args.results_root).expanduser().resolve()
@@ -162,7 +175,15 @@ def main() -> None:
     real_rows = read_csv(real_mapping)
     synthetic_rows = read_csv(synthetic_manifest) if synthetic_manifest else []
     channel_order = CHANNEL_ORDERS[args.channel_order]
-    rows, num_training = build_rows(real_rows, synthetic_rows, dataset_dir, channel_order, args.mode, args.overwrite)
+    rows, num_training = build_rows(
+        real_rows,
+        synthetic_rows,
+        dataset_dir,
+        channel_order,
+        args.mode,
+        args.overwrite,
+        args.include_ablation_only,
+    )
 
     dataset_json = {
         "channel_names": {str(idx): modality for idx, modality in enumerate(channel_order)},
@@ -171,6 +192,7 @@ def main() -> None:
         "file_ending": ".nii.gz",
         "g2_channel_order": args.channel_order,
         "g2_materialization_mode": args.mode,
+        "g2_include_ablation_only": args.include_ablation_only,
         "g2_real_mapping": str(real_mapping),
         "g2_synthetic_manifest": str(synthetic_manifest) if synthetic_manifest else "",
     }
@@ -183,6 +205,7 @@ def main() -> None:
     print(f"numTraining={num_training}")
     print(f"channel_order={args.channel_order}:{','.join(channel_order)}")
     print(f"mode={args.mode}")
+    print(f"include_ablation_only={args.include_ablation_only}")
 
 
 if __name__ == "__main__":
