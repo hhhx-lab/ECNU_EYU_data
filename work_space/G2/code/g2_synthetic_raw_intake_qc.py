@@ -13,15 +13,6 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from g2_pretraining_audit import (
-    build_synthetic_run_context,
-    ensure_dirs,
-    ingest_synthetic_run,
-    write_progress_report,
-    write_templates,
-)
-
-
 DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 
 
@@ -50,6 +41,14 @@ def main() -> None:
         help="Rewrite current G2 manifest/QC/report templates before intake.",
     )
     args = parser.parse_args()
+
+    from g2_pretraining_audit import (  # noqa: PLC0415
+        build_synthetic_run_context,
+        ensure_dirs,
+        ingest_synthetic_run,
+        write_progress_report,
+        write_templates,
+    )
 
     run_root = Path(args.synthetic_run_root).expanduser().resolve()
     results_root = Path(args.results_root).expanduser().resolve()

@@ -12,6 +12,10 @@ The default policy is:
 - Training input: final-QC-pass cases whose T2W is not flagged as fake.
 - Inference input: final-QC-pass cases whose T2W is flagged as fake by G2.
 
+The script fails by default if any required source NIfTI is missing. This makes
+stale Mac paths or incomplete server mounts fail early instead of creating a
+misleading folder layout.
+
 Use --mode copy only on a machine with enough disk space.
 """
 
@@ -194,12 +198,20 @@ def prepare(args: argparse.Namespace) -> list[dict[str, object]]:
         counts[destination_split] += 1
 
     write_manifest(data_root / "g1_data_placement_manifest.csv", output_rows)
+    missing_rows = [row for row in output_rows if row["notes"]]
     print(f"data_root={data_root}")
     print(f"mode={args.mode}")
     print(f"train_complete_cases={counts['train']}")
     print(f"inference_missing_t2w_cases={counts['inference']}")
     print(f"skipped_cases={counts['skipped']}")
     print(f"manifest={data_root / 'g1_data_placement_manifest.csv'}")
+    print(f"missing_source_cases={len(missing_rows)}")
+    if missing_rows and not args.allow_missing_sources:
+        preview = ", ".join(f"{row['case_id']}({row['notes']})" for row in missing_rows[:10])
+        raise SystemExit(
+            "missing source NIfTI files detected; refresh G2 manifests with server paths "
+            f"or pass --allow-missing-sources for a diagnostic dry run. examples: {preview}"
+        )
     return output_rows
 
 
@@ -212,6 +224,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--clean", action="store_true", help="Remove existing data/input and data/input_inference first.")
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing files/links.")
     parser.add_argument("--include-failed-qc", action="store_true", help="Include cases that G2 final QC failed.")
+    parser.add_argument(
+        "--allow-missing-sources",
+        action="store_true",
+        help="Write the placement manifest even if source NIfTI paths are missing. Default fails fast.",
+    )
     return parser.parse_args()
 
 

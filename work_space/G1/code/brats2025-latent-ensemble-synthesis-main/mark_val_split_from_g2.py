@@ -51,7 +51,12 @@ def load_split_ids(split_path: Path, mapping_path: Path) -> dict[str, set[str]]:
     return split_case_ids
 
 
-def rewrite_csv(csv_path: Path, split_case_ids: dict[str, set[str]], output_path: Path | None) -> dict[str, int]:
+def rewrite_csv(
+    csv_path: Path,
+    split_case_ids: dict[str, set[str]],
+    output_path: Path | None,
+    allow_unmatched_as_train: bool,
+) -> dict[str, object]:
     with csv_path.open("r", encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         rows = list(reader)
@@ -61,6 +66,8 @@ def rewrite_csv(csv_path: Path, split_case_ids: dict[str, set[str]], output_path
         fieldnames.append("split")
 
     counts = {"train": 0, "val": 0, "test": 0}
+    matched_ids = split_case_ids.get("train", set()) | split_case_ids.get("val", set()) | split_case_ids.get("test", set())
+    unmatched: list[str] = []
     for row in rows:
         case_id = row.get("id")
         if case_id in split_case_ids.get("test", set()):
@@ -69,9 +76,20 @@ def rewrite_csv(csv_path: Path, split_case_ids: dict[str, set[str]], output_path
         elif case_id in split_case_ids.get("val", set()):
             row["split"] = "val"
             counts["val"] += 1
-        else:
+        elif case_id in split_case_ids.get("train", set()):
             row["split"] = "train"
             counts["train"] += 1
+        else:
+            unmatched.append(case_id or "")
+            row["split"] = "train"
+            counts["train"] += 1
+
+    if unmatched and not allow_unmatched_as_train:
+        preview = ", ".join(unmatched[:20])
+        raise SystemExit(
+            f"{len(unmatched)} CSV case ids are not present in the G2 split/mapping; "
+            f"stop before rewriting split. examples: {preview}"
+        )
 
     target = output_path or csv_path
     if target == csv_path:
@@ -82,7 +100,11 @@ def rewrite_csv(csv_path: Path, split_case_ids: dict[str, set[str]], output_path
         writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
-    return counts
+    return {
+        "counts": counts,
+        "unmatched": unmatched,
+        "matched_id_count": len(matched_ids),
+    }
 
 
 def parse_args() -> argparse.Namespace:
@@ -91,6 +113,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--split-json", default=str(DEFAULT_SPLIT))
     parser.add_argument("--mapping-csv", default=str(DEFAULT_MAPPING))
     parser.add_argument("--output-csv", default="", help="Optional output path. Defaults to in-place rewrite with backup.")
+    parser.add_argument(
+        "--allow-unmatched-as-train",
+        action="store_true",
+        help="Keep old conservative behavior: rows missing from G2 mapping are written as train. Default fails fast.",
+    )
     return parser.parse_args()
 
 
@@ -98,12 +125,15 @@ def main() -> None:
     args = parse_args()
     split_ids = load_split_ids(Path(args.split_json), Path(args.mapping_csv))
     output = Path(args.output_csv) if args.output_csv else None
-    counts = rewrite_csv(Path(args.csv_path), split_ids, output)
+    result = rewrite_csv(Path(args.csv_path), split_ids, output, args.allow_unmatched_as_train)
+    counts = result["counts"]
     print(f"train={counts['train']}")
     print(f"val={counts['val']}")
     print(f"test={counts['test']}")
     print(f"val_ids_from_g2={len(split_ids['val'])}")
     print(f"test_ids_from_g2={len(split_ids['test'])}")
+    print(f"matched_ids_from_g2={result['matched_id_count']}")
+    print(f"unmatched_ids={len(result['unmatched'])}")
     print(f"csv={output or Path(args.csv_path)}")
 
 

@@ -72,7 +72,7 @@
 | `code/g2_pretraining_audit.py` | G2 基础审计脚本：扫描真实训练/验证数据，生成 manifest、真实数据统计、G1 source CSV、real-only nnU-Net mapping 和可选 synthetic intake。 |
 | `code/g2_create_train_val_test_split.py` | 固定划分脚本：把历史 fixed val 锁成 internal test，并从训练池稳定切出 dev/val。 |
 | `code/g2_synthetic_raw_intake_qc.py` | G1 raw output 正式接收脚本：生成 candidate/accepted/rejected manifest、normalized mapping、逐例 QC、扩散质量指标、batch summary 和 run 级报告。 |
-| `code/g2_materialize_nnunet_dataset.py` | 把 real mapping 与 accepted synthetic manifest 转成 nnU-Net raw dataset 入口；默认只物化 `accepted_for_training=True`，`accepted_for_ablation_only` 需显式开启。 |
+| `code/g2_materialize_nnunet_dataset.py` | 把 real mapping 与 accepted synthetic manifest 转成 nnU-Net raw dataset 入口；completion 默认替换 fake/broken T2W，不追加重复病例；`accepted_for_ablation_only` 需显式开启。 |
 | `code/g2_official_mets_metrics_parser.py` | 解析 BraTS_evaluation / Panoptica 输出或校验 CSV 是否包含 2026 Task1 leaderboard 字段。 |
 
 ### 5.2 docs
@@ -170,6 +170,6 @@
 
 1. 等 G1 交付真实 `data/output/<case_id>` run 后，用 `g2_synthetic_raw_intake_qc.py` 生成 candidate/accepted/rejected、normalized mapping 和 QC 报告。
 2. 对 borderline 病例填写 `qc_case_review_template.csv`，不能手工绕过 QC。
-3. 用 `g2_materialize_nnunet_dataset.py` 在训练机物化 real+synth 数据，默认只纳入 `accepted_for_training=True`。
+3. 用 `g2_materialize_nnunet_dataset.py` 在训练机物化 real+synth 数据，默认只纳入 `accepted_for_training=True`，并用 accepted completion 替换 fake/broken T2W。
 4. S1/S2 训练出 real-only 与 real+synth 预测后，用官方 BraTS_evaluation 或 `g2_official_mets_metrics_parser.py` 汇总官方同款字段。
 5. 只有官方同款指标不下降，且 small-instance 指标稳定或提升，才能把某一批 synthetic 数据写成主方案。

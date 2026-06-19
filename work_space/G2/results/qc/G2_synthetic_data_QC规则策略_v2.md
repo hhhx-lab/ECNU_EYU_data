@@ -429,6 +429,14 @@ teacher model 建议使用 real-only nnU-Net baseline。
 
 accepted synthetic 导出后必须检查：
 
+当前 G1 T2W completion 与后续 diffusion augmentation 的物化口径不同：
+
+- completion 输出默认不是新增病例，而是替换对应真实病例的 fake/broken `t2w` 通道。
+- fake/broken `t2w` 病例如果没有 accepted completion，默认不能以原始 fake/broken `t2w` 进入主训练数据。
+- 非 completion 的 diffusion augmentation 才作为额外 synthetic case 追加到 real+synth 数据集。
+- `accepted_for_ablation_only=True` 只有显式加 `--include-ablation-only` 时才进入受控消融数据集。
+- fake/broken T2W 清单缺失时，物化脚本默认停止，不能假设所有真实病例 T2W 都可信。
+
 1. `imagesTr/{case_id}_0000.nii.gz = t1n`
 2. `imagesTr/{case_id}_0001.nii.gz = t1c`
 3. `imagesTr/{case_id}_0002.nii.gz = t2w`
@@ -615,6 +623,8 @@ python work_space/G2/code/g2_materialize_nnunet_dataset.py \
   --dataset-name BraTS2026_MET_RealSynth_G1V1 \
   --channel-order g2_official \
   --mode manifest-only
+
+# completion 默认 auto：accepted completion 替换 fake/broken T2W，不追加重复病例。
 
 # 4. S1/S2 训练后解析官方风格指标
 python work_space/G2/code/g2_official_mets_metrics_parser.py parse-json \

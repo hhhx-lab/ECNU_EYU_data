@@ -1,19 +1,50 @@
-# G1 / G2 服务器运行手册
+# G1 T2W 缺失模态填补服务器运行手册
 
 更新日期：2026-06-19
-适用对象：拿到原始 BraTS Task1 数据、要在服务器上把 G1 训练/推理跑起来，并让 G2 完成 QC、accepted/rejected 判定和 nnU-Net 导出的同学。
+适用对象：负责先把当前 G1 代码跑通的操作者。当前目标是先完成 `t1n+t1c+t2f(+seg) -> t2w` 的缺失模态填补训练与推理；G2 的 QC、accepted/rejected 判定和 nnU-Net 导出属于 G1 输出完成后的后续阶段。
 
 ## 0. 你先记住一句话
 
-不要手动删坏掉的 `t2w`，不要手动改 `data/data_csv.csv`，不要把系统 Python 和 Conda/uv 混起来。
-这套流程已经改成：
+当前 G1 代码是 **T2W 缺失模态填补**，不是完整的 diffusion synthetic augmentation。操作者现在先跑 G1 completion；G2 只提供前置清单和固定划分，等 G1 产出 `data/output/<case_id>/<case_id>-t2w.nii.gz` 后再接收和 QC。
 
-1. G2 先从原始 Task1 数据生成真实数据侧清单和 fake T2W 清单。
-2. G2 自动生成固定 train/val/test 划分：829/207/259。
-3. G1 自动把训练集和推理集摆好。
-4. G1 预处理时，缺 `t2w` 的训练病例自动跳过，不进 `data_csv.csv`。
-5. G1 推理时，只要求 `t1n/t1c/t2f/seg`，`t2w` 缺失是正常状态。
-6. G2 接收 G1 输出后做 QC，给出 `accepted / rejected / ablation_only / needs_regeneration`。
+不要手动删坏掉的 `t2w`，不要手动改 `data/data_csv.csv`，不要把系统 Python 和 Conda/uv 混起来。这套流程已经改成：
+
+1. G2 已生成或刷新真实数据清单、fake T2W 清单和固定 train/val/test 划分。
+2. G1 用 `prepare_g1_t2w_data.py` 自动摆放 `data/input/` 和 `data/input_inference/`。
+3. G1 训练只使用完整真实 T2W 病例；缺失或 fake T2W 病例不进 `data/data_csv.csv`。
+4. G1 推理只要求 `t1n/t1c/t2f/seg`，`data/input_inference/` 中没有 `t2w` 是正确状态。
+5. G2 后续接收 G1 输出，做 QC、accepted/rejected、ablation-only 和 nnU-Net 物化；这不是操作者当前第一步要跑的内容。
+
+当前两条线要分清：
+
+1. **已在跑的线：T2W completion / imputation**。当前 G1 代码就是这条线，先补齐 fake/broken T2W 病例。
+2. **后续还需要的线：diffusion synthetic augmentation**。这才对应“用 diffusion 替代往年 GAN/GliGAN 做数据增强”，目前不能把当前 completion 代码当成完整 augmentation pipeline。
+
+操作者当前只需要跑这一串：
+
+```bash
+cd work_space/G1/code/brats2025-latent-ensemble-synthesis-main
+
+python test_vae.py
+python prepare_g1_t2w_data.py --mode symlink --clean --overwrite
+python preprocess.py
+python mark_val_split_from_g2.py
+python generate_attmask.py
+python compute_weights.py
+
+python training_endec.py
+python training_bbdm.py
+
+python main.py \
+  --input_dir data/input_inference \
+  --output_dir data/output \
+  --synthesis_type ensamble \
+  --gpu_id 0 \
+  --verbose \
+  --compute_bmask
+```
+
+如果 `prepare_g1_t2w_data.py` 报 manifest 路径找不到或源 NIfTI 不存在，先停下来让 G2 操作者刷新服务器路径下的 `work_space/G2/results/`，不要手工改病例目录。
 
 ---
 
@@ -48,7 +79,7 @@ work_space/G2/results
 
 ### 1.1 手上的三个原始数据集分别怎么用
 
-服务器同学通常只会拿到下面三个目录。不要拆散病例文件，也不要把 corrected labels 直接混进 Training 目录；先让 G2 audit 脚本统一识别和覆盖。
+服务器操作者通常只会拿到下面三个目录。不要拆散病例文件，也不要把 corrected labels 直接混进 Training 目录；由 G2 audit 脚本统一识别和覆盖。操作者当前只需要消费 G2 已经生成好的清单；如果清单里的路径不是服务器路径，再让 G2 操作者刷新 audit。
 
 | 原始目录 | 里面有什么 | 谁使用 | 用途 |
 |---|---|---|---|
@@ -58,10 +89,10 @@ work_space/G2/results
 
 最重要的原则：
 
-1. `Training/` 是 G1 训练的来源，但 fake/broken T2W 病例会被自动分到 `data/input_inference/`。
-2. `Validation/` 不能作为 synthetic source，也不能混进主训练集；它可以拿来跑 `evaluate.py` 做图像合成 sanity check。
+1. `Training/` 是 G1 completion 训练的来源，但 fake/broken T2W 病例会被自动分到 `data/input_inference/`。
+2. `Validation/` 不能混进主训练集；它可以拿来跑 `evaluate.py` 做图像合成 sanity check。
 3. `corrected-labels/` 只由 G2 audit 读取；不要手工复制到病例文件夹里。
-4. 旧 manifest 里有本机绝对路径，换服务器后必须重新跑 G2 audit，不要直接搬旧 CSV 当成路径真相。
+4. 旧 manifest 里有本机绝对路径，换服务器后必须刷新 G2 audit 或改用服务器路径的 manifest，不要直接搬旧 CSV 当成路径真相。
 
 ---
 
@@ -112,16 +143,26 @@ python test_vae.py
 
 ---
 
-## 3. 第一步：先把 G2 基线清出来
+## 3. 第零步：确认 G2 前置清单
 
-这一步的目的是生成：
+操作者当前不是先跑完整 G2 QC，而是先确认 G1 completion 需要的前置清单存在、路径有效。当前 G1 代码实际依赖的文件是：
 
-1. 真实训练清单
-2. 真实验证清单
-3. G1 可用 source 清单
-4. nnU-Net 映射
-5. fixed train/val/test split
-6. fake T2W 清单
+```text
+work_space/G2/results/manifests/real_train_manifest.csv
+work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
+work_space/G2/results/splits/splits_final_train_val_test.json
+work_space/G2/results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv
+```
+
+其中：
+
+1. `prepare_g1_t2w_data.py` 使用 `real_train_manifest.csv` 和 fake T2W 清单，自动生成 `data/input/` 与 `data/input_inference/`。
+2. `mark_val_split_from_g2.py` 使用 `splits_final_train_val_test.json` 和 `nnunet_case_mapping_realonly.csv`，自动把 `data/data_csv.csv` 改成 `train/val/test`。
+3. `g1_gligan_source_cases_v1.csv` 是后续 synthetic augmentation 线会用的 source 清单，不是当前 T2W completion 必需文件。
+
+如果这些文件已经存在，并且 CSV 里的原始数据路径能在服务器上访问，操作者可以直接跳到第 4 节。
+
+如果路径仍指向本机 Mac，或者清单缺失，再由 G2 操作者刷新 audit：
 
 命令：
 
@@ -134,31 +175,36 @@ python work_space/G2/code/g2_pretraining_audit.py \
   --force
 ```
 
-### 3.1 这一步会生成什么
+### 3.1 刷新 audit 后会生成什么
 
-重点看这些文件：
+当前 T2W completion 重点看这些文件：
 
 ```text
 work_space/G2/results/manifests/real_train_manifest.csv
-work_space/G2/results/manifests/real_validation_manifest.csv
-work_space/G2/results/manifests/g1_gligan_source_cases_v1.csv
 work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
-work_space/G2/results/splits/splits_final_fold0_realval.json
 work_space/G2/results/splits/splits_final_train_val_test.json
 work_space/G2/results/splits/splits_final_train_val_test_membership.csv
 work_space/G2/results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv
 work_space/G2/results/qc/official_t2w_gzip_header_audit_2026-06-15.csv
 ```
 
+下面这些是后续 G2 报告或 synthetic augmentation 会用到的文件，不是操作者当前 completion 必跑项：
+
+```text
+work_space/G2/results/manifests/real_validation_manifest.csv
+work_space/G2/results/manifests/g1_gligan_source_cases_v1.csv
+work_space/G2/results/splits/splits_final_fold0_realval.json
+```
+
 ### 3.2 你要检查什么
 
 1. `real_train_manifest.csv` 里路径是否指向你服务器上的原始数据。
-2. `g1_gligan_source_cases_v1.csv` 是否已经生成。
-3. `official_fake_t2w_cases_by_gzip_header_2026-06-15.csv` 是否存在。
-4. `splits_final_train_val_test.json` 是否存在。
-5. `splits_final_train_val_test_membership.csv` 是否存在。
+2. `official_fake_t2w_cases_by_gzip_header_2026-06-15.csv` 是否存在，并且包含 265 个 fake/broken T2W 病例。
+3. `splits_final_train_val_test.json` 是否存在。
+4. `nnunet_case_mapping_realonly.csv` 是否存在。
+5. `splits_final_train_val_test_membership.csv` 是否存在，方便人工核对。
 
-如果你只换了挂载路径，但病例 ID 没变，这一步就够用了。
+如果你只换了挂载路径，但病例 ID 没变，刷新 audit 这一步就够用了。
 
 如果后续把 `--results-root` 改成别的位置，那么 G1 的 `prepare_g1_t2w_data.py` 也要显式传入同一套 manifest 路径；为了减少出错，建议服务器第一版先使用默认 `work_space/G2/results`。
 
@@ -175,7 +221,7 @@ work_space/G2/results/splits/splits_final_train_val_test.json
 1. `splits_final_fold0_realval.json` 是历史 two-way fold，原来是 1036 train / 259 val。
 2. 现在把历史 `259 val` 锁定为内部 `test`，后续不训练、不调参、不作为 synthetic source。
 3. 从历史 `1036 train` 中再按稳定 hash 切出 `207 val`，用于调参和 dev 评估。
-4. 剩余 `829 train` 作为真实训练池和 synthetic source 池。
+4. 剩余 `829 train` 作为真实训练池；后续 synthetic augmentation source 也必须只从允许训练来源里取，但这不是当前 completion 代码的任务。
 
 所以 G2/S1/S2 的正式口径是：
 
@@ -203,7 +249,7 @@ python work_space/G2/code/g2_create_train_val_test_split.py
 
 ---
 
-## 4. 第二步：自动摆放 G1 数据
+## 4. 操作者第一步：自动摆放 G1 数据
 
 这一步把 G1 需要的数据自动分到：
 
@@ -219,6 +265,16 @@ cd work_space/G1/code/brats2025-latent-ensemble-synthesis-main
 python prepare_g1_t2w_data.py --mode symlink --clean --overwrite
 ```
 
+当前代码会使用 `configs.py` 里的路径约定：
+
+```text
+PATH_INPUT = data/input
+PATH_INPUT_INFERENCE = data/input_inference
+PATH_OUTPUT = data/output
+MISSING_MODALITY = t2w
+AVAILABLE_MODALITIES = t1n, t1c, t2f
+```
+
 ### 4.1 这个脚本做什么
 
 1. 从 G2 的真实训练 manifest 和 fake T2W 清单里找病例。
@@ -227,6 +283,17 @@ python prepare_g1_t2w_data.py --mode symlink --clean --overwrite
 4. 推理目录里**自动不放 `t2w`**。
 5. 写出 `data/g1_data_placement_manifest.csv`。
 
+如果 manifest 里的源 NIfTI 路径不存在，脚本会默认停下来，并在 `data/g1_data_placement_manifest.csv` 里写清楚缺哪个病例、哪个模态。不要绕过这个错误继续训练；这通常说明服务器路径还没刷新，或原始数据没有挂载完整。
+
+当前默认口径应是：
+
+```text
+data/input/           1030 个完整真实 T2W 病例
+data/input_inference/ 265 个需要重建 T2W 的病例
+```
+
+`data/input_inference/<case_id>/` 中如果出现 `*-t2w.nii.gz`，说明摆放不符合当前 G1 推理口径，要先修正再推理。
+
 ### 4.2 运行后你应该看到
 
 ```text
@@ -234,6 +301,29 @@ data/input/<case_id>/
 data/input_inference/<case_id>/
 data/g1_data_placement_manifest.csv
 ```
+
+抽查一个训练病例：
+
+```text
+data/input/<case_id>/
+  <case_id>-t1n.nii.gz
+  <case_id>-t1c.nii.gz
+  <case_id>-t2w.nii.gz
+  <case_id>-t2f.nii.gz
+  <case_id>-seg.nii.gz
+```
+
+抽查一个推理病例：
+
+```text
+data/input_inference/<case_id>/
+  <case_id>-t1n.nii.gz
+  <case_id>-t1c.nii.gz
+  <case_id>-t2f.nii.gz
+  <case_id>-seg.nii.gz
+```
+
+推理病例这里没有 `t2w` 是正确的，因为当前 G1 `main.py` 的真实输入是 `t1n/t1c/t2f/seg`，目标输出才是 `t2w`。
 
 ### 4.3 如果没有 fake T2W 清单
 
@@ -253,7 +343,7 @@ work_space/G2/results/qc/official_t2w_gzip_header_audit_2026-06-15.csv
 
 ---
 
-## 5. 第三步：G1 预处理
+## 5. 操作者第二步：G1 预处理
 
 命令：
 
@@ -265,10 +355,10 @@ python preprocess.py
 
 1. 扫描 `data/input/`
 2. 只保留 `t1n/t1c/t2w/t2f` 四模态齐全病例
-3. 缺 `t2w` 的病例自动跳过
+3. 缺 `t2w` 或缺其他训练必需模态的病例自动跳过
 4. 编码成 latent
 5. 生成 `data/data_csv.csv`
-6. 生成 `data/data_csv_skipped_subjects.csv`
+6. 如果存在被跳过病例，则生成 `data/data_csv_skipped_subjects.csv`
 
 ### 5.2 结果判断
 
@@ -277,14 +367,14 @@ python preprocess.py
 ```text
 data/latents/<case_id>/*.npy
 data/data_csv.csv
-data/data_csv_skipped_subjects.csv
+data/data_csv_skipped_subjects.csv  # 只有出现 skipped subject 时才一定存在
 ```
 
-如果某病例缺 `t2w`，它应该只出现在 `data_csv_skipped_subjects.csv`，不应该进 `data_csv.csv`。
+如果某病例缺 `t2w`，它不应该进 `data_csv.csv`。正常情况下，前一步已经把 fake/broken T2W 病例放进 `data/input_inference/`，所以 `data/input/` 本身应主要是完整四模态病例。
 
 ---
 
-## 6. 第四步：写入固定 train/val/test
+## 6. 操作者第三步：写入固定 train/val/test
 
 命令：
 
@@ -300,11 +390,19 @@ python mark_val_split_from_g2.py
 2. 如果新文件不存在，才回退读取旧的 `splits_final_fold0_realval.json`
 3. 读取 `nnunet_case_mapping_realonly.csv`
 4. 把 `data/data_csv.csv` 里对应病例改成 `train`、`val` 或 `test`
-5. 其余无法匹配但已经进入 CSV 的病例保守维持 `train`
+5. 如果 CSV 里出现 G2 mapping/split 无法匹配的病例，默认直接报错停止
 
 ### 6.2 为什么不用手工改
 
 因为手工改容易把 ID 改错，也容易把应该进 `val/test` 的病例漏掉。现在这步是自动的。
+
+如果确实是在做临时诊断，想恢复旧的“未知病例保守归 train”行为，才加：
+
+```bash
+python mark_val_split_from_g2.py --allow-unmatched-as-train
+```
+
+正式训练不要使用这个参数。
 
 ### 6.3 正常输出数量
 
@@ -324,7 +422,7 @@ test=210
 
 ---
 
-## 7. 第五步：生成训练需要的辅助文件
+## 7. 操作者第四步：生成训练需要的辅助文件
 
 ### 7.1 肿瘤掩码
 
@@ -344,7 +442,7 @@ python compute_weights.py
 
 ---
 
-## 8. 第六步：训练
+## 8. 操作者第五步：训练
 
 ### 8.1 EncDec
 
@@ -396,7 +494,7 @@ data/eval_synthesized/<case_id>-t2w.nii.gz
 
 ---
 
-## 9. 第七步：G1 推理
+## 9. 操作者第六步：G1 推理
 
 ### 9.1 推理输入
 
@@ -411,6 +509,8 @@ data/input_inference/<case_id>/
 注意：这里**不要放 `t2w`**。
 
 ### 9.2 推理命令
+
+注意：当前 G1 代码里的参数值拼写就是 `ensamble`，不要改成 `ensemble`。
 
 ```bash
 python main.py \
@@ -439,7 +539,9 @@ data/output/<case_id>/
 
 ---
 
-## 10. 第八步：G2 接收 G1 输出
+## 10. G2 后续第一步：接收 G1 输出
+
+这一节不是操作者当前第一阶段必须执行的内容。操作者当前只需要把 G1 completion 跑到 `data/output/<case_id>/<case_id>-t2w.nii.gz` 产出稳定。等这批 T2W 生成完成后，再由 G2 接收、QC 和写报告。
 
 命令：
 
@@ -484,9 +586,18 @@ G1 的 `data/output/<case_id>/` 会被 G2 识别成：
 
 ---
 
-## 11. 第九步：物化 nnU-Net 数据集
+## 11. G2 后续第二步：物化 nnU-Net 数据集
 
-默认只物化 `accepted_for_training=True` 的样本。
+这一节也不属于操作者当前任务。只有当 G2 已经完成 completion 输出的 QC，并生成 `synthetic_accepted_manifest_*` 后，才进入 nnU-Net 物化。
+
+默认只物化 `accepted_for_training=True` 的样本。对当前 G1 completion 输出，物化脚本默认执行的是 **replace fake T2W**，不是 append duplicate case：
+
+1. 完整真实 T2W 病例照常进入 nnU-Net。
+2. fake/broken T2W 病例如果有通过 QC 的 completion 输出，就用生成的 `t2w` 替换原始 fake/broken `t2w`。
+3. fake/broken T2W 病例如果没有通过 QC 的 completion 输出，默认不进入主物化数据集。
+4. 非 completion 的 diffusion augmentation 样本才作为额外 synthetic case 追加。
+
+`official_fake_t2w_cases_by_gzip_header_2026-06-15.csv` 是这一步的硬前置；如果这个清单缺失，物化脚本会默认停止，避免原始 fake/broken T2W 混进主训练。
 
 ```bash
 python work_space/G2/code/g2_materialize_nnunet_dataset.py \
@@ -503,6 +614,14 @@ python work_space/G2/code/g2_materialize_nnunet_dataset.py \
 ```bash
 --include-ablation-only
 ```
+
+如果团队专门要做“原始官方 fake T2W 不替换”的对照实验，才显式加：
+
+```bash
+--include-unreplaced-fake-t2w
+```
+
+正式主训练数据不要加这个参数。
 
 ### 11.1 通道顺序
 
@@ -533,16 +652,36 @@ python work_space/G2/code/g2_materialize_nnunet_dataset.py \
 
 因为现在物化脚本默认只收 `accepted_for_training=True`。要做消融时再显式加 `--include-ablation-only`。
 
+### 12.5 操作者现在要不要跑 G2
+
+操作者当前只需要确认 G2 前置清单存在并且路径有效，然后跑 G1 completion。G2 audit、QC、accepted/rejected、nnU-Net 物化都属于后续阶段。
+
+如果服务器上的 `real_train_manifest.csv` 路径不对，才需要 G2 操作者刷新 audit；这不是 G1 completion 算法本身的一部分。
+
+### 12.6 当前 G1 代码是不是完整 synthetic augmentation
+
+不是。当前 `brats2025-latent-ensemble-synthesis-main` 是缺失 T2W 模态填补代码，核心任务是从 `t1n/t1c/t2f` 生成 `t2w`。
+
+完整数据增强还需要另一条 diffusion synthetic augmentation 代码线。那条线后续应生成可追溯 synthetic cases，再交给 G2 做 manifest、QC、accepted/rejected 和下游消融。
+
 ---
 
 ## 13. 最后检查清单
 
-跑完后至少确认：
+操作者跑完 G1 completion 后至少确认：
 
 1. `data/input/` 里都是完整四模态病例。
 2. `data/input_inference/` 里没有 `t2w`。
 3. `data/data_csv.csv` 没有缺 `t2w` 的病例。
 4. `mark_val_split_from_g2.py` 已执行，并且 `data/data_csv.csv` 中存在 `train/val/test` 三类 split。
 5. G1 推理输出出现在 `data/output/<case_id>/`。
-6. G2 能生成 accepted/rejected/QC/报告文件。
-7. nnU-Net 物化时没有把 ablation-only 样本误塞进主训练集。
+6. `data/output/<case_id>/` 中包含源 `t1n/t1c/t2f/seg` 和生成的 `t2w`。
+7. 推理日志里没有大量 `skipped incomplete subjects`。
+
+G2 后续接收时再确认：
+
+1. G2 能生成 accepted/rejected/QC/报告文件。
+2. completion 输出没有 NaN/Inf、空图、常数图、shape/spacing/affine 不一致等硬错误。
+3. internal val/test 来源的 completion 样本没有误进主训练集。
+4. nnU-Net 物化时没有把 ablation-only 样本误塞进主训练集。
+5. fake/broken T2W 病例没有以原始 fake T2W 进入主物化数据；要么被 accepted completion 替换，要么被跳过。

@@ -206,6 +206,13 @@ completion 模式的 accepted/rejected 口径：
 2. `accepted_for_ablation_only=True`：completion 输出质量基本通过，但 source 不适合进入主训练，例如 internal val/test holdout、official validation、不是 fake T2W 队列或需要单独消融验证。
 3. `rejected`：缺文件、NIfTI 不可读、几何不一致、label 非法、空 mask、常数图、NaN/Inf 或 source 不可追溯。
 
+completion 模式进入 nnU-Net 时默认不是新增病例，而是替换对应真实病例的 fake/broken `t2w` 通道：
+
+1. 保留真实病例原有 `nnunet_case_id`、`t1n/t1c/t2f/seg`。
+2. 仅把 `t2w` 来源切换为 accepted completion 输出。
+3. 没有 accepted completion 的 fake/broken T2W 病例默认不进入主训练物化数据。
+4. 后续真正的 diffusion synthetic augmentation 才使用 `SYN-MET-*` / `SYNMET*` 作为新增病例。
+
 ## 7. raw case 命名
 
 默认命名：
