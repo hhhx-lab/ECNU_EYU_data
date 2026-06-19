@@ -1,6 +1,6 @@
 # G2 当前进度报告
 
-更新日期：2026-06-18
+更新日期：2026-06-19
 
 ## 1. 本轮结论
 
@@ -10,6 +10,7 @@
 4. QC 策略已升级为两层口径：训练前数据质量闸门负责筛 synthetic 数据；训练后用官方 Task1 leaderboard 字段验证 real-only 与 real+synth 的实际收益。
 5. 官方/模板/榜单字段表已保留，尤其是 `official_leaderboard_metrics_template.csv`，这是从官方 leaderboard 指标整理出的标签表，不能作为旧产物清理。
 6. `results` 目录已收敛为 README + 模板 + 真实数据审计结果 + 固定 split + 轻量 nnU-Net 契约；正式 synthetic 影像、大体积预处理缓存和临时 smoke run 不进入仓库。
+7. 固定划分已升级为 train/val/test 三分法：历史 259 例 fixed val 锁定为 internal test，再从历史 1036 train 中切出 207 例作为 dev/val。
 
 ## 2. 当前可用数据状态
 
@@ -19,7 +20,9 @@
 | corrected overlay 后 final QC pass | 1295 |
 | corrected overlay 后 final QC fail | 1 |
 | 官方 validation 病例 | 179 |
-| fixed fold0 train / val | 1036 / 259 |
+| 当前固定 train / val / test | 829 / 207 / 259 |
+| 历史兼容 fold0 train / val | 1036 / 259 |
+| G1 完整真实 T2W 投影 train / val / test | 660 / 160 / 210 |
 | 真实 lesion component 总数 | 9793 |
 | tiny / small / large lesion 数 | 3788 / 3922 / 2083 |
 | 含 RC 真实训练病例 | 167 |
@@ -28,10 +31,10 @@
 
 ## 3. 官方指标口径
 
-后续判断 synthetic data 是否真正有用，不能只看 G2 训练前 QC pass 数量，必须比较同一 fixed fold 下的官方同款字段：
+后续判断 synthetic data 是否真正有用，不能只看 G2 训练前 QC pass 数量，必须比较同一 internal test 下的官方同款字段：
 
-1. real-only fold0。
-2. real+synth fold0。
+1. real-only train+val 调参后，在 internal test 上评估。
+2. real+synth train+val 调参后，在同一 internal test 上评估。
 
 核心字段：
 
@@ -55,7 +58,9 @@
 | `results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv` | 原始 header 中含 fake 的 T2W 病例清单。 |
 | `results/qc/official_non000_t2w_cases_2026-06-15.csv` | 非 000 后缀病例辅助审计清单。 |
 | `results/manifests/*.csv` | 真实数据、source 候选、synthetic intake 和 nnU-Net 映射的核心索引。 |
-| `results/splits/splits_final_fold0_realval.json` | S1/S2/G2 必须共用的 fixed validation split。 |
+| `results/splits/splits_final_train_val_test.json` | S1/S2/G2/G1 必须共用的正式 train/val/test split。 |
+| `results/splits/splits_final_train_val_test_membership.csv` | 逐病例 split membership 表，便于人工核查和脚本读取。 |
+| `results/splits/splits_final_fold0_realval.json` | 历史兼容 two-way fold；旧 val 已锁定为 internal test。 |
 
 ## 5. 八个主区域索引
 
@@ -65,6 +70,7 @@
 |---|---|
 | `code/.gitkeep` | 保留 code 目录。 |
 | `code/g2_pretraining_audit.py` | G2 基础审计脚本：扫描真实训练/验证数据，生成 manifest、真实数据统计、G1 source CSV、real-only nnU-Net mapping 和可选 synthetic intake。 |
+| `code/g2_create_train_val_test_split.py` | 固定划分脚本：把历史 fixed val 锁成 internal test，并从训练池稳定切出 dev/val。 |
 | `code/g2_synthetic_raw_intake_qc.py` | G1 raw output 正式接收脚本：生成 candidate/accepted/rejected manifest、normalized mapping、逐例 QC、扩散质量指标、batch summary 和 run 级报告。 |
 | `code/g2_materialize_nnunet_dataset.py` | 把 real mapping 与 accepted synthetic manifest 转成 nnU-Net raw dataset 入口；默认只物化 `accepted_for_training=True`，`accepted_for_ablation_only` 需显式开启。 |
 | `code/g2_official_mets_metrics_parser.py` | 解析 BraTS_evaluation / Panoptica 输出或校验 CSV 是否包含 2026 Task1 leaderboard 字段。 |
@@ -126,7 +132,9 @@
 | 文件 | 作用 |
 |---|---|
 | `results/splits/README.md` | split 目录总说明。 |
-| `results/splits/splits_final_fold0_realval.json` | real-only 与 real+synth 统一复用的固定 fold0。 |
+| `results/splits/splits_final_train_val_test.json` | 当前正式 train/val/test 划分：829/207/259。 |
+| `results/splits/splits_final_train_val_test_membership.csv` | 逐病例 membership 表。 |
+| `results/splits/splits_final_fold0_realval.json` | 历史兼容 two-way fold：1036/259。 |
 
 ### 5.7 results/reports
 

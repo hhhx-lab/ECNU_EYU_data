@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mark G1 preprocess CSV rows as train/val using the G2 fixed fold.
+"""Mark G1 preprocess CSV rows as train/val/test using the G2 fixed split.
 
 Run this after `python preprocess.py` has generated `data/data_csv.csv`.
 It preserves the CSV columns and only rewrites the `split` column.
@@ -15,25 +15,43 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
 G2_RESULTS = PROJECT_ROOT / "work_space" / "G2" / "results"
-DEFAULT_SPLIT = G2_RESULTS / "splits" / "splits_final_fold0_realval.json"
+DEFAULT_SPLIT = G2_RESULTS / "splits" / "splits_final_train_val_test.json"
+LEGACY_SPLIT = G2_RESULTS / "splits" / "splits_final_fold0_realval.json"
 DEFAULT_MAPPING = G2_RESULTS / "manifests" / "nnunet_case_mapping_realonly.csv"
 DEFAULT_CSV = Path(__file__).resolve().parent / "data" / "data_csv.csv"
 
 
-def load_val_ids(split_path: Path, mapping_path: Path) -> set[str]:
+def load_split_ids(split_path: Path, mapping_path: Path) -> dict[str, set[str]]:
+    if not split_path.exists() and split_path == DEFAULT_SPLIT and LEGACY_SPLIT.exists():
+        split_path = LEGACY_SPLIT
+
     split_data = json.loads(split_path.read_text(encoding="utf-8"))
     fold0 = split_data[0] if isinstance(split_data, list) else split_data
-    val_nnunet = set(fold0["val"])
+    split_nnunet = {
+        "train": set(fold0.get("train", [])),
+        "val": set(fold0.get("val", [])),
+        "test": set(fold0.get("test", [])),
+    }
+    if not split_nnunet["test"] and split_path.name == LEGACY_SPLIT.name:
+        # Historical two-way split: old val is the locked internal test.
+        split_nnunet["test"] = split_nnunet["val"]
+        split_nnunet["val"] = set()
 
-    val_case_ids: set[str] = set()
+    split_case_ids = {"train": set(), "val": set(), "test": set()}
     with mapping_path.open("r", encoding="utf-8-sig", newline="") as f:
         for row in csv.DictReader(f):
-            if row.get("nnunet_case_id") in val_nnunet and row.get("source_case_id"):
-                val_case_ids.add(row["source_case_id"])
-    return val_case_ids
+            nnunet_case_id = row.get("nnunet_case_id")
+            source_case_id = row.get("source_case_id")
+            if not nnunet_case_id or not source_case_id:
+                continue
+            for split_name, nnunet_ids in split_nnunet.items():
+                if nnunet_case_id in nnunet_ids:
+                    split_case_ids[split_name].add(source_case_id)
+                    break
+    return split_case_ids
 
 
-def rewrite_csv(csv_path: Path, val_case_ids: set[str], output_path: Path | None) -> tuple[int, int]:
+def rewrite_csv(csv_path: Path, split_case_ids: dict[str, set[str]], output_path: Path | None) -> dict[str, int]:
     with csv_path.open("r", encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         rows = list(reader)
@@ -42,15 +60,18 @@ def rewrite_csv(csv_path: Path, val_case_ids: set[str], output_path: Path | None
     if "split" not in fieldnames:
         fieldnames.append("split")
 
-    train_count = 0
-    val_count = 0
+    counts = {"train": 0, "val": 0, "test": 0}
     for row in rows:
-        if row.get("id") in val_case_ids:
+        case_id = row.get("id")
+        if case_id in split_case_ids.get("test", set()):
+            row["split"] = "test"
+            counts["test"] += 1
+        elif case_id in split_case_ids.get("val", set()):
             row["split"] = "val"
-            val_count += 1
+            counts["val"] += 1
         else:
             row["split"] = "train"
-            train_count += 1
+            counts["train"] += 1
 
     target = output_path or csv_path
     if target == csv_path:
@@ -61,11 +82,11 @@ def rewrite_csv(csv_path: Path, val_case_ids: set[str], output_path: Path | None
         writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
-    return train_count, val_count
+    return counts
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Apply G2 fixed fold0 train/val split to G1 data_csv.csv.")
+    parser = argparse.ArgumentParser(description="Apply G2 fixed train/val/test split to G1 data_csv.csv.")
     parser.add_argument("--csv-path", default=str(DEFAULT_CSV))
     parser.add_argument("--split-json", default=str(DEFAULT_SPLIT))
     parser.add_argument("--mapping-csv", default=str(DEFAULT_MAPPING))
@@ -75,12 +96,14 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    val_ids = load_val_ids(Path(args.split_json), Path(args.mapping_csv))
+    split_ids = load_split_ids(Path(args.split_json), Path(args.mapping_csv))
     output = Path(args.output_csv) if args.output_csv else None
-    train_count, val_count = rewrite_csv(Path(args.csv_path), val_ids, output)
-    print(f"train={train_count}")
-    print(f"val={val_count}")
-    print(f"val_ids_from_g2={len(val_ids)}")
+    counts = rewrite_csv(Path(args.csv_path), split_ids, output)
+    print(f"train={counts['train']}")
+    print(f"val={counts['val']}")
+    print(f"test={counts['test']}")
+    print(f"val_ids_from_g2={len(split_ids['val'])}")
+    print(f"test_ids_from_g2={len(split_ids['test'])}")
     print(f"csv={output or Path(args.csv_path)}")
 
 

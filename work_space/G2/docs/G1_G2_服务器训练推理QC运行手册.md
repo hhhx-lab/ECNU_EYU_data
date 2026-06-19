@@ -9,10 +9,11 @@
 这套流程已经改成：
 
 1. G2 先从原始 Task1 数据生成真实数据侧清单和 fake T2W 清单。
-2. G1 自动把训练集和推理集摆好。
-3. G1 预处理时，缺 `t2w` 的训练病例自动跳过，不进 `data_csv.csv`。
-4. G1 推理时，只要求 `t1n/t1c/t2f/seg`，`t2w` 缺失是正常状态。
-5. G2 接收 G1 输出后做 QC，给出 `accepted / rejected / ablation_only / needs_regeneration`。
+2. G2 自动生成固定 train/val/test 划分：829/207/259。
+3. G1 自动把训练集和推理集摆好。
+4. G1 预处理时，缺 `t2w` 的训练病例自动跳过，不进 `data_csv.csv`。
+5. G1 推理时，只要求 `t1n/t1c/t2f/seg`，`t2w` 缺失是正常状态。
+6. G2 接收 G1 输出后做 QC，给出 `accepted / rejected / ablation_only / needs_regeneration`。
 
 ---
 
@@ -119,7 +120,7 @@ python test_vae.py
 2. 真实验证清单
 3. G1 可用 source 清单
 4. nnU-Net 映射
-5. fixed fold
+5. fixed train/val/test split
 6. fake T2W 清单
 
 命令：
@@ -143,6 +144,8 @@ work_space/G2/results/manifests/real_validation_manifest.csv
 work_space/G2/results/manifests/g1_gligan_source_cases_v1.csv
 work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
 work_space/G2/results/splits/splits_final_fold0_realval.json
+work_space/G2/results/splits/splits_final_train_val_test.json
+work_space/G2/results/splits/splits_final_train_val_test_membership.csv
 work_space/G2/results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv
 work_space/G2/results/qc/official_t2w_gzip_header_audit_2026-06-15.csv
 ```
@@ -152,11 +155,51 @@ work_space/G2/results/qc/official_t2w_gzip_header_audit_2026-06-15.csv
 1. `real_train_manifest.csv` 里路径是否指向你服务器上的原始数据。
 2. `g1_gligan_source_cases_v1.csv` 是否已经生成。
 3. `official_fake_t2w_cases_by_gzip_header_2026-06-15.csv` 是否存在。
-4. `splits_final_fold0_realval.json` 是否存在。
+4. `splits_final_train_val_test.json` 是否存在。
+5. `splits_final_train_val_test_membership.csv` 是否存在。
 
 如果你只换了挂载路径，但病例 ID 没变，这一步就够用了。
 
 如果后续把 `--results-root` 改成别的位置，那么 G1 的 `prepare_g1_t2w_data.py` 也要显式传入同一套 manifest 路径；为了减少出错，建议服务器第一版先使用默认 `work_space/G2/results`。
+
+### 3.3 当前固定划分口径
+
+当前 G2 正式划分文件是：
+
+```text
+work_space/G2/results/splits/splits_final_train_val_test.json
+```
+
+划分原则：
+
+1. `splits_final_fold0_realval.json` 是历史 two-way fold，原来是 1036 train / 259 val。
+2. 现在把历史 `259 val` 锁定为内部 `test`，后续不训练、不调参、不作为 synthetic source。
+3. 从历史 `1036 train` 中再按稳定 hash 切出 `207 val`，用于调参和 dev 评估。
+4. 剩余 `829 train` 作为真实训练池和 synthetic source 池。
+
+所以 G2/S1/S2 的正式口径是：
+
+```text
+train = 829
+val   = 207
+test  = 259
+```
+
+G1 因为只能用完整真实 T2W 病例训练，投影到 G1 的 `data/data_csv.csv` 后是：
+
+```text
+train = 660
+val   = 160
+test  = 210
+```
+
+另外 265 个 fake/broken T2W 病例只进入 `data/input_inference/` 做 T2W 补全，不进入 G1 的 `data/data_csv.csv`。
+
+如果只想重生成划分文件，不想重跑完整 audit，可以执行：
+
+```bash
+python work_space/G2/code/g2_create_train_val_test_split.py
+```
 
 ---
 
@@ -241,7 +284,7 @@ data/data_csv_skipped_subjects.csv
 
 ---
 
-## 6. 第四步：写入固定验证集
+## 6. 第四步：写入固定 train/val/test
 
 命令：
 
@@ -251,16 +294,33 @@ python mark_val_split_from_g2.py
 
 ### 6.1 这一步做什么
 
-它会按 G2 的 fixed fold：
+它会按 G2 的 fixed train/val/test split：
 
-1. 读取 `splits_final_fold0_realval.json`
-2. 读取 `nnunet_case_mapping_realonly.csv`
-3. 把 `data/data_csv.csv` 里对应病例改成 `val`
-4. 其余维持 `train`
+1. 优先读取 `splits_final_train_val_test.json`
+2. 如果新文件不存在，才回退读取旧的 `splits_final_fold0_realval.json`
+3. 读取 `nnunet_case_mapping_realonly.csv`
+4. 把 `data/data_csv.csv` 里对应病例改成 `train`、`val` 或 `test`
+5. 其余无法匹配但已经进入 CSV 的病例保守维持 `train`
 
 ### 6.2 为什么不用手工改
 
-因为手工改容易把 ID 改错，也容易把应该进 `val` 的病例漏掉。现在这步是自动的。
+因为手工改容易把 ID 改错，也容易把应该进 `val/test` 的病例漏掉。现在这步是自动的。
+
+### 6.3 正常输出数量
+
+如果使用当前 2026 Task1 数据和 G2 默认 split，G1 完整真实 T2W 子集应看到：
+
+```text
+train=660
+val=160
+test=210
+```
+
+如果你的数量不同，先检查：
+
+1. `prepare_g1_t2w_data.py` 是否使用了同一套 G2 manifest。
+2. `preprocess.py` 是否跳过了缺 `t2w` 或 fake T2W 病例。
+3. `splits_final_train_val_test.json` 是否来自当前这套数据。
 
 ---
 
@@ -420,7 +480,7 @@ G1 的 `data/output/<case_id>/` 会被 G2 识别成：
 2. `label_kind = completion`
 3. `label_index = 0`
 
-如果 source 是 fixed val 或官方 validation，G2 不会把它直接塞进主训练集，但会保留为受控消融或复查记录。
+如果 source 是 internal val、internal test 或官方 validation，G2 不会把它直接塞进主训练集，但会保留为受控消融或复查记录。
 
 ---
 
@@ -467,7 +527,7 @@ python work_space/G2/code/g2_materialize_nnunet_dataset.py \
 
 ### 12.3 为什么 G2 会把某些 completion 样本标成 ablation_only
 
-因为这些病例可能来自 fixed val 或官方 validation。它们可以做质量分析，但不应该混进主训练集。
+因为这些病例可能来自 internal val、internal test 或官方 validation。它们可以做质量分析，但不应该混进主训练集。
 
 ### 12.4 为什么 `accepted_for_ablation_only` 默认不进主训练集
 
@@ -482,7 +542,7 @@ python work_space/G2/code/g2_materialize_nnunet_dataset.py \
 1. `data/input/` 里都是完整四模态病例。
 2. `data/input_inference/` 里没有 `t2w`。
 3. `data/data_csv.csv` 没有缺 `t2w` 的病例。
-4. `mark_val_split_from_g2.py` 已执行。
+4. `mark_val_split_from_g2.py` 已执行，并且 `data/data_csv.csv` 中存在 `train/val/test` 三类 split。
 5. G1 推理输出出现在 `data/output/<case_id>/`。
 6. G2 能生成 accepted/rejected/QC/报告文件。
 7. nnU-Net 物化时没有把 ablation-only 样本误塞进主训练集。

@@ -8,7 +8,7 @@ import synthesis.utils as utils
 
 TRAIN_MODALITIES = ("t1n", "t1c", "t2w", "t2f")
 INFERENCE_MODALITIES = ("t1n", "t1c", "t2f")
-INFERENCE_SPLITS = {"inference", "infer", "test", "predict", "generation"}
+INFERENCE_SPLITS = {"inference", "infer", "predict", "generation"}
 
 
 def has_value(value):

@@ -24,6 +24,8 @@ import numpy as np
 import pandas as pd
 from scipy import ndimage
 
+from g2_create_train_val_test_split import create_train_val_test_split, write_split_outputs
+
 
 LABELS = {0: "background", 1: "NETC", 2: "SNFH", 3: "ET", 4: "RC"}
 MODALITIES = {
@@ -83,12 +85,12 @@ def ensure_dirs(results_root: Path) -> dict[str, Path]:
 
 def write_readme_files(results_root: Path, dirs: dict[str, Path]) -> None:
     readmes = {
-        results_root / "README.md": "# G2 Results\n\n本目录保存 G2 的轻量结果文件：真实数据清单、G1 source 表、synthetic intake 模板、QC 策略、官方指标模板和进度索引。NIfTI 大数据、nnU-Net 预处理缓存、正式 synthetic 影像和临时 smoke run 产物都不放进仓库。\n\n正式入口：`../code/g2_synthetic_raw_intake_qc.py` 接收 G1 raw run，`../code/g2_materialize_nnunet_dataset.py` 转 nnU-Net raw，`../code/g2_official_mets_metrics_parser.py` 解析或校验 2026 Task1 官方字段。\n",
+        results_root / "README.md": "# G2 Results\n\n本目录保存 G2 的轻量结果文件：真实数据清单、G1 source 表、synthetic intake 模板、QC 策略、官方指标模板和进度索引。NIfTI 大数据、nnU-Net 预处理缓存、正式 synthetic 影像和临时 smoke run 产物都不放进仓库。\n\n正式入口：`../code/g2_create_train_val_test_split.py` 生成固定 train/val/test，`../code/g2_synthetic_raw_intake_qc.py` 接收 G1 raw run，`../code/g2_materialize_nnunet_dataset.py` 转 nnU-Net raw，`../code/g2_official_mets_metrics_parser.py` 解析或校验 2026 Task1 官方字段。\n",
         dirs["nnunet_raw_root"] / "README.md": "# nnunet_raw\n\n这里是 nnU-Net 原始数据的轻量入口。当前仓库只放占位说明、dataset.json 和路径契约，不放正式大体积影像。`Dataset260_BraTS2026_MET_RealOnly/` 记录 real-only 基线；正式 real+synth 由 `../code/g2_materialize_nnunet_dataset.py` 在训练机物化。\n",
         dirs["manifests"] / "README.md": "# Manifests\n\n保存真实训练/验证清单、corrected overlay、G1 兼容 source CSV、synthetic intake 模板，以及正式 G1 批次到来后生成的 accepted/rejected 索引文件。旧 smoke run 演示输出不保留。\n",
         dirs["stats"] / "README.md": "# Stats\n\n保存真实 label/lesion 分布、synthetic 目标分布、batch 级统计摘要，以及后续抽样分析所需的小型数表。\n",
         dirs["qc"] / "README.md": "# QC\n\n保存 synthetic data 质量控制规则、逐例指标模板、扩散质量专项模板、人工复查表头、官方 leaderboard 对齐模板，以及正式 run 级自动 QC 输出。\n",
-        dirs["splits"] / "README.md": "# Splits\n\n保存固定真实验证 fold，供 real-only、real+synth 和后续所有消融复用。\n",
+        dirs["splits"] / "README.md": "# Splits\n\n保存固定真实 train/val/test 划分，供 G1、S1、S2、G2 QC、real-only、real+synth 和后续所有消融复用。`splits_final_train_val_test.json` 是当前正式口径；`splits_final_fold0_realval.json` 保留为历史兼容文件，其中旧 `val` 已锁定为内部 test。\n",
         dirs["reports"] / "README.md": "# Reports\n\n保存路径检查、数据 QC、执行总结、进度报告、消融模板和团队沟通文档源稿。临时 smoke run 质量报告不保留。\n",
         dirs["nnunet_raw"] / "README.md": "# Dataset260_BraTS2026_MET_RealOnly\n\n本目录当前只保存 `dataset.json` 和映射说明，不复制或软链接全量 NIfTI。需要正式训练时，由 S1/S2 根据 `manifests/nnunet_case_mapping_realonly.csv` 在训练机器上物化数据集并运行 nnU-Net 预处理。synthetic accepted 结果另起 dataset id，不混进这个 real-only 占位目录。\n",
     }
@@ -381,7 +383,9 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
     g1_df = read_csv_if_exists(manifests_dir / "g1_gligan_source_cases_v1.csv")
     mapping_df = read_csv_if_exists(manifests_dir / "nnunet_case_mapping_realonly.csv")
     fake_t2w_case_ids = load_fake_t2w_case_ids(results_root)
-    split_path = splits_dir / "splits_final_fold0_realval.json"
+    split_path = splits_dir / "splits_final_train_val_test.json"
+    if not split_path.exists():
+        split_path = splits_dir / "splits_final_fold0_realval.json"
     split_data = []
     if split_path.exists():
         try:
@@ -391,6 +395,7 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
     split_val_ids: set[str] = set()
     if split_data and isinstance(split_data, list) and isinstance(split_data[0], dict):
         split_val_ids = set(split_data[0].get("val", []))
+        split_val_ids |= set(split_data[0].get("test", []))
     source_to_nn = {}
     if not mapping_df.empty and "source_case_id" in mapping_df.columns and "nnunet_case_id" in mapping_df.columns:
         source_to_nn = dict(zip(mapping_df["source_case_id"].astype(str), mapping_df["nnunet_case_id"].astype(str)))
@@ -1191,6 +1196,7 @@ def write_progress_report(
         "data/.gitkeep": "data 目录占位文件，保留未来数据放置点。",
         "results/.gitkeep": "results 根目录占位文件，保留结果区目录结构。",
         "code/g2_pretraining_audit.py": "基础审计脚本：真实数据基线扫描、模板刷新、source CSV、real-only mapping、可选 synthetic intake 与进度报告生成。",
+        "code/g2_create_train_val_test_split.py": "固定划分脚本：把历史 fixed val 锁成 internal test，并从训练池稳定切出 dev/val。",
         "code/g2_synthetic_raw_intake_qc.py": "正式 G1 raw run 接收脚本：生成 candidate/accepted/rejected manifest、QC CSV、diffusion quality、batch summary 和质量报告。",
         "code/g2_materialize_nnunet_dataset.py": "nnU-Net 物化脚本：把 real mapping 与 accepted synthetic manifest 转成 dataset.json、materialization manifest，并支持 manifest-only/symlink/copy。",
         "code/g2_official_mets_metrics_parser.py": "官方指标代理脚本：解析 BraTS_evaluation Panoptica JSON 或校验 CSV 是否包含 2026 Task1 leaderboard 字段。",
@@ -1228,8 +1234,10 @@ def write_progress_report(
         "results/reports/ablation_plan_template.md": "real-only / real+synth 的消融模板。",
         "results/reports/local_data_paths_check.md": "本机外部数据路径检查结果。",
         "results/reports/real_data_qc_summary.md": "真实训练数据 QC 汇总。",
-        "results/splits/README.md": "固定真实验证 fold 的说明。",
-        "results/splits/splits_final_fold0_realval.json": "当前固定 fold0 的 train/val 划分。",
+        "results/splits/README.md": "固定真实 train/val/test 划分说明。",
+        "results/splits/splits_final_fold0_realval.json": "历史兼容 fold0 的 train/val 划分；当前旧 val 已作为内部 test 锁定。",
+        "results/splits/splits_final_train_val_test.json": "当前正式 train/val/test 划分；G1/S1/S2/G2 都应优先使用。",
+        "results/splits/splits_final_train_val_test_membership.csv": "逐病例 split membership 表，便于人工核查和脚本读取。",
         "results/stats/README.md": "统计区说明，解释 label/lesion 分布与 synthetic 目标分布。",
         "results/stats/real_label_distribution.csv": "真实训练病例级 label 体素与体积分布。",
         "results/stats/real_lesion_distribution.csv": "真实 lesion component 级分布。",
@@ -1273,6 +1281,7 @@ def write_progress_report(
         ("1. code", "code", [
             "code/.gitkeep",
             "code/g2_pretraining_audit.py",
+            "code/g2_create_train_val_test_split.py",
             "code/g2_synthetic_raw_intake_qc.py",
             "code/g2_materialize_nnunet_dataset.py",
             "code/g2_official_mets_metrics_parser.py",
@@ -1320,6 +1329,8 @@ def write_progress_report(
         ("6. results/splits", "results/splits", [
             "results/splits/README.md",
             "results/splits/splits_final_fold0_realval.json",
+            "results/splits/splits_final_train_val_test.json",
+            "results/splits/splits_final_train_val_test_membership.csv",
         ]),
         ("7. results/reports", "results/reports", [
             "results/reports/README.md",
@@ -2427,6 +2438,23 @@ def main() -> None:
     split_path = dirs["splits"] / "splits_final_fold0_realval.json"
     write_json(split_path, split)
     outputs.append(split_path)
+    train_val_test_split = create_train_val_test_split(
+        mapping_df.to_dict(orient="records"),
+        base_split=split,
+        val_fraction_of_train_pool=0.2,
+        seed="20260619",
+    )
+    train_val_test_split["source_split_json"] = str(split_path)
+    train_val_test_split["mapping_csv"] = str(mapping_path)
+    train_val_test_path = dirs["splits"] / "splits_final_train_val_test.json"
+    train_val_test_membership_path = dirs["splits"] / "splits_final_train_val_test_membership.csv"
+    write_split_outputs(
+        train_val_test_split,
+        mapping_df.to_dict(orient="records"),
+        train_val_test_path,
+        train_val_test_membership_path,
+    )
+    outputs.extend([train_val_test_path, train_val_test_membership_path])
 
     write_templates(dirs)
     outputs.extend([

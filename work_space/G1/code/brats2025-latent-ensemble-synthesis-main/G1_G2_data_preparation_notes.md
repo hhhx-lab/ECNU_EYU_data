@@ -79,7 +79,7 @@ data/input_inference/
 data/g1_data_placement_manifest.csv
 ```
 
-## 5. preprocess 后统一验证集
+## 5. preprocess 后统一 train/val/test
 
 先运行：
 
@@ -100,14 +100,15 @@ data/latents/<case_id>/*.npy
 python mark_val_split_from_g2.py
 ```
 
-该脚本会按 G2 fixed fold0 把 CSV 中可用完整病例标记为 `train` 或 `val`，避免手工改错。
+该脚本会按 G2 fixed train/val/test 把 CSV 中可用完整病例标记为 `train`、`val` 或 `test`，避免手工改错。
 
-当前 G2 fixed fold0 对完整真实 T2W 训练集的投影是：
+当前 G2 fixed train/val/test 对完整真实 T2W 训练集的投影是：
 
-1. train：820 例。
-2. val：210 例。
+1. train：660 例。
+2. val：160 例。
+3. test：210 例。
 
-其余 49 个 fixed val 病例属于 fake T2W 队列，不进入 G1 完整 T2W 训练 CSV。
+另外 265 个 fake/broken T2W 病例属于推理补全队列，不进入 G1 完整 T2W 训练 CSV。其中按 G2 split 投影为 train 169 例、val 47 例、test 49 例。
 
 ## 6. 后续命令顺序
 

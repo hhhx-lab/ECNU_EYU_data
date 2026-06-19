@@ -80,7 +80,7 @@ G1 只能使用 `allowed_as_synthetic_source=True` 的行。
 
 强制排除：
 
-1. fixed real validation fold 病例。
+1. internal val/test holdout 病例。
 2. official validation 病例。
 3. corrected overlay 后仍含非法 label 的病例。
 4. `usable_for_gligan96=False` 且当前仍采用 96 ROI 的病例。
@@ -186,7 +186,7 @@ G2 对该格式的解释：
 3. `label_index` 自动记为 `0`。
 4. 四模态和 `seg` 仍按 L1-L3 做完整性、几何、数值和 label 合法性检查。
 5. completion 模式不再要求 source 出现在 `g1_gligan_source_cases_v1.csv`，也不要求 `usable_for_gligan96=True`；它只要求 source 能在真实数据 manifest 中追溯，且真实数据 final QC 通过。
-6. 如果 source 属于 fixed real validation fold 或官方 validation，G2 可以做 QC 和受控消融记录，但不能把它标成 `accepted_for_training=True`。
+6. 如果 source 属于 internal val/test holdout 或官方 validation，G2 可以做 QC 和受控消融记录，但不能把它标成 `accepted_for_training=True`。
 7. 此格式可直接作为 `g2_synthetic_raw_intake_qc.py --synthetic-run-root data/output` 的输入。
 
 如果 G1 暂时不能生成 manifest/log，也必须至少提供：
@@ -202,8 +202,8 @@ G2 对该格式的解释：
 
 completion 模式的 accepted/rejected 口径：
 
-1. `accepted_for_training=True`：completion 输出质量通过，source 是真实训练 manifest 中 final QC pass 的病例，且不在 fixed validation fold。
-2. `accepted_for_ablation_only=True`：completion 输出质量基本通过，但 source 不适合进入主训练，例如 fixed validation fold、不是 fake T2W 队列或需要单独消融验证。
+1. `accepted_for_training=True`：completion 输出质量通过，source 是真实训练 manifest 中 final QC pass 的病例，且不在 internal val/test holdout。
+2. `accepted_for_ablation_only=True`：completion 输出质量基本通过，但 source 不适合进入主训练，例如 internal val/test holdout、official validation、不是 fake T2W 队列或需要单独消融验证。
 3. `rejected`：缺文件、NIfTI 不可读、几何不一致、label 非法、空 mask、常数图、NaN/Inf 或 source 不可追溯。
 
 ## 7. raw case 命名

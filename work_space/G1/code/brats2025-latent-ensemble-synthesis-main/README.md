@@ -102,7 +102,7 @@ If you are starting from the raw BraTS Task1 package, first read `docs/G1_G2_服
 # Place complete subjects in data/input/
 cp -r /path/to/complete_set/* data/input/
 
-# Preprocess, then apply the G2 fixed validation split automatically
+# Preprocess, then apply the G2 fixed train/val/test split automatically
 python preprocess.py
 python mark_val_split_from_g2.py
 
@@ -208,9 +208,9 @@ This will:
 5. Save `.npy` files to `data/latents/<subject_id>/`
 6. Generate `data/data_csv.csv`
 
-### 3.4 Train/Validation Split
+### 3.4 Train/Validation/Test Split
 
-`preprocess.py` writes all complete four-modality subjects as `split=train` first. For this project, do **not** hand-edit the CSV unless G2 explicitly changes the fold. Apply the fixed G2 fold with:
+`preprocess.py` writes all complete four-modality subjects as `split=train` first. For this project, do **not** hand-edit the CSV unless G2 explicitly changes the split. Apply the fixed G2 split with:
 
 ```bash
 python mark_val_split_from_g2.py
@@ -219,11 +219,21 @@ python mark_val_split_from_g2.py
 This rewrites `data/data_csv.csv` in place and creates `data/data_csv.csv.bak_before_g2_split` before changing it. The script uses:
 
 ```text
-work_space/G2/results/splits/splits_final_fold0_realval.json
+work_space/G2/results/splits/splits_final_train_val_test.json
 work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
 ```
 
-Only subjects that survived `preprocess.py` and have complete `t1n/t1c/t2w/t2f` latents can become train or val rows. Cases missing T2W are never written to `data/data_csv.csv`.
+Only subjects that survived `preprocess.py` and have complete `t1n/t1c/t2w/t2f` latents can become train, val, or test rows. Cases missing T2W are never written to `data/data_csv.csv`.
+
+Current expected G1 projection from the G2 split:
+
+```text
+train = 660
+val   = 160
+test  = 210
+```
+
+The G2 full-case split is `829/207/259`; G1 sees fewer cases because fake/broken T2W cases are routed to `data/input_inference/` instead of training CSV.
 
 ### 3.5 (Optional) Attention Masks
 

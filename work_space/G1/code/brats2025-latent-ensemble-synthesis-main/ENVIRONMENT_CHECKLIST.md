@@ -149,7 +149,7 @@ data/output/<case_id>/
 
 1. `work_space/G2/results/manifests/real_train_manifest.csv`
 2. `work_space/G2/results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv`
-3. `work_space/G2/results/splits/splits_final_fold0_realval.json`
+3. `work_space/G2/results/splits/splits_final_train_val_test.json`
 4. `work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv`
 
 对应脚本：
@@ -186,7 +186,7 @@ python preprocess.py
 3. 编码成 latent
 4. 生成 `data/data_csv.csv`
 
-### 7.3 写回固定验证集
+### 7.3 写回固定 train/val/test
 
 ```bash
 python mark_val_split_from_g2.py
@@ -194,9 +194,9 @@ python mark_val_split_from_g2.py
 
 作用：
 
-1. 读取 G2 fixed fold0
-2. 把 `data/data_csv.csv` 中对应病例标成 `val`
-3. 其余标成 `train`
+1. 读取 G2 fixed train/val/test
+2. 把 `data/data_csv.csv` 中对应病例标成 `train`、`val` 或 `test`
+3. 当前完整真实 T2W 子集预期为 660/160/210
 
 ### 7.4 生成肿瘤掩码
 
@@ -261,11 +261,11 @@ python evaluate.py --gpu_id 0 --verbose
 3. `weights/vae/autoencoder_epoch273.pt` 存在
 4. `data/input/` 和 `data/input_inference/` 路径结构正确
 5. `data/input_inference/` 没有 `t2w`
-6. `data/data_csv.csv` 里 `split=train/val` 已统一
+6. `data/data_csv.csv` 里 `split=train/val/test` 已统一
 
 ## 10. 不需要做的事
 
 1. 不要在本机强行跑完整训练。
 2. 不要在本机把大数据复制一份到项目里。
 3. 不要把 `T2W` 的坏文件留在推理目录里。
-4. 不要手工一个个改 `train/val`，用脚本做。
+4. 不要手工一个个改 `train/val/test`，用脚本做。
