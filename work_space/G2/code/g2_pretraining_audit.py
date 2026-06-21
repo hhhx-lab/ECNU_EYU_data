@@ -34,7 +34,7 @@ MODALITIES = {
     "t2w": "t2w",
     "t2f": "t2f",
 }
-GLIGAN_KEYS = {
+MET_KEYS = {
     "scan_t1ce": "t1c",
     "scan_t2": "t2w",
     "scan_flair": "t2f",
@@ -42,7 +42,23 @@ GLIGAN_KEYS = {
 }
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
 DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
-DEFAULT_DATA_ROOT = os.environ.get("G2_DATA_ROOT", "")
+PROJECT_ROOT_NAME = "ECNU_EYU_data"
+
+
+def find_project_root(start: Path) -> Path:
+    for parent in [start, *start.parents]:
+        if (parent / "work_space" / "G1").exists() and (parent / "work_space" / "G2").exists():
+            return parent
+    raise RuntimeError(f"Could not locate ECNU_EYU_data project root from {start}")
+
+
+PROJECT_ROOT = find_project_root(Path(__file__).resolve())
+DEFAULT_DATA_ROOT = os.environ.get("G2_DATA_ROOT") or str(PROJECT_ROOT / "work_space" / "G1" / "data" / "raw")
+G1_DATA_ROOT = PROJECT_ROOT / "work_space" / "G1" / "data"
+G1_RAW_ROOT = G1_DATA_ROOT / "raw"
+G1_TRAIN_ROOT = G1_RAW_ROOT / "MICCAI-LH-BraTS2025-MET-Challenge-Training"
+G1_VALIDATION_ROOT = G1_RAW_ROOT / "Validation"
+G1_CORRECTED_ROOT = G1_RAW_ROOT / "MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels"
 REAL_TRAIN_EMPTY_COLUMNS = [
     "case_id", "split_source", "case_dir",
     "t1n_path", "t1c_path", "t2w_path", "t2f_path", "raw_seg_path",
@@ -57,6 +73,52 @@ REAL_TRAIN_EMPTY_COLUMNS = [
 
 def as_posix(path: Path | str | None) -> str:
     return "" if path is None else str(path)
+
+
+def parse_workspace_path(path_str: str | Path | None, anchor: Path | None = None) -> Path:
+    if path_str is None:
+        raise FileNotFoundError("empty path")
+    path = Path(path_str)
+    if path.is_absolute():
+        return path
+    bases = []
+    for base in [anchor, PROJECT_ROOT, G1_RAW_ROOT, G1_TRAIN_ROOT, G1_VALIDATION_ROOT, G1_CORRECTED_ROOT, G1_DATA_ROOT, G1_DATA_ROOT / "input", G1_DATA_ROOT / "input_inference"]:
+        if base is not None and base not in bases:
+            bases.append(base)
+    candidate = (PROJECT_ROOT / path).resolve()
+    for base in bases:
+        candidate = (base / path).resolve()
+        if candidate.exists():
+            return candidate
+    return candidate
+
+
+def display_path(path: Path | str | None, anchor: Path | None = None) -> str:
+    if path is None:
+        return ""
+    p = Path(path)
+    if anchor is not None:
+        try:
+            return p.relative_to(anchor).as_posix()
+        except Exception:  # noqa: BLE001
+            pass
+    parts = p.parts
+    if PROJECT_ROOT_NAME in parts:
+        idx = parts.index(PROJECT_ROOT_NAME)
+        return Path(*parts[idx:]).as_posix()
+    return p.as_posix()
+
+
+def display_results_path(path: Path | str | None, results_root: Path | None = None) -> str:
+    if path is None:
+        return ""
+    p = Path(path)
+    if results_root is not None:
+        try:
+            return p.relative_to(results_root).as_posix()
+        except Exception:  # noqa: BLE001
+            pass
+    return display_path(p, PROJECT_ROOT)
 
 
 def ensure_columns(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
@@ -265,7 +327,7 @@ def parse_synthetic_case_name(name: str) -> dict[str, object]:
             return {
                 "parsed": True,
                 "source_case_id": name,
-                "label_kind": "completion",
+                "label_kind": "full_generation",
                 "label_index": 0,
             }
         return {"parsed": False, "source_case_id": "", "label_kind": "", "label_index": ""}
@@ -275,6 +337,18 @@ def parse_synthetic_case_name(name: str) -> dict[str, object]:
         "label_kind": match.group("label_kind"),
         "label_index": int(match.group("label_index")),
     }
+
+
+def apply_generation_mode_override(parsed: dict[str, object], generation_mode: str) -> dict[str, object]:
+    if generation_mode not in {"completion", "full_generation"}:
+        return parsed
+    if not parsed.get("source_case_id"):
+        return parsed
+    parsed = dict(parsed)
+    parsed["label_kind"] = generation_mode
+    parsed["label_index"] = int(parsed.get("label_index") or 0)
+    parsed["parsed"] = True
+    return parsed
 
 
 def find_synthetic_case_dirs(run_root: Path) -> list[Path]:
@@ -362,7 +436,7 @@ def detect_output_suffix_scheme(files: dict[str, Path | None]) -> str:
     if has_legacy and has_native:
         return "mixed"
     if has_legacy:
-        return "legacy_gligan"
+        return "legacy_met"
     if has_native:
         return "native_2026"
     return "unknown"
@@ -380,7 +454,7 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
     splits_dir = results_root / "splits"
     train_df = read_csv_if_exists(manifests_dir / "real_train_manifest.csv")
     val_df = read_csv_if_exists(manifests_dir / "real_validation_manifest.csv")
-    g1_df = read_csv_if_exists(manifests_dir / "g1_gligan_source_cases_v1.csv")
+    g1_df = read_csv_if_exists(manifests_dir / "g1_met_source_cases_v1.csv")
     mapping_df = read_csv_if_exists(manifests_dir / "nnunet_case_mapping_realonly.csv")
     fake_t2w_case_ids = load_fake_t2w_case_ids(results_root)
     split_path = splits_dir / "splits_final_train_val_test.json"
@@ -431,8 +505,8 @@ def build_source_status(source_case_id: str, ctx: dict[str, object], label_kind:
     nn_id = source_to_nn.get(source_case_id, "")
     in_fixed_val_fold = bool(nn_id and nn_id in split_val_ids)
     final_qc_pass = bool(train_row.get("final_qc_pass", val_row.get("final_qc_pass", False)))
-    usable_for_gligan96 = bool(g1_row.get("usable_for_gligan96", False))
-    allowed_as_synthetic_source = bool(g1_row.get("allowed_as_synthetic_source", usable_for_gligan96))
+    usable_for_met96 = bool(g1_row.get("usable_for_met96", False))
+    allowed_as_synthetic_source = bool(g1_row.get("allowed_as_synthetic_source", usable_for_met96))
     completion_mode = label_kind == "completion"
     source_is_fake_t2w_case = source_case_id in fake_t2w_case_ids
     if completion_mode:
@@ -448,7 +522,7 @@ def build_source_status(source_case_id: str, ctx: dict[str, object], label_kind:
         "nnunet_case_id": nn_id,
         "source_in_real_train_manifest": bool(train_row),
         "source_final_qc_pass": final_qc_pass,
-        "source_usable_for_gligan96": usable_for_gligan96,
+        "source_usable_for_met96": usable_for_met96,
         "source_allowed_for_training": source_allowed_for_training,
         "source_is_fake_t2w_case": source_is_fake_t2w_case,
         "source_completion_mode": completion_mode,
@@ -517,6 +591,15 @@ def summarize_case_quality(
                 }
                 break
     files = synthetic_modality_files(case_dir)
+    if files.get("seg") is None:
+        source_seg_candidates = [
+            str(source_row.get("effective_seg_path", "")),
+            str(source_row.get("raw_seg_path", "")),
+        ]
+        for candidate in source_seg_candidates:
+            if candidate and Path(candidate).exists():
+                files["seg"] = Path(candidate)
+                break
     output_scheme = detect_output_suffix_scheme(files)
     synthetic_raw_id = case_name
     synthetic_final_id = f"SYN-MET-{idx:06d}"
@@ -538,7 +621,7 @@ def summarize_case_quality(
         "nnunet_case_id": "",
         "source_in_real_train_manifest": False,
         "source_final_qc_pass": False,
-        "source_usable_for_gligan96": False,
+        "source_usable_for_met96": False,
         "source_allowed_for_training": False,
         "source_is_fake_t2w_case": False,
         "source_completion_mode": label_kind == "completion",
@@ -556,12 +639,12 @@ def summarize_case_quality(
     config_exists = bool(run_ctx.get("generation_config_exists", False))
     manifest_exists = bool(run_ctx.get("generation_manifest_exists", False))
     log_exists = bool(run_ctx.get("generation_log_exists", False))
-    raw_case_dir = as_posix(case_dir)
+    raw_case_dir = display_path(case_dir, PROJECT_ROOT)
     normalized_case_path = Path(run_ctx.get("normalized_root", case_dir.parent)) / synthetic_final_id
-    normalized_case_dir = as_posix(normalized_case_path)
+    normalized_case_dir = display_path(normalized_case_path, PROJECT_ROOT)
     normalized_paths = normalized_synthetic_paths(normalized_case_dir, synthetic_final_id)
     nnunet_paths = nnunet_synthetic_paths(nnunet_case_id)
-    if output_scheme == "legacy_gligan":
+    if output_scheme == "legacy_met":
         suffix_conversion_action = "map_legacy_suffix_to_native_2026"
     elif output_scheme == "native_2026":
         suffix_conversion_action = "keep_native_2026_suffix"
@@ -596,7 +679,7 @@ def summarize_case_quality(
         "sampling_steps": run_ctx.get("sampling_steps", ""),
         "eta": run_ctx.get("eta", ""),
         "seed": run_ctx.get("seed", ""),
-        "source_csv_path": str(run_ctx.get("source_csv_path", "")),
+        "source_csv_path": display_results_path(run_ctx.get("source_csv_path", ""), results_root),
         "source_csv_version": str(run_ctx.get("source_csv_version", "")),
         "raw_case_dir": raw_case_dir,
         "normalized_case_dir": normalized_case_dir,
@@ -608,7 +691,7 @@ def summarize_case_quality(
         "generation_mode": str(run_ctx.get("generator_io", "")),
         "source_in_real_train_manifest": source_info["source_in_real_train_manifest"],
         "source_final_qc_pass": source_info["source_final_qc_pass"],
-        "source_usable_for_gligan96": source_info["source_usable_for_gligan96"],
+        "source_usable_for_met96": source_info.get("source_usable_for_met96", False),
         "source_allowed_for_training": source_info["source_allowed_for_training"],
         "source_is_fake_t2w_case": source_info["source_is_fake_t2w_case"],
         "source_completion_mode": source_info["source_completion_mode"],
@@ -741,9 +824,10 @@ def summarize_case_quality(
     source_seg_arr = None
     source_arrays: dict[str, np.ndarray] = {}
     source_shapes_match = False
-    if source_seg_path:
+    source_seg_path_obj = parse_workspace_path(source_seg_path, PROJECT_ROOT) if source_seg_path else None
+    if source_seg_path_obj:
         try:
-            source_seg_arr = np.asanyarray(nib.load(str(source_seg_path)).dataobj)
+            source_seg_arr = np.asanyarray(nib.load(str(source_seg_path_obj)).dataobj)
             if label_arr is not None:
                 source_shapes_match = source_seg_arr.shape == label_arr.shape
         except Exception:  # noqa: BLE001
@@ -751,7 +835,8 @@ def summarize_case_quality(
     for mod_name, path_str in [("t1n", source_t1n_path), ("t1c", source_t1c_path), ("t2w", source_t2w_path), ("t2f", source_t2f_path)]:
         if path_str:
             try:
-                source_arrays[mod_name] = np.asanyarray(nib.load(str(path_str)).dataobj)
+                source_path_obj = parse_workspace_path(path_str, PROJECT_ROOT)
+                source_arrays[mod_name] = np.asanyarray(nib.load(str(source_path_obj)).dataobj)
             except Exception:  # noqa: BLE001
                 continue
     rows["source_shape_match"] = bool(rows["source_shape_match"] or source_shapes_match)
@@ -979,7 +1064,7 @@ def summarize_case_quality(
         hard_reject_reasons.append("mixed_suffix_scheme")
 
     review_reasons: list[str] = []
-    if output_scheme == "legacy_gligan":
+    if output_scheme == "legacy_met":
         review_reasons.append("legacy_suffix_normalized")
     if completion_mode and rows["validation_leakage"]:
         review_reasons.append("completion_source_not_training_allowed")
@@ -1207,7 +1292,7 @@ def write_progress_report(
         "results/README.md": "results 总说明，概括本目录只保存轻量产物，不保存大体积 NIfTI。",
         "results/manifests/README.md": "清单区说明，解释真实清单、source CSV、synthetic intake manifest 与 accepted/rejected 输出。",
         "results/manifests/corrected_label_overlay.csv": "真实训练病例的 corrected label 覆盖记录，说明哪些病例在最终 manifest 中替换了原始 seg。",
-        "results/manifests/g1_gligan_source_cases_v1.csv": "G2 写给 G1 的兼容 source 表，既保留 GliGAN 口径，也保留 G2 扩展列。",
+        "results/manifests/g1_met_source_cases_v1.csv": "G2 写给 G1 的 MET source 表，保留旧兼容列与 G2 扩展列。",
         "results/manifests/nnunet_case_mapping_realonly.csv": "real-only nnU-Net 映射表，用于训练机物化 imagesTr/labelsTr。",
         "results/manifests/real_train_manifest.csv": "真实训练病例最终主表，已应用 corrected label overlay 并带 final_qc_pass。",
         "results/manifests/real_train_manifest_raw.csv": "原始训练病例扫描表，保留 raw seg 与基础 QC 证据。",
@@ -1296,7 +1381,7 @@ def write_progress_report(
         ("3. results/manifests", "results/manifests", [
             "results/manifests/README.md",
             "results/manifests/corrected_label_overlay.csv",
-            "results/manifests/g1_gligan_source_cases_v1.csv",
+            "results/manifests/g1_met_source_cases_v1.csv",
             "results/manifests/nnunet_case_mapping_realonly.csv",
             "results/manifests/real_train_manifest.csv",
             "results/manifests/real_train_manifest_raw.csv",
@@ -1349,7 +1434,7 @@ def write_progress_report(
         "# G2 Synthetic Intake 进度报告",
         "",
         f"- 生成日期：{RUN_DATE}",
-        f"- 项目根目录：`{results_root.parent}`",
+        f"- 项目根目录：`{PROJECT_ROOT_NAME}`",
     ]
     smoke_summary = None
     if intake_index:
@@ -1396,7 +1481,7 @@ def write_progress_report(
     if intake_outputs:
         lines.extend(["", "## 本次生成的文件", ""])
         for path in intake_outputs:
-            lines.append(f"- `{path}`")
+            lines.append(f"- `{display_results_path(path, results_root)}`")
     if intake_index:
         lines.extend(["", "## Intake 索引", ""])
         for title, paths in intake_index:
@@ -1406,7 +1491,7 @@ def write_progress_report(
                 lines.append("")
                 continue
             for path in paths:
-                lines.append(f"- `{path}`")
+                lines.append(f"- `{display_results_path(path, results_root)}`")
             lines.append("")
     lines.extend(["", "## 根目录与入口文件", "", "| 文件 | 说明 |", "|---|---|"])
     for rel_path in entry_files:
@@ -1458,6 +1543,7 @@ def build_synthetic_run_context(run_root: Path, results_root: Path, args: argpar
         "generator_checkpoint_t2w": str(recursive_find_value(config, "generator_checkpoint_t2w") or generator_checkpoint),
         "generator_checkpoint_t2f": str(recursive_find_value(config, "generator_checkpoint_t2f") or generator_checkpoint),
         "generator_io": str(recursive_find_value(config, "generator_io") or recursive_find_value(config, "io_mode") or "legacy_raw_output"),
+        "generation_mode_override": str(getattr(args, "generation_mode", "auto") or "auto"),
         "label_channels": int(recursive_find_value(config, "label_channels") or 4),
         "rc_policy": str(recursive_find_value(config, "rc_policy") or "preserve_if_source_has_rc"),
         "noise_type": str(recursive_find_value(config, "noise_type") or "gaussian_tumour"),
@@ -1465,8 +1551,8 @@ def build_synthetic_run_context(run_root: Path, results_root: Path, args: argpar
         "sampling_steps": recursive_find_value(config, "sampling_steps") or 50,
         "eta": recursive_find_value(config, "eta") or 0.0,
         "seed": recursive_find_value(config, "seed") or recursive_find_value(config, "random_seed") or "",
-        "source_csv_path": str(recursive_find_value(config, "source_csv") or (results_root / "manifests" / "g1_gligan_source_cases_v1.csv")),
-        "source_csv_version": str(recursive_find_value(config, "source_csv_version") or "g1_gligan_source_cases_v1.csv"),
+        "source_csv_path": display_results_path(recursive_find_value(config, "source_csv") or (results_root / "manifests" / "g1_met_source_cases_v1.csv"), results_root),
+        "source_csv_version": str(recursive_find_value(config, "source_csv_version") or "g1_met_source_cases_v1.csv"),
         "normalized_root": results_root / "synthetic_normalized",
     }
     if log_rows:
@@ -1495,6 +1581,7 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
     mapping_rows = []
     for idx, case_dir in enumerate(case_dirs, start=1):
         parsed = parse_synthetic_case_name(case_dir.name)
+        parsed = apply_generation_mode_override(parsed, str(ctx.get("generation_mode_override", "auto")))
         source_case_id = str(parsed.get("source_case_id") or "")
         label_kind = str(parsed.get("label_kind") or "")
         source_info = build_source_status(source_case_id, ctx, label_kind=label_kind) if source_case_id else {
@@ -1504,7 +1591,7 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
             "nnunet_case_id": "",
             "source_in_real_train_manifest": False,
             "source_final_qc_pass": False,
-            "source_usable_for_gligan96": False,
+            "source_usable_for_met96": False,
             "source_allowed_for_training": False,
             "source_is_fake_t2w_case": False,
             "source_completion_mode": label_kind == "completion",
@@ -1581,7 +1668,7 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
         "ablation_only_count": int(sum(1 for row in qc_rows if row.get("accepted_for_ablation_only"))),
         "needs_regeneration_count": int(sum(1 for row in qc_rows if row.get("needs_regeneration"))),
         "rejected_count": int(len(rejected_rows)),
-        "legacy_suffix_count": int((candidate_df["output_suffix_scheme"] == "legacy_gligan").sum()) if not candidate_df.empty else 0,
+        "legacy_suffix_count": int((candidate_df["output_suffix_scheme"] == "legacy_met").sum()) if not candidate_df.empty else 0,
         "native_suffix_count": int((candidate_df["output_suffix_scheme"] == "native_2026").sum()) if not candidate_df.empty else 0,
         "mixed_suffix_count": int((candidate_df["output_suffix_scheme"] == "mixed").sum()) if not candidate_df.empty else 0,
     }
@@ -1665,13 +1752,13 @@ def scan_training(train_root: Path) -> pd.DataFrame:
         row: dict[str, object] = {
             "case_id": case_id,
             "split_source": "train_ucsd" if "UCSD - Training" in case_dir.parts else "train_top_level",
-            "case_dir": as_posix(case_dir),
+            "case_dir": display_path(case_dir, train_root),
         }
         metas: dict[str, dict[str, object]] = {}
         reasons = []
         for mod in ["t1n", "t1c", "t2w", "t2f", "seg"]:
             path = files.get(mod)
-            row[f"{'raw_seg' if mod == 'seg' else mod}_path"] = as_posix(path)
+            row[f"{'raw_seg' if mod == 'seg' else mod}_path"] = display_path(path, train_root)
             row[f"has_{mod}"] = bool(path and path.exists())
             if not path:
                 reasons.append(f"missing_{mod}")
@@ -1725,12 +1812,12 @@ def scan_validation(validation_root: Path) -> pd.DataFrame:
     for case_dir in find_case_dirs(validation_root):
         case_id = case_dir.name
         files = find_modality_files(case_dir, include_seg=False)
-        row: dict[str, object] = {"case_id": case_id, "case_dir": as_posix(case_dir)}
+        row: dict[str, object] = {"case_id": case_id, "case_dir": display_path(case_dir, validation_root)}
         metas: dict[str, dict[str, object]] = {}
         reasons = []
         for mod in ["t1n", "t1c", "t2w", "t2f"]:
             path = files.get(mod)
-            row[f"{mod}_path"] = as_posix(path)
+            row[f"{mod}_path"] = display_path(path, validation_root)
             row[f"has_{mod}"] = bool(path and path.exists())
             if not path:
                 reasons.append(f"missing_{mod}")
@@ -1764,7 +1851,7 @@ def scan_validation(validation_root: Path) -> pd.DataFrame:
     ])
 
 
-def apply_corrected_labels(raw_df: pd.DataFrame, corrected_root: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
+def apply_corrected_labels(raw_df: pd.DataFrame, corrected_root: Path, data_root: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     if raw_df.empty:
         overlay_cols = [
             "case_id", "raw_seg_path", "corrected_seg_path", "raw_unique_labels", "corrected_unique_labels",
@@ -1792,7 +1879,7 @@ def apply_corrected_labels(raw_df: pd.DataFrame, corrected_root: Path) -> tuple[
     raw_by_case = {row.case_id: row for row in raw_df.itertuples(index=False)}
     for case_id, corrected_path in corrected_by_case.items():
         raw_row = raw_by_case.get(case_id)
-        raw_seg_path = Path(raw_row.raw_seg_path) if raw_row is not None and raw_row.raw_seg_path else None
+        raw_seg_path = parse_workspace_path(raw_row.raw_seg_path, data_root / "MICCAI-LH-BraTS2025-MET-Challenge-Training") if raw_row is not None and raw_row.raw_seg_path else None
         raw_values, _, _ = unique_label_values(raw_seg_path) if raw_seg_path else ([], False, "missing")
         corrected_values, _, corrected_error = unique_label_values(corrected_path)
         raw_meta = nifti_meta(raw_seg_path) if raw_seg_path else None
@@ -1800,8 +1887,8 @@ def apply_corrected_labels(raw_df: pd.DataFrame, corrected_root: Path) -> tuple[
         applied = raw_row is not None and not corrected_error and raw_meta is not None and raw_meta["shape"] == corrected_meta["shape"]
         overlay_rows.append({
             "case_id": case_id,
-            "raw_seg_path": as_posix(raw_seg_path),
-            "corrected_seg_path": as_posix(corrected_path),
+            "raw_seg_path": display_path(raw_seg_path, data_root),
+            "corrected_seg_path": display_path(corrected_path, data_root),
             "raw_unique_labels": ";".join(map(str, raw_values)),
             "corrected_unique_labels": ";".join(map(str, corrected_values)),
             "raw_shape": "x".join(map(str, raw_meta["shape"])) if raw_meta else "",
@@ -1816,12 +1903,13 @@ def apply_corrected_labels(raw_df: pd.DataFrame, corrected_root: Path) -> tuple[
         })
         if applied:
             idx = final_df.index[final_df["case_id"] == case_id]
-            final_df.loc[idx, "effective_seg_path"] = as_posix(corrected_path)
+            final_df.loc[idx, "effective_seg_path"] = display_path(corrected_path, corrected_root.parent)
             final_df.loc[idx, "label_source"] = "corrected"
             final_df.loc[idx, "has_corrected_label"] = True
 
     for idx, row in final_df.iterrows():
-        values, finite, err = unique_label_values(Path(row["effective_seg_path"])) if row["effective_seg_path"] else ([], False, "missing")
+        effective_path = parse_workspace_path(row["effective_seg_path"], data_root) if row["effective_seg_path"] else None
+        values, finite, err = unique_label_values(effective_path) if effective_path else ([], False, "missing")
         illegal = [v for v in values if v not in LABELS]
         reasons = []
         if not row["basic_qc_pass"]:
@@ -1843,7 +1931,7 @@ def apply_corrected_labels(raw_df: pd.DataFrame, corrected_root: Path) -> tuple[
     return pd.DataFrame(overlay_rows), final_df
 
 
-def label_stats(final_df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, object]]:
+def label_stats(final_df: pd.DataFrame, data_root: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict[str, object]]:
     label_rows = []
     lesion_rows = []
     summary: dict[str, object] = {}
@@ -1856,7 +1944,7 @@ def label_stats(final_df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, dic
     for case_index, row in enumerate(pass_df.itertuples(index=False), start=1):
         if case_index % 100 == 0:
             print(f"[label_stats] processed {case_index}/{len(pass_df)} cases", flush=True)
-        seg_path = Path(row.effective_seg_path)
+        seg_path = parse_workspace_path(row.effective_seg_path, data_root)
         img = nib.load(str(seg_path))
         seg = np.asanyarray(img.dataobj)
         spacing = tuple(float(v) for v in img.header.get_zooms()[:3])
@@ -1953,12 +2041,12 @@ def label_stats(final_df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, dic
     return pd.DataFrame(label_rows), pd.DataFrame(lesion_rows), summary
 
 
-def gligan_source_csv(final_df: pd.DataFrame) -> pd.DataFrame:
+def met_source_csv(final_df: pd.DataFrame, data_root: Path) -> pd.DataFrame:
     rows = []
     for row in final_df.itertuples(index=False):
         if not bool(row.final_qc_pass):
             continue
-        seg_path = Path(row.effective_seg_path)
+        seg_path = parse_workspace_path(row.effective_seg_path, data_root)
         img = nib.load(str(seg_path))
         seg = np.asanyarray(img.dataobj)
         mask = seg > 0
@@ -1966,11 +2054,11 @@ def gligan_source_csv(final_df: pd.DataFrame) -> pd.DataFrame:
         usable = all(v <= 96 for v in size) and mask.any()
         rows.append({
             "id": row.case_id,
-            "scan_t1ce": row.t1c_path,
-            "scan_t2": row.t2w_path,
-            "scan_flair": row.t2f_path,
-            "scan_t1": row.t1n_path,
-            "label": row.effective_seg_path,
+            "scan_t1ce": display_path(row.t1c_path, data_root),
+            "scan_t2": display_path(row.t2w_path, data_root),
+            "scan_flair": display_path(row.t2f_path, data_root),
+            "scan_t1": display_path(row.t1n_path, data_root),
+            "label": display_path(row.effective_seg_path, data_root),
             "center_x": center[0],
             "center_y": center[1],
             "center_z": center[2],
@@ -1986,12 +2074,12 @@ def gligan_source_csv(final_df: pd.DataFrame) -> pd.DataFrame:
             "case_id": row.case_id,
             "source_split": "train",
             "has_corrected_label": row.has_corrected_label,
-            "corrected_label_path": row.effective_seg_path if row.has_corrected_label else "",
+            "corrected_label_path": display_path(row.effective_seg_path, data_root) if row.has_corrected_label else "",
             "label_values": row.labels_present_after_overlay,
             "lesion_component_id": "whole_positive_mask",
             "lesion_volume_mm3": "",
             "lesion_class_set": row.labels_present_after_overlay,
-            "usable_for_gligan96": usable,
+            "usable_for_met96": usable,
             "allowed_as_synthetic_source": usable,
             "exclude_reason": "" if usable else "whole_positive_bbox_exceeds_96_or_empty",
             "shape_x": str(row.shape_seg).split("x")[0] if row.shape_seg else "",
@@ -2005,7 +2093,7 @@ def gligan_source_csv(final_df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def nnunet_mapping(final_df: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, str]]:
+def nnunet_mapping(final_df: pd.DataFrame, data_root: Path) -> tuple[pd.DataFrame, dict[str, str]]:
     pass_df = final_df[final_df["final_qc_pass"] == True].sort_values("case_id").copy()  # noqa: E712
     rows = []
     source_to_nn = {}
@@ -2015,11 +2103,11 @@ def nnunet_mapping(final_df: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, str]
         rows.append({
             "nnunet_case_id": nn_id,
             "source_case_id": row.case_id,
-            "t1n_source_path": row.t1n_path,
-            "t1c_source_path": row.t1c_path,
-            "t2w_source_path": row.t2w_path,
-            "t2f_source_path": row.t2f_path,
-            "seg_source_path": row.effective_seg_path,
+            "t1n_source_path": display_path(row.t1n_path, data_root),
+            "t1c_source_path": display_path(row.t1c_path, data_root),
+            "t2w_source_path": display_path(row.t2w_path, data_root),
+            "t2f_source_path": display_path(row.t2f_path, data_root),
+            "seg_source_path": display_path(row.effective_seg_path, data_root),
             "label_source": row.label_source,
             "materialization_status": "deferred_no_nifti_copy_on_mac",
         })
@@ -2115,7 +2203,7 @@ def write_templates(dirs: dict[str, Path]) -> None:
         "affine_hash_seg", "shape_consistent", "spacing_consistent", "affine_consistent", "orientation_consistent",
         "source_shape_match", "has_nan_or_inf", "image_is_constant", "label_is_integer", "label_values",
         "label_values_valid", "empty_mask", "allow_empty_mask", "source_in_real_train_manifest",
-        "source_final_qc_pass", "source_usable_for_gligan96", "source_allowed_for_training",
+        "source_final_qc_pass", "source_usable_for_met96", "source_allowed_for_training",
         "source_is_fake_t2w_case", "source_completion_mode", "source_in_fixed_val_fold",
         "source_from_official_validation", "source_is_allowed", "case_id_reuses_real_id", "validation_leakage",
         "roi_bbox_available", "insert_center_x", "insert_center_y", "insert_center_z", "roi_x_min", "roi_x_max",
@@ -2227,7 +2315,7 @@ def write_path_check(data_root: Path, train_root: Path, val_root: Path, correcte
     ]
     lines = ["# G2 Local Data Paths Check", "", f"生成日期：{RUN_DATE}", "", "| 项目 | 路径 | 是否存在 | 大小 | 备注 |", "|---|---|---|---:|---|"]
     for name, path, note in items:
-        lines.append(f"| {name} | `{path}` | {'yes' if path.exists() else 'no'} | {human_size(dir_size(path)) if path.exists() else '0 B'} | {note} |")
+        lines.append(f"| {name} | `{display_path(path, PROJECT_ROOT)}` | {'yes' if path.exists() else 'no'} | {human_size(dir_size(path)) if path.exists() else '0 B'} | {note} |")
     report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -2362,6 +2450,12 @@ def main() -> None:
     parser.add_argument("--force", action="store_true", help="Re-scan NIfTI data even if cached CSV files exist.")
     parser.add_argument("--synthetic-run-root", default="", help="Optional G1 synthetic run directory to intake.")
     parser.add_argument("--synthetic-run-id", default="", help="Optional run id override for synthetic intake.")
+    parser.add_argument(
+        "--generation-mode",
+        choices=["auto", "completion", "full_generation"],
+        default="auto",
+        help="Interpret plain BraTS-MET case folders as completion or full_generation during synthetic intake.",
+    )
     args = parser.parse_args()
 
     if not args.data_root:
@@ -2402,7 +2496,7 @@ def main() -> None:
         overlay_df = pd.read_csv(overlay_path)
         final_df = pd.read_csv(final_path)
     else:
-        overlay_df, final_df = apply_corrected_labels(raw_df, corrected_root)
+        overlay_df, final_df = apply_corrected_labels(raw_df, corrected_root, data_root)
         overlay_df.to_csv(overlay_path, index=False)
         final_df.to_csv(final_path, index=False)
     outputs.extend([overlay_path, final_path])
@@ -2410,7 +2504,7 @@ def main() -> None:
     write_data_qc_summary(dirs, raw_df, val_df, overlay_df, final_df)
     outputs.append(dirs["reports"] / "real_data_qc_summary.md")
 
-    label_df, lesion_df, lesion_summary = label_stats(final_df)
+    label_df, lesion_df, lesion_summary = label_stats(final_df, data_root)
     label_path = dirs["stats"] / "real_label_distribution.csv"
     lesion_path = dirs["stats"] / "real_lesion_distribution.csv"
     label_df.to_csv(label_path, index=False)
@@ -2423,12 +2517,12 @@ def main() -> None:
     write_target_distribution(dirs, label_df, lesion_df)
     outputs.append(dirs["stats"] / "target_synthetic_distribution_v1.md")
 
-    gligan_df = gligan_source_csv(final_df)
-    gligan_path = dirs["manifests"] / "g1_gligan_source_cases_v1.csv"
-    gligan_df.to_csv(gligan_path, index=False)
-    outputs.append(gligan_path)
+    met_df = met_source_csv(final_df, data_root)
+    met_path = dirs["manifests"] / "g1_met_source_cases_v1.csv"
+    met_df.to_csv(met_path, index=False)
+    outputs.append(met_path)
 
-    mapping_df, _ = nnunet_mapping(final_df)
+    mapping_df, _ = nnunet_mapping(final_df, data_root)
     mapping_path = dirs["manifests"] / "nnunet_case_mapping_realonly.csv"
     mapping_df.to_csv(mapping_path, index=False)
     outputs.append(mapping_path)
@@ -2444,8 +2538,8 @@ def main() -> None:
         val_fraction_of_train_pool=0.2,
         seed="20260619",
     )
-    train_val_test_split["source_split_json"] = str(split_path)
-    train_val_test_split["mapping_csv"] = str(mapping_path)
+    train_val_test_split["source_split_json"] = "splits/splits_final_fold0_realval.json"
+    train_val_test_split["mapping_csv"] = "manifests/nnunet_case_mapping_realonly.csv"
     train_val_test_path = dirs["splits"] / "splits_final_train_val_test.json"
     train_val_test_membership_path = dirs["splits"] / "splits_final_train_val_test_membership.csv"
     write_split_outputs(
@@ -2508,7 +2602,7 @@ def main() -> None:
         "final_qc_pass": int((final_df["final_qc_pass"] == True).sum()),  # noqa: E712
         "final_qc_fail": int((final_df["final_qc_pass"] != True).sum()),  # noqa: E712
         "lesions": len(lesion_df),
-        "gligan_usable_cases": int((gligan_df["usable_for_gligan96"] == True).sum()) if not gligan_df.empty else 0,  # noqa: E712
+        "met_usable_cases": int((met_df["usable_for_met96"] == True).sum()) if not met_df.empty else 0,  # noqa: E712
         "synthetic_run_root": args.synthetic_run_root,
         "outputs": [str(p) for p in outputs],
     }, ensure_ascii=False, indent=2))

@@ -1,7 +1,7 @@
 # G2 Synthetic Data QC 规则策略 v2（G1 raw output 适配版）
 
 更新日期：2026-06-15
-适用对象：G2 数据报告、G1 diffusion/GliGAN-compatible raw output、S1/S2 real+synth nnU-Net 训练入口
+适用对象：G2 数据报告、G1 diffusion/MET-compatible raw output、S1/S2 real+synth nnU-Net 训练入口
 主结论：G2 的 QC 目标不是证明生成图像“像真的”，而是证明 G1 raw output 能被 G2 变成可追溯、无泄漏、空间合法、标签合法、病灶合理、训练可用、消融有价值的数据资产。
 
 ## 1. QC 总原则
@@ -69,7 +69,7 @@ RC 是官方单独区域 `label == 4`，不混入 TC/WT 代理区域。G2 内部
 | 真实 lesion component 总数 | 9793 |
 | tiny / small / large lesion 数 | 3788 / 3922 / 2083 |
 | 含 RC 真实训练病例 | 167 |
-| G1 96 ROI source 候选 | 472 |
+| G1 MET 96 ROI source 候选 | 472 |
 
 已知排除：
 
@@ -126,8 +126,10 @@ run_root/
     BraTS-MET-00554-000-t2w.nii.gz
 ```
 
-此时 `case_dir` 直接视为 `source_case_id`，`label_kind=completion`，`label_index=0`。
-completion 模式下，G2 不再要求 source 出现在 `g1_gligan_source_cases_v1.csv`，也不再要求 `usable_for_gligan96=True`；但 source 必须仍能在真实数据 manifest 中追溯到，且真实数据侧 final QC 通过。
+如果 run root 是 G1 T2W completion 输出，`case_dir` 直接视为 `source_case_id`，`label_kind=completion`，`label_index=0`。
+completion 模式下，G2 不再要求 source 出现在 `g1_met_source_cases_v1.csv`，也不再要求 `usable_for_met96=True`；但 source 必须仍能在真实数据 manifest 中追溯到，且真实数据侧 final QC 通过。
+
+如果 run root 是 G1 diffusion augmentation 输出，目录名虽然也可能是 `BraTS-MET-xxxxx-xxx`，但 G2 将其标记为 `label_kind=full_generation`。full_generation 不按 completion 处理，必须遵守 `g1_met_source_cases_v1.csv`、`usable_for_met96=True`、train-only source、无 val/test 泄漏等 synthetic augmentation 规则。
 
 ### 5.2 G2 可自动恢复的信息
 
@@ -242,7 +244,7 @@ source 必须：
 3. 不在 fixed fold0 validation。
 4. 不来自 official validation。
 5. 不是已排除病例。
-6. 如果使用 G1 96 ROI 模式，应来自 `usable_for_gligan96=True` 候选。
+6. 如果使用 G1 MET 96 ROI 模式，应来自 `usable_for_met96=True` 候选。
 
 强制拒绝：
 
@@ -613,7 +615,10 @@ python work_space/G2/code/g2_pretraining_audit.py --force
 # 2. G1 交付后接收 raw synthetic run
 python work_space/G2/code/g2_synthetic_raw_intake_qc.py \
   --synthetic-run-root /path/to/G1/run_id \
-  --synthetic-run-id run_id
+  --synthetic-run-id run_id \
+  --generation-mode full_generation
+
+如果接收的是 G1 T2W completion 输出，则把 `--generation-mode full_generation` 改成 `--generation-mode completion`。
 
 # 3. 训练机上生成 real+synth nnU-Net raw dataset
 python work_space/G2/code/g2_materialize_nnunet_dataset.py \
@@ -667,7 +672,7 @@ python work_space/G2/code/g2_official_mets_metrics_parser.py parse-json \
 | L4 | source final QC | 查 `final_qc_pass` | true | hard reject/review |
 | L4 | fixed real val 泄漏 | 查 `splits_final_fold0_realval.json` | 不在 val | hard reject |
 | L4 | official validation 泄漏 | 查 `real_validation_manifest.csv` | 不在 validation | hard reject |
-| L4 | source 可用于 G1 96 ROI | 查 `g1_gligan_source_cases_v1.csv` | true | hard reject/review |
+| L4 | source 可用于 G1 MET 96 ROI | 查 `g1_met_source_cases_v1.csv` | true | hard reject/review |
 | L5 | ROI bbox | 从 label 或 manifest/log 恢复 | 可恢复 | review |
 | L5 | ROI 在图像内 | bbox 与 shape 对比 | 在范围内 | hard reject |
 | L5 | lesion 在脑内 | mask 不贴边、脑 mask proxy | 合理 | review/hard reject |

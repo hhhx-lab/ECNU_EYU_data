@@ -2,7 +2,7 @@
 """G2 entry point for G1 synthetic raw intake and QC.
 
 This is a thin, explicit wrapper around the shared G2 audit utilities. Use it
-when G1 hands over either a legacy GliGAN-compatible diffusion run folder or a
+when G1 hands over either a legacy MET-compatible diffusion run folder or a
 completion-style `data/output/<case_id>/` folder. It creates the candidate
 manifest, accepted/rejected manifests, QC tables, diffusion-quality tables, and
 a batch report under work_space/G2/results.
@@ -34,6 +34,15 @@ def main() -> None:
         "--synthetic-run-id",
         default="",
         help="Optional run id override. If omitted, G2 uses generation_config.json or the run folder name.",
+    )
+    parser.add_argument(
+        "--generation-mode",
+        choices=["auto", "completion", "full_generation"],
+        default="auto",
+        help=(
+            "How to interpret plain BraTS-MET case folders. Use completion for "
+            "G1 missing-T2W output and full_generation for diffusion augmentation."
+        ),
     )
     parser.add_argument(
         "--refresh-templates",

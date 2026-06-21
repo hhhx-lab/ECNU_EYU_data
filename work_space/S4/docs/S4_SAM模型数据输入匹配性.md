@@ -2,7 +2,7 @@
 
 生成日期：2026-05-19
 重整日期：2026-05-20
-项目目录：`/Users/hwaigc/比赛+课题/ECNU-NYU2026`
+项目目录：`ECNU_EYU_data` 当前仓库根目录
 调研对象：MedSAM / SAM-Med2D / SAM-Adapter，以及更适合医学 3D 任务的 Medical-SAM-Adapter
 目标任务：BraTS 2026 Task 1 Brain Metastases Segmentation
 主要读者：S4、S1/S2 分割组、G2 数据组、组内统筹同学

@@ -22,11 +22,38 @@ from pathlib import Path
 
 DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 DEFAULT_FAKE_T2W = DEFAULT_RESULTS_ROOT / "qc" / "official_fake_t2w_cases_by_gzip_header_2026-06-15.csv"
+PROJECT_ROOT_NAME = "ECNU_EYU_data"
 CHANNEL_ORDERS = {
     "g2_official": ["t1n", "t1c", "t2w", "t2f"],
     "s2_current": ["t1c", "t1n", "t2f", "t2w"],
 }
 LABELS = {"background": 0, "NETC": 1, "SNFH": 2, "ET": 3, "RC": 4}
+
+
+def find_project_root(start: Path) -> Path:
+    for parent in [start, *start.parents]:
+        if (parent / "work_space" / "G1").exists() and (parent / "work_space" / "G2").exists():
+            return parent
+    raise RuntimeError(f"Could not locate ECNU_EYU_data project root from {start}")
+
+
+PROJECT_ROOT = find_project_root(Path(__file__).resolve())
+
+
+def parse_workspace_path(path_str: str | Path | None, anchor: Path | None = None) -> Path | None:
+    if path_str is None:
+        return None
+    path = Path(path_str)
+    if path.is_absolute():
+        return path
+    if anchor is not None:
+        candidate = (anchor / path).resolve()
+        if candidate.exists():
+            return candidate
+    candidate = (PROJECT_ROOT / path).resolve()
+    if candidate.exists():
+        return candidate
+    return candidate
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -71,7 +98,8 @@ def source_for(row: dict[str, str], modality: str) -> str | None:
         candidates = ["seg_source_path", "normalized_seg_path", "raw_seg_path"]
     values = [row.get(key, "") for key in candidates if row.get(key, "")]
     for value in values:
-        if Path(value).exists():
+        resolved = parse_workspace_path(value)
+        if resolved is not None and resolved.exists():
             return value
     return values[0] if values else None
 
@@ -158,7 +186,7 @@ def write_case_files(
     for channel_idx, modality in enumerate(channel_order):
         source_path = completion_replacement_source(replacement_row, modality) if replacement_row else None
         source_path = source_path or source_for(row, modality)
-        src = Path(source_path) if source_path else None
+        src = parse_workspace_path(source_path, PROJECT_ROOT) if source_path else None
         dst = dataset_dir / "imagesTr" / f"{case_id}_{channel_idx:04d}.nii.gz"
         action = link_or_copy(src, dst, mode, overwrite)
         materialized.append(
@@ -177,7 +205,7 @@ def write_case_files(
         )
 
     source_path = source_for(row, "seg")
-    src = Path(source_path) if source_path else None
+    src = parse_workspace_path(source_path, PROJECT_ROOT) if source_path else None
     dst = dataset_dir / "labelsTr" / f"{case_id}.nii.gz"
     action = link_or_copy(src, dst, mode, overwrite)
     materialized.append(

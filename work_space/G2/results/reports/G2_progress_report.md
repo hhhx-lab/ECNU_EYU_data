@@ -26,7 +26,7 @@
 | 真实 lesion component 总数 | 9793 |
 | tiny / small / large lesion 数 | 3788 / 3922 / 2083 |
 | 含 RC 真实训练病例 | 167 |
-| G1 96 ROI source 候选 | 472 |
+| G1 MET 96 ROI source 候选 | 472 |
 | gzip header 原始文件名含 fake 的 T2W | 265 |
 
 ## 3. 官方指标口径
@@ -94,7 +94,7 @@
 | `results/manifests/real_train_manifest.csv` | 最终训练 manifest，已应用 corrected label overlay。 |
 | `results/manifests/real_validation_manifest.csv` | 官方 validation 结构检查表，不能作为 synthetic source。 |
 | `results/manifests/corrected_label_overlay.csv` | corrected labels 覆盖记录。 |
-| `results/manifests/g1_gligan_source_cases_v1.csv` | 给 G1/旧 GliGAN-compatible 流程复用的 source 候选 CSV。 |
+| `results/manifests/g1_met_source_cases_v1.csv` | 给 G1/旧 MET-compatible 流程复用的 source 候选 CSV。 |
 | `results/manifests/nnunet_case_mapping_realonly.csv` | S1/S2 物化 real-only nnU-Net 数据集的映射表。 |
 | `results/manifests/synthetic_generation_manifest_template_g1.csv` | G1 正式批次或 G2 补建 synthetic manifest 时使用的表头模板。 |
 | `results/manifests/synthetic_normalized_mapping_template.csv` | raw/native/legacy 文件到 2026 suffix 与 nnU-Net 目标文件的逐模态映射模板。 |

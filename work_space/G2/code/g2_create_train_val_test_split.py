@@ -52,6 +52,13 @@ def sorted_unique(values: Iterable[str]) -> list[str]:
     return sorted({str(value) for value in values if str(value).strip()})
 
 
+def display_result_path(path: Path, results_root: Path) -> str:
+    try:
+        return path.relative_to(results_root).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
 def _validate_known_ids(ids: set[str], known_ids: set[str], label: str) -> None:
     unknown = sorted(ids - known_ids)
     if unknown:
@@ -217,8 +224,8 @@ def main() -> None:
         test_fraction=args.test_fraction,
         seed=args.seed,
     )
-    split["source_split_json"] = str(base_split_json) if base_split_json.exists() else ""
-    split["mapping_csv"] = str(mapping_csv)
+    split["source_split_json"] = display_result_path(base_split_json, results_root) if base_split_json.exists() else ""
+    split["mapping_csv"] = display_result_path(mapping_csv, results_root)
     write_split_outputs(split, mapping_rows, output_json, membership_csv)
 
     counts = split["counts"]
