@@ -173,8 +173,8 @@ def main():
     parser.add_argument(
         "--input_dir",
         type=str,
-        default=configs.PATH_INPUT_INFERENCE,
-        help="Directory containing subject folders for evaluation"
+        default=configs.PATH_INPUT,
+        help="Directory containing complete subject folders for evaluation"
     )
     args = parser.parse_args()
 

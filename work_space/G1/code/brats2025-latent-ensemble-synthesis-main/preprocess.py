@@ -1,10 +1,12 @@
 import os
 import re
 import sys
+import argparse
 import numpy as np
 import torch
 import pandas as pd
 from tqdm import tqdm
+from pathlib import Path
 
 import configs
 import synthesis.utils as utils
@@ -14,6 +16,7 @@ import synthesis.pipeline as pipeline
 MODALITY_PATTERN = re.compile(r"^(?P<prefix>.+?)-(?P<mod>t1n|t1c|t2w|t2f|seg)\.(?:nii|nii\.gz)$", re.IGNORECASE)
 TRAIN_MODALITIES = tuple(configs.MODALITY_LIST)
 SKIPPED_CSV_NAME = "data_csv_skipped_subjects.csv"
+MET_PREFIX = "BraTS-MET-"
 
 
 def extract_modality(file_name):
@@ -21,6 +24,19 @@ def extract_modality(file_name):
     if not match:
         return None
     return match.group("mod").lower()
+
+
+def find_subject_dirs(input_dir):
+    root = Path(input_dir)
+    if not root.exists():
+        raise FileNotFoundError(f"Input directory does not exist: {input_dir}")
+    if root.is_dir() and root.name.startswith(MET_PREFIX):
+        return [root]
+    case_dirs = []
+    for path in root.rglob(f"{MET_PREFIX}*"):
+        if path.is_dir():
+            case_dirs.append(path)
+    return sorted(case_dirs, key=lambda p: str(p))
 
 
 def scan_subjects(input_dir):
@@ -31,9 +47,17 @@ def scan_subjects(input_dir):
     """
     subjects = []
     skipped = []
-    for folder in sorted(os.listdir(input_dir)):
-        folder_path = os.path.join(input_dir, folder)
-        if not os.path.isdir(folder_path):
+    for folder_path_obj in find_subject_dirs(input_dir):
+        folder = folder_path_obj.name
+        folder_path = str(folder_path_obj)
+        if not folder.startswith(MET_PREFIX):
+            skipped.append({
+                "id": folder,
+                "reason": "non_met_case_id",
+                "present_modalities": "",
+                "files": "",
+            })
+            print(f"  Skip {folder}: non MET case id")
             continue
         files = sorted(os.listdir(folder_path))
         files = [f for f in files if f.endswith(".nii.gz") or f.endswith(".nii")]
@@ -100,12 +124,17 @@ def preprocess_subject(sub_data, vae, output_latents_dir, device):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Preprocess MET subjects for BBDM training")
+    parser.add_argument("--input-dir", default=configs.PATH_INPUT,
+                        help="Root directory to scan for BraTS-MET cases (default: data/input)")
+    args = parser.parse_args()
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
     # 扫描输入目录
-    print(f"Scanning subjects in: {configs.PATH_INPUT}")
-    subjects, skipped_subjects = scan_subjects(configs.PATH_INPUT)
+    print(f"Scanning subjects in: {args.input_dir}")
+    subjects, skipped_subjects = scan_subjects(args.input_dir)
     print(f"Found {len(subjects)} subjects with complete training modalities.\n")
 
     if not subjects:

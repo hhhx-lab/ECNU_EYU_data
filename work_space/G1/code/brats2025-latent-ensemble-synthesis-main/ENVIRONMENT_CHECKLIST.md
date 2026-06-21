@@ -11,6 +11,7 @@
 1. 训练集放在 `data/input/`，必须是完整四模态加 `seg`。
 2. 推理集放在 `data/input_inference/`，只放 `t1n/t1c/t2f/seg`，**不要放 T2W**。
 3. 任务是缺失模态补全，目标是生成 `t2w`。
+4. `prepare_g1_t2w_data.py` 可以直接从 G2 manifest 生成 `data/input/` 和 `data/input_inference/`，不需要手工拆分目录。
 
 ## 2. 推荐 Conda 环境
 
@@ -172,11 +173,12 @@ python prepare_g1_t2w_data.py --mode symlink --clean --overwrite
 1. 把完整真实 T2W 病例放进 `data/input/`
 2. 把 fake T2W 病例放进 `data/input_inference/`
 3. 在 `data/input_inference` 中去掉 T2W
+4. 递归读取当前 G2 manifest 指向的 2026 MET 新数据，不吃旧 GLI 数据
 
 ### 7.2 预处理
 
 ```bash
-python preprocess.py
+python preprocess.py --input-dir data/input
 ```
 
 作用：

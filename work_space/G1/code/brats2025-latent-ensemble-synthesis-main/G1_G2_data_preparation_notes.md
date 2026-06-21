@@ -84,7 +84,7 @@ data/g1_data_placement_manifest.csv
 先运行：
 
 ```bash
-python preprocess.py
+python preprocess.py --input-dir data/input
 ```
 
 它会生成：
@@ -101,6 +101,7 @@ python mark_val_split_from_g2.py
 ```
 
 该脚本会按 G2 fixed train/val/test 把 CSV 中可用完整病例标记为 `train`、`val` 或 `test`，避免手工改错。
+该脚本与 `prepare_g1_t2w_data.py` 配套使用：先自动生成 `data/input/` 与 `data/input_inference/`，再递归扫描 `data/input/` 生成 `data/data_csv.csv`。
 
 当前 G2 fixed train/val/test 对完整真实 T2W 训练集的投影是：
 
@@ -113,7 +114,7 @@ python mark_val_split_from_g2.py
 ## 6. 后续命令顺序
 
 ```bash
-python preprocess.py
+python preprocess.py --input-dir data/input
 python mark_val_split_from_g2.py
 python generate_attmask.py
 python compute_weights.py

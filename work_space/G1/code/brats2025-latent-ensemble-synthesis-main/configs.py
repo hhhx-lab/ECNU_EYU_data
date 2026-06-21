@@ -1,7 +1,16 @@
 import os
+from pathlib import Path
 
-# set the root path for the project as the current working directory
+def find_g1_workspace_root(start: Path) -> Path:
+    for parent in [start, *start.parents]:
+        if parent.name == "G1" and (parent / "code").exists() and (parent / "docs").exists():
+            return parent
+    raise RuntimeError(f"Could not locate work_space/G1 from {start}")
+
+
+# code root stays here for checkpoints and model weights
 PATH_ROOT = os.path.dirname(os.path.abspath(__file__))
+PATH_WORKSPACE = str(find_g1_workspace_root(Path(__file__).resolve()))
 
 PATH_MODELS = os.path.join(PATH_ROOT, "models")
 PATH_WEIGHTS = os.path.join(PATH_ROOT, "weights")
@@ -14,7 +23,8 @@ AVAILABLE_MODALITIES = ["t1n", "t1c", "t2f"]
 SHAPE_PREPROCESS_IMG=(256,256,160)
 
 
-PATH_DATA = os.path.join(PATH_ROOT, "data")
+PATH_DATA = os.path.join(PATH_WORKSPACE, "data")
+PATH_RAW_DATA = os.path.join(PATH_DATA, "raw")
 PATH_INPUT = os.path.join(PATH_DATA, "input")
 PATH_INPUT_INFERENCE = os.path.join(PATH_DATA, "input_inference")
 PATH_OUTPUT = os.path.join(PATH_DATA, "output")

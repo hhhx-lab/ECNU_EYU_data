@@ -4,6 +4,7 @@ import os
 import re
 import configs
 import argparse
+import shutil
 
 import synthesis.pipeline as pipeline
 import synthesis.utils as utils
@@ -15,6 +16,7 @@ MODALITY_PATTERN = re.compile(
 )
 SYNTHESIS_INPUT_MODALITIES = tuple(configs.AVAILABLE_MODALITIES)  # t1n, t1c, t2f
 REQUIRED_INFERENCE_FILES = SYNTHESIS_INPUT_MODALITIES + ("seg",)
+MET_PREFIX = "BraTS-MET-"
 
 
 def parse_modality_file(file_name):
@@ -81,6 +83,8 @@ def prepare_s_data(subject_folder):
 
 def mirror_source_case(s_data, output_case_dir, overwrite=False):
     """Mirror source inference files into the output case directory."""
+    if os.path.isdir(output_case_dir):
+        shutil.rmtree(output_case_dir)
     os.makedirs(output_case_dir, exist_ok=True)
     source_files = list(s_data["path_name_img_list"])
     seg_path = s_data.get("seg_path")
@@ -102,9 +106,14 @@ def read_data_folder(input_folder):
     """
     Reads the data folder and returns a list of subject folders.
     """
-    subject_folders = [os.path.join(input_folder, f) for f in os.listdir(input_folder) if os.path.isdir(os.path.join(input_folder, f))]
-    subject_folders.sort()
-    return subject_folders
+    subject_folders = []
+    for root, dirs, _files in os.walk(input_folder):
+        for folder in dirs:
+            if not folder.startswith(MET_PREFIX):
+                continue
+            folder_path = os.path.join(root, folder)
+            subject_folders.append(folder_path)
+    return sorted(subject_folders)
 
 def process_multiple_subjects(input_subject_list, synthesis_type, output_path, gpu_id=None, verbose=False, compute_bmask=True):
     """
@@ -122,6 +131,7 @@ def process_multiple_subjects(input_subject_list, synthesis_type, output_path, g
             continue
 
         case_output_dir = os.path.join(output_path, s_data["s_id"])
+        shutil.rmtree(case_output_dir, ignore_errors=True)
         os.makedirs(case_output_dir, exist_ok=True)
         mirror_source_case(s_data, case_output_dir, overwrite=True)
 
@@ -145,6 +155,8 @@ def process_multiple_subjects(input_subject_list, synthesis_type, output_path, g
 
 
 def main(args):
+    if args.clean_output and os.path.isdir(args.output_dir):
+        shutil.rmtree(args.output_dir)
     input_subject_list = read_data_folder(args.input_dir)
     if not input_subject_list:
         print(f"No subject folders found in {args.input_dir}")
@@ -192,6 +204,12 @@ def parse_args():
         type=str,
         default=configs.PATH_OUTPUT,
         help="Directory where synthesized case folders will be written"
+    )
+    parser.add_argument(
+        "--clean_output",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Remove an existing case output folder before writing the new result. Use --no-clean-output only if you intentionally want to append to an old folder.",
     )
 
     return parser.parse_args()

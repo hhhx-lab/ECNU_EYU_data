@@ -10,7 +10,7 @@
 
 ## 未迁入的大型数据
 
-以下内容保留在源目录 `/Users/hwaigc/比赛+课题/ECNU-NYU2026/2026的task1以及数据`，未复制到当前仓库：
+以下大型数据不进入仓库。请将它们挂载或链接到共享原始根 `work_space/G1/data/raw/`，由 G1/G2 共同读取：
 
 - `MICCAI-LH-BraTS2025-MET-Challenge-Training/`
 - `Validation/`

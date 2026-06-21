@@ -94,16 +94,16 @@ Note: **V100 GPUs** (Volta architecture) do NOT support Flash Attention regardle
 
 Typical workflow for synthesizing missing T2W given two sets of subjects — one complete (all 4 modalities) for training, one incomplete (missing T2W) to fill in.
 
-If you are starting from the raw BraTS Task1 package, first read `docs/G1_G2_服务器训练推理QC运行手册.md`. It shows how the three raw folders are turned into the two working folders used here: `data/input/` and `data/input_inference/`.
+If you are starting from the raw BraTS Task1 package, first read `docs/G1_G2_服务器训练推理QC运行手册.md`. The raw archive should be mounted or linked once at `work_space/G1/data/raw/`; from there the code builds the two working folders used here: `work_space/G1/data/input/` and `work_space/G1/data/input_inference/`.
 
 ### Step 1 — Train on complete subjects
 
 ```bash
-# Place complete subjects in data/input/
-cp -r /path/to/complete_set/* data/input/
+# Build work_space/G1/data/input/ and work_space/G1/data/input_inference/ automatically from the shared raw root
+python prepare_g1_t2w_data.py --mode symlink --clean --overwrite
 
 # Preprocess, then apply the G2 fixed train/val/test split automatically
-python preprocess.py
+python preprocess.py --input-dir data/input
 python mark_val_split_from_g2.py
 
 # Optional: generate attention masks (requires seg files)
@@ -130,9 +130,6 @@ If metrics look good, proceed. Otherwise tune hyperparameters and retrain.
 ### Step 3 — Generate missing T2W for incomplete subjects
 
 ```bash
-# Place incomplete subjects in data/input_inference/; T2W is omitted automatically by prepare_g1_t2w_data.py
-cp -r /path/to/incomplete_set/* data/input_inference/
-
 # Run inference
 python main.py --synthesis_type ensamble --gpu_id 0 --verbose --output_dir data/output
 
@@ -144,10 +141,11 @@ ls data/output/<subject_id>/   # <subject_id>-t2w.nii.gz plus mirrored source fi
 
 | Directory | Who uses it | Contents |
 |-----------|-------------|----------|
-| `data/input/` | Training | All 4 modalities (t1n, t1c, t2w, t2f) |
-| `data/input_inference/` | `main.py` | t1n, t1c, t2f, seg; T2W is intentionally absent or ignored |
-| `data/output/` | `main.py` output | Per-subject output folders containing mirrored source files and synthesized `.nii.gz` |
-| `data/eval_synthesized/` | `evaluate.py --save_output` | Synthesized images for inspection |
+| `work_space/G1/data/raw/` | Shared raw root | One copy of the raw Task1 archive for both G1 lines |
+| `work_space/G1/data/input/` | Training | All 4 modalities (t1n, t1c, t2w, t2f) |
+| `work_space/G1/data/input_inference/` | `main.py` | t1n, t1c, t2f, seg; T2W is intentionally absent or ignored |
+| `work_space/G1/data/output/` | `main.py` output | Per-subject output folders containing mirrored source files and synthesized `.nii.gz` |
+| `work_space/G1/data/eval_synthesized/` | `evaluate.py --save_output` | Synthesized images for inspection |
 
 ---
 
@@ -155,7 +153,7 @@ ls data/output/<subject_id>/   # <subject_id>-t2w.nii.gz plus mirrored source fi
 
 ### 3.1 Input Format
 
-Place raw NIfTI files under `data/input/<subject_id>/` for training, and `data/input_inference/<subject_id>/` for inference:
+Place raw NIfTI files under `work_space/G1/data/input/<subject_id>/` for training, and `work_space/G1/data/input_inference/<subject_id>/` for inference:
 
 ```
 data/input/
@@ -184,12 +182,12 @@ For ECNU-NYU 2026 Task1, prefer the automatic placement script instead of manual
 python prepare_g1_t2w_data.py --mode symlink --clean --overwrite
 ```
 
-This reads the G2 manifests under `work_space/G2/results/` and creates:
+This reads the G2 manifests under `work_space/G2/results/` and the shared raw root under `work_space/G1/data/raw/`, then creates:
 
 ```text
-data/input/            # complete real T2W cases for training
-data/input_inference/  # fake/missing T2W cases for generation; T2W is omitted
-data/g1_data_placement_manifest.csv
+work_space/G1/data/input/            # complete real T2W cases for training
+work_space/G1/data/input_inference/  # fake/missing T2W cases for generation; T2W is omitted
+work_space/G1/data/g1_data_placement_manifest.csv
 ```
 
 Use `--mode symlink` on the server when raw data and project code are on the same filesystem. Use `--mode copy` only when disk space is sufficient. Use `--mode manifest-only` to inspect the planned placement without creating links or copying data.
@@ -197,11 +195,11 @@ Use `--mode symlink` on the server when raw data and project code are on the sam
 ### 3.3 Preprocessing (VAE Encoding)
 
 ```bash
-python preprocess.py
+python preprocess.py --input-dir work_space/G1/data/input
 ```
 
 This will:
-1. Scan all subjects under `data/input/`
+1. Scan all subjects under `data/input/` recursively, or a custom root passed via `--input-dir`
 2. Normalize each volume to [0, 1]
 3. Zero-pad / center-crop to `(256, 256, 160)`
 4. Encode with the pretrained MAISI VAE → latent arrays of shape `(4, 64, 64, 40)`
@@ -223,17 +221,9 @@ work_space/G2/results/splits/splits_final_train_val_test.json
 work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
 ```
 
-Only subjects that survived `preprocess.py` and have complete `t1n/t1c/t2w/t2f` latents can become train, val, or test rows. Cases missing T2W are never written to `data/data_csv.csv`.
+Only subjects that survived `preprocess.py` and have complete `t1n/t1c/t2w/t2f` latents can become train, val, or test rows. Cases missing T2W are never written to `work_space/G1/data/data_csv.csv`.
 
-Current expected G1 projection from the G2 split:
-
-```text
-train = 660
-val   = 160
-test  = 210
-```
-
-The G2 full-case split is `829/207/259`; G1 sees fewer cases because fake/broken T2W cases are routed to `data/input_inference/` instead of training CSV.
+The exact `train/val/test` counts are determined by the current G2 split scripts and the latest raw Task1 manifest. G1 will see fewer training rows than the full raw cohort because fake/broken T2W cases are routed to `data/input_inference/` instead of `data/input/`.
 
 ### 3.5 (Optional) Attention Masks
 
@@ -277,7 +267,7 @@ channel_importance_weights = [0.512345, 0.124111, 0.201678, 0.161866]
 sum = 1.0000
 ```
 
-Copy the printed `channel_importance_weights` array into `training_bbdm.py`, replacing the default value in the `args_train` dictionary. If you skip this step, the default weights (computed on the original BraSyn glioma+metastasis mix) will be used, which is still reasonable but suboptimal for a different tumor population.
+Copy the printed `channel_importance_weights` array into `training_bbdm.py`, replacing the default value in the `args_train` dictionary. If you skip this step, the default weights from the repository baseline will be used, which is still reasonable but suboptimal for a different tumor population.
 
 ---
 
@@ -429,7 +419,7 @@ python evaluate.py --synthesis_type encdec --gpu_id 0 --verbose
 python evaluate.py --gpu_id 0 --save_csv results.csv
 ```
 
-The script reports metrics for the **whole volume** and **brain region** (masked by mean intensity of input modalities). Place eval subjects in `data/input_inference/` — the script automatically finds those with all 4 modalities.
+The script reports metrics for the **whole volume** and **brain region** (masked by mean intensity of input modalities). Use `data/input/` or another complete-case folder; do not point it at `data/input_inference/` because that folder is intentionally missing T2W.
 
 ---
 

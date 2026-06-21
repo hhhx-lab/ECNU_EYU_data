@@ -68,11 +68,12 @@ class PathsLoader:
 
     def get_data_by_split(self, split="train"):
         complete_df = self.df_path.copy()
-        # obtain train
-        if split is not None and "split" in complete_df.columns:
+        inference_mode = is_inference_split(split)
+        # For training/validation/testing, honor the split column.
+        # For inference, allow the caller to reuse the same CSV without filtering everything away.
+        if not inference_mode and split is not None and "split" in complete_df.columns:
             complete_df = complete_df[complete_df["split"] == split]
 
-        inference_mode = is_inference_split(split)
         required_modalities = INFERENCE_MODALITIES if inference_mode else TRAIN_MODALITIES
         require_seg = self.load_seg or inference_mode
         instances = []
@@ -226,9 +227,16 @@ class PrepareDataset(torch.utils.data.Dataset):
 
         # load lattents
         latents_list = [np.load(instance_latents["t1n"]).squeeze(0),
-                            np.load(instance_latents["t1c"]).squeeze(0),
-                            np.load(instance_latents["t2w"]).squeeze(0),
-                            np.load(instance_latents["t2f"]).squeeze(0)]
+                        np.load(instance_latents["t1c"]).squeeze(0),
+                        np.load(instance_latents["t2f"]).squeeze(0)]
+        has_t2w_latent = bool(instance_latents.get("t2w")) and os.path.exists(instance_latents["t2w"])
+        if has_t2w_latent:
+            t2w_latent = np.load(instance_latents["t2w"]).squeeze(0)
+            latents_list.insert(2, t2w_latent)
+        elif self.split not in ("inference", "infer", "predict", "generation"):
+            raise FileNotFoundError(f"Missing t2w latent for training sample: {instance_latents['t1n']}")
+        else:
+            latents_list.insert(2, np.zeros_like(latents_list[0]))
 
         s_id = os.path.basename(os.path.dirname(instance_latents["t1n"]))
         sample["s_id"] = s_id
@@ -299,9 +307,14 @@ class PrepareDataset(torch.utils.data.Dataset):
         if not self.load_only_latents:
             instance_img = self.paths_list_imgs[index % self.num_instances]
             images_list = [utils.load_nifti(instance_img["t1n"])[0],
-                            utils.load_nifti(instance_img["t1c"])[0],
-                            utils.load_nifti(instance_img["t2w"])[0],
-                            utils.load_nifti(instance_img["t2f"])[0]]
+                           utils.load_nifti(instance_img["t1c"])[0],
+                           utils.load_nifti(instance_img["t2f"])[0]]
+            if instance_img.get("t2w") and os.path.exists(instance_img["t2w"]):
+                images_list.insert(2, utils.load_nifti(instance_img["t2w"])[0])
+            elif self.split not in ("inference", "infer", "predict", "generation"):
+                raise FileNotFoundError(f"Missing t2w image for training sample: {instance_img['t1n']}")
+            else:
+                images_list.insert(2, np.zeros_like(images_list[0]))
 
             if self.load_org_img:
                 images_list = [utils.robust_normalize(utils.resize_center_crop_pad(img, (256,256,160))[0]) for img in images_list]

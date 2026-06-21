@@ -13,7 +13,14 @@ import json
 from pathlib import Path
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[4]
+def find_project_root(start: Path) -> Path:
+    for parent in [start, *start.parents]:
+        if (parent / "work_space" / "G1").exists() and (parent / "work_space" / "G2").exists():
+            return parent
+    raise RuntimeError(f"Could not locate ECNU_EYU_data project root from {start}")
+
+
+PROJECT_ROOT = find_project_root(Path(__file__).resolve())
 G2_RESULTS = PROJECT_ROOT / "work_space" / "G2" / "results"
 DEFAULT_SPLIT = G2_RESULTS / "splits" / "splits_final_train_val_test.json"
 LEGACY_SPLIT = G2_RESULTS / "splits" / "splits_final_fold0_realval.json"

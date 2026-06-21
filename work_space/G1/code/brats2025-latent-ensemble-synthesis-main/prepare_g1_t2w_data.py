@@ -27,13 +27,23 @@ import os
 import shutil
 from pathlib import Path
 
+import configs
 
-PROJECT_ROOT = Path(__file__).resolve().parents[4]
+
+def find_project_root(start: Path) -> Path:
+    for parent in [start, *start.parents]:
+        if (parent / "work_space" / "G1").exists() and (parent / "work_space" / "G2").exists():
+            return parent
+    raise RuntimeError(f"Could not locate ECNU_EYU_data project root from {start}")
+
+
+PROJECT_ROOT = find_project_root(Path(__file__).resolve())
 G2_RESULTS = PROJECT_ROOT / "work_space" / "G2" / "results"
 DEFAULT_REAL_MANIFEST = G2_RESULTS / "manifests" / "real_train_manifest.csv"
 DEFAULT_FAKE_T2W = G2_RESULTS / "qc" / "official_fake_t2w_cases_by_gzip_header_2026-06-15.csv"
-DEFAULT_DATA_ROOT = Path(__file__).resolve().parent / "data"
+DEFAULT_DATA_ROOT = Path(configs.PATH_DATA)
 MODALITIES = ("t1n", "t1c", "t2w", "t2f")
+MET_PREFIX = "BraTS-MET-"
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -43,6 +53,28 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def boolish(value: str) -> bool:
     return str(value).strip().lower() in {"1", "true", "yes", "y"}
+
+
+def parse_workspace_path(path_str: str | Path | None, anchor: Path | None = None) -> Path | None:
+    if path_str is None:
+        return None
+    path = Path(path_str)
+    if path.is_absolute():
+        return path
+    bases = []
+    for base in [anchor, PROJECT_ROOT, PROJECT_ROOT / "work_space" / "G1" / "data", PROJECT_ROOT / "work_space" / "G1" / "data" / "raw"]:
+        if base is not None and base not in bases:
+            bases.append(base)
+    for base in bases:
+        candidate = (base / path).resolve()
+        if candidate.exists():
+            return candidate
+    return (PROJECT_ROOT / path).resolve()
+
+
+def assert_met_case_id(case_id: str) -> None:
+    if not case_id.startswith(MET_PREFIX):
+        raise SystemExit(f"refuse non-MET case id: {case_id}")
 
 
 def fake_t2w_cases(path: Path) -> set[str]:
@@ -105,7 +137,7 @@ def case_source_path(row: dict[str, str], key: str) -> Path | None:
     for col in candidates:
         value = row.get(col, "")
         if value:
-            return Path(value)
+            return parse_workspace_path(value)
     return None
 
 
@@ -136,49 +168,79 @@ def prepare(args: argparse.Namespace) -> list[dict[str, object]]:
     data_root = Path(args.data_root).expanduser().resolve()
     train_root = data_root / "input"
     infer_root = data_root / "input_inference"
+    dry_run = args.mode == "manifest-only"
 
-    if args.clean:
+    if args.clean and not dry_run:
         remove_existing(train_root, overwrite=True)
         remove_existing(infer_root, overwrite=True)
-    train_root.mkdir(parents=True, exist_ok=True)
-    infer_root.mkdir(parents=True, exist_ok=True)
+    if not dry_run:
+        train_root.mkdir(parents=True, exist_ok=True)
+        infer_root.mkdir(parents=True, exist_ok=True)
 
     output_rows: list[dict[str, object]] = []
     counts = {"train": 0, "inference": 0, "skipped": 0}
+    source_missing_rows: list[dict[str, object]] = []
+    dry_run = args.mode == "manifest-only"
 
     for row in real_rows:
         case_id = row.get("case_id", "")
         if not case_id:
             continue
+        assert_met_case_id(case_id)
         final_qc_pass = boolish(row.get("final_qc_pass", ""))
         if not final_qc_pass and not args.include_failed_qc:
             counts["skipped"] += 1
             continue
 
-        is_fake = case_id in fake_cases
+        t2w_src = case_source_path(row, "t2w")
+        has_t2w_source = t2w_src is not None and t2w_src.exists()
+        is_fake = case_id in fake_cases or not has_t2w_source or not boolish(row.get("has_t2w", ""))
         destination_split = "inference" if is_fake else "train"
         case_dir = (infer_root if is_fake else train_root) / case_id
-        case_dir.mkdir(parents=True, exist_ok=True)
+        if not dry_run:
+            shutil.rmtree(case_dir, ignore_errors=True)
+            case_dir.mkdir(parents=True, exist_ok=True)
 
         linked: dict[str, str] = {}
         notes: list[str] = []
+        if case_id in fake_cases:
+            notes.append("fake_t2w_manifest")
+            notes.append("t2w_omitted_for_inference")
+        elif not has_t2w_source:
+            notes.append("missing_t2w_source")
+            notes.append("t2w_omitted_for_inference")
         modalities_to_link = ("t1n", "t1c", "t2f") if is_fake else MODALITIES
         for mod in modalities_to_link:
             src = case_source_path(row, mod)
             dst = case_dir / f"{case_id}-{mod}.nii.gz"
-            action = link_or_copy(src, dst, args.mode, args.overwrite) if src is not None else "missing_source"
+            if dry_run:
+                action = "planned" if src is not None and src.exists() else "missing_source"
+            else:
+                action = link_or_copy(src, dst, args.mode, args.overwrite) if src is not None else "missing_source"
             linked[mod] = action
             if action == "missing_source":
                 notes.append(f"missing_{mod}")
 
         seg_src = case_source_path(row, "seg")
         seg_dst = case_dir / f"{case_id}-seg.nii.gz"
-        linked["seg"] = link_or_copy(seg_src, seg_dst, args.mode, args.overwrite) if seg_src is not None else "missing_source"
+        if dry_run:
+            linked["seg"] = "planned" if seg_src is not None and seg_src.exists() else "missing_source"
+        else:
+            linked["seg"] = link_or_copy(seg_src, seg_dst, args.mode, args.overwrite) if seg_src is not None else "missing_source"
         if linked["seg"] == "missing_source":
             notes.append("missing_seg")
 
         if is_fake:
             linked["t2w"] = "omitted_for_inference"
+
+        has_missing_source = any(value == "missing_source" for value in linked.values())
+        if has_missing_source:
+            source_missing_rows.append(
+                {
+                    "case_id": case_id,
+                    "notes": ";".join(notes),
+                }
+            )
 
         output_rows.append(
             {
@@ -197,17 +259,18 @@ def prepare(args: argparse.Namespace) -> list[dict[str, object]]:
         )
         counts[destination_split] += 1
 
-    write_manifest(data_root / "g1_data_placement_manifest.csv", output_rows)
-    missing_rows = [row for row in output_rows if row["notes"]]
+    manifest_path = data_root / "g1_data_placement_manifest.csv"
+    if not dry_run:
+        write_manifest(manifest_path, output_rows)
     print(f"data_root={data_root}")
     print(f"mode={args.mode}")
     print(f"train_complete_cases={counts['train']}")
     print(f"inference_missing_t2w_cases={counts['inference']}")
     print(f"skipped_cases={counts['skipped']}")
-    print(f"manifest={data_root / 'g1_data_placement_manifest.csv'}")
-    print(f"missing_source_cases={len(missing_rows)}")
-    if missing_rows and not args.allow_missing_sources:
-        preview = ", ".join(f"{row['case_id']}({row['notes']})" for row in missing_rows[:10])
+    print(f"manifest={manifest_path if not dry_run else 'manifest-only (not written)'}")
+    print(f"missing_source_cases={len(source_missing_rows)}")
+    if source_missing_rows and not args.allow_missing_sources:
+        preview = ", ".join(f"{row['case_id']}({row['notes']})" for row in source_missing_rows[:10])
         raise SystemExit(
             "missing source NIfTI files detected; refresh G2 manifests with server paths "
             f"or pass --allow-missing-sources for a diagnostic dry run. examples: {preview}"
@@ -221,7 +284,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--fake-t2w-cases", default=str(DEFAULT_FAKE_T2W))
     parser.add_argument("--data-root", default=str(DEFAULT_DATA_ROOT))
     parser.add_argument("--mode", choices=["symlink", "copy", "manifest-only"], default="symlink")
-    parser.add_argument("--clean", action="store_true", help="Remove existing data/input and data/input_inference first.")
+    parser.add_argument(
+        "--clean",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Remove existing data/input and data/input_inference first. Use --no-clean only if you intentionally want to keep an existing tree.",
+    )
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing files/links.")
     parser.add_argument("--include-failed-qc", action="store_true", help="Include cases that G2 final QC failed.")
     parser.add_argument(
