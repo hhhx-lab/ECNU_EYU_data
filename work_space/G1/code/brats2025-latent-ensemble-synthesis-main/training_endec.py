@@ -267,7 +267,7 @@ def validation(
         seed=args.val_seeds[0],
         max_images=args.nb_val_images,
         new_shape=None,
-        load_only_latents=False,
+        load_only_latents=True,
         attmasks_path=args.val_attmasks_path,
         attmasks_shapes_list=attmasks_shapes_list,
         )
