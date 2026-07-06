@@ -32,10 +32,8 @@ outputs/tmp/
 *.mha
 *.mhd
 
-# G1 往年方案导入包：只提交源码/配置/文本，排除权重、数据和运行产物
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pt
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pth
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.ckpt
+# G1 往年方案导入包：只提交源码/配置/文本，排除数据和运行产物。
+# 模型参数扩展名不在这里一刀切忽略，统一由 .gitattributes 交给 Git LFS 管理。
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pkl
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pdf
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.png
@@ -44,6 +42,7 @@ work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.jpeg
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/__pycache__/
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pyc
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/*egg-info/
+# Checkpoint/ 是训练运行输出目录；确认为交付权重时再显式加入 Git LFS。
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/Checkpoint/
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/DataSet/**
 !work_space/G1/code/BraTS_2023_2024_solutions-main/Segmentation_Tasks/GliGAN/DataSet/
@@ -55,6 +54,26 @@ work_space/G1/code/BraTS_2023_2024_solutions-main/**/results/
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/runs/
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/metadata/
 work_space/G1/code/BraTS_2023_2024_solutions-main/**/nnUNet_results/
+
+# G1 Diffusion V2 imported code: keep source/docs/scripts/splits, exclude data and runtime artifacts.
+# Model parameter files are not ignored here; .gitattributes sends *.pt/*.pth/*.ckpt to Git LFS.
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.pdf
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.png
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.jpg
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.jpeg
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.pkl
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/Checkpoint/
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/DataSet/**
+!work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/DataSet/
+!work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/DataSet/.gitkeep
+!work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/DataSet/README.md
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/New_DataSet/
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/predictions/
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/results/
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/runs/
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/metadata/
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/nnUNet_results/
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.egg-info/
 
 # G1 shared data workspace: keep only the lightweight skeleton in git
 work_space/G1/data/raw/**
