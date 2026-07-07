@@ -1,0 +1,259 @@
+# G1 Diffusion V2 环境清单
+
+本文件只适用于 G1 diffusion V2 线：
+
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN
+
+不适用于：
+
+- 第一条老 diffusion 线：work_space/G1/code/BraTS_2023_2024_solutions-main/Segmentation_Tasks/GliGAN
+- 缺失 T2W 填补线：work_space/G1/code/brats2025-latent-ensemble-synthesis-main
+- Synapse 官方最终提交环境
+- S1/S2 分割推理环境
+
+结论：V2 diffusion 线需要单独 Conda 环境。它和第一条老 diffusion 线基础依赖相近，但代码目录、SLURM 脚本、数据切分、checkpoint 路径、病灶级 CSV 生成逻辑不同，不建议混用环境排查问题。
+
+不要使用 sudo pip。不要混用系统 Python、Homebrew Python、T2W 填补环境或老 diffusion 环境。
+
+
+1. 推荐环境名
+
+g1_diffusion_v2
+
+
+2. 进入服务器后先加载基础模块
+
+如果在 NYU Greene 或类似 HPC 上运行，先按服务器实际情况加载 Miniconda 和 CUDA。
+
+示例：
+
+module purge
+module load apps/envs/miniconda3/25.5.1
+module load compiler/cuda/12.1
+
+如果服务器模块名不同，让操作者用 `module avail` 查对应的 miniconda/anaconda 和 cuda module。
+
+
+3. 创建 Conda 环境
+
+conda create -n g1_diffusion_v2 python=3.11 -y
+conda activate g1_diffusion_v2
+python -m pip install --upgrade pip setuptools wheel
+
+说明：
+
+- V2 README 中写的是 python=3.11。
+- 如果服务器已有统一环境名，也可以继续用 `brats` 或 `diffusion`，但必须确认不是 T2W 填补线或老 diffusion 线共用环境。
+
+
+4. 安装 PyTorch
+
+如果服务器 CUDA 兼容 12.1，使用：
+
+pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 \
+  --index-url https://download.pytorch.org/whl/cu121
+
+如果服务器使用其他 CUDA 版本，必须按官方 PyTorch selector 选择匹配 wheel。不要在 CUDA 不匹配的环境里直接提交训练任务。
+
+
+5. 安装 V2 必需依赖
+
+推荐用 conda-forge 安装科学计算和医学影像重包，减少服务器上源码编译失败：
+
+conda install -y -c conda-forge \
+  "numpy<2" scipy pandas scikit-learn scikit-image matplotlib \
+  nibabel nilearn simpleitk pywavelets tqdm einops
+
+pip install "monai>=1.4,<1.6" blobfile tensorboard
+
+依赖用途：
+
+- torch / torchvision / torchaudio：GPU 训练、推理和 checkpoint 加载。
+- monai：SwinUNETR、AttentionUnet、UNet、transforms、CacheDataset、CSVDataset。
+- nibabel：nii.gz 医学影像读写。
+- numpy / scipy：数组处理、病灶 ROI、连通域、插值、统计计算。
+- pandas：V2 评估表、CSV 汇总和结果表读写。
+- scikit-learn：model.py 顶层导入了 sklearn.metrics.pairwise.rbf_kernel。
+- scikit-image：V2 保留的 legacy/random-label 工具会用到 skimage.filters。
+- matplotlib：训练曲线、loss 图和调试图输出。
+- nilearn：legacy 可视化和随机 label 生成工具会用到。
+- SimpleITK：原 BraTS solution 栈依赖，也可用于医学影像 IO。
+- PyWavelets / blobfile：原 synthesis requirements 中保留的依赖。
+- tqdm / einops：原 BraTS solution 栈中的常用运行依赖。
+- tensorboard：服务器部署指南中建议补充，便于监控训练。
+
+
+6. 可选依赖
+
+只有使用以下参数时才需要安装：
+
+--generator_type PlainConvUNet
+
+对应安装：
+
+pip install dynamic-network-architectures
+
+如果只是跑 V2 SLURM 默认的 Unet_NnU、README 示例里的 SwinUNETR，或冒烟测试里的 Unet 路线，不需要完整安装 nnUNet / MedNeXt。
+
+如果操作者还要复现原仓库里的分割任务，才需要额外安装根目录 README 里的 segmentation stack：
+
+- requirements_seg.txt
+- nnUNet_install
+- mednext
+
+V2 diffusion augmentation 本身不要求先装完整分割环境。
+
+
+7. 环境检查
+
+提交 SLURM 任务前，先在 GPU 节点或 GPU 作业里运行：
+
+python - <<'PY'
+import torch
+import monai
+import nibabel
+import numpy
+import scipy
+import pandas
+import sklearn
+import skimage
+
+print("python ok")
+print("torch:", torch.__version__)
+print("torch cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+print("gpu count:", torch.cuda.device_count())
+if torch.cuda.is_available():
+    print("gpu 0:", torch.cuda.get_device_name(0))
+print("monai:", monai.__version__)
+print("numpy:", numpy.__version__)
+print("scipy:", scipy.__version__)
+print("pandas:", pandas.__version__)
+print("sklearn:", sklearn.__version__)
+print("skimage:", skimage.__version__)
+PY
+
+合格标准：
+
+- 所有 import 都不报错。
+- 在 GPU 节点上 torch.cuda.is_available() 必须是 True。
+- 能打印出 GPU 名称。
+- 如果后续要开 `--use_compile`，PyTorch 必须 >= 2.0。
+
+如果在 login node 上 CUDA 是 False，不要立刻判定代码坏了；先进入 GPU 节点或用 SLURM 申请 GPU 后再检查。
+
+
+8. V2 运行目录
+
+V2 所有命令应在下面目录执行：
+
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN
+
+V2 的主要脚本：
+
+- src/train/csv_creator.py
+- src/train/tumour_main_diffusion.py
+- src/infer/evaluate_generation.py
+- src/infer/generate_from_label.py
+- slurm/01_create_csv_v2_nyu.slurm
+- slurm/02_train_4modal_v2_nyu.slurm
+- slurm/03_eval_v2_nyu.slurm
+- slurm/04_generate_visual_v2_nyu.slurm
+
+注意：
+
+- V2 SLURM 脚本默认 `CONDA_ENV=brats`。
+- 如果按本文件创建 `g1_diffusion_v2`，要么修改 slurm/*.slurm 里的 `CONDA_ENV`，要么提交时覆盖：
+
+CONDA_ENV=g1_diffusion_v2 sbatch slurm/01_create_csv_v2_nyu.slurm
+CONDA_ENV=g1_diffusion_v2 sbatch slurm/02_train_4modal_v2_nyu.slurm
+CONDA_ENV=g1_diffusion_v2 sbatch slurm/03_eval_v2_nyu.slurm
+CONDA_ENV=g1_diffusion_v2 sbatch slurm/04_generate_visual_v2_nyu.slurm
+
+- V2 当前代码虽然用于 2026 Task1 MET 数据，但 `--dataset` / `DATASET` 参数应使用 `BRATS_2024`，因为代码复用 2024 MET/pos-treatment 的 5 通道 label transform。不要在 V2 训练脚本里写 `BRATS_2026`，否则 `tumour_main_diffusion.py` 会报 `Unknown dataset`。
+
+
+9. V2 数据路径要求
+
+V2 README 当前要求完整病例放在：
+
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/DataSet
+
+每个病例一个文件夹，至少包含：
+
+- BraTS-MET-xxxxx-xxx-t1c.nii.gz
+- BraTS-MET-xxxxx-xxx-t1n.nii.gz
+- BraTS-MET-xxxxx-xxx-t2w.nii.gz
+- BraTS-MET-xxxxx-xxx-t2f.nii.gz
+- BraTS-MET-xxxxx-xxx-seg.nii.gz
+
+V2 是学习完整非缺失病例的 synthetic data augmentation 线。第一轮不要把 fake/broken T2W 病例混入 DataSet。
+
+
+10. 最小冒烟测试流程
+
+先生成 CSV：
+
+python src/train/csv_creator.py \
+  --dataset BRATS_2024 \
+  --datadir DataSet \
+  --logdir brats2026_diffusion_v2_smoke
+
+再跑一个很短的训练测试：
+
+python src/train/tumour_main_diffusion.py \
+  --dataset BRATS_2024 \
+  --modality t1c \
+  --logdir brats2026_diffusion_v2_smoke \
+  --batch_size 1 \
+  --num_workers 2 \
+  --generator_type Unet \
+  --num_steps 10 \
+  --noise_schedule edm
+
+冒烟测试通过标准：
+
+- CSV 能生成。
+- 训练能进入 step。
+- loss 能正常打印。
+- ../../Checkpoint/brats2026_diffusion_v2_smoke/t1c/weights 下能看到 checkpoint。
+
+
+11. 正式 V2 训练方式
+
+推荐直接使用 V2 SLURM 脚本：
+
+CSV_JOB=$(sbatch --parsable slurm/01_create_csv_v2_nyu.slurm)
+TRAIN_JOB=$(sbatch --parsable --dependency=afterok:${CSV_JOB} slurm/02_train_4modal_v2_nyu.slurm)
+sbatch --dependency=afterok:${TRAIN_JOB} slurm/03_eval_v2_nyu.slurm
+sbatch --dependency=afterok:${TRAIN_JOB} slurm/04_generate_visual_v2_nyu.slurm
+
+正式训练会分别训练四个模态：
+
+- t1c
+- t1n
+- t2w
+- t2f
+
+如果服务器账号、分区、GPU 资源或 scratch 路径不同，先修改 slurm/*.slurm 顶部配置，再提交。
+
+
+12. 和其他 G1 线的区别
+
+V2 diffusion 线：
+
+- 输入：完整非缺失 BraTS-MET 病例和 seg。
+- 目标：根据 segmentation/病灶结构学习生成四模态 MRI，用于 synthetic data augmentation。
+- 主要输出：V2 diffusion checkpoints、评估结果、可视化生成样本。
+
+缺失 T2W 填补线：
+
+- 输入：缺 T2W 的病例。
+- 目标：生成缺失 T2W 模态。
+- 需要 VAE 权重、attention mask、channel weights、preprocess、BBDM 训练和推理。
+
+第一条老 diffusion 线：
+
+- 和 V2 基础依赖接近。
+- 但代码目录和 V2 不同，脚本版本和数据切分也不同。
+- 不建议和 V2 共用同一个环境。
