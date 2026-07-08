@@ -86,43 +86,51 @@ def train_epoch(model, loader, optimizer, loss_func, epoch, args, scaler):
 
 def val_epoch(model, loader, loss_func, epoch, args):
     model.eval()
-    running_loss = 0.0
-    dice_metric = DiceMetric(include_background=True, reduction="mean")
-    all_f1 = {1: [], 3: [], 4: []}
-    all_auc = {1: [], 3: [], 4: []}
+    total_loss = 0.0
+    # 使用 reduction="none" 获取每个类别的 Dice
+    dice_metric = DiceMetric(include_background=True, reduction="none")
+    # 用于记录验证集中出现的类别
+    present_classes = set()
     with torch.no_grad():
-        for batch_data in loader:
-            inputs = batch_data["image"].cuda()
-            labels = batch_data["label"].cuda().long()
-            if labels.dim() == 5 and labels.shape[1] == 1:
-                labels = labels.squeeze(1)
-            labels = torch.clamp(labels, 0, 4)
-            outputs = model(inputs)
-            loss = loss_func(outputs, labels)
-            running_loss += loss.item()
-            # Dice 计算
-            pred = torch.argmax(outputs, dim=1, keepdim=True)
-            dice_metric(y_pred=pred.long(), y=labels)
-            # 检测指标
-            probs = torch.softmax(outputs, dim=1)
-            for class_id in [1,3,4]:
-                prob = probs[:, class_id, ...]
-                gt_binary = (labels == class_id).cpu().numpy().astype(np.int64)
-                for b in range(prob.shape[0]):
-                    prob_np = prob[b].cpu().numpy()
-                    gt_np = gt_binary[b]
-                    f1_list, auc_val = compute_detection_metrics(prob_np, gt_np)
-                    all_f1[class_id].append(f1_list[-1] if f1_list else 0)
-                    all_auc[class_id].append(auc_val)
-    val_loss = running_loss / len(loader)
-    dice = dice_metric.aggregate().item()
+        for batch_idx, batch in enumerate(loader):
+            x = batch["image"].cuda()
+            y = batch["label"].cuda()
+            if y.dim() == 5 and y.shape[1] == 1:
+                y = y.squeeze(1)
+            y = y.long()
+            with torch.cuda.amp.autocast():
+                logits = model(x)
+                loss = loss_func(logits, y)
+            total_loss += loss.item()
+            pred = torch.argmax(logits, dim=1, keepdim=True)
+            # 更新 Dice 指标（每个类别单独）
+            dice_metric(y_pred=pred.long(), y=y)
+            # 记录当前 batch 中出现的类别
+            batch_classes = torch.unique(y).cpu().numpy()
+            present_classes.update(batch_classes)
+            if batch_idx == 0:
+                print(f"Debug: pred shape {pred.shape}, y shape {y.shape}, unique pred {torch.unique(pred)}, unique y {torch.unique(y)}")
+    val_loss = total_loss / len(loader)
+
+    # 获取每个类别的 Dice 值（形状: (num_classes,)）
+    dice_per_class = dice_metric.aggregate()  # 这是一个 tensor，长度为 num_classes
     dice_metric.reset()
-    print(f"Validation loss: {val_loss:.4f}, Dice: {dice:.4f}")
-    for class_id in [1,3,4]:
-        avg_f1 = np.mean(all_f1[class_id]) if all_f1[class_id] else 0
-        avg_auc = np.mean(all_auc[class_id]) if all_auc[class_id] else 0
-        print(f"Class {class_id} - Small lesion detection: F1={avg_f1:.4f}, AUC={avg_auc:.4f}")
-    return val_loss, dice
+
+    # 只对验证集中实际出现的类别计算平均 Dice
+    present_classes = sorted(list(present_classes))  # 确保顺序
+    valid_dice = [dice_per_class[c] for c in present_classes if c < len(dice_per_class)]
+    if valid_dice:
+        mean_dice = torch.mean(torch.tensor(valid_dice)).item()
+    else:
+        mean_dice = 0.0
+
+    print(f"Validation loss: {val_loss:.4f}, Average Dice (over present classes {present_classes}): {mean_dice:.4f}")
+    # 可选：打印每个类别的 Dice
+    for c in present_classes:
+        if c < len(dice_per_class):
+            print(f"  Class {c} Dice: {dice_per_class[c].item():.4f}")
+
+    return val_loss, mean_dice
 
 def run_training(model, train_loader, val_loader, optimizer, loss_func, args):
     writer = SummaryWriter(logdir=args.logdir)
