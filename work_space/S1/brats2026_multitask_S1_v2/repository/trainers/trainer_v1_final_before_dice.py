@@ -3,6 +3,7 @@ import sys
 import yaml
 import random
 import numpy as np
+from pathlib import Path
 
 import torch
 from torch.utils.data import DataLoader
@@ -11,11 +12,11 @@ from torch.cuda.amp import GradScaler
 
 from torch.utils.tensorboard import SummaryWriter
 
-ROOT = "/root/autodl-tmp/brats2026/repository"
+ROOT = Path(__file__).resolve().parents[1]
 
-sys.path.append(f"{ROOT}/datasets")
-sys.path.append(f"{ROOT}/models")
-sys.path.append(f"{ROOT}/losses")
+sys.path.append(str(ROOT / "datasets"))
+sys.path.append(str(ROOT / "models"))
+sys.path.append(str(ROOT / "losses"))
 
 from brats_multitask_dataset import BraTSMultiTaskDataset
 from multitask_unet import MultiTaskUNet
@@ -28,16 +29,72 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument(
     "--config",
-    default="/root/autodl-tmp/brats2026/repository/configs/multitask_v1.yaml"
+    default=str(ROOT / "configs" / "multitask_v1.yaml")
 )
 
 args = parser.parse_args()
 
-CONFIG = args.config
+def resolve_config_path(path):
+    path = Path(path).expanduser()
+    if path.is_absolute():
+        return path
+    cwd_path = Path.cwd() / path
+    if cwd_path.exists():
+        return cwd_path
+    return ROOT / path
+
+
+def resolve_repo_path(path):
+    if path is None or path == "":
+        return ""
+    path = Path(str(path)).expanduser()
+    if path.is_absolute():
+        return str(path)
+    return str(ROOT / path)
+
+
+CONFIG = resolve_config_path(args.config)
 
 
 with open(CONFIG, "r") as f:
     cfg = yaml.safe_load(f)
+
+cfg["data"]["data_root"] = os.environ.get(
+    "BRATS_TRAIN_ROOT",
+    cfg["data"]["data_root"]
+)
+split_dir = os.environ.get("BRATS_SPLIT_DIR")
+if split_dir:
+    cfg["data"]["train_split"] = str(
+        Path(split_dir) / Path(cfg["data"]["train_split"]).name
+    )
+    cfg["data"]["val_split"] = str(
+        Path(split_dir) / Path(cfg["data"]["val_split"]).name
+    )
+cfg["data"]["train_split"] = os.environ.get(
+    "BRATS_TRAIN_SPLIT",
+    cfg["data"]["train_split"]
+)
+cfg["data"]["val_split"] = os.environ.get(
+    "BRATS_VAL_SPLIT",
+    cfg["data"]["val_split"]
+)
+cfg["data"]["data_root"] = resolve_repo_path(cfg["data"]["data_root"])
+cfg["data"]["train_split"] = resolve_repo_path(cfg["data"]["train_split"])
+cfg["data"]["val_split"] = resolve_repo_path(cfg["data"]["val_split"])
+cfg["train"]["resume"] = resolve_repo_path(
+    os.environ.get("S1_RESUME", cfg["train"].get("resume", ""))
+)
+cfg["checkpoint"]["save_dir"] = resolve_repo_path(
+    os.environ.get("S1_CHECKPOINT_DIR", cfg["checkpoint"]["save_dir"])
+)
+cfg["logging"]["tensorboard_dir"] = resolve_repo_path(
+    os.environ.get("S1_TENSORBOARD_DIR", cfg["logging"]["tensorboard_dir"])
+)
+if "inference" in cfg and "output_dir" in cfg["inference"]:
+    cfg["inference"]["output_dir"] = resolve_repo_path(
+        os.environ.get("S1_OUTPUT_DIR", cfg["inference"]["output_dir"])
+    )
 
 
 seed = cfg["seed"]
@@ -327,4 +384,3 @@ for epoch in range(
 writer.close()
 
 print("training complete")
-

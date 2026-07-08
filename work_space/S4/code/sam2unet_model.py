@@ -399,7 +399,7 @@ class SAM2UNet3D(nn.Module):
 
     Args:
         spatial_size: Input image size (D, H, W)
-        in_channels: Number of input channels (4 for t1c, t1n, t2f, t2w)
+        in_channels: Number of input channels (4 for t1n, t1c, t2w, t2f)
         out_channels: Final label-map class count. Plan 2 requires 5 labels:
             BG, NETC, SNFH, ET, RC. The actual heads are 4 + 1 channels.
         feature_size: Base feature dimension (default: 48)

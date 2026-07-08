@@ -118,7 +118,7 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
             self.my_init_kwargs[k] = locals()[k]
 
         ###  Saving all the init args into class variables for later access
-        continue_training = plans.pop("continue_training")
+        continue_training = bool(plans.pop("continue_training", False))
         logger_config = {"plans": plans, "configuration": configuration, "fold": fold, "dataset": dataset_json}
         self.plans_manager = PlansManager(plans)
         self.configuration_manager = self.plans_manager.get_configuration(configuration)
@@ -596,8 +596,19 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
                 empty_cache(self.device)
 
     def do_split(self):
-        train_file = "/root/autodl-tmp/brats2026/data/splits/train_full.txt"
-        val_file = "/root/autodl-tmp/brats2026/data/splits/val_full.txt"
+        repo_dir = os.environ.get("BRATS_S2_REPO_DIR", os.getcwd())
+        split_dir = os.environ.get(
+            "BRATS_SPLIT_DIR",
+            os.path.join(repo_dir, "data", "splits")
+        )
+        train_file = os.environ.get(
+            "BRATS_TRAIN_SPLIT",
+            os.path.join(split_dir, "train_full.txt")
+        )
+        val_file = os.environ.get(
+            "BRATS_VAL_SPLIT",
+            os.path.join(split_dir, "val_full.txt")
+        )
 
         with open(train_file) as f:
             tr_keys = [i.strip() for i in f if i.strip()]

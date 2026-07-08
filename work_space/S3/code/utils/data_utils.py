@@ -48,9 +48,12 @@ def datafold_read(datalist, basedir, fold=0, key="training"):
     for d in json_data.get("training", []):
         if isinstance(d["image"], str):
             case_id = d["image"]
-            modalities = ["t1", "t1ce", "t2", "flair"]
-            d["image"] = [os.path.join(basedir, case_id, f"{m}.nii.gz") for m in modalities]
-            d["label"] = os.path.join(basedir, case_id, "seg.nii.gz")
+            modalities = ["t1n", "t1c", "t2w", "t2f"]
+            d["image"] = [
+                os.path.join(basedir, case_id, f"{case_id}-{m}.nii.gz")
+                for m in modalities
+            ]
+            d["label"] = os.path.join(basedir, case_id, f"{case_id}-seg.nii.gz")
         if d.get("fold", 0) == fold:
             val.append(d)
         else:

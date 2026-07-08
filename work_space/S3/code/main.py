@@ -1,5 +1,6 @@
 import os
 import argparse
+import inspect
 import torch
 from monai.networks.nets import SwinUNETR
 from trainer import run_training
@@ -36,17 +37,21 @@ def main():
     parser.add_argument("--smooth_dr", default=1e-5, type=float)
     parser.add_argument("--gpu", default=0, type=int, help="GPU id to use")
     args = parser.parse_args()
+    torch.cuda.set_device(args.gpu)
     
     # 损失函数：交叉熵
     loss_func = torch.nn.CrossEntropyLoss()
     
     # 创建模型
-    model = SwinUNETR(
-        in_channels=args.in_channels,
-        out_channels=args.out_channels,
-        feature_size=args.feature_size,
-        use_checkpoint=args.use_checkpoint,
-    )
+    model_kwargs = {
+        "in_channels": args.in_channels,
+        "out_channels": args.out_channels,
+        "feature_size": args.feature_size,
+        "use_checkpoint": args.use_checkpoint,
+    }
+    if "img_size" in inspect.signature(SwinUNETR).parameters:
+        model_kwargs["img_size"] = (args.roi_x, args.roi_y, args.roi_z)
+    model = SwinUNETR(**model_kwargs)
     model.cuda(args.gpu)
     
     # 优化器

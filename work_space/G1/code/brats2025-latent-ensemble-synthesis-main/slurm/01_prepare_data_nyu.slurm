@@ -7,8 +7,8 @@
 #SBATCH --mem=48G
 #SBATCH --gres=gpu:1
 #SBATCH --time=04:00:00
-#SBATCH --output=/scratch/bf2260/ECNU_EYU_data/logs/prep_data_%j.out
-#SBATCH --error=/scratch/bf2260/ECNU_EYU_data/logs/prep_data_%j.err
+#SBATCH --output=logs/prep_data_%j.out
+#SBATCH --error=logs/prep_data_%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=bf2260@nyu.edu
 # ============================================================

@@ -127,7 +127,7 @@ run_root/
 ```
 
 如果 run root 是 G1 T2W completion 输出，`case_dir` 直接视为 `source_case_id`，`label_kind=completion`，`label_index=0`。
-completion 模式下，G2 不再要求 source 出现在 `g1_met_source_cases_v1.csv`，也不再要求 `usable_for_met96=True`；但 source 必须仍能在真实数据 manifest 中追溯到，且真实数据侧 final QC 通过。
+completion 模式下，G2 不再要求 source 出现在 `g1_met_source_cases_v1.csv`，也不再要求 `usable_for_met96=True`；但 source 必须仍能在真实数据 manifest 中追溯到，且真实数据侧必要文件完整。
 
 如果 run root 是 G1 diffusion augmentation 输出，目录名虽然也可能是 `BraTS-MET-xxxxx-xxx`，但 G2 将其标记为 `label_kind=full_generation`。full_generation 不按 completion 处理，必须遵守 `g1_met_source_cases_v1.csv`、`usable_for_met96=True`、train-only source、无 val/test 泄漏等 synthetic augmentation 规则。
 

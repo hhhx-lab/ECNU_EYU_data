@@ -15,10 +15,17 @@ BraTS-METS 2025 / BraTS 2026
 
 MRI modalities:
 
-* T1C
 * T1N
-* T2F
+* T1C
 * T2W
+* T2F
+
+Channel order:
+
+* 0 = T1N
+* 1 = T1C
+* 2 = T2W
+* 3 = T2F
 
 Tumor labels:
 
@@ -35,6 +42,25 @@ RC labels:
 ---
 
 # Data Preparation
+
+Recommended real-only path on the shared project:
+
+```bash
+PROJECT_ROOT=/scratch/bf2260/ECNU_EYU_data
+cd ${PROJECT_ROOT}
+mkdir -p logs
+sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
+```
+
+That Slurm job first runs `work_space/G2/code/g2_build_realonly_from_raw.py` on the raw data directory. Cases missing `t2w` or any required file are recorded in `realonly_skipped_incomplete_cases.csv` and are not used for training. It then reads the generated G2 real-only mapping/split and builds:
+
+```text
+work_space/S1/data/real_only_cases
+work_space/S1/results/realonly/checkpoints
+work_space/S1/results/realonly/tensorboard
+```
+
+The original data are not edited. Four modalities and the effective seg label are symlinked into the S1 view, then `tumor_label.nii.gz` and `rc_label.nii.gz` are generated inside that view only.
 
 Apply corrected labels:
 
@@ -79,6 +105,10 @@ python scripts/10_create_full_split.py
 Full dataset training:
 
 ```bash
+export BRATS_TRAIN_ROOT=/scratch/bf2260/ECNU_EYU_data/work_space/S1/data/real_only_cases
+export BRATS_SPLIT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S1/brats2026_multitask_S1_v2/repository/data/splits
+export S1_CHECKPOINT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S1/results/realonly/checkpoints
+export S1_TENSORBOARD_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S1/results/realonly/tensorboard
 python trainers/trainer_v1_final.py \
   --config configs/multitask_v1_full.yaml
 ```
@@ -124,4 +154,3 @@ Loss:
 
 * DiceCE Loss
 * Uncertainty Weighting
-

@@ -1,17 +1,23 @@
 # SAM2-UNet BraTS-MET 3D 分割训练说明
 
-本文档说明本仓库中 `sam2unet_model.py`、`train_sam2unet_post.py` 和 `slurm/train_sam2unet_post.slurm` 的代码构成、作用，以及如何在本地/服务器/Slurm 集群上启动训练、配置参数和检查结果。
+本文档说明 `work_space/S4/code` 中 `sam2unet_model.py`、`train_sam2unet_post.py` 和 `slurm/train_sam2unet_post.slurm` 的代码构成、作用，以及如何在服务器/Slurm 集群上启动训练、配置参数和检查结果。
 
-当前仓库位于 Windows 本地路径 `D:\2025sam`，但训练和 Slurm 示例使用 Linux 服务器路径风格。把示例中的 `/path/to/2025sam`、`/path/to/TrainingData`、`/path/to/output` 替换成服务器上的真实路径即可。
+当前项目推荐服务器根目录为 `/scratch/bf2260/ECNU_EYU_data`。S4 代码目录是：
+
+```text
+/scratch/bf2260/ECNU_EYU_data/work_space/S4/code
+```
+
+S4 当前可以直接扫描完整病例目录训练，但它仍使用自身 RC-stratified split；若要和 S1/S2 做严格公平对比，后续应再接入 G2 固定 split。
 
 ## 1. 项目简介
 
 本项目用于 BraTS-MET 3D 医学图像分割。输入是每个病例的 4 个 MRI 模态：
 
-- `t1c`
 - `t1n`
-- `t2f`
+- `t1c`
 - `t2w`
+- `t2f`
 
 标签使用 5 类整数：
 
@@ -33,25 +39,29 @@
 ## 2. 目录结构
 
 ```text
-2026sam
+work_space/S4/code
 ├── sam2unet_model.py                 # SAM2-UNet 3D 模型定义
 ├── train_sam2unet_post.py            # 训练、验证、保存结果的主脚本
 ├── slurm/
 │   └── train_sam2unet_post.slurm     # Slurm 提交脚本
-├── TrainingData/                     # 本地训练数据示例目录
-├── output/                           # 本地历史输出或训练输出目录                            # 方案说明文档
 └── README.md                         # 当前说明文档
 ```
 
-每个病例目录应放在 `TrainingData/` 或服务器上对应的训练数据根目录下。一个完整病例目录示例：
+每个病例目录应放在服务器上的训练数据根目录下。real-only smoke test 可先使用：
+
+```text
+/scratch/bf2260/ECNU_EYU_data/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training
+```
+
+一个完整病例目录示例：
 
 ```text
 TrainingData/
 └── BraTS-MET-00001-000/
-    ├── BraTS-MET-00001-000-t1c.nii.gz
     ├── BraTS-MET-00001-000-t1n.nii.gz
-    ├── BraTS-MET-00001-000-t2f.nii.gz
+    ├── BraTS-MET-00001-000-t1c.nii.gz
     ├── BraTS-MET-00001-000-t2w.nii.gz
+    ├── BraTS-MET-00001-000-t2f.nii.gz
     └── BraTS-MET-00001-000-seg.nii.gz
 ```
 
@@ -212,10 +222,10 @@ python sam2unet_model.py
 
 `find_case_dirs(train_dir, limit=None)` 会扫描训练数据根目录，寻找完整病例。每个病例必须包含：
 
-- `{case}-t1c.nii.gz`
 - `{case}-t1n.nii.gz`
-- `{case}-t2f.nii.gz`
+- `{case}-t1c.nii.gz`
 - `{case}-t2w.nii.gz`
+- `{case}-t2f.nii.gz`
 - `{case}-seg.nii.gz`
 
 `scan_label_statistics(train_dir, save_dir, limit=None)` 会读取每个病例的 segmentation，统计：
@@ -382,8 +392,8 @@ pip install torch nibabel numpy einops tqdm matplotlib
 
 ```bash
 python train_sam2unet_post.py \
-  --train_dir /path/to/2025sam/TrainingData \
-  --save_dir /path/to/2025sam/output/debug_post \
+  --train_dir /scratch/bf2260/ECNU_EYU_data/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training \
+  --save_dir /scratch/bf2260/ECNU_EYU_data/work_space/S4/output/debug_post \
   --debug_case_limit 20 \
   --epochs 2 \
   --warmup_epochs 1 \
@@ -397,8 +407,8 @@ python train_sam2unet_post.py \
 
 ```bash
 python train_sam2unet_post.py \
-  --train_dir /path/to/2025sam/TrainingData \
-  --save_dir /path/to/2025sam/output/debug_small \
+  --train_dir /scratch/bf2260/ECNU_EYU_data/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training \
+  --save_dir /scratch/bf2260/ECNU_EYU_data/work_space/S4/output/debug_small \
   --debug_case_limit 10 \
   --epochs 2 \
   --warmup_epochs 1 \
@@ -412,8 +422,8 @@ python train_sam2unet_post.py \
 
 ```bash
 python train_sam2unet_post.py \
-  --train_dir /path/to/2025sam/TrainingData \
-  --save_dir /path/to/2025sam/output/full_train_450 \
+  --train_dir /scratch/bf2260/ECNU_EYU_data/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training \
+  --save_dir /scratch/bf2260/ECNU_EYU_data/work_space/S4/output/full_train_450 \
   --epochs 450 \
   --warmup_epochs 30 \
   --checkpoint_interval 10 \
@@ -513,9 +523,9 @@ CUDA_MODULE=compiler/cuda/12.1
 ```bash
 sbatch --export=ALL,\
 RUN_MODE=debug,\
-PROJECT_DIR=/path/to/2025sam,\
-TRAIN_DIR=/path/to/2025sam/TrainingData,\
-SAVE_ROOT=/path/to/2025sam/output,\
+PROJECT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S4/code,\
+TRAIN_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training,\
+SAVE_ROOT=/scratch/bf2260/ECNU_EYU_data/work_space/S4/output,\
 CONDA_ENV=myenv \
 slurm/train_sam2unet_post.slurm
 ```
@@ -537,9 +547,9 @@ debug 模式默认会设置：
 ```bash
 sbatch --export=ALL,\
 RUN_MODE=full,\
-PROJECT_DIR=/path/to/2025sam,\
-TRAIN_DIR=/path/to/2025sam/TrainingData,\
-SAVE_ROOT=/path/to/2025sam/output,\
+PROJECT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S4/code,\
+TRAIN_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training,\
+SAVE_ROOT=/scratch/bf2260/ECNU_EYU_data/work_space/S4/output,\
 CONDA_ENV=myenv \
 slurm/train_sam2unet_post.slurm
 ```
@@ -563,9 +573,9 @@ export SAM2UNET_SW_BATCH_SIZE=1
 
 sbatch --export=ALL,\
 RUN_MODE=full,\
-PROJECT_DIR=/path/to/2025sam,\
-TRAIN_DIR=/path/to/2025sam/TrainingData,\
-SAVE_ROOT=/path/to/2025sam/output,\
+PROJECT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S4/code,\
+TRAIN_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training,\
+SAVE_ROOT=/scratch/bf2260/ECNU_EYU_data/work_space/S4/output,\
 CONDA_ENV=myenv \
 slurm/train_sam2unet_post.slurm
 ```

@@ -4,7 +4,7 @@
 
 Dataset ID:
 
-501
+260
 
 Configuration:
 
@@ -30,11 +30,15 @@ custom_nnunet/nnUNetTrainerBraTS2026RC.py
 
 Training:
 
-1167 cases
+829 cases
 
 Validation:
 
-129 cases
+207 cases
+
+Internal locked test:
+
+259 cases, not materialized into the training dataset
 
 No overlap exists.
 
@@ -60,5 +64,22 @@ Training duration:
 
 ## Training command
 
-bash train.sh
+Recommended server submission:
 
+```bash
+PROJECT_ROOT=/scratch/bf2260/ECNU_EYU_data
+cd ${PROJECT_ROOT}
+mkdir -p logs
+sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
+```
+
+The Slurm job refreshes `work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv` and `work_space/G2/results/splits/splits_final_train_val_test.json` from raw data before conversion. Cases missing `t2w` or any required file are written to `work_space/G2/results/manifests/realonly_skipped_incomplete_cases.csv` and skipped.
+
+Manual command after conversion and preprocessing:
+
+```bash
+nnUNetv2_plan_and_preprocess -d 260 --verify_dataset_integrity
+bash train.sh
+```
+
+`train.sh` first copies `custom_nnunet/nnUNetTrainerBraTS2026RC.py` into the active Python environment under `nnunetv2/training/nnUNetTrainer/`. This makes `nnUNetv2_train -tr nnUNetTrainerBraTS2026RC` discover the custom trainer on the server.

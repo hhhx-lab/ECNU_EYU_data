@@ -2,11 +2,11 @@ seed: 42
 
 data:
 
-  train_split: /root/autodl-tmp/brats2026/data/splits/train_cases.txt
+  train_split: data/splits/train_cases.txt
 
-  val_split: /root/autodl-tmp/brats2026/data/splits/val_cases.txt
+  val_split: data/splits/val_cases.txt
 
-  data_root: /root/autodl-tmp/brats2026/data/sample50
+  data_root: data/sample50
 
 
 model:
@@ -30,7 +30,7 @@ train:
 
   amp: true
 
-  resume: "/root/autodl-tmp/brats2026/experiments/checkpoints/latest.pth"
+  resume: ""
 
   patch_size:
     - 96
@@ -40,17 +40,16 @@ train:
 
 checkpoint:
 
-  save_dir: /root/autodl-tmp/brats2026/experiments/checkpoints
+  save_dir: experiments/checkpoints
 
   save_every: 5
 
 
 logging:
 
-  tensorboard_dir: /root/autodl-tmp/brats2026/experiments/tensorboard
+  tensorboard_dir: experiments/tensorboard
 
 
 inference:
 
-  output_dir: /root/autodl-tmp/brats2026/experiments/predictions
-
+  output_dir: experiments/predictions

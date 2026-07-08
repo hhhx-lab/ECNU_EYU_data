@@ -7,8 +7,8 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH --time=72:00:00
-#SBATCH --output=/scratch/bf2260/ECNU_EYU_data/logs/train_%j.out
-#SBATCH --error=/scratch/bf2260/ECNU_EYU_data/logs/train_%j.err
+#SBATCH --output=logs/train_%j.out
+#SBATCH --error=logs/train_%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=bf2260@nyu.edu
 # ============================================================

@@ -4,7 +4,7 @@
 
 详见 [task_assignment.md](task_assignment.md)。
 
-G2 当前负责 Task 1 的数据生成、G1 raw output 接收、合成数据质量控制、数据增强实验设计与交付物整理。当前主口径已经调整为：**G2 完全适配 G1 的 GliGAN-compatible diffusion 输出**，不要求 G1 第一阶段直接输出理想 `SYN-MET-*` 资产；G1 负责生成局部 ROI raw synthetic case，G2 负责标准化、记忆化、QC、nnU-Net 导出和数据报告。
+G2 当前负责 Task 1 的数据清单、G1 raw output 接收、合成数据质量控制、数据增强实验设计与交付物整理。当前主口径分两层：真实数据 real-only baseline 只做 raw intake 和 split，不把它称为 QC；synthetic 数据到来后再做完整质量控制。G1 负责生成局部 ROI raw synthetic case，G2 负责标准化、记忆化、QC、nnU-Net 导出和数据报告。
 
 ## 当前进度
 
@@ -14,7 +14,8 @@ G2 当前负责 Task 1 的数据生成、G1 raw output 接收、合成数据质�
 4. 已新增 `G2_G1适配执行清单.md`，把 G2 接收 G1 输出后的动作拆成可执行步骤。
 5. 已补充 `g2_synthetic_raw_intake_qc.py`、`g2_materialize_nnunet_dataset.py`、`g2_official_mets_metrics_parser.py` 三个工程入口。
 6. 已补充 `diffusion_quality_metrics_template.csv` 和 `synthetic_generation_manifest_template_g1.csv`，用于后续数据报告和 G1 smoke run 接收。
-7. 已完成本机可执行的训练前数据准备，结果保存到 [results/](results/)；GPU 训练、在线 batch 生成、nnU-Net 预处理和大规模 synthetic NIfTI 生成暂缓到训练机执行。
+7. 已新增 `g2_build_realonly_from_raw.py`：服务器训练前从 raw data 自动生成 `nnunet_case_mapping_realonly.csv` 和 `splits_final_train_val_test.json`，并把缺 `t2w` 或缺任一必要文件的病例写入 `realonly_skipped_incomplete_cases.csv`。
+8. 已完成本机可执行的训练前数据准备，结果保存到 [results/](results/)；GPU 训练、在线 batch 生成、nnU-Net 预处理和大规模 synthetic NIfTI 生成暂缓到训练机执行。
 
 ## 本周计划
 
@@ -34,6 +35,7 @@ G2 当前负责 Task 1 的数据生成、G1 raw output 接收、合成数据质�
 - [results/qc/G2_official_metrics_alignment_QC_strategy_2026-06-15.md](results/qc/G2_official_metrics_alignment_QC_strategy_2026-06-15.md)
 - [results/qc/diffusion_quality_metrics_template.csv](results/qc/diffusion_quality_metrics_template.csv)
 - [results/manifests/synthetic_generation_manifest_template_g1.csv](results/manifests/synthetic_generation_manifest_template_g1.csv)
+- [code/g2_build_realonly_from_raw.py](code/g2_build_realonly_from_raw.py)
 - [code/g2_synthetic_raw_intake_qc.py](code/g2_synthetic_raw_intake_qc.py)
 - [code/g2_materialize_nnunet_dataset.py](code/g2_materialize_nnunet_dataset.py)
 - [code/g2_official_mets_metrics_parser.py](code/g2_official_mets_metrics_parser.py)

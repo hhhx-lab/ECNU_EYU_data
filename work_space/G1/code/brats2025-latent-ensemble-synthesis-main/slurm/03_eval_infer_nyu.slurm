@@ -7,8 +7,8 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=12:00:00
-#SBATCH --output=/scratch/bf2260/ECNU_EYU_data/logs/eval_infer_%j.out
-#SBATCH --error=/scratch/bf2260/ECNU_EYU_data/logs/eval_infer_%j.err
+#SBATCH --output=logs/eval_infer_%j.out
+#SBATCH --error=logs/eval_infer_%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=bf2260@nyu.edu
 # ============================================================

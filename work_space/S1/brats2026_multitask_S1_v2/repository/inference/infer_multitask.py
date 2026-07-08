@@ -8,9 +8,8 @@ import torch
 from monai.inferers import sliding_window_inference
 
 import sys
-sys.path.append(
-    "/root/autodl-tmp/brats2026/repository"
-)
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(ROOT))
 
 from models.multitask_unet import MultiTaskUNet
 
@@ -24,10 +23,10 @@ def load_case(case_dir):
     mods = []
 
     for mod in [
-        "t1c",
         "t1n",
-        "t2f",
-        "t2w"
+        "t1c",
+        "t2w",
+        "t2f"
     ]:
 
         arr = nib.load(

@@ -101,10 +101,10 @@ class BraTSMultiTaskDataset:
         image = []
 
         for mod in [
-            "t1c",
             "t1n",
-            "t2f",
-            "t2w"
+            "t1c",
+            "t2w",
+            "t2f"
         ]:
 
             arr = nib.load(

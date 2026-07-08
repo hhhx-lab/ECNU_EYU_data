@@ -4,7 +4,8 @@
 
 当前 G2 的正式执行入口在 `../code/`：
 
-1. `g2_create_train_val_test_split.py`：生成固定 train/val/test split，默认口径为 829/207/259。
-2. `g2_synthetic_raw_intake_qc.py`：接收 G1 raw output，生成 QC、accepted/rejected 和质量报告。
-3. `g2_materialize_nnunet_dataset.py`：把 accepted 数据和真实数据映射成 nnU-Net raw dataset 入口；completion 默认替换 fake/broken T2W。
-4. `g2_official_mets_metrics_parser.py`：解析或校验 2026 Task1 官方 leaderboard 字段。
+1. `g2_build_realonly_from_raw.py`：服务器训练前扫描 raw data，跳过缺 `t2w` 或缺任一必要文件的病例，生成 real-only mapping、split 和 skipped 清单。
+2. `g2_create_train_val_test_split.py`：从 mapping 生成固定 train/val/test split；当完整病例数为 1295 时默认口径为 829/207/259。
+3. `g2_synthetic_raw_intake_qc.py`：接收 G1 raw output，生成 QC、accepted/rejected 和质量报告。
+4. `g2_materialize_nnunet_dataset.py`：把 accepted 数据和真实数据映射成 nnU-Net raw dataset 入口；completion 默认替换 fake/broken T2W。
+5. `g2_official_mets_metrics_parser.py`：解析或校验 2026 Task1 官方 leaderboard 字段。

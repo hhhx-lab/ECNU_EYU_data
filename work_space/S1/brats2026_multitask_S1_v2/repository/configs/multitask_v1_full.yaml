@@ -2,11 +2,11 @@ seed: 42
 
 data:
 
-  train_split: /root/autodl-tmp/brats2026/data/splits/train_full.txt
+  train_split: data/splits/train_full.txt
 
-  val_split: /root/autodl-tmp/brats2026/data/splits/val_full.txt
+  val_split: data/splits/val_full.txt
 
-  data_root: /root/autodl-tmp/brats2026/data/extracted/MICCAI-LH-BraTS2025-MET-Challenge-Training
+  data_root: data/extracted/MICCAI-LH-BraTS2025-MET-Challenge-Training
 
 model:
 
@@ -28,7 +28,7 @@ train:
 
   amp: true
 
-  resume: /root/autodl-tmp/brats2026/experiments/checkpoints_full/latest.pth
+  resume: ""
 
   patch_size:
     - 96
@@ -37,14 +37,14 @@ train:
 
 checkpoint:
 
-  save_dir: /root/autodl-tmp/brats2026/experiments/checkpoints_full
+  save_dir: experiments/checkpoints_full
 
   save_every: 10
 
 logging:
 
-  tensorboard_dir: /root/autodl-tmp/brats2026/experiments/tensorboard_full
+  tensorboard_dir: experiments/tensorboard_full
 
 inference:
 
-  output_dir: /root/autodl-tmp/brats2026/experiments/predictions_full
+  output_dir: experiments/predictions_full

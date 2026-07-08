@@ -133,6 +133,7 @@ def val_epoch(model, loader, loss_func, epoch, args):
     return val_loss, mean_dice
 
 def run_training(model, train_loader, val_loader, optimizer, loss_func, args):
+    os.makedirs(args.logdir, exist_ok=True)
     writer = SummaryWriter(logdir=args.logdir)
     scaler = torch.cuda.amp.GradScaler()
     best_dice = 0.0

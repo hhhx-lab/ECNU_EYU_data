@@ -26,7 +26,7 @@ from sam2unet_model import BRATS_MET_NUM_CLASSES, SAM2UNet3D
 # PLAN2 CHANGE: final reporting is limited to the four foreground regions and
 # their average Dice; no segmentation NIfTI prediction images are written.
 CLASS_NAMES = ["NETC", "SNFH", "ET", "RC"]
-MODALITIES = ["t1c", "t1n", "t2f", "t2w"]
+MODALITIES = ["t1n", "t1c", "t2w", "t2f"]
 MAIN_IGNORE_INDEX = 4
 RC_LABEL = 4
 
@@ -179,7 +179,7 @@ def find_case_dirs(train_dir, limit=None):
     if not case_dirs:
         raise ValueError(
             f"No valid cases found in {train_dir}. Expected each case to contain "
-            "{case}-t1c/t1n/t2f/t2w/seg.nii.gz."
+            "{case}-t1n/t1c/t2w/t2f/seg.nii.gz."
         )
     return case_dirs
 

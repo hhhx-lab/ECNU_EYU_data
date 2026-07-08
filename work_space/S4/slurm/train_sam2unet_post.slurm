@@ -22,8 +22,8 @@ set -euo pipefail
 #   - Keep --gres=gpu:1 if your cluster uses generic Slurm GPU resources.
 #
 # Common overrides at submit time:
-#   sbatch --export=ALL,RUN_MODE=debug,PROJECT_DIR=/path/to/2025sam,VENV_DIR=/path/to/venv slurm/train_sam2unet_post.slurm
-#   sbatch --export=ALL,RUN_MODE=full,PROJECT_DIR=/path/to/2025sam,CONDA_ENV=myenv slurm/train_sam2unet_post.slurm
+#   sbatch --export=ALL,RUN_MODE=debug,PROJECT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S4/code,VENV_DIR=/path/to/venv slurm/train_sam2unet_post.slurm
+#   sbatch --export=ALL,RUN_MODE=full,PROJECT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S4/code,CONDA_ENV=myenv slurm/train_sam2unet_post.slurm
 # ============================================================
 
 # -------- User-editable paths --------

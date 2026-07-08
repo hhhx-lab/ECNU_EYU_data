@@ -1,13 +1,33 @@
+import argparse
+import os
 from pathlib import Path
 import shutil
 
-TRAIN_ROOT = Path(
-    "/root/autodl-tmp/brats2026/data/extracted/MICCAI-LH-BraTS2025-MET-Challenge-Training"
-)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_TRAIN_ROOT = "data/extracted/MICCAI-LH-BraTS2025-MET-Challenge-Training"
+DEFAULT_CORRECTED_ROOT = "data/corrected/MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels"
 
-CORRECTED_ROOT = Path(
-    "/root/autodl-tmp/brats2026/data/corrected/MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels"
+
+def resolve_path(path):
+    path = Path(path).expanduser()
+    if path.is_absolute():
+        return path
+    return REPO_ROOT / path
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--train-root",
+    default=os.environ.get("BRATS_TRAIN_ROOT", DEFAULT_TRAIN_ROOT)
 )
+parser.add_argument(
+    "--corrected-root",
+    default=os.environ.get("BRATS_CORRECTED_ROOT", DEFAULT_CORRECTED_ROOT)
+)
+args = parser.parse_args()
+
+TRAIN_ROOT = resolve_path(args.train_root)
+CORRECTED_ROOT = resolve_path(args.corrected_root)
 
 for seg_file in CORRECTED_ROOT.glob("*-seg.nii.gz"):
 

@@ -4,10 +4,10 @@ Input
 
 4-channel MRI
 
-- T1C
 - T1N
-- T2F
+- T1C
 - T2W
+- T2F
 
 Backbone
 
@@ -36,4 +36,3 @@ DiceCE
 Uncertainty Weighting
 
 (V5)
-
