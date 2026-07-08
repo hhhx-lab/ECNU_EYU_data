@@ -1,0 +1,114 @@
+S1 experiment environment
+=========================
+
+文件用途
+--------
+这份文件只说明 S1 real-only baseline 的服务器环境怎么创建、怎么自检、Slurm 默认会用哪个环境。
+S1 当前入口是：
+
+work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
+
+默认 conda 环境名
+----------------
+brats2026_s1
+
+Slurm 默认读取：
+
+CONDA_SH=/share/apps/anaconda3/2025.06/etc/profile.d/conda.sh
+CONDA_ENV=brats2026_s1
+
+如果服务器 conda 路径不同，提交时覆盖：
+
+sbatch --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s1 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
+
+推荐 Python / CUDA / PyTorch
+----------------------------
+1. Python: 3.10
+2. PyTorch: 2.1.x 或更新的 2.x 稳定版
+3. CUDA wheel: 优先 cu118；如果集群统一是 CUDA 12 且已验证 PyTorch CUDA 可用，可以改用 cu121。
+4. 不要使用系统 Python、Homebrew Python 或 sudo pip。
+
+创建环境
+--------
+建议在 login node 或 interactive session 创建环境，不要在正式 batch job 里临时安装依赖。
+
+conda create -n brats2026_s1 python=3.10 -y
+conda activate brats2026_s1
+
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install "monai>=1.3" numpy nibabel pyyaml tensorboard tqdm scikit-image scipy
+
+如果服务器只能使用 CUDA 12.1 wheel，把第一条 pip 改成：
+
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+依赖来源
+--------
+S1 repository/requirements.txt 当前要求：
+
+torch>=2.1
+monai>=1.3
+numpy
+nibabel
+pyyaml
+tensorboard
+tqdm
+scikit-image
+scipy
+
+运行前自检
+----------
+激活环境后执行：
+
+python - <<'PY'
+import torch
+import monai
+import nibabel
+import yaml
+import numpy
+import scipy
+import skimage
+import tqdm
+
+print("torch:", torch.__version__)
+print("torch cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+print("gpu:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
+print("monai:", monai.__version__)
+print("S1 environment check passed")
+PY
+
+预期结果
+--------
+1. import 不报错。
+2. GPU 节点上 cuda available 应该是 True。
+3. 如果在 login node 无 GPU，cuda available 可能是 False；这种情况需要在 interactive GPU 节点再确认一次。
+
+和 S1 代码的对应关系
+--------------------
+1. trainer_v1_final.py 需要 torch、tensorboard、pyyaml、numpy。
+2. datasets/brats_multitask_dataset.py 需要 monai、nibabel、numpy、torch。
+3. models/multitask_unet.py 需要 monai.networks.nets.UNet。
+4. G2 raw intake 脚本只依赖 Python 标准库，不额外增加 S1 环境压力。
+
+正式运行前检查
+--------------
+1. 确认 raw data 已放在：
+   work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training/
+2. 确认该目录里完整病例包含 t1n/t1c/t2w/t2f/seg。
+3. 确认缺 t2w 或缺任一必要文件的病例会被 G2 raw intake 自动跳过。
+4. 确认 S1 Slurm 日志开头能打印 torch 版本和 cuda available。
+
+常见问题
+--------
+1. ModuleNotFoundError: monai
+   说明没有激活 brats2026_s1，或 monai 装到了别的 Python 里。先 which python，再重新激活 conda。
+
+2. cuda available: False
+   先确认是不是在 GPU 节点；如果在 GPU 节点仍为 False，检查 PyTorch wheel 和驱动/CUDA 兼容性。
+
+3. YAML 读取报错
+   确认 pyyaml 已安装，并且从项目根目录通过 Slurm 运行，不要手动改相对路径。
+
+4. 显存不足
+   环境没问题，按 S1_服务器运行手册调低 configs/multitask_v1_full.yaml 里的 batch_size。
