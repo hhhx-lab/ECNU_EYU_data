@@ -3,6 +3,24 @@
 更新日期：2026-06-21
 适用对象：负责在服务器上跑 G1 diffusion augmentation 线的操作者。
 
+## 重要说明：这不是 V2 Slurm 正式入口
+
+这份手册保留为旧 diffusion augmentation 手动流程说明，不能直接当作当前 V2 服务器 Slurm 操作入口。
+
+当前 V2 服务器 Slurm 正式入口在：
+
+```text
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/slurm/
+```
+
+当前 V2 计划和服务器操作口径以这份文档为准：
+
+```text
+work_space/G1/docs/G1_diffusion_V2_计划交付书.md
+```
+
+如果要跑 V2，请优先按 V2 计划交付书和 `slurm/README.md` 执行，不要把本手册里的旧路径、旧命令和 V2 Slurm 混用。
+
 ## 0. 先分清两条 G1 线
 
 G1 现在有两条完全不同的线，不要混着跑：

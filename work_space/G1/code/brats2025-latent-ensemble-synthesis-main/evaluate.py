@@ -9,6 +9,7 @@ Usage:
     python evaluate.py --synthesis_type encdec   # EncDec only
     python evaluate.py --gpu_id 0 --verbose
     python evaluate.py --save_csv results.csv   # save per-subject CSV
+    python evaluate.py --csv_path data/data_csv.csv --split val
 """
 
 import os
@@ -114,6 +115,30 @@ def find_eval_subjects(input_dir):
     return subjects
 
 
+def load_split_subject_ids(csv_path, split):
+    if not split:
+        return None
+
+    split_name = split.strip().lower()
+    if split_name in {"all", "*"}:
+        return None
+
+    if not csv_path:
+        raise ValueError("--csv_path is required when --split is set.")
+
+    df = pd.read_csv(csv_path)
+    required_columns = {"id", "split"}
+    missing = required_columns - set(df.columns)
+    if missing:
+        raise ValueError(f"{csv_path} is missing required columns: {sorted(missing)}")
+
+    split_series = df["split"].astype(str).str.strip().str.lower()
+    ids = set(df.loc[split_series == split_name, "id"].astype(str))
+    if not ids:
+        raise ValueError(f"No subjects with split={split_name!r} found in {csv_path}")
+    return ids
+
+
 def run_encdec_forward(unet, latens_list, device):
     """Synthesize using pre-loaded EncDec model."""
     to_modality_one_hot = torch.tensor(
@@ -166,9 +191,27 @@ def main():
     parser.add_argument("--verbose", action="store_true")
     parser.add_argument("--save_csv", type=str, default=None, help="Save per-subject results to CSV")
     parser.add_argument(
+        "--csv_path",
+        type=str,
+        default=None,
+        help="Optional G1 data_csv.csv used to filter evaluation by split.",
+    )
+    parser.add_argument(
+        "--split",
+        type=str,
+        default="",
+        help="Optional split to evaluate, for example val or test. Empty/all evaluates every complete case in input_dir.",
+    )
+    parser.add_argument(
         "--save_output",
         action="store_true",
-        help="Save synthesized NIfTI files to data/eval_synthesized/"
+        help="Save synthesized NIfTI files."
+    )
+    parser.add_argument(
+        "--output_dir",
+        type=str,
+        default=None,
+        help="Directory for synthesized evaluation outputs. Defaults to data/eval_synthesized or data/eval_synthesized_<split>.",
     )
     parser.add_argument(
         "--input_dir",
@@ -181,10 +224,22 @@ def main():
     device = torch.device(f"cuda:{args.gpu_id}" if args.gpu_id is not None else "cpu")
 
     subjects = find_eval_subjects(args.input_dir)
+    split_ids = load_split_subject_ids(args.csv_path, args.split)
+    if split_ids is not None:
+        before = len(subjects)
+        subjects = [subject for subject in subjects if subject["id"] in split_ids]
+        print(
+            f"Filtered by split={args.split.strip().lower()}: "
+            f"{len(subjects)} / {before} complete subjects remain."
+        )
+
     if not subjects:
         print(f"No subjects with all 4 modalities found in {args.input_dir}")
-        print("Place subjects with t1n, t1c, t2w, t2f files to evaluate.")
-        return
+        if args.split:
+            print(f"Check --csv_path and split={args.split!r}; no matching complete subjects were found.")
+        else:
+            print("Place subjects with t1n, t1c, t2w, t2f files to evaluate.")
+        raise SystemExit(1)
 
     print(f"Found {len(subjects)} subjects with all 4 modalities.")
 
@@ -271,7 +326,9 @@ def main():
 
             # Save synthesized image if requested
             if args.save_output:
-                EVAL_OUTPUT = os.path.join(configs.PATH_DATA, "eval_synthesized")
+                split_suffix = args.split.strip().lower()
+                default_output_name = f"eval_synthesized_{split_suffix}" if split_suffix else "eval_synthesized"
+                EVAL_OUTPUT = args.output_dir or os.path.join(configs.PATH_DATA, default_output_name)
                 os.makedirs(EVAL_OUTPUT, exist_ok=True)
                 out_name = f[first_mod][:-10] + configs.MISSING_MODALITY + f[first_mod][-7:]
                 syn_post = utils.postprocessing(syn_img, configs.MISSING_MODALITY, org_shape)

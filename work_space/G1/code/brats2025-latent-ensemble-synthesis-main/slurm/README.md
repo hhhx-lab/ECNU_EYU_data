@@ -7,7 +7,7 @@ PROJECT_ROOT=/scratch/bf2260/ECNU_EYU_data
 mkdir -p ${PROJECT_ROOT}/logs
 cd ${PROJECT_ROOT}
 
-# G1: submit data preparation (CPU only)
+# G1: submit data preparation (uses 1 GPU for VAE latent encoding)
 PREP_JOB=$(sbatch --parsable work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/01_prepare_data_nyu.slurm)
 echo "Prep job: ${PREP_JOB}"
 
@@ -15,8 +15,13 @@ echo "Prep job: ${PREP_JOB}"
 TRAIN_JOB=$(sbatch --parsable --dependency=afterok:${PREP_JOB} work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/02_train_nyu.slurm)
 echo "Train job: ${TRAIN_JOB}"
 
-# G1: submit eval+inference (GPU, waits for train)
-sbatch --dependency=afterok:${TRAIN_JOB} work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/03_eval_infer_nyu.slurm
+# G1: submit validation-only evaluation (GPU, waits for train)
+EVAL_JOB=$(sbatch --parsable --dependency=afterok:${TRAIN_JOB} work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/03_eval_val_nyu.slurm)
+echo "Eval job: ${EVAL_JOB}"
+
+# Review work_space/G1/data/eval_metrics_val.csv and eval_synthesized_val/.
+# Submit missing-T2W inference only after validation output is acceptable:
+sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_infer_missing_t2w_nyu.slurm
 
 # S2: original-data nnU-Net real-only baseline
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
@@ -33,16 +38,19 @@ mkdir -p logs
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/01_prepare_data_nyu.slurm
 # Wait for completion, then:
 sbatch --dependency=afterok:<PREP_JOB_ID> work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/02_train_nyu.slurm
-sbatch --dependency=afterok:<TRAIN_JOB_ID> work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/03_eval_infer_nyu.slurm
+sbatch --dependency=afterok:<TRAIN_JOB_ID> work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/03_eval_val_nyu.slurm
+# Review val metrics/images, then:
+sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_infer_missing_t2w_nyu.slurm
 ```
 
 ## Script Overview
 
 | Script | GPU | Walltime | What it does |
 |--------|-----|----------|-------------|
-| `01_prepare_data_nyu.slurm` | No | 4h | Data placement, preprocessing, split marking, attention masks, channel weights |
+| `01_prepare_data_nyu.slurm` | 1 GPU | 4h | Data placement, VAE latent preprocessing, split marking, attention masks, channel weights |
 | `02_train_nyu.slurm` | 1 GPU | 72h | EncDec training -> BBDM training |
-| `03_eval_infer_nyu.slurm` | 1 GPU | 12h | Validation evaluation -> inference on input_inference |
+| `03_eval_val_nyu.slurm` | 1 GPU | 12h | Fixed val split evaluation only; writes `eval_metrics_val.csv` and `eval_synthesized_val/` |
+| `04_infer_missing_t2w_nyu.slurm` | 1 GPU | 12h | Missing-T2W inference on `input_inference/`; run only after val output is acceptable |
 | `04_s2_realonly_nyu.slurm` | 1 GPU | 96h | S2 nnU-Net v2 real-only baseline from G2 mapping/split |
 | `05_s1_realonly_nyu.slurm` | 1 GPU | 96h | S1 MONAI multitask real-only baseline from G2 mapping/split |
 
@@ -117,6 +125,7 @@ sbatch --export=ALL,PROJ=/path/to/ECNU_EYU_data,CONDA_ENV=brats2026_s1 work_spac
 4. **Ensure raw data exists** under `work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training/`, or submit with `RAW_DATA_DIR=/path/to/raw`.
 5. **Submit from the project root and ensure `logs/` exists before submitting.** The Slurm `--output/--error` paths are opened before the shell body runs.
 6. **If your project root is not `/scratch/bf2260/ECNU_EYU_data`, pass `PROJ=/path/to/ECNU_EYU_data` at submit time.**
+7. **G1 data preparation uses `work_space/G2/results/manifests/real_train_manifest.csv` by default.** This is the mixed raw-layout manifest covering root-level cases and `UCSD - Training` cases. Override with `G2_REAL_MANIFEST=/path/to/manifest.csv` only if the server data layout is intentionally different.
 
 ## Monitoring
 
@@ -127,7 +136,8 @@ squeue -u ${USER}
 # View output
 tail -f logs/prep_data_<JOB_ID>.out
 tail -f logs/train_<JOB_ID>.out
-tail -f logs/eval_infer_<JOB_ID>.out
+tail -f logs/eval_val_<JOB_ID>.out
+tail -f logs/infer_t2w_<JOB_ID>.out
 tail -f logs/s2_realonly_<JOB_ID>.out
 tail -f logs/s1_realonly_<JOB_ID>.out
 

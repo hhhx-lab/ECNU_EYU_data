@@ -1,6 +1,6 @@
 # G1 T2W 缺失模态填补服务器运行手册
 
-更新日期：2026-06-21
+更新日期：2026-07-08
 适用对象：负责在服务器上跑 G1 缺失模态填补线的操作者。
 
 ## 0. 先记住范围
@@ -13,8 +13,9 @@
 2. G1 用 `prepare_g1_t2w_data.py` 自动把数据摆到 `work_space/G1/data/input/` 和 `work_space/G1/data/input_inference/`。
 3. `preprocess.py` 只保留完整四模态训练病例，缺 `t2w` 的病例不会进 `data_csv.csv`。
 4. `mark_val_split_from_g2.py` 按 G2 固定划分写入 `train/val/test`。
-5. `main.py` 只处理 `t1n/t1c/t2f/seg`，并生成 `t2w`。
-6. G2 再接收 G1 输出，做 QC、accepted/rejected 和后续物化。
+5. `evaluate.py` 只在固定 `val` split 上评估生成质量。
+6. val 结果确认可接受后，`main.py` 才处理 `t1n/t1c/t2f/seg`，并生成缺失 `t2w`。
+7. G2 再接收 G1 输出，做 QC、accepted/rejected 和后续物化。
 
 ## 1. 共享目录约定
 
@@ -80,6 +81,34 @@ python test_vae.py
 ```
 
 只有 VAE 权重加载成功，才继续后面的步骤。
+
+## 3.1 服务器 Slurm 正式顺序
+
+服务器上不要再使用旧的 `03_eval_infer_nyu.slurm`。正式顺序是：
+
+```text
+01_prepare_data_nyu.slurm
+02_train_nyu.slurm
+03_eval_val_nyu.slurm
+04_infer_missing_t2w_nyu.slurm
+```
+
+含义：
+
+1. `01_prepare_data_nyu.slurm`：摆放数据、预处理、写入固定 train/val/test、生成 attention mask 和 channel weights。
+2. `02_train_nyu.slurm`：只用 `split=train` 训练 EncDec 和 BBDM，训练过程内部用 `split=val` 做监控。
+3. `03_eval_val_nyu.slurm`：只评估 `split=val`，输出 `eval_metrics_val.csv` 和 `eval_synthesized_val/`。
+4. `04_infer_missing_t2w_nyu.slurm`：只在 val 结果确认可接受后，对 `input_inference/` 的缺 T2W 病例生成 T2W。
+
+不要把 `03_eval_val_nyu.slurm` 和 `04_infer_missing_t2w_nyu.slurm` 无脑连成自动依赖链。中间需要操作者查看 val 指标和图像，确认没有明显失败后再提交 inference。
+
+`01_prepare_data_nyu.slurm` 默认读取：
+
+```text
+work_space/G2/results/manifests/real_train_manifest.csv
+```
+
+这份 manifest 对应当前原始数据的混合结构：一部分病例在 training 根目录，一部分病例在 `UCSD - Training/` 子目录。不要改用只适配单一路径层级的旧 manifest，除非服务器实际数据目录也被刻意整理成对应结构。确实需要覆盖时，在提交 Slurm 时显式传入 `G2_REAL_MANIFEST=/path/to/manifest.csv`。
 
 ## 4. 第一步：自动摆放 G1 数据
 
@@ -167,25 +196,29 @@ python training_bbdm.py
 2. 再看 `weight_decay`。
 3. 最后再动其他次要参数。
 
-## 9. 第六步：用 Validation 做自检
+## 9. 第六步：只用固定 val split 做自检
 
-`evaluate.py` 只要求完整四模态，不要求 `seg`。官方 `Validation/` 正适合做生成质量 sanity check。
+`evaluate.py` 只要求完整四模态，不要求 `seg`。正式调参和是否进入缺失 T2W 重建，必须看 `data_csv.csv` 里 `split=val` 的病例，不要把全部 `input/` 病例混在一起算验证效果。
 
 ```bash
 python evaluate.py \
-  --input_dir ../../data/raw/Validation \
+  --input_dir ../../data/input \
+  --csv_path ../../data/data_csv.csv \
+  --split val \
   --synthesis_type ensamble \
   --gpu_id 0 \
   --verbose \
-  --save_csv ../../data/eval_validation_metrics.csv \
-  --save_output
+  --save_csv ../../data/eval_metrics_val.csv \
+  --save_output \
+  --output_dir ../../data/eval_synthesized_val
 ```
 
 注意：
 
 1. `ensamble` 是代码里的真实拼写，不要改成 `ensemble`。
 2. 这里不要指向 `input_inference/`，那里面本来就没有 `t2w`。
-3. 只看生成结果是不是有明显空白、错位、截断、强噪声。
+3. 这里也不要只写 `--input_dir ../../data/input` 就结束；必须带 `--csv_path ../../data/data_csv.csv --split val`。
+4. `eval_metrics_val.csv` 和 `eval_synthesized_val/` 可接受后，才进入下一步缺失 T2W 重建。
 
 ## 10. 第七步：推理生成 T2W
 
@@ -209,9 +242,10 @@ python main.py \
   --output_dir ../../data/output \
   --synthesis_type ensamble \
   --gpu_id 0 \
-  --verbose \
-  --compute_bmask
+  --verbose
 ```
+
+`--compute_bmask` 需要额外安装 TotalSegmentator。当前服务器 Slurm 默认不启用它；确认环境已经安装并通过自检前，不要把它加回正式命令。
 
 输出结构：
 
@@ -262,6 +296,7 @@ work_space/G2/results/reports/G2_synthetic_data_quality_report_g1_t2w_completion
 3. `work_space/G1/data/input_inference/` 里没有 `t2w`。
 4. `work_space/G1/data/data_csv.csv` 里没有缺 `t2w` 的病例。
 5. `mark_val_split_from_g2.py` 已执行，`split` 列有 `train/val/test`。
-6. `work_space/G1/data/output/` 里能找到生成的 `t2w`。
-7. `evaluate.py` 对 `Validation/` 跑通。
-8. G2 intake 能产出 accepted/rejected/QC/report 文件。
+6. `evaluate.py --split val` 已生成 `work_space/G1/data/eval_metrics_val.csv`。
+7. `work_space/G1/data/eval_synthesized_val/` 里没有明显空白、错位、截断、强噪声。
+8. val 结果确认可接受后，`work_space/G1/data/output/` 里能找到生成的 `t2w`。
+9. G2 intake 能产出 accepted/rejected/QC/report 文件。
