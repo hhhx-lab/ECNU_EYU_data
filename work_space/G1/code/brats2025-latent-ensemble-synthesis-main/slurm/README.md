@@ -56,7 +56,7 @@ sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_infe
 
 ## S1/S2 Real-Only Baselines
 
-The S1/S2 scripts are for the original-data comparison path. They do not use G1 generated completion data or synthetic augmentation. They first run the G2 raw intake script to scan raw data, skip incomplete cases such as cases without T2W, and generate the real-only mapping/split artifacts used by S1/S2/S3.
+The S1/S2 scripts are for the original-data comparison path. They do not use G1 generated completion data or synthetic augmentation. They first run the G2 raw intake script to scan raw data, prefer corrected labels when available, skip incomplete cases such as cases without T2W, skip cases that still contain illegal label values, and generate the real-only mapping/split artifacts used by S1/S2/S3.
 
 Default project root:
 
@@ -79,7 +79,7 @@ work_space/G2/results/splits/splits_final_train_val_test.json
 work_space/G2/results/manifests/realonly_skipped_incomplete_cases.csv
 ```
 
-`realonly_skipped_incomplete_cases.csv` records cases missing `t1n/t1c/t2w/t2f/seg`. Those cases are not materialized into S1/S2 training data.
+`realonly_skipped_incomplete_cases.csv` records cases missing `t1n/t1c/t2w/t2f/seg` and cases without a clean corrected/raw label. Those cases are not materialized into S1/S2 training data.
 
 `04_s2_realonly_nyu.slurm` writes a train+val-only symlinked nnU-Net raw dataset. The internal locked test list is written to `test_internal_locked.txt` but is not materialized into the training dataset:
 

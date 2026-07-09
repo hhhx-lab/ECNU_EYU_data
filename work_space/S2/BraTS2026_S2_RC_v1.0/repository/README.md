@@ -49,7 +49,7 @@ mkdir -p logs
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
 ```
 
-The Slurm job first runs `work_space/G2/code/g2_build_realonly_from_raw.py` on raw data. Cases missing `t2w` or any required file are recorded and skipped. It then reads the generated G2 real-only mapping/split and materializes train+val cases only. The internal locked test list is recorded but not included in the training dataset:
+The Slurm job first runs `work_space/G2/code/g2_build_realonly_from_raw.py` on raw data. The G2 intake prefers corrected labels when available; cases missing `t2w`, missing any required file, or still containing illegal label values without a clean corrected label are recorded and skipped. It then reads the generated G2 real-only mapping/split and materializes train+val cases only. The internal locked test list is recorded but not included in the training dataset:
 
 ```text
 work_space/S2/data/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly

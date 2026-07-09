@@ -31,6 +31,8 @@ REQUIRED_SUFFIXES = {
     "seg": "seg_source_path",
 }
 
+ALLOWED_LABEL_VALUES = {0, 1, 2, 3, 4}
+
 MAPPING_FIELDNAMES = [
     "nnunet_case_id",
     "source_case_id",
@@ -61,6 +63,14 @@ def parse_args() -> argparse.Namespace:
     project_root = default_project_root()
     results_root = project_root / "work_space" / "G2" / "results"
     default_data_root = project_root / "work_space" / "G1" / "data" / "raw" / "MICCAI-LH-BraTS2025-MET-Challenge-Training"
+    default_corrected_root = (
+        project_root
+        / "work_space"
+        / "G1"
+        / "data"
+        / "raw"
+        / "MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels"
+    )
 
     parser = argparse.ArgumentParser(
         description="Scan raw BraTS-MET data and write G2 real-only mapping/split artifacts."
@@ -71,6 +81,12 @@ def parse_args() -> argparse.Namespace:
         action="append",
         default=[],
         help="Raw data root containing BraTS-MET case folders. Can be passed more than once.",
+    )
+    parser.add_argument(
+        "--corrected-labels-root",
+        action="append",
+        default=[],
+        help="Directory containing corrected <case_id>-seg.nii.gz files. Can be passed more than once.",
     )
     parser.add_argument("--results-root", default=str(results_root))
     parser.add_argument("--mapping-csv", default="")
@@ -88,6 +104,8 @@ def parse_args() -> argparse.Namespace:
     args = parser.parse_args()
     if not args.data_root:
         args.data_root = [str(default_data_root)]
+    if not args.corrected_labels_root:
+        args.corrected_labels_root = [str(default_corrected_root)]
     return args
 
 
@@ -124,14 +142,95 @@ def inspect_case(case_dir: Path) -> tuple[dict[str, Path], list[str]]:
     return files, missing
 
 
+def normalized_label_values(values: object) -> set[int | float]:
+    normalized: set[int | float] = set()
+    for value in values:  # type: ignore[union-attr]
+        numeric = float(value)
+        if numeric.is_integer():
+            normalized.add(int(numeric))
+        else:
+            normalized.add(numeric)
+    return normalized
+
+
+def read_label_values(path: Path) -> set[int | float]:
+    try:
+        import nibabel as nib  # type: ignore[import-not-found]
+        import numpy as np  # type: ignore[import-not-found]
+
+        arr = np.asanyarray(nib.load(str(path)).dataobj)
+        return normalized_label_values(np.unique(arr))
+    except ModuleNotFoundError:
+        try:
+            import SimpleITK as sitk  # type: ignore[import-not-found]
+            import numpy as np  # type: ignore[import-not-found]
+
+            arr = sitk.GetArrayFromImage(sitk.ReadImage(str(path)))
+            return normalized_label_values(np.unique(arr))
+        except ModuleNotFoundError as exc:
+            raise RuntimeError(
+                "Label value checking requires nibabel or SimpleITK in the active environment."
+            ) from exc
+
+
+def illegal_label_values(values: set[int | float]) -> set[int | float]:
+    return set(values) - ALLOWED_LABEL_VALUES
+
+
+def format_label_values(values: set[int | float]) -> str:
+    return ";".join(str(value) for value in sorted(values))
+
+
+def find_corrected_seg(case_id: str, corrected_label_roots: list[Path]) -> Path | None:
+    file_name = f"{case_id}-seg.nii.gz"
+    for root in corrected_label_roots:
+        direct = root / file_name
+        if direct.exists():
+            return direct
+        nested = root / case_id / file_name
+        if nested.exists():
+            return nested
+    return None
+
+
+def select_seg_source(
+    case_id: str,
+    raw_seg_path: Path,
+    corrected_label_roots: list[Path],
+    label_value_reader=read_label_values,
+) -> tuple[Path | None, str, str]:
+    corrected_seg = find_corrected_seg(case_id, corrected_label_roots)
+    if corrected_seg is not None:
+        corrected_values = label_value_reader(corrected_seg)
+        corrected_illegal = illegal_label_values(corrected_values)
+        if not corrected_illegal:
+            return corrected_seg, "corrected", ""
+
+    raw_values = label_value_reader(raw_seg_path)
+    raw_illegal = illegal_label_values(raw_values)
+    if not raw_illegal:
+        return raw_seg_path, "raw", ""
+
+    details = f"illegal_label_values:{format_label_values(raw_illegal)}"
+    if corrected_seg is not None:
+        corrected_values = label_value_reader(corrected_seg)
+        corrected_illegal = illegal_label_values(corrected_values)
+        if corrected_illegal:
+            details += f";corrected_illegal_label_values:{format_label_values(corrected_illegal)}"
+    return None, "", details
+
+
 def build_mapping_rows(
     data_roots: list[Path],
     project_root: Path,
+    corrected_label_roots: list[Path] | None = None,
+    label_value_reader=read_label_values,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     rows: list[dict[str, str]] = []
     skipped: list[dict[str, str]] = []
     seen_cases: set[str] = set()
-    valid_cases: list[tuple[str, Path, Path, dict[str, Path]]] = []
+    valid_cases: list[tuple[str, Path, Path, dict[str, Path], Path, str]] = []
+    corrected_label_roots = corrected_label_roots or []
 
     for case_dir, raw_root in iter_case_dirs(data_roots):
         case_id = case_dir.name
@@ -155,15 +254,31 @@ def build_mapping_rows(
                 "raw_data_root": display_path(raw_root, project_root),
             })
             continue
-        valid_cases.append((case_id, case_dir, raw_root, files))
+        seg_source_path, label_source, skip_reason = select_seg_source(
+            case_id,
+            files["seg"],
+            corrected_label_roots,
+            label_value_reader=label_value_reader,
+        )
+        if seg_source_path is None:
+            skipped.append({
+                "source_case_id": case_id,
+                "case_dir": display_path(case_dir, project_root),
+                "reason": "illegal_label_values",
+                "missing_files": skip_reason,
+                "raw_data_root": display_path(raw_root, project_root),
+            })
+            continue
+        files["seg"] = seg_source_path
+        valid_cases.append((case_id, case_dir, raw_root, files, seg_source_path, label_source))
 
-    for idx, (case_id, _case_dir, raw_root, files) in enumerate(sorted(valid_cases), start=1):
+    for idx, (case_id, _case_dir, raw_root, files, _seg_source_path, label_source) in enumerate(sorted(valid_cases), start=1):
         nnunet_case_id = f"BraTSMET_{idx:06d}"
         row = {
             "nnunet_case_id": nnunet_case_id,
             "source_case_id": case_id,
-            "label_source": "raw",
-            "materialization_status": "deferred_raw_symlink_on_training_machine",
+            "label_source": label_source,
+            "materialization_status": "deferred_symlink_on_training_machine",
             "raw_data_root": display_path(raw_root, project_root),
         }
         for suffix, column in REQUIRED_SUFFIXES.items():
@@ -186,6 +301,7 @@ def main() -> int:
     project_root = Path(args.project_root).expanduser().resolve()
     results_root = Path(args.results_root).expanduser().resolve()
     data_roots = [Path(root).expanduser().resolve() for root in args.data_root]
+    corrected_label_roots = [Path(root).expanduser().resolve() for root in args.corrected_labels_root]
 
     mapping_csv = Path(args.mapping_csv) if args.mapping_csv else results_root / "manifests" / "nnunet_case_mapping_realonly.csv"
     skipped_csv = Path(args.skipped_csv) if args.skipped_csv else results_root / "manifests" / "realonly_skipped_incomplete_cases.csv"
@@ -195,8 +311,12 @@ def main() -> int:
     missing_roots = [root for root in data_roots if not root.exists()]
     for root in missing_roots:
         print(f"warning: raw data root does not exist and will be ignored: {root}", file=sys.stderr)
+    missing_corrected_roots = [root for root in corrected_label_roots if not root.exists()]
+    for root in missing_corrected_roots:
+        print(f"warning: corrected labels root does not exist and will be ignored: {root}", file=sys.stderr)
+    corrected_label_roots = [root for root in corrected_label_roots if root.exists()]
 
-    mapping_rows, skipped_rows = build_mapping_rows(data_roots, project_root)
+    mapping_rows, skipped_rows = build_mapping_rows(data_roots, project_root, corrected_label_roots)
     if not mapping_rows:
         message = "no complete BraTS-MET cases found; expected t1n/t1c/t2w/t2f/seg for each training case"
         if args.fail_if_no_valid_cases:

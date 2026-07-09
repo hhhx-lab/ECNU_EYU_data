@@ -7,7 +7,9 @@ real-only baseline 训练前由 `../../code/g2_build_realonly_from_raw.py` 从 r
 1. `nnunet_case_mapping_realonly.csv`
 2. `realonly_skipped_incomplete_cases.csv`
 
-其中 `realonly_skipped_incomplete_cases.csv` 记录缺 `t1n/t1c/t2w/t2f/seg` 的病例；这些病例不会进入 S1/S2/S3 real-only 训练。
+其中 `realonly_skipped_incomplete_cases.csv` 记录缺 `t1n/t1c/t2w/t2f/seg` 的病例，以及没有可用 corrected label 且 raw seg 仍含非法 label 值的病例；这些病例不会进入 S1/S2/S3 real-only 训练。
+
+`nnunet_case_mapping_realonly.csv` 的 `seg_source_path` 已经优先指向 corrected label。若 corrected label 不存在，则只在 raw seg 的 label 值属于 `{0,1,2,3,4}` 时使用 raw seg。
 
 正式 G1 批次到来后由 `../../code/g2_synthetic_raw_intake_qc.py` 自动生成：
 

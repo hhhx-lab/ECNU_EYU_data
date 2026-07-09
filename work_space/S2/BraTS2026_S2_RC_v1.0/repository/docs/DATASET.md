@@ -32,7 +32,7 @@ Overlap:
 
 ## Labels
 
-Original labels are preserved.
+Labels come from the G2 real-only mapping. The mapping prefers official corrected labels when available. A raw segmentation is used only when its label values are inside `{0,1,2,3,4}`. Cases that still contain illegal labels without a clean corrected label are skipped before nnU-Net materialization.
 
 RC lesions are included in the segmentation targets.
 

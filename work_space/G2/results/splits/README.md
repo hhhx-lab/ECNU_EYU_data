@@ -5,7 +5,7 @@
 当前正式口径：
 
 1. `splits_final_train_val_test.json`
-   - 完整真实病例：按 raw data 实际扫描结果决定，缺 `t2w` 或缺任一必要文件的病例会被跳过。
+   - 有效真实病例：按 raw data 实际扫描结果决定，缺 `t2w`、缺任一必要文件或仍含非法 label 值的病例会被跳过；有 clean corrected label 的病例会自动使用 corrected label。
    - train：用于真实数据训练池和 synthetic source 池。
    - val：用于调参、早停、G1 `s`/`weight_decay` 试验和 S1/S2 dev 评估。
    - test：内部 holdout，只做最终内部测试，不训练、不调参、不作为 synthetic source。

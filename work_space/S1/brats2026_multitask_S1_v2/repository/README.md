@@ -52,7 +52,7 @@ mkdir -p logs
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
 ```
 
-That Slurm job first runs `work_space/G2/code/g2_build_realonly_from_raw.py` on the raw data directory. Cases missing `t2w` or any required file are recorded in `realonly_skipped_incomplete_cases.csv` and are not used for training. It then reads the generated G2 real-only mapping/split and builds:
+That Slurm job first runs `work_space/G2/code/g2_build_realonly_from_raw.py` on the raw data directory. The G2 intake prefers corrected labels when available; cases missing `t2w`, missing any required file, or still containing illegal label values without a clean corrected label are recorded in `realonly_skipped_incomplete_cases.csv` and are not used for training. It then reads the generated G2 real-only mapping/split and builds:
 
 ```text
 work_space/S1/data/real_only_cases

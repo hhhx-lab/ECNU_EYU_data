@@ -73,7 +73,7 @@ mkdir -p logs
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
 ```
 
-The Slurm job refreshes `work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv` and `work_space/G2/results/splits/splits_final_train_val_test.json` from raw data before conversion. Cases missing `t2w` or any required file are written to `work_space/G2/results/manifests/realonly_skipped_incomplete_cases.csv` and skipped.
+The Slurm job refreshes `work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv` and `work_space/G2/results/splits/splits_final_train_val_test.json` from raw data before conversion. The G2 intake prefers corrected labels when available. Cases missing `t2w`, missing any required file, or still containing illegal label values without a clean corrected label are written to `work_space/G2/results/manifests/realonly_skipped_incomplete_cases.csv` and skipped.
 
 Manual command after conversion and preprocessing:
 
