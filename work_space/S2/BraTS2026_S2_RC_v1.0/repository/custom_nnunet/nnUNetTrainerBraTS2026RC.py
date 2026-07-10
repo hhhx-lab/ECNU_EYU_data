@@ -601,14 +601,39 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
             "BRATS_SPLIT_DIR",
             os.path.join(repo_dir, "data", "splits")
         )
+        try:
+            fold = int(self.fold)
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"S2 requires an integer fold in [0, 4], got: {self.fold}") from exc
+        if fold not in range(5):
+            raise ValueError(f"S2 requires fold in [0, 4], got: {fold}")
+
         train_file = os.environ.get(
             "BRATS_TRAIN_SPLIT",
-            os.path.join(split_dir, "train_full.txt")
+            os.path.join(split_dir, f"train_fold{fold}.txt")
         )
         val_file = os.environ.get(
             "BRATS_VAL_SPLIT",
-            os.path.join(split_dir, "val_full.txt")
+            os.path.join(split_dir, f"val_fold{fold}.txt")
         )
+
+        # Backward compatibility for an existing fold-0 checkpoint prepared
+        # before fold-specific files were introduced.
+        if fold == 0 and not os.path.isfile(train_file):
+            train_file = os.path.join(split_dir, "train_full.txt")
+        if fold == 0 and not os.path.isfile(val_file):
+            val_file = os.path.join(split_dir, "val_full.txt")
+
+        if not os.path.isfile(train_file):
+            raise FileNotFoundError(
+                f"Missing fold-{fold} training split: {train_file}. "
+                "Run the S2 real-only preparation Slurm job first."
+            )
+        if not os.path.isfile(val_file):
+            raise FileNotFoundError(
+                f"Missing fold-{fold} validation split: {val_file}. "
+                "Run the S2 real-only preparation Slurm job first."
+            )
 
         with open(train_file) as f:
             tr_keys = [i.strip() for i in f if i.strip()]
@@ -616,8 +641,18 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
         with open(val_file) as f:
             val_keys = [i.strip() for i in f if i.strip()]
 
+        if not tr_keys or not val_keys:
+            raise ValueError(
+                f"Fold {fold} has an empty split: train={len(tr_keys)}, val={len(val_keys)}"
+            )
+        if len(tr_keys) != len(set(tr_keys)) or len(val_keys) != len(set(val_keys)):
+            raise ValueError(f"Fold {fold} split files contain duplicate case IDs")
+        overlap = sorted(set(tr_keys) & set(val_keys))
+        if overlap:
+            raise ValueError(f"Fold {fold} train/val overlap: {overlap[:10]}")
+
         self.print_to_log_file(
-            f"Using BraTS2026 fixed split: {len(tr_keys)} train / {len(val_keys)} val"
+            f"Using BraTS2026 fold {fold}: {len(tr_keys)} train / {len(val_keys)} val"
         )
 
         return tr_keys, val_keys

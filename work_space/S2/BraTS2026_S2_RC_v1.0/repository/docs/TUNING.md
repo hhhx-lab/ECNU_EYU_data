@@ -32,7 +32,8 @@ Select the best checkpoint.
 
 ## Important
 
-The validation split should remain fixed.
+Use the preserved fold 0 validation set for hyperparameter selection.
 
-Do NOT modify the train/validation split during tuning.
-
+Do not tune independently on folds 1-4. After selecting one configuration on
+fold 0, freeze it and train folds 1-4 for cross-validation and out-of-fold
+evaluation. Do not modify any fold files during tuning.

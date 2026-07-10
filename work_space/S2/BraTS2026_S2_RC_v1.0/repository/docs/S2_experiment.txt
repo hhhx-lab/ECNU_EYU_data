@@ -4,9 +4,11 @@ S2 experiment environment
 文件用途
 --------
 这份文件只说明 S2 real-only 主基线的服务器环境怎么创建、怎么自检、Slurm 默认会用哪个环境。
-S2 当前入口是：
+S2 当前入口分为准备、五折训练和官方指标三步：
 
+work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm
 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
+work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
 
 默认 conda 环境名
 ----------------
@@ -17,9 +19,10 @@ Slurm 默认读取：
 CONDA_SH=/share/apps/anaconda3/2025.06/etc/profile.d/conda.sh
 CONDA_ENV=brats2026_s2
 
-如果服务器 conda 路径不同，提交时覆盖：
+如果服务器 conda 路径不同，提交时覆盖。先准备，再提交 folds 1-4：
 
-sbatch --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s2 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
+PREP_JOB=$(sbatch --parsable --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s2 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
+sbatch --dependency=afterok:${PREP_JOB} --array=1-4%4 --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s2 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
 
 推荐 Python / CUDA / PyTorch
 ----------------------------
@@ -88,9 +91,10 @@ nnUNetv2_train -h >/tmp/s2_nnunet_train_help.txt
 和 S2 代码的对应关系
 --------------------
 1. scripts/01_convert_to_nnunet.py 会把 G2 real-only mapping 物化成 nnU-Net raw dataset。
-2. train.sh 会把 custom_nnunet/nnUNetTrainerBraTS2026RC.py 复制到当前 Python 环境的 nnunet trainer 目录。
-3. Slurm 会设置 nnUNet_raw、nnUNet_preprocessed、nnUNet_results。
-4. 正式训练入口是 bash train.sh，不是旧的 train.py。
+2. scripts/04_build_five_fold_splits.py 会保留 fold0，并生成 folds 1-4 的确定性划分。
+3. train.sh 会把 custom_nnunet/nnUNetTrainerBraTS2026RC.py 复制到当前 Python 环境的 nnunet trainer 目录，并根据 S2_FOLD 决定训练、续训或跳过。
+4. Slurm 会设置 nnUNet_raw、nnUNet_preprocessed、nnUNet_results。
+5. 正式训练入口是 Slurm Array 调用 bash train.sh，不是旧的 train.py。
 
 正式运行前检查
 --------------
@@ -98,7 +102,8 @@ nnUNetv2_train -h >/tmp/s2_nnunet_train_help.txt
    work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training/
 2. 确认完整病例包含 t1n/t1c/t2w/t2f/seg。
 3. 确认缺 t2w、缺任一必要文件或仍含非法 label 值的病例会被 G2 raw intake 自动跳过；有 clean corrected label 的病例会自动使用 corrected label。
-4. 确认 S2 Slurm 日志开头能打印 torch 版本、cuda available，并能继续执行 nnUNetv2_plan_and_preprocess。
+4. 确认 CPU 准备任务生成 train_fold0-4.txt、val_fold0-4.txt 和 five_fold_summary.json。
+5. 确认 GPU Array 日志开头打印正确的 S2_FOLD、torch 版本和 cuda available。
 
 常见问题
 --------

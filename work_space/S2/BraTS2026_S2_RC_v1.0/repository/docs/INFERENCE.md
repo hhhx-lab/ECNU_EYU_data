@@ -1,42 +1,57 @@
 # Inference Protocol
 
-Pseudo-test dataset:
+## Input
 
-MICCAI-LH-BraTS2025-MET-Challenge-ValidationData_batch1.zip
+`infer.sh` expects an nnU-Net input directory. Each case must contain four files:
 
----
+```text
+<case_id>_0000.nii.gz  # T1N
+<case_id>_0001.nii.gz  # T1C
+<case_id>_0002.nii.gz  # T2W
+<case_id>_0003.nii.gz  # T2F
+```
 
-## Usage
+The pseudo-test or official test dataset must not be used for training,
+validation, model selection, or parameter tuning.
 
+## Five-fold ensemble
+
+After folds 0-4 are complete, run:
+
+```bash
 bash infer.sh INPUT_FOLDER OUTPUT_FOLDER
+```
 
----
+Defaults:
 
-## Important
+```text
+Dataset ID   = 260
+Configuration= 3d_fullres
+Trainer      = nnUNetTrainerBraTS2026RC
+Folds        = 0 1 2 3 4
+```
 
-This dataset is treated as a TEST set.
+`nnUNetv2_predict` ensembles all five folds. The script verifies every
+`checkpoint_final.pth` before inference.
 
-It must NOT be used for:
+For a temporary fold-0-only smoke test:
 
-- training,
-- validation,
-- model selection,
-- parameter tuning.
+```bash
+S2_FOLDS=0 bash infer.sh INPUT_FOLDER OUTPUT_FOLDER
+```
 
-It is reserved for final evaluation only.
+Fold-0-only output is not the final five-fold result.
 
----
+## Slurm
 
-## Prediction settings
+```bash
+sbatch \
+  --export=ALL,S2_INFERENCE_INPUT=/path/to/nnunet_input \
+  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+```
 
-Dataset ID:
+The default output directory is:
 
-260
-
-Configuration:
-
-3d_fullres
-
-Fold:
-
-0
+```text
+work_space/S2/results/realonly_5fold_inference/
+```

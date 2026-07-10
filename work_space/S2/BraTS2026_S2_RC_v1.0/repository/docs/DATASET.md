@@ -10,13 +10,17 @@ Dataset260_BraTS2026_MET_RealOnly
 
 ---
 
-## Split
+## Five-fold split
 
-Training:
+Current CV pool after preserving the completed fold-0 exclusions:
 
-829 cases
+1035 cases
 
-Validation:
+Per-fold training:
+
+828 cases
+
+Per-fold validation:
 
 207 cases
 
@@ -24,9 +28,13 @@ Internal locked test:
 
 259 cases
 
-Overlap:
+Train/validation overlap within each fold:
 
 0
+
+Each CV-pool case appears in validation exactly once across folds 0-4. Fold 0
+keeps the completed fixed validation set unchanged. The 259-case internal locked
+test never enters Dataset260 training or validation.
 
 ---
 
@@ -74,6 +82,8 @@ BRATS_TRAIN_ROOT
 NNUNET_DATASET_DIR
 BRATS_NNUNET_MAPPING_CSV
 BRATS_MATERIALIZE_MODE
+BRATS_SPLIT_DIR
+S2_FOLD
 ```
 
 Recommended real-only conversion command after generating the train+val-only mapping file:
