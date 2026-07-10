@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=96G
+#SBATCH --mem=160G
 #SBATCH --time=96:00:00
 #SBATCH --output=logs/s1_realonly_%j.out
 #SBATCH --error=logs/s1_realonly_%j.err
@@ -93,6 +93,8 @@ if [[ "${G2_REFRESH_REALONLY}" == "1" || ! -f "${BRATS_NNUNET_MAPPING_CSV}" || !
         --project-root "${PROJ}" \
         --data-root "${RAW_DATA_DIR}" \
         --results-root "${G2_RESULTS}" \
+        --exclude-ids BraTS-MET-01094-002 \
+        --exclude-ids BraTS-MET-01184-002 \
         --fail-if-no-valid-cases
 fi
 if [[ ! -f "${BRATS_NNUNET_MAPPING_CSV}" ]]; then

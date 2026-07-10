@@ -39,4 +39,5 @@ echo "Starting BraTS2026 RC training..."
 nnUNetv2_train \
     "${S2_DATASET_ID}" 3d_fullres 0 \
     -tr nnUNetTrainerBraTS2026RC \
-    -num_gpus 1
+    -num_gpus 1 \
+    --c

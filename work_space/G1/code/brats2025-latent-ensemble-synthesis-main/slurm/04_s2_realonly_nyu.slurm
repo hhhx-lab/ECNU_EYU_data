@@ -11,6 +11,7 @@
 #SBATCH --error=logs/s2_realonly_%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=bf2260@nyu.edu
+#SBATCH --requeue
 
 # ============================================================
 # S2 real-only baseline - nnU-Net v2 + RC-aware trainer
@@ -95,6 +96,8 @@ if [[ "${G2_REFRESH_REALONLY}" == "1" || ! -f "${BRATS_NNUNET_MAPPING_CSV}" || !
         --project-root "${PROJ}" \
         --data-root "${RAW_DATA_DIR}" \
         --results-root "${G2_RESULTS}" \
+        --exclude-ids BraTS-MET-01094-002 \
+        --exclude-ids BraTS-MET-01184-002 \
         --fail-if-no-valid-cases
 fi
 if [[ ! -f "${BRATS_NNUNET_MAPPING_CSV}" ]]; then

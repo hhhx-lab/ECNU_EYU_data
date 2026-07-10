@@ -91,6 +91,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--results-root", default=str(results_root))
     parser.add_argument("--mapping-csv", default="")
     parser.add_argument("--skipped-csv", default="")
+    parser.add_argument(
+        "--exclude-ids",
+        action="append",
+        default=[],
+        help="Source case_id(s) to exclude (full folder name, e.g. BraTS-MET-01094-002). Repeatable.",
+    )
     parser.add_argument("--split-json", default="")
     parser.add_argument("--membership-csv", default="")
     parser.add_argument("--val-fraction-of-train-pool", type=float, default=0.2)
@@ -225,7 +231,9 @@ def build_mapping_rows(
     project_root: Path,
     corrected_label_roots: list[Path] | None = None,
     label_value_reader=read_label_values,
+    exclude_ids: set[str] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    exclude_ids = exclude_ids or set()
     rows: list[dict[str, str]] = []
     skipped: list[dict[str, str]] = []
     seen_cases: set[str] = set()
@@ -244,6 +252,15 @@ def build_mapping_rows(
             })
             continue
         seen_cases.add(case_id)
+        if case_id in exclude_ids:
+            skipped.append({
+                "source_case_id": case_id,
+                "case_dir": display_path(case_dir, project_root),
+                "reason": "excluded_by_request",
+                "missing_files": "",
+                "raw_data_root": display_path(raw_root, project_root),
+            })
+            continue
         files, missing = inspect_case(case_dir)
         if missing:
             skipped.append({
@@ -316,7 +333,12 @@ def main() -> int:
         print(f"warning: corrected labels root does not exist and will be ignored: {root}", file=sys.stderr)
     corrected_label_roots = [root for root in corrected_label_roots if root.exists()]
 
-    mapping_rows, skipped_rows = build_mapping_rows(data_roots, project_root, corrected_label_roots)
+    mapping_rows, skipped_rows = build_mapping_rows(
+        data_roots,
+        project_root,
+        corrected_label_roots,
+        exclude_ids=set(args.exclude_ids),
+    )
     if not mapping_rows:
         message = "no complete BraTS-MET cases found; expected t1n/t1c/t2w/t2f/seg for each training case"
         if args.fail_if_no_valid_cases:
