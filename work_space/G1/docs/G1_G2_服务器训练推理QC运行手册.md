@@ -1,302 +1,366 @@
-# G1 T2W 缺失模态填补服务器运行手册
+# G1 V2 缺失 T2W 填补服务器运行手册
 
-更新日期：2026-07-08
-适用对象：负责在服务器上跑 G1 缺失模态填补线的操作者。
+更新日期：2026-07-10
 
-## 0. 先记住范围
+适用对象：在华东师范大学超算八期运行 G1 V2 的操作者。
 
-这份手册只管 **T2W 缺失模态填补**，不是完整的 diffusion synthetic augmentation。
+## 0. 流程结论
 
-当前流程是：
-
-1. G2 先给出真实训练清单、fake T2W 清单和固定 train/val/test 划分。
-2. G1 用 `prepare_g1_t2w_data.py` 自动把数据摆到 `work_space/G1/data/input/` 和 `work_space/G1/data/input_inference/`。
-3. `preprocess.py` 只保留完整四模态训练病例，缺 `t2w` 的病例不会进 `data_csv.csv`。
-4. `mark_val_split_from_g2.py` 按 G2 固定划分写入 `train/val/test`。
-5. `evaluate.py` 只在固定 `val` split 上评估生成质量。
-6. val 结果确认可接受后，`main.py` 才处理 `t1n/t1c/t2f/seg`，并生成缺失 `t2w`。
-7. G2 再接收 G1 输出，做 QC、accepted/rejected 和后续物化。
-
-## 1. 共享目录约定
-
-只保留一份原始数据挂载：
+G1 V2 学习 `t1n + t1c + t2f -> t2w`，完整流程是：
 
 ```text
-work_space/G1/data/raw/
+完整四模态 raw data
+  -> patient-grouped train/val/locked test
+  -> VAE baseline + train 微调 + val 选择
+  -> 使用被选中的同一个 VAE 重编码全部 latent
+  -> 并行训练 EncDec 与 BBDM
+  -> val 验证 ensemble
+  -> 真正缺 T2W 病例重建
+  -> G2 QC accepted/rejected
 ```
 
-工作区数据目录：
+VAE 微调不是独立终点。若采用微调 VAE，旧 VAE 生成的 latent 全部失效，必须重编码并重训 EncDec/BBDM。G2 不参与 VAE 训练；只有最终 fake T2W 生成后才进入 G2 QC。
+
+本地原始数据：
 
 ```text
-work_space/G1/data/input/
-work_space/G1/data/input_inference/
-work_space/G1/data/output/
-work_space/G1/data/latents/
-work_space/G1/data/data_csv.csv
-work_space/G1/data/data_csv_skipped_subjects.csv
-work_space/G1/data/g1_data_placement_manifest.csv
+/Users/hwaigc/比赛+课题/ECNU-NYU2026/2026的task1以及数据
 ```
 
-规则很简单：
+已核对的服务器准备结果：raw root 共识别 `1296` 个病例，其中 `265` 个被识别为缺失或伪 T2W，不进入 VAE 训练；完整候选 `1031` 个。`BraTS-MET-01094-002` 含非法标签 `6` 且无可用修正版，自动排除；`BraTS-MET-01184-002` 使用 corrected label。最终 `data_csv.csv` 共 `1030` 例：`823 train / 103 val / 104 locked test`。缺 T2W 病例只在模型定型后进入重建阶段。
 
-1. `raw/` 只读，只挂一次，不复制大体积 NIfTI。
-2. `input/` 只放完整四模态训练病例。
-3. `input_inference/` 只放需要补 `t2w` 的病例，`t2w` 必须缺省。
-4. `output/` 只放 G1 生成结果，不要混旧结果。
+## 1. 路径约定
 
-## 2. 先确认前置文件
-
-G1 completion 依赖 G2 先生成这些文件：
+本地代码：
 
 ```text
-work_space/G2/results/manifests/real_train_manifest.csv
-work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
-work_space/G2/results/splits/splits_final_train_val_test.json
-work_space/G2/results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv
+/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2
 ```
 
-如果 `official_fake_t2w_cases_by_gzip_header_2026-06-15.csv` 不在，脚本会回退读：
-
-```text
-work_space/G2/results/qc/official_t2w_gzip_header_audit_2026-06-15.csv
-```
-
-如果这些文件缺失、路径还是旧机路径，先停，不要手工改病例目录，直接让 G2 刷新 audit。
-
-## 3. 环境
-
-建议只用 Conda 或 uv，不要混系统 Python、Homebrew Python 或 `sudo pip`。
-
-需要的关键资源：
-
-```text
-work_space/G1/code/brats2025-latent-ensemble-synthesis-main/weights/vae/autoencoder_epoch273.pt
-```
-
-先在 G1 代码目录跑：
+服务器路径：
 
 ```bash
-cd work_space/G1/code/brats2025-latent-ensemble-synthesis-main
+PROJECT_ROOT=/public/home/${USER}/projects/ECNU_EYU_data
+RAW_DATA_ROOT=${HOME}/data
+CODE_DIR=${PROJECT_ROOT}/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2
+```
+
+服务器目录名使用无空格的 `brats2025-latent-ensemble-synthesis-main-v2`。Slurm 从脚本位置自动定位代码，不硬编码具体用户名。
+
+## 2. 连接服务器
+
+登录凭据只保存在本机私密目录：
+
+```text
+/Users/hwaigc/比赛+课题/服务器登陆
+```
+
+禁止把 `服务器登陆的env` 上传到 Git、网盘或服务器项目目录。
+
+本机先检查并启动分流 VPN：
+
+```bash
+cd "/Users/hwaigc/比赛+课题/服务器登陆"
+./ecnu-vpn-split.sh doctor
+./ecnu-vpn-split.sh start
+./ecnu-vpn-split.sh check
+./ecnu-vpn-split.sh ssh-test
+```
+
+只有 `check` 显示默认外网路由未改变、HPC IP 单独走 VPN，且 `ssh-test` 成功，才继续。进入交互登录：
+
+```bash
+./ecnu-vpn-split.sh ssh-hpc
+```
+
+使用完毕后：
+
+```bash
+./ecnu-vpn-split.sh stop
+```
+
+## 3. 上传代码与数据
+
+在本机终端加载私密变量：
+
+```bash
+set -a
+source "/Users/hwaigc/比赛+课题/服务器登陆/服务器登陆的env"
+set +a
+```
+
+上传原始数据，可断点续传：
+
+```bash
+rsync -avP -e "ssh -p ${HPC_LOGIN_PORT}" \
+  "/Users/hwaigc/比赛+课题/ECNU-NYU2026/2026的task1以及数据/" \
+  "${HPC_SSH_USER}@${HPC_BACKUP_HOST}:/public/home/${HPC_SSH_USER}/projects/ECNU_EYU_data/raw_task1_2026/"
+```
+
+上传 V2 代码，不上传本地运行产物：
+
+```bash
+rsync -avP -e "ssh -p ${HPC_LOGIN_PORT}" \
+  --exclude ".git/" \
+  --exclude ".idea/" \
+  --exclude "__pycache__/" \
+  --exclude "data/input/" \
+  --exclude "data/input_inference/" \
+  --exclude "data/latents/" \
+  --exclude "data/output/" \
+  --exclude "data/eval_synthesized*/" \
+  --exclude "training/endec/" \
+  --exclude "training/bbdm/" \
+  --exclude "training/vae_finetuned/" \
+  "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/" \
+  "${HPC_SSH_USER}@${HPC_BACKUP_HOST}:/public/home/${HPC_SSH_USER}/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/"
+```
+
+## 4. 环境配置
+
+只使用独立 Conda 环境，不使用 `sudo pip`，不混用系统 Python：
+
+```bash
+module purge
+module load apps/envs/miniconda3/25.5.1
+module load compiler/cuda/12.1
+
+conda create -n brats_g1_v2 python=3.10 -y
+conda activate brats_g1_v2
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+在计算节点作业外完成依赖安装。验证环境：
+
+```bash
+python - <<'PY'
+import torch, monai, nibabel, numpy
+print("torch", torch.__version__)
+print("torch CUDA", torch.version.cuda)
+print("MONAI", monai.__version__)
+print("nibabel", nibabel.__version__)
+print("numpy", numpy.__version__)
+PY
+
 python test_vae.py
 ```
 
-只有 VAE 权重加载成功，才继续后面的步骤。
-
-## 3.1 服务器 Slurm 正式顺序
-
-服务器上不要再使用旧的 `03_eval_infer_nyu.slurm`。正式顺序是：
+预训练权重必须存在：
 
 ```text
-01_prepare_data_nyu.slurm
-02_train_nyu.slurm
-03_eval_val_nyu.slurm
-04_infer_missing_t2w_nyu.slurm
+weights/vae/autoencoder_epoch273.pt
 ```
 
-含义：
+## 5. 明日先跑 VAE 微调
 
-1. `01_prepare_data_nyu.slurm`：摆放数据、预处理、写入固定 train/val/test、生成 attention mask 和 channel weights。
-2. `02_train_nyu.slurm`：只用 `split=train` 训练 EncDec 和 BBDM，训练过程内部用 `split=val` 做监控。
-3. `03_eval_val_nyu.slurm`：只评估 `split=val`，输出 `eval_metrics_val.csv` 和 `eval_synthesized_val/`。
-4. `04_infer_missing_t2w_nyu.slurm`：只在 val 结果确认可接受后，对 `input_inference/` 的缺 T2W 病例生成 T2W。
+登录服务器后：
 
-不要把 `03_eval_val_nyu.slurm` 和 `04_infer_missing_t2w_nyu.slurm` 无脑连成自动依赖链。中间需要操作者查看 val 指标和图像，确认没有明显失败后再提交 inference。
+```bash
+cd /public/home/${USER}/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2
+mkdir -p logs
+```
 
-`01_prepare_data_nyu.slurm` 默认读取：
+先投递数据准备：
+
+```bash
+PREP_JOB=$(sbatch --parsable slurm/01_prepare_data.slurm)
+echo "PREP_JOB=${PREP_JOB}"
+```
+
+`01` 做以下事情：
+
+1. 从 raw root 建立 `data/input/` 和 `data/input_inference/` 软链接。
+2. 只收四模态和 seg 完整的训练病例，优先 corrected labels。
+3. 先生成 metadata-only `data/data_csv.csv`，此时不浪费 GPU 编码旧 latent。
+4. 完整扫描 seg 值域，写 `g1_v2_label_filter_report.csv`；非法且无 corrected label 的病例自动排除，不静默改值。
+5. 按 patient group 固定切分，默认 seed `42`，目标比例约 `80/10/10`。
+6. 同一 `BraTS-MET-xxxxx` 下所有记录保持在同一 split，防止患者泄漏。
+7. 检查路径、NIfTI、shape、affine 和 split 非空。
+
+当前服务器用完整 raw root、seed 42 的准备结果应为：`1030` 个有效完整病例，`823 train / 103 val / 104 locked test`。如果数量不同，先核对 raw root、缺失/伪 T2W 识别和 corrected labels，再决定是否继续。
+
+数据准备成功后再投递 VAE job：
+
+```bash
+VAE_JOB=$(sbatch --parsable --dependency=afterok:${PREP_JOB} slurm/02_finetune_vae.slurm)
+echo "VAE_JOB=${VAE_JOB}"
+```
+
+`02` 完整执行 README 1.2：
+
+1. 用原始 VAE 在全部 `103` 个 val 病例上做完整体积 baseline。
+2. 读取全部 `823` 个 `split=train` 病例，每例四模态共用一个 `128×128×96` patch：`80%` 均匀选择一个 26 连通肿瘤域并以其中心裁剪，`20%` 从脑区随机取中心。
+3. 最多训练 `3 epochs`，使用 BF16、关闭梯度检查点；每个 epoch 使用固定、可复现的 `20` 个 val 病例快速验证，按 tumor MSE 保存 `best_model.pt`，连续 `2` 次无提升则 early stop。
+4. 训练结束后在全部 `103` 个 val 病例上做完整体积比较，生成 delta 指标和 5 张最差病例可视化。
+5. locked test 不参与训练、调参或 VAE 选择。
+
+默认参数：
 
 ```text
-work_space/G2/results/manifests/real_train_manifest.csv
+VAE_EPOCHS=3
+VAE_BATCH_SIZE=2
+VAE_VAL_INTERVAL=1
+VAE_SAVE_INTERVAL=1
+VAE_PATCH_SIZE="128 128 96"
+VAE_TUMOR_PATCH_PROBABILITY=0.8
+VAE_QUICK_VAL_SUBJECTS=20
+VAE_EARLY_STOPPING_PATIENCE=2
+VAE_AMP_DTYPE=bfloat16
 ```
 
-这份 manifest 对应当前原始数据的混合结构：一部分病例在 training 根目录，一部分病例在 `UCSD - Training/` 子目录。不要改用只适配单一路径层级的旧 manifest，除非服务器实际数据目录也被刻意整理成对应结构。确实需要覆盖时，在提交 Slurm 时显式传入 `G2_REAL_MANIFEST=/path/to/manifest.csv`。
-
-## 4. 第一步：自动摆放 G1 数据
-
-在 G1 completion 代码目录运行：
+正式训练前必须先做一次 20 病例 benchmark：
 
 ```bash
-cd work_space/G1/code/brats2025-latent-ensemble-synthesis-main
-python prepare_g1_t2w_data.py --data-root ../../data --mode symlink --clean --overwrite
+BENCH_DIR="training/vae_finetuned/benchmark_${USER}_$(date +%Y%m%d_%H%M%S)"
+VAE_EPOCHS=1 \
+VAE_MAX_TRAIN_SUBJECTS=20 \
+VAE_MAX_VAL_SUBJECTS=2 \
+VAE_QUICK_VAL_SUBJECTS=2 \
+PUBLISH_VAE_SELECTION=0 \
+VAE_OUTPUT_DIR="${BENCH_DIR}" \
+sbatch slurm/02_finetune_vae.slurm
 ```
 
-这一步会：
+benchmark 必须满足：无 OOM/NaN、日志显示 `optimizer_steps > 0`、输出存在 `best_model.pt` 与 `vae_selection.json`。用日志中纯训练段耗时按 `823×3/20` 外推；确认连同两次完整 val 总时长可落在 `18` 小时限制内，再提交默认正式任务。若 OOM，再将 `VAE_BATCH_SIZE=1` 重投，不先改学习率、patch 或损失。
 
-1. 读取 G2 的真实训练 manifest 和 fake T2W 清单。
-2. 把完整四模态病例放进 `work_space/G1/data/input/`。
-3. 把需要补 `t2w` 的病例放进 `work_space/G1/data/input_inference/`。
-4. 对 inference 病例 **不链接 `t2w`**，即使原始目录里曾经有坏文件也不会保留。
-5. 写出 `work_space/G1/data/g1_data_placement_manifest.csv`。
+## 6. VAE 输出与验收
 
-如果源路径缺失，脚本会直接报错。不要跳过这个错误继续跑。
-
-## 5. 第二步：G1 预处理
+监控：
 
 ```bash
-python preprocess.py
+squeue -u ${USER}
+tail -f logs/g1v2_prep_${PREP_JOB}.out
+tail -f logs/g1v2_vae_${VAE_JOB}.out
 ```
 
-这一步会：
-
-1. 扫描 `work_space/G1/data/input/`。
-2. 只保留 `t1n/t1c/t2w/t2f` 齐全的病例。
-3. 缺 `t2w` 或缺其他训练必需模态的病例自动跳过。
-4. 编码 latent。
-5. 生成 `work_space/G1/data/data_csv.csv`。
-6. 如果有跳过病例，生成 `work_space/G1/data/data_csv_skipped_subjects.csv`。
-
-正式流程里不要手工改 `data_csv.csv`。
-
-## 6. 第三步：写入固定 train/val/test
-
-```bash
-python mark_val_split_from_g2.py
-```
-
-这一步会按 G2 的固定划分把 `data_csv.csv` 的 `split` 列改成 `train/val/test`。
-
-如果出现 unmatched，先停，不要使用 `--allow-unmatched-as-train` 作为正式训练方案。
-
-## 7. 第四步：生成辅助文件
-
-### 7.1 肿瘤掩码
-
-```bash
-python generate_attmask.py
-```
-
-用途：给 BBDM 的 loss 计算肿瘤掩码。
-
-### 7.2 通道权重
-
-```bash
-python compute_weights.py
-```
-
-用途：重新计算当前数据集的通道权重。
-
-这两个步骤都依赖 `seg` 存在。
-
-## 8. 第五步：训练
-
-### 8.1 EncDec
-
-```bash
-python training_endec.py
-```
-
-### 8.2 BBDM
-
-```bash
-python training_bbdm.py
-```
-
-调参顺序建议：
-
-1. 先调 BBDM 的 `s`。
-2. 再看 `weight_decay`。
-3. 最后再动其他次要参数。
-
-## 9. 第六步：只用固定 val split 做自检
-
-`evaluate.py` 只要求完整四模态，不要求 `seg`。正式调参和是否进入缺失 T2W 重建，必须看 `data_csv.csv` 里 `split=val` 的病例，不要把全部 `input/` 病例混在一起算验证效果。
-
-```bash
-python evaluate.py \
-  --input_dir ../../data/input \
-  --csv_path ../../data/data_csv.csv \
-  --split val \
-  --synthesis_type ensamble \
-  --gpu_id 0 \
-  --verbose \
-  --save_csv ../../data/eval_metrics_val.csv \
-  --save_output \
-  --output_dir ../../data/eval_synthesized_val
-```
-
-注意：
-
-1. `ensamble` 是代码里的真实拼写，不要改成 `ensemble`。
-2. 这里不要指向 `input_inference/`，那里面本来就没有 `t2w`。
-3. 这里也不要只写 `--input_dir ../../data/input` 就结束；必须带 `--csv_path ../../data/data_csv.csv --split val`。
-4. `eval_metrics_val.csv` 和 `eval_synthesized_val/` 可接受后，才进入下一步缺失 T2W 重建。
-
-## 10. 第七步：推理生成 T2W
-
-`input_inference/` 的正确结构是：
+VAE 输出：
 
 ```text
-work_space/G1/data/input_inference/<case_id>/
-  <case_id>-t1n.nii.gz
-  <case_id>-t1c.nii.gz
-  <case_id>-t2f.nii.gz
-  <case_id>-seg.nii.gz
+training/vae_finetuned/run_<jobid>/baseline_metrics.csv
+training/vae_finetuned/run_<jobid>/finetuned_metrics.csv
+training/vae_finetuned/run_<jobid>/delta_metrics.csv
+training/vae_finetuned/run_<jobid>/training_history.csv
+training/vae_finetuned/run_<jobid>/quick_val_subjects.json
+training/vae_finetuned/run_<jobid>/finetune_config.json
+training/vae_finetuned/run_<jobid>/comparison_samples/*.png
+training/vae_finetuned/run_<jobid>/best_model.pt
+training/vae_finetuned/run_<jobid>/vae_selection.json
 ```
 
-其中没有 `t2w` 是正常状态。
-
-推理命令：
+读取结论：
 
 ```bash
-python main.py \
-  --input_dir ../../data/input_inference \
-  --output_dir ../../data/output \
-  --synthesis_type ensamble \
-  --gpu_id 0 \
-  --verbose
+VAE_RUN_DIR=$(head -n 1 training/vae_finetuned/latest_run.txt)
+python -m json.tool "${VAE_RUN_DIR}/vae_selection.json"
 ```
 
-`--compute_bmask` 需要额外安装 TotalSegmentator。当前服务器 Slurm 默认不启用它；确认环境已经安装并通过自检前，不要把它加回正式命令。
+自动采用微调 VAE 的最低门槛：
 
-输出结构：
+- mean `delta_tumor_SSIM >= 0.03`
+- mean `delta_whole_SSIM >= -0.005`
 
-```text
-work_space/G1/data/output/<case_id>/
-  <case_id>-t1n.nii.gz
-  <case_id>-t1c.nii.gz
-  <case_id>-t2f.nii.gz
-  <case_id>-seg.nii.gz
-  <case_id>-t2w.nii.gz
-```
+还必须人工看 `comparison_samples/`，排除空白、错位、肿瘤结构消失和明显伪影。`vae_selection.json` 中 `selected_weights` 是后续唯一权重口径；未达标时自动保留原始 VAE。
 
-前四个是镜像源文件，最后一个是生成结果。
+## 7. VAE 验收后的阶段
 
-## 11. 交给 G2 的输出
-
-G2 接收命令：
+确认 VAE 结果后，统一重编码：
 
 ```bash
-python work_space/G2/code/g2_synthetic_raw_intake_qc.py \
-  --synthetic-run-root work_space/G1/data/output \
-  --synthetic-run-id g1_t2w_completion_v1 \
-  --generation-mode completion \
-  --refresh-templates
+ENCODE_JOB=$(sbatch --parsable slurm/03_encode_latents.slurm)
+echo "ENCODE_JOB=${ENCODE_JOB}"
 ```
 
-G2 会生成：
+`03` 会清空旧 latent，使用 `selected_weights` 重新编码全部病例，并生成 attention masks 和 channel weights。不要跳过这一步。
+
+EncDec 与 BBDM 可并行：
+
+```bash
+ENDEC_JOB=$(TRAIN_TARGET=endec sbatch --parsable --dependency=afterok:${ENCODE_JOB} slurm/04_train_models.slurm)
+BBDM_JOB=$(TRAIN_TARGET=bbdm sbatch --parsable --dependency=afterok:${ENCODE_JOB} slurm/04_train_models.slurm)
+echo "ENDEC_JOB=${ENDEC_JOB} BBDM_JOB=${BBDM_JOB}"
+```
+
+二者都成功后验证 val ensemble：
+
+```bash
+EVAL_JOB=$(sbatch --parsable \
+  --dependency=afterok:${ENDEC_JOB}:${BBDM_JOB} \
+  slurm/05_evaluate_val.slurm)
+echo "EVAL_JOB=${EVAL_JOB}"
+```
+
+先检查：
 
 ```text
-work_space/G2/results/manifests/synthetic_generation_manifest_g1_t2w_completion_v1.csv
-work_space/G2/results/manifests/synthetic_candidate_manifest_g1_t2w_completion_v1.csv
-work_space/G2/results/manifests/synthetic_accepted_manifest_g1_t2w_completion_v1.csv
-work_space/G2/results/manifests/synthetic_rejected_manifest_g1_t2w_completion_v1.csv
-work_space/G2/results/manifests/synthetic_normalized_mapping_g1_t2w_completion_v1.csv
-work_space/G2/results/qc/qc_metrics_g1_t2w_completion_v1.csv
-work_space/G2/results/qc/diffusion_quality_metrics_g1_t2w_completion_v1.csv
-work_space/G2/results/qc/qc_case_review_g1_t2w_completion_v1.csv
-work_space/G2/results/qc/qc_batch_summary_g1_t2w_completion_v1.json
-work_space/G2/results/reports/G2_synthetic_data_quality_report_g1_t2w_completion_v1.md
+data/eval_metrics_val.csv
+data/eval_synthesized_val/
+training/endec/val_imgs/
+training/bbdm/val_imgs/
 ```
 
-## 12. 最后检查清单
+确认模型通过，且 `data/input_inference/` 已有真正缺 T2W 病例后，才投递：
 
-跑完后至少确认：
+```bash
+sbatch slurm/06_infer_missing_t2w.slurm
+```
 
-1. `work_space/G1/data/raw/` 只挂了一份原始数据。
-2. `work_space/G1/data/input/` 里全是完整四模态病例。
-3. `work_space/G1/data/input_inference/` 里没有 `t2w`。
-4. `work_space/G1/data/data_csv.csv` 里没有缺 `t2w` 的病例。
-5. `mark_val_split_from_g2.py` 已执行，`split` 列有 `train/val/test`。
-6. `evaluate.py --split val` 已生成 `work_space/G1/data/eval_metrics_val.csv`。
-7. `work_space/G1/data/eval_synthesized_val/` 里没有明显空白、错位、截断、强噪声。
-8. val 结果确认可接受后，`work_space/G1/data/output/` 里能找到生成的 `t2w`。
-9. G2 intake 能产出 accepted/rejected/QC/report 文件。
+当前 raw data 没有缺 T2W 病例，`06` 会返回错误码 `2`，这是数据状态提示，不是模型故障。
+
+## 8. 调参顺序
+
+1. 先决定 VAE 是否采用微调权重，不要同时改 VAE 和生成模型超参数。
+2. 固定 VAE 后训练 EncDec/BBDM baseline。
+3. BBDM 第一优先调 `configs.py` 中 `bb_scheduler.s`。
+4. 第二优先调 BBDM/EncDec 的 `weight_decay`。
+5. 再考虑 batch size、训练步数、seg loss 与 lesion weights。
+6. 每组参数必须复用同一 split seed 和同一 VAE，才能公平比较。
+
+## 9. 拉回结果
+
+本机连接 VPN并加载私密变量后：
+
+```bash
+LOCAL_BACK="/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/data/g1_v2_server_return"
+REMOTE_CODE="/public/home/${HPC_SSH_USER}/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2"
+mkdir -p "${LOCAL_BACK}"
+```
+
+先拉 VAE 报告和最佳权重：
+
+```bash
+rsync -avP -e "ssh -p ${HPC_LOGIN_PORT}" \
+  "${HPC_SSH_USER}@${HPC_BACKUP_HOST}:${REMOTE_CODE}/training/vae_finetuned/latest_run.txt" \
+  "${LOCAL_BACK}/"
+
+rsync -avP -e "ssh -p ${HPC_LOGIN_PORT}" \
+  --include "*/" --include "*.csv" --include "*.json" --include "*.png" \
+  --include "best_model.pt" --exclude "*" \
+  "${HPC_SSH_USER}@${HPC_BACKUP_HOST}:${REMOTE_CODE}/training/vae_finetuned/" \
+  "${LOCAL_BACK}/vae_finetuned/"
+```
+
+拉最终 val 与推理输出：
+
+```bash
+rsync -avP -e "ssh -p ${HPC_LOGIN_PORT}" \
+  "${HPC_SSH_USER}@${HPC_BACKUP_HOST}:${REMOTE_CODE}/data/eval_metrics_val.csv" \
+  "${LOCAL_BACK}/"
+
+rsync -avP -e "ssh -p ${HPC_LOGIN_PORT}" \
+  "${HPC_SSH_USER}@${HPC_BACKUP_HOST}:${REMOTE_CODE}/data/output/" \
+  "${LOCAL_BACK}/output/"
+```
+
+## 10. 快速排错
+
+1. `RAW_DATA_ROOT not found`：服务器原始数据路径不对，提交 `01` 时显式设置 `RAW_DATA_ROOT`。
+2. `pretrained VAE is missing`：80 MB 权重未上传，检查 `weights/vae/autoencoder_epoch273.pt`。
+3. `empty_split:val`：切分未运行或 CSV 被人工覆盖，重跑 `01`，不要手改。
+4. `affine_mismatch` / `shape_mismatch`：病例模态没有正确配准，不能直接进入训练。
+5. `illegal_seg_labels`：查看 `g1_v2_label_filter_report.csv`；已知 01094-002 会被自动排除，其他新增非法病例需要核查 corrected-labels 目录。
+6. `CUDA was requested`：环境是 CPU torch，或作业未申请 GPU。
+7. `best_model.pt was not produced`：检查 VAE job 的首个 val interval 是否成功完成。
+8. `data/selected_vae.json not found`：未运行阶段 3，禁止直接训练 EncDec/BBDM。
+9. `input_inference contains no true missing-T2W cases`：当前数据确实没有推理目标，不要复制完整病例冒充缺失病例。
+10. `ensamble` 是代码现有合法选项，运行命令保持该拼写。

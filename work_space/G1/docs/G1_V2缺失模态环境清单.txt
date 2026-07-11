@@ -1,0 +1,46 @@
+G1 V2 缺失 T2W 填补环境清单
+更新时间：2026-07-10
+
+服务器：华东师范大学超算八期
+建议环境名：brats_g1_v2
+Python：3.10
+CUDA：12.1 优先
+
+模块：
+module purge
+module load apps/envs/miniconda3/25.5.1
+module load compiler/cuda/12.1
+
+创建环境：
+conda create -n brats_g1_v2 python=3.10 -y
+conda activate brats_g1_v2
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+
+requirements.txt 内核心包：
+torch>=2.0.0,<2.8.0
+torchvision>=0.15.0
+monai>=1.4.0
+nibabel>=5.0.0
+TotalSegmentator>=2.0.0
+numpy>=1.24.0,<2.0.0
+pandas>=2.0.0
+Pillow>=10.0.0
+tqdm>=4.65.0
+tensorboard>=2.13.0
+
+注意：
+1. 不要用 sudo pip。
+2. 不要混系统 Python、Homebrew Python 和 Conda。
+3. 如果 torch 被装成 CPU 版，需要安装 CUDA 对应版本。
+4. TotalSegmentator 只在 main.py 使用 --compute_bmask 时需要；默认 Slurm 推理脚本不启用 --compute_bmask。
+5. 计算节点通常不能联网安装包，环境应提前在登录节点或允许联网的环境配置好。
+6. 验证命令：
+   python - <<'PY'
+   import torch
+   print(torch.__version__)
+   print(torch.version.cuda)
+   print(torch.cuda.is_available())
+   print(torch.cuda.device_count())
+   PY
+   python test_vae.py
