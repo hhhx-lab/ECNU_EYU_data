@@ -1,0 +1,62 @@
+G1 V3 缺失 T2W 填补环境清单
+==============================
+
+适用代码：
+/public/home/${USER}/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3
+
+一、当前 ECNU 服务器固定环境
+1. 调度系统：Slurm。
+2. GPU 分区：a100。
+3. GPU 请求：gpu:NVIDIAA100-PCIE-40GB:1。
+4. CPU 数据接入分区：cpu_96G。
+5. Miniconda 模块：apps/envs/miniconda3/25.5.1。
+6. CUDA 模块：compiler/cuda/12.1。
+7. Conda 环境名：segmamba。
+8. 作业内设备：cuda:0。Slurm 会把分配到的物理 GPU 映射为可见设备 0。
+9. Python 要求：>=3.10。
+10. 该代码是单 GPU 训练，不启用 DDP/DataParallel。
+
+二、代码需要的 Python 包
+1. torch >= 2.0，且能访问 CUDA。
+2. monai >= 1.4，必须包含 AutoencoderKlMaisi。
+3. numpy >= 1.24 且 < 2.0。
+4. pandas >= 2.0。
+5. scipy >= 1.10。
+6. nibabel >= 5.0。
+7. Pillow >= 10.0。
+8. tensorboard >= 2.13。
+9. tqdm >= 4.65。
+10. scikit-image >= 0.21。
+
+三、禁止操作
+1. 不在 Slurm 作业里 pip install。
+2. 不使用 sudo pip。
+3. 不混用系统 Python、Homebrew Python 与服务器 Conda 环境。
+4. 不修改服务器全局 PATH。
+5. 不另建环境；当前先复用已验证的 segmamba。
+6. 不把密码、token、VPN 或代理配置写进项目。
+
+四、Slurm 内统一激活方式
+module purge
+module load apps/envs/miniconda3/25.5.1
+module load compiler/cuda/12.1
+source "$(conda info --base)/etc/profile.d/conda.sh"
+conda activate segmamba
+PYTHON_BIN="${CONDA_PREFIX}/bin/python"
+
+五、环境验收
+提交：
+sbatch slurm/00_smoke.slurm
+
+只有日志同时满足以下条件，才允许继续：
+1. torch.cuda.is_available() 为 True。
+2. GPU 名称为 A100。
+3. AutoencoderKlMaisi 可导入。
+4. weights/vae/autoencoder_epoch273.pt 可完整加载。
+5. Python py_compile 全部通过。
+6. patch sampling 单元测试全部通过。
+7. EncDec batch=2 前向形状正确且无 NaN/Inf。
+8. BBDM batch=2、condition token 和 scheduler 前向形状正确且无 NaN/Inf。
+
+实际 Python/PyTorch/MONAI/CUDA 版本以每次 00_smoke 日志为准；日志会记录，
+不在本地猜写服务器版本。
