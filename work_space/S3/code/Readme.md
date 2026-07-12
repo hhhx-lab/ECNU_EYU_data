@@ -8,7 +8,7 @@
 |------|------|
 | `main.py` | 训练入口脚本，解析参数，调用数据加载和训练流程（一般无需修改）。 |
 | `trainer.py` | 训练/验证核心逻辑。包含训练循环、验证循环、Dice 计算、小病灶检测指标（F1/AUC）计算、模型保存。 |
-| `make_split.py` | 生成训练/验证集划分 JSON 文件。将数据目录下所有病例随机分为 80% 训练（`fold=1`）和 20% 验证（`fold=0`），输出 `full_split.json`。 |
+| `make_split.py` | 正式实验读取 G2 mapping 与 patient-group fixed split；不传 G2 参数时才使用随机 80/20 fallback。 |
 | `utils/data_utils.py` | 数据加载工具。适配原始数据名称，根据 JSON 中的 `fold` 字段自动划分训练集和验证集。 |
 | `utils/__init__.py` | 标识 utils 为 Python 包（空文件）。 |
 
@@ -34,14 +34,18 @@ BraTS-MET-xxxxx-xxx-t2w.nii.gz
 BraTS-MET-xxxxx-xxx-t2f.nii.gz   
 BraTS-MET-xxxxx-xxx-seg.nii.gz
 ```
-之后将所有 BraTS-MET-* 文件夹放在同一顶层目录中。如果存在 UCSD - Training 等子目录，请将其中的 BraTS-MET-* 文件夹移出到顶层，并删除空目录。
+无需移动 `UCSD - Training` 等子目录。G2 会递归扫描 raw data，并把每个模态的实际路径写入 mapping；正式 S3 split JSON 直接使用这些路径。
 
-## 生成全量数据训练/验证集划分
+## 生成正式固定划分
 
-运行 make_split.py 脚本，它会自动扫描数据目录，随机划分 80% 病例为训练集（fold=1），20% 为验证集（fold=0），并生成 full_split.json。
+正式实验必须读取 G2 的 `823/103/104` real-only patient-group split。`fold=1` 为 train，`fold=0` 为 val，locked test 只记录身份，不进入训练 JSON。
 
 ```bash
-python make_split.py
+python make_split.py \
+  --g2-split-json ../../G2/results/splits/splits_final_train_val_test.json \
+  --g2-mapping-csv ../../G2/results/manifests/nnunet_case_mapping_realonly.csv \
+  --project-root /absolute/path/to/ECNU_EYU_data \
+  --output ../data/splits/s3_g2_fixed_split.json
 ```
 
 生成的 full_split.json 内容示例：
@@ -56,15 +60,15 @@ python make_split.py
   ]
 }
 ```
-注意：fold=1 为训练集，fold=0 为验证集。脚本使用随机种子 42，保证可复现。
+不传 G2 split/mapping 时的随机 80/20 仅供独立 smoke，不得用于 S1-S5 严格比较。
 
 
 ## 全量数据训练（200 epochs）
-使用上一步生成的 full_split.json 启动全量训练。
+使用上一步生成的 G2 fixed-split JSON 启动训练。
 ```bash
 nohup python main.py \
     --data_dir /path/to/MICCAI-LH-BraTS2025-MET-Challenge-Training \
-    --json_list ./full_split.json \
+    --json_list ../data/splits/s3_g2_fixed_split.json \
     --logdir ./exp_full \
     --max_epochs 200 \
     --batch_size 2 \

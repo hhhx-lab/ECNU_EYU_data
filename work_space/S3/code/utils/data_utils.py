@@ -33,9 +33,13 @@ class NibabelLoader:
                 img = nib.load(fpath)
                 arr = img.get_fdata().astype(np.float32)
                 if key == "label":
-                    # 将非法标签值（>=5）映射为背景（0）
-                    arr = (arr * (arr < 5)).astype(np.int64)
-                    d[key] = arr
+                    if not np.allclose(arr, np.rint(arr)):
+                        raise ValueError(f"segmentation contains non-integer labels: {fpath}")
+                    labels = set(np.unique(arr).astype(np.int64).tolist())
+                    illegal = sorted(labels - {0, 1, 2, 3, 4})
+                    if illegal:
+                        raise ValueError(f"segmentation contains illegal labels {illegal}: {fpath}")
+                    d[key] = np.rint(arr).astype(np.int64)
                 else:
                     d[key] = arr
         return d

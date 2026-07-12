@@ -1,22 +1,20 @@
 # S2 工作区
 
-## 整体任务
+S2 使用 nnU-Net v2 `3d_fullres` 和 RC-aware Trainer 训练 BraTS-MET 分割模型。
 
-详见 [task_assignment.md](task_assignment.md)。
+## 当前正式策略
 
-## 当前进度
+- 不使用交叉验证，只训练一个固定模型。
+- 默认读取 G2 patient-group real-only split：`823 train / 103 val / 104 test`。
+- 默认使用 `Dataset263_BraTS2026_MET_RealOnly_Current`，与历史 Dataset260 隔离。
+- validation 用于模型选择；locked test 只用于最终复核。
+- 后续 real+synth 必须复用相同真实 validation/test，才能进行 paired 消融。
+- nnU-Net 的 `fold_0` 只是 API/目录键，不代表五折。
 
-real-only fold0 已完成 1000 epochs 和固定验证集推理。五折 Slurm Array、fold-aware Trainer、确定性 folds 1-4 划分和官方兼容指标任务已经补齐；下一步在服务器继续 folds 1-4。
+历史 Dataset260 `828/207/259` 模型已完成 1000 epochs 和 207 例验证推理，但只能作为历史结果，不用于当前严格消融。
 
-## 本周计划
+服务器运行说明：
 
-1. 运行一次 S2 real-only preparation job。
-2. 以 Slurm Array 并行完成 folds 1-4。
-3. 汇总五折 out-of-fold 预测并运行 BraTS_evaluation。
-4. 在 G1 synthetic 通过 G2 QC 后建立独立 real+synthetic 消融实验。
-
-## 提交记录
-
-| 日期 | 内容 | 备注 |
-| --- | --- | --- |
-| 待填写 | 待填写 | 待填写 |
+```text
+work_space/S2/BraTS2026_S2_RC_v1.0/repository/docs/S2_服务器运行手册.md
+```

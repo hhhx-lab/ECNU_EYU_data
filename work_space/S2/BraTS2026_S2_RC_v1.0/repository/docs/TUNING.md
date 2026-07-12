@@ -32,8 +32,4 @@ Select the best checkpoint.
 
 ## Important
 
-Use the preserved fold 0 validation set for hyperparameter selection.
-
-Do not tune independently on folds 1-4. After selecting one configuration on
-fold 0, freeze it and train folds 1-4 for cross-validation and out-of-fold
-evaluation. Do not modify any fold files during tuning.
+Use the current fixed 103-case validation set for hyperparameter selection. Cross-validation is disabled. After selecting one configuration, freeze it and use the current 104-case internal locked test only for final internal review. Do not modify `data/splits/current/` during tuning. Historical Dataset260 metrics are reference-only and must not be mixed into current paired comparisons.

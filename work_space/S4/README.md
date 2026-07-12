@@ -8,7 +8,7 @@
 /scratch/bf2260/ECNU_EYU_data/work_space/S4/code
 ```
 
-S4 当前可以直接扫描完整病例目录训练，但它仍使用自身 RC-stratified split；若要和 S1/S2 做严格公平对比，后续应再接入 G2 固定 split。
+S4 现在支持两种模式：正式实验通过 `SAM2UNET_FIXED_SPLIT_ROOT` 读取 G2 `train/val/test` case-folder view；旧的 RC-stratified 自动划分只保留给独立探索 smoke。与 S1-S5 做严格比较时必须使用 G2 fixed split。
 
 ## 1. 项目简介
 

@@ -23,17 +23,17 @@ echo "Eval job: ${EVAL_JOB}"
 # Submit missing-T2W inference only after validation output is acceptable:
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_infer_missing_t2w_nyu.slurm
 
-# S2: prepare Dataset260 and five folds once (CPU)
-S2_PREP_JOB=$(sbatch --parsable work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
+# S2: prepare the current Dataset263 patient-group fixed split (CPU)
+S2_PREP_JOB=$(sbatch --parsable --export=ALL,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
 
-# S2: fold0 is already complete; continue folds 1-4, one GPU per array task
-S2_CV_JOB=$(sbatch --parsable --dependency=afterok:${S2_PREP_JOB} --array=1-4%4 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm)
+# S2: submit the single current fixed-split model
+S2_TRAIN_JOB=$(sbatch --parsable --dependency=afterok:${S2_PREP_JOB} --export=ALL,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm)
 
-# S2: run combined out-of-fold BraTS metrics after all folds complete
-sbatch --dependency=afterok:${S2_CV_JOB} --export=ALL,CONDA_ENV=brats_eval work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
+# S2: run BraTS metrics on the current fixed 103-case validation set
+sbatch --dependency=afterok:${S2_TRAIN_JOB} --export=ALL,S2_EXPERIMENT_MODE=current,CONDA_ENV=brats_eval work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
 
-# S2: five-fold ensemble inference on prepared nnU-Net test input
-sbatch --export=ALL,S2_INFERENCE_INPUT=/path/to/nnunet_input work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+# S2: single fixed-split checkpoint inference
+sbatch --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_INPUT=/path/to/nnunet_input work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
 
 # S1: original-data MONAI multitask real-only baseline
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
@@ -60,10 +60,10 @@ sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_infe
 | `02_train_nyu.slurm` | 1 GPU | 72h | EncDec training -> BBDM training |
 | `03_eval_val_nyu.slurm` | 1 GPU | 12h | Fixed val split evaluation only; writes `eval_metrics_val.csv` and `eval_synthesized_val/` |
 | `04_infer_missing_t2w_nyu.slurm` | 1 GPU | 12h | Missing-T2W inference on `input_inference/`; run only after val output is acceptable |
-| `04_s2_realonly_prepare_nyu.slurm` | CPU | 24h | Build G2 mapping, deterministic five folds, Dataset260, and shared preprocessing |
-| `04_s2_realonly_nyu.slurm` | 1 GPU/task | 96h | S2 five-fold training array; skip completed folds and resume interrupted folds |
-| `04_s2_realonly_official_eval_nyu.slurm` | CPU | 24h | Combine five-fold out-of-fold predictions and run BraTS MET metrics |
-| `04_s2_realonly_infer_nyu.slurm` | 1 GPU | 24h | Final S2 inference with folds 0-4 ensemble |
+| `04_s2_realonly_prepare_nyu.slurm` | CPU | 24h | Build current Dataset263 fixed split and preprocessing; optional legacy recovery |
+| `04_s2_realonly_nyu.slurm` | 1 GPU | 96h | S2 fixed-split training; skip complete model or resume interruption |
+| `04_s2_realonly_official_eval_nyu.slurm` | CPU | 24h | Run BraTS MET metrics on the fixed validation set |
+| `04_s2_realonly_infer_nyu.slurm` | 1 GPU | 24h | Final S2 inference with the single fixed-split checkpoint |
 | `05_s1_realonly_nyu.slurm` | 1 GPU | 96h | S1 MONAI multitask real-only baseline from G2 mapping/split |
 
 ## S1/S2 Real-Only Baselines
@@ -76,7 +76,10 @@ Default project root:
 /scratch/bf2260/ECNU_EYU_data
 ```
 
-Both scripts refresh these files from raw data before training:
+S2 defaults to `G2_REFRESH_REALONLY=0` so a submitted run consumes the reviewed,
+versioned G2 artifacts. Current mode may explicitly refresh from raw data when
+the official fake/broken-T2W list and corrected labels are available; legacy
+mode never refreshes identities:
 
 ```text
 work_space/G2/code/g2_build_realonly_from_raw.py
@@ -93,26 +96,28 @@ work_space/G2/results/manifests/realonly_skipped_incomplete_cases.csv
 
 `realonly_skipped_incomplete_cases.csv` records cases missing `t1n/t1c/t2w/t2f/seg` and cases without a clean corrected/raw label. Those cases are not materialized into S1/S2 training data.
 
-`04_s2_realonly_prepare_nyu.slurm` writes a train+val-only symlinked nnU-Net raw dataset, builds folds 0-4, and preprocesses once. The internal locked test list is written to `test_internal_locked.txt` but is not materialized into the training dataset:
+Current S2 mode writes a train+val-only symlinked nnU-Net raw dataset for the G2 `823/103/104` patient-group split. The 104-case locked test is listed but not materialized into training:
 
 ```text
-work_space/S2/data/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly
+work_space/S2/data/nnunet_raw/Dataset263_BraTS2026_MET_RealOnly_Current
 work_space/S2/data/nnunet_preprocessed
 work_space/S2/data/nnunet_results
-work_space/S2/BraTS2026_S2_RC_v1.0/repository/data/splits/nnunet_case_mapping_realonly_train_val.csv
+work_space/S2/BraTS2026_S2_RC_v1.0/repository/data/splits/current/nnunet_case_mapping_realonly_train_val.csv
 ```
 
-For the current continuation run, the preparation job defaults to
-`G2_REFRESH_REALONLY=0` and `S2_RUN_PREPROCESS=auto`. It reuses the exact G2
-mapping, split, Dataset260 preprocessing, and case identities used by completed
-fold 0. Do not set `G2_REFRESH_REALONLY=1` while completing folds 1-4. That
-option is reserved for a new experiment that retrains all five folds.
+Default `S2_EXPERIMENT_MODE=current` enforces `823/103/104`, patient-group
+isolation, and exact equality among split, raw Dataset263, and preprocessed IDs.
+Historical Dataset260 recovery is available only with
+`S2_EXPERIMENT_MODE=legacy`; it writes separate split files and is not a valid
+paired baseline for current G2 experiments.
 
-The training array then runs one fold per task:
+The training entry is submitted once:
 
 ```bash
-S2_FOLD=<0..4> bash train.sh
+bash train.sh
 ```
+
+Do not submit `04_s2_realonly_nyu.slurm` with `--array`. nnU-Net still stores the fixed model under `fold_0` for API compatibility.
 
 `05_s1_realonly_nyu.slurm` writes a symlinked S1 training view:
 
@@ -130,8 +135,8 @@ Submit with a different project root or environment when needed:
 ```bash
 cd /path/to/ECNU_EYU_data
 mkdir -p logs
-S2_PREP_JOB=$(sbatch --parsable --export=ALL,PROJ=/path/to/ECNU_EYU_data,CONDA_ENV=brats2026_s2 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
-sbatch --dependency=afterok:${S2_PREP_JOB} --array=1-4%4 --export=ALL,PROJ=/path/to/ECNU_EYU_data,CONDA_ENV=brats2026_s2 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
+S2_PREP_JOB=$(sbatch --parsable --export=ALL,PROJ=/path/to/ECNU_EYU_data,CONDA_ENV=brats2026_s2,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
+sbatch --dependency=afterok:${S2_PREP_JOB} --export=ALL,PROJ=/path/to/ECNU_EYU_data,CONDA_ENV=brats2026_s2,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
 sbatch --export=ALL,PROJ=/path/to/ECNU_EYU_data,CONDA_ENV=brats2026_s1 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
 ```
 
@@ -157,7 +162,7 @@ tail -f logs/train_<JOB_ID>.out
 tail -f logs/eval_val_<JOB_ID>.out
 tail -f logs/infer_t2w_<JOB_ID>.out
 tail -f logs/s2_realonly_prepare_<JOB_ID>.out
-tail -f logs/s2_realonly_<ARRAY_JOB_ID>_<FOLD>.out
+tail -f logs/s2_realonly_fixed_<JOB_ID>.out
 tail -f logs/s1_realonly_<JOB_ID>.out
 
 # Cancel a job

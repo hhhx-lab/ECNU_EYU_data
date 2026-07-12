@@ -8,7 +8,7 @@ import json
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = Path(os.environ.get("PROJ", REPO_ROOT.parents[3])).expanduser()
 DEFAULT_TRAIN_ROOT = "data/extracted_full/MICCAI-LH-BraTS2025-MET-Challenge-Training"
-DEFAULT_DATASET_NAME = "Dataset260_BraTS2026_MET_RealOnly"
+DEFAULT_DATASET_NAME = "Dataset263_BraTS2026_MET_RealOnly_Current"
 
 
 def resolve_path(path):

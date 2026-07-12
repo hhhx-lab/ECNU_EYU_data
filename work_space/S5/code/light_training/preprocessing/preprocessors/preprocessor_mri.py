@@ -55,12 +55,22 @@ class MultiModalityPreprocessor(DefaultPreprocessor):
         return data
     
     # need to modify
+    def resolve_case_file(self, case_name, filename):
+        case_dir = os.path.join(self.base_dir, self.image_dir, case_name)
+        direct = os.path.join(case_dir, filename)
+        if os.path.isfile(direct):
+            return direct
+        prefixed = os.path.join(case_dir, f"{case_name}-{filename}")
+        if os.path.isfile(prefixed):
+            return prefixed
+        raise FileNotFoundError(f"Missing {filename} for {case_name}: {case_dir}")
+
     def read_data(self, case_name):
         ## only for CT dataset
         assert len(self.data_filenames) != 0
         data = []
         for dfname in self.data_filenames:
-            d = sitk.ReadImage(os.path.join(self.base_dir, self.image_dir, case_name, dfname))
+            d = sitk.ReadImage(self.resolve_case_file(case_name, dfname))
             spacing = d.GetSpacing()
             data.append(sitk.GetArrayFromImage(d).astype(np.float32)[None,])
         
@@ -70,7 +80,7 @@ class MultiModalityPreprocessor(DefaultPreprocessor):
         ## 一定要是float32！！！！
     
         if self.seg_filename != "":
-            seg = sitk.ReadImage(os.path.join(self.base_dir, self.image_dir, case_name, self.seg_filename))
+            seg = sitk.ReadImage(self.resolve_case_file(case_name, self.seg_filename))
             ## 读出来以后一定转float32!!!
             seg_arr = sitk.GetArrayFromImage(seg).astype(np.float32)
             seg_arr = seg_arr[None]

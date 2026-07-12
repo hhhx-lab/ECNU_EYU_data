@@ -9,17 +9,45 @@ if [ $# -ne 2 ]; then
 fi
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+S2_EXPERIMENT_MODE="${S2_EXPERIMENT_MODE:-current}"
+
+case "${S2_EXPERIMENT_MODE}" in
+    current)
+        DEFAULT_S2_DATASET_ID=263
+        DEFAULT_S2_DATASET_NAME=Dataset263_BraTS2026_MET_RealOnly_Current
+        ;;
+    legacy)
+        DEFAULT_S2_DATASET_ID=260
+        DEFAULT_S2_DATASET_NAME=Dataset260_BraTS2026_MET_RealOnly
+        ;;
+    *)
+        echo "S2_EXPERIMENT_MODE must be current or legacy, got: ${S2_EXPERIMENT_MODE}" >&2
+        exit 2
+        ;;
+esac
 
 export nnUNet_raw="${nnUNet_raw:-${REPO_DIR}/data/nnunet_raw}"
 export nnUNet_preprocessed="${nnUNet_preprocessed:-${REPO_DIR}/data/nnunet_preprocessed}"
 export nnUNet_results="${nnUNet_results:-${REPO_DIR}/data/nnunet_results}"
-export BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${REPO_DIR}/data/splits}"
+export BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${REPO_DIR}/data/splits/${S2_EXPERIMENT_MODE}}"
 export BRATS_S2_REPO_DIR="${BRATS_S2_REPO_DIR:-${REPO_DIR}}"
-export S2_DATASET_ID="${S2_DATASET_ID:-260}"
-S2_DATASET_NAME="${S2_DATASET_NAME:-Dataset260_BraTS2026_MET_RealOnly}"
+export S2_DATASET_ID="${S2_DATASET_ID:-${DEFAULT_S2_DATASET_ID}}"
+S2_DATASET_NAME="${S2_DATASET_NAME:-${DEFAULT_S2_DATASET_NAME}}"
 S2_TRAINER="${S2_TRAINER:-nnUNetTrainerBraTS2026RC}"
 S2_CONFIGURATION="${S2_CONFIGURATION:-3d_fullres}"
-S2_FOLDS="${S2_FOLDS:-0 1 2 3 4}"
+
+if [[ -n "${S2_FOLDS:-}" && "${S2_FOLDS}" != "0" ]]; then
+    echo "S2 cross-validation is disabled; S2_FOLDS must be unset or 0." >&2
+    exit 2
+fi
+if [[ "${S2_DATASET_NAME}" != Dataset${S2_DATASET_ID}_* ]]; then
+    echo "S2_DATASET_NAME must start with Dataset${S2_DATASET_ID}_, got: ${S2_DATASET_NAME}" >&2
+    exit 2
+fi
+if [[ "${S2_DATASET_ID}" != "${DEFAULT_S2_DATASET_ID}" || "${S2_DATASET_NAME}" != "${DEFAULT_S2_DATASET_NAME}" ]]; then
+    echo "${S2_EXPERIMENT_MODE} mode is locked to dataset ${DEFAULT_S2_DATASET_ID}/${DEFAULT_S2_DATASET_NAME}." >&2
+    exit 2
+fi
 
 export nnUNet_extTrainer="${REPO_DIR}/custom_nnunet"
 export PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}"
@@ -46,29 +74,60 @@ PY
 
 INPUT_FOLDER="$1"
 OUTPUT_FOLDER="$2"
-read -r -a FOLD_ARGS <<< "${S2_FOLDS}"
-
-if [[ ${#FOLD_ARGS[@]} -eq 0 ]]; then
-    echo "S2_FOLDS must contain at least one fold, for example: '0 1 2 3 4'" >&2
-    exit 2
+if [[ ! -d "${INPUT_FOLDER}" ]]; then
+    echo "S2 inference input directory does not exist: ${INPUT_FOLDER}" >&2
+    exit 1
 fi
 
+python - "${INPUT_FOLDER}" <<'PY'
+import re
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+root = Path(sys.argv[1])
+pattern = re.compile(r"^(.+)_([0-9]{4})\.nii\.gz$")
+channels_by_case = defaultdict(set)
+unexpected = []
+for path in root.iterdir():
+    if not path.is_file():
+        continue
+    match = pattern.match(path.name)
+    if match is None:
+        if path.name.endswith(".nii.gz"):
+            unexpected.append(path.name)
+        continue
+    case_id, channel = match.groups()
+    channels_by_case[case_id].add(channel)
+
+if not channels_by_case:
+    raise SystemExit(f"No nnU-Net input cases were found in {root}")
+expected = {"0000", "0001", "0002", "0003"}
+invalid = {
+    case_id: sorted(channels)
+    for case_id, channels in channels_by_case.items()
+    if channels != expected
+}
+if unexpected or invalid:
+    raise SystemExit(
+        "Invalid S2 inference input: "
+        f"unexpected_nifti={unexpected[:10]}, invalid_channels={list(invalid.items())[:10]}"
+    )
+print(f"S2 inference input verified: {len(channels_by_case)} cases, channels 0000-0003")
+PY
+
 RESULT_BASE="${nnUNet_results}/${S2_DATASET_NAME}/${S2_TRAINER}__nnUNetPlans__${S2_CONFIGURATION}"
-for FOLD in "${FOLD_ARGS[@]}"; do
-    if [[ ! "${FOLD}" =~ ^[0-4]$ ]]; then
-        echo "Invalid fold in S2_FOLDS: ${FOLD}" >&2
-        exit 2
-    fi
-    if [[ ! -f "${RESULT_BASE}/fold_${FOLD}/checkpoint_final.pth" ]]; then
-        echo "Missing final checkpoint for fold ${FOLD}: ${RESULT_BASE}/fold_${FOLD}/checkpoint_final.pth" >&2
-        exit 1
-    fi
-done
+CHECKPOINT="${RESULT_BASE}/fold_0/checkpoint_final.pth"
+if [[ ! -f "${CHECKPOINT}" ]]; then
+    echo "Missing fixed-split final checkpoint: ${CHECKPOINT}" >&2
+    exit 1
+fi
 
 echo "Input  : ${INPUT_FOLDER}"
 echo "Output : ${OUTPUT_FOLDER}"
 echo "Trainer: ${S2_TRAINER}"
-echo "Folds  : ${FOLD_ARGS[*]}"
+echo "Mode   : ${S2_EXPERIMENT_MODE}"
+echo "Split  : fixed model (nnU-Net internal key: fold_0)"
 
 nnUNetv2_predict \
     -i "${INPUT_FOLDER}" \
@@ -76,4 +135,4 @@ nnUNetv2_predict \
     -d "${S2_DATASET_ID}" \
     -c "${S2_CONFIGURATION}" \
     -tr "${S2_TRAINER}" \
-    -f "${FOLD_ARGS[@]}"
+    -f 0

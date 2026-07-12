@@ -3,7 +3,7 @@ Prediction script for BraTS 2026 Brain Metastases Challenge
 """
 import argparse
 import numpy as np
-from light_training.dataloading.dataset import get_train_val_test_loader_from_train
+from light_training.dataloading.dataset import get_train_val_test_loader_seperate
 import torch
 import torch.nn as nn
 from monai.inferers import SlidingWindowInferer
@@ -59,6 +59,12 @@ if args.config:
     print(f"Config name: {config_name}")
 
 data_dir = get_config_value(config, 'data_dir', default="./data/fullres/train")
+val_data_dir = get_config_value(
+    config, 'val_data_dir', default=os.path.join(os.path.dirname(data_dir), "val")
+)
+test_data_dir = get_config_value(
+    config, 'test_data_dir', default=os.path.join(os.path.dirname(data_dir), "test")
+)
 env = "pytorch"
 max_epoch = 10
 batch_size = 1
@@ -246,5 +252,12 @@ if __name__ == "__main__":
         training_script=__file__
     )
 
-    train_ds, val_ds, test_ds = get_train_val_test_loader_from_train(data_dir)
+    if not os.path.isdir(val_data_dir) or not os.path.isdir(test_data_dir):
+        raise SystemExit(
+            f"G2 fixed split preprocessing is incomplete: train={data_dir}, "
+            f"val={val_data_dir}, test={test_data_dir}"
+        )
+    train_ds, val_ds, test_ds = get_train_val_test_loader_seperate(
+        data_dir, val_data_dir, test_data_dir
+    )
     predictor.validation_single_gpu(test_ds)

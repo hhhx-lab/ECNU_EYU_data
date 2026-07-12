@@ -12,13 +12,14 @@ nnUNet 基线主力，与 S1 共同负责。
 
 1. 协助生成模型小组验证合成数据的有效性，对比加入合成数据增强前后的性能提升。
 2. 将预处理数据整理为 nnU-Net 格式。
-3. 设置统一验证集划分，优先使用 5 折交叉验证的第一折，或使用固定验证集，保证模型对比公平。
+3. 锁定统一的 training、validation 和 internal test，保证所有模型与数据增强实验可公平比较。
 
 ## 具体任务
 
-1. 运行 nnUNet v2 的所有配置，完成 5 折交叉验证。
+1. 使用固定划分完成 nnUNet v2 real-only baseline，不运行交叉验证。
 2. 运行真实数据与真实数据加合成数据增强两个版本，对比性能提升。
 3. 调优超参数，例如 patch size、batch size，使 nnUNet 适应新数据集。
+4. 固定 validation 做模型选择，internal locked test 只做最终内部复核。
 
 ## 交付物
 

@@ -74,6 +74,11 @@ def build_arg_parser():
         description="Train SAM2-UNet Plan2 with a 4-class main head and binary RC head."
     )
     parser.add_argument("--train_dir", default=os.environ.get("SAM2UNET_TRAIN_DIR"))
+    parser.add_argument(
+        "--fixed_split_root",
+        default=os.environ.get("SAM2UNET_FIXED_SPLIT_ROOT"),
+        help="G2 case-folder root containing train/val/test subdirectories.",
+    )
     parser.add_argument("--save_dir", default=os.environ.get("SAM2UNET_SAVE_DIR"))
     parser.add_argument("--epochs", type=int, default=get_env_int("SAM2UNET_EPOCHS", 400))
     parser.add_argument("--crop_size", type=lambda s: parse_triplet(s, "crop_size"),
@@ -133,17 +138,28 @@ def build_arg_parser():
 
 
 def build_config(args):
-    if not args.train_dir:
-        raise ValueError("Missing train_dir. Pass --train_dir or set SAM2UNET_TRAIN_DIR.")
+    if not args.train_dir and not args.fixed_split_root:
+        raise ValueError(
+            "Missing data input. Pass --fixed_split_root/SAM2UNET_FIXED_SPLIT_ROOT "
+            "for formal G2 runs, or --train_dir/SAM2UNET_TRAIN_DIR for exploratory runs."
+        )
     if not args.save_dir:
         raise ValueError("Missing save_dir. Pass --save_dir or set SAM2UNET_SAVE_DIR.")
 
-    train_dir = Path(args.train_dir)
-    if not train_dir.exists():
-        raise ValueError(f"train_dir does not exist: {train_dir}")
+    fixed_split_root = Path(args.fixed_split_root).resolve() if args.fixed_split_root else None
+    if fixed_split_root is not None:
+        missing = [name for name in ("train", "val", "test") if not (fixed_split_root / name).is_dir()]
+        if missing:
+            raise ValueError(f"fixed_split_root is missing split directories {missing}: {fixed_split_root}")
+        train_dir = fixed_split_root
+    else:
+        train_dir = Path(args.train_dir).resolve()
+        if not train_dir.exists():
+            raise ValueError(f"train_dir does not exist: {train_dir}")
 
     config = vars(args).copy()
     config["train_dir"] = str(train_dir)
+    config["fixed_split_root"] = str(fixed_split_root) if fixed_split_root else ""
     config["save_dir"] = str(Path(args.save_dir))
     config["debug_case_limit"] = int(args.debug_case_limit) if args.debug_case_limit else None
     config["use_attention"] = not args.no_attention
@@ -187,6 +203,8 @@ def find_case_dirs(train_dir, limit=None):
 def scan_label_statistics(train_dir, save_dir, limit=None):
     # PLAN2 CHANGE: scan labels before training, record RC-positive cases, and
     # write the exact statistics files requested by plan2.
+    save_dir = Path(save_dir)
+    save_dir.mkdir(parents=True, exist_ok=True)
     case_dirs = find_case_dirs(train_dir, limit=limit)
     records = []
     invalid_labels = {}
@@ -289,6 +307,45 @@ def scan_label_statistics(train_dir, save_dir, limit=None):
                 "rc_center": record["rc_center"],
             })
     return records
+
+
+def load_g2_fixed_split_records(fixed_split_root, save_dir, limit=None):
+    root = Path(fixed_split_root)
+    train_records = scan_label_statistics(root / "train", Path(save_dir) / "g2_train_audit", limit=limit)
+    val_records = scan_label_statistics(root / "val", Path(save_dir) / "g2_val_audit", limit=limit)
+    test_case_dirs = find_case_dirs(root / "test", limit=limit)
+
+    train_ids = {record["case"] for record in train_records}
+    val_ids = {record["case"] for record in val_records}
+    test_ids = {path.name for path in test_case_dirs}
+    if train_ids & val_ids or train_ids & test_ids or val_ids & test_ids:
+        raise ValueError("G2 fixed split contains overlapping case IDs")
+
+    split_json = {
+        "source": "g2_case_folder_fixed_split",
+        "fixed_split_root": str(root),
+        "train_cases": sorted(train_ids),
+        "val_cases": sorted(val_ids),
+        "test_cases": sorted(test_ids),
+    }
+    save_dir = Path(save_dir)
+    with (save_dir / "g2_fixed_split.json").open("w") as handle:
+        json.dump(split_json, handle, indent=2)
+    with (save_dir / "g2_fixed_split.csv").open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["case", "split"])
+        writer.writeheader()
+        for split_name, case_ids in (
+            ("train", sorted(train_ids)),
+            ("val", sorted(val_ids)),
+            ("test", sorted(test_ids)),
+        ):
+            for case_id in case_ids:
+                writer.writerow({"case": case_id, "split": split_name})
+    print(
+        f"G2 fixed split: {len(train_records)} train / {len(val_records)} val / "
+        f"{len(test_ids)} locked test"
+    )
+    return train_records, val_records
 
 
 def rc_stratified_split(records, split_ratio, seed, save_dir):
@@ -1059,13 +1116,20 @@ def train(config):
     save_dir = Path(config["save_dir"])
     save_dir.mkdir(parents=True, exist_ok=True)
 
-    records = scan_label_statistics(config["train_dir"], save_dir, limit=config["debug_case_limit"])
-    train_records, val_records = rc_stratified_split(
-        records,
-        split_ratio=config["split_ratio"],
-        seed=config["split_seed"],
-        save_dir=save_dir,
-    )
+    if config["fixed_split_root"]:
+        train_records, val_records = load_g2_fixed_split_records(
+            config["fixed_split_root"],
+            save_dir,
+            limit=config["debug_case_limit"],
+        )
+    else:
+        records = scan_label_statistics(config["train_dir"], save_dir, limit=config["debug_case_limit"])
+        train_records, val_records = rc_stratified_split(
+            records,
+            split_ratio=config["split_ratio"],
+            seed=config["split_seed"],
+            save_dir=save_dir,
+        )
 
     main_dataset = BraTSPatchDataset(train_records, crop_size=config["crop_size"], phase="main")
     rc_dataset = BraTSPatchDataset(train_records, crop_size=config["crop_size"], phase="rc")
@@ -1140,6 +1204,7 @@ def main():
     print("SAM2-UNET PLAN2 POST TRAINING")
     print("=" * 70)
     print(f"Training data: {config['train_dir']}")
+    print(f"G2 fixed split: {config['fixed_split_root'] or 'disabled (exploratory RC split)'}")
     print(f"Save dir:      {config['save_dir']}")
     print(f"Epochs:        {config['epochs']} (warmup={config['warmup_epochs']})")
     print(f"Crop size:     {config['crop_size']}")

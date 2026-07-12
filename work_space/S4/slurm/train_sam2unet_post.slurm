@@ -30,6 +30,7 @@ set -euo pipefail
 # By default, use the directory from which sbatch was submitted.
 export PROJECT_DIR="${PROJECT_DIR:-${SLURM_SUBMIT_DIR:-$(pwd)}}"
 export TRAIN_DIR="${TRAIN_DIR:-${PROJECT_DIR}/TrainingData}"
+export FIXED_SPLIT_ROOT="${FIXED_SPLIT_ROOT:-}"
 export SAVE_ROOT="${SAVE_ROOT:-${PROJECT_DIR}/output}"
 export RUN_MODE="${RUN_MODE:-full}"  # full or debug
 
@@ -100,7 +101,14 @@ if [[ ! -f train_sam2unet_post.py || ! -f sam2unet_model.py ]]; then
   exit 1
 fi
 
-if [[ ! -d "${TRAIN_DIR}" ]]; then
+if [[ -n "${FIXED_SPLIT_ROOT}" ]]; then
+  for split_name in train val test; do
+    if [[ ! -d "${FIXED_SPLIT_ROOT}/${split_name}" ]]; then
+      echo "Missing G2 fixed split directory: ${FIXED_SPLIT_ROOT}/${split_name}" >&2
+      exit 1
+    fi
+  done
+elif [[ ! -d "${TRAIN_DIR}" ]]; then
   echo "Missing TrainingData directory: ${TRAIN_DIR}" >&2
   exit 1
 fi
@@ -112,6 +120,7 @@ export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
 export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
 
 export SAM2UNET_TRAIN_DIR="${TRAIN_DIR}"
+export SAM2UNET_FIXED_SPLIT_ROOT="${FIXED_SPLIT_ROOT}"
 export SAM2UNET_SAVE_DIR="${SAVE_DIR}"
 export SAM2UNET_BATCH_SIZE="${SAM2UNET_BATCH_SIZE:-1}"
 export SAM2UNET_ACCUMULATION_STEPS="${SAM2UNET_ACCUMULATION_STEPS:-1}"
@@ -138,6 +147,7 @@ echo "node: ${SLURMD_NODENAME:-$(hostname)}"
 echo "submit dir: ${SLURM_SUBMIT_DIR:-NA}"
 echo "project: ${PROJECT_DIR}"
 echo "train dir: ${SAM2UNET_TRAIN_DIR}"
+echo "G2 fixed split root: ${SAM2UNET_FIXED_SPLIT_ROOT:-disabled}"
 echo "save dir: ${SAM2UNET_SAVE_DIR}"
 echo "run mode: ${RUN_MODE}"
 echo "python: ${PYTHON_BIN}"

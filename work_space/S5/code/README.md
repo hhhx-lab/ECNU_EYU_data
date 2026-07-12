@@ -1,5 +1,7 @@
 # SegMamba BraTS 2026 实验指南
 
+> 2026-07-12 数据口径：正式实验先运行 `2_preprocessing_mri.py --g2-case-folder-root <root>`，输入必须是 G2 materializer 生成的 `train/val/test` case-folder view。通道固定为 `t1n,t1c,t2w,t2f`，训练/预测读取固定 split。不要对 G2 数据运行旧 `1_rename_mri_data.py`，也不要直接使用 G1 raw output。
+
 本项目包含 8 组实验，用于验证不同配置对脑转移瘤分割模型性能的影响。
 
 ---
@@ -39,6 +41,16 @@
 # 只运行指定实验
 ./run_all_experiments.sh exp_ce_dice
 ```
+
+运行前先准备固定 split：
+
+```bash
+python 2_preprocessing_mri.py \
+  --g2-case-folder-root ./data/g2_case_folders \
+  --output-root ./data/fullres
+```
+
+`data/fullres/train`、`val`、`test` 必须同时存在。若缺 val/test，正式训练会停止；只有 YAML 显式设置 `allow_random_split: true` 才允许旧随机切分用于探索。
 
 ---
 
@@ -135,5 +147,4 @@ inference:
 ### 检测指标
 - **F1**: 病灶检测 F1 分数（在不同 IoU 阈值下）
 - **AUC**: F1 曲线的 AUC 值，综合评估检测性能
-
 

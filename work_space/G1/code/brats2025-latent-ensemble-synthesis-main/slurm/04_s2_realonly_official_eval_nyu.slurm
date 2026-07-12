@@ -11,8 +11,8 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=bf2260@nyu.edu
 
-# Evaluate the combined out-of-fold predictions with BraTS_evaluation.
-# This job intentionally requests no GPU and must run after all five folds.
+# Evaluate the fixed validation predictions with BraTS_evaluation.
+# This job intentionally requests no GPU.
 
 set -e
 
@@ -20,17 +20,41 @@ PROJ="${PROJ:-/scratch/bf2260/ECNU_EYU_data}"
 S2_REPO="${PROJ}/work_space/S2/BraTS2026_S2_RC_v1.0/repository"
 CONDA_SH="${CONDA_SH:-/share/apps/anaconda3/2025.06/etc/profile.d/conda.sh}"
 CONDA_ENV="${CONDA_ENV:-brats_eval}"
+S2_EXPERIMENT_MODE="${S2_EXPERIMENT_MODE:-current}"
+
+case "${S2_EXPERIMENT_MODE}" in
+    current)
+        DEFAULT_S2_DATASET_NAME=Dataset263_BraTS2026_MET_RealOnly_Current
+        DEFAULT_OFFICIAL_RUN_ID=realonly_current_fixed_validation
+        DEFAULT_EXPECTED_VAL_COUNT=103
+        ;;
+    legacy)
+        DEFAULT_S2_DATASET_NAME=Dataset260_BraTS2026_MET_RealOnly
+        DEFAULT_OFFICIAL_RUN_ID=legacy_dataset260_fixed_validation
+        DEFAULT_EXPECTED_VAL_COUNT=207
+        ;;
+    *)
+        echo "S2_EXPERIMENT_MODE must be current or legacy, got: ${S2_EXPERIMENT_MODE}" >&2
+        exit 2
+        ;;
+esac
 
 export nnUNet_preprocessed="${nnUNet_preprocessed:-${PROJ}/work_space/S2/data/nnunet_preprocessed}"
 export nnUNet_results="${nnUNet_results:-${PROJ}/work_space/S2/data/nnunet_results}"
-BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${S2_REPO}/data/splits}"
+BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${S2_REPO}/data/splits/${S2_EXPERIMENT_MODE}}"
 BRATS_NNUNET_TRAINVAL_MAPPING_CSV="${BRATS_NNUNET_TRAINVAL_MAPPING_CSV:-${BRATS_SPLIT_DIR}/nnunet_case_mapping_realonly_train_val.csv}"
-S2_DATASET_NAME="${S2_DATASET_NAME:-Dataset260_BraTS2026_MET_RealOnly}"
+S2_DATASET_NAME="${S2_DATASET_NAME:-${DEFAULT_S2_DATASET_NAME}}"
 S2_TRAINER="${S2_TRAINER:-nnUNetTrainerBraTS2026RC}"
 S2_CONFIGURATION="${S2_CONFIGURATION:-3d_fullres}"
-OFFICIAL_RUN_ID="${OFFICIAL_RUN_ID:-realonly_5fold_cv}"
+OFFICIAL_RUN_ID="${OFFICIAL_RUN_ID:-${DEFAULT_OFFICIAL_RUN_ID}}"
+S2_EXPECTED_VAL_COUNT="${S2_EXPECTED_VAL_COUNT:-${DEFAULT_EXPECTED_VAL_COUNT}}"
 VOL_THRESHOLD="${VOL_THRESHOLD:-27}"
 OVERLAP_THRESHOLD="${OVERLAP_THRESHOLD:-0.2}"
+
+if [[ "${S2_DATASET_NAME}" != "${DEFAULT_S2_DATASET_NAME}" ]]; then
+    echo "${S2_EXPERIMENT_MODE} mode is locked to dataset ${DEFAULT_S2_DATASET_NAME}." >&2
+    exit 2
+fi
 
 RESULT_BASE="${nnUNet_results}/${S2_DATASET_NAME}/${S2_TRAINER}__nnUNetPlans__${S2_CONFIGURATION}"
 REFERENCE_ALL="${nnUNet_preprocessed}/${S2_DATASET_NAME}/gt_segmentations"
@@ -42,6 +66,7 @@ METRICS_CSV="${OUTPUT_ROOT}/leaderboard_metrics.csv"
 
 echo "===== S2 Official-Compatible Evaluation ====="
 echo "Job ID       : ${SLURM_JOB_ID:-local}"
+echo "Mode         : ${S2_EXPERIMENT_MODE}"
 echo "Date         : $(date)"
 echo "Result base  : ${RESULT_BASE}"
 echo "Reference    : ${REFERENCE_ALL}"
@@ -111,53 +136,50 @@ while IFS=$'\t' read -r NNUNET_ID SOURCE_ID; do
     SOURCE_ID_BY_NNUNET["${NNUNET_ID}"]="${SOURCE_ID}"
 done < "${MAPPING_TSV}"
 
-EXPECTED=0
-for FOLD in 0 1 2 3 4; do
-    VAL_FILE="${BRATS_SPLIT_DIR}/val_fold${FOLD}.txt"
-    FOLD_DIR="${RESULT_BASE}/fold_${FOLD}"
-    PRED_DIR="${FOLD_DIR}/validation"
-    if [[ ! -f "${FOLD_DIR}/checkpoint_final.pth" ]]; then
-        echo "Fold ${FOLD} is incomplete; missing ${FOLD_DIR}/checkpoint_final.pth" >&2
-        exit 1
-    fi
-    if [[ ! -s "${VAL_FILE}" || ! -d "${PRED_DIR}" ]]; then
-        echo "Fold ${FOLD} split or validation predictions are missing." >&2
-        exit 1
-    fi
+VAL_FILE="${BRATS_SPLIT_DIR}/val_fixed.txt"
+FOLD_DIR="${RESULT_BASE}/fold_0"
+PRED_DIR="${FOLD_DIR}/validation"
+if [[ ! -f "${FOLD_DIR}/checkpoint_final.pth" ]]; then
+    echo "Fixed-split model is incomplete; missing ${FOLD_DIR}/checkpoint_final.pth" >&2
+    exit 1
+fi
+if [[ ! -s "${VAL_FILE}" || ! -d "${PRED_DIR}" ]]; then
+    echo "Fixed validation split or predictions are missing." >&2
+    exit 1
+fi
 
-    while IFS= read -r CASE_ID; do
-        [[ -z "${CASE_ID}" ]] && continue
-        REF_FILE="${REFERENCE_ALL}/${CASE_ID}.nii.gz"
-        PRED_FILE="${PRED_DIR}/${CASE_ID}.nii.gz"
-        SOURCE_ID="${SOURCE_ID_BY_NNUNET[${CASE_ID}]:-}"
-        if [[ -z "${SOURCE_ID}" ]]; then
-            echo "Missing source-case mapping for ${CASE_ID}" >&2
-            exit 1
-        fi
-        if [[ ! -f "${REF_FILE}" ]]; then
-            echo "Missing reference for fold ${FOLD}: ${REF_FILE}" >&2
-            exit 1
-        fi
-        if [[ ! -f "${PRED_FILE}" ]]; then
-            echo "Missing prediction for fold ${FOLD}: ${PRED_FILE}" >&2
-            exit 1
-        fi
-        if [[ -e "${PREDICTION_VIEW}/${SOURCE_ID}.nii.gz" ]]; then
-            echo "Duplicate out-of-fold prediction source ID: ${SOURCE_ID}" >&2
-            exit 1
-        fi
-        # BraTS_evaluation matches the official BraTS-MET-xxxxx-xxx suffix,
-        # so expose source IDs instead of nnU-Net's BraTSMET_000001 IDs.
-        ln -s "${REF_FILE}" "${REFERENCE_VIEW}/${SOURCE_ID}.nii.gz"
-        ln -s "${PRED_FILE}" "${PREDICTION_VIEW}/${SOURCE_ID}.nii.gz"
-        EXPECTED=$((EXPECTED + 1))
-    done < "${VAL_FILE}"
-done
+EXPECTED=0
+while IFS= read -r CASE_ID; do
+    [[ -z "${CASE_ID}" ]] && continue
+    REF_FILE="${REFERENCE_ALL}/${CASE_ID}.nii.gz"
+    PRED_FILE="${PRED_DIR}/${CASE_ID}.nii.gz"
+    SOURCE_ID="${SOURCE_ID_BY_NNUNET[${CASE_ID}]:-}"
+    if [[ -z "${SOURCE_ID}" ]]; then
+        echo "Missing source-case mapping for ${CASE_ID}" >&2
+        exit 1
+    fi
+    if [[ ! -f "${REF_FILE}" ]]; then
+        echo "Missing fixed-validation reference: ${REF_FILE}" >&2
+        exit 1
+    fi
+    if [[ ! -f "${PRED_FILE}" ]]; then
+        echo "Missing fixed-validation prediction: ${PRED_FILE}" >&2
+        exit 1
+    fi
+    # BraTS_evaluation matches official source IDs, not nnU-Net IDs.
+    ln -s "${REF_FILE}" "${REFERENCE_VIEW}/${SOURCE_ID}.nii.gz"
+    ln -s "${PRED_FILE}" "${PREDICTION_VIEW}/${SOURCE_ID}.nii.gz"
+    EXPECTED=$((EXPECTED + 1))
+done < "${VAL_FILE}"
 
 REF_COUNT=$(find "${REFERENCE_VIEW}" -maxdepth 1 -type l -name '*.nii.gz' | wc -l | tr -d ' ')
 PRED_COUNT=$(find "${PREDICTION_VIEW}" -maxdepth 1 -type l -name '*.nii.gz' | wc -l | tr -d ' ')
 if [[ "${REF_COUNT}" != "${EXPECTED}" || "${PRED_COUNT}" != "${EXPECTED}" ]]; then
-    echo "Out-of-fold materialization mismatch: expected=${EXPECTED}, ref=${REF_COUNT}, pred=${PRED_COUNT}" >&2
+    echo "Fixed-validation materialization mismatch: expected=${EXPECTED}, ref=${REF_COUNT}, pred=${PRED_COUNT}" >&2
+    exit 1
+fi
+if [[ "${EXPECTED}" != "${S2_EXPECTED_VAL_COUNT}" ]]; then
+    echo "Validation count mismatch for ${S2_EXPERIMENT_MODE}: expected=${S2_EXPECTED_VAL_COUNT}, actual=${EXPECTED}" >&2
     exit 1
 fi
 

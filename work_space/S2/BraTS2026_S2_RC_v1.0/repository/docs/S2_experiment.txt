@@ -1,120 +1,38 @@
-S2 experiment environment
-=========================
+S2 fixed-split experiment environment
+=====================================
 
-文件用途
---------
-这份文件只说明 S2 real-only 主基线的服务器环境怎么创建、怎么自检、Slurm 默认会用哪个环境。
-S2 当前入口分为准备、五折训练和官方指标三步：
+默认正式模式
+------------
+S2_EXPERIMENT_MODE=current
+Dataset263_BraTS2026_MET_RealOnly_Current
+823 train / 103 validation / 104 internal test
+不使用交叉验证；fold_0 只用于 nnU-Net API/目录兼容。
 
-work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm
-work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
-work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
-
-默认 conda 环境名
-----------------
-brats2026_s2
-
-Slurm 默认读取：
-
+环境
+----
 CONDA_SH=/share/apps/anaconda3/2025.06/etc/profile.d/conda.sh
 CONDA_ENV=brats2026_s2
+已在 Python 3.10、PyTorch 2.7.1、nnunetv2 2.8.0、batchgenerators 0.25.3、batchgeneratorsv2 0.3.3 上完成 trainer 导入和 CLI 参数验证。
+Python 用户态依赖见 repository/requirements.txt。PyTorch 必须使用与服务器 CUDA/driver 兼容的构建，不要为了对齐 requirements 盲目覆盖已能正常识别 GPU 的 PyTorch。
+不要使用 sudo pip，不要混用系统 Python。
 
-如果服务器 conda 路径不同，提交时覆盖。先准备，再提交 folds 1-4：
+入口
+----
+准备：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm
+训练：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
+验证：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
+推理：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
 
-PREP_JOB=$(sbatch --parsable --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s2 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
-sbatch --dependency=afterok:${PREP_JOB} --array=1-4%4 --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s2 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
+运行
+----
+PREP_JOB=$(sbatch --parsable --export=ALL,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
+sbatch --dependency=afterok:${PREP_JOB} --export=ALL,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
 
-推荐 Python / CUDA / PyTorch
-----------------------------
-1. Python: 3.10
-2. PyTorch: 2.1.x 或更新的 2.x 稳定版
-3. nnU-Net: nnunetv2
-4. CUDA wheel: 优先 cu118；如果集群统一是 CUDA 12 且已验证 PyTorch CUDA 可用，可以改用 cu121。
-5. 不要使用系统 Python、Homebrew Python 或 sudo pip。
+输出
+----
+模型：work_space/S2/data/nnunet_results/Dataset263_BraTS2026_MET_RealOnly_Current/nnUNetTrainerBraTS2026RC__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth
+划分：work_space/S2/BraTS2026_S2_RC_v1.0/repository/data/splits/current/
 
-创建环境
+历史模式
 --------
-建议在 login node 或 interactive session 创建环境，不要在正式 batch job 里临时安装依赖。
-
-conda create -n brats2026_s2 python=3.10 -y
-conda activate brats2026_s2
-
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
-pip install nnunetv2 batchgenerators batchgeneratorsv2 nibabel numpy scipy pandas scikit-image SimpleITK tqdm matplotlib
-
-如果服务器只能使用 CUDA 12.1 wheel，把第一条 pip 改成：
-
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-
-为什么 S2 需要这些包
---------------------
-1. nnunetv2: S2 的 plan/preprocess/train/infer 全部走 nnU-Net v2 CLI。
-2. batchgenerators / batchgeneratorsv2: custom_nnunet/nnUNetTrainerBraTS2026RC.py 直接 import 这两套增强模块。
-3. nibabel / numpy: 标签检查、格式转换脚本使用。
-4. SimpleITK: nnU-Net v2 常用医学图像 IO 依赖。
-5. scipy / pandas / scikit-image / tqdm / matplotlib: nnU-Net、质控和辅助分析常用依赖。
-
-运行前自检
-----------
-激活环境后执行：
-
-python - <<'PY'
-import importlib.util
-import torch
-import nnunetv2
-import batchgenerators
-import batchgeneratorsv2
-import nibabel
-import SimpleITK
-import numpy
-import scipy
-import pandas
-
-print("torch:", torch.__version__)
-print("torch cuda:", torch.version.cuda)
-print("cuda available:", torch.cuda.is_available())
-print("gpu:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
-print("nnunetv2:", importlib.util.find_spec("nnunetv2").origin)
-print("S2 environment check passed")
-PY
-
-nnUNetv2_plan_and_preprocess -h >/tmp/s2_nnunet_plan_help.txt
-nnUNetv2_train -h >/tmp/s2_nnunet_train_help.txt
-
-预期结果
---------
-1. import 不报错。
-2. nnUNetv2_plan_and_preprocess 和 nnUNetv2_train 命令存在。
-3. GPU 节点上 cuda available 应该是 True。
-4. 如果在 login node 无 GPU，cuda available 可能是 False；这种情况需要在 interactive GPU 节点再确认一次。
-
-和 S2 代码的对应关系
---------------------
-1. scripts/01_convert_to_nnunet.py 会把 G2 real-only mapping 物化成 nnU-Net raw dataset。
-2. scripts/04_build_five_fold_splits.py 会保留 fold0，并生成 folds 1-4 的确定性划分。
-3. train.sh 会把 custom_nnunet/nnUNetTrainerBraTS2026RC.py 复制到当前 Python 环境的 nnunet trainer 目录，并根据 S2_FOLD 决定训练、续训或跳过。
-4. Slurm 会设置 nnUNet_raw、nnUNet_preprocessed、nnUNet_results。
-5. 正式训练入口是 Slurm Array 调用 bash train.sh，不是旧的 train.py。
-
-正式运行前检查
---------------
-1. 确认 raw data 已放在：
-   work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training/
-2. 确认完整病例包含 t1n/t1c/t2w/t2f/seg。
-3. 确认缺 t2w、缺任一必要文件或仍含非法 label 值的病例会被 G2 raw intake 自动跳过；有 clean corrected label 的病例会自动使用 corrected label。
-4. 确认 CPU 准备任务生成 train_fold0-4.txt、val_fold0-4.txt 和 five_fold_summary.json。
-5. 确认 GPU Array 日志开头打印正确的 S2_FOLD、torch 版本和 cuda available。
-
-常见问题
---------
-1. nnUNetv2_train: command not found
-   说明 nnunetv2 没装到当前环境，或 Slurm 激活的不是 brats2026_s2。
-
-2. 找不到 nnUNetTrainerBraTS2026RC
-   正常流程下 train.sh 会自动复制 custom trainer；如果仍失败，先检查 train.sh 打印的 Python site-packages 路径是否属于 brats2026_s2。
-
-3. CUDA 可见但训练显存不足
-   先不要改 dataset conversion；按 S2_服务器运行手册调 nnU-Net trainer 参数或换更大显存节点。
-
-4. SimpleITK import 报错
-   重新在 brats2026_s2 里安装 SimpleITK，不要在系统 Python 里补。
+S2_EXPERIMENT_MODE=legacy 仅用于复核 Dataset260 的 828/207/259 历史模型，不用于当前 paired 消融。

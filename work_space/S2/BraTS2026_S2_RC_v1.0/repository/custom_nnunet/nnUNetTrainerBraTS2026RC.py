@@ -604,34 +604,36 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
         try:
             fold = int(self.fold)
         except (TypeError, ValueError) as exc:
-            raise ValueError(f"S2 requires an integer fold in [0, 4], got: {self.fold}") from exc
-        if fold not in range(5):
-            raise ValueError(f"S2 requires fold in [0, 4], got: {fold}")
+            raise ValueError(f"S2 fixed-split training requires nnU-Net fold key 0, got: {self.fold}") from exc
+        if fold != 0:
+            raise ValueError(
+                f"S2 cross-validation is disabled; only nnU-Net fold key 0 is allowed, got: {fold}"
+            )
 
         train_file = os.environ.get(
             "BRATS_TRAIN_SPLIT",
-            os.path.join(split_dir, f"train_fold{fold}.txt")
+            os.path.join(split_dir, "train_fixed.txt")
         )
         val_file = os.environ.get(
             "BRATS_VAL_SPLIT",
-            os.path.join(split_dir, f"val_fold{fold}.txt")
+            os.path.join(split_dir, "val_fixed.txt")
         )
 
-        # Backward compatibility for an existing fold-0 checkpoint prepared
-        # before fold-specific files were introduced.
-        if fold == 0 and not os.path.isfile(train_file):
+        # Existing server checkpoints used these aliases before the fixed split
+        # was named explicitly.
+        if not os.path.isfile(train_file):
             train_file = os.path.join(split_dir, "train_full.txt")
-        if fold == 0 and not os.path.isfile(val_file):
+        if not os.path.isfile(val_file):
             val_file = os.path.join(split_dir, "val_full.txt")
 
         if not os.path.isfile(train_file):
             raise FileNotFoundError(
-                f"Missing fold-{fold} training split: {train_file}. "
+                f"Missing fixed training split: {train_file}. "
                 "Run the S2 real-only preparation Slurm job first."
             )
         if not os.path.isfile(val_file):
             raise FileNotFoundError(
-                f"Missing fold-{fold} validation split: {val_file}. "
+                f"Missing fixed validation split: {val_file}. "
                 "Run the S2 real-only preparation Slurm job first."
             )
 
@@ -643,16 +645,16 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
 
         if not tr_keys or not val_keys:
             raise ValueError(
-                f"Fold {fold} has an empty split: train={len(tr_keys)}, val={len(val_keys)}"
+                f"Fixed split is empty: train={len(tr_keys)}, val={len(val_keys)}"
             )
         if len(tr_keys) != len(set(tr_keys)) or len(val_keys) != len(set(val_keys)):
-            raise ValueError(f"Fold {fold} split files contain duplicate case IDs")
+            raise ValueError("Fixed split files contain duplicate case IDs")
         overlap = sorted(set(tr_keys) & set(val_keys))
         if overlap:
-            raise ValueError(f"Fold {fold} train/val overlap: {overlap[:10]}")
+            raise ValueError(f"Fixed train/validation overlap: {overlap[:10]}")
 
         self.print_to_log_file(
-            f"Using BraTS2026 fold {fold}: {len(tr_keys)} train / {len(val_keys)} val"
+            f"Using BraTS2026 fixed split: {len(tr_keys)} train / {len(val_keys)} val"
         )
 
         return tr_keys, val_keys

@@ -1,57 +1,28 @@
-# Inference Protocol
+# S2 Inference Protocol
 
-## Input
-
-`infer.sh` expects an nnU-Net input directory. Each case must contain four files:
+Each input case requires:
 
 ```text
-<case_id>_0000.nii.gz  # T1N
-<case_id>_0001.nii.gz  # T1C
-<case_id>_0002.nii.gz  # T2W
-<case_id>_0003.nii.gz  # T2F
+<case_id>_0000.nii.gz  T1N
+<case_id>_0001.nii.gz  T1C
+<case_id>_0002.nii.gz  T2W
+<case_id>_0003.nii.gz  T2F
 ```
 
-The pseudo-test or official test dataset must not be used for training,
-validation, model selection, or parameter tuning.
-
-## Five-fold ensemble
-
-After folds 0-4 are complete, run:
-
-```bash
-bash infer.sh INPUT_FOLDER OUTPUT_FOLDER
-```
-
-Defaults:
+Current inference uses:
 
 ```text
-Dataset ID   = 260
-Configuration= 3d_fullres
-Trainer      = nnUNetTrainerBraTS2026RC
-Folds        = 0 1 2 3 4
+Dataset263_BraTS2026_MET_RealOnly_Current/
+nnUNetTrainerBraTS2026RC__nnUNetPlans__3d_fullres/
+fold_0/checkpoint_final.pth
 ```
-
-`nnUNetv2_predict` ensembles all five folds. The script verifies every
-`checkpoint_final.pth` before inference.
-
-For a temporary fold-0-only smoke test:
-
-```bash
-S2_FOLDS=0 bash infer.sh INPUT_FOLDER OUTPUT_FOLDER
-```
-
-Fold-0-only output is not the final five-fold result.
-
-## Slurm
 
 ```bash
 sbatch \
-  --export=ALL,S2_INFERENCE_INPUT=/path/to/nnunet_input \
+  --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_INPUT=/path/to/nnunet_input \
   work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
 ```
 
-The default output directory is:
+Default output is `work_space/S2/results/realonly_current_fixed_inference/`. The script always calls `nnUNetv2_predict -f 0` and rejects multi-fold inference.
 
-```text
-work_space/S2/results/realonly_5fold_inference/
-```
+Use `S2_EXPERIMENT_MODE=legacy` only to infer with the historical Dataset260 checkpoint.

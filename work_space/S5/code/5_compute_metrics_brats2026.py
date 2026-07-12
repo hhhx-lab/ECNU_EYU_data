@@ -4,7 +4,7 @@ Metrics:
 - Segmentation: DSC, NSD (only for lesions > 275 mm³)
 - Detection: F1, AUC over multiple F1 scores at different detection thresholds
 """
-from light_training.dataloading.dataset import get_train_val_test_loader_from_train
+from light_training.dataloading.dataset import get_train_val_test_loader_seperate
 from monai.utils import set_determinism
 import os
 import numpy as np
@@ -42,6 +42,20 @@ def load_config(config_path):
 
 args, _ = parse_args()
 config = load_config(args.config) if args.config else {}
+
+
+def get_config_value(config, key, default=None):
+    value = config.get(key, default) if isinstance(config, dict) else default
+    return default if value is None else value
+
+
+def resolve_seg_path(raw_test_root, case_name):
+    case_dir = os.path.join(raw_test_root, case_name)
+    for filename in ("seg.nii.gz", f"{case_name}-seg.nii.gz"):
+        path = os.path.join(case_dir, filename)
+        if os.path.isfile(path):
+            return path
+    raise FileNotFoundError(f"missing ground-truth seg for {case_name}: {case_dir}")
 
 # 从 config 文件名提取实验标识
 config_name = ""
@@ -267,11 +281,13 @@ def calculate_auc_over_f1(all_detection_metrics_per_threshold):
 # ------------------------------------------------------------------
 
 def main():
-    data_dir     = "./data/fullres/train"
-    raw_data_dir = "./data/raw_data/MICCAI-LH-BraTS2025-MET-Challenge-TrainingData/"
+    data_dir = get_config_value(config, "data_dir", "./data/fullres/train")
+    val_data_dir = get_config_value(config, "val_data_dir", os.path.join(os.path.dirname(data_dir), "val"))
+    test_data_dir = get_config_value(config, "test_data_dir", os.path.join(os.path.dirname(data_dir), "test"))
+    raw_data_dir = get_config_value(config, "raw_test_dir", "./data/g2_case_folders/test")
     results_root = "prediction_results"
 
-    _, _, test_ds = get_train_val_test_loader_from_train(data_dir)
+    _, _, test_ds = get_train_val_test_loader_seperate(data_dir, val_data_dir, test_data_dir)
     print(f"Number of test cases: {len(test_ds)}")
 
     num_cases   = len(test_ds)
@@ -288,7 +304,7 @@ def main():
         properties = batch["properties"]
         case_name  = properties["name"]
 
-        gt_itk   = sitk.ReadImage(os.path.join(raw_data_dir, case_name, "seg.nii.gz"))
+        gt_itk   = sitk.ReadImage(resolve_seg_path(raw_data_dir, case_name))
         gt_array = sitk.GetArrayFromImage(gt_itk).astype(np.int32)
 
         pred_itk   = sitk.ReadImage(f"./{results_root}/{pred_name}/{case_name}.nii.gz")

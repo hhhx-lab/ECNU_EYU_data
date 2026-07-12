@@ -1,97 +1,43 @@
-# Dataset Description
+# S2 Dataset
 
-Dataset ID:
-
-260
-
-Dataset name:
-
-Dataset260_BraTS2026_MET_RealOnly
-
----
-
-## Five-fold split
-
-Current CV pool after preserving the completed fold-0 exclusions:
-
-1035 cases
-
-Per-fold training:
-
-828 cases
-
-Per-fold validation:
-
-207 cases
-
-Internal locked test:
-
-259 cases
-
-Train/validation overlap within each fold:
-
-0
-
-Each CV-pool case appears in validation exactly once across folds 0-4. Fold 0
-keeps the completed fixed validation set unchanged. The 259-case internal locked
-test never enters Dataset260 training or validation.
-
----
-
-## Labels
-
-Labels come from the G2 real-only mapping. The mapping prefers official corrected labels when available. A raw segmentation is used only when its label values are inside `{0,1,2,3,4}`. Cases that still contain illegal labels without a clean corrected label are skipped before nnU-Net materialization.
-
-RC lesions are included in the segmentation targets.
-
-## Channel order
-
-The nnU-Net image suffixes are unified with G2 materialized datasets:
+## Current Dataset
 
 ```text
-0000 = T1N
-0001 = T1C
-0002 = T2W
-0003 = T2F
+Dataset263_BraTS2026_MET_RealOnly_Current
+mapping: work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
+split:   work_space/G2/results/splits/splits_final_train_val_test.json
+counts:  823 train / 103 val / 104 test
 ```
 
----
+Only 926 train+val cases are materialized into `imagesTr/labelsTr`. The 104-case test remains locked outside training preprocessing.
 
-## Environment variables
-
-nnUNet_raw
-
-nnUNet_preprocessed
-
-nnUNet_results
-
-must be configured before training.
-
-If they are not set, `train.sh` and `infer.sh` use repository-local defaults:
+Channel order:
 
 ```text
-data/nnunet_raw
-data/nnunet_preprocessed
-data/nnunet_results
+0000=T1N
+0001=T1C
+0002=T2W
+0003=T2F
+labels={0,1,2,3,4}
 ```
 
-Data conversion can also be controlled with:
+Split artifacts live under `data/splits/current/`:
 
 ```text
-BRATS_TRAIN_ROOT
-NNUNET_DATASET_DIR
-BRATS_NNUNET_MAPPING_CSV
-BRATS_MATERIALIZE_MODE
-BRATS_SPLIT_DIR
-S2_FOLD
+train_fixed.txt
+val_fixed.txt
+test_internal_locked.txt
+test_internal_locked_source_ids.txt
+fixed_split_membership.csv
+fixed_split_summary.json
+fixed_split_cache_audit.json
+nnunet_case_mapping_realonly_train_val.csv
 ```
 
-Recommended real-only conversion command after generating the train+val-only mapping file:
+`04_build_fixed_split.py` enforces `823/103/104`, source-case isolation, and patient-group isolation. `05_validate_fixed_split_cache.py` requires exact equality among train+val split IDs, raw Dataset263 IDs, and preprocessed cache IDs.
 
-```bash
-python scripts/01_convert_to_nnunet.py \
-  --mapping-csv /scratch/bf2260/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/data/splits/nnunet_case_mapping_realonly_train_val.csv \
-  --dst /scratch/bf2260/ECNU_EYU_data/work_space/S2/data/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly \
-  --mode symlink \
-  --clean
-```
+## Historical Dataset260
+
+`Dataset260_BraTS2026_MET_RealOnly` uses historical `828/207/259`. Legacy recovery derives train/val from the actual Dataset260 and `fold_0/validation`, uses the master mapping to recover source identities, and writes separate artifacts under `data/splits/legacy/`.
+
+Legacy Dataset260 is not a valid paired baseline for the current G2 split.
