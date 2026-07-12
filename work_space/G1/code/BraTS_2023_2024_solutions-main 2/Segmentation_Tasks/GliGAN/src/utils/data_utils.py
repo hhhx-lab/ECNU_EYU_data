@@ -162,7 +162,7 @@ def get_loader(args):
     train_ds = CacheDataset( 
         data=train_records, 
         transform=train_transforms,
-        cache_rate=1, 
+        cache_rate=float(os.environ.get('CACHE_RATE', 0.0)), 
         copy_cache=False,
         progress=True,
         num_workers=NUM_WORKERS,

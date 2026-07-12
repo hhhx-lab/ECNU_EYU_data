@@ -17,7 +17,7 @@ set -e
 PROJ=${PROJ:-/scratch/bf2260/ECNU_EYU_data}
 CODE_DIR="${PROJ}/work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN"
 CONDA_SH=${CONDA_SH:-/share/apps/anaconda3/2025.06/etc/profile.d/conda.sh}
-CONDA_ENV=${CONDA_ENV:-brats}
+CONDA_ENV=${CONDA_ENV:-g1_diffusion_v2}
 LOGDIR=${LOGDIR:-brats2026_diffusion_v2_complete_only}
 DATASET=${DATASET:-BRATS_2024}
 BATCH_SIZE=${BATCH_SIZE:-16}
