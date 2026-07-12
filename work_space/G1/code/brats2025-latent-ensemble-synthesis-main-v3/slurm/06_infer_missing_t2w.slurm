@@ -27,6 +27,7 @@ SYNTHESIS_TYPE="${SYNTHESIS_TYPE:-ensamble}"
 INFER_RUN_ID="${INFER_RUN_ID:-run_${SLURM_JOB_ID}}"
 EXPECTED_INFERENCE_CASES="${EXPECTED_INFERENCE_CASES:-265}"
 VAL_APPROVED="${VAL_APPROVED:-0}"
+G1_INFERENCE_SEED="${G1_INFERENCE_SEED:-42}"
 case "${SYNTHESIS_TYPE}" in encdec|bbdm|ensamble) ;; *) echo "ERROR: invalid SYNTHESIS_TYPE"; exit 1 ;; esac
 if [ "${VAL_APPROVED}" != "1" ]; then
   echo "ERROR: validation is a manual gate. Inspect stage 05, then submit with VAL_APPROVED=1."
@@ -72,6 +73,7 @@ if [ "${CASE_COUNT}" -ne "${EXPECTED_INFERENCE_CASES}" ]; then
 fi
 
 export INFER_RUN_DIR SYNTHESIS_TYPE EXPECTED_INFERENCE_CASES VAL_RUN_DIR
+export G1_INFERENCE_SEED
 echo "===== G1 V3 Infer Missing T2W ====="
 echo "Cases: ${CASE_COUNT}"
 echo "Synthesis type: ${SYNTHESIS_TYPE}"
@@ -79,6 +81,7 @@ echo "VAE: ${G1_VAE_WEIGHTS}"
 echo "EncDec checkpoint: ${G1_ENCDEC_CHECKPOINT}"
 echo "BBDM checkpoint: ${G1_BBDM_CHECKPOINT}"
 echo "BBDM s: ${G1_BBDM_S}"
+echo "Inference seed: ${G1_INFERENCE_SEED}"
 echo "Approved validation run: ${VAL_RUN_DIR}"
 echo "Output run: ${INFER_RUN_DIR}"
 nvidia-smi
@@ -87,10 +90,12 @@ nvidia-smi
   --input_dir data/input_inference \
   --output_dir "${INFER_RUN_DIR}" \
   --synthesis_type "${SYNTHESIS_TYPE}" \
+  --seed "${G1_INFERENCE_SEED}" \
   --gpu_id 0 \
   --verbose
 
 "${PYTHON_BIN}" - <<'PY'
+import csv
 import json
 import os
 from datetime import datetime, timezone
@@ -99,7 +104,7 @@ from pathlib import Path
 import configs
 
 run_dir = Path(os.environ["INFER_RUN_DIR"]).resolve()
-case_dirs = [path for path in run_dir.iterdir() if path.is_dir()]
+case_dirs = sorted(path for path in run_dir.iterdir() if path.is_dir())
 generated = list(run_dir.glob("*/*-t2w.nii.gz"))
 expected = int(os.environ["EXPECTED_INFERENCE_CASES"])
 if len(case_dirs) != expected:
@@ -122,6 +127,13 @@ for case_dir in case_dirs:
 record = {
     "created_at": datetime.now(timezone.utc).isoformat(),
     "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
+    "generation_run_id": run_dir.name,
+    "generator_name": "g1_missing_t2w_v3",
+    "generation_mode": "completion",
+    "generator_io": "t1n_t1c_t2f_to_t2w_completion",
+    "source_csv": "data/g1_v3_data_placement_manifest.csv",
+    "source_csv_version": "g1_v3_data_placement_manifest.csv",
+    "seed": int(os.environ["G1_INFERENCE_SEED"]),
     "case_count": len(case_dirs),
     "synthesis_type": os.environ["SYNTHESIS_TYPE"],
     "validation_run": os.environ["VAL_RUN_DIR"],
@@ -132,6 +144,33 @@ record = {
     "bbdm_s": configs.BBDM_S,
 }
 (run_dir / "inference_run.json").write_text(json.dumps(record, indent=2) + "\n")
+(run_dir / "generation_config.json").write_text(json.dumps(record, indent=2) + "\n")
+manifest_rows = []
+log_rows = []
+for case_dir in case_dirs:
+    case_id = case_dir.name
+    manifest_rows.append({
+        "synthetic_raw_id": case_id,
+        "source_case_id": case_id,
+        "label_kind": "completion",
+        "status": "success",
+        "raw_case_dir": str(case_dir.resolve()),
+    })
+    log_rows.append({
+        "synthetic_raw_id": case_id,
+        "source_case_id": case_id,
+        "generation_run_id": record["generation_run_id"],
+        "generator_name": record["generator_name"],
+        "seed": record["seed"],
+        "status": "success",
+    })
+with (run_dir / "synthetic_generation_manifest.csv").open("w", newline="") as handle:
+    writer = csv.DictWriter(handle, fieldnames=list(manifest_rows[0]))
+    writer.writeheader()
+    writer.writerows(manifest_rows)
+with (run_dir / "generation_log.jsonl").open("w") as handle:
+    for row in log_rows:
+        handle.write(json.dumps(row) + "\n")
 (run_dir.parent / "latest_run.txt").write_text(str(run_dir) + "\n")
 print(json.dumps(record, indent=2))
 PY

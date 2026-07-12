@@ -38,6 +38,7 @@ import csv
 import json
 import os
 import sys
+import time
 from datetime import datetime
 
 import numpy as np
@@ -450,10 +451,14 @@ def main():
     epochs_without_improvement = 0
     early_stop_reason = None
     total_patch_counts = {"tumor": 0, "brain": 0}
+    training_started_at = time.monotonic()
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
 
     vae.train()
 
     for epoch in range(1, args.epochs + 1):
+        epoch_started_at = time.monotonic()
         # shuffle subjects each epoch
         perm = np.random.permutation(len(train_subjects))
         epoch_losses = {"total": [], "mse_whole": [], "mse_tumor": [],
@@ -620,12 +625,13 @@ def main():
         avg_kl = np.mean(epoch_losses["kl"])
 
         completed_epochs = epoch
+        epoch_seconds = time.monotonic() - epoch_started_at
         print(f"\nEpoch {epoch} summary — "
               f"total={avg_total:.6f}  whole={avg_whole:.6f}  "
               f"tumor={avg_tumor:.6f}  healthy={avg_healthy:.6f}  "
               f"kl={avg_kl:.6f}  lr={scheduler.get_last_lr()[0]:.2e}  "
               f"patches(tumor/brain)={epoch_patch_counts['tumor']}/"
-              f"{epoch_patch_counts['brain']}")
+              f"{epoch_patch_counts['brain']}  seconds={epoch_seconds:.1f}")
 
         writer.add_scalar("train/total", avg_total, epoch)
         writer.add_scalar("train/mse_whole", avg_whole, epoch)
@@ -676,6 +682,7 @@ def main():
             "val_kl": "" if val_metrics is None else float(val_metrics["kl"]),
             "tumor_patches": epoch_patch_counts["tumor"],
             "brain_patches": epoch_patch_counts["brain"],
+            "epoch_seconds": float(epoch_seconds),
         }
         history.append(history_row)
         history_path = os.path.join(args.output_dir, "training_history.csv")
@@ -712,9 +719,26 @@ def main():
 
     # ----- done -----
     writer.close()
+    training_seconds = time.monotonic() - training_started_at
+    peak_cuda_memory_gib = (
+        torch.cuda.max_memory_allocated(device) / (1024 ** 3)
+        if device.type == "cuda"
+        else None
+    )
+    peak_cuda_reserved_gib = (
+        torch.cuda.max_memory_reserved(device) / (1024 ** 3)
+        if device.type == "cuda"
+        else None
+    )
     print(f"\nFinished. Best epoch: {best_epoch} "
           f"(validation tumor_mse: {best_tumor_mse:.6f})")
     print(f"Optimizer steps: {optimizer_steps}")
+    print(f"Training seconds (including quick val): {training_seconds:.1f}")
+    if peak_cuda_memory_gib is not None:
+        print(
+            f"Peak CUDA memory: allocated={peak_cuda_memory_gib:.2f} GiB, "
+            f"reserved={peak_cuda_reserved_gib:.2f} GiB"
+        )
     print(
         f"Sampled patches: tumor={total_patch_counts['tumor']}, "
         f"brain={total_patch_counts['brain']}"
@@ -728,6 +752,9 @@ def main():
                    "best_epoch": best_epoch,
                    "completed_epochs": completed_epochs,
                    "optimizer_steps": optimizer_steps,
+                   "training_seconds": training_seconds,
+                   "peak_cuda_memory_gib": peak_cuda_memory_gib,
+                   "peak_cuda_reserved_gib": peak_cuda_reserved_gib,
                    "quick_val_subject_ids": [
                        subject["id"] for subject in quick_val_subjects
                    ],

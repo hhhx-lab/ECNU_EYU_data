@@ -21,7 +21,7 @@ else
   CODE_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 fi
 test -f "${CODE_DIR}/README.md" || { echo "ERROR: submit from the G1 V2 code root or set G1_CODE_DIR"; exit 1; }
-CONDA_ENV="${CONDA_ENV:-brats_g1_v2}"
+G1_V2_CONDA_ENV="${G1_V2_CONDA_ENV:-segmamba}"
 VAE_EPOCHS="${VAE_EPOCHS:-3}"
 VAE_BATCH_SIZE="${VAE_BATCH_SIZE:-2}"
 VAE_VAL_INTERVAL="${VAE_VAL_INTERVAL:-1}"
@@ -40,7 +40,9 @@ module purge
 module load apps/envs/miniconda3/25.5.1
 module load compiler/cuda/12.1
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate "${CONDA_ENV}"
+conda activate "${G1_V2_CONDA_ENV}"
+PYTHON_BIN="${CONDA_PREFIX}/bin/python"
+test -x "${PYTHON_BIN}" || { echo "ERROR: Python not found in Conda env: ${PYTHON_BIN}"; exit 1; }
 export PYTHONUNBUFFERED=1
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
@@ -55,6 +57,9 @@ echo "Output dir: ${VAE_OUTPUT_DIR}"
 echo "Epochs: ${VAE_EPOCHS}"
 echo "Subject accumulation batch: ${VAE_BATCH_SIZE}"
 echo "AMP dtype: ${VAE_AMP_DTYPE}"
+echo "Conda prefix: ${CONDA_PREFIX}"
+echo "Python: ${PYTHON_BIN}"
+"${PYTHON_BIN}" -c 'import sys; print(sys.version); assert sys.version_info >= (3, 10), sys.version'
 echo "Patch size: ${VAE_PATCH_SIZE}"
 echo "Tumor patch probability: ${VAE_TUMOR_PATCH_PROBABILITY}"
 echo "Quick val subjects: ${VAE_QUICK_VAL_SUBJECTS}"
@@ -65,8 +70,8 @@ echo "Date: $(date)"
 nvidia-smi
 
 test -f data/data_csv.csv || { echo "ERROR: run 01_prepare_data.slurm first"; exit 1; }
-python -u validate_g1_v2_dataset.py --skip-label-values
-python -u validate_g1_v2_preparation.py
+"${PYTHON_BIN}" -u validate_g1_v2_dataset.py --skip-label-values
+"${PYTHON_BIN}" -u validate_g1_v2_preparation.py
 
 BASELINE_LIMIT_ARGS=(--device cuda:0)
 TRAIN_LIMIT_ARGS=(--device cuda:0)
@@ -86,7 +91,7 @@ if [ -n "${VAE_MAX_VAL_SUBJECTS}" ]; then
 fi
 
 echo "===== 1/3 Pretrained VAE baseline ====="
-python -u validate_vae_recon.py \
+"${PYTHON_BIN}" -u validate_vae_recon.py \
   --data_csv data/data_csv.csv \
   --data_dir data/input \
   --vae_weights weights/vae/autoencoder_epoch273.pt \
@@ -96,7 +101,7 @@ python -u validate_vae_recon.py \
   "${BASELINE_LIMIT_ARGS[@]}"
 
 echo "===== 2/3 Fine-tune VAE on train split ====="
-python -u finetune_vae.py \
+"${PYTHON_BIN}" -u finetune_vae.py \
   --data_csv data/data_csv.csv \
   --data_dir data/input \
   --vae_weights weights/vae/autoencoder_epoch273.pt \
@@ -117,7 +122,7 @@ python -u finetune_vae.py \
 test -f "${VAE_OUTPUT_DIR}/best_model.pt" || { echo "ERROR: best_model.pt was not produced"; exit 1; }
 
 echo "===== 3/3 Compare on untouched val split ====="
-python -u validate_vae_recon.py \
+"${PYTHON_BIN}" -u validate_vae_recon.py \
   --data_csv data/data_csv.csv \
   --data_dir data/input \
   --vae_weights weights/vae/autoencoder_epoch273.pt \
@@ -130,7 +135,7 @@ python -u validate_vae_recon.py \
 if [ "${PUBLISH_VAE_SELECTION}" = "1" ]; then
   printf '%s\n' "${VAE_OUTPUT_DIR}" > training/vae_finetuned/latest_run.txt
 fi
-python - <<PY
+"${PYTHON_BIN}" - <<PY
 import json
 from pathlib import Path
 selection = json.loads(Path("${VAE_OUTPUT_DIR}/vae_selection.json").read_text())

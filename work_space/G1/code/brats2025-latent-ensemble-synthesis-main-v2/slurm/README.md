@@ -153,7 +153,7 @@ RAW_DATA_ROOT=/path/to/raw \
 SPLIT_SEED=42 \
 VAL_FRACTION=0.10 \
 TEST_FRACTION=0.10 \
-CONDA_ENV=brats_g1_v2 \
+G1_V2_CONDA_ENV=segmamba \
 sbatch slurm/01_prepare_data.slurm
 
 VAE_EPOCHS=3 \

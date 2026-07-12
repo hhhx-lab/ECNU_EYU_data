@@ -22,7 +22,7 @@ fi
 test -f "${CODE_DIR}/README.md" || { echo "ERROR: submit from the G1 V2 code root or set G1_CODE_DIR"; exit 1; }
 PROJECT_ROOT="${G1_PROJECT_ROOT:-$(cd "${CODE_DIR}/../../../.." && pwd)}"
 RAW_DATA_ROOT="${RAW_DATA_ROOT:-${HOME}/data}"
-CONDA_ENV="${CONDA_ENV:-brats_g1_v2}"
+G1_V2_CONDA_ENV="${G1_V2_CONDA_ENV:-segmamba}"
 SPLIT_SEED="${SPLIT_SEED:-42}"
 VAL_FRACTION="${VAL_FRACTION:-0.10}"
 TEST_FRACTION="${TEST_FRACTION:-0.10}"
@@ -31,7 +31,7 @@ EXPECTED_FAKE_T2W_COUNT="${EXPECTED_FAKE_T2W_COUNT:-265}"
 module purge
 module load apps/envs/miniconda3/25.5.1
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate "${CONDA_ENV}"
+conda activate "${G1_V2_CONDA_ENV}"
 export PYTHONUNBUFFERED=1
 
 cd "${CODE_DIR}"
@@ -45,7 +45,7 @@ echo "Job ID: ${SLURM_JOB_ID:-NA}"
 echo "Node: ${SLURMD_NODENAME:-NA}"
 echo "Code dir: ${CODE_DIR}"
 echo "Raw data root: ${RAW_DATA_ROOT}"
-echo "Conda env: ${CONDA_ENV}"
+echo "Conda env: ${G1_V2_CONDA_ENV}"
 echo "Date: $(date)"
 
 test -d "${RAW_DATA_ROOT}" || { echo "ERROR: RAW_DATA_ROOT not found: ${RAW_DATA_ROOT}"; exit 1; }

@@ -2,6 +2,8 @@ import os
 import sys
 import csv
 import shutil
+import random
+import numpy as np
 import torch
 import configs
 import argparse
@@ -280,6 +282,11 @@ def run_synthesis_per_lesion(s_data, synthesis_type, output_path, output_name,
 
 
 def main(args):
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
     input_subject_list = read_data_folder(args.input_dir)
     if not input_subject_list:
         raise RuntimeError(f"No subject folders found in {args.input_dir}")
@@ -330,6 +337,12 @@ def parse_args():
         type=str,
         default=configs.PATH_OUTPUT,
         help="Directory where synthesized NIfTI files will be saved"
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed recorded for reproducible completion inference",
     )
     parser.add_argument(
         "--per_lesion",

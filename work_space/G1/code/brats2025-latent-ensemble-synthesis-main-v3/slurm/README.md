@@ -190,7 +190,25 @@ data/output/run_<jobid>/<case_id>/
 └── intermediate_<case_id>/
 ```
 
-必须正好 265 个 case、265 个生成 T2W。该 run 目录才是 G2 QC 输入。
+run root 还必须包含：
+
+```text
+inference_run.json
+generation_config.json
+generation_log.jsonl
+synthetic_generation_manifest.csv
+```
+
+必须正好 265 个 case、265 个生成 T2W。该 run 目录才是 G2 QC 输入。G2 保留每个原病例和 nnU-Net ID，只使用生成 T2W，t1n/t1c/t2f/seg 重新从 master mapping 读取。
+
+在仓库根目录运行：
+
+```bash
+python work_space/G2/code/g2_v3_completion_intake.py \
+  --completion-run-root work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/output/run_<jobid>
+```
+
+train completion 可审批进入训练；val/test completion 只能审批为原 fixed split 的 evaluation 数据。缺 config、checkpoint、seed、manifest 或 log 时 G2 硬拒绝。
 
 ## 8. 可覆盖参数
 

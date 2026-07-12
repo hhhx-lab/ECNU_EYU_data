@@ -21,7 +21,7 @@ else
   CODE_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 fi
 test -f "${CODE_DIR}/README.md" || { echo "ERROR: submit from the G1 V2 code root or set G1_CODE_DIR"; exit 1; }
-CONDA_ENV="${CONDA_ENV:-brats_g1_v2}"
+G1_V2_CONDA_ENV="${G1_V2_CONDA_ENV:-segmamba}"
 TRAIN_TARGET="${TRAIN_TARGET:-both}"
 RUN_ID="${G1_MODEL_RUN_ID:-run_${SLURM_JOB_ID}}"
 export G1_BBDM_S="${G1_BBDM_S:-0.01}"
@@ -33,7 +33,7 @@ module purge
 module load apps/envs/miniconda3/25.5.1
 module load compiler/cuda/12.1
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate "${CONDA_ENV}"
+conda activate "${G1_V2_CONDA_ENV}"
 export PYTHONUNBUFFERED=1
 
 cd "${CODE_DIR}"

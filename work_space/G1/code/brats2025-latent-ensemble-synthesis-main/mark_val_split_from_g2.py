@@ -23,15 +23,11 @@ def find_project_root(start: Path) -> Path:
 PROJECT_ROOT = find_project_root(Path(__file__).resolve())
 G2_RESULTS = PROJECT_ROOT / "work_space" / "G2" / "results"
 DEFAULT_SPLIT = G2_RESULTS / "splits" / "splits_final_train_val_test.json"
-LEGACY_SPLIT = G2_RESULTS / "splits" / "splits_final_fold0_realval.json"
 DEFAULT_MAPPING = G2_RESULTS / "manifests" / "nnunet_case_mapping_realonly.csv"
 DEFAULT_CSV = Path(__file__).resolve().parent / "data" / "data_csv.csv"
 
 
 def load_split_ids(split_path: Path, mapping_path: Path) -> dict[str, set[str]]:
-    if not split_path.exists() and split_path == DEFAULT_SPLIT and LEGACY_SPLIT.exists():
-        split_path = LEGACY_SPLIT
-
     split_data = json.loads(split_path.read_text(encoding="utf-8"))
     fold0 = split_data[0] if isinstance(split_data, list) else split_data
     split_nnunet = {
@@ -39,22 +35,38 @@ def load_split_ids(split_path: Path, mapping_path: Path) -> dict[str, set[str]]:
         "val": set(fold0.get("val", [])),
         "test": set(fold0.get("test", [])),
     }
-    if not split_nnunet["test"] and split_path.name == LEGACY_SPLIT.name:
-        # Historical two-way split: old val is the locked internal test.
-        split_nnunet["test"] = split_nnunet["val"]
-        split_nnunet["val"] = set()
+    if not all(split_nnunet.values()):
+        raise ValueError(
+            f"split must contain non-empty train/val/test lists: {split_path}"
+        )
+    if (
+        split_nnunet["train"] & split_nnunet["val"]
+        or split_nnunet["train"] & split_nnunet["test"]
+        or split_nnunet["val"] & split_nnunet["test"]
+    ):
+        raise ValueError(f"split contains overlapping train/val/test IDs: {split_path}")
 
-    split_case_ids = {"train": set(), "val": set(), "test": set()}
+    mapping: dict[str, str] = {}
+    source_case_ids: set[str] = set()
     with mapping_path.open("r", encoding="utf-8-sig", newline="") as f:
         for row in csv.DictReader(f):
             nnunet_case_id = row.get("nnunet_case_id")
             source_case_id = row.get("source_case_id")
             if not nnunet_case_id or not source_case_id:
                 continue
-            for split_name, nnunet_ids in split_nnunet.items():
-                if nnunet_case_id in nnunet_ids:
-                    split_case_ids[split_name].add(source_case_id)
-                    break
+            if nnunet_case_id in mapping:
+                raise ValueError(f"mapping contains duplicate nnU-Net ID: {nnunet_case_id}")
+            if source_case_id in source_case_ids:
+                raise ValueError(f"mapping contains duplicate source case ID: {source_case_id}")
+            mapping[nnunet_case_id] = source_case_id
+            source_case_ids.add(source_case_id)
+    unknown_ids = set().union(*split_nnunet.values()) - set(mapping)
+    if unknown_ids:
+        raise ValueError(f"split contains IDs absent from mapping: {sorted(unknown_ids)[:20]}")
+    split_case_ids = {
+        split_name: {mapping[nnunet_id] for nnunet_id in nnunet_ids}
+        for split_name, nnunet_ids in split_nnunet.items()
+    }
     return split_case_ids
 
 

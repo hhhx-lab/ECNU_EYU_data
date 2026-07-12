@@ -21,13 +21,13 @@ else
   CODE_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 fi
 test -f "${CODE_DIR}/README.md" || { echo "ERROR: submit from the G1 V2 code root or set G1_CODE_DIR"; exit 1; }
-CONDA_ENV="${CONDA_ENV:-brats_g1_v2}"
+G1_V2_CONDA_ENV="${G1_V2_CONDA_ENV:-segmamba}"
 
 module purge
 module load apps/envs/miniconda3/25.5.1
 module load compiler/cuda/12.1
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate "${CONDA_ENV}"
+conda activate "${G1_V2_CONDA_ENV}"
 export PYTHONUNBUFFERED=1
 
 cd "${CODE_DIR}"
@@ -39,7 +39,7 @@ mkdir -p logs
 echo "===== G1 V2 A100 Smoke ====="
 echo "Job ID: ${SLURM_JOB_ID:-NA}"
 echo "Node: ${SLURMD_NODENAME:-NA}"
-echo "Conda env: ${CONDA_ENV}"
+echo "Conda env: ${G1_V2_CONDA_ENV}"
 nvidia-smi
 
 python - <<'PY'

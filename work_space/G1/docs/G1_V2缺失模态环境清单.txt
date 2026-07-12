@@ -2,8 +2,8 @@ G1 V2 缺失 T2W 填补环境清单
 更新时间：2026-07-10
 
 服务器：华东师范大学超算八期
-建议环境名：brats_g1_v2
-Python：3.10
+服务器现用环境名：segmamba
+服务器已验证 Python：3.11.13
 CUDA：12.1 优先
 
 模块：
@@ -11,11 +11,9 @@ module purge
 module load apps/envs/miniconda3/25.5.1
 module load compiler/cuda/12.1
 
-创建环境：
-conda create -n brats_g1_v2 python=3.10 -y
-conda activate brats_g1_v2
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+使用现有环境（本轮不创建、不安装）：
+conda activate segmamba
+export G1_V2_CONDA_ENV=segmamba
 
 requirements.txt 内核心包：
 torch>=2.0.0,<2.8.0
@@ -43,4 +41,5 @@ tensorboard>=2.13.0
    print(torch.cuda.is_available())
    print(torch.cuda.device_count())
    PY
+7. Slurm 只读取 G1_V2_CONDA_ENV，默认 segmamba；不要用通用 CONDA_ENV 覆盖。
    python test_vae.py

@@ -120,6 +120,8 @@ python src/infer/generate_from_label.py \
 
 输出：`./output/{casename}-t1c.nii.gz`, `-t1n.nii.gz`, `-t2w.nii.gz`, `-t2f.nii.gz`
 
+> 2026 MET 交付注意：这里保存的是与输入 label 同 shape 的数组，但仅生成病灶区域有值，其他区域为 0，且 affine 为单位阵；脚本也不输出 seg。该目录只能用于可视化或作为 G2 composer 的 raw input，不能直接交给 S1-S5。正式 augmentation 必须先运行 `work_space/G2/code/g2_v2_compose_augmentation.py`，由 G2 回填 source、恢复真实 header/affine、复制 corrected seg 并生成 run manifest/log。正式 `generation_config.json` 必须留存 run ID、seed、checkpoint、`sampling_method`、`sampling_steps`、`eta`、`crop_size` 和 source manifest。
+
 **推理流程**：
 1. 加载全脑 label → 连通域分析 (CC) 找出所有独立病灶
 2. `--merge_dist` 合并邻近病灶（质心距离 < N 体素）
