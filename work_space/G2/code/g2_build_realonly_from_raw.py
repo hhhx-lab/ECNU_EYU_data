@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build real-only G2 mapping/split artifacts directly from raw BraTS-MET data.
+"""Build G2 master and real-only mappings directly from raw BraTS-MET data.
 
-This is not a QC gate. It only creates the lightweight artifacts needed by
-S1/S2/S3 from raw case folders and skips cases that are incomplete, especially
-cases without an available T2W file.
+The master mapping retains physically complete fake/broken-T2W cases because
+G1 V3 must repair them. The derived real-only mapping contains authentic T2W
+cases only and is the safe baseline input for S1-S5.
 """
 
 from __future__ import annotations
@@ -19,6 +19,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from g2_create_train_val_test_split import (
     DEFAULT_SEED,
     create_train_val_test_split,
+    filter_split,
+    patient_group,
     write_split_outputs,
 )
 
@@ -36,6 +38,10 @@ ALLOWED_LABEL_VALUES = {0, 1, 2, 3, 4}
 MAPPING_FIELDNAMES = [
     "nnunet_case_id",
     "source_case_id",
+    "patient_group",
+    "t2w_status",
+    "eligible_for_realonly",
+    "completion_required",
     "t1n_source_path",
     "t1c_source_path",
     "t2w_source_path",
@@ -52,6 +58,21 @@ SKIPPED_FIELDNAMES = [
     "reason",
     "missing_files",
     "raw_data_root",
+]
+
+V2_SOURCE_FIELDNAMES = [
+    "source_case_id",
+    "patient_group",
+    "nnunet_case_id",
+    "split",
+    "t2w_status",
+    "allowed_as_v2_source",
+    "t1n_path",
+    "t1c_path",
+    "t2w_path",
+    "t2f_path",
+    "seg_path",
+    "label_source",
 ]
 
 
@@ -71,6 +92,7 @@ def parse_args() -> argparse.Namespace:
         / "raw"
         / "MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels"
     )
+    default_fake_t2w = results_root / "qc" / "official_fake_t2w_cases_by_gzip_header_2026-06-15.csv"
 
     parser = argparse.ArgumentParser(
         description="Scan raw BraTS-MET data and write G2 real-only mapping/split artifacts."
@@ -89,18 +111,28 @@ def parse_args() -> argparse.Namespace:
         help="Directory containing corrected <case_id>-seg.nii.gz files. Can be passed more than once.",
     )
     parser.add_argument("--results-root", default=str(results_root))
-    parser.add_argument("--mapping-csv", default="")
+    parser.add_argument("--mapping-csv", default="", help="Derived authentic-T2W real-only mapping.")
+    parser.add_argument("--master-mapping-csv", default="", help="All physically complete cases, including completion targets.")
     parser.add_argument("--skipped-csv", default="")
+    parser.add_argument("--fake-t2w-cases", default=str(default_fake_t2w))
+    parser.add_argument(
+        "--allow-missing-fake-t2w-list",
+        action="store_true",
+        help="Diagnostic only. Without the official fake/broken list every T2W is treated as authentic.",
+    )
     parser.add_argument(
         "--exclude-ids",
         action="append",
         default=[],
         help="Source case_id(s) to exclude (full folder name, e.g. BraTS-MET-01094-002). Repeatable.",
     )
-    parser.add_argument("--split-json", default="")
-    parser.add_argument("--membership-csv", default="")
-    parser.add_argument("--val-fraction-of-train-pool", type=float, default=0.2)
-    parser.add_argument("--test-fraction", type=float, default=0.2)
+    parser.add_argument("--split-json", default="", help="Derived real-only split JSON.")
+    parser.add_argument("--membership-csv", default="", help="Derived real-only membership CSV.")
+    parser.add_argument("--master-split-json", default="")
+    parser.add_argument("--master-membership-csv", default="")
+    parser.add_argument("--v2-source-manifest", default="")
+    parser.add_argument("--val-fraction-of-train-pool", type=float, default=0.10)
+    parser.add_argument("--test-fraction", type=float, default=0.10)
     parser.add_argument("--seed", default=DEFAULT_SEED)
     parser.add_argument(
         "--fail-if-no-valid-cases",
@@ -121,6 +153,18 @@ def display_path(path: Path, project_root: Path) -> str:
         return path.relative_to(project_root.resolve()).as_posix()
     except ValueError:
         return path.as_posix()
+
+
+def load_case_ids(path: Path) -> set[str]:
+    if not path.exists():
+        return set()
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        rows = csv.DictReader(handle)
+        return {
+            str(row.get("case_id") or row.get("source_case_id") or row.get("id") or "").strip()
+            for row in rows
+            if str(row.get("case_id") or row.get("source_case_id") or row.get("id") or "").strip()
+        }
 
 
 def iter_case_dirs(data_roots: list[Path]) -> list[tuple[Path, Path]]:
@@ -232,8 +276,10 @@ def build_mapping_rows(
     corrected_label_roots: list[Path] | None = None,
     label_value_reader=read_label_values,
     exclude_ids: set[str] | None = None,
+    fake_t2w_case_ids: set[str] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     exclude_ids = exclude_ids or set()
+    fake_t2w_case_ids = fake_t2w_case_ids or set()
     rows: list[dict[str, str]] = []
     skipped: list[dict[str, str]] = []
     seen_cases: set[str] = set()
@@ -294,6 +340,10 @@ def build_mapping_rows(
         row = {
             "nnunet_case_id": nnunet_case_id,
             "source_case_id": case_id,
+            "patient_group": patient_group(case_id),
+            "t2w_status": "fake_or_broken" if case_id in fake_t2w_case_ids else "authentic",
+            "eligible_for_realonly": str(case_id not in fake_t2w_case_ids),
+            "completion_required": str(case_id in fake_t2w_case_ids),
             "label_source": label_source,
             "materialization_status": "deferred_symlink_on_training_machine",
             "raw_data_root": display_path(raw_root, project_root),
@@ -313,6 +363,36 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> 
         writer.writerows(rows)
 
 
+def build_v2_source_rows(
+    mapping_rows: list[dict[str, str]],
+    master_split: dict[str, object],
+) -> list[dict[str, str]]:
+    split_by_id = {
+        str(nnunet_id): split_name
+        for split_name in ("train", "val", "test")
+        for nnunet_id in master_split[split_name]  # type: ignore[index]
+    }
+    rows: list[dict[str, str]] = []
+    for row in mapping_rows:
+        split_name = split_by_id[row["nnunet_case_id"]]
+        allowed = split_name == "train" and row["eligible_for_realonly"] == "True"
+        rows.append({
+            "source_case_id": row["source_case_id"],
+            "patient_group": row["patient_group"],
+            "nnunet_case_id": row["nnunet_case_id"],
+            "split": split_name,
+            "t2w_status": row["t2w_status"],
+            "allowed_as_v2_source": str(allowed),
+            "t1n_path": row["t1n_source_path"],
+            "t1c_path": row["t1c_source_path"],
+            "t2w_path": row["t2w_source_path"],
+            "t2f_path": row["t2f_source_path"],
+            "seg_path": row["seg_source_path"],
+            "label_source": row["label_source"],
+        })
+    return rows
+
+
 def main() -> int:
     args = parse_args()
     project_root = Path(args.project_root).expanduser().resolve()
@@ -321,9 +401,20 @@ def main() -> int:
     corrected_label_roots = [Path(root).expanduser().resolve() for root in args.corrected_labels_root]
 
     mapping_csv = Path(args.mapping_csv) if args.mapping_csv else results_root / "manifests" / "nnunet_case_mapping_realonly.csv"
+    master_mapping_csv = Path(args.master_mapping_csv) if args.master_mapping_csv else results_root / "manifests" / "nnunet_case_mapping_master.csv"
     skipped_csv = Path(args.skipped_csv) if args.skipped_csv else results_root / "manifests" / "realonly_skipped_incomplete_cases.csv"
     split_json = Path(args.split_json) if args.split_json else results_root / "splits" / "splits_final_train_val_test.json"
     membership_csv = Path(args.membership_csv) if args.membership_csv else results_root / "splits" / "splits_final_train_val_test_membership.csv"
+    master_split_json = Path(args.master_split_json) if args.master_split_json else results_root / "splits" / "splits_master_train_val_test.json"
+    master_membership_csv = Path(args.master_membership_csv) if args.master_membership_csv else results_root / "splits" / "splits_master_train_val_test_membership.csv"
+    v2_source_manifest = Path(args.v2_source_manifest) if args.v2_source_manifest else results_root / "manifests" / "g1_v2_source_manifest.csv"
+    fake_t2w_path = Path(args.fake_t2w_cases).expanduser().resolve()
+    if not fake_t2w_path.exists() and not args.allow_missing_fake_t2w_list:
+        raise SystemExit(
+            f"fake/broken T2W list not found: {fake_t2w_path}. "
+            "Restore the official G2 list or use --allow-missing-fake-t2w-list for diagnostics only."
+        )
+    fake_t2w_case_ids = load_case_ids(fake_t2w_path)
 
     missing_roots = [root for root in data_roots if not root.exists()]
     for root in missing_roots:
@@ -338,6 +429,7 @@ def main() -> int:
         project_root,
         corrected_label_roots,
         exclude_ids=set(args.exclude_ids),
+        fake_t2w_case_ids=fake_t2w_case_ids,
     )
     if not mapping_rows:
         message = "no complete BraTS-MET cases found; expected t1n/t1c/t2w/t2f/seg for each training case"
@@ -345,31 +437,47 @@ def main() -> int:
             raise SystemExit(message)
         print(f"warning: {message}", file=sys.stderr)
 
-    write_csv(mapping_csv, MAPPING_FIELDNAMES, mapping_rows)
+    eligible_rows = [row for row in mapping_rows if row["eligible_for_realonly"] == "True"]
+    write_csv(master_mapping_csv, MAPPING_FIELDNAMES, mapping_rows)
+    write_csv(mapping_csv, MAPPING_FIELDNAMES, eligible_rows)
     write_csv(skipped_csv, SKIPPED_FIELDNAMES, skipped_rows)
 
     if mapping_rows:
-        split = create_train_val_test_split(
+        authentic_ids = {row["source_case_id"] for row in eligible_rows}
+        master_split = create_train_val_test_split(
             mapping_rows,
             base_split=None,
             val_fraction_of_train_pool=args.val_fraction_of_train_pool,
             test_fraction=args.test_fraction,
             seed=args.seed,
+            anchor_case_ids=authentic_ids,
         )
-        split["source_split_json"] = ""
+        master_split["mapping_csv"] = display_path(master_mapping_csv, results_root)
+        write_split_outputs(master_split, mapping_rows, master_split_json, master_membership_csv)
+        write_csv(v2_source_manifest, V2_SOURCE_FIELDNAMES, build_v2_source_rows(mapping_rows, master_split))
+
+        eligible_nnunet_ids = {row["nnunet_case_id"] for row in eligible_rows}
+        split = filter_split(master_split, eligible_nnunet_ids, "realonly_patient_group_train_val_test")
         split["mapping_csv"] = display_path(mapping_csv, results_root)
-        write_split_outputs(split, mapping_rows, split_json, membership_csv)
+        write_split_outputs(split, eligible_rows, split_json, membership_csv)
         counts = split["counts"]
         print(f"train={counts['train']}")  # type: ignore[index]
         print(f"val={counts['val']}")  # type: ignore[index]
         print(f"test={counts['test']}")  # type: ignore[index]
+        print(f"master_counts={master_split['counts']}")
 
-    print(f"valid_cases={len(mapping_rows)}")
+    print(f"master_cases={len(mapping_rows)}")
+    print(f"realonly_eligible_cases={len(eligible_rows)}")
+    print(f"fake_or_broken_t2w_cases={len(mapping_rows) - len(eligible_rows)}")
     print(f"skipped_cases={len(skipped_rows)}")
     print(f"mapping_csv={mapping_csv}")
+    print(f"master_mapping_csv={master_mapping_csv}")
     print(f"skipped_csv={skipped_csv}")
     print(f"split_json={split_json}")
     print(f"membership_csv={membership_csv}")
+    print(f"master_split_json={master_split_json}")
+    print(f"master_membership_csv={master_membership_csv}")
+    print(f"v2_source_manifest={v2_source_manifest}")
     return 0
 
 

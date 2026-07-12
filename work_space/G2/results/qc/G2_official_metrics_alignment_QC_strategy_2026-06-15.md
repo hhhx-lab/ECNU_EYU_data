@@ -398,16 +398,19 @@ results/qc/qc_batch_summary_{run_id}.json
 results/reports/G2_synthetic_data_quality_report_{run_id}.md
 ```
 
-### 8.2 accepted synthetic 到 nnU-Net raw
+### 8.2 accepted 数据到下游双视图
 
 默认只生成 manifest，不复制大文件：
 
 ```bash
 python work_space/G2/code/g2_materialize_nnunet_dataset.py \
   --output-root /path/to/nnUNet_raw \
+  --case-folder-root /path/to/case_folders \
+  --real-mapping work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv \
   --synthetic-accepted-manifest work_space/G2/results/manifests/synthetic_accepted_manifest_{run_id}.csv \
   --dataset-id 261 \
   --dataset-name BraTS2026_MET_RealSynth_G1V1 \
+  --dataset-profile real-synth \
   --channel-order g2_official \
   --mode manifest-only
 ```
@@ -417,19 +420,21 @@ python work_space/G2/code/g2_materialize_nnunet_dataset.py \
 ```bash
 python work_space/G2/code/g2_materialize_nnunet_dataset.py \
   --output-root /path/to/nnUNet_raw \
+  --case-folder-root /path/to/case_folders \
+  --real-mapping work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv \
   --synthetic-accepted-manifest work_space/G2/results/manifests/synthetic_accepted_manifest_{run_id}.csv \
   --dataset-id 261 \
   --dataset-name BraTS2026_MET_RealSynth_G1V1 \
+  --dataset-profile real-synth \
   --channel-order g2_official \
-  --mode symlink
+  --mode symlink \
+  --clean-output \
+  --run-nnunet-integrity
 ```
 
-通道口径：
+全队唯一通道口径是 `t1n,t1c,t2w,t2f`；nnU-Net 编号为 `0000/0001/0002/0003`。S1/S3/S4/S5 使用按 suffix 命名并按 split 分区的 case-folder view，S5 再做自己的固定 split preprocessing；S2 使用同次物化的 nnU-Net view。real-only、completion 和 real+synth 之间不得改变通道顺序。
 
-1. `g2_official`: `0000=t1n`, `0001=t1c`, `0002=t2w`, `0003=t2f`。
-2. `s2_current`: `0000=t1c`, `0001=t1n`, `0002=t2f`, `0003=t2w`，用于兼容 S2 现有转换脚本。
-
-G2 建议：团队最终固定一种通道顺序；如果 S1/S2 沿用现有代码，必须在 dataset.json、训练日志和报告中显式声明。
+以上命令是 authentic real-only + V2 augmentation 的 paired 口径，因此显式指定 real-only mapping。第二条命令的 `--clean-output` 只用于清理同路径的 manifest-only 预检产物。若物化完整 master，则必须额外同时传入 V3 `synthetic_accepted_manifest` 与 `synthetic_accepted_evaluation_manifest`，分别覆盖 train 和 val/test completion。
 
 ### 8.3 官方 leaderboard parser/validator
 
@@ -485,58 +490,42 @@ python work_space/G2/code/g2_official_mets_metrics_parser.py validate-csv \
 
 ### 10.1 对 G1
 
-G1 可以继续输出 GliGAN-compatible raw cases，但必须至少给：
+G1 V2 可以输出当前 `generate_from_label.py` 的平铺整脑数组，但必须先由 G2 composer 恢复 source 强度与几何；G1 V3 必须作为 completion 单独接收。两条线都必须至少给：
 
 1. run folder。
-2. generation_config 或等效说明。
-3. checkpoint。
-4. seed。
-5. source CSV 版本。
-6. label channel 数。
-7. rc_policy。
-8. raw case folder。
-9. 四模态 + seg。
+2. generation config 或 inference record。
+3. generation log 与 generation manifest。
+4. checkpoint。
+5. seed。
+6. source CSV 版本。
+7. raw case folder。
+8. V2 四模态输出；V3 完整四模态 + seg。
 
 G2 负责：
 
 1. legacy suffix 转换。
-2. manifest 补建。
+2. V2 composition 或 V3 completion identity adapter。
 3. 自动 QC。
 4. accepted/rejected 输出。
 5. 给 G1 回传 reject reason。
 
-### 10.2 对 S1
+### 10.2 对 S1/S3/S4
 
-S1 当前自定义 dataset 读取病例目录，并把四模态顺序写成：
-
-```text
-t1c, t1n, t2f, t2w
-```
-
-它还把 `seg` 拆成：
+G2 给这三条线提供 case-folder view，文件按 `-t1n/-t1c/-t2w/-t2f/-seg` 命名。消费者必须按 suffix 显式读取，不能依赖目录遍历顺序。S1 可继续把 `seg` 拆成：
 
 1. `tumor_label.nii.gz`：原 label 中去掉 RC。
 2. `rc_label.nii.gz`：RC 二分类。
 
-G2 对 S1 的交付：
+G2 的交付：
 
 1. 提供原始 5-label seg。
 2. 提供可选拆分脚本说明，S1 自己保持 tumor/RC 双头。
 3. 明确 synthetic 也必须能拆出 tumor/RC。
-4. 如果用 G2 nnU-Net 物化脚本，S1 要选择 `s2_current` 或自行确认 loader 顺序。
+4. completion 只改变 T2W 路径；augmentation 使用新的 `SYN-MET-*` 病例目录。
 
 ### 10.3 对 S2
 
-S2 当前 nnU-Net 转换脚本使用：
-
-```text
-0000=t1c
-0001=t1n
-0002=t2f
-0003=t2w
-```
-
-G2 默认官方顺序是：
+G2 只发布一种 nnU-Net 通道顺序：
 
 ```text
 0000=t1n
@@ -545,12 +534,11 @@ G2 默认官方顺序是：
 0003=t2f
 ```
 
-团队必须在训练前固定通道顺序。G2 已在 `g2_materialize_nnunet_dataset.py` 中同时支持：
+`g2_materialize_nnunet_dataset.py` 不再提供历史兼容通道选项。不能在 real-only 与 real+synth 之间改变通道顺序。历史 S2 checkpoint 如果使用不同 split 或数据 ID 空间，只能保留为历史结果；严格消融必须在当前 patient-group master split 上重训 paired baseline。
 
-1. `g2_official`
-2. `s2_current`
+### 10.4 对 S5
 
-不能在 real-only 与 real+synth 之间改变通道顺序。
+S5 读取 G2 case-folder view，并由 `work_space/S5/code/2_preprocessing_mri.py` 分别预处理 train/val/test。S5 通道已统一为 `t1n,t1c,t2w,t2f`，正式训练不允许重新随机切分。旧破坏性重命名脚本不用于 G2 数据。
 
 ## 11. 一句话结论
 

@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""Materialize G2 real/synthetic manifests into an nnU-Net raw dataset.
-
-Default mode is manifest-only so this script is safe to run on a laptop. For
-G1 T2W completion rows, the default policy replaces the original fake/broken
-T2W channel in the matching real case instead of appending a duplicate case. By
-default it only uses completion/synthetic rows accepted for training; pass
---include-ablation-only explicitly if you want the controlled ablation rows too.
-On the training machine, use --mode symlink or --mode copy after checking disk
-space.
-"""
+"""Materialize approved G2 data for nnU-Net and case-folder consumers."""
 
 from __future__ import annotations
 
@@ -17,403 +8,578 @@ import csv
 import json
 import os
 import shutil
+import subprocess
+from collections import Counter
 from pathlib import Path
 
+import nibabel as nib
+import numpy as np
 
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 DEFAULT_FAKE_T2W = DEFAULT_RESULTS_ROOT / "qc" / "official_fake_t2w_cases_by_gzip_header_2026-06-15.csv"
-PROJECT_ROOT_NAME = "ECNU_EYU_data"
-CHANNEL_ORDERS = {
-    "g2_official": ["t1n", "t1c", "t2w", "t2f"],
-    "s2_current": ["t1c", "t1n", "t2f", "t2w"],
-}
+CHANNEL_ORDERS = {"g2_official": ["t1n", "t1c", "t2w", "t2f"]}
 LABELS = {"background": 0, "NETC": 1, "SNFH": 2, "ET": 3, "RC": 4}
-
-
-def find_project_root(start: Path) -> Path:
-    for parent in [start, *start.parents]:
-        if (parent / "work_space" / "G1").exists() and (parent / "work_space" / "G2").exists():
-            return parent
-    raise RuntimeError(f"Could not locate ECNU_EYU_data project root from {start}")
-
-
-PROJECT_ROOT = find_project_root(Path(__file__).resolve())
-
-
-def parse_workspace_path(path_str: str | Path | None, anchor: Path | None = None) -> Path | None:
-    if path_str is None:
-        return None
-    path = Path(path_str)
-    if path.is_absolute():
-        return path
-    if anchor is not None:
-        candidate = (anchor / path).resolve()
-        if candidate.exists():
-            return candidate
-    candidate = (PROJECT_ROOT / path).resolve()
-    if candidate.exists():
-        return candidate
-    return candidate
-
-
-def read_csv(path: Path) -> list[dict[str, str]]:
-    if not path.exists():
-        return []
-    with path.open("r", encoding="utf-8-sig", newline="") as f:
-        return list(csv.DictReader(f))
 
 
 def boolish(value: object) -> bool:
     return str(value).strip().lower() in {"1", "true", "yes", "y"}
 
 
-def load_fake_t2w_cases(path: Path) -> set[str]:
-    if not path.exists():
-        return set()
-    rows = read_csv(path)
-    cases: set[str] = set()
-    for row in rows:
-        case_id = row.get("case_id") or row.get("subject_id") or row.get("id")
-        if case_id:
-            cases.add(case_id)
-    return cases
+def resolve_path(value: str | Path | None) -> Path | None:
+    if not value:
+        return None
+    path = Path(value).expanduser()
+    return path if path.is_absolute() else (PROJECT_ROOT / path).resolve()
+
+
+def read_csv(path: Path | None) -> list[dict[str, str]]:
+    if path is None or not path.exists():
+        return []
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
 def write_csv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
+        writer.writerows(rows)
+
+
+def load_fake_t2w_cases(path: Path) -> set[str]:
+    cases = set()
+    for row in read_csv(path):
+        case_id = row.get("case_id") or row.get("source_case_id") or row.get("id")
+        if case_id:
+            cases.add(case_id.strip())
+    return cases
+
+
+def load_split(path: Path) -> dict[str, object]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    split = data[0] if isinstance(data, list) else data
+    if not isinstance(split, dict) or not all(name in split for name in ("train", "val", "test")):
+        raise ValueError(f"invalid master split: {path}")
+    return split
 
 
 def source_for(row: dict[str, str], modality: str) -> str | None:
-    candidates = [
-        f"{modality}_source_path",
-        f"normalized_{modality}_path",
-        f"raw_{modality}_path",
-    ]
     if modality == "seg":
-        candidates = ["seg_source_path", "normalized_seg_path", "raw_seg_path"]
-    values = [row.get(key, "") for key in candidates if row.get(key, "")]
+        candidates = ("seg_source_path", "normalized_seg_path", "raw_seg_path")
+    else:
+        candidates = (
+            f"{modality}_source_path",
+            f"normalized_{modality}_path",
+            f"raw_{modality}_path",
+        )
+    values = [row.get(column, "") for column in candidates if row.get(column, "")]
     for value in values:
-        resolved = parse_workspace_path(value)
+        resolved = resolve_path(value)
         if resolved is not None and resolved.exists():
             return value
     return values[0] if values else None
 
 
-def completion_replacement_source(row: dict[str, str], modality: str) -> str | None:
-    if modality == "t2w":
-        return source_for(row, "t2w")
-    return None
+def is_completion_row(row: dict[str, str]) -> bool:
+    return boolish(row.get("source_completion_mode", "")) or row.get("label_kind") == "completion"
 
 
-def link_or_copy(src: Path | None, dst: Path, mode: str, overwrite: bool) -> str:
-    if src is None:
-        return "missing_source"
+def approved_for_training(row: dict[str, str]) -> bool:
+    return boolish(row.get("accepted_for_training", ""))
+
+
+def approved_for_evaluation(row: dict[str, str]) -> bool:
+    return boolish(row.get("accepted_for_evaluation", ""))
+
+
+def read_synthetic_manifests(paths: list[Path]) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    seen_run_raw_ids: set[tuple[str, str]] = set()
+    for path in paths:
+        for row in read_csv(path):
+            raw_id = row.get("synthetic_raw_id", "").strip()
+            if not raw_id:
+                raise ValueError(f"synthetic manifest contains an empty synthetic_raw_id: {path}")
+            run_id = row.get("generation_run_id", "").strip()
+            if not run_id:
+                raise ValueError(f"synthetic manifest row is missing generation_run_id: {path}:{raw_id}")
+            run_raw_id = (run_id, raw_id)
+            if run_raw_id in seen_run_raw_ids:
+                raise ValueError(f"duplicate synthetic row across manifests: {run_id}/{raw_id}")
+            seen_run_raw_ids.add(run_raw_id)
+            row["g2_input_manifest"] = str(path)
+            rows.append(row)
+    return rows
+
+
+def select_completion_replacements(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
+    replacements: dict[str, dict[str, str]] = {}
+    for row in rows:
+        if not is_completion_row(row):
+            continue
+        if not (approved_for_training(row) or approved_for_evaluation(row)):
+            continue
+        source_case_id = row.get("source_case_id", "").strip()
+        if not source_case_id or not source_for(row, "t2w"):
+            continue
+        if source_case_id in replacements:
+            raise ValueError(f"multiple approved completion T2W files for {source_case_id}")
+        replacements[source_case_id] = row
+    return replacements
+
+
+def output_is_nonempty(path: Path) -> bool:
+    return path.exists() and any(path.iterdir())
+
+
+def prepare_output(path: Path, clean: bool) -> None:
+    if output_is_nonempty(path):
+        if not clean:
+            raise FileExistsError(f"output is not empty; pass --clean-output explicitly: {path}")
+        shutil.rmtree(path)
+    path.mkdir(parents=True, exist_ok=True)
+
+
+def materialize_file(src: Path, dst: Path, mode: str) -> str:
+    if not src.is_file():
+        raise FileNotFoundError(src)
     if mode == "manifest-only":
         return "planned"
-    if not src.exists():
-        return "missing_source"
     dst.parent.mkdir(parents=True, exist_ok=True)
-    if dst.exists() or dst.is_symlink():
-        if not overwrite:
-            return "exists"
-        dst.unlink()
     if mode == "symlink":
-        os.symlink(src, dst)
+        dst.symlink_to(src)
     elif mode == "hardlink":
         os.link(src, dst)
     elif mode == "copy":
         shutil.copy2(src, dst)
     else:
-        raise ValueError(f"unsupported mode: {mode}")
+        raise ValueError(f"unsupported materialization mode: {mode}")
     return mode
 
 
-def is_completion_row(row: dict[str, str]) -> bool:
-    return boolish(row.get("source_completion_mode", "")) or row.get("label_kind", "") == "completion"
+def selected_path(
+    real_row: dict[str, str],
+    modality: str,
+    completion_row: dict[str, str] | None,
+) -> str | None:
+    if modality == "t2w" and completion_row is not None:
+        return source_for(completion_row, "t2w")
+    return source_for(real_row, modality)
 
 
-def row_is_usable(row: dict[str, str], include_ablation_only: bool) -> bool:
-    accepted = boolish(row.get("accepted_for_training", ""))
-    ablation = boolish(row.get("accepted_for_ablation_only", ""))
-    return accepted or (include_ablation_only and ablation)
-
-
-def selected_completion_replacements(
-    synthetic_rows: list[dict[str, str]],
-    include_ablation_only: bool,
-    completion_policy: str,
-) -> dict[str, dict[str, str]]:
-    if completion_policy == "append":
-        return {}
-
-    replacements: dict[str, dict[str, str]] = {}
-    for row in synthetic_rows:
-        if not is_completion_row(row) or not row_is_usable(row, include_ablation_only):
-            continue
-        source_case_id = row.get("source_case_id", "")
-        if not source_case_id:
-            continue
-        t2w_source = source_for(row, "t2w")
-        if not t2w_source:
-            continue
-        current = replacements.get(source_case_id)
-        if current is None:
-            replacements[source_case_id] = row
-            continue
-        # Prefer training-accepted rows over ablation-only rows if both exist.
-        if boolish(row.get("accepted_for_training", "")) and not boolish(current.get("accepted_for_training", "")):
-            replacements[source_case_id] = row
-    return replacements
-
-
-def write_case_files(
-    row: dict[str, str],
-    row_type: str,
-    case_id: str,
-    source_case_id: str,
-    dataset_dir: Path,
-    channel_order: list[str],
-    mode: str,
-    overwrite: bool,
-    materialized: list[dict[str, object]],
-    replacement_row: dict[str, str] | None = None,
-) -> None:
-    for channel_idx, modality in enumerate(channel_order):
-        source_path = completion_replacement_source(replacement_row, modality) if replacement_row else None
-        source_path = source_path or source_for(row, modality)
-        src = parse_workspace_path(source_path, PROJECT_ROOT) if source_path else None
-        dst = dataset_dir / "imagesTr" / f"{case_id}_{channel_idx:04d}.nii.gz"
-        action = link_or_copy(src, dst, mode, overwrite)
-        materialized.append(
-            {
-                "case_id": case_id,
-                "source_case_id": source_case_id,
-                "row_type": row_type,
-                "modality": modality,
-                "nnunet_channel": f"{channel_idx:04d}",
-                "source_path": source_path or "",
-                "target_path": str(dst),
-                "action": action,
-                "replacement_synthetic_raw_id": replacement_row.get("synthetic_raw_id", "") if replacement_row else "",
-                "replacement_synthetic_final_id": replacement_row.get("synthetic_final_id", "") if replacement_row else "",
-            }
-        )
-
-    source_path = source_for(row, "seg")
-    src = parse_workspace_path(source_path, PROJECT_ROOT) if source_path else None
-    dst = dataset_dir / "labelsTr" / f"{case_id}.nii.gz"
-    action = link_or_copy(src, dst, mode, overwrite)
-    materialized.append(
-        {
-            "case_id": case_id,
-            "source_case_id": source_case_id,
-            "row_type": row_type,
-            "modality": "seg",
-            "nnunet_channel": "label",
-            "source_path": source_path or "",
-            "target_path": str(dst),
-            "action": action,
-            "replacement_synthetic_raw_id": replacement_row.get("synthetic_raw_id", "") if replacement_row else "",
-            "replacement_synthetic_final_id": replacement_row.get("synthetic_final_id", "") if replacement_row else "",
-        }
-    )
-
-
-def build_rows(
+def build_case_specs(
     real_rows: list[dict[str, str]],
     synthetic_rows: list[dict[str, str]],
     fake_t2w_cases: set[str],
-    dataset_dir: Path,
-    channel_order: list[str],
-    mode: str,
-    overwrite: bool,
-    include_ablation_only: bool,
-    completion_policy: str,
-    include_unreplaced_fake_t2w: bool,
+    profile: str,
+    allow_incomplete_completion: bool,
 ) -> tuple[list[dict[str, object]], dict[str, int]]:
-    materialized: list[dict[str, object]] = []
-    stats = {
-        "included_cases": 0,
-        "real_cases": 0,
-        "replaced_completion_cases": 0,
-        "appended_synthetic_cases": 0,
-        "skipped_unreplaced_fake_t2w_cases": 0,
-        "skipped_synthetic_rows": 0,
-    }
-    used_case_ids: set[str] = set()
-    replacements = selected_completion_replacements(synthetic_rows, include_ablation_only, completion_policy)
+    replacements = select_completion_replacements(synthetic_rows)
+    specs: list[dict[str, object]] = []
+    stats: Counter[str] = Counter()
+    used_ids: set[str] = set()
 
     for row in real_rows:
-        case_id = row.get("nnunet_case_id") or row.get("case_id") or row.get("synthetic_final_id") or row.get("source_case_id")
-        if not case_id:
+        nnunet_id = (row.get("nnunet_case_id") or "").strip()
+        source_case_id = (row.get("source_case_id") or "").strip()
+        if not nnunet_id or not source_case_id:
+            raise ValueError("real mapping contains an empty nnunet_case_id/source_case_id")
+        if nnunet_id in used_ids:
+            raise ValueError(f"duplicate nnU-Net ID in real mapping: {nnunet_id}")
+        replacement = replacements.get(source_case_id)
+        is_fake = source_case_id in fake_t2w_cases or row.get("t2w_status") == "fake_or_broken"
+        if is_fake and profile == "real-only":
+            stats["skipped_fake_realonly"] += 1
             continue
-        source_case_id = row.get("source_case_id") or row.get("case_id") or case_id
-        replacement_row = replacements.get(source_case_id)
-        source_has_fake_t2w = source_case_id in fake_t2w_cases
-        if source_has_fake_t2w and replacement_row is None and not include_unreplaced_fake_t2w:
-            stats["skipped_unreplaced_fake_t2w_cases"] += 1
+        if is_fake and replacement is None:
+            if not allow_incomplete_completion:
+                raise ValueError(f"fake/broken T2W has no approved completion: {source_case_id}")
+            stats["skipped_missing_completion"] += 1
             continue
-
-        row_type = "real_with_completion_t2w" if replacement_row else "real"
-        write_case_files(row, row_type, case_id, source_case_id, dataset_dir, channel_order, mode, overwrite, materialized, replacement_row)
-        stats["included_cases"] += 1
+        paths = {
+            modality: selected_path(row, modality, replacement)
+            for modality in (*CHANNEL_ORDERS["g2_official"], "seg")
+        }
+        missing = [modality for modality, value in paths.items() if not value]
+        if missing:
+            raise ValueError(f"real case {source_case_id} is missing source paths: {missing}")
+        specs.append({
+            "nnunet_case_id": nnunet_id,
+            "case_folder_id": source_case_id,
+            "source_case_id": source_case_id,
+            "row_type": "real_with_completion_t2w" if replacement else "real",
+            "paths": paths,
+            "completion_raw_id": replacement.get("synthetic_raw_id", "") if replacement else "",
+            "completion_approved_for_training": approved_for_training(replacement) if replacement else False,
+            "completion_approved_for_evaluation": approved_for_evaluation(replacement) if replacement else False,
+        })
+        used_ids.add(nnunet_id)
         stats["real_cases"] += 1
-        if replacement_row:
-            stats["replaced_completion_cases"] += 1
-        used_case_ids.add(case_id)
+        if replacement:
+            stats["completion_replacements"] += 1
 
-    for row in synthetic_rows:
-        if not row_is_usable(row, include_ablation_only):
-            stats["skipped_synthetic_rows"] += 1
+    if profile == "real-synth":
+        for row in synthetic_rows:
+            if is_completion_row(row) or not approved_for_training(row):
+                continue
+            if row.get("source_split") != "train":
+                raise ValueError(f"approved augmentation source is not train: {row.get('synthetic_raw_id')}")
+            nnunet_id = (row.get("nnunet_case_id") or "").strip()
+            final_id = (row.get("synthetic_final_id") or "").strip()
+            source_case_id = (row.get("source_case_id") or "").strip()
+            if not nnunet_id or not final_id or not source_case_id:
+                raise ValueError("approved augmentation is missing stable IDs/source_case_id")
+            if nnunet_id in used_ids:
+                raise ValueError(f"synthetic nnU-Net ID collides with another case: {nnunet_id}")
+            paths = {
+                modality: source_for(row, modality)
+                for modality in (*CHANNEL_ORDERS["g2_official"], "seg")
+            }
+            missing = [modality for modality, value in paths.items() if not value]
+            if missing:
+                raise ValueError(f"synthetic case {final_id} is missing paths: {missing}")
+            specs.append({
+                "nnunet_case_id": nnunet_id,
+                "case_folder_id": final_id,
+                "source_case_id": source_case_id,
+                "row_type": "synthetic_augmentation",
+                "paths": paths,
+                "completion_raw_id": "",
+                "completion_approved_for_training": False,
+                "completion_approved_for_evaluation": False,
+            })
+            used_ids.add(nnunet_id)
+            stats["synthetic_augmentation_cases"] += 1
+
+    stats["included_cases"] = len(specs)
+    return specs, dict(stats)
+
+
+def assign_spec_splits(
+    specs: list[dict[str, object]],
+    master: dict[str, object],
+) -> None:
+    split_by_id = {
+        str(case_id): split_name
+        for split_name in ("train", "val", "test")
+        for case_id in master[split_name]  # type: ignore[index]
+    }
+    source_split_by_case: dict[str, str] = {}
+    for spec in specs:
+        if spec["row_type"] == "synthetic_augmentation":
             continue
-        if is_completion_row(row) and completion_policy in {"auto", "replace"}:
+        nnunet_id = str(spec["nnunet_case_id"])
+        if nnunet_id not in split_by_id:
+            raise ValueError(f"real case is absent from master split: {nnunet_id}")
+        split_name = split_by_id[nnunet_id]
+        spec["split"] = split_name
+        source_split_by_case[str(spec["source_case_id"])] = split_name
+        if spec["row_type"] == "real_with_completion_t2w":
+            if split_name == "train" and not bool(spec["completion_approved_for_training"]):
+                raise ValueError(
+                    f"train completion lacks training approval: {spec['source_case_id']}"
+                )
+            if split_name in {"val", "test"} and not bool(spec["completion_approved_for_evaluation"]):
+                raise ValueError(
+                    f"{split_name} completion lacks evaluation approval: {spec['source_case_id']}"
+                )
+
+    for spec in specs:
+        if spec["row_type"] != "synthetic_augmentation":
             continue
-        case_id = row.get("nnunet_case_id") or row.get("case_id") or row.get("synthetic_final_id") or row.get("source_case_id")
-        if not case_id:
-            stats["skipped_synthetic_rows"] += 1
-            continue
-        if case_id in used_case_ids:
-            raise SystemExit(f"duplicate nnU-Net case id during materialization: {case_id}")
-        source_case_id = row.get("source_case_id") or case_id
-        write_case_files(row, "synthetic", case_id, source_case_id, dataset_dir, channel_order, mode, overwrite, materialized)
-        stats["included_cases"] += 1
-        stats["appended_synthetic_cases"] += 1
-        used_case_ids.add(case_id)
-
-    return materialized, stats
+        source_case_id = str(spec["source_case_id"])
+        actual_source_split = source_split_by_case.get(source_case_id)
+        if actual_source_split != "train":
+            raise ValueError(
+                f"synthetic augmentation source is not master train: "
+                f"{source_case_id} ({actual_source_split or 'missing'})"
+            )
+        spec["split"] = "train"
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Create an nnU-Net raw dataset from G2 real mapping plus accepted synthetic manifest."
+def materialize_specs(
+    specs: list[dict[str, object]],
+    dataset_dir: Path,
+    case_folder_root: Path,
+    mode: str,
+) -> list[dict[str, object]]:
+    records: list[dict[str, object]] = []
+    modalities = CHANNEL_ORDERS["g2_official"]
+    for spec in specs:
+        nnunet_id = str(spec["nnunet_case_id"])
+        folder_id = str(spec["case_folder_id"])
+        split_name = str(spec.get("split", ""))
+        if split_name not in {"train", "val", "test"}:
+            raise ValueError(f"case has no valid fixed split: {folder_id}")
+        image_partition = "imagesTs" if split_name == "test" else "imagesTr"
+        label_partition = "labelsTs" if split_name == "test" else "labelsTr"
+        paths = spec["paths"]  # type: ignore[assignment]
+        for channel, modality in enumerate(modalities):
+            source_value = paths[modality]
+            source = resolve_path(source_value)
+            if source is None:
+                raise FileNotFoundError(f"empty source path for {folder_id}/{modality}")
+            nnunet_target = dataset_dir / image_partition / f"{nnunet_id}_{channel:04d}.nii.gz"
+            folder_target = case_folder_root / split_name / folder_id / f"{folder_id}-{modality}.nii.gz"
+            action = materialize_file(source, nnunet_target, mode)
+            materialize_file(source, folder_target, mode)
+            records.append({
+                "nnunet_case_id": nnunet_id,
+                "case_folder_id": folder_id,
+                "source_case_id": spec["source_case_id"],
+                "row_type": spec["row_type"],
+                "split": split_name,
+                "nnunet_partition": image_partition,
+                "modality": modality,
+                "nnunet_channel": f"{channel:04d}",
+                "source_path": str(source),
+                "nnunet_target_path": str(nnunet_target),
+                "case_folder_target_path": str(folder_target),
+                "action": action,
+                "completion_raw_id": spec["completion_raw_id"],
+            })
+        source_value = paths["seg"]
+        source = resolve_path(source_value)
+        if source is None:
+            raise FileNotFoundError(f"empty seg path for {folder_id}")
+        nnunet_target = dataset_dir / label_partition / f"{nnunet_id}.nii.gz"
+        folder_target = case_folder_root / split_name / folder_id / f"{folder_id}-seg.nii.gz"
+        action = materialize_file(source, nnunet_target, mode)
+        materialize_file(source, folder_target, mode)
+        records.append({
+            "nnunet_case_id": nnunet_id,
+            "case_folder_id": folder_id,
+            "source_case_id": spec["source_case_id"],
+            "row_type": spec["row_type"],
+            "split": split_name,
+            "nnunet_partition": label_partition,
+            "modality": "seg",
+            "nnunet_channel": "label",
+            "source_path": str(source),
+            "nnunet_target_path": str(nnunet_target),
+            "case_folder_target_path": str(folder_target),
+            "action": action,
+            "completion_raw_id": spec["completion_raw_id"],
+        })
+    return records
+
+
+def build_output_split(master: dict[str, object], specs: list[dict[str, object]]) -> dict[str, object]:
+    real_ids = {
+        str(spec["nnunet_case_id"])
+        for spec in specs
+        if spec["row_type"] != "synthetic_augmentation"
+    }
+    synthetic_ids = sorted(
+        str(spec["nnunet_case_id"])
+        for spec in specs
+        if spec["row_type"] == "synthetic_augmentation"
     )
+    output = {
+        "name": "g2_materialized_fixed_split",
+        "derived_from": master.get("name", "master_patient_group_train_val_test"),
+        "train": [case_id for case_id in master["train"] if case_id in real_ids] + synthetic_ids,  # type: ignore[index]
+        "val": [case_id for case_id in master["val"] if case_id in real_ids],  # type: ignore[index]
+        "test": [case_id for case_id in master["test"] if case_id in real_ids],  # type: ignore[index]
+        "synthetic_train_ids": synthetic_ids,
+    }
+    output["counts"] = {name: len(output[name]) for name in ("train", "val", "test")}
+    if (set(output["train"]) & set(output["val"])) or (set(output["train"]) & set(output["test"])) or (set(output["val"]) & set(output["test"])):
+        raise ValueError("materialized fixed split overlaps")
+    return output
+
+
+def verify_materialized_dataset(
+    dataset_dir: Path,
+    specs: list[dict[str, object]],
+    mode: str,
+) -> dict[str, object]:
+    expected_ids = {str(spec["nnunet_case_id"]) for spec in specs}
+    report: dict[str, object] = {
+        "mode": mode,
+        "expected_cases": len(expected_ids),
+        "checked_cases": 0,
+        "errors": [],
+        "passed": True,
+    }
+    if mode == "manifest-only":
+        report["status"] = "planned_only_sources_preflighted"
+        return report
+    errors: list[str] = []
+    expected_trainval = {
+        str(spec["nnunet_case_id"])
+        for spec in specs
+        if spec.get("split") in {"train", "val"}
+    }
+    expected_test = {
+        str(spec["nnunet_case_id"])
+        for spec in specs
+        if spec.get("split") == "test"
+    }
+    actual_trainval = {path.name.removesuffix(".nii.gz") for path in (dataset_dir / "labelsTr").glob("*.nii.gz")}
+    actual_test = {path.name.removesuffix(".nii.gz") for path in (dataset_dir / "labelsTs").glob("*.nii.gz")}
+    if actual_trainval != expected_trainval:
+        errors.append(f"labelsTr IDs mismatch: expected={len(expected_trainval)} actual={len(actual_trainval)}")
+    if actual_test != expected_test:
+        errors.append(f"labelsTs IDs mismatch: expected={len(expected_test)} actual={len(actual_test)}")
+    spec_by_id = {str(spec["nnunet_case_id"]): spec for spec in specs}
+    for case_id in sorted(expected_ids):
+        split_name = str(spec_by_id[case_id]["split"])
+        image_partition = "imagesTs" if split_name == "test" else "imagesTr"
+        label_partition = "labelsTs" if split_name == "test" else "labelsTr"
+        paths = [dataset_dir / image_partition / f"{case_id}_{index:04d}.nii.gz" for index in range(4)]
+        label_path = dataset_dir / label_partition / f"{case_id}.nii.gz"
+        missing = [str(path) for path in [*paths, label_path] if not path.is_file()]
+        if missing:
+            errors.append(f"{case_id}:missing:{missing}")
+            continue
+        images = [nib.load(str(path)) for path in paths]
+        label_image = nib.load(str(label_path))
+        geometries = [(image.shape[:3], np.round(image.affine, 6).tobytes()) for image in [*images, label_image]]
+        if len(set(geometries)) != 1:
+            errors.append(f"{case_id}:geometry_mismatch")
+        labels = np.unique(np.asanyarray(label_image.dataobj))
+        if not set(labels.tolist()).issubset({0, 1, 2, 3, 4}):
+            errors.append(f"{case_id}:illegal_labels:{labels.tolist()}")
+        report["checked_cases"] = int(report["checked_cases"]) + 1
+    report["errors"] = errors
+    report["passed"] = not errors
+    report["status"] = "pass" if not errors else "fail"
+    return report
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results-root", default=str(DEFAULT_RESULTS_ROOT))
-    parser.add_argument("--real-mapping", default="", help="real-only mapping CSV. Defaults to results/manifests/nnunet_case_mapping_realonly.csv")
-    parser.add_argument("--synthetic-accepted-manifest", default="", help="Optional synthetic_accepted_manifest_<run_id>.csv")
-    parser.add_argument("--fake-t2w-cases", default="", help="CSV listing source case ids whose real T2W is fake/broken. Defaults to G2 QC fake list.")
-    parser.add_argument("--output-root", required=True, help="nnUNet_raw root or any destination root on the training machine.")
+    parser.add_argument("--real-mapping", default="")
+    parser.add_argument("--master-split", default="")
+    parser.add_argument(
+        "--synthetic-accepted-manifest",
+        action="append",
+        default=[],
+        help="Approved training or evaluation manifest. Repeat for multiple G1 runs.",
+    )
+    parser.add_argument("--fake-t2w-cases", default=str(DEFAULT_FAKE_T2W))
+    parser.add_argument("--output-root", required=True)
+    parser.add_argument("--case-folder-root", default="")
     parser.add_argument("--dataset-id", default="261")
     parser.add_argument("--dataset-name", default="BraTS2026_MET_RealSynth_G1")
+    parser.add_argument("--dataset-profile", choices=["auto", "real-only", "completion", "real-synth"], default="auto")
     parser.add_argument("--channel-order", choices=sorted(CHANNEL_ORDERS), default="g2_official")
     parser.add_argument("--mode", choices=["manifest-only", "symlink", "hardlink", "copy"], default="manifest-only")
-    parser.add_argument("--overwrite", action="store_true")
-    parser.add_argument(
-        "--completion-policy",
-        choices=["auto", "replace", "append"],
-        default="auto",
-        help="auto/replace uses accepted G1 completion T2W to replace fake real T2W; append keeps completion rows as separate synthetic cases.",
-    )
-    parser.add_argument(
-        "--include-unreplaced-fake-t2w",
-        action="store_true",
-        help="Also include real rows whose T2W is flagged fake/broken and has no accepted completion replacement. Default excludes them.",
-    )
-    parser.add_argument(
-        "--allow-missing-fake-t2w-list",
-        action="store_true",
-        help="Continue if the fake/broken T2W case list is missing. Default fails fast to avoid leaking raw fake T2W.",
-    )
-    parser.add_argument(
-        "--allow-missing-sources",
-        action="store_true",
-        help="Write manifest even if source NIfTI files are missing. Default fails fast for symlink/hardlink/copy modes.",
-    )
-    parser.add_argument(
-        "--include-ablation-only",
-        action="store_true",
-        help="Also include accepted_for_ablation_only synthetic rows. Default excludes them from the main training dataset.",
-    )
+    parser.add_argument("--clean-output", action="store_true")
+    parser.add_argument("--allow-incomplete-completion", action="store_true")
+    parser.add_argument("--run-nnunet-integrity", action="store_true")
     args = parser.parse_args()
 
     results_root = Path(args.results_root).expanduser().resolve()
-    real_mapping = Path(args.real_mapping) if args.real_mapping else results_root / "manifests" / "nnunet_case_mapping_realonly.csv"
-    synthetic_manifest = Path(args.synthetic_accepted_manifest) if args.synthetic_accepted_manifest else None
-    fake_t2w_path = Path(args.fake_t2w_cases) if args.fake_t2w_cases else results_root / "qc" / DEFAULT_FAKE_T2W.name
+    manifest_paths = [Path(value).expanduser().resolve() for value in args.synthetic_accepted_manifest]
+    profile = args.dataset_profile
+    if profile == "auto":
+        profile = "real-synth" if manifest_paths else "real-only"
+    if args.real_mapping:
+        real_mapping = Path(args.real_mapping).expanduser().resolve()
+    elif profile == "real-only":
+        real_mapping = results_root / "manifests" / "nnunet_case_mapping_realonly.csv"
+    else:
+        real_mapping = results_root / "manifests" / "nnunet_case_mapping_master.csv"
+    master_split_path = Path(args.master_split).expanduser().resolve() if args.master_split else results_root / "splits" / "splits_master_train_val_test.json"
+    fake_t2w_path = Path(args.fake_t2w_cases).expanduser().resolve()
+    for required in [real_mapping, master_split_path, fake_t2w_path, *manifest_paths]:
+        if not required.is_file():
+            raise SystemExit(f"required input not found: {required}")
+
     output_root = Path(args.output_root).expanduser().resolve()
     dataset_dir = output_root / f"Dataset{args.dataset_id}_{args.dataset_name}"
-    dataset_dir.mkdir(parents=True, exist_ok=True)
-    (dataset_dir / "imagesTr").mkdir(exist_ok=True)
-    (dataset_dir / "labelsTr").mkdir(exist_ok=True)
+    case_folder_root = Path(args.case_folder_root).expanduser().resolve() if args.case_folder_root else output_root / f"{args.dataset_name}_case_folders"
+    prepare_output(dataset_dir, args.clean_output)
+    prepare_output(case_folder_root, args.clean_output)
+    (dataset_dir / "imagesTr").mkdir()
+    (dataset_dir / "labelsTr").mkdir()
+    (dataset_dir / "imagesTs").mkdir()
+    (dataset_dir / "labelsTs").mkdir()
 
     real_rows = read_csv(real_mapping)
-    synthetic_rows = read_csv(synthetic_manifest) if synthetic_manifest else []
-    if not fake_t2w_path.exists() and not args.allow_missing_fake_t2w_list:
-        raise SystemExit(
-            f"fake/broken T2W case list not found: {fake_t2w_path}. "
-            "Refresh G2 audit or pass --allow-missing-fake-t2w-list for a controlled diagnostic run."
-        )
+    synthetic_rows = read_synthetic_manifests(manifest_paths)
     fake_t2w_cases = load_fake_t2w_cases(fake_t2w_path)
-    channel_order = CHANNEL_ORDERS[args.channel_order]
-    rows, stats = build_rows(
+    specs, stats = build_case_specs(
         real_rows,
         synthetic_rows,
         fake_t2w_cases,
-        dataset_dir,
-        channel_order,
-        args.mode,
-        args.overwrite,
-        args.include_ablation_only,
-        args.completion_policy,
-        args.include_unreplaced_fake_t2w,
+        profile,
+        args.allow_incomplete_completion,
     )
+    master_split = load_split(master_split_path)
+    assign_spec_splits(specs, master_split)
+    records = materialize_specs(specs, dataset_dir, case_folder_root, args.mode)
+    output_split = build_output_split(master_split, specs)
 
     dataset_json = {
-        "channel_names": {str(idx): modality for idx, modality in enumerate(channel_order)},
+        "channel_names": {str(index): modality for index, modality in enumerate(CHANNEL_ORDERS[args.channel_order])},
         "labels": LABELS,
-        "numTraining": stats["included_cases"],
+        "numTraining": sum(spec.get("split") in {"train", "val"} for spec in specs),
+        "numTest": sum(spec.get("split") == "test" for spec in specs),
         "file_ending": ".nii.gz",
+        "g2_dataset_profile": profile,
         "g2_channel_order": args.channel_order,
-        "g2_materialization_mode": args.mode,
-        "g2_include_ablation_only": args.include_ablation_only,
-        "g2_completion_policy": args.completion_policy,
-        "g2_include_unreplaced_fake_t2w": args.include_unreplaced_fake_t2w,
         "g2_real_mapping": str(real_mapping),
-        "g2_synthetic_manifest": str(synthetic_manifest) if synthetic_manifest else "",
-        "g2_fake_t2w_cases": str(fake_t2w_path),
+        "g2_synthetic_manifests": [str(path) for path in manifest_paths],
+        "g2_master_split": str(master_split_path),
         "g2_materialization_stats": stats,
     }
-    (dataset_dir / "dataset.json").write_text(json.dumps(dataset_json, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (dataset_dir / "dataset.json").write_text(json.dumps(dataset_json, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (dataset_dir / "g2_fixed_split.json").write_text(json.dumps([output_split], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (dataset_dir / "splits_final.json").write_text(
+        json.dumps([{"train": output_split["train"], "val": output_split["val"]}], indent=2) + "\n",
+        encoding="utf-8",
+    )
+    write_csv(
+        dataset_dir / "g2_materialization_manifest.csv",
+        records,
+        [
+            "nnunet_case_id",
+            "case_folder_id",
+            "source_case_id",
+            "row_type",
+            "split",
+            "nnunet_partition",
+            "modality",
+            "nnunet_channel",
+            "source_path",
+            "nnunet_target_path",
+            "case_folder_target_path",
+            "action",
+            "completion_raw_id",
+        ],
+    )
 
-    fieldnames = [
-        "case_id",
-        "source_case_id",
-        "row_type",
-        "modality",
-        "nnunet_channel",
-        "source_path",
-        "target_path",
-        "action",
-        "replacement_synthetic_raw_id",
-        "replacement_synthetic_final_id",
-    ]
-    write_csv(dataset_dir / "g2_materialization_manifest.csv", rows, fieldnames)
-    missing_source_rows = [row for row in rows if row["action"] == "missing_source"]
-    if missing_source_rows and args.mode != "manifest-only" and not args.allow_missing_sources:
-        preview = ", ".join(
-            f"{row['case_id']}:{row['modality']}->{row['source_path']}" for row in missing_source_rows[:10]
-        )
-        raise SystemExit(
-            "missing source NIfTI files detected during nnU-Net materialization; "
-            f"fix paths or pass --allow-missing-sources for diagnostics. examples: {preview}"
+    integrity = verify_materialized_dataset(dataset_dir, specs, args.mode)
+    integrity_path = dataset_dir / "g2_integrity_report.json"
+    integrity_path.write_text(json.dumps(integrity, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if not integrity["passed"]:
+        raise SystemExit(f"G2 built-in integrity check failed: {integrity_path}")
+    if args.run_nnunet_integrity:
+        if args.mode == "manifest-only":
+            raise SystemExit("--run-nnunet-integrity requires symlink/hardlink/copy mode")
+        env = os.environ.copy()
+        env["nnUNet_raw"] = str(output_root)
+        subprocess.run(
+            ["nnUNetv2_plan_and_preprocess", "-d", str(args.dataset_id), "--verify_dataset_integrity"],
+            check=True,
+            env=env,
         )
 
     print(f"dataset_dir={dataset_dir}")
-    print(f"numTraining={stats['included_cases']}")
-    print(f"channel_order={args.channel_order}:{','.join(channel_order)}")
-    print(f"mode={args.mode}")
-    print(f"include_ablation_only={args.include_ablation_only}")
-    print(f"completion_policy={args.completion_policy}")
-    print(f"fake_t2w_cases={len(fake_t2w_cases)}")
-    print(f"replaced_completion_cases={stats['replaced_completion_cases']}")
-    print(f"skipped_unreplaced_fake_t2w_cases={stats['skipped_unreplaced_fake_t2w_cases']}")
-    print(f"appended_synthetic_cases={stats['appended_synthetic_cases']}")
-    print(f"missing_source_files={len(missing_source_rows)}")
+    print(f"case_folder_root={case_folder_root}")
+    print(f"profile={profile}")
+    print(f"included_cases={len(specs)}")
+    print(f"split_counts={output_split['counts']}")
+    print(f"integrity={integrity['status']}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -1,23 +1,20 @@
 # Splits
 
-保存固定真实 train/val/test 划分，供 G1、S1、S2、real-only、real+synth 和后续所有消融复用。real-only split 由 `../../code/g2_build_realonly_from_raw.py` 从 raw data 生成，不代表真实数据经过 G2 质量判定。
+更新日期：2026-07-12
 
-当前正式口径：
+## 唯一规则
 
-1. `splits_final_train_val_test.json`
-   - 有效真实病例：按 raw data 实际扫描结果决定，缺 `t2w`、缺任一必要文件或仍含非法 label 值的病例会被跳过；有 clean corrected label 的病例会自动使用 corrected label。
-   - train：用于真实数据训练池和 synthetic source 池。
-   - val：用于调参、早停、G1 `s`/`weight_decay` 试验和 S1/S2 dev 评估。
-   - test：内部 holdout，只做最终内部测试，不训练、不调参、不作为 synthetic source。
-   - 如果完整病例数为 1295，默认 hash split 结果为 train 829 / val 207 / test 259。
+病例按 patient group 划分：去掉 `BraTS-MET-xxxxx-yyy` 最后的数字后缀。同一患者的 `-000/-001/-002` 不得跨 split。
 
-2. `splits_final_train_val_test_membership.csv`
-   - 逐病例 membership 表。
-   - 包含 `nnunet_case_id`、`source_case_id`、`split` 和稳定 hash 分数，便于人工核查。
+## 文件
 
-历史兼容文件：
+| 文件 | 口径 |
+|---|---|
+| `splits_master_train_val_test.json` | master 1295：1035/130/130 |
+| `splits_master_train_val_test_membership.csv` | master 逐例身份、patient group、T2W 状态和 split |
+| `splits_final_train_val_test.json` | real-only 1030：823/103/104 |
+| `splits_final_train_val_test_membership.csv` | real-only 逐例 membership |
 
-1. `splits_final_fold0_realval.json`
-   - 旧 two-way fold：1036 train / 259 val。
-   - 当前不再把旧 `val` 当调参验证集；它已经锁定为 internal test。
-   - 保留它只是为了兼容旧脚本和追溯历史结果。
+master 的 265 个 V3 completion 目标分布为 train 212、val 27、test 26。completion 完成后回到原 split；V2 augmentation 永远只追加 train。
+
+历史 two-way split 已清理，不再作为正式接口。既有历史 checkpoint 若使用不同 split，只能作为历史结果；严格 real-only vs real+synth 消融要在当前 master split 上建立 paired baseline。

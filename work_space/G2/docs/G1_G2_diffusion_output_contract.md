@@ -1,387 +1,155 @@
-# G1-G2 Diffusion Raw Output 对接契约（G2 适配 G1 版）
+# G1-G2 V2/V3 输出契约
 
-更新日期：2026-06-13
-适用对象：G1 生成模型组、G2 数据生成与质量控制组、S1/S2 nnU-Net 训练组
-契约原则：G1 第一阶段保持 MET-compatible raw output；G2 承接 raw output，补齐记忆、QC、标准化与训练导出
+更新日期：2026-07-12
 
-## 0. 契约结论
+## 1. 不可混用的两种模式
 
-1. G1 不需要第一阶段直接输出 G2 理想资产格式。
-2. G1 可以继续沿用 2023/2024 GliGAN 的 CSV、ROI、legacy naming 和四模态回填流程，但只作为接口兼容，不允许沿用旧 GLI 数据。
-3. G2 必须完整适配 G1 raw output，并负责后续 `SYN-MET-*`、manifest、QC、nnU-Net export。
-4. G1 输出只要达到“可读、可追溯、可解析、可检查”的最低标准，G2 就能承接。
-5. 所有不能从 raw output 自动恢复的信息，G1 至少要在 run config 或 generation log 中给出；如果仍缺失，则 G2 标记 `needs_metadata_repair`，不能直接训练。
+### V2 augmentation
 
-## 1. G1 当前工程事实
-
-G1 代码实际采用局部生成逻辑：
+V2 raw output 不能直接交给下游模型。它必须先进入：
 
 ```text
-source MRI crop
-  + label crop
-  + noise / diffusion timestep
-  -> diffusion model
-  -> reconstructed tumour patch
-  -> insertion back to source case
-  -> full synthetic case folder
+g2_v2_compose_augmentation.py
 ```
 
-核心事实：
-
-1. 生成单位是 `96x96x96` ROI。
-2. 训练/推理可以按单模态分别运行：`t1ce/t1/t2/flair`。
-3. label 条件使用 region-based multi-channel 表示。
-4. 第一阶段更像 GliGAN modality generator 的 diffusion 替换版。
-5. raw output 可能使用 legacy 后缀 `scan_t1ce/scan_t1/scan_t2/scan_flair`，G2 会映射到 2026 的 `t1c/t1n/t2w/t2f`。
-6. 原始代码没有天然的 per-case `metadata.json` 和 G2 QC 表。
-
-## 2. 总数据流
-
-```text
-G2 real_train_manifest
-  -> G2 g1_met_source_cases_v1.csv
-  -> G1 diffusion/MET-compatible generator
-  -> G1 raw synthetic run folder
-  -> G2 raw intake
-  -> G2 synthetic_generation_manifest
-  -> G2 QC metrics and review
-  -> G2 accepted/rejected manifests
-  -> G2 nnU-Net real+synth export
-  -> S1/S2 fixed-real-val ablation
-```
-
-## 3. G2 写给 G1 的 source CSV
-
-### 3.1 文件位置
-
-当前 G2 已生成并维护：
-
-```text
-work_space/G2/results/manifests/g1_met_source_cases_v1.csv
-```
-
-### 3.2 G1 必读列
-
-```csv
-id,scan_t1ce,scan_t2,scan_flair,scan_t1,label,center_x,center_y,center_z,x_extreme_min,x_extreme_max,y_extreme_min,y_extreme_max,z_extreme_min,z_extreme_max,x_size,y_size,z_size
-```
-
-### 3.3 G2 扩展列
-
-G1 可以忽略，G2 必须保留：
-
-```csv
-case_id,source_split,has_corrected_label,corrected_label_path,label_values,lesion_component_id,lesion_volume_mm3,lesion_class_set,usable_for_met96,allowed_as_synthetic_source,exclude_reason,shape_x,shape_y,shape_z,spacing_x,spacing_y,spacing_z,affine_hash
-```
-
-`usable_for_met96` 是当前 2026 MET diffusion 线的正式字段。
-
-### 3.4 source 准入规则
-
-G1 只能使用 `allowed_as_synthetic_source=True` 的行。
-
-强制排除：
-
-1. internal val/test holdout 病例。
-2. official validation 病例。
-3. corrected overlay 后仍含非法 label 的病例。
-4. `usable_for_met96=False` 且当前仍采用 96 ROI 的病例。
-5. `exclude_reason` 非空的病例。
-
-## 4. 模态映射
-
-| G1 key | G1 legacy suffix | 2026 suffix | nnU-Net channel |
-|---|---|---|---|
-| `scan_t1` | `scan_t1` | `t1n` | `0000` |
-| `scan_t1ce` | `scan_t1ce` | `t1c` | `0001` |
-| `scan_t2` | `scan_t2` | `t2w` | `0002` |
-| `scan_flair` | `scan_flair` | `t2f` | `0003` |
-| `label` | `seg` | `seg` | labelsTr |
-
-执行规则：
-
-1. G1 代码内部可以继续使用 legacy key。
-2. G1 raw output 可以使用 legacy suffix。
-3. G2 接收时做 suffix mapping。
-4. G2 导出 nnU-Net 时必须固定 `t1n,t1c,t2w,t2f` 顺序。
-
-## 5. 标签契约
-
-### 5.1 2026 Task1 单通道标签
-
-| value | name | 含义 |
-|---:|---|---|
-| 0 | background | 背景 |
-| 1 | NETC | non-enhancing tumour core |
-| 2 | SNFH | surrounding non-enhancing FLAIR hyperintensity |
-| 3 | ET | enhancing tumour |
-| 4 | RC | resection cavity |
-
-最终 `seg.nii.gz` 必须是单通道整数标签，值域只能是 `{0,1,2,3,4}`。
-
-### 5.2 G1 label condition 推荐
-
-2026 第一阶段推荐沿用 post-treatment 4 channel transform：
-
-```text
-channel 0: TC = label 1 or label 3
-channel 1: WT = label 1 or label 2 or label 3
-channel 2: ET = label 3
-channel 3: RC = label 4
-```
-
-对应 tumour diffusion 单模态输入：
-
-```text
-noisy_scan: [1, 1, 96, 96, 96]
-label_cond: [1, 4, 96, 96, 96]
-model input effective channels = 1 scan + 4 label + time channel inside model
-output_patch: [1, 1, 96, 96, 96]
-```
-
-如果 G1 临时只用 3 channel，无 RC，则必须写：
-
-```text
-label_channels=3
-rc_policy=ignored_in_v1
-```
-
-G2 不允许把 3 channel 输出伪装成完整 2026 post-treatment 数据。
-
-## 6. G1 raw run 目录
-
-推荐 G1 每轮输出一个 run：
-
-```text
-synthetic_raw/
-  met_only/
-    run_YYYYMMDD_HHMM_g1_diffusion_v1/
-      generation_config.json
-      generation_log.jsonl
-      synthetic_generation_manifest.csv
-      BraTS-MET-00007-000_fake_label_0/
-        BraTS-MET-00007-000_fake_label_0-scan_t1.nii.gz
-        BraTS-MET-00007-000_fake_label_0-scan_t1ce.nii.gz
-        BraTS-MET-00007-000_fake_label_0-scan_t2.nii.gz
-        BraTS-MET-00007-000_fake_label_0-scan_flair.nii.gz
-        BraTS-MET-00007-000_fake_label_0-seg.nii.gz
-```
-
-### 6.1 当前 G1 diffusion 输出格式
-
-当前这条分支的 diffusion 代码是“seg 条件生成完整 MRI”，不是缺失模态补全。G1 现在应当以每个病例一个输出目录的方式交付：
-
-```text
-data/output/
-  BraTS-MET-00554-000/
-    BraTS-MET-00554-000-t1n.nii.gz
-    BraTS-MET-00554-000-t1c.nii.gz
-    BraTS-MET-00554-000-t2w.nii.gz
-    BraTS-MET-00554-000-t2f.nii.gz
-```
-
-G2 对该格式的解释：
-
-1. 目录名等于 `source_case_id`。
-2. `label_kind` 自动记为 `completion` 或 `full_generation`，以 run log 为准。
-3. 每个病例目录必须能回溯到 `generation_run_id`、seed、checkpoint 和 source manifest。
-4. 四模态和 `seg` 仍按 L1-L3 做完整性、几何、数值和 label 合法性检查。
-5. 如果 source 属于 internal val/test holdout 或官方 validation，G2 可以做 QC 和受控消融记录，但不能把它标成 `accepted_for_training=True`。
-6. 此格式可直接作为 `g2_synthetic_raw_intake_qc.py --synthetic-run-root data/output` 的输入。
-
-如果 G1 暂时不能生成 manifest/log，也必须至少提供：
-
-1. run 目录名。
-2. checkpoint 路径。
-3. 推理命令。
-4. seed 规则。
-5. source CSV 路径。
-6. label channel 说明。
-
-缺少这些信息的 raw output，G2 只能归档，不进入训练。
-
-full-generation 模式的 accepted/rejected 口径：
-
-1. `accepted_for_training=True`：full-generation 输出质量通过，source 是真实训练 manifest 中 final QC pass 的病例，且不在 internal val/test holdout。
-2. `accepted_for_ablation_only=True`：full-generation 输出质量基本通过，但 source 不适合进入主训练，例如 internal val/test holdout、official validation、或需要单独消融验证。
-3. `rejected`：缺文件、NIfTI 不可读、几何不一致、label 非法、空 mask、常数图、NaN/Inf 或 source 不可追溯。
-
-full-generation 模式进入 nnU-Net 时默认不是替换原病例，而是作为新增 synthetic 病例：
-
-1. 保留真实病例原有 `nnunet_case_id` 不变只适用于 real-only 基线。
-2. 接收的 diffusion 结果在 G2 中标准化为新的 `SYN-MET-*` / `SYNMET*` 病例。
-3. 后续真正的 diffusion synthetic augmentation 使用 `SYN-MET-*` / `SYNMET*` 作为新增病例。
-
-## 7. raw case 命名
-
-默认命名：
-
-```text
-<source_case_id>_<label_kind>_label_<label_index>
-```
-
-示例：
-
-```text
-BraTS-MET-00007-000_fake_label_0
-BraTS-MET-00007-000_real_label_0
-```
-
-字段：
-
-| 字段 | 允许值 | 说明 |
-|---|---|---|
-| `source_case_id` | BraTS-MET ID | 被插入 synthetic lesion 的 source |
-| `label_kind` | `real`, `fake`, `fake_no_rc`, `manual_template` | label 来源 |
-| `label_index` | integer | 同一 source 下生成编号 |
-
-如果 G1 改命名，必须在 manifest 中显式给出 `source_case_id`、`label_kind`、`label_index`。
-
-## 8. `generation_config.json`
-
-建议 G1 每个 run 提供：
+V2 run 必需元数据：
 
 ```json
 {
-  "generation_run_id": "run_20260613_2100_g1_diffusion_v1",
-  "generator_name": "g1_diffusion_met_only",
-  "source_csv": "work_space/G2/results/manifests/g1_met_source_cases_v1.csv",
-  "generation_mode": "local_insertion_met_only",
-  "generator_io": "single_modal_met",
-  "label_channels": 4,
-  "rc_policy": "preserve_if_source_has_rc",
-  "noise_type": "gaussian_tumour",
-  "sampling_method": "ddim",
-  "sampling_steps": 50,
+  "generation_run_id": "v2_run_xxx",
+  "generator_name": "g1_diffusion_v2",
+  "generation_mode": "full_generation",
+  "seed": 42,
+  "source_csv": "work_space/G2/results/manifests/g1_v2_source_manifest.csv",
+  "diffusion_checkpoint_dir": "/server/path/to/checkpoints",
+  "sampling_method": "edm_heun",
+  "sampling_steps": 18,
   "eta": 0.0,
-  "seed_base": 42,
-  "modalities": ["t1n", "t1c", "t2w", "t2f"]
+  "crop_size": 64,
+  "label_channels": 4
 }
 ```
 
-## 9. `generation_log.jsonl`
-
-每行一个 case 级事件。
-
-成功：
-
-```json
-{"synthetic_raw_id":"BraTS-MET-00007-000_fake_label_0","source_case_id":"BraTS-MET-00007-000","generation_run_id":"run_20260613_2100_g1_diffusion_v1","label_kind":"fake","label_index":0,"seed":42,"status":"success","error_type":null,"error_message":null}
-```
-
-失败：
-
-```json
-{"synthetic_raw_id":"BraTS-MET-01094-002_real_label_0","source_case_id":"BraTS-MET-01094-002","generation_run_id":"run_20260613_2100_g1_diffusion_v1","label_kind":"real","label_index":0,"seed":43,"status":"failed","error_type":"illegal_source_label","error_message":"source label contains value 6"}
-```
-
-## 10. `synthetic_generation_manifest.csv`
-
-如果 G1 能生成，使用以下字段。若 G1 暂时不能生成，G2 intake 后补建同款字段。
-
-```csv
-synthetic_raw_id,synthetic_final_id,nnunet_case_id,source_case_id,source_split,label_kind,label_index,label_source_case_id,label_component_id,label_generator_checkpoint,generation_run_id,generator_name,generator_checkpoint_t1n,generator_checkpoint_t1c,generator_checkpoint_t2w,generator_checkpoint_t2f,generator_io,label_channels,rc_policy,noise_type,sampling_method,sampling_steps,eta,seed,source_csv_path,source_csv_version,raw_case_dir,normalized_case_dir,output_suffix_scheme,suffix_conversion_action,raw_t1n_path,raw_t1c_path,raw_t2w_path,raw_t2f_path,raw_seg_path,normalized_t1n_path,normalized_t1c_path,normalized_t2w_path,normalized_t2f_path,normalized_seg_path,nnunet_t1n_target_path,nnunet_t1c_target_path,nnunet_t2w_target_path,nnunet_t2f_target_path,nnunet_seg_target_path,insert_center_x,insert_center_y,insert_center_z,roi_x_min,roi_x_max,roi_y_min,roi_y_max,roi_z_min,roi_z_max,source_shape_x,source_shape_y,source_shape_z,output_shape_x,output_shape_y,output_shape_z,status,error_type,error_message,qc_status,qc_reject_reason,accepted_for_training,accepted_for_ablation_only,needs_regeneration
-```
-
-### 10.1 必填程度
-
-| 字段组 | 第一阶段要求 |
-|---|---|
-| raw ID/source/run/checkpoint | 必须 |
-| label_kind/label_channels/rc_policy | 必须 |
-| seed | 必须，缺失则不可复现 |
-| ROI 坐标 | 强烈建议，缺失则自动触发人工复查 |
-| output shape | G2 可自动补 |
-| QC 字段 | G2 填 |
-
-## 11. G2 intake 后的标准化产物
-
-G2 为每个 raw case 补齐：
-
-```csv
-synthetic_raw_id,synthetic_final_id,nnunet_case_id,source_case_id,generation_run_id,raw_case_dir,normalized_case_dir,output_suffix_scheme,suffix_conversion_action,qc_decision,accepted_for_training,accepted_for_ablation_only
-```
-
-同时生成逐模态映射表：
-
-```csv
-synthetic_raw_id,synthetic_final_id,nnunet_case_id,source_case_id,generation_run_id,modality,nnunet_channel,raw_source_path,normalized_target_path,nnunet_target_path,output_suffix_scheme,suffix_conversion_action,qc_decision,accepted_for_training,accepted_for_ablation_only,needs_regeneration
-```
-
-这张表是 legacy suffix 转换的落地凭证：
-
-| raw suffix | normalized suffix | nnU-Net target |
-|---|---|---|
-| `scan_t1` | `t1n` | `{nnunet_case_id}_0000.nii.gz` |
-| `scan_t1ce` | `t1c` | `{nnunet_case_id}_0001.nii.gz` |
-| `scan_t2` | `t2w` | `{nnunet_case_id}_0002.nii.gz` |
-| `scan_flair` | `t2f` | `{nnunet_case_id}_0003.nii.gz` |
-| `seg` | `seg` | `{nnunet_case_id}.nii.gz` |
-
-G2 不要求 G1 第一阶段重命名 raw NIfTI；但 G2 的 accepted 输出必须能通过这张表精确物化为训练机上的 nnU-Net 文件。
-
-final naming：
+V2 flat raw 文件名：
 
 ```text
-SYN-MET-000001
+<source_case_id>-t1n.nii.gz
+<source_case_id>-t1c.nii.gz
+<source_case_id>-t2w.nii.gz
+<source_case_id>-t2f.nii.gz
 ```
 
-nnU-Net naming：
+Composer 输出：
 
 ```text
-SYNMET000001_0000.nii.gz
-SYNMET000001_0001.nii.gz
-SYNMET000001_0002.nii.gz
-SYNMET000001_0003.nii.gz
-SYNMET000001.nii.gz
+composed_run/
+  generation_config.json
+  generation_log.jsonl
+  synthetic_generation_manifest.csv
+  <source_case_id>_v2aug_label_0/
+    <raw_id>-t1n.nii.gz
+    <raw_id>-t1c.nii.gz
+    <raw_id>-t2w.nii.gz
+    <raw_id>-t2f.nii.gz
+    <raw_id>-seg.nii.gz
+    <raw_id>-generation_support.nii.gz
 ```
 
-## 12. G2 对 G1 的最低 smoke test 要求
+Composer 强制检查：source 属于 master train、T2W 真实、四模态齐全、shape 一致、seg 合法。输出恢复 source affine/header，非 generation support 区域保持 source 值。输出目录非空时默认拒绝；`--overwrite` 表示清空整个 composed run 后重建。
 
-G1 第一次交付：
+### V3 completion
 
-1. 10-20 个 raw synthetic cases。
-2. 每例四模态 + `seg`。
-3. 每例 NIfTI 可读。
-4. checkpoint 信息。
-5. seed 信息。
-6. label channel 说明。
-7. 使用哪个 G2 source CSV。
-8. 失败 case 也要记录。
+V3 run 直接进入：
 
-G2 smoke 通过标准：
+```text
+g2_v3_completion_intake.py
+```
 
-1. raw case 可读率 100%。
-2. 五文件完整率 100%。
-3. validation leakage 为 0。
-4. 自动 QC 通过率不低于 80%。
-5. 人工抽查无系统性 ROI 方块伪影。
-6. 能导出 nnU-Net smoke dataset。
+目录：
 
-## 13. 不能妥协的底线
+```text
+run_<id>/
+  generation_config.json
+  inference_run.json
+  generation_log.jsonl
+  synthetic_generation_manifest.csv
+  <source_case_id>/
+    <source_case_id>-t1n.nii.gz
+    <source_case_id>-t1c.nii.gz
+    <source_case_id>-t2w.nii.gz
+    <source_case_id>-t2f.nii.gz
+    <source_case_id>-seg.nii.gz
+```
 
-1. validation 病例不能作为 synthetic training source。
-2. source 缺失不能训练。
-3. label 非法不能训练。
-4. 缺任一模态不能训练。
-5. geometry 不一致不能训练。
-6. 不可复现信息缺失时，最多进入归档或修复队列，不能进入 accepted manifest。
-7. G1 raw output 和 G2 final output 必须通过 manifest 一一对应。
+V3 元数据至少包括：
 
-## 14. G1 与 G2 的分工边界
+```text
+generation_run_id
+generator_name
+generation_mode=completion
+source_csv
+seed
+vae_weights
+encdec_checkpoint
+bbdm_checkpoint
+bbdm_s
+validation_run
+```
 
-| 事项 | G1 | G2 |
-|---|---|---|
-| diffusion 模型训练 | 主责 | 只提数据约束 |
-| ROI 生成/回填 | 主责 | QC 检查 |
-| source CSV | 读取 | 生成和维护 |
-| raw output | 生成 | 接收和标准化 |
-| legacy suffix | 可使用 | 映射和重命名 |
-| manifest/log | 尽量生成 | 必须补齐和审计 |
-| QC | 可做 smoke | 主责 |
-| nnU-Net export | 不要求 | 主责 |
-| 数据报告 | 提供参数 | 主责 |
+V3 completion 的 `synthetic_final_id` 等于 `source_case_id`，nnU-Net ID 复用 master mapping。只有 T2W 可以替换，其他模态和 seg 最终从真实 source 读取。
 
-## 15. 一句话
+## 2. Split 约束
 
-G1 输出“可解析 raw synthetic case”；G2 输出“可训练、可审计、可报告 synthetic dataset”。
+1. V2 source 只能是 `master split=train` 且 `eligible_for_realonly=True`。
+2. V2 augmentation 只加入输出 split 的 train。
+3. V3 train completion 经批准后可用于训练。
+4. V3 val/test completion 经批准后只用于原 val/test。
+5. official validation 没有公开标签，不得作为 V2 source，也不进入内部训练 QC。
+
+## 3. Metadata 硬门
+
+缺少以下任一关键项即 rejected：
+
+```text
+generation config/inference run
+generation log
+generation manifest
+generation_run_id
+generator_name
+seed
+source_csv
+required checkpoint(s)
+V3 bbdm_s
+V3 validation_run
+```
+
+缺少上述运行证据时 G2 直接拒绝，不会虚构 checkpoint、seed、日志或 manifest。每个病例还必须在 generation manifest 和 JSONL log 中各有唯一 `status=success` 记录，且 source、run ID、seed 一致。
+
+## 4. QC 审批文件
+
+技术 QC 通过后，操作者在 run root 放置：
+
+```text
+g2_approval_manifest.csv
+```
+
+表头：
+
+```csv
+synthetic_raw_id,approved_for_training,approved_for_evaluation,reviewer,reason
+```
+
+没有该审批时，病例保持 `pending_review`。
+
+## 5. 下游输出
+
+G2 materializer 同时输出：
+
+1. `DatasetXXX_*/imagesTr + labelsTr` 保存 train/val，供 S2。
+2. `DatasetXXX_*/imagesTs + labelsTs` 物理隔离 locked test。
+3. `<dataset>_case_folders/{train,val,test}/<case_id>/`，供 S1/S3/S4/S5。
+4. `g2_fixed_split.json`、`splits_final.json`。
+5. `g2_materialization_manifest.csv`。
+6. `g2_integrity_report.json`。
+
+固定通道顺序只有：`t1n,t1c,t2w,t2f`。

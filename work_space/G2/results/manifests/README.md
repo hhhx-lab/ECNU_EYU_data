@@ -1,20 +1,40 @@
 # Manifests
 
-保存真实训练/验证清单、corrected overlay、G1 兼容 source CSV、synthetic intake 模板，以及正式 G1 批次到来后生成的 accepted/rejected 索引文件。旧 smoke run 演示输出已清理。
+更新日期：2026-07-12
 
-real-only baseline 训练前由 `../../code/g2_build_realonly_from_raw.py` 从 raw data 生成：
+## 固定输入
 
-1. `nnunet_case_mapping_realonly.csv`
-2. `realonly_skipped_incomplete_cases.csv`
+| 文件 | 用途 |
+|---|---|
+| `real_train_manifest_raw.csv` | 历史原始训练数据扫描证据 |
+| `real_train_manifest.csv` | 应用 corrected label 后的真实病例审计表 |
+| `real_validation_manifest.csv` | 官方 validation 结构记录，不作 V2 source |
+| `corrected_label_overlay.csv` | corrected seg 覆盖证据 |
+| `nnunet_case_mapping_master.csv` | 1295 例 master 身份，包括 completion 目标 |
+| `nnunet_case_mapping_realonly.csv` | 1030 例 authentic-T2W 子集 |
+| `g1_v2_source_manifest.csv` | V2 source 主表，只有 823 行 allowed |
 
-其中 `realonly_skipped_incomplete_cases.csv` 记录缺 `t1n/t1c/t2w/t2f/seg` 的病例，以及没有可用 corrected label 且 raw seg 仍含非法 label 值的病例；这些病例不会进入 S1/S2/S3 real-only 训练。
+master mapping 保留 fake/broken T2W 病例，是为了让 V3 completion 修复后恢复到原病例身份；real-only mapping 明确排除这些病例。
 
-`nnunet_case_mapping_realonly.csv` 的 `seg_source_path` 已经优先指向 corrected label。若 corrected label 不存在，则只在 raw seg 的 label 值属于 `{0,1,2,3,4}` 时使用 raw seg。
+## 正式 run 输出
 
-正式 G1 批次到来后由 `../../code/g2_synthetic_raw_intake_qc.py` 自动生成：
+通用 intake 按 run ID 生成：
 
-1. `synthetic_generation_manifest_{run_id}.csv`
-2. `synthetic_candidate_manifest_{run_id}.csv`
-3. `synthetic_accepted_manifest_{run_id}.csv`
-4. `synthetic_rejected_manifest_{run_id}.csv`
-5. `synthetic_normalized_mapping_{run_id}.csv`
+```text
+synthetic_generation_manifest_<run_id>.csv
+synthetic_candidate_manifest_<run_id>.csv
+synthetic_pending_review_manifest_<run_id>.csv
+synthetic_accepted_manifest_<run_id>.csv
+synthetic_accepted_evaluation_manifest_<run_id>.csv
+synthetic_rejected_manifest_<run_id>.csv
+synthetic_normalized_mapping_<run_id>.csv
+```
+
+`synthetic_accepted_manifest` 只含训练角色数据；`synthetic_accepted_evaluation_manifest` 只含 V3 val/test completion。
+
+## 模板
+
+1. `synthetic_generation_manifest_template_g1.csv`
+2. `synthetic_normalized_mapping_template.csv`
+
+模板只定义字段，不代表已有真实 G1 批次通过。

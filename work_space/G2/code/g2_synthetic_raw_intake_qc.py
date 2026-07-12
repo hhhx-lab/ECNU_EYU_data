@@ -16,7 +16,7 @@ from pathlib import Path
 DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 
 
-def main() -> None:
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Intake one G1 synthetic raw run and generate G2 QC outputs."
     )
@@ -49,7 +49,10 @@ def main() -> None:
         action="store_true",
         help="Rewrite current G2 manifest/QC/report templates before intake.",
     )
-    args = parser.parse_args()
+    return parser
+
+
+def run_intake(args: argparse.Namespace) -> list[Path]:
 
     from g2_pretraining_audit import (  # noqa: PLC0415
         build_synthetic_run_context,
@@ -78,6 +81,8 @@ def main() -> None:
         ("synthetic_generation_manifest", [dirs["manifests"] / f"synthetic_generation_manifest_{run_id}.csv"]),
         ("synthetic_candidate_manifest", [dirs["manifests"] / f"synthetic_candidate_manifest_{run_id}.csv"]),
         ("synthetic_accepted_manifest", [dirs["manifests"] / f"synthetic_accepted_manifest_{run_id}.csv"]),
+        ("synthetic_accepted_evaluation_manifest", [dirs["manifests"] / f"synthetic_accepted_evaluation_manifest_{run_id}.csv"]),
+        ("synthetic_pending_review_manifest", [dirs["manifests"] / f"synthetic_pending_review_manifest_{run_id}.csv"]),
         ("synthetic_rejected_manifest", [dirs["manifests"] / f"synthetic_rejected_manifest_{run_id}.csv"]),
         ("synthetic_normalized_mapping", [dirs["manifests"] / f"synthetic_normalized_mapping_{run_id}.csv"]),
         ("qc_metrics", [dirs["qc"] / f"qc_metrics_{run_id}.csv"]),
@@ -96,6 +101,11 @@ def main() -> None:
     print("G2 synthetic intake finished.")
     for path in outputs:
         print(path)
+    return outputs
+
+
+def main() -> None:
+    run_intake(build_parser().parse_args())
 
 
 if __name__ == "__main__":

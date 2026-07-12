@@ -66,6 +66,27 @@ class G2BuildRealOnlyFromRawTest(unittest.TestCase):
                 saved = list(csv.DictReader(f))
             self.assertEqual(saved[0]["t2w_source_path"], "raw/BraTS-MET-00001-000/BraTS-MET-00001-000-t2w.nii.gz")
 
+    def test_marks_fake_t2w_as_completion_only(self):
+        mod = load_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            raw = root / "raw"
+            case_id = "BraTS-MET-00554-000"
+            touch_case(raw, case_id)
+
+            rows, skipped = mod.build_mapping_rows(
+                [raw],
+                root,
+                label_value_reader=lambda _path: {0, 1, 2, 3, 4},
+                fake_t2w_case_ids={case_id},
+            )
+
+            self.assertEqual(skipped, [])
+            self.assertEqual(rows[0]["patient_group"], "BraTS-MET-00554")
+            self.assertEqual(rows[0]["t2w_status"], "fake_or_broken")
+            self.assertEqual(rows[0]["eligible_for_realonly"], "False")
+            self.assertEqual(rows[0]["completion_required"], "True")
+
     def test_uses_clean_corrected_label_when_raw_label_has_illegal_values(self):
         mod = load_module()
         with tempfile.TemporaryDirectory() as tmp:

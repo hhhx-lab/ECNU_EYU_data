@@ -23,8 +23,14 @@ import nibabel as nib
 import numpy as np
 import pandas as pd
 from scipy import ndimage
+from skimage.metrics import structural_similarity
 
-from g2_create_train_val_test_split import create_train_val_test_split, write_split_outputs
+from g2_create_train_val_test_split import (
+    create_train_val_test_split,
+    filter_split,
+    patient_group,
+    write_split_outputs,
+)
 
 
 LABELS = {0: "background", 1: "NETC", 2: "SNFH", 3: "ET", 4: "RC"}
@@ -73,6 +79,10 @@ REAL_TRAIN_EMPTY_COLUMNS = [
 
 def as_posix(path: Path | str | None) -> str:
     return "" if path is None else str(path)
+
+
+def boolish(value: object) -> bool:
+    return str(value).strip().lower() in {"1", "true", "yes", "y"}
 
 
 def parse_workspace_path(path_str: str | Path | None, anchor: Path | None = None) -> Path:
@@ -142,22 +152,25 @@ def ensure_dirs(results_root: Path) -> dict[str, Path]:
         path.mkdir(parents=True, exist_ok=True)
     (dirs["nnunet_raw"] / "imagesTr").mkdir(parents=True, exist_ok=True)
     (dirs["nnunet_raw"] / "labelsTr").mkdir(parents=True, exist_ok=True)
+    (dirs["nnunet_raw"] / "imagesTs").mkdir(parents=True, exist_ok=True)
+    (dirs["nnunet_raw"] / "labelsTs").mkdir(parents=True, exist_ok=True)
     return dirs
 
 
 def write_readme_files(results_root: Path, dirs: dict[str, Path]) -> None:
     readmes = {
-        results_root / "README.md": "# G2 Results\n\n本目录保存 G2 的轻量结果文件：真实数据清单、G1 source 表、synthetic intake 模板、QC 策略、官方指标模板和进度索引。NIfTI 大数据、nnU-Net 预处理缓存、正式 synthetic 影像和临时 smoke run 产物都不放进仓库。\n\n正式入口：`../code/g2_create_train_val_test_split.py` 生成固定 train/val/test，`../code/g2_synthetic_raw_intake_qc.py` 接收 G1 raw run，`../code/g2_materialize_nnunet_dataset.py` 转 nnU-Net raw，`../code/g2_official_mets_metrics_parser.py` 解析或校验 2026 Task1 官方字段。\n",
+        results_root / "README.md": "# G2 Results\n\n本目录只保存轻量 mapping、patient-group split、QC 规则、模板和报告，不保存正式 NIfTI。V2 必须先 composition，V3 使用 completion 专用入口；技术通过但未审批的病例保持 pending。\n",
         dirs["nnunet_raw_root"] / "README.md": "# nnunet_raw\n\n这里是 nnU-Net 原始数据的轻量入口。当前仓库只放占位说明、dataset.json 和路径契约，不放正式大体积影像。`Dataset260_BraTS2026_MET_RealOnly/` 记录 real-only 基线；正式 real+synth 由 `../code/g2_materialize_nnunet_dataset.py` 在训练机物化。\n",
-        dirs["manifests"] / "README.md": "# Manifests\n\n保存真实训练/验证清单、corrected overlay、G1 兼容 source CSV、synthetic intake 模板，以及正式 G1 批次到来后生成的 accepted/rejected 索引文件。旧 smoke run 演示输出不保留。\n",
+        dirs["manifests"] / "README.md": "# Manifests\n\n`nnunet_case_mapping_master.csv` 保存全部病例身份，`nnunet_case_mapping_realonly.csv` 只保存真实 T2W，`g1_v2_source_manifest.csv` 只放行 master train source。正式 run 输出 rejected、pending、accepted-training 和 accepted-evaluation。\n",
         dirs["stats"] / "README.md": "# Stats\n\n保存真实 label/lesion 分布、synthetic 目标分布、batch 级统计摘要，以及后续抽样分析所需的小型数表。\n",
-        dirs["qc"] / "README.md": "# QC\n\n保存 synthetic data 质量控制规则、逐例指标模板、扩散质量专项模板、人工复查表头、官方 leaderboard 对齐模板，以及正式 run 级自动 QC 输出。\n",
-        dirs["splits"] / "README.md": "# Splits\n\n保存固定真实 train/val/test 划分，供 G1、S1、S2、G2 QC、real-only、real+synth 和后续所有消融复用。`splits_final_train_val_test.json` 是当前正式口径；`splits_final_fold0_realval.json` 保留为历史兼容文件，其中旧 `val` 已锁定为内部 test。\n",
+        dirs["qc"] / "README.md": "# QC\n\n保存技术硬门、质量复核、release 审批和官方训练价值验收产物。未计算指标不写常量，未审批病例不得进入训练。\n",
+        dirs["splits"] / "README.md": "# Splits\n\n`splits_master_train_val_test.json` 是全部 1295 例的 patient-group master split；`splits_final_train_val_test.json` 是真实 T2W real-only 派生 split。\n",
         dirs["reports"] / "README.md": "# Reports\n\n保存路径检查、数据 QC、执行总结、进度报告、消融模板和团队沟通文档源稿。临时 smoke run 质量报告不保留。\n",
         dirs["nnunet_raw"] / "README.md": "# Dataset260_BraTS2026_MET_RealOnly\n\n本目录当前只保存 `dataset.json` 和映射说明，不复制或软链接全量 NIfTI。需要正式训练时，由 S1/S2 根据 `manifests/nnunet_case_mapping_realonly.csv` 在训练机器上物化数据集并运行 nnU-Net 预处理。synthetic accepted 结果另起 dataset id，不混进这个 real-only 占位目录。\n",
     }
     for path, text in readmes.items():
-        path.write_text(text, encoding="utf-8")
+        if not path.exists():
+            path.write_text(text, encoding="utf-8")
 
 
 def dir_size(path: Path) -> int:
@@ -296,6 +309,28 @@ def read_csv_if_exists(path: Path) -> pd.DataFrame:
         return pd.DataFrame()
 
 
+def index_case_records(
+    records: list[dict[str, object]],
+) -> tuple[dict[str, dict[str, object]], set[str]]:
+    lookup: dict[str, dict[str, object]] = {}
+    duplicates: set[str] = set()
+    for record in records:
+        raw_id = str(
+            record.get("synthetic_raw_id")
+            or record.get("case_id")
+            or record.get("raw_case_id")
+            or record.get("case_name")
+            or ""
+        ).strip()
+        if not raw_id:
+            continue
+        if raw_id in lookup:
+            duplicates.add(raw_id)
+            continue
+        lookup[raw_id] = record
+    return lookup, duplicates
+
+
 def load_fake_t2w_case_ids(results_root: Path) -> set[str]:
     fake_path = results_root / "qc" / "official_fake_t2w_cases_by_gzip_header_2026-06-15.csv"
     fake_df = read_csv_if_exists(fake_path)
@@ -372,6 +407,16 @@ def find_synthetic_case_dirs(run_root: Path) -> list[Path]:
 
 
 def synthetic_modality_files(case_dir: Path) -> dict[str, Path | None]:
+    case_prefixes: set[str] = set()
+    for path in case_dir.glob("*.nii.gz"):
+        match = re.match(r"^(BraTS-MET-\d{5}-\d{3})", path.name)
+        if match:
+            case_prefixes.add(match.group(1))
+    if len(case_prefixes) > 1:
+        raise ValueError(
+            f"flat V2 output contains multiple cases in {case_dir}; "
+            "run g2_v2_compose_augmentation.py before synthetic intake"
+        )
     files: dict[str, Path | None] = {}
     for modality, variants in SYNTHETIC_SUFFIX_VARIANTS.items():
         matches: list[Path] = []
@@ -393,14 +438,22 @@ def normalized_synthetic_paths(normalized_case_dir: str, synthetic_final_id: str
     return {key: as_posix(value) for key, value in paths.items()}
 
 
-def nnunet_synthetic_paths(nnunet_case_id: str, dataset_name: str = "Dataset261_BraTS2026_MET_RealSynth") -> dict[str, str]:
+def nnunet_synthetic_paths(
+    nnunet_case_id: str,
+    split: str = "train",
+    dataset_name: str = "Dataset261_BraTS2026_MET_RealSynth",
+) -> dict[str, str]:
+    if not nnunet_case_id or split not in {"train", "val", "test"}:
+        return {key: "" for key in ["t1n", "t1c", "t2w", "t2f", "seg"]}
     root = Path("nnunet_raw") / dataset_name
+    image_dir = "imagesTs" if split == "test" else "imagesTr"
+    label_dir = "labelsTs" if split == "test" else "labelsTr"
     paths = {
-        "t1n": root / "imagesTr" / f"{nnunet_case_id}_0000.nii.gz",
-        "t1c": root / "imagesTr" / f"{nnunet_case_id}_0001.nii.gz",
-        "t2w": root / "imagesTr" / f"{nnunet_case_id}_0002.nii.gz",
-        "t2f": root / "imagesTr" / f"{nnunet_case_id}_0003.nii.gz",
-        "seg": root / "labelsTr" / f"{nnunet_case_id}.nii.gz",
+        "t1n": root / image_dir / f"{nnunet_case_id}_0000.nii.gz",
+        "t1c": root / image_dir / f"{nnunet_case_id}_0001.nii.gz",
+        "t2w": root / image_dir / f"{nnunet_case_id}_0002.nii.gz",
+        "t2f": root / image_dir / f"{nnunet_case_id}_0003.nii.gz",
+        "seg": root / label_dir / f"{nnunet_case_id}.nii.gz",
     }
     return {key: value.as_posix() for key, value in paths.items()}
 
@@ -423,7 +476,8 @@ def synthetic_mapping_rows(row: dict[str, object]) -> list[dict[str, object]]:
             "suffix_conversion_action": row.get("suffix_conversion_action", ""),
             "qc_decision": row.get("qc_decision", ""),
             "accepted_for_training": row.get("accepted_for_training", False),
-            "accepted_for_ablation_only": row.get("accepted_for_ablation_only", False),
+            "accepted_for_evaluation": row.get("accepted_for_evaluation", False),
+            "pending_review": row.get("pending_review", False),
             "needs_regeneration": row.get("needs_regeneration", False),
         })
     return mapping_rows
@@ -454,12 +508,15 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
     splits_dir = results_root / "splits"
     train_df = read_csv_if_exists(manifests_dir / "real_train_manifest.csv")
     val_df = read_csv_if_exists(manifests_dir / "real_validation_manifest.csv")
-    g1_df = read_csv_if_exists(manifests_dir / "g1_met_source_cases_v1.csv")
-    mapping_df = read_csv_if_exists(manifests_dir / "nnunet_case_mapping_realonly.csv")
+    g1_df = read_csv_if_exists(manifests_dir / "g1_v2_source_manifest.csv")
+    mapping_path = manifests_dir / "nnunet_case_mapping_master.csv"
+    if not mapping_path.exists():
+        mapping_path = manifests_dir / "nnunet_case_mapping_realonly.csv"
+    mapping_df = read_csv_if_exists(mapping_path)
     fake_t2w_case_ids = load_fake_t2w_case_ids(results_root)
-    split_path = splits_dir / "splits_final_train_val_test.json"
+    split_path = splits_dir / "splits_master_train_val_test.json"
     if not split_path.exists():
-        split_path = splits_dir / "splits_final_fold0_realval.json"
+        split_path = splits_dir / "splits_final_train_val_test.json"
     split_data = []
     if split_path.exists():
         try:
@@ -467,15 +524,24 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
         except Exception:  # noqa: BLE001
             split_data = []
     split_val_ids: set[str] = set()
+    split_by_nnunet: dict[str, str] = {}
     if split_data and isinstance(split_data, list) and isinstance(split_data[0], dict):
         split_val_ids = set(split_data[0].get("val", []))
         split_val_ids |= set(split_data[0].get("test", []))
+        for split_name in ("train", "val", "test"):
+            for nnunet_id in split_data[0].get(split_name, []):
+                split_by_nnunet[str(nnunet_id)] = split_name
     source_to_nn = {}
     if not mapping_df.empty and "source_case_id" in mapping_df.columns and "nnunet_case_id" in mapping_df.columns:
         source_to_nn = dict(zip(mapping_df["source_case_id"].astype(str), mapping_df["nnunet_case_id"].astype(str)))
     train_lookup = train_df.set_index("case_id").to_dict(orient="index") if not train_df.empty and "case_id" in train_df.columns else {}
     val_lookup = val_df.set_index("case_id").to_dict(orient="index") if not val_df.empty and "case_id" in val_df.columns else {}
-    g1_lookup = g1_df.set_index("case_id").to_dict(orient="index") if not g1_df.empty and "case_id" in g1_df.columns else {}
+    if not g1_df.empty and "source_case_id" in g1_df.columns:
+        g1_lookup = g1_df.set_index("source_case_id").to_dict(orient="index")
+    elif not g1_df.empty and "case_id" in g1_df.columns:
+        g1_lookup = g1_df.set_index("case_id").to_dict(orient="index")
+    else:
+        g1_lookup = {}
     return {
         "train_df": train_df,
         "val_df": val_df,
@@ -483,6 +549,7 @@ def load_reference_context(results_root: Path) -> dict[str, object]:
         "mapping_df": mapping_df,
         "split_data": split_data,
         "split_val_ids": split_val_ids,
+        "split_by_nnunet": split_by_nnunet,
         "source_to_nn": source_to_nn,
         "train_lookup": train_lookup,
         "val_lookup": val_lookup,
@@ -497,23 +564,26 @@ def build_source_status(source_case_id: str, ctx: dict[str, object], label_kind:
     g1_lookup = ctx["g1_lookup"]  # type: ignore[assignment]
     split_val_ids = ctx["split_val_ids"]  # type: ignore[assignment]
     source_to_nn = ctx["source_to_nn"]  # type: ignore[assignment]
+    split_by_nnunet = ctx.get("split_by_nnunet", {})  # type: ignore[assignment]
     fake_t2w_case_ids = ctx.get("fake_t2w_case_ids", set())  # type: ignore[assignment]
 
     train_row = train_lookup.get(source_case_id, {})
     val_row = val_lookup.get(source_case_id, {})
     g1_row = g1_lookup.get(source_case_id, {})
     nn_id = source_to_nn.get(source_case_id, "")
-    in_fixed_val_fold = bool(nn_id and nn_id in split_val_ids)
+    source_split = split_by_nnunet.get(nn_id, "unknown") if nn_id else "unknown"
+    in_fixed_val_fold = source_split in {"val", "test"} or bool(nn_id and nn_id in split_val_ids)
     final_qc_pass = bool(train_row.get("final_qc_pass", val_row.get("final_qc_pass", False)))
-    usable_for_met96 = bool(g1_row.get("usable_for_met96", False))
-    allowed_as_synthetic_source = bool(g1_row.get("allowed_as_synthetic_source", usable_for_met96))
+    allowed_as_synthetic_source = boolish(
+        g1_row.get("allowed_as_v2_source", g1_row.get("allowed_as_synthetic_source", False))
+    )
     completion_mode = label_kind == "completion"
     source_is_fake_t2w_case = source_case_id in fake_t2w_case_ids
     if completion_mode:
         source_is_allowed = bool(train_row or val_row) and final_qc_pass
-        source_allowed_for_training = bool(train_row) and final_qc_pass and not bool(val_row) and not in_fixed_val_fold
+        source_allowed_for_training = bool(train_row) and final_qc_pass and source_split == "train"
     else:
-        source_is_allowed = bool(train_row) and final_qc_pass and not bool(val_row) and not in_fixed_val_fold and allowed_as_synthetic_source
+        source_is_allowed = bool(train_row) and final_qc_pass and source_split == "train" and allowed_as_synthetic_source
         source_allowed_for_training = source_is_allowed
     return {
         "source_row": train_row,
@@ -522,15 +592,53 @@ def build_source_status(source_case_id: str, ctx: dict[str, object], label_kind:
         "nnunet_case_id": nn_id,
         "source_in_real_train_manifest": bool(train_row),
         "source_final_qc_pass": final_qc_pass,
-        "source_usable_for_met96": usable_for_met96,
+        "source_allowed_for_v2": allowed_as_synthetic_source,
         "source_allowed_for_training": source_allowed_for_training,
         "source_is_fake_t2w_case": source_is_fake_t2w_case,
         "source_completion_mode": completion_mode,
         "source_in_fixed_val_fold": in_fixed_val_fold,
         "source_from_official_validation": bool(val_row),
         "source_is_allowed": source_is_allowed,
-        "source_split": "train" if train_row else ("validation" if val_row else "unknown"),
+        "source_split": source_split if source_split != "unknown" else ("official_validation" if val_row else "unknown"),
     }
+
+
+def stable_synthetic_ids(generation_run_id: str, synthetic_raw_id: str) -> tuple[str, str]:
+    digest = hashlib.sha256(f"{generation_run_id}::{synthetic_raw_id}".encode("utf-8")).hexdigest()[:12].upper()
+    return f"SYN-MET-{digest}", f"SYNMET_{digest}"
+
+
+def normalized_ssim(a: np.ndarray, b: np.ndarray) -> float | str:
+    if a.shape != b.shape or a.size < 8:
+        return ""
+    a = a.astype(np.float32, copy=False)
+    b = b.astype(np.float32, copy=False)
+    data_min = float(min(a.min(), b.min()))
+    data_max = float(max(a.max(), b.max()))
+    data_range = data_max - data_min
+    if not np.isfinite(data_range) or data_range <= 0:
+        return ""
+    min_dim = min(a.shape)
+    if a.ndim == 3 and min_dim >= 7:
+        return float(structural_similarity(a, b, data_range=data_range))
+    return float((2 * np.mean(a) * np.mean(b) + 1e-6) / (np.mean(a) ** 2 + np.mean(b) ** 2 + 1e-6))
+
+
+def z_smoothness_scores(image: np.ndarray, lesion_mask: np.ndarray) -> tuple[float | str, float | str, float | str]:
+    active = np.where(np.any(lesion_mask, axis=(0, 1)))[0]
+    if active.size < 2:
+        return "", "", ""
+    areas = np.asarray([lesion_mask[:, :, index].sum() for index in active], dtype=np.float32)
+    area_denom = max(float(np.mean(areas)), 1.0)
+    area_score = float(np.clip(1.0 - np.mean(np.abs(np.diff(areas))) / area_denom, 0.0, 1.0))
+    means = []
+    for index in active:
+        mask = lesion_mask[:, :, index]
+        means.append(float(np.mean(image[:, :, index][mask])))
+    means_array = np.asarray(means, dtype=np.float32)
+    intensity_scale = max(float(np.percentile(image[lesion_mask], 99) - np.percentile(image[lesion_mask], 1)), 1e-6)
+    intensity_score = float(np.clip(1.0 - np.mean(np.abs(np.diff(means_array))) / intensity_scale, 0.0, 1.0))
+    return float((area_score + intensity_score) / 2.0), area_score, intensity_score
 
 
 def array_stats(arr: np.ndarray) -> dict[str, object]:
@@ -559,6 +667,14 @@ def shell_mask(mask: np.ndarray) -> np.ndarray:
     expanded = ndimage.binary_dilation(mask, iterations=1)
     inner = ndimage.binary_erosion(mask, iterations=1)
     return np.logical_and(expanded, np.logical_not(inner))
+
+
+def gradient_magnitude(image: np.ndarray) -> np.ndarray:
+    gradients = np.gradient(image.astype(np.float32, copy=False))
+    squared = np.zeros(image.shape, dtype=np.float32)
+    for gradient in gradients:
+        squared += np.square(gradient, dtype=np.float32)
+    return np.sqrt(squared, dtype=np.float32)
 
 
 def ratio_or_blank(num: float | None, den: float | None) -> float | str:
@@ -590,20 +706,11 @@ def summarize_case_quality(
                     "label_index": int(entry.get("label_index") or 0),
                 }
                 break
-    files = synthetic_modality_files(case_dir)
-    if files.get("seg") is None:
-        source_seg_candidates = [
-            str(source_row.get("effective_seg_path", "")),
-            str(source_row.get("raw_seg_path", "")),
-        ]
-        for candidate in source_seg_candidates:
-            if candidate and Path(candidate).exists():
-                files["seg"] = Path(candidate)
-                break
-    output_scheme = detect_output_suffix_scheme(files)
+    parsed = apply_generation_mode_override(
+        parsed,
+        str(run_ctx.get("generation_mode_override", "auto")),
+    )
     synthetic_raw_id = case_name
-    synthetic_final_id = f"SYN-MET-{idx:06d}"
-    nnunet_case_id = f"SYNMET{idx:06d}"
     generation_run_id = str(run_ctx.get("generation_run_id", ""))
     generator_name = str(run_ctx.get("generator_name", ""))
     generator_checkpoint = str(run_ctx.get("generator_checkpoint", ""))
@@ -621,7 +728,7 @@ def summarize_case_quality(
         "nnunet_case_id": "",
         "source_in_real_train_manifest": False,
         "source_final_qc_pass": False,
-        "source_usable_for_met96": False,
+        "source_allowed_for_v2": False,
         "source_allowed_for_training": False,
         "source_is_fake_t2w_case": False,
         "source_completion_mode": label_kind == "completion",
@@ -636,14 +743,63 @@ def summarize_case_quality(
     val_row = source_info.get("val_row", {})
     g1_row = source_info.get("g1_row", {})
 
+    files = synthetic_modality_files(case_dir)
+    if files.get("seg") is None:
+        source_seg_candidates = [
+            str(source_row.get("effective_seg_path", "")),
+            str(source_row.get("seg_source_path", "")),
+            str(source_row.get("raw_seg_path", "")),
+        ]
+        for candidate in source_seg_candidates:
+            if not candidate:
+                continue
+            candidate_path = parse_workspace_path(candidate, PROJECT_ROOT)
+            if candidate_path.exists():
+                files["seg"] = candidate_path
+                break
+    output_scheme = detect_output_suffix_scheme(files)
+    completion_mode = bool(source_info.get("source_completion_mode")) or label_kind == "completion"
+    if completion_mode and source_case_id:
+        synthetic_final_id = source_case_id
+        nnunet_case_id = str(source_info.get("nnunet_case_id", ""))
+    else:
+        synthetic_final_id, nnunet_case_id = stable_synthetic_ids(generation_run_id, synthetic_raw_id)
+
     config_exists = bool(run_ctx.get("generation_config_exists", False))
     manifest_exists = bool(run_ctx.get("generation_manifest_exists", False))
     log_exists = bool(run_ctx.get("generation_log_exists", False))
+    manifest_lookup = run_ctx.get("generation_manifest_lookup", {})
+    log_lookup = run_ctx.get("generation_log_lookup", {})
+    manifest_record = manifest_lookup.get(synthetic_raw_id) if isinstance(manifest_lookup, dict) else None
+    log_record = log_lookup.get(synthetic_raw_id) if isinstance(log_lookup, dict) else None
+    case_metadata_missing: list[str] = []
+    if not isinstance(manifest_record, dict):
+        case_metadata_missing.append("case_manifest_record")
+    else:
+        if str(manifest_record.get("status", "")).strip().lower() != "success":
+            case_metadata_missing.append("case_manifest_status_success")
+        if str(manifest_record.get("source_case_id", "")).strip() != source_case_id:
+            case_metadata_missing.append("case_manifest_source_case_id")
+    if not isinstance(log_record, dict):
+        case_metadata_missing.append("case_log_record")
+    else:
+        if str(log_record.get("status", "")).strip().lower() != "success":
+            case_metadata_missing.append("case_log_status_success")
+        if str(log_record.get("source_case_id", "")).strip() != source_case_id:
+            case_metadata_missing.append("case_log_source_case_id")
+        if str(log_record.get("generation_run_id", "")).strip() != generation_run_id:
+            case_metadata_missing.append("case_log_generation_run_id")
+        if str(log_record.get("seed", "")).strip() != str(run_ctx.get("seed", "")).strip():
+            case_metadata_missing.append("case_log_seed")
+    metadata_missing_fields = list(run_ctx.get("metadata_missing_fields", []))
+    metadata_missing_fields.extend(case_metadata_missing)
+    metadata_missing_fields = list(dict.fromkeys(metadata_missing_fields))
     raw_case_dir = display_path(case_dir, PROJECT_ROOT)
     normalized_case_path = Path(run_ctx.get("normalized_root", case_dir.parent)) / synthetic_final_id
     normalized_case_dir = display_path(normalized_case_path, PROJECT_ROOT)
     normalized_paths = normalized_synthetic_paths(normalized_case_dir, synthetic_final_id)
-    nnunet_paths = nnunet_synthetic_paths(nnunet_case_id)
+    target_split = str(source_info.get("source_split", "")) if completion_mode else "train"
+    nnunet_paths = nnunet_synthetic_paths(nnunet_case_id, split=target_split)
     if output_scheme == "legacy_met":
         suffix_conversion_action = "map_legacy_suffix_to_native_2026"
     elif output_scheme == "native_2026":
@@ -671,6 +827,11 @@ def summarize_case_quality(
         "generator_checkpoint_t1c": generator_checkpoint_t1c,
         "generator_checkpoint_t2w": generator_checkpoint_t2w,
         "generator_checkpoint_t2f": generator_checkpoint_t2f,
+        "vae_checkpoint": str(run_ctx.get("vae_checkpoint", "")),
+        "encdec_checkpoint": str(run_ctx.get("encdec_checkpoint", "")),
+        "bbdm_checkpoint": str(run_ctx.get("bbdm_checkpoint", "")),
+        "bbdm_s": run_ctx.get("bbdm_s", ""),
+        "validation_run": str(run_ctx.get("validation_run", "")),
         "generator_io": str(run_ctx.get("generator_io", "")),
         "label_channels": int(run_ctx.get("label_channels", 0) or 0),
         "rc_policy": str(run_ctx.get("rc_policy", "")),
@@ -678,8 +839,12 @@ def summarize_case_quality(
         "sampling_method": str(run_ctx.get("sampling_method", "")),
         "sampling_steps": run_ctx.get("sampling_steps", ""),
         "eta": run_ctx.get("eta", ""),
+        "crop_size": run_ctx.get("crop_size", ""),
         "seed": run_ctx.get("seed", ""),
-        "source_csv_path": display_results_path(run_ctx.get("source_csv_path", ""), results_root),
+        "source_csv_path": display_results_path(
+            run_ctx.get("source_csv_path", ""),
+            Path(run_ctx.get("results_root", DEFAULT_RESULTS_ROOT)),
+        ),
         "source_csv_version": str(run_ctx.get("source_csv_version", "")),
         "raw_case_dir": raw_case_dir,
         "normalized_case_dir": normalized_case_dir,
@@ -688,10 +853,14 @@ def summarize_case_quality(
         "config_exists": config_exists,
         "manifest_exists": manifest_exists,
         "log_exists": log_exists,
+        "manifest_case_record_exists": isinstance(manifest_record, dict),
+        "log_case_record_exists": isinstance(log_record, dict),
+        "metadata_complete": bool(run_ctx.get("metadata_complete", False) and not case_metadata_missing),
+        "metadata_missing_fields": ";".join(metadata_missing_fields),
         "generation_mode": str(run_ctx.get("generator_io", "")),
         "source_in_real_train_manifest": source_info["source_in_real_train_manifest"],
         "source_final_qc_pass": source_info["source_final_qc_pass"],
-        "source_usable_for_met96": source_info.get("source_usable_for_met96", False),
+        "source_allowed_for_v2": source_info.get("source_allowed_for_v2", False),
         "source_allowed_for_training": source_info["source_allowed_for_training"],
         "source_is_fake_t2w_case": source_info["source_is_fake_t2w_case"],
         "source_completion_mode": source_info["source_completion_mode"],
@@ -832,6 +1001,12 @@ def summarize_case_quality(
                 source_shapes_match = source_seg_arr.shape == label_arr.shape
         except Exception:  # noqa: BLE001
             source_seg_arr = None
+    if source_seg_arr is not None and source_seg_arr.ndim >= 3:
+        rows["source_shape_x"], rows["source_shape_y"], rows["source_shape_z"] = source_seg_arr.shape[:3]
+    else:
+        rows["source_shape_x"] = ""
+        rows["source_shape_y"] = ""
+        rows["source_shape_z"] = ""
     for mod_name, path_str in [("t1n", source_t1n_path), ("t1c", source_t1c_path), ("t2w", source_t2w_path), ("t2f", source_t2f_path)]:
         if path_str:
             try:
@@ -840,12 +1015,23 @@ def summarize_case_quality(
             except Exception:  # noqa: BLE001
                 continue
     rows["source_shape_match"] = bool(rows["source_shape_match"] or source_shapes_match)
+    rows["source_modalities_compared"] = ""
+    rows["source_modality_comparison_complete"] = False
     rows["source_existing_lesion_overlap"] = ""
+    rows["source_seg_change_ratio"] = ""
     rows["brain_mask_overlap_ratio"] = ""
     rows["nonroi_change_ratio"] = ""
+    rows["protected_source_change_ratio"] = ""
+    rows["intensity_drift_p1"] = ""
     rows["intensity_drift_p50"] = ""
+    rows["intensity_drift_p99"] = ""
+    rows["source_synth_roi_ssim"] = ""
+    rows["z_continuity_score"] = ""
+    rows["z_area_smoothness"] = ""
+    rows["z_intensity_smoothness"] = ""
     rows["artifact_suspected"] = False
-    rows["artifact_block_score"] = 0.0
+    rows["artifact_block_score"] = ""
+    rows["lesion_bbox_fill_ratio"] = ""
     rows["lesion_count"] = 0
     rows["tiny_lesion_count"] = 0
     rows["small_lesion_count"] = 0
@@ -859,6 +1045,7 @@ def summarize_case_quality(
     rows["label_modality_alignment_score"] = ""
     rows["roi_boundary_mae"] = ""
     rows["roi_boundary_gradient_jump"] = ""
+    rows["roi_boundary_p95_jump"] = ""
     rows["roi_bbox_available"] = False
     rows["roi_inside_image"] = False
     rows["bbox_inside_image"] = False
@@ -867,6 +1054,14 @@ def summarize_case_quality(
     rows["t1c_min"] = rows["t1c_p1"] = rows["t1c_p50"] = rows["t1c_p99"] = rows["t1c_max"] = ""
     rows["t2w_min"] = rows["t2w_p1"] = rows["t2w_p50"] = rows["t2w_p99"] = rows["t2w_max"] = ""
     rows["t2f_min"] = rows["t2f_p1"] = rows["t2f_p50"] = rows["t2f_p99"] = rows["t2f_max"] = ""
+    rows["teacher_model"] = "not_run"
+    rows["teacher_dice_label_1"] = ""
+    rows["teacher_dice_label_2"] = ""
+    rows["teacher_dice_label_3"] = ""
+    rows["teacher_dice_label_4"] = ""
+    rows["teacher_lesion_count_diff"] = ""
+    rows["teacher_missing_large_lesion_count"] = ""
+    rows["teacher_extra_large_lesion_count"] = ""
 
     if label_arr is not None:
         lesion_mask = np.isin(label_arr, [1, 3, 4])
@@ -912,8 +1107,7 @@ def summarize_case_quality(
             rows["max_lesion_volume_mm3"] = float(max(comp_stats)) if comp_stats else ""
             rows["tiny_lesion_ratio"] = float(tiny / max(1, num_components))
             bbox_volume = float(max(1, size[0] * size[1] * size[2]))
-            rows["artifact_block_score"] = float(lesion_mask.sum() / bbox_volume) if bbox_volume else ""
-            rows["artifact_suspected"] = bool(rows["artifact_block_score"] != "" and float(rows["artifact_block_score"]) > 0.85)
+            rows["lesion_bbox_fill_ratio"] = float(lesion_mask.sum() / bbox_volume) if bbox_volume else ""
         else:
             rows["lesion_count"] = 0
             rows["tiny_lesion_count"] = 0
@@ -923,32 +1117,70 @@ def summarize_case_quality(
             rows["p50_lesion_volume_mm3"] = 0.0
             rows["max_lesion_volume_mm3"] = 0.0
             rows["tiny_lesion_ratio"] = 0.0
-            rows["artifact_block_score"] = 0.0
+            rows["lesion_bbox_fill_ratio"] = 0.0
             rows["artifact_suspected"] = False
 
         if source_seg_arr is not None:
             source_mask = source_seg_arr > 0
-            union = np.logical_or(source_mask, lesion_mask)
             inter = np.logical_and(source_mask, lesion_mask)
             denom = float(source_mask.sum() + lesion_mask.sum())
             rows["source_existing_lesion_overlap"] = float((2.0 * inter.sum()) / denom) if denom else ""
-            rows["brain_mask_overlap_ratio"] = float(lesion_mask.sum() / max(1, union.sum())) if union.any() else ""
+            if label_arr is not None and source_seg_arr.shape == label_arr.shape:
+                rows["source_seg_change_ratio"] = float(np.mean(source_seg_arr != label_arr))
         else:
             rows["source_existing_lesion_overlap"] = ""
+
+        brain_inputs = [
+            source_arrays[mod]
+            for mod in ["t1n", "t1c", "t2w", "t2f"]
+            if mod in source_arrays and source_arrays[mod].shape == lesion_mask.shape
+        ]
+        if not brain_inputs:
+            brain_inputs = [
+                arrays[mod]
+                for mod in ["t1n", "t1c", "t2w", "t2f"]
+                if mod in arrays and arrays[mod].shape == lesion_mask.shape
+            ]
+        if brain_inputs and lesion_mask.any():
+            brain_mask = np.logical_or.reduce(
+                [np.abs(image.astype(np.float32, copy=False)) > 1e-6 for image in brain_inputs]
+            )
+            rows["brain_mask_overlap_ratio"] = float(np.mean(brain_mask[lesion_mask]))
+            rows["lesion_inside_brain_ok"] = bool(
+                rows["lesion_inside_brain_ok"]
+                and float(rows["brain_mask_overlap_ratio"]) >= 0.95
+            )
+        else:
             rows["brain_mask_overlap_ratio"] = ""
+            rows["lesion_inside_brain_ok"] = False
 
         rows["rc_source_allowed"] = bool(rows["has_rc"] and source_info["source_is_allowed"])
 
         if arrays:
             first_mod = "t1c" if "t1c" in arrays else sorted(arrays.keys())[0]
-            boundary = shell_mask(lesion_mask)
-            inside = lesion_mask
-            outside = np.logical_and(~lesion_mask, ndimage.binary_dilation(lesion_mask, iterations=1))
-            if not outside.any():
-                outside = ~lesion_mask
+            support_matches = sorted(case_dir.glob("*-generation_support.nii.gz"))
+            quality_mask = lesion_mask
+            if support_matches:
+                try:
+                    support_arr = np.asanyarray(nib.load(str(support_matches[0])).dataobj)
+                    if support_arr.shape == lesion_mask.shape and np.any(support_arr > 0):
+                        quality_mask = support_arr > 0
+                except Exception:  # noqa: BLE001
+                    pass
+            boundary = shell_mask(quality_mask)
+            inside = quality_mask
+            outside = ~quality_mask
             boundary_diffs = []
-            total_drift = []
+            boundary_gradient_diffs = []
+            boundary_gradient_values: list[np.ndarray] = []
+            normalized_drift_values: list[np.ndarray] = []
+            nonroi_change_values = []
+            protected_change_values = []
+            roi_ssim_values = []
+            source_compared_modalities: set[str] = set()
             for mod, arr in arrays.items():
+                if mod == "seg":
+                    continue
                 stats = array_stats(arr)
                 rows[f"{mod}_min"] = stats["min"]
                 rows[f"{mod}_p1"] = stats["p1"]
@@ -956,17 +1188,80 @@ def summarize_case_quality(
                 rows[f"{mod}_p99"] = stats["p99"]
                 rows[f"{mod}_max"] = stats["max"]
                 if source_arrays.get(mod) is not None and source_arrays[mod].shape == arr.shape:
-                    diff = np.abs(arr.astype(np.float32) - source_arrays[mod].astype(np.float32))
+                    source_compared_modalities.add(mod)
+                    source_arr = source_arrays[mod].astype(np.float32)
+                    arr_float = arr.astype(np.float32)
+                    diff = np.abs(arr_float - source_arr)
+                    source_scale = max(
+                        float(np.percentile(source_arr, 99) - np.percentile(source_arr, 1)),
+                        1e-6,
+                    )
+                    if completion_mode:
+                        if mod != "t2w":
+                            tolerance = max(source_scale * 1e-6, 1e-6)
+                            protected_change_values.append(float(np.mean(diff > tolerance)))
+                        continue
                     if boundary.any():
-                        boundary_diffs.append(float(diff[boundary].mean()))
-                    if inside.any() and outside.any():
-                        inside_mean = float(diff[inside].mean())
-                        outside_mean = float(diff[outside].mean())
-                        total_drift.append(outside_mean / max(1e-6, inside_mean))
+                        boundary_diffs.append(float(diff[boundary].mean() / source_scale))
+                        generated_gradient = gradient_magnitude(arr_float)
+                        source_gradient = gradient_magnitude(source_arr)
+                        normalized_gradient_diff = (
+                            np.abs(generated_gradient[boundary] - source_gradient[boundary]) / source_scale
+                        )
+                        boundary_gradient_diffs.append(float(np.mean(normalized_gradient_diff)))
+                        boundary_gradient_values.append(normalized_gradient_diff)
+                    if inside.any():
+                        normalized_drift_values.append(diff[inside] / source_scale)
+                        coords = np.argwhere(inside)
+                        mins = coords.min(axis=0)
+                        maxs = coords.max(axis=0) + 1
+                        slices = tuple(slice(int(mins[axis]), int(maxs[axis])) for axis in range(3))
+                        score = normalized_ssim(arr_float[slices], source_arr[slices])
+                        if score != "":
+                            roi_ssim_values.append(float(score))
+                    if outside.any() and not completion_mode:
+                        tolerance = max(source_scale * 1e-5, 1e-6)
+                        nonroi_change_values.append(float(np.mean(diff[outside] > tolerance)))
             rows["roi_boundary_mae"] = float(np.mean(boundary_diffs)) if boundary_diffs else ""
-            rows["roi_boundary_gradient_jump"] = rows["roi_boundary_mae"]
-            rows["intensity_drift_p50"] = float(np.median(total_drift)) if total_drift else ""
-            rows["nonroi_change_ratio"] = float(np.median(total_drift)) if total_drift else ""
+            rows["roi_boundary_gradient_jump"] = (
+                float(np.mean(boundary_gradient_diffs)) if boundary_gradient_diffs else ""
+            )
+            rows["roi_boundary_p95_jump"] = (
+                float(np.percentile(np.concatenate(boundary_gradient_values), 95))
+                if boundary_gradient_values
+                else ""
+            )
+            artifact_components = [
+                float(value)
+                for value in (
+                    rows["roi_boundary_mae"],
+                    rows["roi_boundary_gradient_jump"],
+                    rows["roi_boundary_p95_jump"],
+                )
+                if value != ""
+            ]
+            rows["artifact_block_score"] = max(artifact_components) if artifact_components else ""
+            rows["artifact_suspected"] = bool(
+                rows["artifact_block_score"] != "" and float(rows["artifact_block_score"]) > 0.25
+            )
+            if normalized_drift_values:
+                drift = np.concatenate(normalized_drift_values)
+                rows["intensity_drift_p1"] = float(np.percentile(drift, 1))
+                rows["intensity_drift_p50"] = float(np.percentile(drift, 50))
+                rows["intensity_drift_p99"] = float(np.percentile(drift, 99))
+            rows["nonroi_change_ratio"] = float(np.max(nonroi_change_values)) if nonroi_change_values else ""
+            rows["protected_source_change_ratio"] = (
+                float(np.max(protected_change_values)) if protected_change_values else ""
+            )
+            rows["source_synth_roi_ssim"] = float(np.mean(roi_ssim_values)) if roi_ssim_values else ""
+            required_source_modalities = {"t1n", "t1c", "t2f"} if completion_mode else {"t1n", "t1c", "t2w", "t2f"}
+            rows["source_modalities_compared"] = ";".join(sorted(source_compared_modalities))
+            rows["source_modality_comparison_complete"] = required_source_modalities.issubset(
+                source_compared_modalities
+            )
+            z_mod = "t2w" if completion_mode and "t2w" in arrays else first_mod
+            z_scores = z_smoothness_scores(arrays[z_mod].astype(np.float32), lesion_mask)
+            rows["z_continuity_score"], rows["z_area_smoothness"], rows["z_intensity_smoothness"] = z_scores
             roi_vectors = []
             for mod in ["t1n", "t1c", "t2w", "t2f"]:
                 if mod in arrays:
@@ -988,9 +1283,16 @@ def summarize_case_quality(
         else:
             rows["roi_boundary_mae"] = ""
             rows["roi_boundary_gradient_jump"] = ""
+            rows["roi_boundary_p95_jump"] = ""
             rows["intensity_drift_p50"] = ""
+            rows["intensity_drift_p1"] = ""
+            rows["intensity_drift_p99"] = ""
             rows["nonroi_change_ratio"] = ""
+            rows["protected_source_change_ratio"] = ""
+            rows["source_synth_roi_ssim"] = ""
             rows["cross_modality_roi_corr"] = ""
+            rows["source_modalities_compared"] = ""
+            rows["source_modality_comparison_complete"] = False
 
         # Modality-specific contrast ratios.
         if label_arr is not None and lesion_mask.any():
@@ -1036,6 +1338,8 @@ def summarize_case_quality(
     # Decide QC outcome.
     completion_mode = bool(rows.get("source_completion_mode")) or str(rows.get("label_kind", "")) == "completion"
     hard_reject_reasons: list[str] = []
+    if not rows["metadata_complete"]:
+        hard_reject_reasons.append(f"metadata_incomplete:{rows['metadata_missing_fields']}")
     if not rows["source_is_allowed"]:
         hard_reject_reasons.append("source_not_allowed")
     if rows["validation_leakage"] and not completion_mode:
@@ -1058,72 +1362,109 @@ def summarize_case_quality(
         hard_reject_reasons.append("illegal_label_values")
     if rows["empty_mask"] and not rows["allow_empty_mask"]:
         hard_reject_reasons.append("empty_mask")
+    if not rows["lesion_inside_brain_ok"]:
+        hard_reject_reasons.append("lesion_outside_brain")
     if rows["image_is_constant"]:
         hard_reject_reasons.append("constant_image")
     if output_scheme == "mixed":
         hard_reject_reasons.append("mixed_suffix_scheme")
+    if not rows["source_shape_match"]:
+        hard_reject_reasons.append("source_shape_mismatch")
+    if not rows["source_modality_comparison_complete"]:
+        hard_reject_reasons.append("source_modality_comparison_incomplete")
+    if rows["source_seg_change_ratio"] == "":
+        hard_reject_reasons.append("source_seg_comparison_unavailable")
+    elif float(rows["source_seg_change_ratio"]) > 0:
+        hard_reject_reasons.append("source_seg_changed")
+    if not rows["source_final_qc_pass"]:
+        hard_reject_reasons.append("source_final_qc_failed")
+    if completion_mode and not rows["source_is_fake_t2w_case"]:
+        hard_reject_reasons.append("completion_source_not_marked_fake_t2w")
+    if completion_mode and not nnunet_case_id:
+        hard_reject_reasons.append("completion_source_missing_master_id")
+    if completion_mode and rows["protected_source_change_ratio"] == "":
+        hard_reject_reasons.append("completion_protected_modalities_unverifiable")
+    elif completion_mode and float(rows["protected_source_change_ratio"]) > 0:
+        hard_reject_reasons.append("completion_protected_modalities_changed")
+    if not completion_mode and rows["nonroi_change_ratio"] == "":
+        hard_reject_reasons.append("v2_nonroi_comparison_unavailable")
+    elif not completion_mode and float(rows["nonroi_change_ratio"]) > 1e-4:
+        hard_reject_reasons.append("v2_nonroi_changed")
 
     review_reasons: list[str] = []
     if output_scheme == "legacy_met":
         review_reasons.append("legacy_suffix_normalized")
-    if completion_mode and rows["validation_leakage"]:
-        review_reasons.append("completion_source_not_training_allowed")
-    if completion_mode and not rows["source_is_fake_t2w_case"]:
-        review_reasons.append("completion_source_not_marked_fake_t2w")
-    if not rows["source_shape_match"]:
-        review_reasons.append("source_shape_mismatch")
     if rows["roi_bbox_available"] is False:
         review_reasons.append("roi_missing")
     if rows["artifact_suspected"]:
         review_reasons.append("block_artifact_suspected")
     if rows["tiny_lesion_ratio"] != "" and float(rows["tiny_lesion_ratio"]) > 0.5:
         review_reasons.append("tiny_ratio_high")
-    if rows["nonroi_change_ratio"] != "" and float(rows["nonroi_change_ratio"]) > 0.4:
-        review_reasons.append("nonroi_change_high")
     if rows["label_modality_alignment_score"] != "" and float(rows["label_modality_alignment_score"]) < 1.0:
         review_reasons.append("alignment_low")
-    if not rows["source_final_qc_pass"]:
-        review_reasons.append("source_final_qc_failed")
+    if rows["z_continuity_score"] != "" and float(rows["z_continuity_score"]) < 0.5:
+        review_reasons.append("z_discontinuity")
+    if not completion_mode and rows["intensity_drift_p99"] != "" and float(rows["intensity_drift_p99"]) > 2.0:
+        review_reasons.append("extreme_intensity_drift")
+    approval_lookup = run_ctx.get("approval_lookup", {})
+    approval_row = approval_lookup.get(synthetic_raw_id, {}) if isinstance(approval_lookup, dict) else {}
+    approved_for_training = boolish(approval_row.get("approved_for_training", False))
+    approved_for_evaluation = boolish(approval_row.get("approved_for_evaluation", False))
+    approval_ambiguous_ids = run_ctx.get("approval_ambiguous_ids", set())
+    if synthetic_raw_id in approval_ambiguous_ids:
+        review_reasons.append("release_approval_ambiguous")
+    elif not approved_for_training and not approved_for_evaluation:
+        review_reasons.append("release_approval_missing")
 
     rows["hard_reject"] = bool(hard_reject_reasons)
     rows["hard_reject_reason"] = ";".join(hard_reject_reasons)
     rows["manual_review_required"] = bool(review_reasons)
     rows["manual_review_reason"] = ";".join(review_reasons)
-    rows["manual_review_priority"] = "high" if any(reason in review_reasons for reason in ["source_shape_mismatch", "roi_missing", "block_artifact_suspected", "nonroi_change_high", "alignment_low"]) else ("medium" if review_reasons else "")
-    rows["qc_status"] = "reject" if hard_reject_reasons else ("review" if review_reasons else "pass")
+    rows["manual_review_priority"] = "high" if any(reason in review_reasons for reason in ["roi_missing", "block_artifact_suspected", "alignment_low"]) else ("medium" if review_reasons else "")
+    rows["accepted_for_training"] = False
+    rows["accepted_for_evaluation"] = False
+    rows["pending_review"] = False
     if hard_reject_reasons:
         rows["quality_grade"] = "F"
         rows["qc_decision"] = "rejected"
-        rows["accepted_for_training"] = False
-        rows["accepted_for_ablation_only"] = False
         rows["needs_regeneration"] = True
         rows["regeneration_reason"] = ";".join(hard_reject_reasons)
-    elif review_reasons:
-        if any(reason in review_reasons for reason in ["source_shape_mismatch", "block_artifact_suspected", "nonroi_change_high", "alignment_low"]):
-            rows["quality_grade"] = "D"
-            rows["qc_decision"] = "needs_regeneration"
-            rows["accepted_for_training"] = False
-            rows["accepted_for_ablation_only"] = False
-            rows["needs_regeneration"] = True
-            rows["regeneration_reason"] = ";".join(review_reasons)
+    elif not review_reasons:
+        source_split = str(rows.get("source_split", ""))
+        if completion_mode and source_split in {"val", "test"}:
+            if approved_for_evaluation:
+                rows["quality_grade"] = "A"
+                rows["qc_decision"] = "accepted_for_evaluation"
+                rows["accepted_for_evaluation"] = True
+            else:
+                rows["quality_grade"] = "C"
+                rows["qc_decision"] = "pending_review"
+                rows["pending_review"] = True
         else:
-            rows["quality_grade"] = "C"
-            rows["qc_decision"] = "accepted_for_ablation_only"
-            rows["accepted_for_training"] = False
-            rows["accepted_for_ablation_only"] = True
-            rows["needs_regeneration"] = False
-            rows["regeneration_reason"] = ""
-    else:
-        rows["quality_grade"] = "A"
-        rows["qc_decision"] = "accepted_for_training"
-        rows["accepted_for_training"] = True
-        rows["accepted_for_ablation_only"] = False
+            if approved_for_training:
+                rows["quality_grade"] = "A"
+                rows["qc_decision"] = "accepted_for_training"
+                rows["accepted_for_training"] = True
+            else:
+                rows["quality_grade"] = "C"
+                rows["qc_decision"] = "pending_review"
+                rows["pending_review"] = True
         rows["needs_regeneration"] = False
         rows["regeneration_reason"] = ""
+    else:
+        rows["quality_grade"] = "C"
+        rows["qc_decision"] = "pending_review"
+        rows["pending_review"] = True
+        rows["needs_regeneration"] = False
+        rows["regeneration_reason"] = ""
+    rows["qc_status"] = rows["qc_decision"]
+    rows["release_status"] = rows["qc_decision"]
     rows["qc_reject_reason"] = rows["hard_reject_reason"] if rows["hard_reject_reason"] else rows["manual_review_reason"]
     rows["status"] = rows["qc_decision"]
     rows["synthetic_final_id"] = synthetic_final_id
     rows["nnunet_case_id"] = nnunet_case_id
+    rows["error_type"] = "nifti_read_error" if errors else ""
+    rows["error_message"] = ";".join(errors)
 
     diffusion_row = {
         "synthetic_raw_id": synthetic_raw_id,
@@ -1140,6 +1481,7 @@ def summarize_case_quality(
         "sampling_method": rows["sampling_method"],
         "sampling_steps": rows["sampling_steps"],
         "eta": rows["eta"],
+        "crop_size": rows["crop_size"],
         "seed": rows["seed"],
         "roi_bbox_available": rows["roi_bbox_available"],
         "roi_x_min": rows.get("roi_x_min", ""),
@@ -1152,96 +1494,34 @@ def summarize_case_quality(
         "lesion_voxels_in_roi": int(np.count_nonzero(label_arr > 0)) if label_arr is not None else "",
         "lesion_inside_roi_ratio": 1.0 if label_arr is not None and np.any(label_arr > 0) else "",
         "nonroi_change_ratio": rows["nonroi_change_ratio"],
+        "protected_source_change_ratio": rows["protected_source_change_ratio"],
+        "source_seg_change_ratio": rows["source_seg_change_ratio"],
         "brain_mask_overlap_ratio": rows["brain_mask_overlap_ratio"],
         "roi_boundary_mae": rows["roi_boundary_mae"],
         "roi_boundary_gradient_jump": rows["roi_boundary_gradient_jump"],
-        "roi_boundary_p95_jump": rows["roi_boundary_gradient_jump"],
-        "z_continuity_score": 1.0 if label_arr is not None and label_arr.ndim == 3 else "",
-        "z_area_smoothness": 1.0 if label_arr is not None and label_arr.ndim == 3 else "",
-        "z_intensity_smoothness": 1.0 if label_arr is not None and label_arr.ndim == 3 else "",
-        "intensity_drift_p1": rows["intensity_drift_p50"],
+        "roi_boundary_p95_jump": rows["roi_boundary_p95_jump"],
+        "z_continuity_score": rows["z_continuity_score"],
+        "z_area_smoothness": rows["z_area_smoothness"],
+        "z_intensity_smoothness": rows["z_intensity_smoothness"],
+        "intensity_drift_p1": rows["intensity_drift_p1"],
         "intensity_drift_p50": rows["intensity_drift_p50"],
-        "intensity_drift_p99": rows["intensity_drift_p50"],
+        "intensity_drift_p99": rows["intensity_drift_p99"],
         "artifact_block_score": rows["artifact_block_score"],
-        "artifact_ring_score": "",
-        "artifact_noise_score": "",
         "et_t1c_contrast_ratio": rows["et_t1c_contrast_ratio"],
         "snfh_t2f_contrast_ratio": rows["snfh_t2f_contrast_ratio"],
         "snfh_t2w_contrast_ratio": rows["snfh_t2w_contrast_ratio"],
-        "rc_profile_score": "",
         "cross_modality_roi_corr": rows["cross_modality_roi_corr"],
         "label_modality_alignment_score": rows["label_modality_alignment_score"],
-        "source_synth_roi_ssim": rows["source_existing_lesion_overlap"],
-        "label_source_synth_roi_ssim": rows["source_existing_lesion_overlap"],
-        "synth_synth_ms_ssim": "",
-        "nearest_real_roi_feature_distance": "",
-        "duplicate_hash_hit": "",
-        "feature_extractor": "basic_stats_v1",
-        "feature_fid_medical": "",
-        "feature_mmd_medical": "",
+        "source_synth_roi_ssim": rows["source_synth_roi_ssim"],
+        "label_source_seg_dice": rows["source_existing_lesion_overlap"],
         "teacher_model": rows["teacher_model"],
-        "teacher_dice_mean": "",
         "teacher_lesion_count_diff": rows["teacher_lesion_count_diff"],
         "manual_visual_score": "",
         "quality_grade": rows["quality_grade"],
         "diffusion_quality_decision": rows["qc_decision"],
         "diffusion_quality_reason": rows["qc_reject_reason"],
     }
-    qc_row = {
-        "synthetic_raw_id": synthetic_raw_id,
-        "synthetic_final_id": synthetic_final_id,
-        "nnunet_case_id": nnunet_case_id,
-        "source_case_id": source_case_id,
-        "source_split": source_info.get("source_split", ""),
-        "label_kind": label_kind,
-        "label_index": label_index,
-        "label_source_case_id": source_case_id,
-        "label_component_id": "whole_positive_mask",
-        "label_generator_checkpoint": generator_checkpoint,
-        "generation_run_id": generation_run_id,
-        "generator_name": generator_name,
-        "generator_checkpoint_t1n": generator_checkpoint_t1n,
-        "generator_checkpoint_t1c": generator_checkpoint_t1c,
-        "generator_checkpoint_t2w": generator_checkpoint_t2w,
-        "generator_checkpoint_t2f": generator_checkpoint_t2f,
-        "generator_io": rows["generator_io"],
-        "label_channels": rows["label_channels"],
-        "rc_policy": rows["rc_policy"],
-        "noise_type": rows["noise_type"],
-        "sampling_method": rows["sampling_method"],
-        "sampling_steps": rows["sampling_steps"],
-        "eta": rows["eta"],
-        "seed": rows["seed"],
-        "source_csv_path": rows["source_csv_path"],
-        "source_csv_version": rows["source_csv_version"],
-        "insert_center_x": rows.get("insert_center_x", ""),
-        "insert_center_y": rows.get("insert_center_y", ""),
-        "insert_center_z": rows.get("insert_center_z", ""),
-        "roi_x_min": rows.get("roi_x_min", ""),
-        "roi_x_max": rows.get("roi_x_max", ""),
-        "roi_y_min": rows.get("roi_y_min", ""),
-        "roi_y_max": rows.get("roi_y_max", ""),
-        "roi_z_min": rows.get("roi_z_min", ""),
-        "roi_z_max": rows.get("roi_z_max", ""),
-        "source_shape_x": source_row.get("shape_seg", source_row.get("shape", "")),
-        "source_shape_y": "",
-        "source_shape_z": "",
-        "output_shape_x": rows.get("output_shape_x", ""),
-        "output_shape_y": rows.get("output_shape_y", ""),
-        "output_shape_z": rows.get("output_shape_z", ""),
-        "output_suffix_scheme": output_scheme,
-        "raw_case_dir": raw_case_dir,
-        "normalized_case_dir": normalized_case_dir,
-        "status": rows["status"],
-        "error_type": "",
-        "error_message": ";".join(errors),
-        "qc_status": rows["qc_status"],
-        "qc_reject_reason": rows["qc_reject_reason"],
-        "manual_review_reason": rows["manual_review_reason"],
-        "accepted_for_training": rows["accepted_for_training"],
-        "accepted_for_ablation_only": rows["accepted_for_ablation_only"],
-        "needs_regeneration": rows["needs_regeneration"],
-    }
+    qc_row = dict(rows)
 
     manifest_row = dict(rows)
     return manifest_row, qc_row, diffusion_row, {
@@ -1281,9 +1561,11 @@ def write_progress_report(
         "data/.gitkeep": "data 目录占位文件，保留未来数据放置点。",
         "results/.gitkeep": "results 根目录占位文件，保留结果区目录结构。",
         "code/g2_pretraining_audit.py": "基础审计脚本：真实数据基线扫描、模板刷新、source CSV、real-only mapping、可选 synthetic intake 与进度报告生成。",
-        "code/g2_create_train_val_test_split.py": "固定划分脚本：把历史 fixed val 锁成 internal test，并从训练池稳定切出 dev/val。",
-        "code/g2_synthetic_raw_intake_qc.py": "正式 G1 raw run 接收脚本：生成 candidate/accepted/rejected manifest、QC CSV、diffusion quality、batch summary 和质量报告。",
-        "code/g2_materialize_nnunet_dataset.py": "nnU-Net 物化脚本：把 real mapping 与 accepted synthetic manifest 转成 dataset.json、materialization manifest，并支持 manifest-only/symlink/copy。",
+        "code/g2_create_train_val_test_split.py": "患者分组 master split 脚本，真实 T2W 子集复现 G1 V3 seed=42 划分。",
+        "code/g2_synthetic_raw_intake_qc.py": "通用 G1 run 接收脚本，输出 rejected、pending、accepted-training 和 accepted-evaluation。",
+        "code/g2_v2_compose_augmentation.py": "V2 composition 脚本：将平铺 ROI 输出回填 source 并恢复完整几何。",
+        "code/g2_v3_completion_intake.py": "V3 completion 专用入口：校验 checkpoint、seed、bbdm_s 和 source manifest。",
+        "code/g2_materialize_nnunet_dataset.py": "双视图物化脚本：同时生成 nnU-Net 和病例目录、fixed split 与完整性报告。",
         "code/g2_official_mets_metrics_parser.py": "官方指标代理脚本：解析 BraTS_evaluation Panoptica JSON 或校验 CSV 是否包含 2026 Task1 leaderboard 字段。",
         "docs/G1_G2_diffusion_output_contract.md": "G1 raw output 与 G2 适配边界的主契约，定义 raw 命名、source CSV、manifest 字段和最低 smoke 标准。",
         "docs/G2_G1适配执行清单.md": "按执行顺序拆解 G2 先准备什么、G1 输出后 G2 做什么、如何形成 QC 结果与回传。",
@@ -1292,7 +1574,8 @@ def write_progress_report(
         "results/README.md": "results 总说明，概括本目录只保存轻量产物，不保存大体积 NIfTI。",
         "results/manifests/README.md": "清单区说明，解释真实清单、source CSV、synthetic intake manifest 与 accepted/rejected 输出。",
         "results/manifests/corrected_label_overlay.csv": "真实训练病例的 corrected label 覆盖记录，说明哪些病例在最终 manifest 中替换了原始 seg。",
-        "results/manifests/g1_met_source_cases_v1.csv": "G2 写给 G1 的 MET source 表，保留旧兼容列与 G2 扩展列。",
+        "results/manifests/g1_v2_source_manifest.csv": "V2 source 主表；只有 master train 且真实 T2W 的病例允许生成。",
+        "results/manifests/nnunet_case_mapping_master.csv": "全部 1295 个可追溯病例身份，包含 265 个 completion 目标。",
         "results/manifests/nnunet_case_mapping_realonly.csv": "real-only nnU-Net 映射表，用于训练机物化 imagesTr/labelsTr。",
         "results/manifests/real_train_manifest.csv": "真实训练病例最终主表，已应用 corrected label overlay 并带 final_qc_pass。",
         "results/manifests/real_train_manifest_raw.csv": "原始训练病例扫描表，保留 raw seg 与基础 QC 证据。",
@@ -1320,8 +1603,8 @@ def write_progress_report(
         "results/reports/local_data_paths_check.md": "本机外部数据路径检查结果。",
         "results/reports/real_data_qc_summary.md": "真实训练数据 QC 汇总。",
         "results/splits/README.md": "固定真实 train/val/test 划分说明。",
-        "results/splits/splits_final_fold0_realval.json": "历史兼容 fold0 的 train/val 划分；当前旧 val 已作为内部 test 锁定。",
-        "results/splits/splits_final_train_val_test.json": "当前正式 train/val/test 划分；G1/S1/S2/G2 都应优先使用。",
+        "results/splits/splits_master_train_val_test.json": "全部病例 patient-group master split。",
+        "results/splits/splits_final_train_val_test.json": "从 master split 派生的真实 T2W real-only split。",
         "results/splits/splits_final_train_val_test_membership.csv": "逐病例 split membership 表，便于人工核查和脚本读取。",
         "results/stats/README.md": "统计区说明，解释 label/lesion 分布与 synthetic 目标分布。",
         "results/stats/real_label_distribution.csv": "真实训练病例级 label 体素与体积分布。",
@@ -1339,7 +1622,11 @@ def write_progress_report(
                 elif title == "synthetic_candidate_manifest":
                     file_notes[rel] = "本次 synthetic run 的候选合并清单，保留原始输入与 QC 判定对照。"
                 elif title == "synthetic_accepted_manifest":
-                    file_notes[rel] = "本次 synthetic run 的通过清单，包含进入训练或仅用于消融的样本。"
+                    file_notes[rel] = "本次 synthetic run 正式批准进入训练的病例清单。"
+                elif title == "synthetic_accepted_evaluation_manifest":
+                    file_notes[rel] = "V3 val/test completion 正式批准用于固定评估的病例清单。"
+                elif title == "synthetic_pending_review_manifest":
+                    file_notes[rel] = "技术 QC 通过但尚未完成 teacher/人工审批的病例清单。"
                 elif title == "synthetic_rejected_manifest":
                     file_notes[rel] = "本次 synthetic run 的拒绝清单，记录未通过的候选和拒绝原因。"
                 elif title == "synthetic_normalized_mapping":
@@ -1368,6 +1655,8 @@ def write_progress_report(
             "code/g2_pretraining_audit.py",
             "code/g2_create_train_val_test_split.py",
             "code/g2_synthetic_raw_intake_qc.py",
+            "code/g2_v2_compose_augmentation.py",
+            "code/g2_v3_completion_intake.py",
             "code/g2_materialize_nnunet_dataset.py",
             "code/g2_official_mets_metrics_parser.py",
         ]),
@@ -1381,7 +1670,8 @@ def write_progress_report(
         ("3. results/manifests", "results/manifests", [
             "results/manifests/README.md",
             "results/manifests/corrected_label_overlay.csv",
-            "results/manifests/g1_met_source_cases_v1.csv",
+            "results/manifests/g1_v2_source_manifest.csv",
+            "results/manifests/nnunet_case_mapping_master.csv",
             "results/manifests/nnunet_case_mapping_realonly.csv",
             "results/manifests/real_train_manifest.csv",
             "results/manifests/real_train_manifest_raw.csv",
@@ -1413,7 +1703,8 @@ def write_progress_report(
         ]),
         ("6. results/splits", "results/splits", [
             "results/splits/README.md",
-            "results/splits/splits_final_fold0_realval.json",
+            "results/splits/splits_master_train_val_test.json",
+            "results/splits/splits_master_train_val_test_membership.csv",
             "results/splits/splits_final_train_val_test.json",
             "results/splits/splits_final_train_val_test_membership.csv",
         ]),
@@ -1449,8 +1740,9 @@ def write_progress_report(
             "",
             f"- 真实数据基线 run_id：`{run_summary.get('generation_run_id', '')}`",
             f"- 训练集病例数：{run_summary.get('case_count', 0)}",
-            f"- accepted：{run_summary.get('accepted_count', 0)}",
-            f"- ablation only：{run_summary.get('ablation_only_count', 0)}",
+            f"- accepted for training：{run_summary.get('accepted_training_count', run_summary.get('accepted_count', 0))}",
+            f"- accepted for evaluation：{run_summary.get('accepted_evaluation_count', 0)}",
+            f"- pending review：{run_summary.get('pending_review_count', 0)}",
             f"- needs regeneration：{run_summary.get('needs_regeneration_count', 0)}",
             f"- rejected：{run_summary.get('rejected_count', 0)}",
         ])
@@ -1461,8 +1753,9 @@ def write_progress_report(
             "",
             f"- smoke run_id：`{smoke_summary.get('generation_run_id', '')}`",
             f"- 候选数：{smoke_summary.get('case_count', 0)}",
-            f"- accepted：{smoke_summary.get('accepted_count', 0)}",
-            f"- ablation only：{smoke_summary.get('ablation_only_count', 0)}",
+            f"- accepted for training：{smoke_summary.get('accepted_training_count', 0)}",
+            f"- accepted for evaluation：{smoke_summary.get('accepted_evaluation_count', 0)}",
+            f"- pending review：{smoke_summary.get('pending_review_count', 0)}",
             f"- needs regeneration：{smoke_summary.get('needs_regeneration_count', 0)}",
             f"- rejected：{smoke_summary.get('rejected_count', 0)}",
             f"- legacy suffix case：{smoke_summary.get('legacy_suffix_count', 0)}",
@@ -1473,10 +1766,10 @@ def write_progress_report(
         "",
         "## 下一步",
         "",
-        "1. 接入真实 G1 生成目录，替换当前 smoke 例子。",
-        "2. 复核正式批次的 accepted / rejected 比例，并根据真实样本再微调 QC 阈值。",
-        "3. 将通过的 synthetic 样本物化到训练机上的 nnU-Net raw / mapping 流程。",
-        "4. 完成训练前的最终消融准备和版本冻结。",
+        "1. V3 阶段 6 完成后先运行 completion 专用 intake。",
+        "2. V2 正式批量输出必须先运行 composer，再进入通用 QC。",
+        "3. pending 病例完成 teacher/人工审批后才可物化。",
+        "4. 使用固定真实验证集完成 real-only 与 real+synth 消融。",
     ])
     if intake_outputs:
         lines.extend(["", "## 本次生成的文件", ""])
@@ -1507,8 +1800,8 @@ def write_progress_report(
     lines.extend([
         "## 结论",
         "",
-        "1. G2 已完成真实数据侧的基线准备，并用 smoke run 证明了 synthetic raw intake、legacy suffix 归一、manifest 自动补建、QC 和 accepted/rejected 闭环。",
-        "2. 当前工作区已形成清晰的 G2 文件结构索引，后续只需用真实 G1 目录替换 smoke 例子即可。",
+        "1. G2 已完成 patient-group master split、V2/V3 分流、严格 metadata gate 和三态 release 接口。",
+        "2. 当前测试证明接口与小型 NIfTI fixture 可运行；真实生成质量仍须等待服务器 NIfTI 批次验收。",
         "3. 大体积影像仍留在外部数据盘或训练机器，不进入仓库。",
     ])
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -1516,43 +1809,174 @@ def write_progress_report(
 
 def build_synthetic_run_context(run_root: Path, results_root: Path, args: argparse.Namespace) -> dict[str, object]:
     config_path = run_root / "generation_config.json"
+    inference_path = run_root / "inference_run.json"
     log_path = run_root / "generation_log.jsonl"
     manifest_path = run_root / "synthetic_generation_manifest.csv"
+    approval_path = run_root / "g2_approval_manifest.csv"
     config = read_json_if_exists(config_path)
+    inference_config = read_json_if_exists(inference_path)
+    if not config and inference_config:
+        config = dict(inference_config)
     log_rows = read_jsonl_if_exists(log_path)
-    run_id = str(
-        args.synthetic_run_id
-        or recursive_find_value(config, "generation_run_id")
-        or recursive_find_value(config, "run_id")
-        or run_root.name
+    manifest_df = read_csv_if_exists(manifest_path)
+    manifest_rows = (
+        manifest_df.fillna("").to_dict(orient="records")
+        if not manifest_df.empty
+        else []
     )
-    generator_checkpoint = str(recursive_find_value(config, "generator_checkpoint") or recursive_find_value(config, "checkpoint") or "")
+    manifest_lookup, manifest_duplicate_ids = index_case_records(manifest_rows)
+    log_lookup, log_duplicate_ids = index_case_records(log_rows)
+    requested_mode = str(getattr(args, "generation_mode", "auto") or "auto")
+    configured_mode = str(
+        recursive_find_value(config, "generation_mode")
+        or recursive_find_value(config, "generator_io")
+        or ""
+    )
+    if requested_mode == "auto":
+        if inference_config:
+            requested_mode = "completion"
+        elif "completion" in configured_mode:
+            requested_mode = "completion"
+        elif configured_mode:
+            requested_mode = "full_generation"
+    configured_run_id = (
+        recursive_find_value(config, "generation_run_id")
+        or recursive_find_value(config, "run_id")
+    )
+    run_id = str(args.synthetic_run_id or configured_run_id or run_root.name)
+    encdec_checkpoint = str(recursive_find_value(config, "encdec_checkpoint") or "")
+    bbdm_checkpoint = str(recursive_find_value(config, "bbdm_checkpoint") or "")
+    vae_checkpoint = str(recursive_find_value(config, "vae_weights") or recursive_find_value(config, "vae_checkpoint") or "")
+    validation_run = str(recursive_find_value(config, "validation_run") or "")
+    generator_checkpoint = str(
+        recursive_find_value(config, "generator_checkpoint")
+        or recursive_find_value(config, "checkpoint")
+        or bbdm_checkpoint
+        or encdec_checkpoint
+        or ""
+    )
+    source_csv_value = (
+        recursive_find_value(config, "source_csv")
+        or recursive_find_value(config, "source_manifest")
+        or recursive_find_value(config, "input_manifest")
+        or ""
+    )
+    configured_generator_name = (
+        recursive_find_value(config, "generator_name")
+        or recursive_find_value(config, "model_name")
+    )
+    generator_name = str(configured_generator_name or ("g1_missing_t2w_v3" if inference_config else ""))
+    seed = recursive_find_value(config, "seed")
+    if seed is None:
+        seed = recursive_find_value(config, "random_seed")
+    checkpoint_dir = str(recursive_find_value(config, "diffusion_checkpoint_dir") or "")
+    metadata_missing_fields: list[str] = []
+    if not (config_path.exists() or inference_path.exists()):
+        metadata_missing_fields.append("generation_config_or_inference_run")
+    if not manifest_path.exists():
+        metadata_missing_fields.append("synthetic_generation_manifest")
+    elif not manifest_rows:
+        metadata_missing_fields.append("synthetic_generation_manifest_empty")
+    if manifest_duplicate_ids:
+        metadata_missing_fields.append("synthetic_generation_manifest_duplicate_ids")
+    if not log_path.exists():
+        metadata_missing_fields.append("generation_log")
+    elif not log_rows:
+        metadata_missing_fields.append("generation_log_empty")
+    if log_duplicate_ids:
+        metadata_missing_fields.append("generation_log_duplicate_ids")
+    if not configured_run_id and not args.synthetic_run_id:
+        metadata_missing_fields.append("generation_run_id")
+    if not configured_generator_name:
+        metadata_missing_fields.append("generator_name")
+    if seed in (None, ""):
+        metadata_missing_fields.append("seed")
+    if not source_csv_value:
+        metadata_missing_fields.append("source_csv")
+    if requested_mode == "completion":
+        if not vae_checkpoint:
+            metadata_missing_fields.append("vae_weights")
+        if not encdec_checkpoint:
+            metadata_missing_fields.append("encdec_checkpoint")
+        if not bbdm_checkpoint:
+            metadata_missing_fields.append("bbdm_checkpoint")
+        if recursive_find_value(config, "bbdm_s") in (None, ""):
+            metadata_missing_fields.append("bbdm_s")
+        if not validation_run:
+            metadata_missing_fields.append("validation_run")
+    else:
+        modal_checkpoints = [
+            recursive_find_value(config, f"generator_checkpoint_{mod}")
+            for mod in ("t1n", "t1c", "t2w", "t2f")
+        ]
+        if not checkpoint_dir and not generator_checkpoint and not all(modal_checkpoints):
+            metadata_missing_fields.append("diffusion_checkpoints")
+        for field in ("sampling_method", "sampling_steps", "eta", "crop_size"):
+            if recursive_find_value(config, field) in (None, ""):
+                metadata_missing_fields.append(field)
+
+    approval_df = read_csv_if_exists(approval_path)
+    approval_lookup: dict[str, dict[str, object]] = {}
+    approval_ambiguous_ids: set[str] = set()
+    if not approval_df.empty and "synthetic_raw_id" in approval_df.columns:
+        approval_rows = approval_df.fillna("").to_dict(orient="records")
+        approval_lookup, approval_ambiguous_ids = index_case_records(approval_rows)
+        for raw_id in approval_ambiguous_ids:
+            approval_lookup.pop(raw_id, None)
+    if requested_mode == "completion":
+        generator_checkpoints = {
+            "t1n": "",
+            "t1c": "",
+            "t2w": bbdm_checkpoint,
+            "t2f": "",
+        }
+    else:
+        generator_checkpoints = {
+            mod: str(recursive_find_value(config, f"generator_checkpoint_{mod}") or generator_checkpoint)
+            for mod in ("t1n", "t1c", "t2w", "t2f")
+        }
+    label_channels_value = recursive_find_value(config, "label_channels")
     context = {
+        "results_root": results_root,
         "run_root": run_root,
         "run_id": run_id,
         "generation_run_id": run_id,
-        "generation_config_exists": config_path.exists(),
+        "generation_config_exists": config_path.exists() or inference_path.exists(),
+        "inference_run_exists": inference_path.exists(),
         "generation_manifest_exists": manifest_path.exists(),
         "generation_log_exists": log_path.exists(),
+        "approval_manifest_exists": approval_path.exists(),
+        "approval_lookup": approval_lookup,
         "generation_config": config,
         "generation_log_rows": log_rows,
-        "generator_name": str(recursive_find_value(config, "generator_name") or recursive_find_value(config, "model_name") or ""),
+        "generation_manifest_lookup": manifest_lookup,
+        "generation_log_lookup": log_lookup,
+        "approval_ambiguous_ids": approval_ambiguous_ids,
+        "generator_name": generator_name,
         "generator_checkpoint": generator_checkpoint,
-        "generator_checkpoint_t1n": str(recursive_find_value(config, "generator_checkpoint_t1n") or generator_checkpoint),
-        "generator_checkpoint_t1c": str(recursive_find_value(config, "generator_checkpoint_t1c") or generator_checkpoint),
-        "generator_checkpoint_t2w": str(recursive_find_value(config, "generator_checkpoint_t2w") or generator_checkpoint),
-        "generator_checkpoint_t2f": str(recursive_find_value(config, "generator_checkpoint_t2f") or generator_checkpoint),
-        "generator_io": str(recursive_find_value(config, "generator_io") or recursive_find_value(config, "io_mode") or "legacy_raw_output"),
-        "generation_mode_override": str(getattr(args, "generation_mode", "auto") or "auto"),
-        "label_channels": int(recursive_find_value(config, "label_channels") or 4),
-        "rc_policy": str(recursive_find_value(config, "rc_policy") or "preserve_if_source_has_rc"),
-        "noise_type": str(recursive_find_value(config, "noise_type") or "gaussian_tumour"),
-        "sampling_method": str(recursive_find_value(config, "sampling_method") or "ddim"),
-        "sampling_steps": recursive_find_value(config, "sampling_steps") or 50,
-        "eta": recursive_find_value(config, "eta") or 0.0,
-        "seed": recursive_find_value(config, "seed") or recursive_find_value(config, "random_seed") or "",
-        "source_csv_path": display_results_path(recursive_find_value(config, "source_csv") or (results_root / "manifests" / "g1_met_source_cases_v1.csv"), results_root),
-        "source_csv_version": str(recursive_find_value(config, "source_csv_version") or "g1_met_source_cases_v1.csv"),
+        "generator_checkpoint_t1n": generator_checkpoints["t1n"],
+        "generator_checkpoint_t1c": generator_checkpoints["t1c"],
+        "generator_checkpoint_t2w": generator_checkpoints["t2w"],
+        "generator_checkpoint_t2f": generator_checkpoints["t2f"],
+        "vae_checkpoint": vae_checkpoint,
+        "encdec_checkpoint": encdec_checkpoint,
+        "bbdm_checkpoint": bbdm_checkpoint,
+        "bbdm_s": recursive_find_value(config, "bbdm_s") or "",
+        "validation_run": validation_run,
+        "generator_io": str(recursive_find_value(config, "generator_io") or recursive_find_value(config, "io_mode") or configured_mode or "unknown"),
+        "generation_mode_override": requested_mode,
+        "label_channels": int(label_channels_value) if label_channels_value not in (None, "") else 0,
+        "rc_policy": str(recursive_find_value(config, "rc_policy") or ""),
+        "noise_type": str(recursive_find_value(config, "noise_type") or ""),
+        "sampling_method": str(recursive_find_value(config, "sampling_method") or ""),
+        "sampling_steps": recursive_find_value(config, "sampling_steps") if recursive_find_value(config, "sampling_steps") is not None else "",
+        "eta": recursive_find_value(config, "eta") if recursive_find_value(config, "eta") is not None else "",
+        "crop_size": recursive_find_value(config, "crop_size") if recursive_find_value(config, "crop_size") is not None else "",
+        "seed": seed if seed is not None else "",
+        "source_csv_path": str(source_csv_value),
+        "source_csv_version": str(recursive_find_value(config, "source_csv_version") or Path(str(source_csv_value)).name),
+        "metadata_complete": not metadata_missing_fields,
+        "metadata_missing_fields": metadata_missing_fields,
         "normalized_root": results_root / "synthetic_normalized",
     }
     if log_rows:
@@ -1576,7 +2000,9 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
     qc_rows = []
     diffusion_rows = []
     review_rows = []
-    accepted_rows = []
+    accepted_training_rows = []
+    accepted_evaluation_rows = []
+    pending_rows = []
     rejected_rows = []
     mapping_rows = []
     for idx, case_dir in enumerate(case_dirs, start=1):
@@ -1591,7 +2017,7 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
             "nnunet_case_id": "",
             "source_in_real_train_manifest": False,
             "source_final_qc_pass": False,
-            "source_usable_for_met96": False,
+            "source_allowed_for_v2": False,
             "source_allowed_for_training": False,
             "source_is_fake_t2w_case": False,
             "source_completion_mode": label_kind == "completion",
@@ -1605,12 +2031,14 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
         mapping_rows.extend(synthetic_mapping_rows(manifest_row))
         qc_rows.append(qc_row)
         diffusion_rows.append(diffusion_row)
-        if qc_row["qc_status"] == "review":
+        if qc_row["pending_review"]:
             review_rows.append(review_row)
         if bool(qc_row["accepted_for_training"]):
-            accepted_rows.append(manifest_row)
-        elif bool(qc_row["accepted_for_ablation_only"]):
-            accepted_rows.append(manifest_row)
+            accepted_training_rows.append(manifest_row)
+        elif bool(qc_row["accepted_for_evaluation"]):
+            accepted_evaluation_rows.append(manifest_row)
+        elif bool(qc_row["pending_review"]):
+            pending_rows.append(manifest_row)
         else:
             rejected_rows.append(manifest_row)
 
@@ -1627,7 +2055,8 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
                 "qc_status",
                 "qc_reject_reason",
                 "accepted_for_training",
-                "accepted_for_ablation_only",
+                "accepted_for_evaluation",
+                "pending_review",
                 "needs_regeneration",
                 "status",
             ]
@@ -1643,6 +2072,8 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
     manifest_path = dirs["manifests"] / f"synthetic_generation_manifest_{run_id}.csv"
     candidate_path = dirs["manifests"] / f"synthetic_candidate_manifest_{run_id}.csv"
     accepted_path = dirs["manifests"] / f"synthetic_accepted_manifest_{run_id}.csv"
+    evaluation_path = dirs["manifests"] / f"synthetic_accepted_evaluation_manifest_{run_id}.csv"
+    pending_path = dirs["manifests"] / f"synthetic_pending_review_manifest_{run_id}.csv"
     rejected_path = dirs["manifests"] / f"synthetic_rejected_manifest_{run_id}.csv"
     mapping_path = dirs["manifests"] / f"synthetic_normalized_mapping_{run_id}.csv"
     qc_path = dirs["qc"] / f"qc_metrics_{run_id}.csv"
@@ -1654,8 +2085,10 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
 
     candidate_df.to_csv(manifest_path, index=False)
     merged_df.to_csv(candidate_path, index=False)
-    pd.DataFrame(accepted_rows).to_csv(accepted_path, index=False)
-    pd.DataFrame(rejected_rows).to_csv(rejected_path, index=False)
+    pd.DataFrame(accepted_training_rows, columns=candidate_df.columns).to_csv(accepted_path, index=False)
+    pd.DataFrame(accepted_evaluation_rows, columns=candidate_df.columns).to_csv(evaluation_path, index=False)
+    pd.DataFrame(pending_rows, columns=candidate_df.columns).to_csv(pending_path, index=False)
+    pd.DataFrame(rejected_rows, columns=candidate_df.columns).to_csv(rejected_path, index=False)
     mapping_df.to_csv(mapping_path, index=False)
     qc_df.to_csv(qc_path, index=False)
     diffusion_df.to_csv(diffusion_path, index=False)
@@ -1664,8 +2097,9 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
     summary = {
         "generation_run_id": run_id,
         "case_count": int(len(candidate_df)),
-        "accepted_count": int(len(accepted_rows)),
-        "ablation_only_count": int(sum(1 for row in qc_rows if row.get("accepted_for_ablation_only"))),
+        "accepted_training_count": int(len(accepted_training_rows)),
+        "accepted_evaluation_count": int(len(accepted_evaluation_rows)),
+        "pending_review_count": int(len(pending_rows)),
         "needs_regeneration_count": int(sum(1 for row in qc_rows if row.get("needs_regeneration"))),
         "rejected_count": int(len(rejected_rows)),
         "legacy_suffix_count": int((candidate_df["output_suffix_scheme"] == "legacy_met").sum()) if not candidate_df.empty else 0,
@@ -1682,8 +2116,9 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
         "## 1. 本轮概况",
         "",
         f"- 候选数：{summary['case_count']}",
-        f"- accepted：{summary['accepted_count']}",
-        f"- ablation only：{summary['ablation_only_count']}",
+        f"- accepted for training：{summary['accepted_training_count']}",
+        f"- accepted for evaluation：{summary['accepted_evaluation_count']}",
+        f"- pending review：{summary['pending_review_count']}",
         f"- needs regeneration：{summary['needs_regeneration_count']}",
         f"- rejected：{summary['rejected_count']}",
         "",
@@ -1693,11 +2128,19 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
         f"- `generation_log.jsonl`：{'存在' if ctx['generation_log_exists'] else '缺失'}",
         f"- `synthetic_generation_manifest.csv`：{'存在' if ctx['generation_manifest_exists'] else '缺失，已由 G2 补建'}",
         "",
-        "## 3. accepted / rejected 结果",
+        "## 3. release 结果",
         "",
-        "### accepted",
+        "### accepted for training",
         "",
-        df_to_markdown(pd.DataFrame(accepted_rows)[["synthetic_raw_id", "synthetic_final_id", "source_case_id", "qc_decision"]] if accepted_rows else pd.DataFrame()),
+        df_to_markdown(pd.DataFrame(accepted_training_rows)[["synthetic_raw_id", "synthetic_final_id", "source_case_id", "qc_decision"]] if accepted_training_rows else pd.DataFrame()),
+        "",
+        "### accepted for evaluation",
+        "",
+        df_to_markdown(pd.DataFrame(accepted_evaluation_rows)[["synthetic_raw_id", "synthetic_final_id", "source_case_id", "qc_decision"]] if accepted_evaluation_rows else pd.DataFrame()),
+        "",
+        "### pending review",
+        "",
+        df_to_markdown(pd.DataFrame(pending_rows)[["synthetic_raw_id", "synthetic_final_id", "source_case_id", "qc_reject_reason"]] if pending_rows else pd.DataFrame()),
         "",
         "### rejected",
         "",
@@ -1710,15 +2153,15 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
         "## 5. 输出文件",
         "",
     ]
-    for path in [manifest_path, candidate_path, accepted_path, rejected_path, mapping_path, qc_path, diffusion_path, review_path, batch_summary_path]:
+    for path in [manifest_path, candidate_path, accepted_path, evaluation_path, pending_path, rejected_path, mapping_path, qc_path, diffusion_path, review_path, batch_summary_path]:
         lines.append(f"- `{path}`")
     lines.extend([
         "",
         "## 6. 结论",
         "",
-        "1. G2 已经可以从 G1 legacy raw output 里自动恢复 source、label_kind、run 信息、suffix scheme，并补建 synthetic manifest。",
+        "1. G2 分别接收 V2 composed augmentation 与 V3 completion，不能直接接收多病例平铺 V2 raw output。",
         "2. G2 会额外生成 `synthetic_normalized_mapping_{run_id}.csv`，逐模态记录 raw legacy/native 文件到 2026 标准文件名和 nnU-Net 目标文件名的映射。",
-        "3. 通过的样本会进入 accepted manifest，未通过的样本会进入 rejected manifest，人工复查项会单独落表。",
+        "3. 技术通过但没有审批的样本进入 pending manifest，不会自动伪装为 accepted。",
         "4. 真实验证 fold 和官方 validation 仍然不能作为 synthetic source。",
     ])
     report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -1726,11 +2169,13 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
         results_root,
         progress_report_path,
         summary,
-        [manifest_path, candidate_path, accepted_path, rejected_path, mapping_path, qc_path, diffusion_path, review_path, batch_summary_path, report_path],
+        [manifest_path, candidate_path, accepted_path, evaluation_path, pending_path, rejected_path, mapping_path, qc_path, diffusion_path, review_path, batch_summary_path, report_path],
         [
             ("synthetic_generation_manifest", [manifest_path]),
             ("synthetic_candidate_manifest", [candidate_path]),
             ("synthetic_accepted_manifest", [accepted_path]),
+            ("synthetic_accepted_evaluation_manifest", [evaluation_path]),
+            ("synthetic_pending_review_manifest", [pending_path]),
             ("synthetic_rejected_manifest", [rejected_path]),
             ("synthetic_normalized_mapping", [mapping_path]),
             ("qc_metrics", [qc_path]),
@@ -1740,7 +2185,7 @@ def ingest_synthetic_run(run_root: Path, results_root: Path, args: argparse.Name
             ("quality_report", [report_path]),
         ],
     )
-    outputs.extend([manifest_path, candidate_path, accepted_path, rejected_path, mapping_path, qc_path, diffusion_path, review_path, batch_summary_path, report_path, progress_report_path])
+    outputs.extend([manifest_path, candidate_path, accepted_path, evaluation_path, pending_path, rejected_path, mapping_path, qc_path, diffusion_path, review_path, batch_summary_path, report_path, progress_report_path])
     return outputs
 
 
@@ -2041,58 +2486,6 @@ def label_stats(final_df: pd.DataFrame, data_root: Path) -> tuple[pd.DataFrame, 
     return pd.DataFrame(label_rows), pd.DataFrame(lesion_rows), summary
 
 
-def met_source_csv(final_df: pd.DataFrame, data_root: Path) -> pd.DataFrame:
-    rows = []
-    for row in final_df.itertuples(index=False):
-        if not bool(row.final_qc_pass):
-            continue
-        seg_path = parse_workspace_path(row.effective_seg_path, data_root)
-        img = nib.load(str(seg_path))
-        seg = np.asanyarray(img.dataobj)
-        mask = seg > 0
-        bbox, center, size = bbox_and_center(mask)
-        usable = all(v <= 96 for v in size) and mask.any()
-        rows.append({
-            "id": row.case_id,
-            "scan_t1ce": display_path(row.t1c_path, data_root),
-            "scan_t2": display_path(row.t2w_path, data_root),
-            "scan_flair": display_path(row.t2f_path, data_root),
-            "scan_t1": display_path(row.t1n_path, data_root),
-            "label": display_path(row.effective_seg_path, data_root),
-            "center_x": center[0],
-            "center_y": center[1],
-            "center_z": center[2],
-            "x_extreme_min": bbox[0],
-            "x_extreme_max": bbox[1],
-            "y_extreme_min": bbox[2],
-            "y_extreme_max": bbox[3],
-            "z_extreme_min": bbox[4],
-            "z_extreme_max": bbox[5],
-            "x_size": size[0],
-            "y_size": size[1],
-            "z_size": size[2],
-            "case_id": row.case_id,
-            "source_split": "train",
-            "has_corrected_label": row.has_corrected_label,
-            "corrected_label_path": display_path(row.effective_seg_path, data_root) if row.has_corrected_label else "",
-            "label_values": row.labels_present_after_overlay,
-            "lesion_component_id": "whole_positive_mask",
-            "lesion_volume_mm3": "",
-            "lesion_class_set": row.labels_present_after_overlay,
-            "usable_for_met96": usable,
-            "allowed_as_synthetic_source": usable,
-            "exclude_reason": "" if usable else "whole_positive_bbox_exceeds_96_or_empty",
-            "shape_x": str(row.shape_seg).split("x")[0] if row.shape_seg else "",
-            "shape_y": str(row.shape_seg).split("x")[1] if row.shape_seg and "x" in str(row.shape_seg) else "",
-            "shape_z": str(row.shape_seg).split("x")[2] if row.shape_seg and str(row.shape_seg).count("x") >= 2 else "",
-            "spacing_x": str(row.spacing_seg).split(",")[0] if row.spacing_seg else "",
-            "spacing_y": str(row.spacing_seg).split(",")[1] if row.spacing_seg and "," in str(row.spacing_seg) else "",
-            "spacing_z": str(row.spacing_seg).split(",")[2] if row.spacing_seg and str(row.spacing_seg).count(",") >= 2 else "",
-            "affine_hash": row.affine_hash_seg,
-        })
-    return pd.DataFrame(rows)
-
-
 def nnunet_mapping(final_df: pd.DataFrame, data_root: Path) -> tuple[pd.DataFrame, dict[str, str]]:
     pass_df = final_df[final_df["final_qc_pass"] == True].sort_values("case_id").copy()  # noqa: E712
     rows = []
@@ -2112,19 +2505,6 @@ def nnunet_mapping(final_df: pd.DataFrame, data_root: Path) -> tuple[pd.DataFram
             "materialization_status": "deferred_no_nifti_copy_on_mac",
         })
     return pd.DataFrame(rows), source_to_nn
-
-
-def stable_split(mapping_df: pd.DataFrame, val_fraction: float = 0.2) -> list[dict[str, list[str]]]:
-    scored = []
-    for row in mapping_df.itertuples(index=False):
-        digest = hashlib.sha256(f"20260530::{row.source_case_id}".encode("utf-8")).hexdigest()
-        score = int(digest[:16], 16) / float(16**16)
-        scored.append((score, row.nnunet_case_id))
-    scored.sort()
-    val_count = int(round(len(scored) * val_fraction))
-    val = sorted(case_id for _, case_id in scored[:val_count])
-    train = sorted(case_id for _, case_id in scored[val_count:])
-    return [{"train": train, "val": val}]
 
 
 def write_json(path: Path, data: object) -> None:
@@ -2165,8 +2545,9 @@ def write_templates(dirs: dict[str, Path]) -> None:
         "synthetic_raw_id", "synthetic_final_id", "nnunet_case_id", "source_case_id", "source_split",
         "label_kind", "label_index", "label_source_case_id", "label_component_id", "label_generator_checkpoint",
         "generation_run_id", "generator_name", "generator_checkpoint_t1n", "generator_checkpoint_t1c",
-        "generator_checkpoint_t2w", "generator_checkpoint_t2f", "generator_io", "label_channels", "rc_policy",
-        "noise_type", "sampling_method", "sampling_steps", "eta", "seed", "source_csv_path", "source_csv_version",
+        "generator_checkpoint_t2w", "generator_checkpoint_t2f", "vae_checkpoint", "encdec_checkpoint",
+        "bbdm_checkpoint", "bbdm_s", "validation_run", "generator_io", "label_channels", "rc_policy",
+        "noise_type", "sampling_method", "sampling_steps", "eta", "crop_size", "seed", "source_csv_path", "source_csv_version",
         "raw_case_dir", "normalized_case_dir", "output_suffix_scheme", "suffix_conversion_action",
         "raw_t1n_path", "raw_t1c_path", "raw_t2w_path", "raw_t2f_path", "raw_seg_path",
         "normalized_t1n_path", "normalized_t1c_path", "normalized_t2w_path", "normalized_t2f_path",
@@ -2176,7 +2557,8 @@ def write_templates(dirs: dict[str, Path]) -> None:
         "source_shape_x", "source_shape_y", "source_shape_z", "output_shape_x", "output_shape_y",
         "output_shape_z", "status", "error_type", "error_message", "qc_status", "qc_reject_reason",
         "source_allowed_for_training", "source_is_fake_t2w_case", "source_completion_mode",
-        "accepted_for_training", "accepted_for_ablation_only", "needs_regeneration",
+        "metadata_complete", "metadata_missing_fields", "accepted_for_training",
+        "accepted_for_evaluation", "pending_review", "needs_regeneration",
     ]
     with (dirs["manifests"] / "synthetic_generation_manifest_template_g1.csv").open("w", encoding="utf-8", newline="") as f:
         csv.writer(f, lineterminator="\n").writerow(synthetic_manifest_header)
@@ -2185,41 +2567,64 @@ def write_templates(dirs: dict[str, Path]) -> None:
         "synthetic_raw_id", "synthetic_final_id", "nnunet_case_id", "source_case_id", "generation_run_id",
         "modality", "nnunet_channel", "raw_source_path", "normalized_target_path", "nnunet_target_path",
         "output_suffix_scheme", "suffix_conversion_action", "qc_decision", "accepted_for_training",
-        "accepted_for_ablation_only", "needs_regeneration",
+        "accepted_for_evaluation", "pending_review", "needs_regeneration",
     ]
     with (dirs["manifests"] / "synthetic_normalized_mapping_template.csv").open("w", encoding="utf-8", newline="") as f:
         csv.writer(f, lineterminator="\n").writerow(normalized_mapping_header)
 
     qc_v2_header = [
-        "synthetic_raw_id", "synthetic_final_id", "nnunet_case_id", "source_case_id", "label_kind", "label_index",
+        "synthetic_raw_id", "synthetic_final_id", "nnunet_case_id", "source_case_id", "source_split",
+        "label_kind", "label_index", "label_source_case_id", "label_component_id",
         "generation_run_id", "generator_name", "generator_checkpoint_t1n", "generator_checkpoint_t1c",
-        "generator_checkpoint_t2w", "generator_checkpoint_t2f", "label_generator_checkpoint", "generator_io",
-        "label_channels", "rc_policy", "noise_type", "sampling_method", "sampling_steps", "eta", "seed",
+        "generator_checkpoint_t2w", "generator_checkpoint_t2f", "label_generator_checkpoint", "vae_checkpoint",
+        "encdec_checkpoint", "bbdm_checkpoint", "bbdm_s", "validation_run", "generator_io",
+        "generation_mode",
+        "label_channels", "rc_policy", "noise_type", "sampling_method", "sampling_steps", "eta", "crop_size", "seed",
         "raw_case_dir", "normalized_case_dir", "output_suffix_scheme", "suffix_conversion_action",
-        "config_exists", "manifest_exists", "log_exists", "source_csv_version", "has_t1n", "has_t1c",
-        "has_t2w", "has_t2f", "has_seg", "filename_consistent", "nifti_readable", "shape_t1n", "shape_t1c",
-        "shape_t2w", "shape_t2f", "shape_seg", "spacing_t1n", "spacing_t1c", "spacing_t2w", "spacing_t2f",
+        "config_exists", "manifest_exists", "log_exists", "manifest_case_record_exists",
+        "log_case_record_exists", "metadata_complete", "metadata_missing_fields",
+        "source_csv_path", "source_csv_version", "has_t1n", "has_t1c",
+        "has_t2w", "has_t2f", "has_seg", "has_all_modalities", "filename_consistent", "nifti_readable",
+        "raw_t1n_path", "raw_t1c_path", "raw_t2w_path", "raw_t2f_path", "raw_seg_path",
+        "normalized_t1n_path", "normalized_t1c_path", "normalized_t2w_path", "normalized_t2f_path",
+        "normalized_seg_path", "nnunet_t1n_target_path", "nnunet_t1c_target_path", "nnunet_t2w_target_path",
+        "nnunet_t2f_target_path", "nnunet_seg_target_path", "shape_t1n", "shape_t1c",
+        "shape_t2w", "shape_t2f", "shape_seg", "source_shape_x", "source_shape_y", "source_shape_z",
+        "output_shape_x", "output_shape_y", "output_shape_z",
+        "spacing_t1n", "spacing_t1c", "spacing_t2w", "spacing_t2f",
         "spacing_seg", "affine_hash_t1n", "affine_hash_t1c", "affine_hash_t2w", "affine_hash_t2f",
-        "affine_hash_seg", "shape_consistent", "spacing_consistent", "affine_consistent", "orientation_consistent",
-        "source_shape_match", "has_nan_or_inf", "image_is_constant", "label_is_integer", "label_values",
+        "affine_hash_seg", "shape_consistent", "spacing_consistent", "affine_consistent", "affine_valid",
+        "orientation_consistent",
+        "source_shape_match", "source_modalities_compared", "source_modality_comparison_complete",
+        "has_nan_or_inf", "image_is_constant",
+        "t1n_min", "t1n_p1", "t1n_p50", "t1n_p99", "t1n_max",
+        "t1c_min", "t1c_p1", "t1c_p50", "t1c_p99", "t1c_max",
+        "t2w_min", "t2w_p1", "t2w_p50", "t2w_p99", "t2w_max",
+        "t2f_min", "t2f_p1", "t2f_p50", "t2f_p99", "t2f_max",
+        "label_is_integer", "label_values",
         "label_values_valid", "empty_mask", "allow_empty_mask", "source_in_real_train_manifest",
-        "source_final_qc_pass", "source_usable_for_met96", "source_allowed_for_training",
+        "source_final_qc_pass", "source_allowed_for_v2", "source_allowed_for_training",
         "source_is_fake_t2w_case", "source_completion_mode", "source_in_fixed_val_fold",
         "source_from_official_validation", "source_is_allowed", "case_id_reuses_real_id", "validation_leakage",
         "roi_bbox_available", "insert_center_x", "insert_center_y", "insert_center_z", "roi_x_min", "roi_x_max",
         "roi_y_min", "roi_y_max", "roi_z_min", "roi_z_max", "roi_inside_image", "nonroi_change_ratio",
-        "source_existing_lesion_overlap", "brain_mask_overlap_ratio", "lesion_count", "tiny_lesion_count",
+        "protected_source_change_ratio", "source_seg_change_ratio", "source_existing_lesion_overlap",
+        "brain_mask_overlap_ratio", "lesion_count", "tiny_lesion_count",
         "small_lesion_count", "large_lesion_count", "min_lesion_volume_mm3", "p50_lesion_volume_mm3",
         "max_lesion_volume_mm3", "tiny_lesion_ratio", "label_combination", "has_rc", "rc_source_allowed",
         "bbox_inside_image", "lesion_inside_brain_ok", "et_t1c_contrast_ratio", "snfh_t2f_contrast_ratio",
         "snfh_t2w_contrast_ratio", "cross_modality_roi_corr", "label_modality_alignment_score",
-        "roi_boundary_mae", "roi_boundary_gradient_jump", "intensity_drift_p50", "artifact_block_score",
+        "roi_boundary_mae", "roi_boundary_gradient_jump", "roi_boundary_p95_jump",
+        "z_continuity_score", "z_area_smoothness",
+        "z_intensity_smoothness", "intensity_drift_p1", "intensity_drift_p50", "intensity_drift_p99",
+        "source_synth_roi_ssim", "lesion_bbox_fill_ratio", "artifact_block_score",
         "artifact_suspected", "teacher_model", "teacher_dice_label_1", "teacher_dice_label_2",
         "teacher_dice_label_3", "teacher_dice_label_4", "teacher_lesion_count_diff",
         "teacher_missing_large_lesion_count", "teacher_extra_large_lesion_count", "manual_review_required",
         "manual_review_priority", "manual_review_reason", "hard_reject", "hard_reject_reason", "quality_grade",
-        "qc_decision", "accepted_for_training", "accepted_for_ablation_only", "needs_regeneration",
-        "regeneration_reason",
+        "qc_decision", "qc_status", "qc_reject_reason", "release_status", "status",
+        "accepted_for_training", "accepted_for_evaluation", "pending_review", "needs_regeneration",
+        "regeneration_reason", "error_type", "error_message",
     ]
     with (dirs["qc"] / "qc_metrics_template_v2.csv").open("w", encoding="utf-8", newline="") as f:
         csv.writer(f, lineterminator="\n").writerow(qc_v2_header)
@@ -2241,17 +2646,16 @@ def write_templates(dirs: dict[str, Path]) -> None:
     diffusion_header = [
         "synthetic_raw_id", "synthetic_final_id", "source_case_id", "generation_run_id", "generator_name",
         "generator_checkpoint", "modality", "label_kind", "label_channels", "rc_policy", "noise_type",
-        "sampling_method", "sampling_steps", "eta", "seed", "roi_bbox_available", "roi_x_min", "roi_x_max",
+        "sampling_method", "sampling_steps", "eta", "crop_size", "seed", "roi_bbox_available", "roi_x_min", "roi_x_max",
         "roi_y_min", "roi_y_max", "roi_z_min", "roi_z_max", "roi_volume_voxels", "lesion_voxels_in_roi",
-        "lesion_inside_roi_ratio", "nonroi_change_ratio", "brain_mask_overlap_ratio", "roi_boundary_mae",
+        "lesion_inside_roi_ratio", "nonroi_change_ratio", "protected_source_change_ratio",
+        "source_seg_change_ratio", "brain_mask_overlap_ratio", "roi_boundary_mae",
         "roi_boundary_gradient_jump", "roi_boundary_p95_jump", "z_continuity_score", "z_area_smoothness",
         "z_intensity_smoothness", "intensity_drift_p1", "intensity_drift_p50", "intensity_drift_p99",
-        "artifact_block_score", "artifact_ring_score", "artifact_noise_score", "et_t1c_contrast_ratio",
-        "snfh_t2f_contrast_ratio", "snfh_t2w_contrast_ratio", "rc_profile_score", "cross_modality_roi_corr",
-        "label_modality_alignment_score", "source_synth_roi_ssim", "label_source_synth_roi_ssim",
-        "synth_synth_ms_ssim", "nearest_real_roi_feature_distance", "duplicate_hash_hit", "feature_extractor",
-        "feature_fid_medical", "feature_mmd_medical", "teacher_model", "teacher_dice_mean",
-        "teacher_lesion_count_diff", "manual_visual_score", "quality_grade", "diffusion_quality_decision",
+        "artifact_block_score", "et_t1c_contrast_ratio",
+        "snfh_t2f_contrast_ratio", "snfh_t2w_contrast_ratio", "cross_modality_roi_corr",
+        "label_modality_alignment_score", "source_synth_roi_ssim", "label_source_seg_dice",
+        "teacher_model", "teacher_lesion_count_diff", "manual_visual_score", "quality_grade", "diffusion_quality_decision",
         "diffusion_quality_reason",
     ]
     with (dirs["qc"] / "diffusion_quality_metrics_template.csv").open("w", encoding="utf-8", newline="") as f:
@@ -2517,38 +2921,78 @@ def main() -> None:
     write_target_distribution(dirs, label_df, lesion_df)
     outputs.append(dirs["stats"] / "target_synthetic_distribution_v1.md")
 
-    met_df = met_source_csv(final_df, data_root)
-    met_path = dirs["manifests"] / "g1_met_source_cases_v1.csv"
-    met_df.to_csv(met_path, index=False)
-    outputs.append(met_path)
-
     mapping_df, _ = nnunet_mapping(final_df, data_root)
+    fake_t2w_ids = load_fake_t2w_case_ids(results_root)
+    mapping_df.insert(2, "patient_group", mapping_df["source_case_id"].map(patient_group))
+    mapping_df.insert(3, "t2w_status", mapping_df["source_case_id"].map(lambda value: "fake_or_broken" if value in fake_t2w_ids else "authentic"))
+    mapping_df.insert(4, "eligible_for_realonly", mapping_df["source_case_id"].map(lambda value: value not in fake_t2w_ids))
+    mapping_df.insert(5, "completion_required", mapping_df["source_case_id"].map(lambda value: value in fake_t2w_ids))
+    master_mapping_path = dirs["manifests"] / "nnunet_case_mapping_master.csv"
+    mapping_df.to_csv(master_mapping_path, index=False)
+    outputs.append(master_mapping_path)
+
+    realonly_df = mapping_df[mapping_df["eligible_for_realonly"] == True].copy()  # noqa: E712
     mapping_path = dirs["manifests"] / "nnunet_case_mapping_realonly.csv"
-    mapping_df.to_csv(mapping_path, index=False)
+    realonly_df.to_csv(mapping_path, index=False)
     outputs.append(mapping_path)
     write_dataset_json(dirs["nnunet_raw"] / "dataset.json")
     outputs.append(dirs["nnunet_raw"] / "dataset.json")
-    split = stable_split(mapping_df)
-    split_path = dirs["splits"] / "splits_final_fold0_realval.json"
-    write_json(split_path, split)
-    outputs.append(split_path)
-    train_val_test_split = create_train_val_test_split(
+
+    master_split = create_train_val_test_split(
         mapping_df.to_dict(orient="records"),
-        base_split=split,
-        val_fraction_of_train_pool=0.2,
-        seed="20260619",
+        base_split=None,
+        val_fraction_of_train_pool=0.10,
+        test_fraction=0.10,
+        seed="42",
+        anchor_case_ids=set(realonly_df["source_case_id"].astype(str)),
     )
-    train_val_test_split["source_split_json"] = "splits/splits_final_fold0_realval.json"
+    master_split["mapping_csv"] = "manifests/nnunet_case_mapping_master.csv"
+    master_split_path = dirs["splits"] / "splits_master_train_val_test.json"
+    master_membership_path = dirs["splits"] / "splits_master_train_val_test_membership.csv"
+    write_split_outputs(master_split, mapping_df.to_dict(orient="records"), master_split_path, master_membership_path)
+    outputs.extend([master_split_path, master_membership_path])
+
+    train_val_test_split = filter_split(
+        master_split,
+        set(realonly_df["nnunet_case_id"].astype(str)),
+        "realonly_patient_group_train_val_test",
+    )
     train_val_test_split["mapping_csv"] = "manifests/nnunet_case_mapping_realonly.csv"
     train_val_test_path = dirs["splits"] / "splits_final_train_val_test.json"
     train_val_test_membership_path = dirs["splits"] / "splits_final_train_val_test_membership.csv"
     write_split_outputs(
         train_val_test_split,
-        mapping_df.to_dict(orient="records"),
+        realonly_df.to_dict(orient="records"),
         train_val_test_path,
         train_val_test_membership_path,
     )
     outputs.extend([train_val_test_path, train_val_test_membership_path])
+
+    split_by_nnunet = {
+        str(nnunet_id): split_name
+        for split_name in ("train", "val", "test")
+        for nnunet_id in master_split[split_name]
+    }
+    v2_source_df = pd.DataFrame({
+        "source_case_id": mapping_df["source_case_id"],
+        "patient_group": mapping_df["patient_group"],
+        "nnunet_case_id": mapping_df["nnunet_case_id"],
+        "split": mapping_df["nnunet_case_id"].map(split_by_nnunet),
+        "t2w_status": mapping_df["t2w_status"],
+        "allowed_as_v2_source": mapping_df.apply(
+            lambda row: split_by_nnunet[str(row["nnunet_case_id"])] == "train" and bool(row["eligible_for_realonly"]),
+            axis=1,
+        ),
+        "t1n_path": mapping_df["t1n_source_path"],
+        "t1c_path": mapping_df["t1c_source_path"],
+        "t2w_path": mapping_df["t2w_source_path"],
+        "t2f_path": mapping_df["t2f_source_path"],
+        "seg_path": mapping_df["seg_source_path"],
+        "label_source": mapping_df["label_source"],
+    })
+    v2_source_path = dirs["manifests"] / "g1_v2_source_manifest.csv"
+    v2_source_df.to_csv(v2_source_path, index=False)
+    outputs.append(v2_source_path)
 
     write_templates(dirs)
     outputs.extend([
@@ -2586,6 +3030,8 @@ def main() -> None:
                 ("synthetic_generation_manifest", [dirs["manifests"] / f"synthetic_generation_manifest_{run_dir_name}.csv"]),
                 ("synthetic_candidate_manifest", [dirs["manifests"] / f"synthetic_candidate_manifest_{run_dir_name}.csv"]),
                 ("synthetic_accepted_manifest", [dirs["manifests"] / f"synthetic_accepted_manifest_{run_dir_name}.csv"]),
+                ("synthetic_accepted_evaluation_manifest", [dirs["manifests"] / f"synthetic_accepted_evaluation_manifest_{run_dir_name}.csv"]),
+                ("synthetic_pending_review_manifest", [dirs["manifests"] / f"synthetic_pending_review_manifest_{run_dir_name}.csv"]),
                 ("synthetic_rejected_manifest", [dirs["manifests"] / f"synthetic_rejected_manifest_{run_dir_name}.csv"]),
                 ("synthetic_normalized_mapping", [dirs["manifests"] / f"synthetic_normalized_mapping_{run_dir_name}.csv"]),
                 ("qc_metrics", [dirs["qc"] / f"qc_metrics_{run_dir_name}.csv"]),
@@ -2602,7 +3048,7 @@ def main() -> None:
         "final_qc_pass": int((final_df["final_qc_pass"] == True).sum()),  # noqa: E712
         "final_qc_fail": int((final_df["final_qc_pass"] != True).sum()),  # noqa: E712
         "lesions": len(lesion_df),
-        "met_usable_cases": int((met_df["usable_for_met96"] == True).sum()) if not met_df.empty else 0,  # noqa: E712
+        "v2_allowed_source_cases": int(v2_source_df["allowed_as_v2_source"].sum()),
         "synthetic_run_root": args.synthetic_run_root,
         "outputs": [str(p) for p in outputs],
     }, ensure_ascii=False, indent=2))

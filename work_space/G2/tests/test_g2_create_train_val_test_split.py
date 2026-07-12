@@ -17,6 +17,86 @@ def load_split_module():
 
 
 class TrainValTestSplitTest(unittest.TestCase):
+    def test_patient_group_never_crosses_splits(self):
+        mod = load_split_module()
+        mapping_rows = []
+        for idx, source_case_id in enumerate(
+            [
+                "BraTS-MET-00001-000",
+                "BraTS-MET-00001-001",
+                "BraTS-MET-00002-000",
+                "BraTS-MET-00003-000",
+                "BraTS-MET-00004-000",
+                "BraTS-MET-00005-000",
+                "BraTS-MET-00006-000",
+                "BraTS-MET-00007-000",
+                "BraTS-MET-00008-000",
+                "BraTS-MET-00009-000",
+            ],
+            start=1,
+        ):
+            mapping_rows.append(
+                {"nnunet_case_id": f"BraTSMET_{idx:06d}", "source_case_id": source_case_id}
+            )
+
+        result = mod.create_train_val_test_split(
+            mapping_rows,
+            val_fraction_of_train_pool=0.2,
+            test_fraction=0.2,
+            seed="42",
+        )
+        split_by_id = {
+            case_id: split_name
+            for split_name in ("train", "val", "test")
+            for case_id in result[split_name]
+        }
+        self.assertEqual(split_by_id["BraTSMET_000001"], split_by_id["BraTSMET_000002"])
+
+    def test_unanchored_completion_group_does_not_move_anchor(self):
+        mod = load_split_module()
+        mapping_rows = [
+            {
+                "nnunet_case_id": f"BraTSMET_{idx:06d}",
+                "source_case_id": source_case_id,
+            }
+            for idx, source_case_id in enumerate(
+                [
+                    "BraTS-MET-00001-000",
+                    "BraTS-MET-00002-000",
+                    "BraTS-MET-00003-000",
+                    "BraTS-MET-00004-000",
+                    "BraTS-MET-00005-000",
+                    "BraTS-MET-00006-000",
+                    "BraTS-MET-00007-000",
+                    "BraTS-MET-00008-000",
+                    "BraTS-MET-00009-000",
+                    "BraTS-MET-00010-000",
+                    "BraTS-MET-99999-000",
+                ],
+                start=1,
+            )
+        ]
+        anchor_ids = {row["source_case_id"] for row in mapping_rows[:-1]}
+        anchored_only = mod.create_train_val_test_split(
+            mapping_rows[:-1],
+            val_fraction_of_train_pool=0.2,
+            test_fraction=0.2,
+            seed="42",
+            anchor_case_ids=anchor_ids,
+        )
+        with_completion = mod.create_train_val_test_split(
+            mapping_rows,
+            val_fraction_of_train_pool=0.2,
+            test_fraction=0.2,
+            seed="42",
+            anchor_case_ids=anchor_ids,
+        )
+        for split_name in ("train", "val", "test"):
+            self.assertEqual(
+                set(anchored_only[split_name]),
+                set(with_completion[split_name]) - {"BraTSMET_000011"},
+            )
+
     def test_legacy_val_is_locked_as_test_and_train_pool_is_split(self):
         mod = load_split_module()
         mapping_rows = [
@@ -81,6 +161,7 @@ class TrainValTestSplitTest(unittest.TestCase):
             {row["split"] for row in rows},
             {"train", "val", "test"},
         )
+        self.assertTrue(all(row["patient_group"] for row in rows))
 
     def setUp(self):
         import tempfile
