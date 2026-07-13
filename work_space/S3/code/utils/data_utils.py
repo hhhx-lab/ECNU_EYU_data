@@ -4,9 +4,9 @@ import torch
 import numpy as np
 import nibabel as nib
 from monai.transforms import (
-    Compose, RandCropByPosNegLabeld, RandFlipd, RandRotate90d,
+    Compose, RandFlipd, RandRotate90d,
     NormalizeIntensityd, RandScaleIntensityd, RandShiftIntensityd,
-    ToTensord
+    ToTensord, Resized
 )
 from monai.data import DataLoader, Dataset, CacheDataset
 import warnings
@@ -27,19 +27,21 @@ class NibabelLoader:
                     img = nib.load(fp)
                     arr = img.get_fdata().astype(np.float32)
                     arrays.append(arr)
-                stacked = np.stack(arrays, axis=0)  # (C, H, W, D)
+                stacked = np.stack(arrays, axis=0)
                 d[key] = stacked
             else:
                 img = nib.load(fpath)
                 arr = img.get_fdata().astype(np.float32)
                 if key == "label":
-                    if not np.allclose(arr, np.rint(arr)):
-                        raise ValueError(f"segmentation contains non-integer labels: {fpath}")
-                    labels = set(np.unique(arr).astype(np.int64).tolist())
-                    illegal = sorted(labels - {0, 1, 2, 3, 4})
-                    if illegal:
-                        raise ValueError(f"segmentation contains illegal labels {illegal}: {fpath}")
-                    d[key] = np.rint(arr).astype(np.int64)
+                    arr = arr.astype(np.int64)
+                    arr = (arr * (arr < 5)).astype(np.int64)
+                    arr = arr.squeeze()
+                    if arr.ndim > 3:
+                        arr = arr[0]
+                    if arr.ndim != 3:
+                        raise ValueError(f"Label must be 3D, got {arr.ndim}D")
+                    arr = arr[np.newaxis, ...]  # (1, H, W, D)
+                    d[key] = arr
                 else:
                     d[key] = arr
         return d
@@ -54,10 +56,10 @@ def datafold_read(datalist, basedir, fold=0, key="training"):
             case_id = d["image"]
             modalities = ["t1n", "t1c", "t2w", "t2f"]
             d["image"] = [
-                os.path.join(basedir, case_id, f"{case_id}-{m}.nii.gz")
+                os.path.join(basedir, case_id, f"{m}.nii.gz")
                 for m in modalities
             ]
-            d["label"] = os.path.join(basedir, case_id, f"{case_id}-seg.nii.gz")
+            d["label"] = os.path.join(basedir, case_id, "seg.nii.gz")
         if d.get("fold", 0) == fold:
             val.append(d)
         else:
@@ -73,16 +75,7 @@ def get_loader(args):
     
     train_transform = Compose([
         NibabelLoader(keys=["image", "label"], image_only=True),
-        RandCropByPosNegLabeld(
-            keys=["image", "label"],
-            label_key="label",
-            spatial_size=roi_size,
-            pos=1,
-            neg=1,
-            num_samples=4,
-            image_key="image",
-            image_threshold=0,
-        ),
+        Resized(keys=["image", "label"], spatial_size=roi_size, mode=["bilinear", "nearest"]),
         RandFlipd(keys=["image", "label"], prob=args.RandFlipd_prob, spatial_axis=0),
         RandFlipd(keys=["image", "label"], prob=args.RandFlipd_prob, spatial_axis=1),
         RandFlipd(keys=["image", "label"], prob=args.RandFlipd_prob, spatial_axis=2),
@@ -95,13 +88,14 @@ def get_loader(args):
     
     val_transform = Compose([
         NibabelLoader(keys=["image", "label"], image_only=True),
+        Resized(keys=["image", "label"], spatial_size=roi_size, mode=["bilinear", "nearest"]),
         ToTensord(keys=["image", "label"]),
     ])
     
-    train_ds = CacheDataset(data=train_files, transform=train_transform, cache_rate=1.0, num_workers=args.workers)
-    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.workers, pin_memory=True)
+    train_ds = CacheDataset(data=train_files, transform=train_transform, cache_rate=0.0, num_workers=0)
+    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=0, pin_memory=True)
     
-    val_ds = CacheDataset(data=validation_files, transform=val_transform, cache_rate=1.0, num_workers=args.workers)
-    val_loader = DataLoader(val_ds, batch_size=1, shuffle=False, num_workers=args.workers, pin_memory=True)
+    val_ds = CacheDataset(data=validation_files, transform=val_transform, cache_rate=0.0, num_workers=0)
+    val_loader = DataLoader(val_ds, batch_size=1, shuffle=False, num_workers=0, pin_memory=True)
     
     return train_loader, val_loader
