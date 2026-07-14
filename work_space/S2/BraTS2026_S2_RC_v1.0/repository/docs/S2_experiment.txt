@@ -16,6 +16,21 @@ CONDA_ENV=brats2026_s2
 Python 用户态依赖见 repository/requirements.txt。PyTorch 必须使用与服务器 CUDA/driver 兼容的构建，不要为了对齐 requirements 盲目覆盖已能正常识别 GPU 的 PyTorch。
 不要使用 sudo pip，不要混用系统 Python。
 
+官方评估环境
+--------------
+分割排行榜指标使用独立 CPU 环境，不安装到 brats2026_s2：
+CONDA_ENV=brats_eval
+Python 3.10
+BraTS-evaluation 0.0.8
+Panoptica 2.1.0
+
+在项目根目录创建/验证：
+bash work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/setup_brats_eval_env.sh
+bash work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/setup_brats_eval_env.sh --check
+
+官方代码快照：data_space/task1_2026/reference_code/BraTS_evaluation/
+该快照与官方 v0.0.8/commit 88e3e39 一致。
+
 入口
 ----
 准备：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm
@@ -28,10 +43,18 @@ Python 用户态依赖见 repository/requirements.txt。PyTorch 必须使用与�
 PREP_JOB=$(sbatch --parsable --export=ALL,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
 sbatch --dependency=afterok:${PREP_JOB} --export=ALL,S2_EXPERIMENT_MODE=current work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
 
+训练完成后单独运行官方 validation 评估：
+sbatch --export=ALL,S2_EXPERIMENT_MODE=current,CONDA_ENV=brats_eval work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
+
+不运行 G2 synthetic QC 来代替此步。G2 QC 检查合成数据；S2 指标必须由官方 BraTS_evaluation 计算。
+
 输出
 ----
 模型：work_space/S2/data/nnunet_results/Dataset263_BraTS2026_MET_RealOnly_Current/nnUNetTrainerBraTS2026RC__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth
 划分：work_space/S2/BraTS2026_S2_RC_v1.0/repository/data/splits/current/
+官方评估 JSON：work_space/S2/results/realonly_current_fixed_validation/panoptica_evaluation_summary.json
+排行榜指标 CSV：work_space/S2/results/realonly_current_fixed_validation/leaderboard_metrics.csv
+后两个文件只有在官方评估 Slurm 成功后才会生成，不是 GitHub 预置产物。
 
 历史模式
 --------

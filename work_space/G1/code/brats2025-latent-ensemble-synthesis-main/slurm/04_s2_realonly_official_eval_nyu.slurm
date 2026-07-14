@@ -20,6 +20,8 @@ PROJ="${PROJ:-/scratch/bf2260/ECNU_EYU_data}"
 S2_REPO="${PROJ}/work_space/S2/BraTS2026_S2_RC_v1.0/repository"
 CONDA_SH="${CONDA_SH:-/share/apps/anaconda3/2025.06/etc/profile.d/conda.sh}"
 CONDA_ENV="${CONDA_ENV:-brats_eval}"
+EXPECTED_BRATS_EVAL_VERSION="${EXPECTED_BRATS_EVAL_VERSION:-0.0.8}"
+EXPECTED_PANOPTICA_VERSION="${EXPECTED_PANOPTICA_VERSION:-2.1.0}"
 S2_EXPERIMENT_MODE="${S2_EXPERIMENT_MODE:-current}"
 
 case "${S2_EXPERIMENT_MODE}" in
@@ -99,6 +101,22 @@ for command_name in brats-evaluate brats-parse-metrics; do
         exit 1
     fi
 done
+
+ACTUAL_BRATS_EVAL_VERSION="$(python -c 'import importlib.metadata as m; print(m.version("BraTS-evaluation"))')"
+ACTUAL_PANOPTICA_VERSION="$(python -c 'import importlib.metadata as m; print(m.version("panoptica"))')"
+if [[ "${ACTUAL_BRATS_EVAL_VERSION}" != "${EXPECTED_BRATS_EVAL_VERSION}" ]]; then
+    echo "BraTS-evaluation version mismatch: expected=${EXPECTED_BRATS_EVAL_VERSION}, actual=${ACTUAL_BRATS_EVAL_VERSION}" >&2
+    echo "Run work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/setup_brats_eval_env.sh before evaluation." >&2
+    exit 1
+fi
+if [[ "${ACTUAL_PANOPTICA_VERSION}" != "${EXPECTED_PANOPTICA_VERSION}" ]]; then
+    echo "Panoptica version mismatch: expected=${EXPECTED_PANOPTICA_VERSION}, actual=${ACTUAL_PANOPTICA_VERSION}" >&2
+    echo "Run work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/setup_brats_eval_env.sh before evaluation." >&2
+    exit 1
+fi
+python -c "import brats_evaluation, nibabel, pandas, panoptica, SimpleITK; print('BraTS evaluation imports OK')"
+echo "BraTS-evaluation version: ${ACTUAL_BRATS_EVAL_VERSION}"
+echo "Panoptica version: ${ACTUAL_PANOPTICA_VERSION}"
 
 mkdir -p "${REFERENCE_VIEW}" "${PREDICTION_VIEW}"
 find "${REFERENCE_VIEW}" -mindepth 1 -maxdepth 1 -type l -delete

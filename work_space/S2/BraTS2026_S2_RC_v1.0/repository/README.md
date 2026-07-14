@@ -24,4 +24,15 @@ sbatch --dependency=afterok:${PREP_JOB} --export=ALL,S2_EXPERIMENT_MODE=current 
 
 Do not add `--array`. Preparation checks the count contract, patient-group isolation, raw/preprocessed ID equality, and label integrity before training.
 
+After training, create/check the dedicated official-evaluation environment and submit the CPU evaluation job:
+
+```bash
+bash work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/setup_brats_eval_env.sh
+
+sbatch --export=ALL,S2_EXPERIMENT_MODE=current,CONDA_ENV=brats_eval \
+  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
+```
+
+The job runs `BraTS-evaluation==0.0.8` with the official MET config and writes `panoptica_evaluation_summary.json` plus `leaderboard_metrics.csv` under `work_space/S2/results/realonly_current_fixed_validation/`. G2 synthetic-data QC is not a substitute for this segmentation evaluation.
+
 Historical Dataset260 recovery is available only through `S2_EXPERIMENT_MODE=legacy`. See `docs/S2_服务器运行手册.md`.
