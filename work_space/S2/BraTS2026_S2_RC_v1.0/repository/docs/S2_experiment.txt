@@ -36,7 +36,7 @@ bash work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/setup_brats_eval_env.
 准备：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm
 训练：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm
 验证：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
-推理：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+官方179例推理/打包：work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
 
 运行
 ----
@@ -48,6 +48,12 @@ sbatch --export=ALL,S2_EXPERIMENT_MODE=current,CONDA_ENV=brats_eval work_space/G
 
 不运行 G2 synthetic QC 来代替此步。G2 QC 检查合成数据；S2 指标必须由官方 BraTS_evaluation 计算。
 
+这里的 validation 评估是 103 例内部 proxy，不是 Synapse 提交。checkpoint 确认后，对独立的 179 例官方无标签 validation 运行：
+sbatch --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_TARGET=official_validation work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+
+默认官方输入：work_space/G1/data/raw/Validation/
+默认提交包：work_space/S2/results/realonly_current_official_validation_submission/S2_realonly_current_Task1_validation_179.zip
+
 输出
 ----
 模型：work_space/S2/data/nnunet_results/Dataset263_BraTS2026_MET_RealOnly_Current/nnUNetTrainerBraTS2026RC__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth
@@ -55,6 +61,7 @@ sbatch --export=ALL,S2_EXPERIMENT_MODE=current,CONDA_ENV=brats_eval work_space/G
 官方评估 JSON：work_space/S2/results/realonly_current_fixed_validation/panoptica_evaluation_summary.json
 排行榜指标 CSV：work_space/S2/results/realonly_current_fixed_validation/leaderboard_metrics.csv
 后两个文件只有在官方评估 Slurm 成功后才会生成，不是 GitHub 预置产物。
+Synapse 只上传 179 例提交 ZIP，不上传上述内部 JSON/CSV。
 
 历史模式
 --------

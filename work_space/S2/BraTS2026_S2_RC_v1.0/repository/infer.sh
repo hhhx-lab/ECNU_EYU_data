@@ -80,6 +80,7 @@ if [[ ! -d "${INPUT_FOLDER}" ]]; then
 fi
 
 python - "${INPUT_FOLDER}" <<'PY'
+import os
 import re
 import sys
 from collections import defaultdict
@@ -113,6 +114,12 @@ if unexpected or invalid:
         "Invalid S2 inference input: "
         f"unexpected_nifti={unexpected[:10]}, invalid_channels={list(invalid.items())[:10]}"
     )
+expected_count = int(os.environ.get("S2_EXPECTED_INFERENCE_COUNT", "0"))
+if expected_count and len(channels_by_case) != expected_count:
+    raise SystemExit(
+        "S2 inference case-count mismatch: "
+        f"expected={expected_count}, actual={len(channels_by_case)}"
+    )
 print(f"S2 inference input verified: {len(channels_by_case)} cases, channels 0000-0003")
 PY
 
@@ -136,3 +143,31 @@ nnUNetv2_predict \
     -c "${S2_CONFIGURATION}" \
     -tr "${S2_TRAINER}" \
     -f 0
+
+python - "${INPUT_FOLDER}" "${OUTPUT_FOLDER}" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+input_root = Path(sys.argv[1])
+output_root = Path(sys.argv[2])
+pattern = re.compile(r"^(.+)_([0-9]{4})\.nii\.gz$")
+expected_ids = {
+    match.group(1)
+    for path in input_root.iterdir()
+    if path.is_file() and (match := pattern.match(path.name)) is not None
+}
+actual_ids = {
+    path.name.removesuffix(".nii.gz")
+    for path in output_root.iterdir()
+    if path.is_file() and path.name.endswith(".nii.gz")
+}
+if actual_ids != expected_ids:
+    raise SystemExit(
+        "S2 inference output coverage mismatch: "
+        f"missing={sorted(expected_ids - actual_ids)[:10]}, "
+        f"unexpected={sorted(actual_ids - expected_ids)[:10]}, "
+        f"expected_count={len(expected_ids)}, actual_count={len(actual_ids)}"
+    )
+print(f"S2 inference output verified: {len(actual_ids)} predictions")
+PY

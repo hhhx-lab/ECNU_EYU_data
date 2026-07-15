@@ -35,4 +35,13 @@ sbatch --export=ALL,S2_EXPERIMENT_MODE=current,CONDA_ENV=brats_eval \
 
 The job runs `BraTS-evaluation==0.0.8` with the official MET config and writes `panoptica_evaluation_summary.json` plus `leaderboard_metrics.csv` under `work_space/S2/results/realonly_current_fixed_validation/`. G2 synthetic-data QC is not a substitute for this segmentation evaluation.
 
+The 103-case internal validation output is not a Synapse submission. After the checkpoint is accepted, run the separate 179-case official validation pipeline:
+
+```bash
+sbatch --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_TARGET=official_validation \
+  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+```
+
+The job reads `work_space/G1/data/raw/Validation/`, validates and flattens all 179 four-modality cases, predicts with the fixed model, checks official filename/geometry/label rules, and writes `work_space/S2/results/realonly_current_official_validation_submission/S2_realonly_current_Task1_validation_179.zip`.
+
 Historical Dataset260 recovery is available only through `S2_EXPERIMENT_MODE=legacy`. See `docs/S2_服务器运行手册.md`.

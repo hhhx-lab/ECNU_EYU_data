@@ -41,3 +41,17 @@ nnunet_case_mapping_realonly_train_val.csv
 `Dataset260_BraTS2026_MET_RealOnly` uses historical `828/207/259`. Legacy recovery derives train/val from the actual Dataset260 and `fold_0/validation`, uses the master mapping to recover source identities, and writes separate artifacts under `data/splits/legacy/`.
 
 Legacy Dataset260 is not a valid paired baseline for the current G2 split.
+
+## Official Unlabeled Validation
+
+The downloadable Task 1 validation set is independent of the internal split:
+
+```text
+source: work_space/G1/data/raw/Validation/
+count:  179 cases
+files:  t1n/t1c/t2w/t2f only; no seg
+```
+
+`scripts/06_prepare_official_validation.py` validates the source tree and creates a flat inference view under `work_space/S2/data/official_validation_nnunet_input/`. Source case IDs are preserved, so nnU-Net emits official-compatible filenames such as `BraTS-MET-00833-000.nii.gz`.
+
+This set is inference-only. It must never be added to `imagesTr`, `labelsTr`, the 823/103 split, model selection, or local metric computation because its ground truth is private.

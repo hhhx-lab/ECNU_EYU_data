@@ -32,8 +32,8 @@ S2_TRAIN_JOB=$(sbatch --parsable --dependency=afterok:${S2_PREP_JOB} --export=AL
 # S2: run BraTS metrics on the current fixed 103-case validation set
 sbatch --dependency=afterok:${S2_TRAIN_JOB} --export=ALL,S2_EXPERIMENT_MODE=current,CONDA_ENV=brats_eval work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_official_eval_nyu.slurm
 
-# S2: single fixed-split checkpoint inference
-sbatch --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_INPUT=/path/to/nnunet_input work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+# S2: official 179-case validation inference and Synapse ZIP packaging
+sbatch --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_TARGET=official_validation work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
 
 # S1: original-data MONAI multitask real-only baseline
 sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
@@ -63,7 +63,7 @@ sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_infe
 | `04_s2_realonly_prepare_nyu.slurm` | CPU | 24h | Build current Dataset263 fixed split and preprocessing; optional legacy recovery |
 | `04_s2_realonly_nyu.slurm` | 1 GPU | 96h | S2 fixed-split training; skip complete model or resume interruption |
 | `04_s2_realonly_official_eval_nyu.slurm` | CPU | 24h | Run BraTS MET metrics on the fixed validation set |
-| `04_s2_realonly_infer_nyu.slurm` | 1 GPU | 24h | Final S2 inference with the single fixed-split checkpoint |
+| `04_s2_realonly_infer_nyu.slurm` | 1 GPU | 24h | Official 179-case inference, spatial/label audit, and Synapse ZIP packaging; generic mode remains available |
 | `05_s1_realonly_nyu.slurm` | 1 GPU | 96h | S1 MONAI multitask real-only baseline from G2 mapping/split |
 
 ## S1/S2 Real-Only Baselines
@@ -149,6 +149,7 @@ sbatch --export=ALL,PROJ=/path/to/ECNU_EYU_data,CONDA_ENV=brats2026_s1 work_spac
 5. **Submit from the project root and ensure `logs/` exists before submitting.** The Slurm `--output/--error` paths are opened before the shell body runs.
 6. **If your project root is not `/scratch/bf2260/ECNU_EYU_data`, pass `PROJ=/path/to/ECNU_EYU_data` at submit time.**
 7. **G1 data preparation uses `work_space/G2/results/manifests/real_train_manifest.csv` by default.** This is the mixed raw-layout manifest covering root-level cases and `UCSD - Training` cases. Override with `G2_REAL_MANIFEST=/path/to/manifest.csv` only if the server data layout is intentionally different.
+8. **S2 official inference requires the extracted 179-case validation set at `work_space/G1/data/raw/Validation/`.** It must contain four modalities per case and no `seg`; override with `S2_OFFICIAL_VALIDATION_ROOT=/absolute/path/to/Validation` only when necessary.
 
 ## Monitoring
 
