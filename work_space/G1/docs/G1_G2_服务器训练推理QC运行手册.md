@@ -1,13 +1,13 @@
 # G1-G2 服务器训练、生成、QC 总运行手册
 
-更新日期：2026-07-12
+更新日期：2026-07-15
 
 ## 1. 当前只有两条正式产线
 
 | 产线 | 当前代码 | 数据含义 | 模型专用手册 |
 |---|---|---|---|
 | 缺失 T2W V3 | `work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3` | 修复原病例 T2W | `slurm/README.md` |
-| Diffusion V2 | `work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN` | 新增四模态 augmentation | `README_DIFFUSION.md`、`slurm/README.md` |
+| Diffusion augmentation V3 | `work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN` | 新增四模态 augmentation | `README_DIFFUSION.md`、`slurm/README.md` |
 
 旧 `brats2025-latent-ensemble-synthesis-main-v2` 不再是缺失 T2W 正式训练入口。历史代码和结果可保留追溯，但新任务使用 V3。
 
@@ -27,7 +27,7 @@
 
 V3 保留原病例身份，只替换 T2W，不增加 synthetic 病例数。
 
-### 2.2 Diffusion V2 augmentation
+### 2.2 Diffusion augmentation V3
 
 ```text
 823 个 authentic master-train source
@@ -157,23 +157,24 @@ G2 检查：
 
 无 `g2_approval_manifest.csv` 时技术通过病例仍为 pending。
 
-## 8. Diffusion V2 操作顺序
+## 8. Diffusion augmentation V3 操作顺序
 
 进入：
 
 ```bash
-cd "${PROJECT_ROOT}/work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN"
+cd "${PROJECT_ROOT}/work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN"
 mkdir -p logs
 ```
 
 按 `slurm/README.md` 执行：
 
-1. `01_create_csv_v2_nyu.slurm`
-2. `02_train_4modal_v2_nyu.slurm`
-3. `03_eval_v2_nyu.slurm`
-4. `04_generate_visual_v2_nyu.slurm`
+1. `00_smoke_v3_ecnu.slurm`
+2. `00_preflight_crop64_v3_ecnu.slurm`
+3. `01_prepare_dataset_v3_ecnu.slurm`
+4. `02_train_4modal_v3_ecnu.slurm`
+5. `03_eval_4modal_v3_ecnu.slurm`
 
-`04_generate_visual` 只生成一个可视化病例，不是正式批量 augmentation 入口。正式批量生成需由操作者另行提交生产任务，并确保每个 source 来自 `g1_v2_source_manifest.csv` 的 allowed 行。
+四模态训练是四个独立单卡 A100 array task。正式 source 只来自 `g1_v2_source_manifest.csv` 的 823 个 allowed train；103 个 val 只评估。
 
 V2 raw 输出特性：
 
@@ -185,9 +186,9 @@ V2 raw 输出特性：
 
 因此 V2 raw 不能直接给 S1-S5。
 
-## 9. V2 进入 G2
+## 9. Diffusion augmentation V3 进入 G2
 
-正式 V2 raw root 必须带 `generation_config.json`，其中必须记录 run ID、seed、checkpoint、source manifest、`sampling_method`、`sampling_steps`、`eta` 和 `crop_size`，然后运行：
+正式 raw root 必须带 `generation_config.json`，其中必须记录 run ID、seed、checkpoint、source manifest、`sampling_method`、`sampling_steps`、`eta` 和 `crop_size`，然后运行：
 
 ```bash
 python work_space/G2/code/g2_v2_compose_augmentation.py \
@@ -201,6 +202,8 @@ python work_space/G2/code/g2_synthetic_raw_intake_qc.py \
 ```
 
 composer 会恢复 source 强度和 geometry、复制 corrected seg、保留非 generation support 区域并生成 config/log/manifest。任一病例 composition 失败时脚本返回非 0，不得跳过错误直接训练。输出目录非空时默认拒绝；只有确认整轮重建时才加 `--overwrite`，该选项会先清空整个 composed run。
+
+G2 脚本名中的 `v2` 是 augmentation 接口版本名；当前生产模型代码已经升级为 `main 3`，不要因此改回旧模型目录。
 
 ## 10. G2 审批
 

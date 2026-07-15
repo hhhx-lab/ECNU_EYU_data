@@ -75,6 +75,23 @@ work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/metadata/
 work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/nnUNet_results/
 work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.egg-info/
 
+# G1 Diffusion V3 imported code: keep source/docs/scripts, exclude data and runtime artifacts.
+# Model parameter files are not ignored here; .gitattributes sends *.pt/*.pth/*.ckpt to Git LFS.
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/*.pdf
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/*.png
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/*.jpg
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/*.jpeg
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/*.pkl
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/DataSet/**
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/New_DataSet/
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/predictions/
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/results/
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/eval_results/
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/runs/
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/metadata/
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/nnUNet_results/
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/**/*.egg-info/
+
 # G1 shared data workspace: keep only the lightweight skeleton in git
 work_space/G1/data/raw/**
 !work_space/G1/data/raw/.gitkeep

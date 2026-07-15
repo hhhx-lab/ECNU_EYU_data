@@ -1,0 +1,51 @@
+G1 Diffusion augmentation V3 环境清单
+=====================================
+
+适用代码：
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN
+
+一、ECNU 已验证环境
+1. 调度系统：Slurm。
+2. 正式训练分区：a100。
+3. 每个模态：1 张 A100；四模态用 array 0-3 并行排队。
+4. 数据预处理分区：cpu_96G。
+5. Conda 环境：segmamba。
+6. Python：3.11.13。
+7. PyTorch：2.6.0+cu124。
+8. MONAI：1.4.0。
+9. nibabel：5.4.2。
+10. NumPy：1.26.4。
+11. GPU smoke 已验证：Tesla V100 32GB。
+12. 正式宽网络 64^3、batch=4 已在 V100 32GB 完成一步训练。
+
+二、运行时核心包
+1. torch，必须能访问 CUDA。
+2. monai。
+3. nibabel。
+4. numpy < 2.0。
+5. scipy。
+6. pandas。
+7. matplotlib。
+8. transformers（当前环境随其他项目已安装；本线仅间接导入）。
+
+三、固定启动方式
+脚本直接使用：
+/public/home/${USER}/.conda/envs/segmamba/bin/python
+
+不在 Slurm 作业中安装包，不使用 sudo pip，不混用系统 Python。
+
+四、torch.compile 限制
+ECNU /usr/bin/gcc 为 4.8.5，缺少 Triton 编译所需 stdatomic.h。
+真实预检已证明 --use_compile 会在第一步失败。因此正式默认：
+USE_COMPILE=0
+
+当前加速方式：AMP、TF32、cuDNN benchmark，以及四模态四卡任务并行。
+只有管理员提供并验证新 GCC 后，才可改为 USE_COMPILE=1。
+
+五、验收命令
+sbatch slurm/00_smoke_v3_ecnu.slurm
+sbatch slurm/00_preflight_crop64_v3_ecnu.slurm
+
+日志必须分别出现：
+SMOKE_TEST_PASS
+CROP64_BATCH4_EAGER_PASS

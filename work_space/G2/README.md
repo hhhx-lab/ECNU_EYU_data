@@ -11,6 +11,8 @@ G2 接收 G1 生成结果，负责数据身份、标准化、质量控制、训�
 | Diffusion V2 | segmentation-conditioned augmentation | 先 composition，再作为新增 synthetic train case |
 | Missing-T2W V3 | 缺失模态修复 | 保留真实病例 ID，只替换对应 T2W |
 
+> 版本说明（2026-07-15）：表中的 `Diffusion V2` 是 G2 augmentation 接口名。当前 G1 生产模型代码已升级为 `work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN`；G2 仍使用 `g2_v2_compose_augmentation.py` 接收其输出，不代表继续运行旧 `main 2` 模型。
+
 ## 唯一数据口径
 
 | 文件 | 用途 |

@@ -1,5 +1,7 @@
 # G1 Diffusion V2 计划交付书
 
+> **历史归档，禁止作为新任务入口（2026-07-15）**：本文记录旧 `main 2` 方案。当前正式模型已升级到 `work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN`，服务器执行以 `G1_diffusion_augmentation服务器训练手册.md` 和新代码目录的 `slurm/README.md` 为准。G2 中保留的 `v2` 名称只是 augmentation 接口名。
+
 更新日期：2026-07-06
 
 适用对象：负责在服务器上运行 G1 diffusion augmentation V2 线的操作者。

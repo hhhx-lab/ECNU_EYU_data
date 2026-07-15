@@ -1,241 +1,221 @@
-# G1 diffusion augmentation 服务器训练手册
+# G1 Diffusion augmentation V3 服务器训练手册
 
-更新日期：2026-06-21
-适用对象：负责在服务器上跑 G1 diffusion augmentation 线的操作者。
+更新日期：2026-07-15
 
-## 重要说明：这不是 V2 Slurm 正式入口
+## 1. 任务边界
 
-这份手册保留为旧 diffusion augmentation 手动流程说明，不能直接当作当前 V2 服务器 Slurm 操作入口。
+本线输入真实病例的 `seg` 和四个完整模态，学习从分割条件生成四模态病灶影像，用于后续 synthetic augmentation。
 
-当前 V2 服务器 Slurm 正式入口在：
+本线不是缺失 T2W 填补算法。缺失 T2W V3 保留原病例 ID，只修复 T2W；本线会在 G2 composer 后形成新的 synthetic 病例。
 
-```text
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/slurm/
-```
-
-当前 V2 计划和服务器操作口径以这份文档为准：
+正式代码唯一入口：
 
 ```text
-work_space/G1/docs/G1_diffusion_V2_计划交付书.md
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN
 ```
 
-如果要跑 V2，请优先按 V2 计划交付书和 `slurm/README.md` 执行，不要把本手册里的旧路径、旧命令和 V2 Slurm 混用。
+模型参数细节见该目录 `README_DIFFUSION.md`，Slurm 参数和顺序见 `slurm/README.md`。
 
-## 0. 先分清两条 G1 线
+## 2. 数据口径
 
-G1 现在有两条完全不同的线，不要混着跑：
-
-| 代码目录 | 任务 | 输入 | 输出 | 当前用途 |
-|---|---|---|---|---|
-| `work_space/G1/code/brats2025-latent-ensemble-synthesis-main` | 缺失模态填补 | `t1n/t1c/t2f/seg`，目标补 `t2w` | `work_space/G1/data/output/<case_id>/<case_id>-t2w.nii.gz` | 先补 fake/broken T2W 病例 |
-| `work_space/G1/code/BraTS_2023_2024_solutions-main/Segmentation_Tasks/GliGAN` | diffusion augmentation | `seg` 条件，训练时用完整 `t1n/t1c/t2w/t2f/seg` | 每个 synthetic case 的 `t1c/t1n/t2w/t2f/seg` | 后续做样本增强 |
-
-这份手册只讲第二条线。
-
-## 1. 共享目录约定
-
-原始数据只挂一次：
+唯一 source manifest：
 
 ```text
-work_space/G1/data/raw/
+work_space/G2/results/manifests/g1_v2_source_manifest.csv
 ```
 
-如果要做本地镜像缓存，优先用：
+正式准备脚本固定得到：
+
+| split | authentic 病例 | 行为 |
+|---|---:|---|
+| train | 823 | 参与训练 |
+| val | 103 | 只参与验证 |
+| test | 104 | locked，不建立训练视图 |
+
+265 个 fake/broken T2W 病例不进入本线。患者组 `BraTS-MET-xxxxx` 不得跨 split。两份 corrected seg 必须按 manifest 覆盖。
+
+ECNU 原始数据可以保持扁平布局：
 
 ```text
-work_space/G1/data/diffusion_cache/
+/public/home/${USER}/data/<case_id>/
+  t1n.nii.gz
+  t1c.nii.gz
+  t2w.nii.gz
+  t2f.nii.gz
+  seg.nii.gz
 ```
 
-不要再用历史缓存目录作为默认入口。所有缓存都应按本轮脚本重新生成。
-
-## 2. 先确认前置文件
-
-训练和缓存构建都依赖 G2 已经跑完的真实数据清单：
-
-```text
-work_space/G2/results/manifests/real_train_manifest.csv
-work_space/G2/results/manifests/nnunet_case_mapping_realonly.csv
-work_space/G2/results/qc/official_fake_t2w_cases_by_gzip_header_2026-06-15.csv
-```
-
-如果需要补充校验，还会用到：
-
-```text
-work_space/G2/results/splits/splits_final_train_val_test.json
-```
-
-如果这些文件没刷新，先停，不要直接开始训练。
+`prepare_dataset_from_g2_manifest.py` 会创建标准命名软链接，无需复制原始数据。
 
 ## 3. 环境
 
-建议单独 Conda 或 uv 环境，不要混系统 Python、Homebrew Python 或 `sudo pip`。
-
-常见依赖：
+当前复用已经验证的独立 Conda 环境：
 
 ```text
-torch
-monai
-nibabel
-numpy
-pandas
-scipy
-tqdm
-matplotlib
+/public/home/${USER}/.conda/envs/segmamba/bin/python
 ```
 
-## 4. 先建立可选的 diffusion 缓存
+版本和限制见：
 
-如果服务器想先做一份共享缓存，用这个脚本：
+```text
+work_space/G1/docs/G1_Diffusion_V3环境清单.txt
+```
+
+禁止 `sudo pip`、禁止在作业中安装包、禁止混用系统 Python。ECNU GCC 4.8 不支持当前 Triton 编译，正式任务保持 `USE_COMPILE=0`。
+
+## 4. 服务器目录
+
+正式隔离根目录：
 
 ```bash
-cd work_space/G1/code/BraTS_2023_2024_solutions-main/Segmentation_Tasks/GliGAN
-python scripts/prepare_diffusion_dataset.py \
-  --dataset-root ../../../../data/diffusion_cache \
-  --mode symlink
+export PROD_ROOT=/public/home/${USER}/g1_diffusion_v3_production_20260715
 ```
 
-这一步会：
+结构：
 
-1. 从 G2 的 `real_train_manifest.csv` 中筛出当前可训练病例。
-2. 只保留 `BraTS-MET-*`、`final_qc_pass=True`、四模态加 `seg` 都完整的病例。
-3. 自动排除 fake/broken T2W 病例。
-4. 每次重建前先清空旧缓存，避免历史产物和旧 smoke test 混进来。
+```text
+${PROD_ROOT}/
+  code/                 # 已验证代码快照
+  manifests/            # G2 source manifest
+  corrected_labels/     # corrected seg
+  DataSet/              # 926 病例软链接视图
+  splits/current/       # membership 和 lesions.csv
+  checkpoints/          # 四模态 checkpoint
+  eval/                 # 103 val 指标
+  logs/                 # Slurm 日志
+```
 
-如果你不需要缓存，直接跑 `csv_creator.py` 也可以。
+大数据、checkpoint、eval 输出不提交 Git。
 
-## 5. 创建训练 CSV
+## 5. 一次性提交生产链
 
-在 `GliGAN` 目录下运行：
+smoke、正式尺寸预检和 CPU 数据准备使用不同资源，可以并行；四模态训练必须等待三者全部成功：
 
 ```bash
-python src/train/csv_creator.py \
-  --dataset BRATS_2026 \
-  --datadir ../../../../data/raw \
-  --logdir brats2026_diffusion \
-  --require_met True
+export PROD_ROOT=/public/home/${USER}/g1_diffusion_v3_production_20260715
+export SMOKE_ROOT=/public/home/${USER}/g1_diffusion_v3_smoke_20260715
+mkdir -p "${PROD_ROOT}/logs" "${SMOKE_ROOT}/logs"
+cd "${PROD_ROOT}/code/Segmentation_Tasks/GliGAN"
+
+SMOKE_JOB=$(sbatch --parsable -p a100 slurm/00_smoke_v3_ecnu.slurm)
+PREFLIGHT_JOB=$(sbatch --parsable slurm/00_preflight_crop64_v3_ecnu.slurm)
+PREP_JOB=$(sbatch --parsable slurm/01_prepare_dataset_v3_ecnu.slurm)
+TRAIN_JOB=$(sbatch --parsable \
+  --dependency=afterok:${SMOKE_JOB}:${PREFLIGHT_JOB}:${PREP_JOB} \
+  slurm/02_train_4modal_v3_ecnu.slurm)
+EVAL_JOB=$(sbatch --parsable --dependency=afterok:${TRAIN_JOB} \
+  slurm/03_eval_4modal_v3_ecnu.slurm)
+
+printf 'smoke=%s preflight=%s prep=%s train=%s eval=%s\n' \
+  "${SMOKE_JOB}" "${PREFLIGHT_JOB}" "${PREP_JOB}" "${TRAIN_JOB}" "${EVAL_JOB}"
 ```
 
-这一步会递归扫描 `work_space/G1/data/raw/` 下的 `BraTS-MET-*` 病例，只写入：
-
-1. `t1n/t1c/t2w/t2f/seg` 齐全的病例。
-2. 肿瘤 bbox 三个方向都不超过 96 的病例。
-3. 不是 fake/broken T2W 的病例。
-
-输出：
+`SLURM_SUBMIT_DIR` 会把 smoke/preflight 固定到当前 production 代码快照；不要在其他目录执行上述 `sbatch`。两项回归必须分别出现：
 
 ```text
-../../Checkpoint/brats2026_diffusion/brats2026_diffusion.csv
-../../Checkpoint/brats2026_diffusion/brats2026_diffusion_skipped.csv
+SMOKE_TEST_PASS
+CROP64_BATCH4_EAGER_PASS
 ```
 
-如果 `skipped.csv` 里出现 `missing:t2w`，这是正常行为，说明缺 T2W 的病例被自动跳过了。
+任何一项非零退出都会通过 `afterok` 阻止正式训练。
 
-## 6. 训练四个模态
+## 6. 四模态并行方式
 
-四个模态要分别训练：
+ECNU 每个 A100 节点只有 2 张 GPU，代码也没有 DDP。正确方案是一个 Slurm array、四个单卡 task：
+
+```text
+task 0 = t1c
+task 1 = t1n
+task 2 = t2w
+task 3 = t2f
+```
+
+四个 task 可同时占用四个节点上的 A100，也可以根据空闲资源独立启动，不会等待同一节点四卡。
+
+## 7. 默认训练参数
+
+```text
+64^3 crop
+batch 4
+Unet_NnU
+channels 48,96,192,384
+strides 2,2,2
+EDM
+zscore + sigma_data 1.0
+small_lesion_weight 3.0
+patient_balance_mode sqrt
+100000 steps
+AMP + TF32
+```
+
+这是本轮生产基线。不要在四个模态之间改归一化、网络宽度或 noise schedule。
+
+## 8. 查看状态与日志
 
 ```bash
-python src/train/tumour_main_diffusion.py \
-  --dataset BRATS_2026 \
-  --modality t1c \
-  --logdir brats2026_diffusion \
-  --batch_size 2 \
-  --generator_type SwinUNETR \
-  --num_steps 100000 \
-  --noise_schedule edm \
-  --sampling_method edm_heun
+squeue -u "${USER}"
+sacct -j "${TRAIN_JOB}" --format=JobID,State,ExitCode,Elapsed
+tail -f "${PROD_ROOT}/logs/train_${TRAIN_JOB}_0.out"
 ```
 
-把 `--modality t1c` 分别替换成：
+每个模态完成时日志必须出现：
 
 ```text
-t1n
-t2w
-t2f
+TRAIN_MODALITY_PASS modality=<modality>
 ```
 
-训练后权重会在：
+权重位置：
 
 ```text
-../../Checkpoint/brats2026_diffusion/<modality>/weights/
+${PROD_ROOT}/checkpoints/brats2026_diffusion_v3_edm_zscore/<modality>/weights/
 ```
 
-## 7. 快速自检
+## 9. 断点续训
 
-先拿一个真实 `seg` 跑单病例推理：
+脚本默认 `AUTO_RESUME=1`，按数值寻找最大 checkpoint step。单独重跑某模态：
 
 ```bash
-CASE_ID=BraTS-MET-00001-000
-python src/infer/generate_from_label.py \
-  --label_path ../../../../data/raw/$CASE_ID/$CASE_ID-seg.nii.gz \
-  --diffusion_ckpt_dir ../../Checkpoint/brats2026_diffusion \
-  --dataset BRATS_2026 \
-  --output_dir /path/to/output_brats2026_diffusion_v1 \
-  --generator_type SwinUNETR \
-  --noise_schedule edm \
-  --sampling_method edm_heun \
-  --sampling_steps 18 \
-  --modality all
+sbatch --array=0 slurm/02_train_4modal_v3_ecnu.slurm  # t1c
+sbatch --array=2 slurm/02_train_4modal_v3_ecnu.slurm  # t2w
 ```
 
-这一步会输出：
+不要删除其他模态 checkpoint，不要把 `diffusion_90000.pt` 当作比 `diffusion_100000.pt` 更新。
+
+## 10. 验证输出
+
+四个模态全部结束后，`03_eval_4modal_v3_ecnu.slurm` 在固定 103 val 上运行 whole-brain、tile 模式评估：
 
 ```text
-<case_id>-t1c.nii.gz
-<case_id>-t1n.nii.gz
-<case_id>-t2w.nii.gz
-<case_id>-t2f.nii.gz
-<case_id>-seg.nii.gz
+${PROD_ROOT}/eval/brats2026_diffusion_v3_edm_zscore_whole_brain/metrics.json
 ```
 
-注意：
+这些 MSE/MAE/PSNR/SSIM 是 G1 生成质量诊断，不是 BraTS 官方分割榜单指标。最终是否让 synthetic 进入 S1-S5，仍由 G2 QC 和 real-only vs real+synth 消融决定。
 
-1. `--dataset BRATS_2026` 只接受 `BraTS-MET-*` label。
-2. `seg` 是条件输入和输出的一部分，不是要生成的 T2W。
-3. 输出目录不要放进 Git 工作区。
+## 11. 交给 G2
 
-## 8. 交给 G2 的输出
+G1 生成结果是病灶区域 raw diffusion 输出。G2 必须：
 
-diffusion augmentation 的 G2 接收命令是：
+1. 按 source case 回填非生成区域。
+2. 恢复真实 affine/header。
+3. 复制 corrected seg。
+4. 写 generation config、checkpoint、seed 和 source manifest。
+5. 执行 full-generation QC。
 
-```bash
-python work_space/G2/code/g2_synthetic_raw_intake_qc.py \
-  --synthetic-run-root /path/to/output_brats2026_diffusion_v1 \
-  --synthetic-run-id g1_diffusion_augmentation_v1 \
-  --generation-mode full_generation \
-  --refresh-templates
-```
-
-G2 会按 full_generation 口径生成：
+对应脚本仍使用既有接口名：
 
 ```text
-synthetic_generation_manifest_*.csv
-synthetic_candidate_manifest_*.csv
-synthetic_accepted_manifest_*.csv
-synthetic_rejected_manifest_*.csv
-synthetic_normalized_mapping_*.csv
-qc_metrics_*.csv
-diffusion_quality_metrics_*.csv
-qc_case_review_*.csv
-qc_batch_summary_*.json
-G2_synthetic_data_quality_report_*.md
+work_space/G2/code/g2_v2_compose_augmentation.py
+work_space/G2/code/g2_synthetic_raw_intake_qc.py
 ```
 
-## 9. 不要做的事
+这里的 `v2` 是 G2 augmentation 接口名称，不代表继续使用旧的 `BraTS_2023_2024_solutions-main 2` 代码。
 
-1. 不要把历史缓存目录当成默认入口。
-2. 不要把历史病例或旧 smoke test 混进本轮训练。
-3. 不要把缺 T2W 的病例手工塞进训练 CSV。
-4. 不要把 `Validation/` 混进训练 CSV。
-5. 不要把大体积 NIfTI 和 checkpoint 提交进 Git。
+## 12. 禁止事项
 
-## 10. 最后检查清单
-
-跑完后至少确认：
-
-1. `work_space/G1/data/raw/` 只挂了一份原始数据。
-2. `csv_creator.py` 只写入 `BraTS-MET-*` 完整病例。
-3. `brats2026_diffusion_skipped.csv` 里能看到被跳过的缺模态病例。
-4. 四个模态都训练过，权重都在各自目录下。
-5. 单病例推理能输出 `t1c/t1n/t2w/t2f/seg`。
-6. G2 intake 用 `--generation-mode full_generation`，而不是 completion。
+1. 不使用旧 `main` 或 `main 2` 作为新生产训练入口。
+2. 不把 val/test 病例作为训练 source。
+3. 不把 fake/broken T2W 病例混入训练。
+4. 不手工复制 926 份数据；使用软链接视图。
+5. 不把四模态塞进一个未实现 DDP 的四卡进程。
+6. 不打开未经服务器验证的 `torch.compile`。
+7. 不把 checkpoint、NIfTI、缓存和日志提交 Git。

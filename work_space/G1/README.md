@@ -6,14 +6,29 @@
 
 ## 当前进度
 
-待填写。
+G1 当前保留两条正式产线：
+
+| 产线 | 正式代码 | 状态 |
+|---|---|---|
+| 缺失 T2W 填补 V3 | `code/brats2025-latent-ensemble-synthesis-main-v3` | 服务器阶段任务运行中 |
+| Diffusion augmentation V3 | `code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN` | 已通过 ECNU GPU smoke 和 `64^3/batch=4` 预检，四模态 A100 任务已提交 |
+
+两条线不可互换。缺失 T2W 线修复原病例；Diffusion augmentation 线生成新增 synthetic 病例，并由 G2 composer/QC 接收。
 
 ## 本周计划
 
-待填写。
+1. 完成 Diffusion augmentation 四模态训练与固定 val 评估。
+2. 锁定四个 checkpoint、采样参数和生成 metadata。
+3. 批量生成后交给 G2 composer 与 full-generation QC。
+
+操作入口：
+
+- [Diffusion 服务器手册](docs/G1_diffusion_augmentation服务器训练手册.md)
+- [G1-G2 总运行手册](docs/G1_G2_服务器训练推理QC运行手册.md)
+- [ECNU 部署记录](docs/G1_Diffusion_V3_ECNU部署记录_2026-07-15.md)
 
 ## 提交记录
 
 | 日期 | 内容 | 备注 |
 | --- | --- | --- |
-| 待填写 | 待填写 | 待填写 |
+| 2026-07-15 | Diffusion augmentation V3 真实 GPU 回归、数据契约修复、A100 四模态任务部署 | 详见 ECNU 部署记录 |
