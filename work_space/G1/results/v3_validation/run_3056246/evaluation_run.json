@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-07-15T04:55:41.474128+00:00",
+  "slurm_job_id": "3056246",
+  "split": "val",
+  "case_count": 103,
+  "synthesis_type": "ensamble",
+  "vae_weights": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+  "encdec_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+  "bbdm_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+  "bbdm_s": 0.01,
+  "mean_metrics": {
+    "whole_SSIM": 0.8372187897996995,
+    "whole_PSNR": 25.591641857858136,
+    "whole_MSE": 0.003623576960255148,
+    "whole_MAE": 0.024876462083165216,
+    "brain_SSIM": 0.7525595854786993,
+    "brain_PSNR": 19.54903319751008,
+    "brain_MSE": 0.011800497806477316,
+    "brain_MAE": 0.07789823015048666
+  },
+  "operator_approved": false
+}

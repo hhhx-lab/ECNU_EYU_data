@@ -1,50 +1,89 @@
 seed: 42
 
 data:
-
   train_split: data/splits/train_full.txt
-
   val_split: data/splits/val_full.txt
-
   data_root: data/extracted/MICCAI-LH-BraTS2025-MET-Challenge-Training
+  # Identical nonzero-brain Z-score for train / val / inference
+  normalize: true
 
 model:
-
   in_channels: 4
-
+  feature_channels: 64
   tumor_classes: 4
-
   rc_classes: 2
+  channels: [32, 64, 128, 256, 512]
+  strides: [2, 2, 2, 2]
+  num_res_units: 2
 
 train:
-
   epochs: 300
-
-  batch_size: 2
-
+  # ~19.4M params; OOM comes from 96^3 activations + skips, not param count.
+  # micro-batch 1 + accumulate 2 keeps effective batch ≈ 2 with half peak memory.
+  batch_size: 1
+  gradient_accumulation: 2
   lr: 0.0003
-
+  weight_decay: 0.00001
   num_workers: 4
-
   amp: true
-
+  # A100/H100: BF16; other GPUs: auto falls back to FP16
+  amp_dtype: auto
   resume: ""
+  patch_size: [96, 96, 96]
+  # If still OOM on <40GB GPUs, change to [80, 80, 80] before shrinking width.
+  # 80% lesion-balanced connected-component crops; 20% random brain
+  lesion_probability: 0.8
+  scheduler: plateau
+  lr_factor: 0.5
+  lr_patience: 8
+  min_lr: 0.000001
+  early_stop_patience: 30
+  early_stop_min_delta: 0.0001
+  min_epochs: 40
 
-  patch_size:
-    - 96
-    - 96
-    - 96
+loss:
+  use_uncertainty: true
+  # Prevent RC branch from being auto-ignored by uncertainty weighting
+  max_log_sigma: 2.0
+  min_log_sigma: -2.0
+  fixed_tumor_weight: 1.0
+  fixed_rc_weight: 1.0
+
+augmentation:
+  enabled: true
+  flip_probability: 0.5
+  affine_probability: 0.25
+  rotation_radians: 0.10
+  translation_voxels: 5.0
+  scale_range: 0.08
+  contrast_probability: 0.15
+  gamma_range: [0.9, 1.1]
+  noise_probability: 0.15
+  noise_std: 0.01
+  bias_field_probability: 0.1
+  bias_field_coeff_range: [0.0, 0.05]
+
+validation:
+  # Full-volume joint sliding-window; best.pth selected by checkpoint_score
+  every_n_epochs: 1
+  roi_size: [96, 96, 96]
+  sw_batch_size: 1
+  overlap: 0.5
+  num_workers: 2
+  small_lesion_volume_mm3: 27.0
+  small_overlap_threshold: 0.2
+  selection_weights:
+    region_dice_mean: 0.5
+    lesion_dice_proxy_mean: 0.25
+    small_f1_proxy_mean: 0.25
 
 checkpoint:
-
   save_dir: experiments/checkpoints_full
-
   save_every: 10
 
 logging:
-
   tensorboard_dir: experiments/tensorboard_full
+  log_every: 20
 
 inference:
-
   output_dir: experiments/predictions_full

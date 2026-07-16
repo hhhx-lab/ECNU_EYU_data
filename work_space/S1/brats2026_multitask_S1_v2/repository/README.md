@@ -113,28 +113,44 @@ python trainers/trainer_v1_final.py \
   --config configs/multitask_v1_full.yaml
 ```
 
+Defaults in `multitask_v1_full.yaml`:
+
+* Nonzero-brain per-modality Z-score
+* 80% lesion-balanced connected-component crops / 20% random brain
+* Light augmentations (flip / small affine / gamma / noise / bias field)
+* `batch_size=1`, `gradient_accumulation=2`, AMP auto (BF16 preferred)
+* Full-volume joint sliding-window validation
+* `best.pth` by BraTS-compatible `checkpoint_score` (not center-crop val_loss)
+* ReduceLROnPlateau + early stopping; RC uncertainty weights logged/clamped
+
 Resume training:
 
-Set in:
+```bash
+export S1_RESUME=/path/to/latest.pth
+python trainers/trainer_v1_final.py \
+  --config configs/multitask_v1_full.yaml
+```
+
+or set in YAML:
 
 ```yaml
 train:
   resume: checkpoints_full/latest.pth
 ```
 
-then run:
-
-```bash
-python trainers/trainer_v1_final.py \
-  --config configs/multitask_v1_full.yaml
-```
-
 ---
 
 # Inference
 
+Joint SWI (tumor + RC in one backbone pass):
+
 ```bash
-python inference/infer_multitask.py
+python inference/infer_multitask.py \
+  --checkpoint /path/to/best.pth \
+  --case_dir /path/to/BraTS-MET-XXXXX-000 \
+  --output_dir /path/to/output \
+  --config configs/multitask_v1_full.yaml \
+  --save_fused
 ```
 
 ---
@@ -153,4 +169,4 @@ Heads:
 Loss:
 
 * DiceCE Loss
-* Uncertainty Weighting
+* Uncertainty Weighting (log-sigma clamped; RC weight monitored)

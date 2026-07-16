@@ -4,19 +4,17 @@ G1 Diffusion augmentation V3 环境清单
 适用代码：
 work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN
 
-一、ECNU 已验证环境
-1. 调度系统：Slurm。
-2. 正式训练分区：a100。
-3. 每个模态：1 张 A100；四模态用 array 0-3 并行排队。
-4. 数据预处理分区：cpu_96G。
-5. Conda 环境：segmamba。
-6. Python：3.11.13。
-7. PyTorch：2.6.0+cu124。
-8. MONAI：1.4.0。
-9. nibabel：5.4.2。
-10. NumPy：1.26.4。
-11. GPU smoke 已验证：Tesla V100 32GB。
-12. 正式宽网络 64^3、batch=4 已在 V100 32GB 完成一步训练。
+一、NYU Greene 正式环境
+1. 调度系统：Slurm（Greene）。
+2. 账号：torch_pr_522_general。
+3. 正式训练：单节点 4 GPU（#SBATCH --gres=gpu:4）。
+4. 数据准备：CPU 作业（无 GPU）。
+5. Conda 安装：/share/apps/anaconda3/2025.06
+6. 环境名默认：g1_diffusion_v3（可用 CONDA_ENV 覆盖为 brats / g1_diffusion_v2）。
+7. 项目根默认：/scratch/bf2260/ECNU_EYU_data
+8. 运行根默认：/scratch/bf2260/ECNU_EYU_data/runs/g1_diffusion_v3
+9. 日志默认：/scratch/bf2260/ECNU_EYU_data/logs
+10. 邮件：bf2260@nyu.edu
 
 二、运行时核心包
 1. torch，必须能访问 CUDA。
@@ -26,26 +24,29 @@ work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN
 5. scipy。
 6. pandas。
 7. matplotlib。
-8. transformers（当前环境随其他项目已安装；本线仅间接导入）。
 
 三、固定启动方式
-脚本直接使用：
-/public/home/${USER}/.conda/envs/segmamba/bin/python
+脚本内：
+source /share/apps/anaconda3/2025.06/etc/profile.d/conda.sh
+conda activate ${CONDA_ENV:-g1_diffusion_v3}
 
 不在 Slurm 作业中安装包，不使用 sudo pip，不混用系统 Python。
 
-四、torch.compile 限制
-ECNU /usr/bin/gcc 为 4.8.5，缺少 Triton 编译所需 stdatomic.h。
-真实预检已证明 --use_compile 会在第一步失败。因此正式默认：
-USE_COMPILE=0
+四、torch.compile
+NYU 默认 USE_COMPILE=1。
+若 Triton / 编译失败，提交时覆盖：
+USE_COMPILE=0 sbatch slurm/02_train_4modal_v3_nyu.slurm
 
-当前加速方式：AMP、TF32、cuDNN benchmark，以及四模态四卡任务并行。
-只有管理员提供并验证新 GCC 后，才可改为 USE_COMPILE=1。
+当前加速方式：AMP、TF32、cuDNN benchmark，以及四模态四卡同节点并行。
 
 五、验收命令
-sbatch slurm/00_smoke_v3_ecnu.slurm
-sbatch slurm/00_preflight_crop64_v3_ecnu.slurm
+sbatch slurm/00_smoke_v3_nyu.slurm
+sbatch slurm/00_preflight_crop64_v3_nyu.slurm
 
 日志必须分别出现：
 SMOKE_TEST_PASS
 CROP64_BATCH4_EAGER_PASS
+
+六、历史说明
+ECNU 曾用 segmamba + a100 array 单卡任务验证过 GPU smoke 与 64^3/batch=4 预检；
+当前正式入口已改为 NYU Greene，不再维护 *_v3_ecnu.slurm。

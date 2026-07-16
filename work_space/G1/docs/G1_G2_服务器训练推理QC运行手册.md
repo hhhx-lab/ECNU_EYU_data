@@ -157,24 +157,26 @@ G2 检查：
 
 无 `g2_approval_manifest.csv` 时技术通过病例仍为 pending。
 
-## 8. Diffusion augmentation V3 操作顺序
+## 8. Diffusion augmentation V3 操作顺序（NYU Greene）
 
 进入：
 
 ```bash
+export PROJECT_ROOT=/scratch/bf2260/ECNU_EYU_data
 cd "${PROJECT_ROOT}/work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN"
-mkdir -p logs
+mkdir -p "${PROJECT_ROOT}/logs"
 ```
 
 按 `slurm/README.md` 执行：
 
-1. `00_smoke_v3_ecnu.slurm`
-2. `00_preflight_crop64_v3_ecnu.slurm`
-3. `01_prepare_dataset_v3_ecnu.slurm`
-4. `02_train_4modal_v3_ecnu.slurm`
-5. `03_eval_4modal_v3_ecnu.slurm`
+1. `00_smoke_v3_nyu.slurm`
+2. `00_preflight_crop64_v3_nyu.slurm`
+3. `01_prepare_dataset_v3_nyu.slurm`
+4. `02_train_4modal_v3_nyu.slurm`（单节点 4 GPU，每模态一卡）
+5. `03_eval_4modal_v3_nyu.slurm`
+6. 可选：`04_generate_visual_v3_nyu.slurm`
 
-四模态训练是四个独立单卡 A100 array task。正式 source 只来自 `g1_v2_source_manifest.csv` 的 823 个 allowed train；103 个 val 只评估。
+正式 source 只来自 `g1_v2_source_manifest.csv` 的 823 个 allowed train；103 个 val 只评估。
 
 V2 raw 输出特性：
 

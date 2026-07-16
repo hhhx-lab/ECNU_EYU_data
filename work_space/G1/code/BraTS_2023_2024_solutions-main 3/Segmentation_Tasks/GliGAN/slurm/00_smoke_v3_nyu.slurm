@@ -1,42 +1,49 @@
 #!/bin/bash
-#SBATCH -J g1d3_smoke
-#SBATCH -p v100
-#SBATCH -N 1
-#SBATCH -n 1
+#SBATCH --job-name=g1_diffv3_smoke
+#SBATCH --account=torch_pr_522_general
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=32G
-#SBATCH -t 01:00:00
-#SBATCH -o /public/home/%u/g1_diffusion_v3_smoke_20260715/logs/smoke_%j.out
-#SBATCH -e /public/home/%u/g1_diffusion_v3_smoke_20260715/logs/smoke_%j.err
+#SBATCH --mem=48G
+#SBATCH --time=01:00:00
+#SBATCH --output=/scratch/bf2260/ECNU_EYU_data/logs/g1_diffv3_smoke_%j.out
+#SBATCH --error=/scratch/bf2260/ECNU_EYU_data/logs/g1_diffv3_smoke_%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=bf2260@nyu.edu
 
-set -Eeuo pipefail
+set -e
 
-SMOKE_ROOT=${SMOKE_ROOT:-/public/home/${USER}/g1_diffusion_v3_smoke_20260715}
-CODE_DIR=${CODE_DIR:-${SLURM_SUBMIT_DIR:-"${SMOKE_ROOT}/code/Segmentation_Tasks/GliGAN"}}
-PYTHON_BIN=${PYTHON_BIN:-/public/home/${USER}/.conda/envs/segmamba/bin/python}
-RUN_ROOT="${SMOKE_ROOT}/runs/${SLURM_JOB_ID}"
+PROJ=${PROJ:-/scratch/bf2260/ECNU_EYU_data}
+CODE_DIR="${PROJ}/work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN"
+CONDA_SH=${CONDA_SH:-/share/apps/anaconda3/2025.06/etc/profile.d/conda.sh}
+CONDA_ENV=${CONDA_ENV:-g1_diffusion_v3}
+RUN_ROOT=${RUN_ROOT:-"${PROJ}/runs/g1_diffusion_v3_smoke/${SLURM_JOB_ID}"}
 CHECKPOINT_ROOT="${RUN_ROOT}/checkpoints"
 LOGDIR=axis_edm_smoke
 
-mkdir -p "${RUN_ROOT}" "${CHECKPOINT_ROOT}" "${SMOKE_ROOT}/logs"
-export PYTHONUNBUFFERED=1
-export MPLCONFIGDIR="${RUN_ROOT}/matplotlib"
-export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-4}"
+echo "===== Job Info ====="
+echo "Job ID : ${SLURM_JOB_ID}"
+echo "Node   : ${SLURMD_NODENAME:-unknown}"
+echo "GPU    : ${CUDA_VISIBLE_DEVICES:-allocated}"
+echo "Date   : $(date)"
+echo "Code   : ${CODE_DIR}"
+echo "Run    : ${RUN_ROOT}"
+echo "===================="
 
-echo "job_id=${SLURM_JOB_ID}"
-echo "node=$(hostname)"
-echo "code_dir=${CODE_DIR}"
-echo "run_root=${RUN_ROOT}"
-test -f "${CODE_DIR}/tests/create_smoke_fixture.py"
-nvidia-smi
-"${PYTHON_BIN}" -c 'import torch, monai, nibabel; print("torch", torch.__version__, "cuda", torch.version.cuda, "available", torch.cuda.is_available()); print("gpu", torch.cuda.get_device_name(0)); print("monai", monai.__version__, "nibabel", nibabel.__version__)'
+mkdir -p "${PROJ}/logs" "${RUN_ROOT}" "${CHECKPOINT_ROOT}"
+source "${CONDA_SH}"
+conda activate "${CONDA_ENV}"
+set -uo pipefail
 
 cd "${CODE_DIR}"
+echo "CWD    : $(pwd)"
+echo "Python : $(which python)"
+python -c "import torch, monai, nibabel; print('torch', torch.__version__, 'cuda', torch.cuda.is_available(), 'gpu', torch.cuda.get_device_name(0) if torch.cuda.is_available() else None); print('monai', monai.__version__, 'nibabel', nibabel.__version__)"
 
-"${PYTHON_BIN}" tests/create_smoke_fixture.py --output-root "${RUN_ROOT}/fixture"
+python tests/create_smoke_fixture.py --output-root "${RUN_ROOT}/fixture"
 
-"${PYTHON_BIN}" src/train/csv_creator.py \
+python src/train/csv_creator.py \
   --dataset BRATS_2024 \
   --datadir "${RUN_ROOT}/fixture/DataSet" \
   --split_manifest "${RUN_ROOT}/fixture/fixture_split_manifest.csv" \
@@ -47,7 +54,7 @@ cd "${CODE_DIR}"
   --merge_dist 4 \
   --debug False
 
-"${PYTHON_BIN}" - "${RUN_ROOT}/lesions.csv" <<'PY'
+python - "${RUN_ROOT}/lesions.csv" <<'PY'
 import csv
 import sys
 from collections import Counter
@@ -67,7 +74,7 @@ assert all(int(row["patient_n_crops"]) == 1 for row in rows if row["split"] == "
 print("csv_contract=PASS")
 PY
 
-"${PYTHON_BIN}" src/train/tumour_main_diffusion.py \
+python src/train/tumour_main_diffusion.py \
   --dataset BRATS_2024 \
   --modality t1c \
   --split train \
@@ -87,7 +94,7 @@ PY
 CKPT_DIR="${CHECKPOINT_ROOT}/${LOGDIR}"
 test -s "${CKPT_DIR}/t1c/weights/diffusion_1.pt"
 
-"${PYTHON_BIN}" src/infer/evaluate_generation.py \
+python src/infer/evaluate_generation.py \
   --diffusion_ckpt_dir "${CKPT_DIR}" \
   --csv_path "${RUN_ROOT}/lesions.csv" \
   --dataset BRATS_2024 \
@@ -104,7 +111,7 @@ test -s "${CKPT_DIR}/t1c/weights/diffusion_1.pt"
   --max_cases 1
 
 VAL_CASE=BraTS-MET-99999-000
-"${PYTHON_BIN}" src/infer/generate_from_label.py \
+python src/infer/generate_from_label.py \
   --label_path "${RUN_ROOT}/fixture/DataSet/${VAL_CASE}/${VAL_CASE}-seg.nii.gz" \
   --diffusion_ckpt_dir "${CKPT_DIR}" \
   --dataset BRATS_2024 \
@@ -117,7 +124,7 @@ VAL_CASE=BraTS-MET-99999-000
   --sampling_steps 2 \
   --modality t1c
 
-"${PYTHON_BIN}" src/infer/on_the_fly_augmentation.py \
+python src/infer/on_the_fly_augmentation.py \
   --diffusion_ckpt_dir "${CKPT_DIR}" \
   --label_pool_csv "${RUN_ROOT}/lesions.csv" \
   --dataset BRATS_2024 \
@@ -128,7 +135,7 @@ VAL_CASE=BraTS-MET-99999-000
   --crop_size 16 \
   --allow_partial
 
-"${PYTHON_BIN}" - "${RUN_ROOT}" <<'PY'
+python - "${RUN_ROOT}" <<'PY'
 import json
 import sys
 from pathlib import Path
@@ -146,8 +153,6 @@ array = nib.load(generated).get_fdata()
 assert array.shape == (32, 28, 20), array.shape
 assert np.isfinite(array).all()
 assert np.count_nonzero(array) > 0
-# Validation lesion is x=4:7, y=18:21, z=14:17. With the 4-voxel
-# inference margin, generation must stay inside this native NIfTI window.
 expected_window = np.zeros(array.shape, dtype=bool)
 expected_window[0:11, 14:25, 10:20] = True
 assert np.count_nonzero(array[expected_window]) > 0
@@ -169,3 +174,4 @@ print("gpu_pipeline_contract=PASS")
 PY
 
 echo "SMOKE_TEST_PASS run_root=${RUN_ROOT}"
+echo "===== DONE: $(date) ====="

@@ -1,54 +1,88 @@
-# Diffusion augmentation V3：ECNU Slurm 入口
+# Diffusion augmentation V3：NYU Greene Slurm 入口
 
 更新日期：2026-07-15
 
 本目录只负责从 `seg` 学习并生成四模态病灶影像，不是缺失 T2W 填补线。
 
-## 固定顺序
+脚本风格对齐：
 
-| 顺序 | 脚本 | 资源 | 作用 |
-|---:|---|---|---|
-| 0A | `00_smoke_v3_ecnu.slurm` | 1 x A100（生产提交覆盖默认分区） | 小尺寸端到端 GPU 回归 |
-| 0B | `00_preflight_crop64_v3_ecnu.slurm` | 1 x V100 | 正式 `64^3/batch=4/宽网络` 显存预检 |
-| 1 | `01_prepare_dataset_v3_ecnu.slurm` | CPU | 依据 G2 master manifest 建 823/103 数据视图并生成 lesion CSV |
-| 2 | `02_train_4modal_v3_ecnu.slurm` | 4 个单卡 A100 array task | 独立训练 `t1c/t1n/t2w/t2f` |
-| 3 | `03_eval_4modal_v3_ecnu.slurm` | 1 x A100 | 固定 103 例 val 的四模态 whole-brain 评估 |
+```text
+work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/slurm/*_v2_nyu.slurm
+```
 
-## 推荐提交
+正式代码入口：
+
+```text
+work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN
+```
+
+## Scripts
+
+| Script | GPU | Purpose |
+|---|---:|---|
+| `00_smoke_v3_nyu.slurm` | 1 | 小尺寸端到端 GPU 回归 |
+| `00_preflight_crop64_v3_nyu.slurm` | 1 | 正式 `64^3/batch` + 宽网络一步训练预检 |
+| `01_prepare_dataset_v3_nyu.slurm` | 0 | 依据 G2 master manifest 建 823/103 软链接视图 + lesion CSV |
+| `02_train_4modal_v3_nyu.slurm` | 4 | 单节点四卡并行训练 `t1c/t1n/t2w/t2f` |
+| `03_eval_4modal_v3_nyu.slurm` | 1 | 固定 103 val 四模态 whole-brain 评估 |
+| `04_generate_visual_v3_nyu.slurm` | 1 | 单病例可视化，不是批量 production 入口 |
+
+## Before Submit
+
+1. 仓库放在 NYU scratch：`/scratch/bf2260/ECNU_EYU_data`（可用 `PROJ` 覆盖）。
+2. G2 source manifest 存在：
+   `work_space/G2/results/manifests/g1_v2_source_manifest.csv`
+3. 原始数据与 corrected seg 可按 manifest 相对路径解析（相对 `PROJ`）。
+4. 创建/激活 Conda 环境，默认名 `g1_diffusion_v3`：
 
 ```bash
-export PROD_ROOT=/public/home/${USER}/g1_diffusion_v3_production_20260715
-export SMOKE_ROOT=/public/home/${USER}/g1_diffusion_v3_smoke_20260715
-mkdir -p "${PROD_ROOT}/logs" "${SMOKE_ROOT}/logs"
-cd "${PROD_ROOT}/code/Segmentation_Tasks/GliGAN"
+source /share/apps/anaconda3/2025.06/etc/profile.d/conda.sh
+conda activate g1_diffusion_v3
+# 若已有兼容环境：export CONDA_ENV=brats 或 g1_diffusion_v2
+```
 
-SMOKE_JOB=$(sbatch --parsable -p a100 slurm/00_smoke_v3_ecnu.slurm)
-PREFLIGHT_JOB=$(sbatch --parsable slurm/00_preflight_crop64_v3_ecnu.slurm)
-PREP_JOB=$(sbatch --parsable slurm/01_prepare_dataset_v3_ecnu.slurm)
+5. 日志目录：
+
+```bash
+mkdir -p /scratch/bf2260/ECNU_EYU_data/logs
+```
+
+## Recommended Submit
+
+```bash
+export PROJ=/scratch/bf2260/ECNU_EYU_data
+export RUN_ROOT=${PROJ}/runs/g1_diffusion_v3
+mkdir -p "${PROJ}/logs" "${RUN_ROOT}"
+cd "${PROJ}/work_space/G1/code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN"
+
+SMOKE_JOB=$(sbatch --parsable slurm/00_smoke_v3_nyu.slurm)
+PREFLIGHT_JOB=$(sbatch --parsable slurm/00_preflight_crop64_v3_nyu.slurm)
+PREP_JOB=$(sbatch --parsable slurm/01_prepare_dataset_v3_nyu.slurm)
 TRAIN_JOB=$(sbatch --parsable \
   --dependency=afterok:${SMOKE_JOB}:${PREFLIGHT_JOB}:${PREP_JOB} \
-  slurm/02_train_4modal_v3_ecnu.slurm)
+  slurm/02_train_4modal_v3_nyu.slurm)
 EVAL_JOB=$(sbatch --parsable --dependency=afterok:${TRAIN_JOB} \
-  slurm/03_eval_4modal_v3_ecnu.slurm)
+  slurm/03_eval_4modal_v3_nyu.slurm)
+sbatch --dependency=afterok:${TRAIN_JOB} slurm/04_generate_visual_v3_nyu.slurm
+
 printf 'smoke=%s preflight=%s prep=%s train=%s eval=%s\n' \
   "${SMOKE_JOB}" "${PREFLIGHT_JOB}" "${PREP_JOB}" "${TRAIN_JOB}" "${EVAL_JOB}"
 ```
 
-前三项并行执行，训练只在三项全部成功后启动。smoke/preflight 默认使用提交命令所在的 `SLURM_SUBMIT_DIR`，因此必须先进入上面的 production 代码目录。
+只跑生产链时，可跳过 smoke/preflight：
 
-`02_train_4modal_v3_ecnu.slurm` 是一个文件、四个 array task：
-
-```text
-0=t1c, 1=t1n, 2=t2w, 3=t2f
+```bash
+PREP_JOB=$(sbatch --parsable slurm/01_prepare_dataset_v3_nyu.slurm)
+TRAIN_JOB=$(sbatch --parsable --dependency=afterok:${PREP_JOB} \
+  slurm/02_train_4modal_v3_nyu.slurm)
+sbatch --dependency=afterok:${TRAIN_JOB} slurm/03_eval_4modal_v3_nyu.slurm
 ```
 
-每个 task 独占一张 A100，独立排队和失败重跑。ECNU `a100` 节点每台只有 2 张 GPU，因此不要申请同节点 4 卡。
-
-## 默认生产参数
+## Default Production Parameters
 
 ```text
 crop_size=64
-batch_size=4
+batch_size=8          # NYU 默认；OOM 时 BATCH_SIZE=4
 network_channels=48,96,192,384
 network_strides=2,2,2
 normalization=zscore
@@ -57,26 +91,78 @@ noise_schedule=edm
 small_lesion_weight=3.0
 patient_balance_mode=sqrt
 num_steps=100000
+USE_COMPILE=1         # NYU 默认可开；失败则 USE_COMPILE=0
+AUTO_RESUME=1
 ```
 
-ECNU 系统 GCC 4.8 缺少 Triton 所需 `stdatomic.h`，所以 `USE_COMPILE=0` 是服务器已验证默认值。禁止直接打开 `torch.compile`；只有加载并验证新 GCC 后才可显式传 `USE_COMPILE=1`。
+训练脚本在**一个节点 4 张 GPU**上各起一个模态进程，不使用 ECNU 式 array 四任务。
 
-## 断点续训
+## Paths
 
-脚本默认 `AUTO_RESUME=1`，会按数值选择当前模态最大的 `diffusion_<step>.pt`。只重跑一个模态：
+默认 run 根目录：
+
+```text
+/scratch/bf2260/ECNU_EYU_data/runs/g1_diffusion_v3/
+  DataSet/
+  splits/current/lesions.csv
+  checkpoints/brats2026_diffusion_v3_edm_zscore/<modality>/weights/
+  eval/
+  visual/
+  PREPARED.ok
+```
+
+## Useful Overrides
 
 ```bash
-sbatch --array=2 slurm/02_train_4modal_v3_ecnu.slurm
+# 换账号路径
+PROJ=/scratch/$USER/ECNU_EYU_data sbatch slurm/01_prepare_dataset_v3_nyu.slurm
+
+# 显存不够
+BATCH_SIZE=4 USE_COMPILE=0 sbatch slurm/02_train_4modal_v3_nyu.slurm
+
+# 快速评估
+MAX_CASES=20 EVAL_MODE=patch sbatch slurm/03_eval_4modal_v3_nyu.slurm
+
+# 指定可视化病例
+CASE_ID=BraTS-MET-00004-000 sbatch slurm/04_generate_visual_v3_nyu.slurm
 ```
 
-## 通过标记
+若集群要求特定 GPU 分区/约束（例如 A100），在脚本顶部自行补：
+
+```bash
+#SBATCH --partition=...
+#SBATCH --constraint=...
+```
+
+默认请求是 Greene 通用写法：`#SBATCH --gres=gpu:N`。
+
+## Pass Markers
 
 日志必须出现：
 
 ```text
+SMOKE_TEST_PASS
+CROP64_BATCH4_EAGER_PASS
 PREPARE_DATASET_PASS
 TRAIN_MODALITY_PASS modality=<modality>
 EVALUATION_PASS metrics=<path>/metrics.json
 ```
 
-任一任务非零退出时，下游 `afterok` 依赖不会启动。
+任一上游非零退出时，`afterok` 依赖不会启动下游。
+
+## G2 Handoff
+
+G1 输出是病灶区域 raw diffusion 结果。批量生成后走：
+
+```bash
+python work_space/G2/code/g2_v2_compose_augmentation.py \
+  --v2-output-root /path/to/v3_flat_output \
+  --source-manifest work_space/G2/results/manifests/g1_v2_source_manifest.csv \
+  --output-run-root /path/to/g2_composed/v3_run_id
+
+python work_space/G2/code/g2_synthetic_raw_intake_qc.py \
+  --synthetic-run-root /path/to/g2_composed/v3_run_id \
+  --generation-mode full_generation
+```
+
+G2 接口名里的 `v2` 是 augmentation 契约名，不代表继续使用 `main 2` 训练代码。

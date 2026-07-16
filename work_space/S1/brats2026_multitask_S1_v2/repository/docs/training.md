@@ -20,37 +20,76 @@ Patch Size:
 
 Command:
 
-python trainers/trainer_v1_final.py
+```bash
+python trainers/trainer_v1_final.py --config configs/multitask_v1.yaml
+```
 
 ## Full Training
 
 Use:
 
+```text
 configs/multitask_v1_full.yaml
+```
 
-Recommended:
+Recommended hardware:
 
-4 x A100
+- GPU with **≥40GB** memory (A100 / H100 preferred)
+- Do **not** rely on a generic `gpu:1` that may land on 16/24GB cards
 
-300 epochs
+Recommended defaults (already in the full config):
 
-Mixed Precision
+| Setting | Value | Reason |
+| --- | --- | --- |
+| `batch_size` | 1 | Peak activation memory of 96³ UNet |
+| `gradient_accumulation` | 2 | Keep effective batch ≈ 2 |
+| `amp_dtype` | `auto` | BF16 on Ampere/Hopper, else FP16 |
+| `lesion_probability` | 0.8 | Small-met balanced sampling |
+| `normalize` | true | Per-modality nonzero Z-score |
+| validation | full-volume joint SWI | Avoid center-crop missing peripheral mets |
+| best checkpoint | `checkpoint_score` | Region Dice + lesion/small-F1 proxies |
+| scheduler | `plateau` | ReduceLROnPlateau on full-val score |
+| early stopping | patience 30 | Stop when full-val score stalls |
 
-Checkpoint:
+If still OOM after batch_size=1 + AMP:
 
-best.pth
+1. Set `train.patch_size` / `validation.roi_size` to `[80, 80, 80]`
+2. Only then consider narrowing `model.channels`
 
-latest.pth
+Checkpoint files:
+
+```text
+best.pth      # highest full-val checkpoint_score
+latest.pth    # last epoch
+resolved_config.yaml
+val_metrics_history.json
+```
 
 ## G2-Aligned Real-Only Slurm
 
-Use this for the original-data baseline:
+Use this for the original-data baseline (canonical entry):
 
 ```bash
 PROJECT_ROOT=/scratch/bf2260/ECNU_EYU_data
 cd ${PROJECT_ROOT}
 mkdir -p logs
-sbatch work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
+sbatch --gres=gpu:a100:1 \
+  --export=ALL,PROJ=${PROJECT_ROOT} \
+  work_space/S1/slurm/01_s1_realonly.slurm
+```
+
+Full server manual:
+
+```text
+work_space/S1/docs/S1_服务器运行手册.md
+```
+
+Legacy wrapper (same runner):
+
+```bash
+sbatch --gres=gpu:a100:1 \
+  --export=ALL,PROJ=${PROJECT_ROOT} \
+  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
 ```
 
 Main inputs:
@@ -80,3 +119,15 @@ export S1_CHECKPOINT_DIR=${PROJECT_ROOT}/work_space/S1/results/realonly/checkpoi
 export S1_TENSORBOARD_DIR=${PROJECT_ROOT}/work_space/S1/results/realonly/tensorboard
 python trainers/trainer_v1_final.py --config configs/multitask_v1_full.yaml
 ```
+
+## What the trainer monitors
+
+TensorBoard scalars include:
+
+- `train/loss`, `train/tumor_loss`, `train/rc_loss`
+- `train/weight_tumor`, `train/weight_rc` (uncertainty weights)
+- `train/lr`
+- `val/checkpoint_score`, `val/region_dice_mean`, per-region Dice / lesion / small-F1 proxies
+
+If `weight_rc` becomes much smaller than `weight_tumor`, the trainer prints a warning.
+Tighten `loss.max_log_sigma` or set `loss.use_uncertainty: false` with fixed weights.

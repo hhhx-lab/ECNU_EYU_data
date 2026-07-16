@@ -4,9 +4,19 @@ S1 experiment environment
 文件用途
 --------
 这份文件只说明 S1 real-only baseline 的服务器环境怎么创建、怎么自检、Slurm 默认会用哪个环境。
-S1 当前入口是：
 
-work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
+S1 当前推荐入口：
+
+  work_space/S1/slurm/01_s1_realonly.slurm
+
+兼容旧入口（内部转调同一 runner）：
+
+  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
+
+完整运行手册：
+
+  work_space/S1/docs/S1_服务器运行手册.md
+  work_space/S1/brats2026_multitask_S1_v2/repository/docs/S1_服务器运行手册.md
 
 默认 conda 环境名
 ----------------
@@ -19,7 +29,9 @@ CONDA_ENV=brats2026_s1
 
 如果服务器 conda 路径不同，提交时覆盖：
 
-sbatch --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s1 work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/05_s1_realonly_nyu.slurm
+sbatch --gres=gpu:a100:1 \
+  --export=ALL,PROJ=/真实项目根目录,CONDA_SH=/path/to/conda.sh,CONDA_ENV=brats2026_s1 \
+  work_space/S1/slurm/01_s1_realonly.slurm
 
 推荐 Python / CUDA / PyTorch
 ----------------------------
@@ -74,6 +86,10 @@ print("torch:", torch.__version__)
 print("torch cuda:", torch.version.cuda)
 print("cuda available:", torch.cuda.is_available())
 print("gpu:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
+if torch.cuda.is_available():
+    gb = torch.cuda.get_device_properties(0).total_memory / 1024**3
+    print(f"gpu_memory_gb: {gb:.1f}")
+    print("bf16_supported:", torch.cuda.is_bf16_supported())
 print("monai:", monai.__version__)
 print("S1 environment check passed")
 PY
@@ -82,22 +98,25 @@ PY
 --------
 1. import 不报错。
 2. GPU 节点上 cuda available 应该是 True。
-3. 如果在 login node 无 GPU，cuda available 可能是 False；这种情况需要在 interactive GPU 节点再确认一次。
+3. 正式训练需要 gpu_memory_gb >= 40（默认 96^3 配置）。
+4. 如果在 login node 无 GPU，cuda available 可能是 False；这种情况需要在 interactive GPU 节点再确认一次。
 
 和 S1 代码的对应关系
 --------------------
-1. trainer_v1_final.py 需要 torch、tensorboard、pyyaml、numpy。
-2. datasets/brats_multitask_dataset.py 需要 monai、nibabel、numpy、torch。
+1. trainer_v1_final.py 需要 torch、tensorboard、pyyaml、numpy、monai。
+2. datasets/brats_multitask_dataset.py 需要 monai、nibabel、numpy、torch、scipy。
 3. models/multitask_unet.py 需要 monai.networks.nets.UNet。
-4. G2 raw intake 脚本会检查 segmentation label 值，需要 nibabel；如果 nibabel 不可用，可用 SimpleITK 作为后备。
+4. metrics/brats_validation_metrics.py 需要 numpy、scipy。
+5. G2 raw intake 脚本会检查 segmentation label 值，需要 nibabel。
 
 正式运行前检查
 --------------
 1. 确认 raw data 已放在：
    work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training/
 2. 确认该目录里完整病例包含 t1n/t1c/t2w/t2f/seg。
-3. 确认缺 t2w、缺任一必要文件或仍含非法 label 值的病例会被 G2 raw intake 自动跳过；有 clean corrected label 的病例会自动使用 corrected label。
-4. 确认 S1 Slurm 日志开头能打印 torch 版本和 cuda available。
+3. 确认从项目根目录提交：
+   cd $PROJECT_ROOT && mkdir -p logs && sbatch ... work_space/S1/slurm/01_s1_realonly.slurm
+4. 确认 S1 Slurm 日志出现 dependency preflight: PASS 与 audit finished: PASS。
 
 常见问题
 --------
@@ -107,8 +126,11 @@ PY
 2. cuda available: False
    先确认是不是在 GPU 节点；如果在 GPU 节点仍为 False，检查 PyTorch wheel 和驱动/CUDA 兼容性。
 
-3. YAML 读取报错
-   确认 pyyaml 已安装，并且从项目根目录通过 Slurm 运行，不要手动改相对路径。
+3. S1 requires >= 40GB
+   默认 96^3 多任务训练需要大显存。请申请 A100/H100；或改 config 为 80^3 后谨慎使用 S1_ALLOW_SMALL_GPU=1。
 
-4. 显存不足
-   环境没问题，按 S1_服务器运行手册调低 configs/multitask_v1_full.yaml 里的 batch_size。
+4. 显存不足 (CUDA OOM)
+   配置已是 batch_size=1 + grad_accum=2 + AMP。下一步把 patch_size 和 validation.roi_size 改为 [80,80,80]。
+
+5. YAML 读取报错
+   确认 pyyaml 已安装，并且从项目根目录通过官方 Slurm 入口运行。

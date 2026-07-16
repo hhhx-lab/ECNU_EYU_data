@@ -2,11 +2,11 @@
 
 训练条件扩散模型，输入分割标签（seg），输出 4 模态脑 MRI（t1c / t1n / t2w / t2f）。
 
-> **2026-07-15 生产入口**：ECNU 正式训练使用本目录的 `slurm/README.md` 和 `slurm/01-03_*.slurm`。正式数据只来自 G2 `g1_v2_source_manifest.csv`：823 个 authentic train 用于训练，103 个 authentic val 只用于评估，locked test 不进入本线。旧 V2 Slurm、手工 `--val_patients` 命令和目录内示例数据不得用于正式任务。
+> **2026-07-15 生产入口**：NYU Greene 正式训练使用本目录的 `slurm/README.md` 和 `slurm/*_v3_nyu.slurm`。正式数据只来自 G2 `g1_v2_source_manifest.csv`：823 个 authentic train 用于训练，103 个 authentic val 只用于评估，locked test 不进入本线。旧 V2 Slurm、手工 `--val_patients` 命令和目录内示例数据不得用于正式任务。
 
 > **架构可移植性**：正式 checkpoint 固化 `network_channels=48,96,192,384` 和 `network_strides=2,2,2`。续训、评估和在线增强从 checkpoint 恢复结构，不再按推理机器显存重新猜网络宽度。
 
-> **ECNU 编译限制**：服务器系统 GCC 4.8 无法编译 Triton，正式脚本默认关闭 `torch.compile`，使用 AMP + TF32 + cuDNN benchmark。不要在未验证新 GCC 的情况下添加 `--use_compile`。
+> **NYU 编译默认**：Greene 脚本默认 `USE_COMPILE=1`。若 Triton/编译失败，提交时设 `USE_COMPILE=0`。加速方式包括 AMP、TF32、cuDNN benchmark 以及四模态同节点四卡并行。
 
 ---
 
