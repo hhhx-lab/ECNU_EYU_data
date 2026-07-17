@@ -1,118 +1,108 @@
-S4 experiment environment
-=========================
+S4 SAM2-UNet server environment
+===============================
 
-文件用途
---------
-这份文件只说明 S4 SAM2-UNet / SAM 变体探索线的服务器环境怎么创建、怎么自检、Slurm 默认怎么激活环境。
-S4 当前入口是：
+This file describes the environment and two Slurm jobs used by the S4
+real-only baseline on the ECNU cluster.
 
-work_space/S4/slurm/train_sam2unet_post.slurm
+Server paths
+------------
 
-推荐 conda 环境名
-----------------
-brats2026_s4
+Project root:
 
-S4 Slurm 不强制固定 conda.sh 路径。它支持三种方式：
+  /public/home/zqchen/projects/ECNU_EYU_data
 
-1. CONDA_ENV=brats2026_s4
-2. VENV_DIR=/path/to/venv
-3. PYTHON_BIN=/path/to/python
+Raw training data:
 
-优先推荐 conda：
+  /public/home/zqchen/projects/ECNU_EYU_data/work_space/S3/data/MICCAI-LH-BraTS2025-MET-Challenge-Training
 
-sbatch --export=ALL,RUN_MODE=debug,PROJECT_DIR=/真实项目根目录/work_space/S4/code,TRAIN_DIR=/真实项目根目录/work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training,SAVE_ROOT=/真实项目根目录/work_space/S4/output,CONDA_ENV=brats2026_s4 work_space/S4/slurm/train_sam2unet_post.slurm
+Corrected segmentation labels:
 
-推荐 Python / CUDA / PyTorch
-----------------------------
-1. Python: 3.10
-2. PyTorch: 2.1.x 或更新的 2.x 稳定版
-3. CUDA wheel: 优先 cu118；如果集群统一是 CUDA 12 且已验证 PyTorch CUDA 可用，可以改用 cu121。
-4. 不要使用系统 Python、Homebrew Python 或 sudo pip。
+  /public/home/zqchen/projects/ECNU_EYU_data/work_space/S3/data/MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels
 
-创建环境
---------
-建议在 login node 或 interactive session 创建环境，不要在正式 batch job 里临时安装依赖。
+Conda setup
+-----------
 
-conda create -n brats2026_s4 python=3.10 -y
-conda activate brats2026_s4
+The server Conda activation script is:
 
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
-pip install nibabel numpy einops tqdm matplotlib scipy
+  /public/software/apps/miniconda3/etc/profile.d/conda.sh
 
-如果服务器只能使用 CUDA 12.1 wheel，把第一条 pip 改成：
+The initial S4 debug job reuses the existing brats_swin environment. It must
+provide torch, nibabel, numpy, einops, tqdm, and matplotlib. The Slurm script
+checks these imports and CUDA inside the allocated GPU job. Do not install
+packages inside a batch job.
 
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+If an import fails, create a dedicated brats2026_s4 environment interactively:
 
-依赖来源
---------
-S4 code 当前主要依赖：
+  source /public/software/apps/miniconda3/etc/profile.d/conda.sh
+  conda create -n brats2026_s4 python=3.10 -y
+  conda activate brats2026_s4
+  pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+  pip install nibabel numpy einops tqdm matplotlib scipy
 
-1. sam2unet_model.py: torch, einops
-2. train_sam2unet_post.py: torch, nibabel, numpy, tqdm
-3. slurm/train_sam2unet_post.slurm 自检: torch, nibabel, einops, matplotlib
+Do not use sudo pip or system Python.
 
-运行前自检
-----------
-激活环境后执行：
+Required run order
+------------------
 
-python - <<'PY'
-import torch
-import nibabel
-import einops
-import matplotlib
-import numpy
-import tqdm
-import scipy
+1. Prepare the authoritative G2 real-only fixed split. This scans raw data,
+   prefers corrected labels, excludes invalid or incomplete cases, and creates
+   only symlinks plus manifests:
 
-print("torch:", torch.__version__)
-print("torch cuda:", torch.version.cuda)
-print("cuda available:", torch.cuda.is_available())
-print("gpu:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
-print("S4 environment check passed")
-PY
+  cd /public/home/zqchen/projects/ECNU_EYU_data/work_space/S4
+  mkdir -p logs
+  sbatch slurm/00_prepare_g2_realonly_fixed_split.slurm
 
-再做一次模型文件 import 自检：
+2. Wait for that job to reach COMPLETED. Its log must show non-zero train, val,
+   and test counts. The output root is:
 
-cd /真实项目根目录/work_space/S4/code
-python - <<'PY'
-from sam2unet_model import BRATS_MET_NUM_CLASSES, SAM2UNet3D
-print("classes:", BRATS_MET_NUM_CLASSES)
-print("S4 model import check passed")
-PY
+  work_space/G2/results/materialized_s4_realonly/
 
-预期结果
---------
-1. import 不报错。
-2. BRATS_MET_NUM_CLASSES 应输出 5。
-3. GPU 节点上 cuda available 应该是 True。
-4. 如果在 login node 无 GPU，cuda available 可能是 False；这种情况需要在 interactive GPU 节点再确认一次。
+3. Submit the default S4 debug job. It uses at most 20 train and 20 validation
+   cases, runs two epochs, and performs full-volume validation:
 
-和 S4 代码的对应关系
---------------------
-1. S4 当前直接扫描 raw data 完整病例目录。
-2. S4 会自动跳过缺 t2w 或缺任一必要文件的病例。
-3. S4 当前使用自己的 RC-stratified split，还没有接入 G2 fixed split。
-4. 因此 S4 现阶段更适合 smoke/exploration，不作为和 S1/S2 的最终公平对比主线。
+  cd /public/home/zqchen/projects/ECNU_EYU_data/work_space/S4
+  mkdir -p logs
+  sbatch slurm/train_sam2unet_post.slurm
 
-正式运行前检查
---------------
-1. 确认 raw data 已放在：
-   work_space/G1/data/raw/MICCAI-LH-BraTS2025-MET-Challenge-Training/
-2. 确认完整病例包含 t1n/t1c/t2w/t2f/seg。
-3. 先用 RUN_MODE=debug 跑通，再用 RUN_MODE=full。
-4. 确认输出目录在：
-   work_space/S4/output/
+4. Only after reviewing debug timing and outputs may a formal job be submitted.
+   A full job requires an explicit epoch budget:
 
-常见问题
---------
-1. CONDA_ENV 设置了但 Slurm 说找不到 conda/mamba
-   该集群没有把 conda 放进 PATH。改用 VENV_DIR 或 PYTHON_BIN，或在作业前加载集群的 conda module。
+  sbatch --export=ALL,RUN_MODE=full,SAM2UNET_EPOCHS=<approved_epoch_budget> \
+    slurm/train_sam2unet_post.slurm
 
-2. import matplotlib 失败
-   S4 Slurm 自检会 import matplotlib；即使训练核心不强依赖，也需要安装 matplotlib。
+Why 450 epochs is not a default
+--------------------------------
 
-3. CUDA 可用但 OOM
-   先 RUN_MODE=debug，正式训练时按 S4_服务器运行手册降低 SAM2UNET_CROP_SIZE 或 workers。
+Each S4 epoch scans all fixed-split train cases. After warmup, each epoch runs
+both a main and an RC phase, so 450 epochs means roughly 870 training passes
+over the train set plus periodic full-volume validation. It is not a two-day
+default. Estimate real wall time from the debug job before selecting the
+formal epoch budget and Slurm time limit.
 
-4. S4 结果和 S1/S2 split 不一致
-   这是当前设计限制。S4 尚未接入 G2 fixed split，不能直接作为最终公平对比结论。
+Outputs and acceptance checks
+-----------------------------
+
+Preparation output:
+
+  work_space/G2/results/materialized_s4_realonly/
+
+Debug output:
+
+  work_space/S4/results/debug_post/
+
+Formal output:
+
+  work_space/S4/results/full_train_<epochs>ep/
+
+The debug run is acceptable only when its log contains:
+
+  CUDA available: True
+  G2 fixed split: ... train / ... val / ... locked test
+  Running full-volume validation
+  Saved validation Dice history
+  Saved best_combined_model.pth
+
+The expected artifacts are config.json, g2_fixed_split.json,
+validation_dice_summary.csv, validation_dice_per_case.csv,
+validation_dice_history.csv, best_main_model.pth, best_rc_model.pth,
+best_combined_model.pth, latest_checkpoint.pth, and logs/train-<jobid>.log.

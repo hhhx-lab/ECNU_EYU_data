@@ -14,6 +14,17 @@
 | `qc_case_review_template.csv` | 人工复核字段 |
 | `official_leaderboard_metrics_template.csv` | 官方 leaderboard 字段模板，必须保留 |
 
+## G1 V3 阶段 5 实际运行目录
+
+```text
+v3_paired_validation/run_<stage5_jobid>/  # 103 例影像/病灶指标与 montage
+v3_s2_teacher/run_<stage5_jobid>/         # 冻结 S2 成对 teacher 指标
+```
+
+paired validation 必须保留同一 Stage 5 run 的 `spatial_audit.csv`，并硬验病例 ID
+和 foreground/lesion FOV containment。两个目录都完成后仍需人工复核
+paired validation 的 high/medium/routine 分层病例；单独一个目录不能作为阶段 6 批准依据。
+
 ## Release 原则
 
 硬门失败为 `rejected`；技术通过但没有人工/teacher 审批为 `pending_review`；只有正确角色审批后才可成为 `accepted_for_training` 或 `accepted_for_evaluation`。

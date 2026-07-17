@@ -141,23 +141,24 @@ def load_split_ids(csv_path, split="train"):
     return subjects
 
 
-def load_and_preprocess_image(path):
-    """Load NIfTI, robust_normalize, resize_center_crop_pad to (256,256,160)."""
-    img, _ = utils.load_nifti(path)
-    img = utils.robust_normalize(img)
-    img, _ = utils.resize_center_crop_pad(img, configs.SHAPE_PREPROCESS_IMG)
-    return img
-
-
-def load_and_preprocess_seg(path):
-    """Load seg NIfTI, resize_center_crop_pad to (256,256,160).
-
-    Uses nearest-neighbour behaviour: resize_center_crop_pad only crops/pads,
-    no interpolation, so integer labels are preserved.
-    """
-    seg, _ = utils.load_nifti(path)
-    seg, _ = utils.resize_center_crop_pad(seg, configs.SHAPE_PREPROCESS_IMG)
-    return seg.astype(np.int16)
+def load_preprocessed_subject(subject, data_dir):
+    modality_paths = [
+        os.path.join(data_dir, subject["id"], os.path.basename(subject[modality]))
+        for modality in configs.MODALITY_LIST
+    ]
+    seg_path = os.path.join(
+        data_dir, subject["id"], os.path.basename(subject["seg"])
+    )
+    foreground_indices = tuple(
+        configs.MODALITY_LIST.index(modality)
+        for modality in configs.AVAILABLE_MODALITIES
+    )
+    prepared = utils.prepare_subject_space(
+        modality_paths,
+        seg_path=seg_path,
+        foreground_indices=foreground_indices,
+    )
+    return prepared["images"], prepared["segmentation"]
 
 
 # ---------------------------------------------------------------------------
@@ -245,15 +246,7 @@ def validate(vae, val_subjects, data_dir, device):
 
     for subj in tqdm(val_subjects, desc="Validating", leave=False):
         try:
-            images = []
-            for mod in configs.MODALITY_LIST:
-                fname = os.path.basename(subj[mod])
-                fpath = os.path.join(data_dir, subj["id"], fname)
-                images.append(load_and_preprocess_image(fpath))
-
-            seg_path = os.path.join(data_dir, subj["id"],
-                                    os.path.basename(subj["seg"]))
-            seg = load_and_preprocess_seg(seg_path)
+            images, seg = load_preprocessed_subject(subj, data_dir)
 
             _, tumor_mask, healthy_mask = build_masks(images, seg)
 
@@ -481,15 +474,7 @@ def main():
             # ---- load batch data ----
             for subj in batch_subjs:
                 try:
-                    images = []
-                    for mod in configs.MODALITY_LIST:
-                        fname = os.path.basename(subj[mod])
-                        fpath = os.path.join(args.data_dir, subj["id"], fname)
-                        images.append(load_and_preprocess_image(fpath))
-
-                    seg_path = os.path.join(args.data_dir, subj["id"],
-                                            os.path.basename(subj["seg"]))
-                    seg = load_and_preprocess_seg(seg_path)
+                    images, seg = load_preprocessed_subject(subj, args.data_dir)
                     patch = sample_synchronized_patch(
                         images=images,
                         seg=seg,

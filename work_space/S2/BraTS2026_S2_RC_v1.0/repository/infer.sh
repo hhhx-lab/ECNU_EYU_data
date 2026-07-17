@@ -59,17 +59,26 @@ import shutil
 from pathlib import Path
 
 repo_dir = Path(os.environ["BRATS_S2_REPO_DIR"])
-src = repo_dir / "custom_nnunet" / "nnUNetTrainerBraTS2026RC.py"
+trainer_name = "nnUNetTrainerBraTS2026RC.py"
+if os.environ.get("S2_USE_INFERENCE_TRAINER_SHIM", "0") == "1":
+    src = repo_dir / "custom_nnunet" / "nnUNetTrainerBraTS2026RC_inference.py"
+    if not src.is_file():
+        raise SystemExit(f"Missing inference trainer shim: {src}")
+    print(f"Inference trainer shim ready: {src}")
+    raise SystemExit(0)
+else:
+    src = repo_dir / "custom_nnunet" / trainer_name
 spec = importlib.util.find_spec("nnunetv2")
 if spec is None or not spec.submodule_search_locations:
     raise SystemExit("Cannot find nnunetv2 in the active Python environment.")
 pkg_root = Path(list(spec.submodule_search_locations)[0])
-dst = pkg_root / "training" / "nnUNetTrainer" / src.name
+dst = pkg_root / "training" / "nnUNetTrainer" / trainer_name
 if not dst.parent.exists():
     raise SystemExit(f"Cannot find nnU-Net trainer directory: {dst.parent}")
 if not dst.exists() or dst.read_bytes() != src.read_bytes():
     shutil.copy2(src, dst)
 print(f"Custom trainer ready: {dst}")
+print(f"Trainer source: {src}")
 PY
 
 INPUT_FOLDER="$1"
@@ -136,13 +145,21 @@ echo "Trainer: ${S2_TRAINER}"
 echo "Mode   : ${S2_EXPERIMENT_MODE}"
 echo "Split  : fixed model (nnU-Net internal key: fold_0)"
 
-nnUNetv2_predict \
-    -i "${INPUT_FOLDER}" \
-    -o "${OUTPUT_FOLDER}" \
-    -d "${S2_DATASET_ID}" \
-    -c "${S2_CONFIGURATION}" \
-    -tr "${S2_TRAINER}" \
-    -f 0
+if [[ "${S2_USE_INFERENCE_TRAINER_SHIM:-0}" == "1" ]]; then
+    python inference_frozen.py \
+        --input "${INPUT_FOLDER}" \
+        --output "${OUTPUT_FOLDER}" \
+        --model-root "${RESULT_BASE}" \
+        --fold 0
+else
+    nnUNetv2_predict \
+        -i "${INPUT_FOLDER}" \
+        -o "${OUTPUT_FOLDER}" \
+        -d "${S2_DATASET_ID}" \
+        -c "${S2_CONFIGURATION}" \
+        -tr "${S2_TRAINER}" \
+        -f 0
+fi
 
 python - "${INPUT_FOLDER}" "${OUTPUT_FOLDER}" <<'PY'
 import re

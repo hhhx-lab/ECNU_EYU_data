@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import os
 import shutil
 from pathlib import Path
@@ -110,16 +111,60 @@ def scan_subjects(input_dir: Path, allow_missing_seg: bool = False) -> list[dict
     return subjects
 
 
-def preprocess_subject(sub_data: dict, vae, output_latents_dir: Path) -> None:
-    """Normalize and encode all four modalities for one subject."""
-    subject_out_dir = output_latents_dir / sub_data["id"]
-    subject_out_dir.mkdir(parents=True, exist_ok=True)
+def prepare_training_subject_space(
+    sub_data: dict,
+    *,
+    target_shape=None,
+    base_spacing_mm: float = 1.0,
+    margin_mm: float = 5.0,
+) -> dict:
+    modality_paths = [
+        sub_data["path"] / sub_data["modality_map"][modality]
+        for modality in configs.MODALITY_LIST
+    ]
+    seg_path = sub_data["path"] / sub_data["seg"] if sub_data.get("seg") else None
+    foreground_indices = tuple(
+        configs.MODALITY_LIST.index(modality)
+        for modality in configs.AVAILABLE_MODALITIES
+    )
+    return utils.prepare_subject_space(
+        modality_paths,
+        seg_path=seg_path,
+        target_shape=target_shape or configs.SHAPE_PREPROCESS_IMG,
+        base_spacing_mm=base_spacing_mm,
+        margin_mm=margin_mm,
+        foreground_indices=foreground_indices,
+    )
 
-    for modality_name in configs.MODALITY_LIST:
+
+def write_spatial_metadata(prepared: dict, sub_data: dict, output_dir: Path) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    metadata = {
+        "case_id": sub_data["id"],
+        "modalities": {
+            modality: sub_data["modality_map"][modality]
+            for modality in configs.MODALITY_LIST
+        },
+        "segmentation": sub_data.get("seg", ""),
+        "transform": prepared["transform"].to_dict(),
+        "foreground_support_audit": prepared["foreground_support_audit"],
+        "lesion_support_audit": prepared["lesion_support_audit"],
+    }
+    destination = output_dir / "spatial_transform.json"
+    temporary = destination.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+    os.replace(temporary, destination)
+    return destination
+
+
+def preprocess_subject(sub_data: dict, vae, output_latents_dir: Path) -> None:
+    """Map all four modalities through one transform and encode their latents."""
+    subject_out_dir = output_latents_dir / sub_data["id"]
+    prepared = prepare_training_subject_space(sub_data)
+    write_spatial_metadata(prepared, sub_data, subject_out_dir)
+
+    for modality_name, img in zip(configs.MODALITY_LIST, prepared["images"]):
         file_name = sub_data["modality_map"][modality_name]
-        file_path = sub_data["path"] / file_name
-        img, affine = utils.load_nifti(file_path)
-        img, _ = utils.preprocessing(img, affine=affine)
         latent = pipeline.encode_image(img, vae)
         latent = np.expand_dims(latent, 0)
         base = file_name.removesuffix(".nii.gz").removesuffix(".nii")

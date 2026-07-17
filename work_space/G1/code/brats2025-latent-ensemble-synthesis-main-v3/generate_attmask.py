@@ -5,7 +5,7 @@ in latent space (64, 64, 40) for BBDM training.
 
 Pipeline (mirrors MRI preprocessing exactly):
   1. Load seg NIfTI → binarize (> 0.5 → 1)
-  2. Center-crop/pad to (256, 256, 160)   ← SAME transform as MRI
+  2. Apply data/latents/<case>/spatial_transform.json with nearest-neighbour labels
   3. 4x block max-pool to (64, 64, 40)     ← aligns with VAE 4x downsampling
 
 Usage:
@@ -25,27 +25,6 @@ import configs
 import synthesis.utils as utils
 
 
-def center_crop_pad(image, new_shape):
-    """Same operation as utils.resize_center_crop_pad (no affine)."""
-    x, y, z = image.shape
-    nx, ny, nz = new_shape
-    new_image = np.zeros((nx, ny, nz), dtype=image.dtype)
-
-    def get_slices(old, new):
-        if old > new:
-            start = (old - new) // 2
-            return slice(start, start + new), slice(0, new)
-        else:
-            start = (new - old) // 2
-            return slice(0, old), slice(start, start + old)
-
-    xs_old, xs_new = get_slices(x, nx)
-    ys_old, ys_new = get_slices(y, ny)
-    zs_old, zs_new = get_slices(z, nz)
-    new_image[xs_new, ys_new, zs_new] = image[xs_old, ys_old, zs_old]
-    return new_image
-
-
 def downsample_max_pool(image, factor=4):
     """4x block max-pooling. If any voxel in a block is tumor, output is tumor."""
     d, h, w = image.shape
@@ -58,6 +37,7 @@ def main():
     csv_path = os.path.join(configs.PATH_DATA, "data_csv.csv")
     input_dir = configs.PATH_INPUT
     attmask_dir = os.path.join(configs.PATH_DATA, "attention_masks")
+    transforms_dir = os.path.join(configs.PATH_DATA, "latents")
     image_shape = configs.SHAPE_PREPROCESS_IMG   # (256, 256, 160)
     latent_shape = (64, 64, 40)
 
@@ -81,13 +61,16 @@ def main():
             missing_seg.append(s_id)
             continue
 
-        # Step 1: load & binarize
         seg_path = os.path.join(subject_input, seg_file)
-        seg, _ = utils.load_nifti(seg_path)
-        seg = (seg > 0.5).astype(np.float32)
-
-        # Step 2: center-crop/pad → (256, 256, 160), same as MRI
-        seg = center_crop_pad(seg, image_shape)
+        transform_path = os.path.join(transforms_dir, s_id, "spatial_transform.json")
+        if not os.path.isfile(transform_path):
+            raise FileNotFoundError(
+                f"missing spatial transform for {s_id}: {transform_path}; run preprocess.py first"
+            )
+        seg = utils.load_segmentation_in_model_space(seg_path, transform_path)
+        seg = (seg > 0).astype(np.float32)
+        if seg.shape != image_shape:
+            raise ValueError(f"{s_id}: model-space seg shape {seg.shape} != {image_shape}")
 
         # Step 3: 4x block max-pool → (64, 64, 40), aligned with VAE latent grid
         seg_latent = downsample_max_pool(seg)

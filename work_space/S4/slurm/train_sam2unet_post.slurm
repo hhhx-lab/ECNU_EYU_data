@@ -1,125 +1,82 @@
 #!/bin/bash
-#SBATCH -J sam2unet_post
-#SBATCH -p gpu
-#SBATCH -N 1
-#SBATCH -n 1
+#SBATCH --job-name=s4_sam2unet
+#SBATCH --partition=a100
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64G
-#SBATCH -t 72:00:00
-#SBATCH -o %x-%j.out
-#SBATCH -e %x-%j.err
+#SBATCH --mem=96G
+#SBATCH --time=2-00:00:00
+#SBATCH --output=logs/s4_sam2unet_%j.out
+#SBATCH --error=logs/s4_sam2unet_%j.err
 
 set -euo pipefail
 
-# ============================================================
-# SAM2-UNet post-training Slurm job
-#
-# Edit the #SBATCH lines above for your cluster:
-#   - NYU/other clusters may use a partition such as gpu, a100, v100, or a lab-specific name.
-#   - Some clusters require an account line, for example:
-#       #SBATCH --account=<your_account>
-#   - Keep --gres=gpu:1 if your cluster uses generic Slurm GPU resources.
-#
-# Common overrides at submit time:
-#   sbatch --export=ALL,RUN_MODE=debug,PROJECT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S4/code,VENV_DIR=/path/to/venv slurm/train_sam2unet_post.slurm
-#   sbatch --export=ALL,RUN_MODE=full,PROJECT_DIR=/scratch/bf2260/ECNU_EYU_data/work_space/S4/code,CONDA_ENV=myenv slurm/train_sam2unet_post.slurm
-# ============================================================
+# Submit from work_space/S4 after running the G2 fixed-split preparation job.
+# RUN_MODE defaults to debug deliberately. A full run requires an explicit
+# SAM2UNET_EPOCHS value after the debug benchmark has been reviewed.
+# Slurm may stage the script under /opt/gridview/slurm on compute nodes, so
+# derive the project from the submit directory instead of BASH_SOURCE.
+S4_ROOT="${S4_ROOT:-${SLURM_SUBMIT_DIR:-}}"
+if [[ -z "${S4_ROOT}" ]]; then
+  echo "S4_ROOT is required when SLURM_SUBMIT_DIR is unavailable." >&2
+  exit 2
+fi
+PROJ="${PROJ:-$(cd "${S4_ROOT}/../.." && pwd)}"
+PROJECT_DIR="${PROJECT_DIR:-${S4_ROOT}/code}"
+FIXED_SPLIT_ROOT="${FIXED_SPLIT_ROOT:-${PROJ}/work_space/G2/results/materialized_s4_realonly/BraTS2026_MET_RealOnly_S4_case_folders}"
+SAVE_ROOT="${SAVE_ROOT:-${S4_ROOT}/results}"
+RUN_MODE="${RUN_MODE:-debug}"
 
-# -------- User-editable paths --------
-# By default, use the directory from which sbatch was submitted.
-export PROJECT_DIR="${PROJECT_DIR:-${SLURM_SUBMIT_DIR:-$(pwd)}}"
-export TRAIN_DIR="${TRAIN_DIR:-${PROJECT_DIR}/TrainingData}"
-export FIXED_SPLIT_ROOT="${FIXED_SPLIT_ROOT:-}"
-export SAVE_ROOT="${SAVE_ROOT:-${PROJECT_DIR}/output}"
-export RUN_MODE="${RUN_MODE:-full}"  # full or debug
+CONDA_SH="${CONDA_SH:-/public/software/apps/miniconda3/etc/profile.d/conda.sh}"
+CONDA_ENV="${CONDA_ENV:-brats_swin}"
+PYTHON_BIN="${PYTHON_BIN:-python}"
 
-# Use exactly one of these environment choices:
-#   VENV_DIR=/path/to/venv       for python -m venv / virtualenv
-#   CONDA_ENV=myenv              for conda/mamba environments
-#   PYTHON_BIN=/path/to/python   if you want to skip activation and call Python directly
-export VENV_DIR="${VENV_DIR:-}"
-export CONDA_ENV="${CONDA_ENV:-}"
-export PYTHON_BIN="${PYTHON_BIN:-python}"
+if [[ "${RUN_MODE}" != "debug" && "${RUN_MODE}" != "full" ]]; then
+  echo "RUN_MODE must be debug or full, got: ${RUN_MODE}" >&2
+  exit 2
+fi
+if [[ ! -f "${CONDA_SH}" ]]; then
+  echo "Missing conda activation script: ${CONDA_SH}" >&2
+  exit 1
+fi
+if [[ ! -d "${PROJECT_DIR}" ]]; then
+  echo "Missing S4 code directory: ${PROJECT_DIR}" >&2
+  exit 1
+fi
+for split_name in train val test; do
+  if [[ ! -d "${FIXED_SPLIT_ROOT}/${split_name}" ]]; then
+    echo "Missing G2 fixed split directory: ${FIXED_SPLIT_ROOT}/${split_name}" >&2
+    echo "Run slurm/00_prepare_g2_realonly_fixed_split.slurm first." >&2
+    exit 1
+  fi
+done
 
-# Optional module names. Leave empty when your cluster does not use modules
-# or when the environment is already available.
-export PYTHON_MODULE="${PYTHON_MODULE:-}"
-export CUDA_MODULE="${CUDA_MODULE:-}"
+source "${CONDA_SH}"
+conda activate "${CONDA_ENV}"
 
 if [[ "${RUN_MODE}" == "debug" ]]; then
-  export SAVE_DIR="${SAVE_DIR:-${SAVE_ROOT}/debug_post}"
+  SAVE_DIR="${SAVE_DIR:-${SAVE_ROOT}/debug_post}"
+  export SAM2UNET_DEBUG_CASE_LIMIT="${SAM2UNET_DEBUG_CASE_LIMIT:-20}"
+  export SAM2UNET_EPOCHS="${SAM2UNET_EPOCHS:-2}"
+  export SAM2UNET_WARMUP_EPOCHS="${SAM2UNET_WARMUP_EPOCHS:-1}"
+  export SAM2UNET_CHECKPOINT_INTERVAL="${SAM2UNET_CHECKPOINT_INTERVAL:-1}"
 else
-  export SAVE_DIR="${SAVE_DIR:-${SAVE_ROOT}/full_train_450}"
-fi
-
-# -------- Cluster environment --------
-if command -v module >/dev/null 2>&1; then
-  module purge || true
-  if [[ -n "${PYTHON_MODULE}" ]]; then
-    module load "${PYTHON_MODULE}"
+  if [[ -z "${SAM2UNET_EPOCHS:-}" ]]; then
+    echo "RUN_MODE=full requires an explicit SAM2UNET_EPOCHS after the debug timing review." >&2
+    exit 2
   fi
-  if [[ -n "${CUDA_MODULE}" ]]; then
-    module load "${CUDA_MODULE}"
-  fi
+  SAVE_DIR="${SAVE_DIR:-${SAVE_ROOT}/full_train_${SAM2UNET_EPOCHS}ep}"
+  unset SAM2UNET_DEBUG_CASE_LIMIT
+  export SAM2UNET_WARMUP_EPOCHS="${SAM2UNET_WARMUP_EPOCHS:-30}"
+  export SAM2UNET_CHECKPOINT_INTERVAL="${SAM2UNET_CHECKPOINT_INTERVAL:-10}"
 fi
 
-if [[ -n "${VENV_DIR}" ]]; then
-  if [[ ! -d "${VENV_DIR}" ]]; then
-    echo "Missing virtual environment directory: ${VENV_DIR}" >&2
-    exit 1
-  fi
-  set +u
-  source "${VENV_DIR}/bin/activate"
-  set -u
-  export PYTHON_BIN="${PYTHON_BIN:-python}"
-elif [[ -n "${CONDA_ENV}" ]]; then
-  if command -v conda >/dev/null 2>&1; then
-    set +u
-    source "$(conda info --base)/etc/profile.d/conda.sh"
-    conda activate "${CONDA_ENV}"
-    set -u
-  elif command -v mamba >/dev/null 2>&1; then
-    set +u
-    source "$(mamba info --base)/etc/profile.d/conda.sh"
-    mamba activate "${CONDA_ENV}"
-    set -u
-  else
-    echo "CONDA_ENV=${CONDA_ENV} was set, but conda/mamba was not found." >&2
-    echo "Set PYTHON_MODULE, VENV_DIR, or PYTHON_BIN for this cluster." >&2
-    exit 1
-  fi
-  export PYTHON_BIN="${PYTHON_BIN:-python}"
-fi
-
-# -------- Project checks --------
-cd "${PROJECT_DIR}"
-mkdir -p "${SAVE_DIR}/logs"
-
-if [[ ! -f train_sam2unet_post.py || ! -f sam2unet_model.py ]]; then
-  echo "Missing train_sam2unet_post.py or sam2unet_model.py in ${PROJECT_DIR}" >&2
-  exit 1
-fi
-
-if [[ -n "${FIXED_SPLIT_ROOT}" ]]; then
-  for split_name in train val test; do
-    if [[ ! -d "${FIXED_SPLIT_ROOT}/${split_name}" ]]; then
-      echo "Missing G2 fixed split directory: ${FIXED_SPLIT_ROOT}/${split_name}" >&2
-      exit 1
-    fi
-  done
-elif [[ ! -d "${TRAIN_DIR}" ]]; then
-  echo "Missing TrainingData directory: ${TRAIN_DIR}" >&2
-  exit 1
-fi
-
-# -------- Runtime configuration used by train_sam2unet_post.py --------
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 export PYTHONUNBUFFERED=1
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
 export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
-
-export SAM2UNET_TRAIN_DIR="${TRAIN_DIR}"
 export SAM2UNET_FIXED_SPLIT_ROOT="${FIXED_SPLIT_ROOT}"
 export SAM2UNET_SAVE_DIR="${SAVE_DIR}"
 export SAM2UNET_BATCH_SIZE="${SAM2UNET_BATCH_SIZE:-1}"
@@ -129,38 +86,43 @@ export SAM2UNET_PREFETCH_FACTOR="${SAM2UNET_PREFETCH_FACTOR:-2}"
 export SAM2UNET_CROP_SIZE="${SAM2UNET_CROP_SIZE:-96,96,96}"
 export SAM2UNET_SW_BATCH_SIZE="${SAM2UNET_SW_BATCH_SIZE:-1}"
 
-if [[ "${RUN_MODE}" == "debug" ]]; then
-  export SAM2UNET_DEBUG_CASE_LIMIT="${SAM2UNET_DEBUG_CASE_LIMIT:-20}"
-  export SAM2UNET_EPOCHS="${SAM2UNET_EPOCHS:-2}"
-  export SAM2UNET_WARMUP_EPOCHS="${SAM2UNET_WARMUP_EPOCHS:-1}"
-  export SAM2UNET_CHECKPOINT_INTERVAL="${SAM2UNET_CHECKPOINT_INTERVAL:-1}"
-else
-  unset SAM2UNET_DEBUG_CASE_LIMIT
-  export SAM2UNET_EPOCHS="${SAM2UNET_EPOCHS:-450}"
-  export SAM2UNET_WARMUP_EPOCHS="${SAM2UNET_WARMUP_EPOCHS:-30}"
-  export SAM2UNET_CHECKPOINT_INTERVAL="${SAM2UNET_CHECKPOINT_INTERVAL:-10}"
+mkdir -p "${SAVE_DIR}/logs"
+cd "${PROJECT_DIR}"
+
+if [[ ! -f train_sam2unet_post.py || ! -f sam2unet_model.py ]]; then
+  echo "Missing S4 training code in ${PROJECT_DIR}" >&2
+  exit 1
 fi
 
-echo "===== SLURM job info ====="
-echo "job id: ${SLURM_JOB_ID:-NA}"
-echo "node: ${SLURMD_NODENAME:-$(hostname)}"
-echo "submit dir: ${SLURM_SUBMIT_DIR:-NA}"
-echo "project: ${PROJECT_DIR}"
-echo "train dir: ${SAM2UNET_TRAIN_DIR}"
-echo "G2 fixed split root: ${SAM2UNET_FIXED_SPLIT_ROOT:-disabled}"
-echo "save dir: ${SAM2UNET_SAVE_DIR}"
-echo "run mode: ${RUN_MODE}"
-echo "python: ${PYTHON_BIN}"
-echo "=========================="
-
-nvidia-smi || true
+echo "===== S4 SAM2-UNet job ====="
+echo "Job ID           : ${SLURM_JOB_ID:-local}"
+echo "Node             : ${SLURMD_NODENAME:-unknown}"
+echo "Project root     : ${PROJ}"
+echo "Code directory   : ${PROJECT_DIR}"
+echo "G2 fixed split   : ${FIXED_SPLIT_ROOT}"
+echo "Save directory   : ${SAVE_DIR}"
+echo "Run mode         : ${RUN_MODE}"
+echo "Epochs           : ${SAM2UNET_EPOCHS}"
+echo "Conda environment: ${CONDA_ENV}"
+echo "============================"
 
 "${PYTHON_BIN}" - <<'PY'
-import torch, nibabel, einops, matplotlib
+import einops
+import matplotlib
+import nibabel
+import numpy
+import torch
+import tqdm
+
 print("torch:", torch.__version__)
-print("torch cuda:", torch.version.cuda)
-print("cuda available:", torch.cuda.is_available())
-print("gpu:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
+print("torch CUDA:", torch.version.cuda)
+print("CUDA available:", torch.cuda.is_available())
+if not torch.cuda.is_available():
+    raise SystemExit("CUDA is unavailable inside the allocated GPU job")
+print("GPU:", torch.cuda.get_device_name(0))
 PY
 
 "${PYTHON_BIN}" -u train_sam2unet_post.py 2>&1 | tee "${SAVE_DIR}/logs/train-${SLURM_JOB_ID:-local}.log"
+
+echo "===== DONE: $(date) ====="
+echo "Best combined model: ${SAVE_DIR}/best_combined_model.pth"

@@ -107,6 +107,12 @@ legacy suffix 只允许由 intake 明确记录转换，不允许一个病例混�
 
 任一失败：硬拒绝。
 
+G1 V3 在进入 265 例 completion 前，其 Stage 5 paired validation 还必须提供
+同一 run 的 `spatial_audit.csv`。审计行数和 ID 集合必须与 `metrics.csv`
+完全一致，不允许重复 ID；每例 `foreground_outside_voxel_count` 和
+`lesion_outside_voxel_count` 必须为 0。该门在生成任何 G2 QC 结果前执行，
+不能用事后修 header 替代。
+
 ## 8. L3 数值与标签
 
 ### 图像
@@ -260,7 +266,10 @@ V3 不对 fake/broken T2W 计算该指标。
 
 ### Teacher
 
-当前自动 intake 不执行 teacher。字段必须为 `not_run`/空值，不得填伪 Dice。
+通用自动 intake 不执行 teacher，字段必须为 `not_run`/空值，不得填伪 Dice。G1 V3 阶段 5
+另有专用入口 `g2_s2_v3_teacher_eval.py`：使用冻结的 Dataset263 real-only S2 checkpoint，
+在同一 103 例 fixed validation 上比较真实 T2W baseline 与生成 T2W 推理。专用报告不自动回填
+通用 intake，也不跳过人工 montage 复核。
 
 正式 teacher 应使用冻结的 real-only checkpoint，至少输出：
 

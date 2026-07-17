@@ -15,6 +15,7 @@ Usage:
 import csv
 import os
 import argparse
+from pathlib import Path
 import numpy as np
 import torch
 import pandas as pd
@@ -23,6 +24,7 @@ from tqdm import tqdm
 import configs
 import synthesis.pipeline as pipeline
 import synthesis.utils as utils
+from synthesis.spatial import restore_to_native
 
 
 def compute_metrics(pred, target, mask=None, data_range=1.0):
@@ -71,22 +73,44 @@ def create_brain_mask(images, threshold=0.02):
     return (mean_img > threshold).astype(np.float32)
 
 
-def load_and_preprocess_first(path):
-    """Load first NIfTI, returning image + affine info."""
-    img, aff = utils.load_nifti(path)
-    org_shape = img.shape
-    img, aff = utils.preprocessing(img, affine=aff)
-    return img, aff, org_shape
+def prepare_eval_subject(
+    subject,
+    *,
+    target_shape=None,
+    base_spacing_mm=1.0,
+    margin_mm=5.0,
+):
+    modality_paths = [
+        os.path.join(subject["path"], subject["files"][modality])
+        for modality in configs.MODALITY_LIST
+    ]
+    seg_path = os.path.join(subject["path"], subject["files"]["seg"])
+    foreground_indices = tuple(
+        configs.MODALITY_LIST.index(modality)
+        for modality in configs.AVAILABLE_MODALITIES
+    )
+    prepared = utils.prepare_subject_space(
+        modality_paths,
+        seg_path=seg_path,
+        target_shape=target_shape or configs.SHAPE_PREPROCESS_IMG,
+        base_spacing_mm=base_spacing_mm,
+        margin_mm=margin_mm,
+        foreground_indices=foreground_indices,
+    )
+    prepared["images_by_modality"] = dict(
+        zip(configs.MODALITY_LIST, prepared["images"])
+    )
+    return prepared
 
 
-def load_and_preprocess(path, aff):
-    """Load NIfTI and preprocess using shared affine."""
-    img, _ = utils.load_nifti(path)
-    img, _ = utils.preprocessing(img, affine=aff)
-    return img
+def save_synthesized_output(model_image, prepared, destination):
+    native = restore_to_native(model_image, prepared["transform"], order=1)
+    native = utils.postprocess_intensity(native, configs.MISSING_MODALITY)
+    utils.save_nifti(native, prepared["native_affine"], str(destination))
+    return native
 
 
-def find_eval_subjects(data_csv, input_dir, split="val"):
+def find_eval_subjects(data_csv, input_dir, split="val", case_ids=None):
     """Load subjects from data_csv.csv filtered by split column.
 
     Returns list of dicts with keys: id, path, files (modality→filename mapping).
@@ -98,6 +122,8 @@ def find_eval_subjects(data_csv, input_dir, split="val"):
             if row.get("split", "val") != split:
                 continue
             s_id = row["id"]
+            if case_ids is not None and s_id not in case_ids:
+                continue
             s_path = os.path.join(input_dir, s_id)
 
             # Build modality → filename mapping from CSV columns
@@ -107,15 +133,37 @@ def find_eval_subjects(data_csv, input_dir, split="val"):
                 if fname:
                     mod_to_file[mod] = fname
 
-            # Require all 4 modalities
-            if len(mod_to_file) == 4:
+            seg_name = os.path.basename(row.get("seg", ""))
+            if seg_name:
+                mod_to_file["seg"] = seg_name
+
+            if all(key in mod_to_file for key in (*configs.MODALITY_LIST, "seg")):
                 subjects.append({
                     "id": s_id,
                     "path": s_path,
                     "files": mod_to_file,
                 })
 
+    if case_ids is not None:
+        found = {subject["id"] for subject in subjects}
+        missing = sorted(set(case_ids) - found)
+        if missing:
+            raise ValueError(f"requested evaluation cases were not found in split {split}: {missing}")
     return subjects
+
+
+def read_case_list(path):
+    if path is None:
+        return None
+    case_ids = set()
+    with Path(path).open(encoding="utf-8-sig") as handle:
+        for line in handle:
+            value = line.strip().split(",", 1)[0].strip()
+            if value and not value.lower() in {"id", "case_id", "subject"}:
+                case_ids.add(value)
+    if not case_ids:
+        raise ValueError(f"case list is empty: {path}")
+    return case_ids
 
 
 def run_encdec_forward(unet, latens_list, device):
@@ -199,11 +247,23 @@ def main():
         action="store_true",
         help="Enable per-lesion ROI synthesis overlay (requires seg files, always uses ensemble)"
     )
+    parser.add_argument(
+        "--case-list",
+        type=str,
+        default=None,
+        help="Optional text/CSV file whose first column lists case IDs to evaluate",
+    )
     args = parser.parse_args()
 
     device = torch.device(f"cuda:{args.gpu_id}" if args.gpu_id is not None else "cpu")
 
-    subjects = find_eval_subjects(args.data_csv, args.input_dir, split=args.split)
+    case_ids = read_case_list(args.case_list)
+    subjects = find_eval_subjects(
+        args.data_csv,
+        args.input_dir,
+        split=args.split,
+        case_ids=case_ids,
+    )
     if not subjects:
         raise RuntimeError(
             f"No subjects with all 4 modalities found in {args.input_dir} "
@@ -236,6 +296,7 @@ def main():
     # --- Evaluate each subject ---
     results = []
     failures = []
+    spatial_audits = []
 
     for subj in tqdm(subjects, desc="Evaluating"):
         s_id = subj["id"]
@@ -243,23 +304,13 @@ def main():
         f = subj["files"]
 
         try:
-            # Load + preprocess: first modality sets affine reference
-            first_mod = configs.AVAILABLE_MODALITIES[0]
-            img_ref, aff, org_shape = load_and_preprocess_first(
-                os.path.join(s_path, f[first_mod])
-            )
-
-            # Preprocess available modalities
-            imgs_pp_list = [img_ref]
-            for mod in configs.AVAILABLE_MODALITIES[1:]:
-                imgs_pp_list.append(
-                    load_and_preprocess(os.path.join(s_path, f[mod]), aff)
-                )
-
-            # Preprocess ground truth T2W
-            gt = load_and_preprocess(
-                os.path.join(s_path, f[configs.MISSING_MODALITY]), aff
-            )
+            prepared = prepare_eval_subject(subj)
+            images_by_modality = prepared["images_by_modality"]
+            imgs_pp_list = [
+                images_by_modality[modality]
+                for modality in configs.AVAILABLE_MODALITIES
+            ]
+            gt = images_by_modality[configs.MISSING_MODALITY]
 
             # Brain mask from available modalities
             brain_mask = create_brain_mask(imgs_pp_list)
@@ -298,29 +349,17 @@ def main():
             # ---- Per-Lesion ROI overlay (inference-only, parallel pipeline) ----
             if args.per_lesion:
                 from synthesis import roi_synthesis
-                # Find and load seg file
-                seg_file = None
-                for fname in os.listdir(s_path):
-                    if fname.endswith(('.nii.gz', '.nii')) and 'seg' in fname.lower():
-                        seg_file = os.path.join(s_path, fname)
-                        break
-
-                if seg_file is not None:
-                    seg, _ = utils.load_nifti(seg_file)
-                    seg, _ = utils.resize_center_crop_pad(seg, configs.SHAPE_PREPROCESS_IMG)
-                    seg = seg.astype(np.int16)
-
-                    if seg.max() > 0:
-                        # Build s_data for ROI synthesis
-                        s_data = {
-                            "s_id": s_id,
-                            "imgs_pp_list": imgs_pp_list,
-                        }
-                        syn_img = roi_synthesis.run_per_lesion_synthesis(
-                            s_data, syn_img, vae, unet_encdec, unet_bbdm,
-                            conditions_model, noise_scheduler, seg, device,
-                            verbose=args.verbose
-                        )
+                seg = prepared["segmentation"]
+                if seg is not None and seg.max() > 0:
+                    s_data = {
+                        "s_id": s_id,
+                        "imgs_pp_list": imgs_pp_list,
+                    }
+                    syn_img = roi_synthesis.run_per_lesion_synthesis(
+                        s_data, syn_img, vae, unet_encdec, unet_bbdm,
+                        conditions_model, noise_scheduler, seg, device,
+                        verbose=args.verbose
+                    )
 
             # Compute metrics
             met_whole = compute_metrics(syn_img, gt)
@@ -331,14 +370,32 @@ def main():
                 **{f"whole_{k}": v for k, v in met_whole.items()},
                 **{f"brain_{k}": v for k, v in met_brain.items()},
             })
+            transform = prepared["transform"]
+            spatial_audits.append({
+                "subject": s_id,
+                "native_shape": "x".join(str(value) for value in transform.native_shape),
+                "target_shape": "x".join(str(value) for value in transform.target_shape),
+                "target_spacing_mm": transform.target_spacing_mm,
+                "foreground_voxel_count": transform.foreground_voxel_count,
+                "lesion_voxel_count": transform.lesion_voxel_count,
+                "foreground_outside_voxel_count": prepared["foreground_support_audit"]["outside_voxel_count"],
+                "lesion_outside_voxel_count": (
+                    prepared["lesion_support_audit"]["outside_voxel_count"]
+                    if prepared["lesion_support_audit"] is not None
+                    else 0
+                ),
+            })
 
             # Save synthesized image if requested
             if args.save_output:
                 EVAL_OUTPUT = args.output_dir
                 os.makedirs(EVAL_OUTPUT, exist_ok=True)
-                out_name = f[first_mod][:-10] + configs.MISSING_MODALITY + f[first_mod][-7:]
-                syn_post = utils.postprocessing(syn_img, configs.MISSING_MODALITY, org_shape)
-                utils.save_nifti(syn_post, aff, os.path.join(EVAL_OUTPUT, out_name))
+                out_name = f"{s_id}-{configs.MISSING_MODALITY}.nii.gz"
+                save_synthesized_output(
+                    syn_img,
+                    prepared,
+                    os.path.join(EVAL_OUTPUT, out_name),
+                )
 
             if args.verbose:
                 print(f"  {s_id}: whole SSIM={met_whole['SSIM']:.4f}  PSNR={met_whole['PSNR']:.2f}  "
@@ -361,6 +418,10 @@ def main():
         pd.DataFrame(failures).to_csv(failure_csv, index=False)
         if results and args.save_csv:
             pd.DataFrame(results).to_csv(args.save_csv, index=False)
+        if spatial_audits and args.save_csv:
+            pd.DataFrame(spatial_audits).to_csv(
+                Path(args.save_csv).with_name("spatial_audit.csv"), index=False
+            )
         raise RuntimeError(
             f"Evaluation failed for {len(failures)}/{len(subjects)} subjects; "
             f"see {failure_csv}."
@@ -388,6 +449,9 @@ def main():
     if args.save_csv:
         df = pd.DataFrame(results)
         df.to_csv(args.save_csv, index=False)
+        pd.DataFrame(spatial_audits).to_csv(
+            Path(args.save_csv).with_name("spatial_audit.csv"), index=False
+        )
         print(f"\nPer-subject results saved to {args.save_csv}")
 
 

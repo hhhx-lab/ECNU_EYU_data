@@ -1,12 +1,21 @@
 
 import os
 import re
+import json
 import numpy as np
 import argparse
 import nibabel as nib
 import torch
 
 import configs
+from synthesis.spatial import (
+    SpatialTransform,
+    assert_support_contained,
+    build_foreground_mask,
+    build_spatial_transform,
+    resample_labels_to_model,
+    resample_to_model,
+)
 ## ------------------ REPRODUCIBILITY
 
 def set_seed(seed: int):
@@ -105,6 +114,142 @@ def save_nifti(image_np, affine, img_path_name, transpose=False):
 
     img_nifti = nib.Nifti1Image(image_np, affine=affine[0], header=affine[1])
     nib.save(img_nifti, img_path_name)
+
+
+def prepare_subject_space(
+    image_paths,
+    seg_path=None,
+    target_shape=None,
+    base_spacing_mm=1.0,
+    margin_mm=5.0,
+    foreground_indices=None,
+):
+    """Load aligned modalities and map them through one reversible transform."""
+    if not image_paths:
+        raise ValueError("at least one modality path is required")
+    target_shape = tuple(target_shape or configs.SHAPE_PREPROCESS_IMG)
+
+    loaded = [nib.load(str(path)) for path in image_paths]
+    reference = loaded[0]
+    native_shape = tuple(int(item) for item in reference.shape)
+    native_affine = np.asarray(reference.affine, dtype=np.float64)
+    raw_images = []
+    for path, image in zip(image_paths, loaded):
+        if tuple(image.shape) != native_shape:
+            raise ValueError(
+                f"shape mismatch for {path}: {tuple(image.shape)} != {native_shape}"
+            )
+        if not np.allclose(image.affine, native_affine, atol=1e-4, rtol=0.0):
+            raise ValueError(f"affine mismatch for {path}")
+        data = image.get_fdata(dtype=np.float32)
+        if not np.isfinite(data).all():
+            raise ValueError(f"non-finite values in {path}")
+        raw_images.append(data)
+
+    segmentation = None
+    if seg_path is not None:
+        seg_image = nib.load(str(seg_path))
+        if tuple(seg_image.shape) != native_shape:
+            raise ValueError(
+                f"shape mismatch for {seg_path}: {tuple(seg_image.shape)} != {native_shape}"
+            )
+        if not np.allclose(seg_image.affine, native_affine, atol=1e-4, rtol=0.0):
+            raise ValueError(f"affine mismatch for {seg_path}")
+        segmentation = np.asanyarray(seg_image.dataobj)
+        if not np.isfinite(segmentation).all():
+            raise ValueError(f"non-finite values in {seg_path}")
+        rounded = np.rint(segmentation)
+        if not np.allclose(segmentation, rounded, atol=1e-6):
+            raise ValueError(f"non-integer segmentation labels in {seg_path}")
+        segmentation = rounded.astype(np.int16)
+
+    normalized_images = [robust_normalize(image) for image in raw_images]
+    if foreground_indices is None:
+        foreground_images = normalized_images
+    else:
+        foreground_indices = tuple(int(index) for index in foreground_indices)
+        if not foreground_indices or any(
+            index < 0 or index >= len(normalized_images) for index in foreground_indices
+        ):
+            raise ValueError(f"invalid foreground indices: {foreground_indices}")
+        foreground_images = [normalized_images[index] for index in foreground_indices]
+
+    transform = build_spatial_transform(
+        foreground_images,
+        native_affine,
+        segmentation=segmentation,
+        target_shape=target_shape,
+        base_spacing_mm=base_spacing_mm,
+        margin_mm=margin_mm,
+    )
+    foreground_support = build_foreground_mask(
+        foreground_images,
+        segmentation=segmentation,
+    )
+    foreground_audit = assert_support_contained(
+        foreground_support, transform, "foreground"
+    )
+    lesion_audit = None
+    if segmentation is not None and np.any(segmentation > 0):
+        lesion_audit = assert_support_contained(segmentation > 0, transform, "lesion")
+
+    model_images = [
+        resample_to_model(image, transform, order=1) for image in normalized_images
+    ]
+    model_segmentation = (
+        resample_labels_to_model(segmentation, transform)
+        if segmentation is not None
+        else None
+    )
+    return {
+        "images": model_images,
+        "segmentation": model_segmentation,
+        "transform": transform,
+        "native_affine": (native_affine, reference.header.copy()),
+        "native_shape": native_shape,
+        "foreground_support_audit": foreground_audit,
+        "lesion_support_audit": lesion_audit,
+    }
+
+
+def _load_spatial_transform(transform_path):
+    with open(transform_path, encoding="utf-8") as handle:
+        metadata = json.load(handle)
+    return SpatialTransform.from_dict(metadata.get("transform", metadata))
+
+
+def load_image_in_model_space(image_path, transform_path):
+    transform = _load_spatial_transform(transform_path)
+    image = nib.load(str(image_path))
+    if tuple(image.shape) != transform.native_shape:
+        raise ValueError(
+            f"image shape {tuple(image.shape)} != transform native shape {transform.native_shape}"
+        )
+    if not np.allclose(image.affine, transform.native_affine, atol=1e-4, rtol=0.0):
+        raise ValueError("image affine does not match saved spatial transform")
+    data = image.get_fdata(dtype=np.float32)
+    if not np.isfinite(data).all():
+        raise ValueError(f"non-finite values in {image_path}")
+    return resample_to_model(robust_normalize(data), transform, order=1)
+
+
+def load_segmentation_in_model_space(seg_path, transform_path):
+    transform = _load_spatial_transform(transform_path)
+    seg_image = nib.load(str(seg_path))
+    if tuple(seg_image.shape) != transform.native_shape:
+        raise ValueError(
+            f"segmentation shape {tuple(seg_image.shape)} != transform native shape "
+            f"{transform.native_shape}"
+        )
+    if not np.allclose(seg_image.affine, transform.native_affine, atol=1e-4, rtol=0.0):
+        raise ValueError("segmentation affine does not match saved spatial transform")
+    segmentation = np.asanyarray(seg_image.dataobj)
+    if not np.isfinite(segmentation).all():
+        raise ValueError(f"non-finite values in {seg_path}")
+    rounded = np.rint(segmentation)
+    if not np.allclose(segmentation, rounded, atol=1e-6):
+        raise ValueError(f"non-integer segmentation labels in {seg_path}")
+    return resample_labels_to_model(rounded.astype(np.int16), transform)
 
 
 ## ------------------ PREPROCESSING/POSTPROCESSING FUNCTIONS
@@ -255,8 +400,8 @@ def preprocessing(img, affine=None):
     return img, affine
 
 
-def postprocessing(img, modality, org_shape, bmask=None):
-    img = resize_center_crop_pad(img, org_shape)[0]
+def postprocess_intensity(img, modality, bmask=None):
+    img = np.asarray(img, dtype=np.float32).copy()
     if bmask is not None:
         img[bmask == 0] = 0
     else:
@@ -276,6 +421,12 @@ def postprocessing(img, modality, org_shape, bmask=None):
         img[img < 0.015] = 0
 
     return img
+
+
+def postprocessing(img, modality, org_shape, bmask=None):
+    """Legacy fixed-voxel restoration retained for old artifacts only."""
+    img = resize_center_crop_pad(img, org_shape)[0]
+    return postprocess_intensity(img, modality, bmask=bmask)
 
 
 def postprocessing_raw(img,org_shape):

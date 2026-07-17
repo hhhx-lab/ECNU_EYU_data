@@ -3,7 +3,7 @@
 #SBATCH -p a100
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --gres=gpu:NVIDIAA100-PCIE-40GB:1
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
 #SBATCH -t 18:00:00

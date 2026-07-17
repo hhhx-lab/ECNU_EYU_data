@@ -69,14 +69,9 @@ def prepare_s_data(subject_folder, load_seg=False):
     seg_path = find_seg_file(subject_folder)
     if seg_path is None:
         raise ValueError("missing required segmentation file")
+    s_data["seg_path"] = seg_path
     if load_seg:
-        if seg_path is not None:
-            import numpy as np
-            seg, _ = utils.load_nifti(seg_path)
-            seg, _ = utils.resize_center_crop_pad(seg, configs.SHAPE_PREPROCESS_IMG)
-            s_data["seg"] = seg.astype(np.int16)
-        else:
-            s_data["seg"] = None
+        s_data["seg"] = None
 
     return s_data
 
@@ -204,20 +199,12 @@ def run_synthesis_per_lesion(s_data, synthesis_type, output_path, output_name,
     path_out_intermediate = os.path.join(output_path, f"intermediate_{s_data['s_id']}")
     os.makedirs(path_out_intermediate, exist_ok=True)
 
-    aff = None
-    aff_preprocessed = None
-    org_shape = None
-
-    # 1. Preprocess images (same as standard pipeline)
-    imgs_pp_list = []
-    for i, path_name_img in enumerate(s_data["path_name_img_list"]):
-        img, aff = utils.load_nifti(path_name_img)
-        org_shape = img.shape
-        img, aff_preprocessed = utils.preprocessing(img, affine=aff)
-        imgs_pp_list.append(img)
+    prepared = pipeline.prepare_inference_subject(s_data)
+    imgs_pp_list = prepared["images"]
 
     # Store preprocessed images for ROI extraction
     s_data["imgs_pp_list"] = imgs_pp_list
+    s_data["spatial_transform"] = prepared["transform"]
 
     # 2. Encode to latents
     latens_list = [pipeline.encode_image(img, vae) for img in imgs_pp_list]
@@ -241,7 +228,7 @@ def run_synthesis_per_lesion(s_data, synthesis_type, output_path, output_name,
                                         combination_type='mean')
 
     # 4. Per-lesion ROI overlay
-    seg = s_data.get("seg", None)
+    seg = prepared["segmentation"]
     if seg is not None and seg.max() > 0:
         if verbose:
             print(f"  Running per-lesion ROI overlay...")
@@ -264,17 +251,29 @@ def run_synthesis_per_lesion(s_data, synthesis_type, output_path, output_name,
     else:
         bmask = None
 
-    final_img = utils.postprocessing(final_img, configs.MISSING_MODALITY,
-                                     org_shape, bmask=bmask)
+    final_img = pipeline.restore_generated_image(
+        final_img,
+        prepared,
+        configs.MISSING_MODALITY,
+        native_brain_mask=bmask,
+    )
 
     path_name_syn_img = os.path.join(output_path, output_name)
-    utils.save_nifti(final_img, aff, path_name_syn_img)
+    utils.save_nifti(final_img, prepared["native_affine"], path_name_syn_img)
 
     # Save intermediate raw outputs
     path_encdec_raw = os.path.join(path_out_intermediate, "raw_encdec_syn_img.nii.gz")
     path_bbdm_raw = os.path.join(path_out_intermediate, "raw_bbdm_syn_img.nii.gz")
-    utils.save_nifti(utils.postprocessing_raw(syn_img_encdec, org_shape), aff, path_encdec_raw)
-    utils.save_nifti(utils.postprocessing_raw(syn_img_bbdm, org_shape), aff, path_bbdm_raw)
+    utils.save_nifti(
+        pipeline.restore_raw_image(syn_img_encdec, prepared),
+        prepared["native_affine"],
+        path_encdec_raw,
+    )
+    utils.save_nifti(
+        pipeline.restore_raw_image(syn_img_bbdm, prepared),
+        prepared["native_affine"],
+        path_bbdm_raw,
+    )
 
     if verbose:
         print(f"  Synthesis completed. Output saved to: {path_name_syn_img}")

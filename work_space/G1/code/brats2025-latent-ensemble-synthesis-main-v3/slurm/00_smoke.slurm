@@ -3,7 +3,7 @@
 #SBATCH -p a100
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --gres=gpu:NVIDIAA100-PCIE-40GB:1
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=24G
 #SBATCH -t 00:20:00
@@ -22,6 +22,21 @@ else
 fi
 test -f "${CODE_DIR}/README.md" || { echo "ERROR: submit from the G1 V3 code root or set G1_V3_CODE_DIR"; exit 1; }
 G1_V3_CONDA_ENV="${G1_V3_CONDA_ENV:-segmamba}"
+
+# Early bootstrap marker (survives module failures; also ensures logs/ exists before modules).
+mkdir -p "${CODE_DIR}/logs"
+{
+  echo "BOOTSTRAP $(date -Is 2>/dev/null || date)"
+  echo "Job ID: ${SLURM_JOB_ID:-NA}"
+  echo "Node: ${SLURMD_NODENAME:-NA}"
+  echo "SubmitDir: ${SLURM_SUBMIT_DIR:-NA}"
+  echo "CodeDir: ${CODE_DIR}"
+  echo "PWD: $(pwd)"
+  echo "PATH: ${PATH}"
+} | tee "${CODE_DIR}/logs/g1v3_smoke_${SLURM_JOB_ID:-manual}.bootstrap"
+# Also force a line to stdout/stderr immediately so Slurm log files are non-empty.
+echo "BOOTSTRAP_STDOUT job=${SLURM_JOB_ID:-NA} node=${SLURMD_NODENAME:-NA}"
+echo "BOOTSTRAP_STDERR job=${SLURM_JOB_ID:-NA}" >&2
 
 module purge
 module load apps/envs/miniconda3/25.5.1

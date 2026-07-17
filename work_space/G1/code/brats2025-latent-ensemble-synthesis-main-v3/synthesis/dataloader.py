@@ -207,6 +207,9 @@ class PrepareDataset(torch.utils.data.Dataset):
 
         s_id = os.path.basename(os.path.dirname(instance_latents["t1n"]))
         sample["s_id"] = s_id
+        transform_path = os.path.join(
+            os.path.dirname(instance_latents["t1n"]), "spatial_transform.json"
+        )
 
         # change lattents shape
         if self.new_shape is not None:
@@ -273,13 +276,14 @@ class PrepareDataset(torch.utils.data.Dataset):
 
         if not self.load_only_latents:
             instance_img = self.paths_list_imgs[index % self.num_instances]
-            images_list = [utils.load_nifti(instance_img["t1n"])[0],
-                            utils.load_nifti(instance_img["t1c"])[0],
-                            utils.load_nifti(instance_img["t2w"])[0],
-                            utils.load_nifti(instance_img["t2f"])[0]]
-
-            if self.load_org_img:
-                images_list = [utils.robust_normalize(utils.resize_center_crop_pad(img, (256,256,160))[0]) for img in images_list]
+            if not os.path.isfile(transform_path):
+                raise FileNotFoundError(
+                    f"missing spatial transform for {s_id}: {transform_path}"
+                )
+            images_list = [
+                utils.load_image_in_model_space(instance_img[modality], transform_path)
+                for modality in ("t1n", "t1c", "t2w", "t2f")
+            ]
 
             ## ---- TO MODALITY ---- ##
             if self.mode in ["1-to-1", "3-to-1"]:
@@ -307,9 +311,13 @@ class PrepareDataset(torch.utils.data.Dataset):
                     __from_modality_images[__to_modality_index] = __noise_img
 
         if self.load_seg:
-            # load the segmentation
-            seg = utils.load_nifti(instance_latents["seg"])[0]
-            seg = utils.resize_center_crop_pad(seg, np.array(latents_list[0].squeeze()[0].shape)*4)[0]
+            if not os.path.isfile(transform_path):
+                raise FileNotFoundError(
+                    f"missing spatial transform for {s_id}: {transform_path}"
+                )
+            seg = utils.load_segmentation_in_model_space(
+                instance_latents["seg"], transform_path
+            )
             seg = np.expand_dims(seg, axis=0)
             sample["segmentation"] = torch.from_numpy(seg)
 

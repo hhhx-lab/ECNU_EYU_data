@@ -32,10 +32,24 @@ code/g2_build_realonly_from_raw.py
 code/g2_create_train_val_test_split.py
 code/g2_v2_compose_augmentation.py
 code/g2_v3_completion_intake.py
+code/g2_v3_paired_quality.py
+code/g2_s2_v3_teacher_eval.py
 code/g2_synthetic_raw_intake_qc.py
 code/g2_materialize_nnunet_dataset.py
 code/g2_official_mets_metrics_parser.py
 ```
+
+G1 V3 阶段 5 审批使用两个独立入口：
+
+```text
+slurm/01_g2_v3_paired_quality.slurm  # 真实/生成 T2W 影像与病灶 QC
+slurm/02_g2_v3_s2_teacher.slurm      # 冻结 S2 对同一 103 例做成对 teacher 推理
+```
+
+teacher 输入固定为真实 `t1n/t1c/t2f` 加生成 `t2w`，checkpoint 固定为当前
+Dataset263 real-only 模型。teacher 技术通过仍不等于自动批准阶段 6，还必须复核 paired-QC montage。
+paired QC 同时强制读取同一 Stage 5 run 的 `spatial_audit.csv`；病例 ID
+不一致、字段缺失或任一 foreground/lesion 体素逃出模型 FOV 都直接拒绝。
 
 执行顺序见 [G2_G1适配执行清单.md](docs/G2_G1适配执行清单.md)，接口字段见 [G1_G2_diffusion_output_contract.md](docs/G1_G2_diffusion_output_contract.md)，本轮整改记录见 [2026-07-12_G2_V2_V3对接与QC整改.md](docs/2026-07-12_G2_V2_V3对接与QC整改.md)。
 
@@ -68,4 +82,4 @@ labels={0,1,2,3,4}
 python -m unittest discover -s work_space/G2/tests -v
 ```
 
-当前 G2 共 34 项测试，使用临时小型 NIfTI，不依赖本机保存 40GB 数据，也不向仓库写入临时影像。
+当前 G2 共 49 项测试，使用临时小型 NIfTI，不依赖本机保存 40GB 数据，也不向仓库写入临时影像。

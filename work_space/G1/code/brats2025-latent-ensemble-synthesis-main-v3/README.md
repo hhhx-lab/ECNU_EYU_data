@@ -157,7 +157,7 @@ python validate_vae_recon.py \
     --device cuda:0
 ```
 
-The same crop is applied to `t1n/t1c/t2w/t2f`, segmentation, and every loss
+The same training patch is applied to `t1n/t1c/t2w/t2f`, segmentation, and every loss
 mask. Tumor components use 26-connectivity and are sampled uniformly by
 component, so a large lesion cannot dominate the patch distribution.
 
@@ -346,7 +346,8 @@ data/input/
 - Training cases must contain t1n/t1c/t2w/t2f + seg.
 - Inference cases must contain t1n/t1c/t2f + seg and must not contain T2W.
 - Filenames must end in `-t1n`, `-t1c`, `-t2w`, `-t2f`, or `-seg` before the NIfTI extension.
-- Already skull-stripped, registered, and resampled to 1mm³ is recommended
+- Modalities and segmentation must already be mutually registered. Native voxel
+  spacing may vary; the pipeline performs one shared affine-aware resampling.
 
 ### 3.2 Preprocessing (VAE Encoding)
 
@@ -365,10 +366,19 @@ python preprocess.py \
 This will:
 1. Scan all subjects under `data/input/`
 2. Normalize each volume to [0, 1]
-3. Zero-pad / center-crop to `(256, 256, 160)`
-4. Encode with the pretrained MAISI VAE → latent arrays of shape `(4, 64, 64, 40)`
-5. Save `.npy` files to `data/latents/<subject_id>/`
-6. Preserve the existing patient-grouped split in `data/data_csv.csv`
+3. Build one foreground-centered transform from `t1n/t1c/t2f` plus segmentation;
+   the target is `(256, 256, 160)` with 1 mm isotropic base spacing, enlarged
+   automatically when needed so foreground and lesion support remain inside the FOV
+4. Apply that exact affine-aware transform to all four modalities and segmentation
+5. Encode with the pretrained MAISI VAE → latent arrays of shape `(4, 64, 64, 40)`
+6. Save `.npy` files and `spatial_transform.json` to `data/latents/<subject_id>/`
+7. Preserve the existing patient-grouped split in `data/data_csv.csv`
+
+The transform never uses target T2W intensity to choose the FOV, so validation
+does not leak the reconstruction target. Evaluation and missing-T2W inference use
+the same preprocessing and restore every generated T2W directly to the original
+shape and affine. The legacy fixed-voxel center-crop helper is not part of the
+production raw-NIfTI path.
 
 ### 3.3 Train/Validation Split
 

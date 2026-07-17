@@ -3,7 +3,7 @@
 #SBATCH -p a100
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --gres=gpu:NVIDIAA100-PCIE-40GB:1
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH -t 24:00:00
@@ -67,6 +67,7 @@ rm -rf data/latents data/attention_masks data/lesion_weights
 "${PYTHON_BIN}" -u precompute_lesion_weights.py \
   --data_csv data/data_csv.csv \
   --data_dir data/input \
+  --transforms_dir data/latents \
   --output_dir data/lesion_weights
 "${PYTHON_BIN}" -u compute_weights.py
 cp "${SELECTION_JSON}" data/selected_vae.json
@@ -85,10 +86,12 @@ assert Counter(row["split"] for row in rows) == {"train": 823, "val": 103, "test
 
 latent_cases = [path for path in (data / "latents").iterdir() if path.is_dir()]
 latent_files = list((data / "latents").glob("*/*_latent.npy"))
+spatial_transforms = list((data / "latents").glob("*/spatial_transform.json"))
 attention_files = list((data / "attention_masks").glob("*/*_attmask_64_64_40.npy"))
 weight_files = list((data / "lesion_weights").glob("*/*_lesion_weights_64_64_40.npy"))
 assert len(latent_cases) == 1030, len(latent_cases)
 assert len(latent_files) == 1030 * 4, len(latent_files)
+assert len(spatial_transforms) == 1030, len(spatial_transforms)
 assert len(attention_files) == 1030, len(attention_files)
 assert len(weight_files) == 1030, len(weight_files)
 
@@ -100,6 +103,7 @@ assert Path(selection["selected_weights"]).is_file(), selection
 print("Auxiliary contract passed:", {
     "cases": len(latent_cases),
     "latents": len(latent_files),
+    "spatial_transforms": len(spatial_transforms),
     "attention_masks": len(attention_files),
     "lesion_weights": len(weight_files),
 })

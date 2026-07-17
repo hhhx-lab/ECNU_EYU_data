@@ -55,17 +55,24 @@ def load_split_ids(csv_path, split="val"):
     return subjects
 
 
-def load_and_preprocess_image(path):
-    img, _ = utils.load_nifti(path)
-    img = utils.robust_normalize(img)
-    img, _ = utils.resize_center_crop_pad(img, configs.SHAPE_PREPROCESS_IMG)
-    return img
-
-
-def load_and_preprocess_seg(path):
-    seg, _ = utils.load_nifti(path)
-    seg, _ = utils.resize_center_crop_pad(seg, configs.SHAPE_PREPROCESS_IMG)
-    return seg.astype(np.int16)
+def load_preprocessed_subject(subject, data_dir):
+    modality_paths = [
+        os.path.join(data_dir, subject["id"], os.path.basename(subject[modality]))
+        for modality in configs.MODALITY_LIST
+    ]
+    seg_path = os.path.join(
+        data_dir, subject["id"], os.path.basename(subject["seg"])
+    )
+    foreground_indices = tuple(
+        configs.MODALITY_LIST.index(modality)
+        for modality in configs.AVAILABLE_MODALITIES
+    )
+    prepared = utils.prepare_subject_space(
+        modality_paths,
+        seg_path=seg_path,
+        foreground_indices=foreground_indices,
+    )
+    return prepared["images"], prepared["segmentation"]
 
 
 def build_masks(images_list, seg, threshold=0.02):
@@ -157,14 +164,8 @@ def save_comparison_samples(
 
     for subject_id in worst_ids:
         subject = subjects_by_id[subject_id]
-        t2w_path = os.path.join(
-            data_dir, subject_id, os.path.basename(subject["t2w"])
-        )
-        seg_path = os.path.join(
-            data_dir, subject_id, os.path.basename(subject["seg"])
-        )
-        target = load_and_preprocess_image(t2w_path)
-        seg = load_and_preprocess_seg(seg_path)
+        images, seg = load_preprocessed_subject(subject, data_dir)
+        target = images[configs.MODALITY_LIST.index("t2w")]
         frozen = reconstruct_subject(vae_frozen, [target], device)[0][0]
         finetuned = reconstruct_subject(vae_ft, [target], device)[0][0]
         tumor_per_slice = (seg > 0).sum(axis=(0, 1))
@@ -282,16 +283,7 @@ def main():
 
     for subj in tqdm(val_subjects, desc="Evaluating"):
         try:
-            # load all modalities
-            images = []
-            for mod in configs.MODALITY_LIST:
-                fname = os.path.basename(subj[mod])
-                fpath = os.path.join(args.data_dir, subj["id"], fname)
-                images.append(load_and_preprocess_image(fpath))
-
-            seg_path = os.path.join(args.data_dir, subj["id"],
-                                    os.path.basename(subj["seg"]))
-            seg = load_and_preprocess_seg(seg_path)
+            images, seg = load_preprocessed_subject(subj, args.data_dir)
             _, tumor_mask, healthy_mask = build_masks(images, seg)
 
             # --- frozen VAE ---

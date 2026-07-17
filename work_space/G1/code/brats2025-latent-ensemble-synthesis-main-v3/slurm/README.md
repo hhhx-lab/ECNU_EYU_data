@@ -16,7 +16,7 @@ mkdir -p logs
 
 - Conda 环境：服务器已有 `segmamba`。
 - CUDA 模块：`compiler/cuda/12.1`。
-- GPU：单张 `NVIDIAA100-PCIE-40GB`。
+- GPU：`a100` 分区中的单张 A100，调度器可分配 40GB 或 80GB 型号。
 - 不在作业里安装依赖，不新建环境。
 - Slurm 分配的物理 GPU 在作业内映射为 `cuda:0`。
 
@@ -27,10 +27,10 @@ mkdir -p logs
 | 0 | `00_smoke.slurm` | 是 | V3 代码、`segmamba`、预训练 VAE | CUDA/依赖/模型前向检查 |
 | 1 | `01_adopt_prepared_data.slurm` | 是，依赖 0 | V2 已验证的数据链接和固定 split | V3 独立 metadata，复用 NIfTI 链接 |
 | 2 | `02_finetune_vae.slurm` | 是，依赖 1 | 823 train、103 val、预训练 VAE | patch 微调、全 val 对比、VAE 选择 |
-| 3 | `03_encode_and_prepare_aux.slurm` | VAE 人工验收后 | 被选中的 VAE、1030 完整病例 | 4120 latents、mask、lesion weight、channel weight |
+| 3 | `03_encode_and_prepare_aux.slurm` | VAE 人工验收后 | 被选中的 VAE、1030 完整病例 | 4120 latents、1030 spatial transforms、mask/weight |
 | 4 | `04_train_models.slurm` | 阶段 3 后，两个 job 并行 | train latents 和辅助权重 | EncDec 或 BBDM checkpoint |
-| 5 | `05_evaluate_val.slurm` | 两模型都完成后 | 103 val、两模型 checkpoint | 完整 val 指标、重建 NIfTI、运行清单 |
-| 6 | `06_infer_missing_t2w.slurm` | val 人工批准后 | 265 个真缺 T2W 病例 | 每病例完整五文件，交给 G2 QC |
+| 5 | `05_evaluate_val.slurm` | 两模型都完成后 | 103 val、两模型 checkpoint | 原生空间重建、spatial/geometry audit、运行清单 |
+| 6 | `06_infer_missing_t2w.slurm` | G2 最终 gate 批准后 | 265 个真缺 T2W 病例 | 每病例完整五文件，交 G2 completion intake |
 
 阶段 2 与 3 之间、阶段 5 与 6 之间都有人工门。不要把七个阶段一次性串完。
 
@@ -117,6 +117,7 @@ echo "ENCODE_JOB=${ENCODE_JOB}"
 阶段 3 会先删除 V3 自己的旧 latent/mask/lesion-weight，再统一重建。成功条件：
 
 - 1030 个 latent 目录、4120 个 `*_latent.npy`。
+- 1030 个 `spatial_transform.json`，前景/病灶 outside count 全为 0。
 - 1030 个 latent attention mask。
 - 1030 个 latent lesion-weight mask。
 - `channel_weights.json` 明确记录 823 个 train 病例。
@@ -167,18 +168,41 @@ echo "EVAL_JOB=${EVAL_JOB}"
 ```text
 data/evaluation/val/run_<jobid>/
 ├── metrics.csv
+├── spatial_audit.csv
 ├── evaluation_run.json
+├── geometry_audit/
 └── synthesized/*.nii.gz
 ```
 
-检查 `metrics.csv`、均值和重建图像后，显式批准同一 validation run：
+生成 T2W 必须直接与原始 T2W 的 shape/affine/spacing 一致，不做事后 header 修复。
+`spatial_audit.csv` 必须正好 103 行，且 foreground/lesion outside count 全为 0。
+
+然后回到项目根目录，对同一 Stage 5 run 并行执行 G2 paired QC 和冻结 S2 teacher：
 
 ```bash
-VAL_APPROVED=1 sbatch slurm/06_infer_missing_t2w.slurm
+cd "${PROJECT_ROOT}"
+EVAL_JOB_ID="${EVAL_JOB%%;*}"
+VAL_RUN_DIR="${CODE_DIR}/data/evaluation/val/run_${EVAL_JOB_ID}"
+PAIR_QC_JOB=$(PROJECT_ROOT="${PROJECT_ROOT}" G1_V3_VAL_RUN_DIR="${VAL_RUN_DIR}" \
+  sbatch --parsable work_space/G2/slurm/01_g2_v3_paired_quality.slurm)
+TEACHER_JOB=$(PROJECT_ROOT="${PROJECT_ROOT}" G1_V3_VAL_RUN_DIR="${VAL_RUN_DIR}" \
+  sbatch --parsable work_space/G2/slurm/02_g2_v3_s2_teacher.slurm)
+```
+
+两个作业成功且 montage 人工分层复核完成后，在
+`work_space/G2/results/qc/v3_paired_validation/run_<jobid>/FINAL_GATE.json` 写明结论。
+只有 `decision=approve_stage6` 时才能推理：
+
+```bash
+cd "${CODE_DIR}"
+VAL_APPROVED=1 \
+G2_FINAL_GATE_JSON="${PROJECT_ROOT}/work_space/G2/results/qc/v3_paired_validation/run_${EVAL_JOB_ID}/FINAL_GATE.json" \
+sbatch slurm/06_infer_missing_t2w.slurm
 ```
 
 阶段 6 从阶段 5 的 `evaluation_run.json` 读取确切的 VAE、EncDec、BBDM
-checkpoint 和 `s`，不会改用其他权重。它不启用额外 brain-mask 模型。成功输出：
+checkpoint 和 `s`，不会改用其他权重。它同时校验 gate 的 run ID 和
+`approve_stage6` 决策，不启用额外 brain-mask 模型。成功输出：
 
 ```text
 data/output/run_<jobid>/<case_id>/

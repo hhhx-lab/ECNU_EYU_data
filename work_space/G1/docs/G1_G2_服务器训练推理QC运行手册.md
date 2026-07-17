@@ -1,6 +1,6 @@
 # G1-G2 服务器训练、生成、QC 总运行手册
 
-更新日期：2026-07-15
+更新日期：2026-07-16
 
 ## 1. 当前只有两条正式产线
 
@@ -114,10 +114,41 @@ mkdir -p logs
 | 2 | `02_finetune_vae.slurm` | 全 train patch 微调，完整 val 选择 |
 | 3 | `03_encode_and_prepare_aux.slurm` | VAE 人工批准后统一重编码 |
 | 4 | `04_train_models.slurm` | EncDec/BBDM 可并行，各一张 GPU |
-| 5 | `05_evaluate_val.slurm` | 固定 103 val，锁定 checkpoint 与 `s` |
-| 6 | `06_infer_missing_t2w.slurm` | val 人工批准后处理 265 例 |
+| 5 | `05_evaluate_val.slurm` | 固定 103 val，原生空间输出与 spatial/geometry audit |
+| G2 gate | `01_g2_v3_paired_quality.slurm` + `02_g2_v3_s2_teacher.slurm` | 配对 QC、冻结 teacher、montage 人工复核 |
+| 6 | `06_infer_missing_t2w.slurm` | `FINAL_GATE.json=approve_stage6` 后处理 265 例 |
 
 阶段 2 到 3、阶段 5 到 6 是人工门，不能一次性无条件串完。
+正式 raw NIfTI 不再做固定体素中心裁切；统一使用 `t1n/t1c/t2f + seg`
+确定前景中心和自适应 isotropic spacing，并将生成 T2W 直接恢复到原生 shape/affine。
+
+### 6.1 V3 Stage 5 到 G2 的必要输出
+
+```text
+data/evaluation/val/run_<jobid>/
+  metrics.csv
+  spatial_audit.csv
+  evaluation_run.json
+  synthesized/*.nii.gz
+  geometry_audit/geometry_audit.csv
+  geometry_audit/geometry_audit.json
+```
+
+`spatial_audit.csv` 必须正好 103 行且 ID 与 `metrics.csv` 完全一致；
+foreground/lesion outside count 必须全为 0。G2 paired QC 会将上述条件作为写输出前的硬门。
+
+在项目根目录对同一 Stage 5 run 并行提交：
+
+```bash
+PROJECT_ROOT="${PROJECT_ROOT}" G1_V3_VAL_RUN_DIR=/absolute/path/to/run_<jobid> \
+  sbatch work_space/G2/slurm/01_g2_v3_paired_quality.slurm
+PROJECT_ROOT="${PROJECT_ROOT}" G1_V3_VAL_RUN_DIR=/absolute/path/to/run_<jobid> \
+  sbatch work_space/G2/slurm/02_g2_v3_s2_teacher.slurm
+```
+
+两者技术完成后仍需按 `review_index.csv` 复核 montage。最终
+`FINAL_GATE.json` 的 `run_id` 必须对应 Stage 5，`decision` 必须为
+`approve_stage6`，否则 `06_infer_missing_t2w.slurm` 直接拒绝。
 
 V3 阶段 6 必须输出：
 
@@ -285,9 +316,10 @@ S2 使用 nnU-Net view；S1/S3/S4/S5 使用按 split 分区的 case-folder view�
 2. 同患者跨 split。
 3. checkpoint、seed、manifest 或 log 缺失。
 4. NIfTI 不可读或 geometry 不一致。
-5. V3 改动了 t1n/t1c/t2f/seg。
-6. V2 非生成区被改动。
-7. nnU-Net integrity 失败。
-8. 输出目录非空但操作者无法确认内容来源。
+5. V3 spatial audit 病例不齐或任一 foreground/lesion outside count 非 0。
+6. V3 改动了 t1n/t1c/t2f/seg。
+7. V2 非生成区被改动。
+8. nnU-Net integrity 失败。
+9. 输出目录非空但操作者无法确认内容来源。
 
 不要通过手改 CSV、关闭错误检查或复用未知旧目录继续运行。

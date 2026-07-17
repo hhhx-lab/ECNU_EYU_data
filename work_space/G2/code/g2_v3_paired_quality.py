@@ -38,6 +38,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--real-root", required=True, help="G1 V3 data/input directory")
     parser.add_argument("--synthetic-root", required=True, help="Stage-5 synthesized T2W directory")
     parser.add_argument("--stage5-metrics", required=True, help="Stage-5 metrics.csv")
+    parser.add_argument(
+        "--spatial-audit",
+        required=True,
+        help="Stage-5 spatial_audit.csv produced by the same evaluation run",
+    )
     parser.add_argument("--output-root", required=True)
     parser.add_argument("--expected-cases", type=int, default=103)
     parser.add_argument("--seed", type=int, default=42)
@@ -374,6 +379,85 @@ def read_stage5_metrics(path: Path) -> list[dict[str, str]]:
     return rows
 
 
+def _parse_positive_shape(value: str, *, field: str, case_id: str) -> tuple[int, int, int]:
+    try:
+        shape = tuple(int(item) for item in value.strip().lower().split("x"))
+    except (AttributeError, TypeError, ValueError) as error:
+        raise ValueError(f"{case_id}: invalid {field}: {value!r}") from error
+    if len(shape) != 3 or any(item <= 0 for item in shape):
+        raise ValueError(f"{case_id}: invalid {field}: {value!r}")
+    return shape
+
+
+def read_and_validate_spatial_audit(
+    path: Path,
+    expected_case_ids: list[str],
+) -> list[dict[str, str]]:
+    required_columns = {
+        "subject",
+        "native_shape",
+        "target_shape",
+        "target_spacing_mm",
+        "foreground_voxel_count",
+        "lesion_voxel_count",
+        "foreground_outside_voxel_count",
+        "lesion_outside_voxel_count",
+    }
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        columns = set(reader.fieldnames or ())
+        missing_columns = sorted(required_columns - columns)
+        if missing_columns:
+            raise ValueError(f"spatial audit missing required columns: {missing_columns}")
+        rows = list(reader)
+    if not rows:
+        raise ValueError(f"spatial audit is empty: {path}")
+
+    case_ids = [row["subject"].strip() for row in rows]
+    if any(not case_id for case_id in case_ids):
+        raise ValueError("spatial audit contains an empty subject ID")
+    if len(case_ids) != len(set(case_ids)):
+        raise ValueError("spatial audit contains duplicate subjects")
+
+    expected_ids = list(expected_case_ids)
+    if len(expected_ids) != len(set(expected_ids)):
+        raise ValueError("expected case IDs contain duplicates")
+    missing_ids = sorted(set(expected_ids) - set(case_ids))
+    unexpected_ids = sorted(set(case_ids) - set(expected_ids))
+    if missing_ids or unexpected_ids:
+        raise ValueError(
+            "spatial audit case IDs do not match stage-5 metrics: "
+            f"missing={missing_ids}, unexpected={unexpected_ids}"
+        )
+
+    for row, case_id in zip(rows, case_ids):
+        row["subject"] = case_id
+        _parse_positive_shape(row["native_shape"], field="native_shape", case_id=case_id)
+        _parse_positive_shape(row["target_shape"], field="target_shape", case_id=case_id)
+        try:
+            spacing = float(row["target_spacing_mm"])
+            foreground_count = int(row["foreground_voxel_count"])
+            lesion_count = int(row["lesion_voxel_count"])
+            foreground_outside = int(row["foreground_outside_voxel_count"])
+            lesion_outside = int(row["lesion_outside_voxel_count"])
+        except (TypeError, ValueError) as error:
+            raise ValueError(f"{case_id}: spatial audit contains invalid numeric values") from error
+        if not math.isfinite(spacing) or spacing <= 0:
+            raise ValueError(f"{case_id}: target spacing must be finite and positive")
+        if foreground_count <= 0 or lesion_count < 0:
+            raise ValueError(
+                f"{case_id}: invalid support counts foreground={foreground_count}, lesion={lesion_count}"
+            )
+        if foreground_outside < 0 or lesion_outside < 0:
+            raise ValueError(f"{case_id}: outside-voxel counts cannot be negative")
+        if foreground_outside or lesion_outside:
+            raise ValueError(
+                f"{case_id}: support escaped model FOV "
+                f"(foreground={foreground_outside}, lesion={lesion_outside})"
+            )
+    return rows
+
+
 def find_case_file(case_dir: Path, case_id: str, suffix: str) -> Path:
     exact = case_dir / f"{case_id}-{suffix}.nii.gz"
     if exact.is_file():
@@ -513,6 +597,8 @@ def build_report(summary: dict[str, Any], review_rows: list[dict[str, Any]]) -> 
         f"- 区域记录数：{summary['region_row_count']}",
         f"- 连通病灶记录数：{summary['lesion_row_count']}",
         f"- 高优先级人工复核：{len(high_priority)}",
+        f"- 空间视野硬门：{summary['spatial_gate']['status']}",
+        f"- 空间审计病例数：{summary['spatial_gate']['case_count']}",
         "",
         "## 核心指标",
         "",
@@ -539,6 +625,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     real_root = Path(args.real_root).expanduser().resolve()
     synthetic_root = Path(args.synthetic_root).expanduser().resolve()
     stage5_path = Path(args.stage5_metrics).expanduser().resolve()
+    spatial_path = Path(args.spatial_audit).expanduser().resolve()
     output_root = Path(args.output_root).expanduser().resolve()
     for path, description in (
         (real_root, "real root"),
@@ -548,13 +635,20 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             raise FileNotFoundError(f"{description} not found: {path}")
     if not stage5_path.is_file():
         raise FileNotFoundError(f"stage-5 metrics not found: {stage5_path}")
+    if not spatial_path.is_file():
+        raise FileNotFoundError(f"spatial audit not found: {spatial_path}")
 
     stage5_rows = read_stage5_metrics(stage5_path)
     if len(stage5_rows) != args.expected_cases:
         raise ValueError(
             f"stage-5 case count {len(stage5_rows)} != expected {args.expected_cases}"
         )
+    spatial_rows = read_and_validate_spatial_audit(
+        spatial_path,
+        [row["subject"] for row in stage5_rows],
+    )
     prepare_output_root(output_root, args.overwrite)
+    shutil.copy2(spatial_path, output_root / "spatial_audit.csv")
 
     case_rows: list[dict[str, Any]] = []
     region_rows: list[dict[str, Any]] = []
@@ -712,6 +806,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "tiny_lesion_case_count": sum(int(row["tiny_lesion_count"]) > 0 for row in case_rows),
         "small_lesion_case_count": sum(int(row["small_lesion_count"]) > 0 for row in case_rows),
         "artifact_flag_case_count": sum(int(row["artifact_flag_count"]) > 0 for row in case_rows),
+        "spatial_gate": {
+            "status": "pass",
+            "source": str(spatial_path),
+            "case_count": len(spatial_rows),
+            "foreground_outside_voxel_count": 0,
+            "lesion_outside_voxel_count": 0,
+            "target_spacing_mm_min": min(float(row["target_spacing_mm"]) for row in spatial_rows),
+            "target_spacing_mm_max": max(float(row["target_spacing_mm"]) for row in spatial_rows),
+        },
         "review_priority_counts": {
             priority: sum(row["review_priority"] == priority for row in review_rows)
             for priority in ("high", "medium", "routine")

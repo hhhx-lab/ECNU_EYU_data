@@ -5,7 +5,7 @@
 #SBATCH -n 1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH -t 04:00:00
+#SBATCH -t 08:00:00
 #SBATCH -o work_space/G2/logs/g2_v3_pairqc_%j.out
 #SBATCH -e work_space/G2/logs/g2_v3_pairqc_%j.err
 
@@ -41,12 +41,14 @@ if [[ "${VAL_RUN_DIR}" != /* ]]; then
 fi
 VAL_RUN_DIR="$(cd "${VAL_RUN_DIR}" && pwd)"
 VAL_RUN_ID="$(basename "${VAL_RUN_DIR}")"
-SYNTHETIC_ROOT="${VAL_RUN_DIR}/synthesized"
+SYNTHETIC_ROOT="${G1_V3_SYNTHETIC_ROOT:-${VAL_RUN_DIR}/synthesized}"
 STAGE5_METRICS="${VAL_RUN_DIR}/metrics.csv"
+SPATIAL_AUDIT="${VAL_RUN_DIR}/spatial_audit.csv"
 OUTPUT_ROOT="${G2_V3_PAIR_QC_OUTPUT:-${PROJECT_ROOT}/work_space/G2/results/qc/v3_paired_validation/${VAL_RUN_ID}}"
 
 test -d "${SYNTHETIC_ROOT}" || { echo "ERROR: synthesized directory missing: ${SYNTHETIC_ROOT}" >&2; exit 1; }
 test -f "${STAGE5_METRICS}" || { echo "ERROR: stage-5 metrics missing: ${STAGE5_METRICS}" >&2; exit 1; }
+test -f "${SPATIAL_AUDIT}" || { echo "ERROR: spatial audit missing: ${SPATIAL_AUDIT}" >&2; exit 1; }
 mkdir -p "${PROJECT_ROOT}/work_space/G2/logs"
 
 module purge
@@ -64,6 +66,7 @@ echo "===== G2 V3 Paired Validation QC ====="
 echo "Validation run : ${VAL_RUN_DIR}"
 echo "Real root      : ${G1_V3_CODE_DIR}/data/input"
 echo "Synthetic root : ${SYNTHETIC_ROOT}"
+echo "Spatial audit  : ${SPATIAL_AUDIT}"
 echo "Output root    : ${OUTPUT_ROOT}"
 echo "Expected cases : ${EXPECTED_CASES}"
 
@@ -71,6 +74,7 @@ echo "Expected cases : ${EXPECTED_CASES}"
   --real-root "${G1_V3_CODE_DIR}/data/input" \
   --synthetic-root "${SYNTHETIC_ROOT}" \
   --stage5-metrics "${STAGE5_METRICS}" \
+  --spatial-audit "${SPATIAL_AUDIT}" \
   --output-root "${OUTPUT_ROOT}" \
   --expected-cases "${EXPECTED_CASES}" \
   "${OVERWRITE_ARGS[@]}"
@@ -78,10 +82,12 @@ echo "Expected cases : ${EXPECTED_CASES}"
 CASE_ROWS="$(( $(wc -l < "${OUTPUT_ROOT}/case_metrics.csv") - 1 ))"
 REGION_ROWS="$(( $(wc -l < "${OUTPUT_ROOT}/region_metrics.csv") - 1 ))"
 MONTAGE_COUNT="$(find "${OUTPUT_ROOT}/montages" -maxdepth 1 -type f -name '*.png' | wc -l)"
+SPATIAL_ROWS="$(( $(wc -l < "${OUTPUT_ROOT}/spatial_audit.csv") - 1 ))"
 test "${CASE_ROWS}" -eq "${EXPECTED_CASES}" || { echo "ERROR: case row count ${CASE_ROWS}" >&2; exit 2; }
 test "${REGION_ROWS}" -eq "$(( EXPECTED_CASES * 5 ))" || { echo "ERROR: region row count ${REGION_ROWS}" >&2; exit 2; }
 test "${MONTAGE_COUNT}" -eq "${EXPECTED_CASES}" || { echo "ERROR: montage count ${MONTAGE_COUNT}" >&2; exit 2; }
+test "${SPATIAL_ROWS}" -eq "${EXPECTED_CASES}" || { echo "ERROR: spatial audit row count ${SPATIAL_ROWS}" >&2; exit 2; }
 
 echo "===== G2 V3 Paired QC finished ====="
-echo "Cases: ${CASE_ROWS}; regions: ${REGION_ROWS}; montages: ${MONTAGE_COUNT}"
+echo "Cases: ${CASE_ROWS}; regions: ${REGION_ROWS}; montages: ${MONTAGE_COUNT}; spatial: ${SPATIAL_ROWS}"
 echo "Review: ${OUTPUT_ROOT}/QC_REPORT.md"

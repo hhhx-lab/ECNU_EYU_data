@@ -1,4 +1,6 @@
 import importlib.util
+import csv
+from argparse import Namespace
 from pathlib import Path
 import tempfile
 import unittest
@@ -127,6 +129,175 @@ class G2V3PairedQualityTest(unittest.TestCase):
             )
             self.assertTrue(output.is_file())
             self.assertGreater(output.stat().st_size, 10_000)
+
+    def _write_spatial_audit(self, path, rows):
+        fieldnames = [
+            "subject",
+            "native_shape",
+            "target_shape",
+            "target_spacing_mm",
+            "foreground_voxel_count",
+            "lesion_voxel_count",
+            "foreground_outside_voxel_count",
+            "lesion_outside_voxel_count",
+        ]
+        with path.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+
+    def _spatial_row(self, case_id, **overrides):
+        row = {
+            "subject": case_id,
+            "native_shape": "240x240x155",
+            "target_shape": "256x256x160",
+            "target_spacing_mm": "1.0",
+            "foreground_voxel_count": "1000",
+            "lesion_voxel_count": "25",
+            "foreground_outside_voxel_count": "0",
+            "lesion_outside_voxel_count": "0",
+        }
+        row.update(overrides)
+        return row
+
+    def test_spatial_audit_accepts_exact_case_set_with_zero_escape(self):
+        case_ids = ["BraTS-MET-00001-000", "BraTS-MET-00002-000"]
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "spatial_audit.csv"
+            self._write_spatial_audit(
+                path,
+                [self._spatial_row(case_id) for case_id in reversed(case_ids)],
+            )
+
+            rows = self.mod.read_and_validate_spatial_audit(path, case_ids)
+
+        self.assertEqual({row["subject"] for row in rows}, set(case_ids))
+
+    def test_spatial_audit_rejects_case_id_mismatch(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "spatial_audit.csv"
+            self._write_spatial_audit(
+                path,
+                [
+                    self._spatial_row("BraTS-MET-00001-000"),
+                    self._spatial_row("BraTS-MET-99999-000"),
+                ],
+            )
+
+            with self.assertRaisesRegex(ValueError, "case IDs do not match"):
+                self.mod.read_and_validate_spatial_audit(
+                    path,
+                    ["BraTS-MET-00001-000", "BraTS-MET-00002-000"],
+                )
+
+    def test_spatial_audit_rejects_duplicate_subjects(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "spatial_audit.csv"
+            self._write_spatial_audit(
+                path,
+                [
+                    self._spatial_row("BraTS-MET-00001-000"),
+                    self._spatial_row("BraTS-MET-00001-000"),
+                ],
+            )
+
+            with self.assertRaisesRegex(ValueError, "duplicate subjects"):
+                self.mod.read_and_validate_spatial_audit(
+                    path,
+                    ["BraTS-MET-00001-000"],
+                )
+
+    def test_spatial_audit_rejects_any_foreground_or_lesion_escape(self):
+        for column in (
+            "foreground_outside_voxel_count",
+            "lesion_outside_voxel_count",
+        ):
+            with self.subTest(column=column), tempfile.TemporaryDirectory() as temporary:
+                path = Path(temporary) / "spatial_audit.csv"
+                self._write_spatial_audit(
+                    path,
+                    [self._spatial_row("BraTS-MET-00001-000", **{column: "1"})],
+                )
+
+                with self.assertRaisesRegex(ValueError, "escaped model FOV"):
+                    self.mod.read_and_validate_spatial_audit(
+                        path,
+                        ["BraTS-MET-00001-000"],
+                    )
+
+    def test_run_persists_passing_spatial_gate_and_outputs(self):
+        case_id = "BraTS-MET-00001-000"
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            real_root = root / "real"
+            synthetic_root = root / "synthetic"
+            output_root = root / "qc"
+            case_dir = real_root / case_id
+            case_dir.mkdir(parents=True)
+            synthetic_root.mkdir()
+
+            shape = (16, 16, 16)
+            affine = np.eye(4)
+            image = np.zeros(shape, dtype=np.float32)
+            image[2:14, 2:14, 2:14] = np.linspace(0.1, 0.9, 12)[:, None, None]
+            segmentation = np.zeros(shape, dtype=np.int16)
+            segmentation[6:10, 6:10, 6:10] = 3
+            nib.save(
+                nib.Nifti1Image(image, affine),
+                case_dir / f"{case_id}-t2w.nii.gz",
+            )
+            nib.save(
+                nib.Nifti1Image(segmentation, affine),
+                case_dir / f"{case_id}-seg.nii.gz",
+            )
+            nib.save(
+                nib.Nifti1Image(image.copy(), affine),
+                synthetic_root / f"{case_id}-t2w.nii.gz",
+            )
+
+            metrics_path = root / "metrics.csv"
+            with metrics_path.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(
+                    handle,
+                    fieldnames=[
+                        "subject",
+                        "whole_SSIM",
+                        "whole_PSNR",
+                        "brain_SSIM",
+                        "brain_PSNR",
+                    ],
+                )
+                writer.writeheader()
+                writer.writerow(
+                    {
+                        "subject": case_id,
+                        "whole_SSIM": "1.0",
+                        "whole_PSNR": "99.0",
+                        "brain_SSIM": "1.0",
+                        "brain_PSNR": "99.0",
+                    }
+                )
+            spatial_path = root / "spatial_audit.csv"
+            self._write_spatial_audit(spatial_path, [self._spatial_row(case_id)])
+
+            summary = self.mod.run(
+                Namespace(
+                    real_root=str(real_root),
+                    synthetic_root=str(synthetic_root),
+                    stage5_metrics=str(metrics_path),
+                    spatial_audit=str(spatial_path),
+                    output_root=str(output_root),
+                    expected_cases=1,
+                    seed=42,
+                    overwrite=False,
+                )
+            )
+
+            self.assertEqual(summary["spatial_gate"]["status"], "pass")
+            self.assertEqual(summary["spatial_gate"]["case_count"], 1)
+            self.assertTrue((output_root / "spatial_audit.csv").is_file())
+            self.assertTrue((output_root / "case_metrics.csv").is_file())
+            self.assertTrue((output_root / "montages" / f"{case_id}.png").is_file())
 
 
 if __name__ == "__main__":

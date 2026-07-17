@@ -32,10 +32,8 @@ import configs
 import synthesis.utils as utils
 
 
-def load_seg(path):
-    seg, _ = utils.load_nifti(path)
-    seg, _ = utils.resize_center_crop_pad(seg, configs.SHAPE_PREPROCESS_IMG)
-    return seg.astype(np.int16)
+def load_seg(path, transform_path):
+    return utils.load_segmentation_in_model_space(path, transform_path).astype(np.int16)
 
 
 def compute_lesion_volumes_and_weights(seg):
@@ -109,6 +107,12 @@ def main():
     parser.add_argument("--data_csv", type=str, required=True)
     parser.add_argument("--data_dir", type=str, required=True)
     parser.add_argument("--output_dir", type=str, default="data/lesion_weights")
+    parser.add_argument(
+        "--transforms_dir",
+        type=str,
+        default="data/latents",
+        help="Per-case spatial_transform.json root written by preprocess.py",
+    )
     parser.add_argument("--latent_shapes", type=str, default="64_64_40",
                         help="Comma-separated latent shapes, e.g. '64_64_40,32_32_20'")
     args = parser.parse_args()
@@ -139,7 +143,14 @@ def main():
         try:
             seg_path = os.path.join(args.data_dir, s_id,
                                     os.path.basename(subj["seg"]))
-            seg = load_seg(seg_path)
+            transform_path = os.path.join(
+                args.transforms_dir, s_id, "spatial_transform.json"
+            )
+            if not os.path.isfile(transform_path):
+                raise FileNotFoundError(
+                    f"missing spatial transform for {s_id}: {transform_path}"
+                )
+            seg = load_seg(seg_path, transform_path)
 
             weight_map, lesion_info = compute_lesion_volumes_and_weights(seg)
 

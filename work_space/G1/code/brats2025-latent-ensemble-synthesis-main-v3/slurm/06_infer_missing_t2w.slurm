@@ -3,7 +3,7 @@
 #SBATCH -p a100
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --gres=gpu:NVIDIAA100-PCIE-40GB:1
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH -t 48:00:00
@@ -27,10 +27,15 @@ SYNTHESIS_TYPE="${SYNTHESIS_TYPE:-ensamble}"
 INFER_RUN_ID="${INFER_RUN_ID:-run_${SLURM_JOB_ID}}"
 EXPECTED_INFERENCE_CASES="${EXPECTED_INFERENCE_CASES:-265}"
 VAL_APPROVED="${VAL_APPROVED:-0}"
+G2_FINAL_GATE_JSON="${G2_FINAL_GATE_JSON:-}"
 G1_INFERENCE_SEED="${G1_INFERENCE_SEED:-42}"
 case "${SYNTHESIS_TYPE}" in encdec|bbdm|ensamble) ;; *) echo "ERROR: invalid SYNTHESIS_TYPE"; exit 1 ;; esac
 if [ "${VAL_APPROVED}" != "1" ]; then
-  echo "ERROR: validation is a manual gate. Inspect stage 05, then submit with VAL_APPROVED=1."
+  echo "ERROR: validation is a manual gate. Complete G2 QC, then submit with VAL_APPROVED=1."
+  exit 1
+fi
+if [ -z "${G2_FINAL_GATE_JSON}" ]; then
+  echo "ERROR: set G2_FINAL_GATE_JSON to the reviewed gate for this validation run."
   exit 1
 fi
 
@@ -56,6 +61,18 @@ test -f "${G1_VAE_WEIGHTS}" || { echo "ERROR: selected VAE not found: ${G1_VAE_W
 VAL_RUN_DIR="$(head -n 1 data/evaluation/val/latest_run.txt)"
 VAL_MANIFEST="${VAL_RUN_DIR}/evaluation_run.json"
 test -f "${VAL_MANIFEST}" || { echo "ERROR: val evaluation manifest missing"; exit 1; }
+test -f "${G2_FINAL_GATE_JSON}" || { echo "ERROR: G2 final gate missing: ${G2_FINAL_GATE_JSON}"; exit 1; }
+G2_GATE_DECISION="$("${PYTHON_BIN}" -c 'import json,sys; print(json.load(open(sys.argv[1]))["decision"])' "${G2_FINAL_GATE_JSON}")"
+G2_GATE_RUN_ID="$("${PYTHON_BIN}" -c 'import json,sys; print(json.load(open(sys.argv[1]))["run_id"])' "${G2_FINAL_GATE_JSON}")"
+VAL_RUN_ID="$(basename "${VAL_RUN_DIR}")"
+if [ "${G2_GATE_DECISION}" != "approve_stage6" ]; then
+  echo "ERROR: G2 gate decision is ${G2_GATE_DECISION}; required approve_stage6."
+  exit 1
+fi
+if [ "${G2_GATE_RUN_ID}" != "${VAL_RUN_ID}" ]; then
+  echo "ERROR: G2 gate run ${G2_GATE_RUN_ID} != validation run ${VAL_RUN_ID}."
+  exit 1
+fi
 G1_ENCDEC_CHECKPOINT="$("${PYTHON_BIN}" -c 'import json,sys; print(json.load(open(sys.argv[1]))["encdec_checkpoint"])' "${VAL_MANIFEST}")"
 G1_BBDM_CHECKPOINT="$("${PYTHON_BIN}" -c 'import json,sys; print(json.load(open(sys.argv[1]))["bbdm_checkpoint"])' "${VAL_MANIFEST}")"
 G1_BBDM_S="$("${PYTHON_BIN}" -c 'import json,sys; print(json.load(open(sys.argv[1]))["bbdm_s"])' "${VAL_MANIFEST}")"
@@ -73,7 +90,7 @@ if [ "${CASE_COUNT}" -ne "${EXPECTED_INFERENCE_CASES}" ]; then
 fi
 
 export INFER_RUN_DIR SYNTHESIS_TYPE EXPECTED_INFERENCE_CASES VAL_RUN_DIR
-export G1_INFERENCE_SEED
+export G1_INFERENCE_SEED G2_FINAL_GATE_JSON G2_GATE_DECISION
 echo "===== G1 V3 Infer Missing T2W ====="
 echo "Cases: ${CASE_COUNT}"
 echo "Synthesis type: ${SYNTHESIS_TYPE}"
@@ -83,6 +100,7 @@ echo "BBDM checkpoint: ${G1_BBDM_CHECKPOINT}"
 echo "BBDM s: ${G1_BBDM_S}"
 echo "Inference seed: ${G1_INFERENCE_SEED}"
 echo "Approved validation run: ${VAL_RUN_DIR}"
+echo "G2 final gate: ${G2_FINAL_GATE_JSON} (${G2_GATE_DECISION})"
 echo "Output run: ${INFER_RUN_DIR}"
 nvidia-smi
 
@@ -138,6 +156,8 @@ record = {
     "synthesis_type": os.environ["SYNTHESIS_TYPE"],
     "validation_run": os.environ["VAL_RUN_DIR"],
     "operator_approved_validation": True,
+    "g2_final_gate": os.environ["G2_FINAL_GATE_JSON"],
+    "g2_gate_decision": os.environ["G2_GATE_DECISION"],
     "vae_weights": configs.PATH_NAME_WEIGHTS_VAE,
     "encdec_checkpoint": configs.PATH_NAME_WEIGHTS_ENCDEC,
     "bbdm_checkpoint": configs.PATH_NAME_WEIGHTS_BBDM,

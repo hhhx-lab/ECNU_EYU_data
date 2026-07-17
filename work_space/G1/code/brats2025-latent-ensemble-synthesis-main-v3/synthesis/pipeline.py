@@ -1,6 +1,7 @@
 
 
 import os
+import json
 import numpy as np
 import torch
 from monai.bundle import ConfigParser
@@ -8,6 +9,7 @@ from tqdm import tqdm
 
 import configs
 import synthesis.utils as utils
+from synthesis.spatial import restore_to_native
 
 import models.encdec.unet as encdec
 import models.bbdm.unet as bbdm
@@ -223,6 +225,37 @@ def run_bbdm_synthesis(s_data, device, models=None):
     return syn_latens
 
 
+def prepare_inference_subject(
+    s_data,
+    *,
+    target_shape=None,
+    base_spacing_mm=1.0,
+    margin_mm=5.0,
+):
+    return utils.prepare_subject_space(
+        s_data["path_name_img_list"],
+        seg_path=s_data.get("seg_path"),
+        target_shape=target_shape or configs.SHAPE_PREPROCESS_IMG,
+        base_spacing_mm=base_spacing_mm,
+        margin_mm=margin_mm,
+    )
+
+
+def restore_raw_image(model_image, prepared):
+    return restore_to_native(model_image, prepared["transform"], order=1)
+
+
+def restore_generated_image(
+    model_image,
+    prepared,
+    modality,
+    *,
+    native_brain_mask=None,
+):
+    native = restore_raw_image(model_image, prepared)
+    return utils.postprocess_intensity(native, modality, bmask=native_brain_mask)
+
+
 
 # def run_synthesis(s_data, device):
 def run_synthesis(
@@ -253,10 +286,6 @@ def run_synthesis(
     )
 
 
-    aff = None
-    aff_preprocessed = None
-    org_shape = None
-
     max_steps = 6 if compute_bmask else 5
 
     # 1.0: preprocessing
@@ -266,11 +295,16 @@ def run_synthesis(
 
     vae = models["vae"] if models is not None else instantiate_vae_model(device)
 
+    prepared = prepare_inference_subject(s_data)
+    s_data["imgs_pp_list"] = prepared["images"]
+    s_data["seg"] = prepared["segmentation"]
+    s_data["spatial_transform"] = prepared["transform"]
+    with open(os.path.join(path_out_intermediate, "spatial_transform.json"), "w") as handle:
+        json.dump(prepared["transform"].to_dict(), handle, indent=2)
+        handle.write("\n")
+
     latens_list = []
-    for i, path_name_img in enumerate(s_data["path_name_img_list"]):
-        img, aff = utils.load_nifti(path_name_img)
-        org_shape = img.shape
-        img, aff_preprocessed = utils.preprocessing(img, affine=aff)
+    for img in prepared["images"]:
         latents = encode_image(img, vae)
 
         # save latents for later use
@@ -323,8 +357,16 @@ def run_synthesis(
 
         path_name_raw_encdec_syn_img = os.path.join(path_out_intermediate, "raw_encdec_syn_img.nii.gz")
         path_name_raw_bbdm_syn_img = os.path.join(path_out_intermediate, "raw_bbdm_syn_img.nii.gz")
-        utils.save_nifti(utils.postprocessing_raw(syn_img_encdec, org_shape), aff, path_name_raw_encdec_syn_img)
-        utils.save_nifti(utils.postprocessing_raw(syn_img_bbdm, org_shape), aff, path_name_raw_bbdm_syn_img)
+        utils.save_nifti(
+            restore_raw_image(syn_img_encdec, prepared),
+            prepared["native_affine"],
+            path_name_raw_encdec_syn_img,
+        )
+        utils.save_nifti(
+            restore_raw_image(syn_img_bbdm, prepared),
+            prepared["native_affine"],
+            path_name_raw_bbdm_syn_img,
+        )
 
         # save_nifti(np.clip(syn_img_encdec, 0, 1), aff_preprocessed, path_name_raw_encdec_syn_img)
         # save_nifti(np.clip(syn_img_bbdm, 0, 1), aff_preprocessed, path_name_raw_bbdm_syn_img)
@@ -341,10 +383,15 @@ def run_synthesis(
     if verbose:
         print(f"{step_count}/{max_steps} Postprocessing synthesized image for subject {s_data['s_id']}...")
 
-    syn_img = utils.postprocessing(syn_img, configs.MISSING_MODALITY, org_shape, bmask=bmask)
+    syn_img = restore_generated_image(
+        syn_img,
+        prepared,
+        configs.MISSING_MODALITY,
+        native_brain_mask=bmask,
+    )
 
     # m.2: save image
-    utils.save_nifti(syn_img, aff, path_name_syn_img)
+    utils.save_nifti(syn_img, prepared["native_affine"], path_name_syn_img)
 
     if verbose:
         step_count += 1
