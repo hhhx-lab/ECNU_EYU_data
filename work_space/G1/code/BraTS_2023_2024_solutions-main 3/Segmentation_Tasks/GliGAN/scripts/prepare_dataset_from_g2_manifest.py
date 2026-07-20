@@ -66,9 +66,9 @@ def resolve_server_source(
     row: dict[str, str],
     modality: str,
 ) -> Path:
-    """Resolve the flattened ECNU layout without weakening manifest policy."""
+    """Resolve either a flattened root or the canonical root with UCSD nested cases."""
     case_id = row["source_case_id"].strip()
-    case_dir = raw_root / case_id
+    case_dirs = [raw_root / case_id, raw_root / "UCSD - Training" / case_id]
     if modality == "seg" and row.get("label_source", "raw").strip().lower() == "corrected":
         corrected_candidates = []
         for root in corrected_label_roots:
@@ -84,13 +84,16 @@ def resolve_server_source(
                 f"was found under: {corrected_label_roots}")
         return corrected
 
-    source = first_existing([
-        case_dir / f"{case_id}-{modality}.nii.gz",
-        case_dir / f"{modality}.nii.gz",
-    ])
+    candidates = []
+    for case_dir in case_dirs:
+        candidates.extend([
+            case_dir / f"{case_id}-{modality}.nii.gz",
+            case_dir / f"{modality}.nii.gz",
+        ])
+    source = first_existing(candidates)
     if source is None:
         raise FileNotFoundError(
-            f"Missing {case_id}/{modality} under flattened raw root: {case_dir}")
+            f"Missing {case_id}/{modality} under raw root: {raw_root}")
     return source
 
 
@@ -135,7 +138,8 @@ def main() -> int:
     parser.add_argument("--split-dir", default=Path("splits/current"), type=Path)
     parser.add_argument(
         "--raw-root", type=Path,
-        help="Optional flattened server root: <root>/<case_id>/<modality>.nii.gz")
+        help=("Optional server root. Supports <root>/<case_id>/... and "
+              "<root>/UCSD - Training/<case_id>/... layouts"))
     parser.add_argument(
         "--corrected-label-root", action="append", default=[], type=Path,
         help="Root containing corrected <case_id>-seg.nii.gz files; repeatable")
@@ -231,7 +235,7 @@ def main() -> int:
         "total_cases": len(membership_rows),
         "patient_group_overlap": 0,
         "copy_policy": "symlink_only",
-        "source_layout": "flattened_raw_root" if raw_root else "manifest_paths",
+        "source_layout": "server_raw_root" if raw_root else "manifest_paths",
         "raw_root": str(raw_root) if raw_root else "",
         "corrected_label_roots": [str(root) for root in corrected_label_roots],
     }

@@ -91,6 +91,10 @@ class OnTheFlyTumourAugmenter:
         normalization="minmax",     # "minmax" (legacy [-1,1]) or "zscore" (S2 nnUNet ~N(0,1))
         cfg_weight=1.0,
         allow_partial=False,
+        checkpoint_steps=None,
+        augment_probability=0.6,
+        second_tumour_probability=0.4,
+        max_tumours=2,
     ):
         """
         参数:
@@ -125,6 +129,16 @@ class OnTheFlyTumourAugmenter:
         self.normalization = normalization
         self.cfg_weight = cfg_weight
         self.allow_partial = allow_partial
+        self.checkpoint_steps = checkpoint_steps or {}
+        self.augment_probability = float(augment_probability)
+        self.second_tumour_probability = float(second_tumour_probability)
+        self.max_tumours = int(max_tumours)
+        if not 0.0 <= self.augment_probability <= 1.0:
+            raise ValueError("augment_probability must be in [0, 1]")
+        if not 0.0 <= self.second_tumour_probability <= 1.0:
+            raise ValueError("second_tumour_probability must be in [0, 1]")
+        if self.max_tumours not in (1, 2):
+            raise ValueError("max_tumours must be 1 or 2")
 
         # ---- 构建伪 args 对象（复用 get_diffusion_network 工厂函数）----
         class _Args:
@@ -143,6 +157,7 @@ class OnTheFlyTumourAugmenter:
         # ---- 加载 4 模态扩散模型 ----
         print(f"[OnTheFly] 加载扩散模型到 {device}...")
         self.models = {}  # key: modality_name → model
+        self.selected_checkpoints = {}
         self._ckpt_metadata = None
         self._load_diffusion_models(diffusion_ckpt_dir)
 
@@ -195,24 +210,34 @@ class OnTheFlyTumourAugmenter:
                     print(f"  跳过: {message}")
                     continue
                 raise FileNotFoundError(message)
-            ckpt_files = glob.glob(os.path.join(weights_dir, "diffusion_*.pt"))
-            if not ckpt_files:
-                message = f"[{modality}] 在 {weights_dir} 中找不到 diffusion_*.pt"
-                if self.allow_partial:
-                    print(f"  跳过: {message}")
-                    continue
-                raise FileNotFoundError(message)
-
             def checkpoint_step(path):
                 match = re.search(r"diffusion_(\d+)\.pt$", os.path.basename(path))
                 return int(match.group(1)) if match else -1
 
-            ckpt_path = max(ckpt_files, key=checkpoint_step)
+            selected_step = self.checkpoint_steps.get(modality)
+            if selected_step is not None:
+                ckpt_path = os.path.join(weights_dir, f"diffusion_{int(selected_step)}.pt")
+                if not os.path.isfile(ckpt_path):
+                    raise FileNotFoundError(
+                        f"[{modality}] selected checkpoint does not exist: {ckpt_path}")
+            else:
+                ckpt_files = glob.glob(os.path.join(weights_dir, "diffusion_*.pt"))
+                if not ckpt_files:
+                    message = f"[{modality}] 在 {weights_dir} 中找不到 diffusion_*.pt"
+                    if self.allow_partial:
+                        print(f"  跳过: {message}")
+                        continue
+                    raise FileNotFoundError(message)
+                ckpt_path = max(ckpt_files, key=checkpoint_step)
             print(f"  [{modality}] 加载: {ckpt_path}")
 
             model, metadata = load_diffusion_model(
                 ckpt_path, self._args, self.device, self.use_compile)
             self.models[modality] = model
+            self.selected_checkpoints[modality] = {
+                "path": os.path.abspath(ckpt_path),
+                "step": checkpoint_step(ckpt_path),
+            }
 
             # 缓存第一个成功加载的模态的元信息（所有模态应相同）
             if self._ckpt_metadata is None:
@@ -283,16 +308,15 @@ class OnTheFlyTumourAugmenter:
             return data_4ch, seg, False
 
         # ---- Step 1: 60% 概率选中 ----
-        if rng.uniform() >= 0.6:
+        if rng.uniform() >= self.augment_probability:
             return data_4ch, seg, False
 
         num_inserted = 0
 
         # ---- 借入标签 + 修改 + 插入 ----
-        for tumour_idx in range(2):  # 最多 2 个肿瘤
+        for tumour_idx in range(self.max_tumours):
             if tumour_idx == 1:
-                # 第二个肿瘤：40% 概率
-                if rng.uniform() >= 0.4:
+                if rng.uniform() >= self.second_tumour_probability:
                     break
 
             # ---- Step 2: 从标签池随机借入一个标签 ----
@@ -378,7 +402,7 @@ class OnTheFlyTumourAugmenter:
         """
         D, H, W = data_4ch.shape[1], data_4ch.shape[2], data_4ch.shape[3]
 
-        # 搜索插入位置：在 crop_size³ 窗口内无现有肿瘤、无 padding
+        # 搜索插入位置：肿瘤及其边缘必须处于脑内、无现有肿瘤、无 padding。
         centre = self._find_insertion_center(data_4ch, seg, tumour_label, rng)
         if centre is None:
             return False  # 没有足够空间
@@ -558,6 +582,10 @@ class OnTheFlyTumourAugmenter:
         is_brain = (data_4ch[0] != 0)
         no_tumour = (seg[0] == 0)
         valid_mask = is_brain & no_tumour  # (D, H, W)
+        from scipy.ndimage import binary_dilation
+        insertion_mask = binary_dilation(tumour_label != 0, iterations=2)
+        if not np.any(insertion_mask):
+            return None
 
         half = self.crop_size // 2
         for _ in range(max_attempts):
@@ -571,7 +599,7 @@ class OnTheFlyTumourAugmenter:
             cy = valid_indices[1][idx]
             cx = valid_indices[2][idx]
 
-            # 确保以 (cx, cy, cz) 为中心的 crop_size³ 区域完全在边界内且无肿瘤无 padding
+            # 确保以 (cx, cy, cz) 为中心的 crop_size³ 区域完全在边界内。
             z0 = cz - half
             z1 = cz + half
             y0 = cy - half
@@ -582,8 +610,9 @@ class OnTheFlyTumourAugmenter:
             if z0 < 0 or z1 > D or y0 < 0 or y1 > H or x0 < 0 or x1 > W:
                 continue
 
-            # 检查该 crop_size³ 区域内是否有肿瘤或 padding
-            if np.all(valid_mask[z0:z1, y0:y1, x0:x1]):
+            # 只要求将要插入的肿瘤及 2 体素边缘有效；已知区域由 inpainting 原样保留。
+            valid_window = valid_mask[z0:z1, y0:y1, x0:x1]
+            if valid_window.shape == insertion_mask.shape and np.all(valid_window[insertion_mask]):
                 return (cx, cy, cz)
 
         return None
@@ -668,6 +697,13 @@ def __main__():
     parser.add_argument("--crop_size", type=int, default=64)
     parser.add_argument("--allow_partial", action="store_true",
                         help="仅用于单模态 smoke test；正式增强不得开启")
+    parser.add_argument("--checkpoint_selection_json", type=str, default="",
+                        help="固定四模态 checkpoint step 的 JSON；正式 QC/S2 推荐使用")
+    parser.add_argument("--checkpoint_step", type=int, default=0,
+                        help="四模态统一使用的 checkpoint step；0 表示各自最新")
+    parser.add_argument("--augment_probability", type=float, default=0.6)
+    parser.add_argument("--second_tumour_probability", type=float, default=0.4)
+    parser.add_argument("--max_tumours", type=int, choices=[1, 2], default=2)
     parser.add_argument("--test_case", type=str, default="",
                         help="测试：对单个 nii.gz 路径执行增强并保存结果")
     parser.add_argument("--test_save_dir", type=str, default="./on_the_fly_test_output",
@@ -690,6 +726,19 @@ def __main__():
 
     print(f"标签池: {len(label_paths)} 个标签文件")
 
+    checkpoint_steps = {}
+    if args.checkpoint_selection_json:
+        import json
+        selection = json.loads(
+            open(args.checkpoint_selection_json, encoding="utf-8").read())
+        checkpoint_steps = selection.get("checkpoint_steps", selection)
+        checkpoint_steps = {key: int(value) for key, value in checkpoint_steps.items()}
+    elif args.checkpoint_step > 0:
+        checkpoint_steps = {
+            modality: args.checkpoint_step
+            for modality in ("t1c", "t1n", "t2w", "t2f")
+        }
+
     # 初始化增强器
     augmenter = OnTheFlyTumourAugmenter(
         diffusion_ckpt_dir=args.diffusion_ckpt_dir,
@@ -707,6 +756,10 @@ def __main__():
         crop_size=args.crop_size,
         cfg_weight=args.cfg_weight,
         allow_partial=args.allow_partial,
+        checkpoint_steps=checkpoint_steps,
+        augment_probability=args.augment_probability,
+        second_tumour_probability=args.second_tumour_probability,
+        max_tumours=args.max_tumours,
     )
 
     # 测试模式：对单个病例执行增强

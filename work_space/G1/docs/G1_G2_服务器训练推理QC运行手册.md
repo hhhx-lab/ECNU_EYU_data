@@ -174,8 +174,14 @@ run metadata 必须记录 VAE、EncDec、BBDM checkpoint、`bbdm_s`、seed、sou
 
 ```bash
 python work_space/G2/code/g2_v3_completion_intake.py \
-  --completion-run-root /absolute/path/to/v3/data/output/run_<id>
+  --completion-run-root /absolute/path/to/v3/data/output/run_<id> \
+  --data-root /absolute/path/to/2026_task1_data
 ```
+
+`--data-root` 指向同时包含 Training、corrected-labels 和可选 Validation
+目录的原始数据根目录。G2 用它解析版本化 mapping 中的
+`work_space/G1/data/raw/...` 路径；不复制 40GB 数据，也不要省略后改用
+completion 输出自身充当 source。服务器已经在项目内物化相同 raw 路径时可省略。
 
 G2 检查：
 
@@ -243,7 +249,7 @@ G2 脚本名中的 `v2` 是 augmentation 接口版本名；当前生产模型代
 人工或 teacher 复核后，在对应 run root 写：
 
 ```csv
-synthetic_raw_id,approved_for_training,approved_for_evaluation,reviewer,reason
+synthetic_raw_id,approved_for_training,approved_for_evaluation,reviewer,reason,cleared_review_reasons
 ```
 
 审批规则：
@@ -251,7 +257,8 @@ synthetic_raw_id,approved_for_training,approved_for_evaluation,reviewer,reason
 1. V2 augmentation：只允许 `approved_for_training=True`。
 2. V3 master train completion：允许 `approved_for_training=True`。
 3. V3 master val/test completion：只允许 `approved_for_evaluation=True`。
-4. 审批后重新运行 intake，让脚本派生 accepted manifest。
+4. `cleared_review_reasons` 只填已人工排除的 `tiny_ratio_high` / `z_discontinuity`，多项用分号分隔。
+5. 审批后重新运行 intake，让脚本派生 accepted manifest。
 
 禁止直接编辑 accepted CSV。
 

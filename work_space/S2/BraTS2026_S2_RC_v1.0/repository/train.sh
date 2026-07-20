@@ -11,15 +11,31 @@ case "${S2_EXPERIMENT_MODE}" in
         DEFAULT_S2_DATASET_NAME=Dataset263_BraTS2026_MET_RealOnly_Current
         DEFAULT_S2_TRAIN_COUNT=823
         DEFAULT_S2_VAL_COUNT=103
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RC
         ;;
     legacy)
         DEFAULT_S2_DATASET_ID=260
         DEFAULT_S2_DATASET_NAME=Dataset260_BraTS2026_MET_RealOnly
         DEFAULT_S2_TRAIN_COUNT=828
         DEFAULT_S2_VAL_COUNT=207
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RC
+        ;;
+    completion_warmstart)
+        DEFAULT_S2_DATASET_ID=264
+        DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_Completion
+        DEFAULT_S2_TRAIN_COUNT=1035
+        DEFAULT_S2_VAL_COUNT=103
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCCompletionFineTune
+        ;;
+    completion_online)
+        DEFAULT_S2_DATASET_ID=264
+        DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_Completion
+        DEFAULT_S2_TRAIN_COUNT=1035
+        DEFAULT_S2_VAL_COUNT=103
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCOnlineDiffusion
         ;;
     *)
-        echo "S2_EXPERIMENT_MODE must be current or legacy, got: ${S2_EXPERIMENT_MODE}" >&2
+        echo "S2_EXPERIMENT_MODE must be current, legacy, completion_warmstart, or completion_online, got: ${S2_EXPERIMENT_MODE}" >&2
         exit 2
         ;;
 esac
@@ -35,7 +51,7 @@ export NNUNET_DATASET_DIR="${NNUNET_DATASET_DIR:-${nnUNet_raw}/${S2_DATASET_NAME
 S2_EXPECTED_TRAIN_COUNT="${S2_EXPECTED_TRAIN_COUNT:-${DEFAULT_S2_TRAIN_COUNT}}"
 S2_EXPECTED_VAL_COUNT="${S2_EXPECTED_VAL_COUNT:-${DEFAULT_S2_VAL_COUNT}}"
 
-S2_TRAINER="${S2_TRAINER:-nnUNetTrainerBraTS2026RC}"
+S2_TRAINER="${S2_TRAINER:-${DEFAULT_S2_TRAINER}}"
 S2_CONFIGURATION="${S2_CONFIGURATION:-3d_fullres}"
 S2_PREPROCESSED_DATA_IDENTIFIER="${S2_PREPROCESSED_DATA_IDENTIFIER:-nnUNetPlans_3d_fullres}"
 S2_CONTINUE="${S2_CONTINUE:-auto}"
@@ -72,17 +88,29 @@ import shutil
 from pathlib import Path
 
 repo_dir = Path(os.environ["BRATS_S2_REPO_DIR"])
-src = repo_dir / "custom_nnunet" / "nnUNetTrainerBraTS2026RC.py"
+source_dir = repo_dir / "custom_nnunet"
+filenames = [
+    "nnUNetTrainerBraTS2026RC.py",
+    "nnUNetTrainerBraTS2026RCCompletionFineTune.py",
+    "nnUNetTrainerBraTS2026RCOnlineDiffusion.py",
+    "online_diffusion_transform.py",
+    "online_diffusion_contract.py",
+]
 spec = importlib.util.find_spec("nnunetv2")
 if spec is None or not spec.submodule_search_locations:
     raise SystemExit("Cannot find nnunetv2 in the active Python environment.")
 pkg_root = Path(list(spec.submodule_search_locations)[0])
-dst = pkg_root / "training" / "nnUNetTrainer" / src.name
-if not dst.parent.exists():
-    raise SystemExit(f"Cannot find nnU-Net trainer directory: {dst.parent}")
-if not dst.exists() or dst.read_bytes() != src.read_bytes():
-    shutil.copy2(src, dst)
-print(f"Custom trainer ready: {dst}")
+trainer_dir = pkg_root / "training" / "nnUNetTrainer"
+if not trainer_dir.exists():
+    raise SystemExit(f"Cannot find nnU-Net trainer directory: {trainer_dir}")
+for filename in filenames:
+    src = source_dir / filename
+    dst = trainer_dir / filename
+    if not src.is_file():
+        raise SystemExit(f"Missing custom trainer component: {src}")
+    if not dst.exists() or dst.read_bytes() != src.read_bytes():
+        shutil.copy2(src, dst)
+    print(f"Custom trainer component ready: {dst}")
 PY
 
 TRAIN_FILE="${BRATS_SPLIT_DIR}/train_fixed.txt"
@@ -151,6 +179,15 @@ elif [[ "${S2_CONTINUE}" == "auto" && -f "${CHECKPOINT_LATEST}" ]]; then
     TRAIN_CMD+=(--c)
 else
     echo "No resumable checkpoint found; starting fixed-split training from scratch."
+    if [[ "${S2_EXPERIMENT_MODE}" == "completion_warmstart" || "${S2_EXPERIMENT_MODE}" == "completion_online" ]]; then
+        S2_PRETRAINED_WEIGHTS="${S2_PRETRAINED_WEIGHTS:-}"
+        if [[ ! -f "${S2_PRETRAINED_WEIGHTS}" ]]; then
+            echo "${S2_EXPERIMENT_MODE} requires S2_PRETRAINED_WEIGHTS from Dataset263 real-only: ${S2_PRETRAINED_WEIGHTS:-unset}" >&2
+            exit 1
+        fi
+        TRAIN_CMD+=(-pretrained_weights "${S2_PRETRAINED_WEIGHTS}")
+        echo "Warm-starting ${S2_EXPERIMENT_MODE} from: ${S2_PRETRAINED_WEIGHTS}"
+    fi
 fi
 
 printf 'Command:'

@@ -45,6 +45,61 @@ def write_rows(path: Path, rows: list[dict[str, str]]) -> None:
 
 
 class G2MaterializerTest(unittest.TestCase):
+    def test_real_data_root_keeps_corrected_seg_authoritative(self):
+        mod = load_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            ordinary = make_case(root, "BraTS-MET-00001-000", 1)
+            corrected = make_case(root, "BraTS-MET-01184-002", 2)
+            corrected_seg = root / "corrected-seg.nii.gz"
+            corrected_seg.write_bytes(b"corrected-placeholder")
+            rows = [
+                {
+                    "source_case_id": ordinary["source_case_id"],
+                    "label_source": "raw",
+                },
+                {
+                    "source_case_id": corrected["source_case_id"],
+                    "label_source": "corrected",
+                    "seg_source_path": str(corrected_seg),
+                },
+            ]
+
+            updated = mod.apply_real_data_root(rows, root)
+
+            self.assertEqual(updated, 2)
+            self.assertEqual(
+                Path(rows[0]["seg_source_path"]).resolve(),
+                Path(ordinary["seg_source_path"]).resolve(),
+            )
+            self.assertEqual(rows[1]["seg_source_path"], str(corrected_seg))
+            self.assertEqual(
+                Path(rows[1]["t1n_source_path"]).resolve(),
+                Path(corrected["t1n_source_path"]).resolve(),
+            )
+
+    def test_completion_root_overrides_machine_specific_manifest_path(self):
+        mod = load_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            case_id = "BraTS-MET-00002-000"
+            completion_root = root / "run_1"
+            case_dir = completion_root / case_id
+            case_dir.mkdir(parents=True)
+            expected = case_dir / f"{case_id}-t2w.nii.gz"
+            expected.write_bytes(b"nifti-placeholder")
+            rows = [{
+                "source_case_id": case_id,
+                "source_completion_mode": "True",
+                "label_kind": "completion",
+                "raw_t2w_path": "/another/machine/completion-t2w.nii.gz",
+            }]
+
+            updated = mod.apply_completion_root(rows, completion_root)
+
+            self.assertEqual(updated, 1)
+            self.assertEqual(rows[0]["t2w_source_path"], str(expected.resolve()))
+
     def test_completion_replaces_only_t2w_and_synthetic_enters_train(self):
         mod = load_module()
         with tempfile.TemporaryDirectory() as tmp:
@@ -135,6 +190,59 @@ class G2MaterializerTest(unittest.TestCase):
             self.assertTrue((case_root / "train" / "BraTS-MET-00001-000" / "BraTS-MET-00001-000-t1n.nii.gz").is_file())
             report = mod.verify_materialized_dataset(dataset_dir, specs, "symlink")
             self.assertTrue(report["passed"], report["errors"])
+
+    def test_integrity_treats_signed_zero_affines_as_equal(self):
+        mod = load_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = make_case(root / "source", "BraTS-MET-00001-000", 1)
+            row["nnunet_case_id"] = "BraTSMET_000001"
+
+            negative_zero_affine = np.eye(4)
+            negative_zero_affine[0, 3] = -0.0
+            for modality in ("t1n", "t1c", "t2w", "t2f"):
+                path = Path(row[f"{modality}_source_path"])
+                image = nib.load(str(path))
+                nib.save(
+                    nib.Nifti1Image(np.asanyarray(image.dataobj), negative_zero_affine),
+                    str(path),
+                )
+
+            specs, _ = mod.build_case_specs(
+                [row], [], set(), profile="real-only", allow_incomplete_completion=False
+            )
+            mod.assign_spec_splits(
+                specs,
+                {"train": ["BraTSMET_000001"], "val": [], "test": []},
+            )
+            dataset_dir = root / "nnunet"
+            case_root = root / "cases"
+            (dataset_dir / "imagesTr").mkdir(parents=True)
+            (dataset_dir / "labelsTr").mkdir()
+            (dataset_dir / "imagesTs").mkdir()
+            (dataset_dir / "labelsTs").mkdir()
+            case_root.mkdir()
+            mod.materialize_specs(specs, dataset_dir, case_root, "symlink")
+
+            report = mod.verify_materialized_dataset(dataset_dir, specs, "symlink")
+
+            self.assertTrue(report["passed"], report["errors"])
+
+            t2f_path = Path(row["t2f_source_path"])
+            t2f_image = nib.load(str(t2f_path))
+            mismatched_affine = negative_zero_affine.copy()
+            mismatched_affine[0, 3] = 0.01
+            nib.save(
+                nib.Nifti1Image(np.asanyarray(t2f_image.dataobj), mismatched_affine),
+                str(t2f_path),
+            )
+            mismatched_report = mod.verify_materialized_dataset(
+                dataset_dir, specs, "symlink"
+            )
+            self.assertIn(
+                "BraTSMET_000001:geometry_mismatch",
+                mismatched_report["errors"],
+            )
 
     def test_multiple_runs_may_reuse_raw_id_but_not_run_raw_pair(self):
         mod = load_module()

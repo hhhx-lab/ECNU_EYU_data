@@ -20,8 +20,12 @@ case "${S2_EXPERIMENT_MODE}" in
         DEFAULT_S2_DATASET_ID=260
         DEFAULT_S2_DATASET_NAME=Dataset260_BraTS2026_MET_RealOnly
         ;;
+    completion_online)
+        DEFAULT_S2_DATASET_ID=264
+        DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_CompletionOnline
+        ;;
     *)
-        echo "S2_EXPERIMENT_MODE must be current or legacy, got: ${S2_EXPERIMENT_MODE}" >&2
+        echo "S2_EXPERIMENT_MODE must be current, legacy, or completion_online, got: ${S2_EXPERIMENT_MODE}" >&2
         exit 2
         ;;
 esac
@@ -33,7 +37,12 @@ export BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${REPO_DIR}/data/splits/${S2_EXPERIME
 export BRATS_S2_REPO_DIR="${BRATS_S2_REPO_DIR:-${REPO_DIR}}"
 export S2_DATASET_ID="${S2_DATASET_ID:-${DEFAULT_S2_DATASET_ID}}"
 S2_DATASET_NAME="${S2_DATASET_NAME:-${DEFAULT_S2_DATASET_NAME}}"
-S2_TRAINER="${S2_TRAINER:-nnUNetTrainerBraTS2026RC}"
+if [[ "${S2_EXPERIMENT_MODE}" == "completion_online" ]]; then
+    DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCOnlineDiffusion
+else
+    DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RC
+fi
+S2_TRAINER="${S2_TRAINER:-${DEFAULT_S2_TRAINER}}"
 S2_CONFIGURATION="${S2_CONFIGURATION:-3d_fullres}"
 
 if [[ -n "${S2_FOLDS:-}" && "${S2_FOLDS}" != "0" ]]; then

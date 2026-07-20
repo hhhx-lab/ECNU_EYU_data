@@ -84,9 +84,7 @@ class GaussianNoiseTumour(MapTransform):
         scan_key = self.keys
         scan_data = d[scan_key]
         _, max_x, max_y, max_z = scan_data.shape
-        scan_crop = clone(scan_data)
         label = d["label"]
-        label_crop = clone(label)
 
         for axis, lower, upper, limit in (
             ("x", d["x_extreme_min"], d["x_extreme_max"], max_x),
@@ -193,10 +191,10 @@ class GaussianNoiseTumour(MapTransform):
             z_top = max_z
         ##################################
         # Crop the label
-        label_crop = label_crop[:, x_base: x_top, y_base: y_top, z_base: z_top]
+        label_crop = clone(label[:, x_base: x_top, y_base: y_top, z_base: z_top])
 
         # Crop and Normalise the scan
-        scan_crop = scan_crop[:, x_base: x_top, y_base: y_top, z_base: z_top]
+        scan_crop = clone(scan_data[:, x_base: x_top, y_base: y_top, z_base: z_top])
 
         # Guard against coordinate/geometry errors before they become silent
         # background-only training samples.

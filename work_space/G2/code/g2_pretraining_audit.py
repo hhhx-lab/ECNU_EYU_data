@@ -49,6 +49,9 @@ MET_KEYS = {
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
 DEFAULT_RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 PROJECT_ROOT_NAME = "ECNU_EYU_data"
+MANUALLY_CLEARABLE_REVIEW_REASONS = frozenset(
+    {"tiny_ratio_high", "z_discontinuity"}
+)
 
 
 def find_project_root(start: Path) -> Path:
@@ -85,22 +88,65 @@ def boolish(value: object) -> bool:
     return str(value).strip().lower() in {"1", "true", "yes", "y"}
 
 
+def apply_manual_review_clearance(
+    review_reasons: list[str], approval_row: dict[str, object]
+) -> list[str]:
+    """Clear only soft flags explicitly documented by a human review."""
+    requested = {
+        reason.strip()
+        for reason in str(approval_row.get("cleared_review_reasons", "")).split(";")
+        if reason.strip()
+    }
+    if not requested:
+        return review_reasons
+    invalid = requested - MANUALLY_CLEARABLE_REVIEW_REASONS
+    valid = requested & MANUALLY_CLEARABLE_REVIEW_REASONS
+    remaining = [reason for reason in review_reasons if reason not in valid]
+    if invalid:
+        remaining.append("release_review_clearance_invalid")
+    return remaining
+
+
 def parse_workspace_path(path_str: str | Path | None, anchor: Path | None = None) -> Path:
     if path_str is None:
         raise FileNotFoundError("empty path")
     path = Path(path_str)
     if path.is_absolute():
         return path
+    configured_data_root = Path(
+        os.environ.get("G2_DATA_ROOT") or DEFAULT_DATA_ROOT
+    ).expanduser().resolve()
+    workspace_raw_prefix = Path("work_space/G1/data/raw").parts
+    if path.parts[: len(workspace_raw_prefix)] == workspace_raw_prefix:
+        remapped = configured_data_root.joinpath(
+            *path.parts[len(workspace_raw_prefix) :]
+        ).resolve()
+        if remapped.exists():
+            return remapped
     bases = []
-    for base in [anchor, PROJECT_ROOT, G1_RAW_ROOT, G1_TRAIN_ROOT, G1_VALIDATION_ROOT, G1_CORRECTED_ROOT, G1_DATA_ROOT, G1_DATA_ROOT / "input", G1_DATA_ROOT / "input_inference"]:
+    for base in [
+        anchor,
+        PROJECT_ROOT,
+        configured_data_root,
+        configured_data_root / "MICCAI-LH-BraTS2025-MET-Challenge-Training",
+        configured_data_root / "Validation",
+        configured_data_root / "MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels",
+        G1_RAW_ROOT,
+        G1_TRAIN_ROOT,
+        G1_VALIDATION_ROOT,
+        G1_CORRECTED_ROOT,
+        G1_DATA_ROOT,
+        G1_DATA_ROOT / "input",
+        G1_DATA_ROOT / "input_inference",
+    ]:
         if base is not None and base not in bases:
             bases.append(base)
-    candidate = (PROJECT_ROOT / path).resolve()
+    project_candidate = (PROJECT_ROOT / path).resolve()
     for base in bases:
         candidate = (base / path).resolve()
         if candidate.exists():
             return candidate
-    return candidate
+    return project_candidate
 
 
 def display_path(path: Path | str | None, anchor: Path | None = None) -> str:
@@ -201,7 +247,11 @@ def nifti_meta(path: Path) -> dict[str, object]:
     img = nib.load(str(path))
     header = img.header
     affine = np.asarray(img.affine, dtype=np.float64)
-    affine_hash = hashlib.sha256(np.round(affine, 6).tobytes()).hexdigest()[:16]
+    canonical_affine = np.round(affine, 6)
+    canonical_affine[np.isclose(canonical_affine, 0.0, atol=5e-7, rtol=0.0)] = 0.0
+    affine_hash = hashlib.sha256(
+        np.ascontiguousarray(canonical_affine).tobytes()
+    ).hexdigest()[:16]
     return {
         "shape": tuple(int(v) for v in img.shape[:3]),
         "spacing": tuple(float(v) for v in header.get_zooms()[:3]),
@@ -209,6 +259,19 @@ def nifti_meta(path: Path) -> dict[str, object]:
         "affine_hash": affine_hash,
         "affine": affine,
     }
+
+
+def affines_consistent(
+    metas: dict[str, dict[str, object]], atol: float = 1e-4
+) -> bool:
+    if not metas:
+        return False
+    affines = [np.asarray(meta["affine"], dtype=np.float64) for meta in metas.values()]
+    reference = affines[0]
+    return all(
+        np.allclose(reference, affine, atol=atol, rtol=0.0)
+        for affine in affines[1:]
+    )
 
 
 def find_case_dirs(root: Path) -> list[Path]:
@@ -913,7 +976,7 @@ def summarize_case_quality(
     if metas:
         rows["shape_consistent"] = len({meta["shape"] for meta in metas.values()}) == 1
         rows["spacing_consistent"] = len({tuple(round(float(v), 6) for v in meta["spacing"]) for meta in metas.values()}) == 1
-        rows["affine_consistent"] = len({meta["affine_hash"] for meta in metas.values()}) == 1
+        rows["affine_consistent"] = affines_consistent(metas)
         rows["orientation_consistent"] = len({orientation_codes_from_affine(np.asarray(meta["affine"])) for meta in metas.values()}) == 1
         rows["affine_valid"] = bool(rows["affine_consistent"])
         rows["has_all_modalities"] = all(bool(files.get(mod)) for mod in ["t1n", "t1c", "t2w", "t2f"])
@@ -1415,6 +1478,10 @@ def summarize_case_quality(
         review_reasons.append("release_approval_ambiguous")
     elif not approved_for_training and not approved_for_evaluation:
         review_reasons.append("release_approval_missing")
+    else:
+        review_reasons = apply_manual_review_clearance(
+            review_reasons, approval_row
+        )
 
     rows["hard_reject"] = bool(hard_reject_reasons)
     rows["hard_reject_reason"] = ";".join(hard_reject_reasons)
@@ -2224,12 +2291,11 @@ def scan_training(train_root: Path) -> pd.DataFrame:
         if all(mod in metas for mod in ["t1n", "t1c", "t2w", "t2f", "seg"]):
             shapes = {metas[m]["shape"] for m in metas}
             spacings = {tuple(round(float(v), 6) for v in metas[m]["spacing"]) for m in metas}
-            affines = {metas[m]["affine_hash"] for m in metas}
             if len(shapes) != 1:
                 reasons.append("shape_mismatch")
             if len(spacings) != 1:
                 reasons.append("spacing_mismatch")
-            if len(affines) != 1:
+            if not affines_consistent(metas):
                 reasons.append("affine_hash_mismatch_warning")
         label_values, label_finite, label_error = ([], False, "missing_seg")
         if files.get("seg"):

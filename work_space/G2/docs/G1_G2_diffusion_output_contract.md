@@ -136,10 +136,12 @@ g2_approval_manifest.csv
 表头：
 
 ```csv
-synthetic_raw_id,approved_for_training,approved_for_evaluation,reviewer,reason
+synthetic_raw_id,approved_for_training,approved_for_evaluation,reviewer,reason,cleared_review_reasons
 ```
 
 没有该审批时，病例保持 `pending_review`。
+`cleared_review_reasons` 是可选审计字段，只允许填写已人工排除的
+`tiny_ratio_high` 和 `z_discontinuity`；不允许用它绕过空白、错位或块状伪影告警。
 
 ## 5. 下游输出
 

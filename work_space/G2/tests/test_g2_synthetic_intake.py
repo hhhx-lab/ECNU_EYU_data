@@ -2,6 +2,7 @@ import argparse
 import csv
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -37,6 +38,77 @@ def save(path: Path, array: np.ndarray, affine: np.ndarray) -> None:
 
 
 class G2SyntheticIntakeTest(unittest.TestCase):
+    def test_manual_review_clearance_only_clears_soft_flags(self):
+        mod = load_module()
+        reasons = [
+            "tiny_ratio_high",
+            "z_discontinuity",
+            "block_artifact_suspected",
+        ]
+        cleared = mod.apply_manual_review_clearance(
+            reasons,
+            {"cleared_review_reasons": "tiny_ratio_high;z_discontinuity"},
+        )
+        self.assertEqual(cleared, ["block_artifact_suspected"])
+
+    def test_manual_review_clearance_rejects_non_whitelisted_reason(self):
+        mod = load_module()
+        cleared = mod.apply_manual_review_clearance(
+            ["block_artifact_suspected"],
+            {"cleared_review_reasons": "block_artifact_suspected"},
+        )
+        self.assertEqual(
+            cleared,
+            [
+                "block_artifact_suspected",
+                "release_review_clearance_invalid",
+            ],
+        )
+
+    def test_affine_signed_zero_is_consistent(self):
+        mod = load_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            array = np.zeros((4, 4, 4), dtype=np.float32)
+            affine_positive = np.eye(4)
+            affine_negative = np.eye(4)
+            affine_negative[0, 1] = -0.0
+            positive_path = root / "positive.nii.gz"
+            negative_path = root / "negative.nii.gz"
+            save(positive_path, array, affine_positive)
+            save(negative_path, array, affine_negative)
+            metas = {
+                "positive": mod.nifti_meta(positive_path),
+                "negative": mod.nifti_meta(negative_path),
+            }
+            self.assertTrue(mod.affines_consistent(metas))
+            self.assertEqual(
+                metas["positive"]["affine_hash"], metas["negative"]["affine_hash"]
+            )
+
+    def test_workspace_raw_path_uses_configured_data_root(self):
+        mod = load_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            data_root = Path(tmp) / "data"
+            relative = Path(
+                "MICCAI-LH-BraTS2025-MET-Challenge-Training"
+            ) / "BraTS-MET-00554-000" / "BraTS-MET-00554-000-t1n.nii.gz"
+            expected = data_root / relative
+            expected.parent.mkdir(parents=True)
+            expected.touch()
+            old_value = os.environ.get("G2_DATA_ROOT")
+            os.environ["G2_DATA_ROOT"] = str(data_root)
+            try:
+                resolved = mod.parse_workspace_path(
+                    Path("work_space/G1/data/raw") / relative
+                )
+            finally:
+                if old_value is None:
+                    os.environ.pop("G2_DATA_ROOT", None)
+                else:
+                    os.environ["G2_DATA_ROOT"] = old_value
+            self.assertEqual(resolved, expected.resolve())
+
     def test_v2_source_manifest_indexes_source_case_id(self):
         mod = load_module()
         with tempfile.TemporaryDirectory() as tmp:

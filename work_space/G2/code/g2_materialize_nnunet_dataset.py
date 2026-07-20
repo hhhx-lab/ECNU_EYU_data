@@ -115,6 +115,79 @@ def read_synthetic_manifests(paths: list[Path]) -> list[dict[str, str]]:
     return rows
 
 
+def apply_completion_root(
+    rows: list[dict[str, str]],
+    completion_root: Path | None,
+) -> int:
+    """Override completion T2W paths with a server-local V3 output root."""
+    if completion_root is None:
+        return 0
+    root = completion_root.expanduser().resolve()
+    if not root.is_dir():
+        raise FileNotFoundError(f"completion root does not exist: {root}")
+
+    updated = 0
+    for row in rows:
+        if not is_completion_row(row):
+            continue
+        source_case_id = row.get("source_case_id", "").strip()
+        if not source_case_id:
+            raise ValueError("completion manifest row is missing source_case_id")
+        expected = root / source_case_id / f"{source_case_id}-t2w.nii.gz"
+        if not expected.is_file():
+            raise FileNotFoundError(
+                f"completion T2W is missing under --completion-root: {expected}"
+            )
+        row["t2w_source_path"] = str(expected)
+        updated += 1
+    return updated
+
+
+def apply_real_data_root(
+    rows: list[dict[str, str]],
+    real_data_root: Path | None,
+) -> int:
+    """Override real-case paths for the ECNU flat per-case data layout."""
+    if real_data_root is None:
+        return 0
+    root = real_data_root.expanduser().resolve()
+    if not root.is_dir():
+        raise FileNotFoundError(f"real data root does not exist: {root}")
+
+    updated = 0
+    for row in rows:
+        source_case_id = row.get("source_case_id", "").strip()
+        if not source_case_id:
+            raise ValueError("real mapping row is missing source_case_id")
+        case_dir = root / source_case_id
+        for modality in CHANNEL_ORDERS["g2_official"]:
+            candidates = (
+                case_dir / f"{modality}.nii.gz",
+                case_dir / f"{source_case_id}-{modality}.nii.gz",
+            )
+            expected = next((path for path in candidates if path.is_file()), None)
+            if expected is None:
+                raise FileNotFoundError(
+                    f"real modality is missing under --real-data-root: {candidates}"
+                )
+            row[f"{modality}_source_path"] = str(expected)
+        if row.get("label_source", "").strip().lower() != "corrected":
+            seg_candidates = (
+                case_dir / "seg.nii.gz",
+                case_dir / f"{source_case_id}-seg.nii.gz",
+            )
+            expected_seg = next(
+                (path for path in seg_candidates if path.is_file()), None
+            )
+            if expected_seg is None:
+                raise FileNotFoundError(
+                    f"real segmentation is missing under --real-data-root: {seg_candidates}"
+                )
+            row["seg_source_path"] = str(expected_seg)
+        updated += 1
+    return updated
+
+
 def select_completion_replacements(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     replacements: dict[str, dict[str, str]] = {}
     for row in rows:
@@ -438,8 +511,20 @@ def verify_materialized_dataset(
             continue
         images = [nib.load(str(path)) for path in paths]
         label_image = nib.load(str(label_path))
-        geometries = [(image.shape[:3], np.round(image.affine, 6).tobytes()) for image in [*images, label_image]]
-        if len(set(geometries)) != 1:
+        geometry_images = [*images, label_image]
+        reference_shape = geometry_images[0].shape[:3]
+        reference_affine = np.asarray(geometry_images[0].affine, dtype=np.float64)
+        if any(
+            image.shape[:3] != reference_shape
+            or not np.allclose(
+                np.asarray(image.affine, dtype=np.float64),
+                reference_affine,
+                rtol=0.0,
+                atol=1e-6,
+                equal_nan=False,
+            )
+            for image in geometry_images[1:]
+        ):
             errors.append(f"{case_id}:geometry_mismatch")
         labels = np.unique(np.asanyarray(label_image.dataobj))
         if not set(labels.tolist()).issubset({0, 1, 2, 3, 4}):
@@ -455,12 +540,29 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results-root", default=str(DEFAULT_RESULTS_ROOT))
     parser.add_argument("--real-mapping", default="")
+    parser.add_argument(
+        "--real-data-root",
+        default="",
+        help=(
+            "Optional server-local real-case root using "
+            "<root>/<source_case_id>/<modality>.nii.gz. Corrected seg paths in "
+            "the mapping remain authoritative."
+        ),
+    )
     parser.add_argument("--master-split", default="")
     parser.add_argument(
         "--synthetic-accepted-manifest",
         action="append",
         default=[],
         help="Approved training or evaluation manifest. Repeat for multiple G1 runs.",
+    )
+    parser.add_argument(
+        "--completion-root",
+        default="",
+        help=(
+            "Optional server-local G1 V3 run root. Completion T2W is resolved as "
+            "<root>/<source_case_id>/<source_case_id>-t2w.nii.gz."
+        ),
     )
     parser.add_argument("--fake-t2w-cases", default=str(DEFAULT_FAKE_T2W))
     parser.add_argument("--output-root", required=True)
@@ -503,7 +605,21 @@ def main() -> int:
     (dataset_dir / "labelsTs").mkdir()
 
     real_rows = read_csv(real_mapping)
+    real_data_root = (
+        Path(args.real_data_root).expanduser().resolve()
+        if args.real_data_root
+        else None
+    )
+    real_paths_overridden = apply_real_data_root(real_rows, real_data_root)
     synthetic_rows = read_synthetic_manifests(manifest_paths)
+    completion_root = (
+        Path(args.completion_root).expanduser().resolve()
+        if args.completion_root
+        else None
+    )
+    completion_paths_overridden = apply_completion_root(
+        synthetic_rows, completion_root
+    )
     fake_t2w_cases = load_fake_t2w_cases(fake_t2w_path)
     specs, stats = build_case_specs(
         real_rows,
@@ -526,7 +642,11 @@ def main() -> int:
         "g2_dataset_profile": profile,
         "g2_channel_order": args.channel_order,
         "g2_real_mapping": str(real_mapping),
+        "g2_real_data_root": str(real_data_root) if real_data_root else "",
+        "g2_real_paths_overridden": real_paths_overridden,
         "g2_synthetic_manifests": [str(path) for path in manifest_paths],
+        "g2_completion_root": str(completion_root) if completion_root else "",
+        "g2_completion_paths_overridden": completion_paths_overridden,
         "g2_master_split": str(master_split_path),
         "g2_materialization_stats": stats,
     }
@@ -576,6 +696,8 @@ def main() -> int:
     print(f"case_folder_root={case_folder_root}")
     print(f"profile={profile}")
     print(f"included_cases={len(specs)}")
+    print(f"real_paths_overridden={real_paths_overridden}")
+    print(f"completion_paths_overridden={completion_paths_overridden}")
     print(f"split_counts={output_split['counts']}")
     print(f"integrity={integrity['status']}")
     return 0

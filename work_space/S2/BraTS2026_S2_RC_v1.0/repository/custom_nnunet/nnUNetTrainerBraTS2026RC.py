@@ -113,9 +113,15 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
         # loading and saving this class for continuing from checkpoint should not happen based on pickling. This
         # would also pickle the network etc. Bad, bad. Instead we just reinstantiate and then load the checkpoint we
         # need. So let's save the init args
-        self.my_init_kwargs = {}
-        for k in inspect.signature(self.__init__).parameters.keys():
-            self.my_init_kwargs[k] = locals()[k]
+        # Subclasses may expose *args/**kwargs, so inspecting self.__init__ here
+        # does not reliably recover the concrete nnU-Net constructor arguments.
+        self.my_init_kwargs = {
+            "plans": plans,
+            "configuration": configuration,
+            "fold": fold,
+            "dataset_json": dataset_json,
+            "device": device,
+        }
 
         ###  Saving all the init args into class variables for later access
         continue_training = bool(plans.pop("continue_training", False))
@@ -672,6 +678,10 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
                                          folder_with_segs_from_previous_stage=self.folder_with_segs_from_previous_stage)
         return dataset_tr, dataset_val
 
+    def get_pre_spatial_training_transforms(self) -> List[BasicTransform]:
+        """Hook for transforms that must update image and integer segmentation together."""
+        return []
+
     def get_dataloaders(self):
         if self.dataset_class is None:
             self.dataset_class = infer_dataset_class(self.preprocessed_dataset_folder)
@@ -723,7 +733,10 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
                                   sampling_probabilities=None, pad_sides=None, transforms=val_transforms,
                                   probabilistic_oversampling=self.probabilistic_oversampling)
 
-        allowed_num_processes = get_allowed_n_proc_DA()
+        allowed_num_processes = (
+            0 if getattr(self, "requires_single_threaded_augmentation", False)
+            else get_allowed_n_proc_DA()
+        )
         if allowed_num_processes == 0:
             mt_gen_train = SingleThreadedAugmenter(dl_tr, None)
             mt_gen_val = SingleThreadedAugmenter(dl_val, None)
@@ -742,8 +755,8 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
         _ = next(mt_gen_val)
         return mt_gen_train, mt_gen_val
 
-    @staticmethod
     def get_training_transforms(
+            self,
             patch_size: Union[np.ndarray, Tuple[int]],
             rotation_for_DA: RandomScalar,
             deep_supervision_scales: Union[List, Tuple, None],
@@ -755,7 +768,7 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
             regions: List[Union[List[int], Tuple[int, ...], int]] = None,
             ignore_label: int = None,
     ) -> BasicTransform:
-        transforms = []
+        transforms = list(self.get_pre_spatial_training_transforms())
         if do_dummy_2d_data_aug:
             ignore_axes = (0,)
             transforms.append(Convert3DTo2DTransform())

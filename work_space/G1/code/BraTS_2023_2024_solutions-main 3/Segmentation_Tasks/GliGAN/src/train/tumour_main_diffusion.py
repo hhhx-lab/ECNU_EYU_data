@@ -1,5 +1,7 @@
 import os
 import argparse
+import re
+import signal
 import torch
 import pickle
 from time import time
@@ -34,14 +36,96 @@ _diffusion_utils = _import_from_path("diffusion_utils",
 
 
 def save_ckp(state, checkpoint_dir):
-    torch.save(state, checkpoint_dir)
+    tmp_path = f"{checkpoint_dir}.tmp.{os.getpid()}"
+    try:
+        torch.save(state, tmp_path)
+        os.replace(tmp_path, checkpoint_dir)
+    finally:
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
 
 
 def _unwrapped_model(model):
     return getattr(model, "_orig_mod", model)
 
 
-def load_ckp(args, model, optimizer):
+_STOP_REQUESTED = False
+
+
+def _handle_stop_signal(signum, _frame):
+    global _STOP_REQUESTED
+    _STOP_REQUESTED = True
+    print(
+        f"Received signal {signum}; a checkpoint will be saved after the current step.",
+        flush=True,
+    )
+
+
+def _checkpoint_payload(args, model, optimizer, scaler, schedule_cfg, epoch, global_step):
+    return {
+        "global_step": global_step,
+        "epoch": epoch,
+        "state_dict": _unwrapped_model(model).state_dict(),
+        "optimizer": optimizer.state_dict(),
+        "scaler": scaler.state_dict(),
+        "n_steps": args.n_steps,
+        "noise_schedule": schedule_cfg.name,
+        "noise_embedding_mode": args.noise_embedding_mode,
+        "time_ch_count": args.time_ch_count,
+        "schedule_config": {
+            key: value for key, value in schedule_cfg.__dict__.items()
+            if value is not None and key not in (
+                "betas", "alphas_bar_sqrt", "one_minus_alphas_bar_sqrt", "alphas_bar")
+        },
+        "p_uncond": args.p_uncond,
+        "dataset": args.dataset,
+        "modality": args.modality,
+        "normalization": args.normalization,
+        "crop_size": args.crop_size,
+        "generator_type": args.generator_type,
+        "in_channels": args.in_channels,
+        "out_channels": args.out_channels,
+        "feature_size": args.feature_size,
+        "network_channels": list(
+            getattr(_unwrapped_model(model), "network_channels", [])),
+        "network_strides": list(
+            getattr(_unwrapped_model(model), "network_strides", [])),
+    }
+
+
+def _prune_checkpoints(weights_dir, keep_last):
+    if keep_last == 0:
+        return
+    checkpoints = []
+    for filename in os.listdir(weights_dir):
+        match = re.fullmatch(r"diffusion_(\d+)\.pt", filename)
+        if match:
+            checkpoints.append((int(match.group(1)), os.path.join(weights_dir, filename)))
+    for _, path in sorted(checkpoints)[:-keep_last]:
+        os.remove(path)
+        print(f"Pruned old checkpoint: {path}")
+
+
+def save_training_checkpoint(
+        args, model, optimizer, scaler, schedule_cfg, HOME_DIR, epoch, global_step):
+    weights_dir = os.path.join(HOME_DIR, args.modality, "weights")
+    checkpoint_path = os.path.join(weights_dir, f"diffusion_{global_step}.pt")
+    payload = _checkpoint_payload(
+        args, model, optimizer, scaler, schedule_cfg, epoch, global_step)
+    save_ckp(payload, checkpoint_path)
+
+    latest_path = os.path.join(weights_dir, "latest_step.txt")
+    latest_tmp = f"{latest_path}.tmp.{os.getpid()}"
+    with open(latest_tmp, "w", encoding="ascii") as handle:
+        handle.write(f"{global_step}\n")
+    os.replace(latest_tmp, latest_path)
+
+    _prune_checkpoints(weights_dir, args.keep_last_checkpoints)
+    print(f"Saved checkpoint: {checkpoint_path}", flush=True)
+    return checkpoint_path
+
+
+def load_ckp(args, model, optimizer, scaler):
     model_pth = os.path.join(args.checkpoint_root, args.logdir)
     print(f"Loading model from {model_pth}")
     ckpt = torch.load(
@@ -54,6 +138,8 @@ def load_ckp(args, model, optimizer):
     }
     _unwrapped_model(model).load_state_dict(state_dict)
     optimizer.load_state_dict(ckpt["optimizer"])
+    if ckpt.get("scaler"):
+        scaler.load_state_dict(ckpt["scaler"])
     model.global_step = ckpt["global_step"]
     model.epoch = ckpt["epoch"]
     print(f"Pre-trained weights loaded. Resuming from epoch {ckpt['epoch']}, step {ckpt['global_step']}")
@@ -150,7 +236,7 @@ def draw_curve(list_iter, dic_loss, losses, colour, file_name, HOME_DIR):
     plt.close()
 
 
-def train(args, global_step, train_loader, model, optimizer, scaler, schedule_cfg, HOME_DIR):
+def train(args, global_step, train_loader, model, optimizer, scaler, schedule_cfg, HOME_DIR, epoch):
     model.train()
 
     loss_list = []
@@ -235,6 +321,18 @@ def train(args, global_step, train_loader, model, optimizer, scaler, schedule_cf
         print("Step:{}/{}, Loss:{:.6f}, Time:{:.4f}"
               .format(global_step, args.num_steps, loss.item(), time() - t1))
 
+        if (
+            global_step % args.checkpoint_interval == 0
+            or global_step >= args.num_steps
+            or _STOP_REQUESTED
+        ):
+            save_training_checkpoint(
+                args, model, optimizer, scaler, schedule_cfg,
+                HOME_DIR, epoch, global_step)
+
+        if _STOP_REQUESTED:
+            break
+
         if global_step >= args.num_steps:
             break
 
@@ -262,6 +360,12 @@ def __main__():
     parser.add_argument("--optim_lr", default=2e-4, type=float, help="Learning rate")
     parser.add_argument("--reg_weight", default=1e-5, type=float, help="Regularization weight")
     parser.add_argument("--num_steps", default=100000, type=int, help="Number of training iterations")
+    parser.add_argument(
+        "--checkpoint_interval", default=5000, type=int,
+        help="Save an atomic resumable checkpoint every N optimizer steps")
+    parser.add_argument(
+        "--keep_last_checkpoints", default=6, type=int,
+        help="Keep only the newest N checkpoints per modality (0 keeps all)")
     parser.add_argument("--n_steps", default=1000, type=int, help="Number of diffusion steps")
     parser.add_argument("--beta_schedule", default=None, type=str, help="[DEPRECATED] Use --noise_schedule instead")
     parser.add_argument("--resume_iter", default=None, type=str, help="Iteration number to resume")
@@ -308,6 +412,13 @@ def __main__():
         warnings.warn(f"Training was requested with split={args.split}; formal runs must use train")
     if args.loader_workers < 0:
         raise ValueError("--loader_workers must be >= 0")
+    if args.checkpoint_interval <= 0:
+        raise ValueError("--checkpoint_interval must be > 0")
+    if args.keep_last_checkpoints < 0:
+        raise ValueError("--keep_last_checkpoints must be >= 0")
+
+    signal.signal(signal.SIGTERM, _handle_stop_signal)
+    signal.signal(signal.SIGINT, _handle_stop_signal)
 
     HOME_DIR = os.path.join(args.checkpoint_root, args.logdir)
     create_dirs(args, HOME_DIR=HOME_DIR)
@@ -383,7 +494,7 @@ def __main__():
 
     if args.resume_iter is not None:
         global_step = int(args.resume_iter)
-        model, optimizer, epoch, global_step = load_ckp(args, model, optimizer)
+        model, optimizer, epoch, global_step = load_ckp(args, model, optimizer, scaler)
     # ---- Ensure CSV has patient_n_crops column for patient-level balancing ----
     import pandas as pd
     if args.csv_path == "":
@@ -420,12 +531,12 @@ def __main__():
     dic_loss = {'loss': []}
     list_iter = []
 
-    while global_step < args.num_steps:
+    while global_step < args.num_steps and not _STOP_REQUESTED:
         epoch += 1
         global_step, model, optimizer, loss_list, x_crop_pad, y_crop_pad = train(
             args=args, global_step=global_step, train_loader=train_loader,
             model=model, optimizer=optimizer, scaler=scaler,
-            schedule_cfg=schedule_cfg, HOME_DIR=HOME_DIR)
+            schedule_cfg=schedule_cfg, HOME_DIR=HOME_DIR, epoch=epoch)
 
         # Save sample visualizations
         save_sample(args=args, image=x_crop_pad[0], reality="x_crop_pad",
@@ -442,40 +553,10 @@ def __main__():
                    losses=['loss'], colour=['b-'],
                    file_name=f"{args.modality}_diffusion_train_loss", HOME_DIR=HOME_DIR)
 
-        # Save checkpoint
-        if (epoch % 10 == 0) or (global_step >= args.num_steps):
-            if global_step >= args.num_steps:
-                print(f"LAST SAVE. global_step: {global_step}")
-            checkpoint = {
-                "global_step": global_step,
-                "epoch": epoch,
-                "state_dict": _unwrapped_model(model).state_dict(),
-                "optimizer": optimizer.state_dict(),
-                "n_steps": args.n_steps,
-                "noise_schedule": schedule_cfg.name,
-                "noise_embedding_mode": args.noise_embedding_mode,
-                "time_ch_count": args.time_ch_count,
-                "schedule_config": {
-                    k: v for k, v in schedule_cfg.__dict__.items()
-                    if v is not None and k not in ("betas", "alphas_bar_sqrt",
-                        "one_minus_alphas_bar_sqrt", "alphas_bar")
-                },
-                "p_uncond": args.p_uncond,
-                "dataset": args.dataset,
-                "modality": args.modality,
-                "normalization": args.normalization,
-                "crop_size": args.crop_size,
-                "generator_type": args.generator_type,
-                "in_channels": args.in_channels,
-                "out_channels": args.out_channels,
-                "feature_size": args.feature_size,
-                "network_channels": list(
-                    getattr(_unwrapped_model(model), "network_channels", [])),
-                "network_strides": list(
-                    getattr(_unwrapped_model(model), "network_strides", [])),
-            }
-            save_ckp(checkpoint, f"{HOME_DIR}/{args.modality}/weights/diffusion_{global_step}.pt")
-            print(f"Saved in: {HOME_DIR}/{args.modality}/weights/diffusion_{global_step}.pt")
+    if _STOP_REQUESTED:
+        print(f"TRAINING_STOPPED_AFTER_CHECKPOINT step={global_step}", flush=True)
+    elif global_step >= args.num_steps:
+        print(f"TRAINING_COMPLETE step={global_step}", flush=True)
 
 
 if __name__ == "__main__":

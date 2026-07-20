@@ -41,7 +41,10 @@ def run(args: argparse.Namespace) -> None:
     # inference can provide that exact builder without training-only transforms.
     predict_module.recursive_find_trainer_class_by_name = (
         lambda trainer_name: nnUNetTrainerBraTS2026RC
-        if trainer_name == "nnUNetTrainerBraTS2026RC"
+        if trainer_name in {
+            "nnUNetTrainerBraTS2026RC",
+            "nnUNetTrainerBraTS2026RCOnlineDiffusion",
+        }
         else (_ for _ in ()).throw(ValueError(f"unexpected trainer: {trainer_name}"))
     )
     predictor = predict_module.nnUNetPredictor(

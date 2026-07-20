@@ -15,6 +15,7 @@ from monai.transforms import (
     SpatialCropd,
     ToTensord,
     ResizeWithPadOrCropd,
+    SelectItemsd,
 )
 import warnings
 from src.utils.gaussian_noise_tumour_extended import GaussianNoiseTumourExtended
@@ -127,9 +128,14 @@ def get_loader(args):
                         #    value=0,
                         #    lazy=False,
                         #),
-                        LABEL_TRANSFORM(keys="label"),
                         GaussianNoiseTumourExtended(keys=scan_name, normalization=normalization, target_size=crop_size),
-                        ToTensord(keys=[scan_name, f'{scan_name}_crop', f'{scan_name}_crop_pad', f'{scan_name}_noisy', 'label', 'label_crop_pad', 'center_x', 'center_y', 'center_z', 'x_extreme_min', 'x_extreme_max', 'y_extreme_min', 'y_extreme_max', 'z_extreme_min', 'z_extreme_max', 'x_size', 'y_size', 'z_size', 'n_voxels', 'effective_n_voxels', 'patient_n_crops']),
+                        LABEL_TRANSFORM(keys="label_crop_pad"),
+                        ToTensord(keys=[f'{scan_name}_crop_pad', 'label_crop_pad',
+                                        'n_voxels', 'effective_n_voxels',
+                                        'patient_n_crops']),
+                        SelectItemsd(keys=[f'{scan_name}_crop_pad', 'label_crop_pad',
+                                           'n_voxels', 'effective_n_voxels',
+                                           'patient_n_crops']),
                     ]
                 )
 
@@ -148,9 +154,14 @@ def get_loader(args):
                         #    value=0,
                         #    lazy=False,
                         #),
-                        LABEL_TRANSFORM(keys="label"),
                         GaussianNoiseTumour(keys=scan_name, normalization=normalization, target_size=crop_size),
-                        ToTensord(keys=[scan_name, f'{scan_name}_crop', f'{scan_name}_crop_pad', f'{scan_name}_noisy', 'label', 'label_crop_pad', 'center_x', 'center_y', 'center_z', 'x_extreme_min', 'x_extreme_max', 'y_extreme_min', 'y_extreme_max', 'z_extreme_min', 'z_extreme_max', 'x_size', 'y_size', 'z_size', 'n_voxels', 'effective_n_voxels', 'patient_n_crops']),
+                        LABEL_TRANSFORM(keys="label_crop_pad"),
+                        ToTensord(keys=[f'{scan_name}_crop_pad', 'label_crop_pad',
+                                        'n_voxels', 'effective_n_voxels',
+                                        'patient_n_crops']),
+                        SelectItemsd(keys=[f'{scan_name}_crop_pad', 'label_crop_pad',
+                                           'n_voxels', 'effective_n_voxels',
+                                           'patient_n_crops']),
                     ]
                 )
 
@@ -168,6 +179,7 @@ def get_loader(args):
         shuffle=(split == "train"),
         pin_memory=torch.cuda.is_available(),
         persistent_workers=(loader_workers > 0),
+        prefetch_factor=1 if loader_workers > 0 else None,
         collate_fn=pad_list_data_collate,
     )
     print(f'Dataset training: number of batches: {len(train_loader)}')

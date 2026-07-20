@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 from g2_synthetic_raw_intake_qc import DEFAULT_RESULTS_ROOT, run_intake
@@ -57,6 +58,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--completion-run-root", required=True)
     parser.add_argument("--results-root", default=str(DEFAULT_RESULTS_ROOT))
+    parser.add_argument(
+        "--data-root",
+        default=os.environ.get("G2_DATA_ROOT", ""),
+        help=(
+            "External BraTS data root containing the Training, corrected-labels, "
+            "and optional Validation directories. This remaps versioned "
+            "work_space/G1/data/raw paths without copying the dataset."
+        ),
+    )
     parser.add_argument("--synthetic-run-id", default="")
     parser.add_argument("--refresh-templates", action="store_true")
     args = parser.parse_args()
@@ -64,6 +74,11 @@ def main() -> None:
     run_root = Path(args.completion_run_root).expanduser().resolve()
     if not run_root.is_dir():
         raise SystemExit(f"V3 completion run not found: {run_root}")
+    if args.data_root:
+        data_root = Path(args.data_root).expanduser().resolve()
+        if not data_root.is_dir():
+            raise SystemExit(f"BraTS data root not found: {data_root}")
+        os.environ["G2_DATA_ROOT"] = str(data_root)
     try:
         _, metadata = load_metadata(run_root)
         validate_v3_metadata(metadata)

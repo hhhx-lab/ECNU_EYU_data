@@ -1,0 +1,2283 @@
+axis_contract=PASS
+{
+  "source_manifest": "/root/brats2026/ECNU_EYU_data/work_space/G2/results/manifests/g1_v2_source_manifest.csv",
+  "project_root": "/root/brats2026/ECNU_EYU_data",
+  "output_dir": "/root/brats2026/runs/g1_diffusion_v3/DataSet",
+  "case_counts": {
+    "train": 823,
+    "val": 103
+  },
+  "total_cases": 926,
+  "patient_group_overlap": 0,
+  "copy_policy": "symlink_only",
+  "source_layout": "server_raw_root",
+  "raw_root": "/root/brats2026/raw_source/MICCAI-LH-BraTS2025-MET-Challenge-Training",
+  "corrected_label_roots": [
+    "/root/brats2026/corrected_labels"
+  ]
+}
+Directory /root/brats2026/runs/g1_diffusion_v3/checkpoints/brats2026_diffusion_v3_edm_zscore already exists
+Directory /root/brats2026/runs/g1_diffusion_v3/checkpoints/brats2026_diffusion_v3_edm_zscore/debug already exists
+CSV_PATH: /root/brats2026/runs/g1_diffusion_v3/splits/current/lesions.csv
+Doing case ID: 00001-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 5: bbox (62,75,63) > 64, split into 5 tiles
+Doing case ID: 00002-000 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00003-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (69,126,87) > 64, split into 10 tiles
+Doing case ID: 00004-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00005-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00006-000 (val)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (58,98,87) > 64, split into 5 tiles
+Doing case ID: 00007-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (68,87,92) > 64, split into 7 tiles
+Doing case ID: 00008-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00009-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (76,59,73) > 64, split into 5 tiles
+Doing case ID: 00010-000 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00011-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+    Lesion 5: bbox (71,122,91) > 64, split into 12 tiles
+Doing case ID: 00012-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00014-000 (val)
+  Found 35 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (48,67,45) > 64, split into 2 tiles
+Doing case ID: 00016-000 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (64,154,85) > 64, split into 8 tiles
+    Lesion 2: bbox (45,68,94) > 64, split into 4 tiles
+Doing case ID: 00017-000 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00018-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (46,65,49) > 64, split into 2 tiles
+Doing case ID: 00019-000 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (67,81,91) > 64, split into 7 tiles
+Doing case ID: 00020-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00021-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00022-000 (val)
+  Found 28 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00023-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (115,101,86) > 64, split into 10 tiles
+Doing case ID: 00025-000 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (42,68,45) > 64, split into 2 tiles
+Doing case ID: 00026-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (73,62,48) > 64, split into 3 tiles
+Doing case ID: 00027-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00028-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (76,99,81) > 64, split into 8 tiles
+Doing case ID: 00029-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00030-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (68,59,54) > 64, split into 3 tiles
+Doing case ID: 00031-000 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00032-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00033-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (48,89,60) > 64, split into 4 tiles
+Doing case ID: 00035-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (54,69,61) > 64, split into 3 tiles
+Doing case ID: 00036-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00037-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (64,100,68) > 64, split into 6 tiles
+Doing case ID: 00086-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00089-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00090-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00096-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00097-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00098-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00100-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00102-000 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00104-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (51,64,71) > 64, split into 4 tiles
+Doing case ID: 00105-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (48,116,54) > 64, split into 3 tiles
+Doing case ID: 00106-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00107-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00108-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00109-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00110-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (60,83,86) > 64, split into 6 tiles
+Doing case ID: 00112-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (67,85,69) > 64, split into 6 tiles
+Doing case ID: 00113-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00114-000 (train)
+  Found 31 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00115-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00116-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (59,89,68) > 64, split into 6 tiles
+Doing case ID: 00117-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00118-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00119-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00120-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00122-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00123-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00124-000 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+    Lesion 12: bbox (55,67,58) > 64, split into 3 tiles
+Doing case ID: 00125-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (60,91,67) > 64, split into 6 tiles
+Doing case ID: 00126-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (77,67,50) > 64, split into 4 tiles
+Doing case ID: 00127-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00129-000 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,108,71) > 64, split into 6 tiles
+Doing case ID: 00130-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00132-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00133-000 (val)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 5: bbox (70,67,52) > 64, split into 4 tiles
+Doing case ID: 00135-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (74,111,69) > 64, split into 6 tiles
+Doing case ID: 00136-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00137-000 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00138-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00139-000 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00140-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (74,117,77) > 64, split into 9 tiles
+Doing case ID: 00141-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (41,69,89) > 64, split into 4 tiles
+Doing case ID: 00142-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (48,79,52) > 64, split into 2 tiles
+Doing case ID: 00143-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00144-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00145-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (68,62,42) > 64, split into 4 tiles
+Doing case ID: 00147-000 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00149-000 (train)
+  Found 15 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00150-000 (train)
+  Found 34 lesion(s) (after merging, dist < 16 vox)
+    Lesion 18: bbox (62,82,63) > 64, split into 6 tiles
+Doing case ID: 00151-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (56,78,52) > 64, split into 2 tiles
+Doing case ID: 00152-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00154-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00155-000 (train)
+  Found 17 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00156-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00158-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00159-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00160-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (54,71,58) > 64, split into 4 tiles
+    Lesion 2: bbox (52,71,58) > 64, split into 3 tiles
+Doing case ID: 00161-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00162-000 (val)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00163-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (67,41,30) > 64, split into 2 tiles
+Doing case ID: 00164-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (73,61,52) > 64, split into 4 tiles
+Doing case ID: 00165-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (55,86,63) > 64, split into 4 tiles
+Doing case ID: 00166-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00167-000 (val)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (58,76,74) > 64, split into 6 tiles
+Doing case ID: 00169-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00170-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00171-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00172-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (56,75,78) > 64, split into 4 tiles
+Doing case ID: 00173-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00174-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00175-000 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00176-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (58,100,75) > 64, split into 6 tiles
+Doing case ID: 00177-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (55,80,60) > 64, split into 3 tiles
+Doing case ID: 00179-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00180-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (50,77,86) > 64, split into 4 tiles
+Doing case ID: 00182-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (96,56,39) > 64, split into 2 tiles
+    Lesion 4: bbox (34,43,66) > 64, split into 2 tiles
+    Lesion 6: bbox (54,83,75) > 64, split into 4 tiles
+Doing case ID: 00183-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (39,67,48) > 64, split into 2 tiles
+    Lesion 3: bbox (58,85,71) > 64, split into 5 tiles
+Doing case ID: 00184-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (57,83,81) > 64, split into 5 tiles
+Doing case ID: 00185-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00187-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (53,71,54) > 64, split into 2 tiles
+Doing case ID: 00188-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (57,65,46) > 64, split into 3 tiles
+Doing case ID: 00189-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (69,139,86) > 64, split into 10 tiles
+Doing case ID: 00190-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00191-000 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (56,77,65) > 64, split into 3 tiles
+Doing case ID: 00192-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00193-000 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00194-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (48,100,82) > 64, split into 4 tiles
+Doing case ID: 00195-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (63,86,81) > 64, split into 8 tiles
+Doing case ID: 00196-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00197-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00199-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00200-000 (val)
+  Found 27 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (85,73,50) > 64, split into 3 tiles
+Doing case ID: 00201-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00202-000 (val)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (55,81,55) > 64, split into 2 tiles
+Doing case ID: 00203-000 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00205-000 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00206-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00207-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00208-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (62,128,93) > 64, split into 9 tiles
+Doing case ID: 00209-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00210-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00211-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00212-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (66,116,90) > 64, split into 9 tiles
+Doing case ID: 00213-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00214-000 (val)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00215-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00216-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00217-000 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (63,69,44) > 64, split into 3 tiles
+Doing case ID: 00219-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00220-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00221-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00222-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (57,88,86) > 64, split into 6 tiles
+Doing case ID: 00223-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00224-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00225-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00226-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00230-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (50,77,56) > 64, split into 2 tiles
+Doing case ID: 00231-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (71,107,78) > 64, split into 8 tiles
+Doing case ID: 00232-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (62,108,60) > 64, split into 6 tiles
+Doing case ID: 00233-000 (train)
+  Found 17 lesion(s) (after merging, dist < 16 vox)
+    Lesion 7: bbox (66,56,46) > 64, split into 2 tiles
+Doing case ID: 00234-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (52,73,52) > 64, split into 2 tiles
+Doing case ID: 00235-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00237-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (64,77,66) > 64, split into 5 tiles
+Doing case ID: 00238-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00239-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00241-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (52,70,48) > 64, split into 2 tiles
+Doing case ID: 00242-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00243-000 (train)
+  Found 29 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00244-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00245-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00247-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00248-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00251-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00252-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00253-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (60,97,46) > 64, split into 3 tiles
+Doing case ID: 00255-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00256-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00260-000 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (78,116,73) > 64, split into 9 tiles
+Doing case ID: 00262-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (53,76,77) > 64, split into 4 tiles
+Doing case ID: 00263-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (73,63,48) > 64, split into 4 tiles
+Doing case ID: 00264-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (54,82,63) > 64, split into 4 tiles
+Doing case ID: 00266-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00268-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00269-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00271-000 (train)
+  Found 25 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00272-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00273-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (77,111,82) > 64, split into 8 tiles
+Doing case ID: 00274-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (63,86,69) > 64, split into 5 tiles
+Doing case ID: 00275-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00277-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (70,108,72) > 64, split into 6 tiles
+Doing case ID: 00278-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (49,79,46) > 64, split into 2 tiles
+Doing case ID: 00280-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (73,91,91) > 64, split into 8 tiles
+Doing case ID: 00281-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00282-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00283-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00284-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (68,88,71) > 64, split into 7 tiles
+Doing case ID: 00285-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00286-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00288-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (65,107,84) > 64, split into 6 tiles
+Doing case ID: 00289-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00290-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (64,95,73) > 64, split into 6 tiles
+Doing case ID: 00291-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00292-000 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (63,76,73) > 64, split into 5 tiles
+Doing case ID: 00293-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (57,72,66) > 64, split into 5 tiles
+Doing case ID: 00294-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (68,99,90) > 64, split into 8 tiles
+Doing case ID: 00295-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00298-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00299-000 (val)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (63,111,87) > 64, split into 6 tiles
+Doing case ID: 00300-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (54,76,70) > 64, split into 4 tiles
+Doing case ID: 00301-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00302-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00303-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00304-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (83,63,49) > 64, split into 4 tiles
+Doing case ID: 00305-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00306-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 5: bbox (58,94,86) > 64, split into 6 tiles
+Doing case ID: 00307-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (60,83,52) > 64, split into 3 tiles
+Doing case ID: 00309-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00310-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00347-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00348-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00349-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00350-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00375-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00376-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (56,112,62) > 64, split into 3 tiles
+Doing case ID: 00378-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00379-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00380-000 (val)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (43,55,68) > 64, split into 2 tiles
+Doing case ID: 00381-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (43,70,72) > 64, split into 4 tiles
+Doing case ID: 00382-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00404-000 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (76,103,67) > 64, split into 8 tiles
+    Lesion 8: bbox (40,50,68) > 64, split into 2 tiles
+Doing case ID: 00405-000 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (57,87,73) > 64, split into 4 tiles
+Doing case ID: 00407-000 (train)
+  Found 22 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00408-000 (train)
+  Found 32 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00409-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00410-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00411-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00413-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00415-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (51,69,77) > 64, split into 4 tiles
+Doing case ID: 00416-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00417-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (45,73,49) > 64, split into 2 tiles
+Doing case ID: 00418-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00507-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00529-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00530-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00532-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00533-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00534-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00536-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00537-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00539-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00540-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00541-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00542-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (99,54,46) > 64, split into 2 tiles
+Doing case ID: 00543-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00544-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00545-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00546-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00547-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00548-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00549-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00550-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (52,82,66) > 64, split into 4 tiles
+Doing case ID: 00551-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00552-000 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00553-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00557-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (96,125,10) > 64, split into 5 tiles
+    Lesion 3: bbox (103,151,9) > 64, split into 6 tiles
+Doing case ID: 00572-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00577-001 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00580-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00581-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (57,71,36) > 64, split into 4 tiles
+Doing case ID: 00588-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00590-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00595-000 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00613-000 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00613-001 (val)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (123,261,61) > 64, split into 20 tiles
+Doing case ID: 00618-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00620-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00623-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00625-000 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00628-000 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00632-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (73,47,60) > 64, split into 3 tiles
+Doing case ID: 00638-002 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00640-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00641-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (44,79,47) > 64, split into 2 tiles
+Doing case ID: 00647-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00649-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00651-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00652-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00653-000 (train)
+  Found 15 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00653-001 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00653-002 (train)
+  Found 15 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00662-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (102,50,120) > 64, split into 6 tiles
+Doing case ID: 00663-000 (val)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00667-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00682-000 (val)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00685-000 (train)
+  Found 53 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00693-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00694-000 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00694-003 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+    Lesion 7: bbox (79,32,77) > 64, split into 4 tiles
+Doing case ID: 00695-000 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00699-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00702-002 (train)
+  Found 29 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00703-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (122,31,103) > 64, split into 6 tiles
+Doing case ID: 00705-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00706-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00715-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00718-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00720-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00735-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00736-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00748-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (110,73,38) > 64, split into 4 tiles
+Doing case ID: 00749-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (87,76,36) > 64, split into 4 tiles
+Doing case ID: 00749-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (64,69,32) > 64, split into 4 tiles
+Doing case ID: 00759-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (131,174,102) > 64, split into 17 tiles
+Doing case ID: 00774-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (49,70,43) > 64, split into 2 tiles
+Doing case ID: 00776-000 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00777-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (50,66,57) > 64, split into 3 tiles
+Doing case ID: 00778-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00779-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00781-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00782-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00783-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00784-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00785-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00786-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00787-000 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00788-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00789-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (55,76,81) > 64, split into 4 tiles
+Doing case ID: 00790-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00791-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00792-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (62,94,87) > 64, split into 8 tiles
+Doing case ID: 00793-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00794-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00795-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (51,86,63) > 64, split into 4 tiles
+Doing case ID: 00796-000 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00797-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00799-000 (val)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00801-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (74,68,79) > 64, split into 6 tiles
+Doing case ID: 00802-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00803-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00804-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00805-000 (train)
+  Found 18 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00807-000 (val)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00808-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00809-000 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00810-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00812-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00813-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00815-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00816-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00817-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (50,91,66) > 64, split into 4 tiles
+Doing case ID: 00819-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00820-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00821-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 00822-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01057-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01057-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01057-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01058-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (27,47,65) > 64, split into 2 tiles
+Doing case ID: 01059-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (115,118,114) > 64, split into 16 tiles
+Doing case ID: 01059-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (71,64,84) > 64, split into 6 tiles
+Doing case ID: 01060-001 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01061-002 (train)
+  Found 21 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01063-000 (train)
+  Found 33 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01063-001 (train)
+  Found 17 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01064-001 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01065-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (68,68,37) > 64, split into 3 tiles
+Doing case ID: 01065-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (67,64,38) > 64, split into 3 tiles
+Doing case ID: 01065-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (71,80,42) > 64, split into 3 tiles
+Doing case ID: 01065-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (72,80,40) > 64, split into 3 tiles
+Doing case ID: 01066-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (111,128,131) > 64, split into 11 tiles
+    Lesion 2: bbox (121,115,112) > 64, split into 11 tiles
+Doing case ID: 01068-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01069-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01069-001 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+    Lesion 12: bbox (58,82,39) > 64, split into 3 tiles
+Doing case ID: 01070-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (77,71,42) > 64, split into 4 tiles
+Doing case ID: 01070-001 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01071-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (47,97,92) > 64, split into 4 tiles
+Doing case ID: 01071-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01073-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (62,95,73) > 64, split into 6 tiles
+Doing case ID: 01073-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01073-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01074-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (46,49,100) > 64, split into 2 tiles
+    Lesion 1: bbox (66,51,80) > 64, split into 3 tiles
+Doing case ID: 01074-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (42,46,86) > 64, split into 2 tiles
+Doing case ID: 01074-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (39,41,71) > 64, split into 2 tiles
+Doing case ID: 01075-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01075-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01075-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01076-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01076-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01077-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01077-001 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01077-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01077-003 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01078-000 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01078-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01078-003 (train)
+  Case 01078-003: no tumour found, skipping
+Doing case ID: 01079-000 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01079-001 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01079-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01079-003 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01080-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (110,185,81) > 64, split into 14 tiles
+Doing case ID: 01080-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (119,204,82) > 64, split into 18 tiles
+Doing case ID: 01080-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (113,203,82) > 64, split into 16 tiles
+Doing case ID: 01082-000 (train)
+  Found 15 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (89,94,82) > 64, split into 8 tiles
+    Lesion 7: bbox (126,98,88) > 64, split into 10 tiles
+    Lesion 10: bbox (49,71,49) > 64, split into 2 tiles
+    Lesion 11: bbox (122,266,128) > 64, split into 28 tiles
+Doing case ID: 01082-002 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 9: bbox (59,136,84) > 64, split into 8 tiles
+Doing case ID: 01082-003 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 9: bbox (89,197,114) > 64, split into 17 tiles
+Doing case ID: 01083-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01083-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01083-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01085-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (126,215,154) > 64, split into 32 tiles
+Doing case ID: 01085-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (54,100,80) > 64, split into 4 tiles
+Doing case ID: 01085-003 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (45,93,52) > 64, split into 2 tiles
+Doing case ID: 01085-004 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01086-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01086-004 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01087-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (92,105,53) > 64, split into 4 tiles
+    Lesion 1: bbox (52,70,16) > 64, split into 2 tiles
+    Lesion 4: bbox (92,139,61) > 64, split into 8 tiles
+Doing case ID: 01087-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (102,125,58) > 64, split into 8 tiles
+    Lesion 4: bbox (90,126,61) > 64, split into 8 tiles
+Doing case ID: 01087-002 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (44,66,33) > 64, split into 2 tiles
+Doing case ID: 01087-003 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01088-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (31,50,86) > 64, split into 2 tiles
+Doing case ID: 01088-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (31,51,81) > 64, split into 2 tiles
+Doing case ID: 01088-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01089-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (83,86,40) > 64, split into 4 tiles
+Doing case ID: 01089-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01090-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01090-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01090-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01090-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01091-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01092-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (63,73,24) > 64, split into 3 tiles
+Doing case ID: 01092-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01092-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01093-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (141,239,65) > 64, split into 22 tiles
+Doing case ID: 01094-003 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (44,78,41) > 64, split into 2 tiles
+Doing case ID: 01095-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (56,86,68) > 64, split into 4 tiles
+Doing case ID: 01095-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01096-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01096-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01096-002 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01097-001 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01098-001 (train)
+  Case 01098-001: no tumour found, skipping
+Doing case ID: 01098-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01098-003 (train)
+  Case 01098-003: no tumour found, skipping
+Doing case ID: 01100-000 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01100-001 (train)
+  Found 23 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01100-002 (train)
+  Found 40 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01100-003 (train)
+  Found 42 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01101-001 (train)
+  Found 38 lesion(s) (after merging, dist < 16 vox)
+    Lesion 19: bbox (32,56,70) > 64, split into 2 tiles
+Doing case ID: 01101-002 (train)
+  Found 54 lesion(s) (after merging, dist < 16 vox)
+    Lesion 37: bbox (63,84,150) > 64, split into 8 tiles
+Doing case ID: 01102-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (87,99,144) > 64, split into 12 tiles
+Doing case ID: 01102-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (34,55,69) > 64, split into 2 tiles
+Doing case ID: 01102-004 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01103-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (104,158,82) > 64, split into 12 tiles
+Doing case ID: 01103-002 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (65,56,37) > 64, split into 2 tiles
+Doing case ID: 01103-003 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01104-001 (train)
+  Found 22 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01104-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01105-001 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01105-002 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01106-001 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01106-002 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01106-003 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01107-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01107-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01108-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (64,103,103) > 64, split into 7 tiles
+Doing case ID: 01108-001 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (34,41,71) > 64, split into 2 tiles
+    Lesion 8: bbox (34,67,61) > 64, split into 3 tiles
+Doing case ID: 01108-002 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (55,55,101) > 64, split into 2 tiles
+Doing case ID: 01109-001 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01109-002 (val)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01109-003 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01110-001 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01110-002 (train)
+  Found 18 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01110-003 (train)
+  Found 22 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01112-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01112-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01114-000 (train)
+  Found 36 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01114-001 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01114-003 (train)
+  Found 62 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (69,84,29) > 64, split into 4 tiles
+    Lesion 5: bbox (97,87,42) > 64, split into 4 tiles
+    Lesion 51: bbox (59,95,54) > 64, split into 4 tiles
+Doing case ID: 01115-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (66,76,24) > 64, split into 4 tiles
+Doing case ID: 01115-001 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (54,67,22) > 64, split into 2 tiles
+Doing case ID: 01115-002 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,66,17) > 64, split into 3 tiles
+    Lesion 2: bbox (84,83,27) > 64, split into 4 tiles
+Doing case ID: 01115-003 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01116-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01116-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01116-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (38,57,65) > 64, split into 3 tiles
+Doing case ID: 01117-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01117-002 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01117-003 (val)
+  Case 01117-003: no tumour found, skipping
+Doing case ID: 01118-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (63,105,45) > 64, split into 4 tiles
+Doing case ID: 01118-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (94,137,73) > 64, split into 12 tiles
+Doing case ID: 01119-000 (val)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01119-001 (val)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01119-003 (val)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (50,52,68) > 64, split into 2 tiles
+Doing case ID: 01120-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (59,103,31) > 64, split into 4 tiles
+Doing case ID: 01120-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (64,100,32) > 64, split into 4 tiles
+Doing case ID: 01121-001 (train)
+  Found 17 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (74,116,77) > 64, split into 9 tiles
+Doing case ID: 01121-002 (train)
+  Found 18 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (63,103,65) > 64, split into 6 tiles
+Doing case ID: 01121-003 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (58,116,58) > 64, split into 7 tiles
+Doing case ID: 01122-001 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (109,221,124) > 64, split into 21 tiles
+Doing case ID: 01122-002 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (66,70,44) > 64, split into 3 tiles
+Doing case ID: 01122-003 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,84,49) > 64, split into 4 tiles
+Doing case ID: 01122-004 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (57,87,53) > 64, split into 3 tiles
+    Lesion 5: bbox (27,74,31) > 64, split into 2 tiles
+Doing case ID: 01124-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (58,74,35) > 64, split into 3 tiles
+Doing case ID: 01124-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01124-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01125-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01126-001 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (127,222,72) > 64, split into 12 tiles
+    Lesion 5: bbox (55,168,37) > 64, split into 3 tiles
+Doing case ID: 01128-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (100,145,100) > 64, split into 12 tiles
+    Lesion 2: bbox (86,96,87) > 64, split into 8 tiles
+Doing case ID: 01128-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (133,301,135) > 64, split into 38 tiles
+Doing case ID: 01128-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (86,68,61) > 64, split into 5 tiles
+    Lesion 3: bbox (54,88,55) > 64, split into 2 tiles
+Doing case ID: 01129-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (51,69,104) > 64, split into 4 tiles
+Doing case ID: 01129-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (43,39,73) > 64, split into 2 tiles
+    Lesion 2: bbox (32,50,83) > 64, split into 2 tiles
+Doing case ID: 01131-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01131-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (66,112,119) > 64, split into 9 tiles
+Doing case ID: 01132-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01132-002 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01133-002 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01133-003 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01134-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01134-003 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01135-002 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01135-003 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01136-000 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01136-002 (train)
+  Found 26 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01137-001 (train)
+  Case 01137-001: no tumour found, skipping
+Doing case ID: 01137-002 (train)
+  Case 01137-002: no tumour found, skipping
+Doing case ID: 01139-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01139-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01139-003 (train)
+  Case 01139-003: no tumour found, skipping
+Doing case ID: 01141-000 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+    Lesion 7: bbox (130,92,48) > 64, split into 6 tiles
+Doing case ID: 01141-002 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+    Lesion 5: bbox (134,93,52) > 64, split into 6 tiles
+Doing case ID: 01141-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01144-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01144-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01144-003 (train)
+  Case 01144-003: no tumour found, skipping
+Doing case ID: 01145-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (98,85,44) > 64, split into 4 tiles
+Doing case ID: 01145-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (108,87,46) > 64, split into 4 tiles
+Doing case ID: 01146-000 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (32,81,35) > 64, split into 2 tiles
+    Lesion 5: bbox (18,59,108) > 64, split into 3 tiles
+    Lesion 8: bbox (44,77,124) > 64, split into 5 tiles
+Doing case ID: 01146-003 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (142,145,208) > 64, split into 35 tiles
+Doing case ID: 01147-000 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01147-001 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01148-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01148-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (33,31,66) > 64, split into 2 tiles
+Doing case ID: 01149-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (116,175,151) > 64, split into 23 tiles
+Doing case ID: 01149-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01150-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (42,43,76) > 64, split into 2 tiles
+Doing case ID: 01150-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01152-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (53,83,140) > 64, split into 6 tiles
+Doing case ID: 01152-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (53,76,139) > 64, split into 6 tiles
+Doing case ID: 01152-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (66,95,157) > 64, split into 12 tiles
+Doing case ID: 01154-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (58,114,113) > 64, split into 7 tiles
+Doing case ID: 01155-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01155-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01155-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01156-000 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01157-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (62,90,30) > 64, split into 4 tiles
+Doing case ID: 01157-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01157-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01159-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (125,150,105) > 64, split into 18 tiles
+    Lesion 1: bbox (73,61,62) > 64, split into 6 tiles
+Doing case ID: 01159-002 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01160-000 (train)
+  Found 17 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (77,106,69) > 64, split into 8 tiles
+    Lesion 10: bbox (82,49,67) > 64, split into 4 tiles
+    Lesion 15: bbox (51,70,69) > 64, split into 4 tiles
+Doing case ID: 01160-001 (train)
+  Found 21 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (110,133,86) > 64, split into 12 tiles
+    Lesion 2: bbox (52,82,42) > 64, split into 2 tiles
+    Lesion 14: bbox (109,94,66) > 64, split into 8 tiles
+Doing case ID: 01160-003 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01162-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (53,116,51) > 64, split into 3 tiles
+Doing case ID: 01162-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (68,145,61) > 64, split into 6 tiles
+Doing case ID: 01162-004 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (79,146,64) > 64, split into 8 tiles
+Doing case ID: 01164-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01164-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (62,127,72) > 64, split into 10 tiles
+Doing case ID: 01164-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (69,136,79) > 64, split into 10 tiles
+Doing case ID: 01165-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01166-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01166-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01166-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01167-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01167-001 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01167-002 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01168-001 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01168-002 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01168-003 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01169-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (92,97,59) > 64, split into 6 tiles
+Doing case ID: 01169-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (95,102,66) > 64, split into 8 tiles
+Doing case ID: 01171-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01171-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01171-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01171-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01172-001 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01172-002 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01172-004 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01173-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01173-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01176-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (84,101,38) > 64, split into 4 tiles
+Doing case ID: 01176-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01176-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01176-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01177-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (67,83,94) > 64, split into 8 tiles
+Doing case ID: 01177-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (50,56,76) > 64, split into 2 tiles
+Doing case ID: 01177-004 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01180-000 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01180-003 (val)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01181-001 (val)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (53,56,88) > 64, split into 2 tiles
+Doing case ID: 01181-002 (val)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (41,44,73) > 64, split into 2 tiles
+Doing case ID: 01184-002 (train)
+  Found 33 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01185-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01185-001 (train)
+  Found 37 lesion(s) (after merging, dist < 16 vox)
+    Lesion 15: bbox (63,59,102) > 64, split into 6 tiles
+    Lesion 20: bbox (42,57,67) > 64, split into 3 tiles
+Doing case ID: 01186-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01187-000 (val)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01187-001 (val)
+  Case 01187-001: no tumour found, skipping
+Doing case ID: 01187-003 (val)
+  Case 01187-003: no tumour found, skipping
+Doing case ID: 01188-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (80,78,47) > 64, split into 4 tiles
+    Lesion 1: bbox (134,178,92) > 64, split into 18 tiles
+Doing case ID: 01189-000 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01189-001 (train)
+  Found 15 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01190-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01190-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01190-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01190-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01191-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01191-002 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01191-003 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (66,66,31) > 64, split into 4 tiles
+Doing case ID: 01191-004 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (91,108,44) > 64, split into 4 tiles
+Doing case ID: 01192-001 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01192-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01194-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (80,86,76) > 64, split into 6 tiles
+Doing case ID: 01194-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (90,93,59) > 64, split into 8 tiles
+Doing case ID: 01195-001 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 8: bbox (36,59,87) > 64, split into 3 tiles
+Doing case ID: 01195-002 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01195-003 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (44,36,67) > 64, split into 2 tiles
+    Lesion 7: bbox (47,75,83) > 64, split into 3 tiles
+Doing case ID: 01196-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (69,85,85) > 64, split into 8 tiles
+Doing case ID: 01196-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (41,75,69) > 64, split into 4 tiles
+Doing case ID: 01196-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01196-004 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01197-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01197-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01199-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (97,176,53) > 64, split into 8 tiles
+    Lesion 1: bbox (90,79,44) > 64, split into 4 tiles
+Doing case ID: 01200-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01200-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01201-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01201-001 (train)
+  Case 01201-001: no tumour found, skipping
+Doing case ID: 01201-002 (train)
+  Case 01201-002: no tumour found, skipping
+Doing case ID: 01201-003 (train)
+  Case 01201-003: no tumour found, skipping
+Doing case ID: 01202-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (139,254,73) > 64, split into 24 tiles
+Doing case ID: 01202-002 (train)
+  Found 30 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (71,67,43) > 64, split into 4 tiles
+    Lesion 8: bbox (71,98,48) > 64, split into 4 tiles
+    Lesion 18: bbox (65,90,33) > 64, split into 4 tiles
+    Lesion 19: bbox (74,54,16) > 64, split into 2 tiles
+    Lesion 22: bbox (82,134,38) > 64, split into 5 tiles
+Doing case ID: 01203-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01203-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01203-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01203-003 (train)
+  Case 01203-003: no tumour found, skipping
+Doing case ID: 01204-000 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01204-002 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01204-003 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01205-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (103,98,54) > 64, split into 4 tiles
+Doing case ID: 01205-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (134,103,53) > 64, split into 6 tiles
+Doing case ID: 01205-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (101,93,43) > 64, split into 4 tiles
+Doing case ID: 01205-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01207-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (112,122,105) > 64, split into 12 tiles
+Doing case ID: 01207-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (106,117,92) > 64, split into 10 tiles
+Doing case ID: 01208-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (135,210,153) > 64, split into 31 tiles
+Doing case ID: 01208-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (86,119,69) > 64, split into 9 tiles
+Doing case ID: 01208-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (81,128,73) > 64, split into 10 tiles
+Doing case ID: 01208-004 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (82,125,76) > 64, split into 9 tiles
+Doing case ID: 01209-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01209-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01210-000 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01210-001 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01212-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01212-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01212-002 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01213-000 (train)
+  Found 92 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01213-002 (train)
+  Case 01213-002: no tumour found, skipping
+Doing case ID: 01214-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01215-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (105,164,132) > 64, split into 18 tiles
+Doing case ID: 01215-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (86,130,88) > 64, split into 11 tiles
+Doing case ID: 01216-001 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01216-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01217-000 (val)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01217-002 (val)
+  Case 01217-002: no tumour found, skipping
+Doing case ID: 01217-003 (val)
+  Case 01217-003: no tumour found, skipping
+Doing case ID: 01218-003 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01219-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01219-003 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01220-001 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+    Lesion 10: bbox (54,73,33) > 64, split into 2 tiles
+Doing case ID: 01220-002 (train)
+  Found 15 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01220-003 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01221-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01221-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01222-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01222-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01222-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01222-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01223-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01223-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01223-003 (train)
+  Case 01223-003: no tumour found, skipping
+Doing case ID: 01224-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (58,115,63) > 64, split into 5 tiles
+Doing case ID: 01224-001 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01224-002 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01224-003 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01225-000 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01225-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01225-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01226-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01226-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01228-000 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01228-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01228-003 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01229-000 (train)
+  Found 14 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01229-001 (train)
+  Found 17 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01229-002 (train)
+  Found 20 lesion(s) (after merging, dist < 16 vox)
+    Lesion 10: bbox (56,53,96) > 64, split into 2 tiles
+Doing case ID: 01232-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01232-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01233-000 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01233-001 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01233-002 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01233-003 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01234-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (93,127,38) > 64, split into 6 tiles
+    Lesion 1: bbox (118,131,72) > 64, split into 14 tiles
+    Lesion 2: bbox (66,98,56) > 64, split into 4 tiles
+    Lesion 3: bbox (61,68,25) > 64, split into 3 tiles
+Doing case ID: 01234-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (57,80,38) > 64, split into 3 tiles
+Doing case ID: 01234-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (73,92,55) > 64, split into 4 tiles
+Doing case ID: 01234-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (105,141,68) > 64, split into 11 tiles
+Doing case ID: 01235-001 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (105,147,54) > 64, split into 6 tiles
+Doing case ID: 01235-002 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (108,162,59) > 64, split into 9 tiles
+Doing case ID: 01236-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01236-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01236-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01236-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01237-000 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01238-002 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01239-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (52,86,85) > 64, split into 4 tiles
+    Lesion 1: bbox (51,86,85) > 64, split into 4 tiles
+Doing case ID: 01239-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (62,118,96) > 64, split into 9 tiles
+    Lesion 1: bbox (60,108,98) > 64, split into 8 tiles
+Doing case ID: 01239-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (61,123,89) > 64, split into 9 tiles
+    Lesion 1: bbox (66,113,102) > 64, split into 9 tiles
+Doing case ID: 01240-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01240-002 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01242-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01242-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01243-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01243-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01243-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01244-000 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (56,80,41) > 64, split into 2 tiles
+    Lesion 3: bbox (52,76,58) > 64, split into 3 tiles
+Doing case ID: 01244-001 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (72,109,47) > 64, split into 4 tiles
+    Lesion 3: bbox (69,107,89) > 64, split into 6 tiles
+    Lesion 4: bbox (76,73,55) > 64, split into 4 tiles
+Doing case ID: 01244-003 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (68,106,85) > 64, split into 7 tiles
+Doing case ID: 01245-001 (train)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01245-003 (train)
+  Found 38 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01246-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01246-002 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01246-003 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (44,79,69) > 64, split into 4 tiles
+Doing case ID: 01247-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01247-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (59,91,52) > 64, split into 4 tiles
+Doing case ID: 01247-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (115,150,71) > 64, split into 14 tiles
+    Lesion 3: bbox (54,66,28) > 64, split into 2 tiles
+Doing case ID: 01247-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (84,112,62) > 64, split into 8 tiles
+Doing case ID: 01248-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01249-002 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01249-003 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+    Lesion 9: bbox (70,96,33) > 64, split into 3 tiles
+Doing case ID: 01249-004 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (78,60,22) > 64, split into 3 tiles
+    Lesion 7: bbox (84,138,45) > 64, split into 5 tiles
+Doing case ID: 01250-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01250-003 (val)
+  Case 01250-003: no tumour found, skipping
+Doing case ID: 01252-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01253-001 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (88,116,87) > 64, split into 10 tiles
+Doing case ID: 01253-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,88,70) > 64, split into 7 tiles
+Doing case ID: 01254-000 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,92,83) > 64, split into 8 tiles
+    Lesion 2: bbox (68,62,85) > 64, split into 8 tiles
+    Lesion 5: bbox (49,75,59) > 64, split into 3 tiles
+    Lesion 7: bbox (88,125,89) > 64, split into 11 tiles
+Doing case ID: 01254-001 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (59,57,71) > 64, split into 4 tiles
+Doing case ID: 01255-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (54,76,66) > 64, split into 3 tiles
+    Lesion 1: bbox (115,188,148) > 64, split into 28 tiles
+    Lesion 3: bbox (81,82,44) > 64, split into 4 tiles
+Doing case ID: 01255-003 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (51,69,65) > 64, split into 3 tiles
+    Lesion 1: bbox (128,204,156) > 64, split into 27 tiles
+    Lesion 3: bbox (81,88,46) > 64, split into 4 tiles
+Doing case ID: 01256-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01256-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01256-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01257-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (71,148,96) > 64, split into 12 tiles
+    Lesion 2: bbox (143,118,107) > 64, split into 14 tiles
+    Lesion 3: bbox (62,90,64) > 64, split into 6 tiles
+Doing case ID: 01257-001 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01257-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01257-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01258-001 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01258-002 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01260-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01260-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01261-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01261-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01261-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01262-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01262-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01263-001 (train)
+  Found 5 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01265-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (56,70,77) > 64, split into 3 tiles
+Doing case ID: 01265-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (46,62,75) > 64, split into 3 tiles
+Doing case ID: 01265-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (52,67,73) > 64, split into 3 tiles
+Doing case ID: 01267-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (33,50,65) > 64, split into 2 tiles
+Doing case ID: 01268-002 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,77,42) > 64, split into 3 tiles
+Doing case ID: 01269-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (102,126,124) > 64, split into 16 tiles
+Doing case ID: 01269-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (90,114,107) > 64, split into 10 tiles
+Doing case ID: 01269-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01269-004 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01270-001 (val)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,86,43) > 64, split into 3 tiles
+    Lesion 7: bbox (58,100,35) > 64, split into 4 tiles
+Doing case ID: 01270-002 (val)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01270-003 (val)
+  Found 11 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01271-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01271-002 (train)
+  Case 01271-002: no tumour found, skipping
+Doing case ID: 01273-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (63,100,64) > 64, split into 5 tiles
+Doing case ID: 01273-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01273-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (69,118,63) > 64, split into 7 tiles
+Doing case ID: 01273-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (72,128,72) > 64, split into 7 tiles
+Doing case ID: 01274-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01275-000 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 4: bbox (57,67,49) > 64, split into 3 tiles
+    Lesion 8: bbox (71,81,36) > 64, split into 4 tiles
+Doing case ID: 01275-001 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01275-003 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01276-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01277-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (73,82,108) > 64, split into 8 tiles
+Doing case ID: 01277-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01278-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01278-002 (train)
+  Case 01278-002: no tumour found, skipping
+Doing case ID: 01278-003 (train)
+  Case 01278-003: no tumour found, skipping
+Doing case ID: 01279-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01279-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01279-003 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (83,87,47) > 64, split into 4 tiles
+    Lesion 1: bbox (94,79,40) > 64, split into 4 tiles
+    Lesion 2: bbox (62,82,24) > 64, split into 3 tiles
+Doing case ID: 01280-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01280-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (59,66,23) > 64, split into 3 tiles
+Doing case ID: 01280-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01281-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01283-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01283-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01283-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (52,67,53) > 64, split into 2 tiles
+Doing case ID: 01284-000 (val)
+  Found 31 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (63,118,112) > 64, split into 10 tiles
+    Lesion 3: bbox (31,176,63) > 64, split into 8 tiles
+    Lesion 4: bbox (24,62,73) > 64, split into 4 tiles
+    Lesion 6: bbox (34,72,69) > 64, split into 4 tiles
+    Lesion 11: bbox (32,76,61) > 64, split into 3 tiles
+    Lesion 21: bbox (47,105,121) > 64, split into 6 tiles
+Doing case ID: 01284-002 (val)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01285-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01285-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01287-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (49,61,77) > 64, split into 3 tiles
+Doing case ID: 01287-002 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01289-001 (train)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (49,48,68) > 64, split into 2 tiles
+Doing case ID: 01289-003 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01289-004 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01290-000 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01290-001 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01290-002 (train)
+  Found 25 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (42,67,33) > 64, split into 2 tiles
+Doing case ID: 01290-003 (train)
+  Found 19 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01292-001 (train)
+  Found 18 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01293-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (50,66,37) > 64, split into 2 tiles
+Doing case ID: 01293-002 (train)
+  Found 6 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01293-003 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01296-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (48,63,93) > 64, split into 3 tiles
+Doing case ID: 01296-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01300-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (47,61,86) > 64, split into 4 tiles
+Doing case ID: 01300-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01300-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01301-000 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01301-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01301-002 (val)
+  Case 01301-002: no tumour found, skipping
+Doing case ID: 01303-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01303-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01303-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01303-003 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01305-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (101,93,80) > 64, split into 8 tiles
+Doing case ID: 01305-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (118,156,103) > 64, split into 14 tiles
+Doing case ID: 01309-000 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01310-001 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01310-002 (val)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01311-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01311-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01311-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01311-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (69,62,87) > 64, split into 6 tiles
+Doing case ID: 01312-000 (train)
+  Found 47 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (120,127,55) > 64, split into 7 tiles
+    Lesion 25: bbox (114,94,54) > 64, split into 6 tiles
+    Lesion 36: bbox (89,99,28) > 64, split into 4 tiles
+Doing case ID: 01312-001 (train)
+  Found 47 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01312-003 (train)
+  Found 26 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01314-002 (val)
+  Case 01314-002: no tumour found, skipping
+Doing case ID: 01314-003 (val)
+  Case 01314-003: no tumour found, skipping
+Doing case ID: 01316-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01316-001 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01317-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01317-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01317-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01317-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01318-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (67,68,24) > 64, split into 3 tiles
+Doing case ID: 01318-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01319-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01319-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01320-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01320-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01321-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (109,182,107) > 64, split into 16 tiles
+Doing case ID: 01321-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (77,152,107) > 64, split into 12 tiles
+Doing case ID: 01321-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (69,106,84) > 64, split into 7 tiles
+Doing case ID: 01323-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (84,94,67) > 64, split into 7 tiles
+Doing case ID: 01323-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (65,62,47) > 64, split into 3 tiles
+Doing case ID: 01323-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (127,180,107) > 64, split into 22 tiles
+    Lesion 2: bbox (97,122,82) > 64, split into 10 tiles
+Doing case ID: 01323-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (130,185,108) > 64, split into 22 tiles
+    Lesion 2: bbox (112,133,108) > 64, split into 12 tiles
+Doing case ID: 01324-000 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01324-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01324-002 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01324-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01325-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (114,134,71) > 64, split into 12 tiles
+Doing case ID: 01325-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (94,96,54) > 64, split into 4 tiles
+Doing case ID: 01325-002 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+    Lesion 6: bbox (84,74,35) > 64, split into 3 tiles
+Doing case ID: 01326-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01327-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01327-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01327-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01327-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01328-002 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01329-000 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01329-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01330-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (124,136,59) > 64, split into 12 tiles
+Doing case ID: 01330-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (62,68,34) > 64, split into 3 tiles
+Doing case ID: 01331-002 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01334-000 (train)
+  Found 13 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01334-001 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01335-003 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01335-004 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01336-000 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01336-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01337-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (135,181,126) > 64, split into 28 tiles
+Doing case ID: 01338-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (47,40,78) > 64, split into 2 tiles
+Doing case ID: 01339-001 (train)
+  Found 10 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (81,77,44) > 64, split into 3 tiles
+    Lesion 4: bbox (77,75,28) > 64, split into 4 tiles
+    Lesion 6: bbox (55,66,30) > 64, split into 2 tiles
+Doing case ID: 01339-002 (train)
+  Found 9 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (55,65,25) > 64, split into 2 tiles
+    Lesion 1: bbox (99,113,51) > 64, split into 5 tiles
+    Lesion 3: bbox (149,136,59) > 64, split into 16 tiles
+    Lesion 5: bbox (60,72,38) > 64, split into 3 tiles
+    Lesion 6: bbox (73,118,43) > 64, split into 5 tiles
+Doing case ID: 01340-001 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (157,221,126) > 64, split into 30 tiles
+Doing case ID: 01340-003 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (81,102,63) > 64, split into 8 tiles
+Doing case ID: 01340-004 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (85,96,66) > 64, split into 8 tiles
+Doing case ID: 01342-002 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (106,155,110) > 64, split into 12 tiles
+    Lesion 3: bbox (167,104,78) > 64, split into 12 tiles
+    Lesion 8: bbox (60,90,144) > 64, split into 9 tiles
+    Lesion 11: bbox (90,114,167) > 64, split into 18 tiles
+    Lesion 12: bbox (95,97,92) > 64, split into 8 tiles
+    Lesion 13: bbox (93,115,90) > 64, split into 9 tiles
+Doing case ID: 01343-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 2: bbox (62,55,77) > 64, split into 3 tiles
+Doing case ID: 01343-001 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01343-003 (train)
+  Found 4 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01344-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01345-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01345-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01346-001 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01346-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01347-000 (train)
+  Found 39 lesion(s) (after merging, dist < 16 vox)
+    Lesion 23: bbox (66,103,50) > 64, split into 4 tiles
+    Lesion 24: bbox (65,150,32) > 64, split into 6 tiles
+Doing case ID: 01348-000 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01348-002 (train)
+  Found 7 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01349-002 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01349-003 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01350-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (106,108,100) > 64, split into 8 tiles
+Doing case ID: 01350-002 (train)
+  Found 8 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01350-004 (train)
+  Found 15 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01351-000 (val)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01351-002 (val)
+  Found 96 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01351-003 (val)
+  Found 12 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01352-000 (train)
+  Found 18 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01352-001 (train)
+  Found 21 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01353-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+    Lesion 1: bbox (158,117,100) > 64, split into 16 tiles
+Doing case ID: 01353-002 (train)
+  Found 1 lesion(s) (after merging, dist < 16 vox)
+    Lesion 0: bbox (135,102,83) > 64, split into 10 tiles
+Doing case ID: 01354-000 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01354-001 (train)
+  Found 3 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01354-002 (train)
+  Found 2 lesion(s) (after merging, dist < 16 vox)
+Doing case ID: 01356-000 (train)
+  Found 16 lesion(s) (after merging, dist < 16 vox)
+    Lesion 9: bbox (71,73,30) > 64, split into 4 tiles
+Doing case ID: 01356-001 (train)
+  Found 22 lesion(s) (after merging, dist < 16 vox)
+    Lesion 3: bbox (120,83,45) > 64, split into 6 tiles
+    Lesion 5: bbox (63,77,38) > 64, split into 3 tiles
+    Lesion 14: bbox (77,76,36) > 64, split into 4 tiles
+
+Done. 7404 lesions saved to /root/brats2026/runs/g1_diffusion_v3/splits/current/lesions.csv
+Finished!
+DIFFUSION_DATASET_CONTRACT_PASS cases={'train': 823, 'val': 103} lesions={'train': 6670, 'val': 734} overlap=0
+PREPARE_DATASET_PASS run_root=/root/brats2026/runs/g1_diffusion_v3
