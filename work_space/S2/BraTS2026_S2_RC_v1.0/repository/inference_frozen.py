@@ -44,6 +44,9 @@ def run(args: argparse.Namespace) -> None:
         if trainer_name in {
             "nnUNetTrainerBraTS2026RC",
             "nnUNetTrainerBraTS2026RCOnlineDiffusion",
+            "nnUNetTrainerBraTS2026RCFocalCompletionFineTune",
+            "nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune",
+            "nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune",
         }
         else (_ for _ in ()).throw(ValueError(f"unexpected trainer: {trainer_name}"))
     )

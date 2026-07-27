@@ -1,0 +1,60 @@
+{
+  "audit_sha256": "3d54a82a46084af50b9f6ab36fad1c3ea9412457fc888adaa710dff9cee51c81",
+  "component_manifest": {
+    "component_count": 4015,
+    "file_sha256": "db05d8ef62ef3a10ae37f3467217de331a8d1e39c089d57d5d97c30cdb731998",
+    "identity_sha256": "c8a413bc180b3a120ee3415f548eab98c305cbe3a63867db89d09f19243da26e",
+    "path": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r4/component_pool/component_manifest.json",
+    "records_sha256": "dd6b3e13155447748c13478f11aa787cb43d39ee44cf595891b543a8ec30157f",
+    "train_count": 1035
+  },
+  "coordinate_audit": {
+    "case_count": 1138,
+    "path": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r4/preprocessed_coordinate_contract.json",
+    "sha256": "4b6f4038c179878e93dbc61aff6f81a4cbc81c05c2dbc83f787c4f7e99c6776a",
+    "status": "pass"
+  },
+  "created_at_utc": "2026-07-26T12:08:08Z",
+  "reuse_mode": "direct_read_only_path_reference_no_asset_copy",
+  "route_config": {
+    "donor_eligibility": {
+      "eligible_by_core_volume_bin": {
+        "27_49": 950,
+        "50_275": 1764,
+        "gt_275": 840
+      },
+      "eligible_component_count": 3554,
+      "eligible_patient_groups_by_core_volume_bin": {
+        "27_49": 263,
+        "50_275": 384,
+        "gt_275": 289
+      },
+      "excluded_component_count": 461,
+      "max_total_support_voxels": 4096,
+      "max_total_to_core_ratio": 20.0,
+      "policy": "compact_support_v1"
+    },
+    "p_select": 0.2,
+    "path": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r5/route_a_config.json",
+    "schema_version": 3,
+    "seed": 20260725,
+    "sha256": "832cd9e03c3d8a9bb63409c02afdaf9d46755bab0ed308b346a2337c824c755a"
+  },
+  "schema_version": 1,
+  "source_prepare_marker": {
+    "path": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r4/PREPARE_COMPLETE.ok",
+    "sha256": "3cd1481f0ffb0af4396a3481b06faea6a00cbb6c85ba7ed39ffbd97c0105cf50"
+  },
+  "source_route_files_written": false,
+  "source_route_root": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r4",
+  "status": "pass",
+  "target_route_root": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r5",
+  "valid_mask_manifest": {
+    "file_sha256": "a381b24ab508b7eba758b971e4ffe05b4a10e319c6299c1aa4a67f955bc6a169",
+    "identity_sha256": "d27b71ec61c34942d33a5c3e0b67611a43daa166b8bbb6a25cb129c5099197ce",
+    "path": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r4/valid_masks/valid_mask_manifest.json",
+    "records_sha256": "f41b2c96d48266880e532f0b6f7fce03754f3c4fad4bf4e08835706b8e523218",
+    "resampling_backend": "nnunet_configuration_resampling_fn_seg",
+    "train_count": 1035
+  }
+}

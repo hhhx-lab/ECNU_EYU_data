@@ -23,9 +23,23 @@ case "${S2_EXPERIMENT_MODE}" in
     completion_online)
         DEFAULT_S2_DATASET_ID=264
         DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_CompletionOnline
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCOnlineDiffusion
+        DEFAULT_USE_INFERENCE_TRAINER_SHIM=0
+        ;;
+    met_aug_route_a)
+        DEFAULT_S2_DATASET_ID=264
+        DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_Completion
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune
+        DEFAULT_USE_INFERENCE_TRAINER_SHIM=1
+        ;;
+    met_aug_route_a_control)
+        DEFAULT_S2_DATASET_ID=264
+        DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_Completion
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune
+        DEFAULT_USE_INFERENCE_TRAINER_SHIM=1
         ;;
     *)
-        echo "S2_EXPERIMENT_MODE must be current, legacy, or completion_online, got: ${S2_EXPERIMENT_MODE}" >&2
+        echo "S2_EXPERIMENT_MODE must be current, legacy, completion_online, met_aug_route_a, or met_aug_route_a_control, got: ${S2_EXPERIMENT_MODE}" >&2
         exit 2
         ;;
 esac
@@ -37,13 +51,13 @@ export BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${REPO_DIR}/data/splits/${S2_EXPERIME
 export BRATS_S2_REPO_DIR="${BRATS_S2_REPO_DIR:-${REPO_DIR}}"
 export S2_DATASET_ID="${S2_DATASET_ID:-${DEFAULT_S2_DATASET_ID}}"
 S2_DATASET_NAME="${S2_DATASET_NAME:-${DEFAULT_S2_DATASET_NAME}}"
-if [[ "${S2_EXPERIMENT_MODE}" == "completion_online" ]]; then
-    DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCOnlineDiffusion
-else
+if [[ -z "${DEFAULT_S2_TRAINER:-}" ]]; then
     DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RC
 fi
+DEFAULT_USE_INFERENCE_TRAINER_SHIM="${DEFAULT_USE_INFERENCE_TRAINER_SHIM:-0}"
 S2_TRAINER="${S2_TRAINER:-${DEFAULT_S2_TRAINER}}"
 S2_CONFIGURATION="${S2_CONFIGURATION:-3d_fullres}"
+export S2_USE_INFERENCE_TRAINER_SHIM="${S2_USE_INFERENCE_TRAINER_SHIM:-${DEFAULT_USE_INFERENCE_TRAINER_SHIM}}"
 
 if [[ -n "${S2_FOLDS:-}" && "${S2_FOLDS}" != "0" ]]; then
     echo "S2 cross-validation is disabled; S2_FOLDS must be unset or 0." >&2
@@ -56,6 +70,16 @@ fi
 if [[ "${S2_DATASET_ID}" != "${DEFAULT_S2_DATASET_ID}" || "${S2_DATASET_NAME}" != "${DEFAULT_S2_DATASET_NAME}" ]]; then
     echo "${S2_EXPERIMENT_MODE} mode is locked to dataset ${DEFAULT_S2_DATASET_ID}/${DEFAULT_S2_DATASET_NAME}." >&2
     exit 2
+fi
+if [[ "${S2_EXPERIMENT_MODE}" == met_aug_route_a* ]]; then
+    if [[ "${S2_TRAINER}" != "${DEFAULT_S2_TRAINER}" ]]; then
+        echo "${S2_EXPERIMENT_MODE} inference is locked to trainer ${DEFAULT_S2_TRAINER}." >&2
+        exit 2
+    fi
+    if [[ "${S2_USE_INFERENCE_TRAINER_SHIM}" != "1" ]]; then
+        echo "${S2_EXPERIMENT_MODE} inference must use the frozen inference shim; training-only Diffusion code is forbidden." >&2
+        exit 2
+    fi
 fi
 
 export nnUNet_extTrainer="${REPO_DIR}/custom_nnunet"

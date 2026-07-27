@@ -1,0 +1,4794 @@
+{
+    "foreground_mean": {
+        "Dice": 0.5183282659903408,
+        "FN": 1713.6553398058254,
+        "FP": 1438.4199029126216,
+        "IoU": 0.4401157802747003,
+        "TN": 33928359.19417476,
+        "TP": 13313.274271844659,
+        "n_pred": 14751.69417475728,
+        "n_ref": 15026.929611650487
+    },
+    "mean": {
+        "1": {
+            "Dice": 0.4814980187362182,
+            "FN": 553.7184466019418,
+            "FP": 531.5436893203884,
+            "IoU": 0.40029497874576764,
+            "TN": 33941898.485436894,
+            "TP": 1840.7961165048544,
+            "n_pred": 2372.339805825243,
+            "n_ref": 2394.5145631067962
+        },
+        "2": {
+            "Dice": 0.7199539009085963,
+            "FN": 4225.543689320389,
+            "FP": 3774.669902912621,
+            "IoU": 0.628559143440765,
+            "TN": 33892911.27184466,
+            "TP": 43913.05825242718,
+            "n_pred": 47687.728155339806,
+            "n_ref": 48138.601941747576
+        },
+        "3": {
+            "Dice": 0.6880119512564983,
+            "FN": 1760.1844660194174,
+            "FP": 1043.106796116505,
+            "IoU": 0.5861734957313104,
+            "TN": 33935083.57281554,
+            "TP": 6937.679611650486,
+            "n_pred": 7980.78640776699,
+            "n_ref": 8697.864077669903
+        },
+        "4": {
+            "Dice": 0.18384919306005026,
+            "FN": 315.1747572815534,
+            "FP": 404.3592233009709,
+            "IoU": 0.14543550318095794,
+            "TN": 33943543.44660194,
+            "TP": 561.5631067961165,
+            "n_pred": 965.9223300970874,
+            "n_ref": 876.7378640776699
+        }
+    },
+    "metric_per_case": [
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4341279799247177,
+                    "FN": 137,
+                    "FP": 314,
+                    "IoU": 0.27724358974358976,
+                    "TN": 8927376,
+                    "TP": 173,
+                    "n_pred": 487,
+                    "n_ref": 310
+                },
+                "2": {
+                    "Dice": 0.9140077727665291,
+                    "FN": 9539,
+                    "FP": 4799,
+                    "IoU": 0.8416338071727582,
+                    "TN": 8837463,
+                    "TP": 76199,
+                    "n_pred": 80998,
+                    "n_ref": 85738
+                },
+                "3": {
+                    "Dice": 0.9396650219623044,
+                    "FN": 7047,
+                    "FP": 82,
+                    "IoU": 0.8861963826764363,
+                    "TN": 8865357,
+                    "TP": 55514,
+                    "n_pred": 55596,
+                    "n_ref": 62561
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 324,
+                    "IoU": 0.0,
+                    "TN": 8927676,
+                    "TP": 0,
+                    "n_pred": 324,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000006.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000006.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8811163948268966,
+                    "FN": 2494,
+                    "FP": 181,
+                    "IoU": 0.7874960279631394,
+                    "TN": 8915412,
+                    "TP": 9913,
+                    "n_pred": 10094,
+                    "n_ref": 12407
+                },
+                "2": {
+                    "Dice": 0.9065335100535298,
+                    "FN": 6695,
+                    "FP": 2402,
+                    "IoU": 0.8290455339860561,
+                    "TN": 8874787,
+                    "TP": 44116,
+                    "n_pred": 46518,
+                    "n_ref": 50811
+                },
+                "3": {
+                    "Dice": 0.9167243435875536,
+                    "FN": 3017,
+                    "FP": 2638,
+                    "IoU": 0.8462521410510861,
+                    "TN": 8891219,
+                    "TP": 31126,
+                    "n_pred": 33764,
+                    "n_ref": 34143
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000009.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000009.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4423076923076923,
+                    "FN": 111,
+                    "FP": 237,
+                    "IoU": 0.2839506172839506,
+                    "TN": 8927514,
+                    "TP": 138,
+                    "n_pred": 375,
+                    "n_ref": 249
+                },
+                "2": {
+                    "Dice": 0.9100121500400693,
+                    "FN": 4341,
+                    "FP": 13064,
+                    "IoU": 0.8348828384403757,
+                    "TN": 8822590,
+                    "TP": 88005,
+                    "n_pred": 101069,
+                    "n_ref": 92346
+                },
+                "3": {
+                    "Dice": 0.8338102783624625,
+                    "FN": 4710,
+                    "FP": 2317,
+                    "IoU": 0.714986818089637,
+                    "TN": 8903345,
+                    "TP": 17628,
+                    "n_pred": 19945,
+                    "n_ref": 22338
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000014.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000014.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 251,
+                    "IoU": 0.0,
+                    "TN": 8927749,
+                    "TP": 0,
+                    "n_pred": 251,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.891148527372915,
+                    "FN": 52842,
+                    "FP": 2588,
+                    "IoU": 0.8036680740132045,
+                    "TN": 8645672,
+                    "TP": 226898,
+                    "n_pred": 229486,
+                    "n_ref": 279740
+                },
+                "3": {
+                    "Dice": 0.9185660290917421,
+                    "FN": 1098,
+                    "FP": 324,
+                    "IoU": 0.8493963143401821,
+                    "TN": 8918558,
+                    "TP": 8020,
+                    "n_pred": 8344,
+                    "n_ref": 9118
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000016.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000016.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.15267175572519084,
+                    "FN": 333,
+                    "FP": 0,
+                    "IoU": 0.08264462809917356,
+                    "TN": 8927637,
+                    "TP": 30,
+                    "n_pred": 30,
+                    "n_ref": 363
+                },
+                "2": {
+                    "Dice": 0.9290262982035458,
+                    "FN": 2036,
+                    "FP": 12408,
+                    "IoU": 0.8674594872359559,
+                    "TN": 8819022,
+                    "TP": 94534,
+                    "n_pred": 106942,
+                    "n_ref": 96570
+                },
+                "3": {
+                    "Dice": 0.9117708117085322,
+                    "FN": 211,
+                    "FP": 639,
+                    "IoU": 0.8378481495612362,
+                    "TN": 8922758,
+                    "TP": 4392,
+                    "n_pred": 5031,
+                    "n_ref": 4603
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000019.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000019.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.24143160448892934,
+                    "FN": 2284,
+                    "FP": 217,
+                    "IoU": 0.1372887202483615,
+                    "TN": 8925101,
+                    "TP": 398,
+                    "n_pred": 615,
+                    "n_ref": 2682
+                },
+                "2": {
+                    "Dice": 0.5105245958362968,
+                    "FN": 23382,
+                    "FP": 2081,
+                    "IoU": 0.34275463321459915,
+                    "TN": 8889258,
+                    "TP": 13279,
+                    "n_pred": 15360,
+                    "n_ref": 36661
+                },
+                "3": {
+                    "Dice": 0.7426877936248674,
+                    "FN": 11718,
+                    "FP": 3563,
+                    "IoU": 0.5906948090212675,
+                    "TN": 8890666,
+                    "TP": 22053,
+                    "n_pred": 25616,
+                    "n_ref": 33771
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 121,
+                    "IoU": 0.0,
+                    "TN": 8927879,
+                    "TP": 0,
+                    "n_pred": 121,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000022.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000022.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9177986276431872,
+                    "FN": 134,
+                    "FP": 453,
+                    "IoU": 0.8480848861283644,
+                    "TN": 8924136,
+                    "TP": 3277,
+                    "n_pred": 3730,
+                    "n_ref": 3411
+                },
+                "2": {
+                    "Dice": 0.9427991219729783,
+                    "FN": 1317,
+                    "FP": 3556,
+                    "IoU": 0.8917880618227039,
+                    "TN": 8882968,
+                    "TP": 40159,
+                    "n_pred": 43715,
+                    "n_ref": 41476
+                },
+                "3": {
+                    "Dice": 0.9006908039782471,
+                    "FN": 1564,
+                    "FP": 463,
+                    "IoU": 0.8193243604599341,
+                    "TN": 8916781,
+                    "TP": 9192,
+                    "n_pred": 9655,
+                    "n_ref": 10756
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000025.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000025.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8932229243843974,
+                    "FN": 984,
+                    "FP": 2936,
+                    "IoU": 0.8070486316203977,
+                    "TN": 8907684,
+                    "TP": 16396,
+                    "n_pred": 19332,
+                    "n_ref": 17380
+                },
+                "3": {
+                    "Dice": 0.802660753880266,
+                    "FN": 24,
+                    "FP": 65,
+                    "IoU": 0.6703703703703704,
+                    "TN": 8927730,
+                    "TP": 181,
+                    "n_pred": 246,
+                    "n_ref": 205
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000043.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000043.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9126860297647623,
+                    "FN": 1184,
+                    "FP": 1726,
+                    "IoU": 0.8393951101054142,
+                    "TN": 8909881,
+                    "TP": 15209,
+                    "n_pred": 16935,
+                    "n_ref": 16393
+                },
+                "2": {
+                    "Dice": 0.8893694283143861,
+                    "FN": 12062,
+                    "FP": 21755,
+                    "IoU": 0.8007788106936246,
+                    "TN": 8758254,
+                    "TP": 135929,
+                    "n_pred": 157684,
+                    "n_ref": 147991
+                },
+                "3": {
+                    "Dice": 0.7729850220953424,
+                    "FN": 2210,
+                    "FP": 3595,
+                    "IoU": 0.6299719530851606,
+                    "TN": 8912312,
+                    "TP": 9883,
+                    "n_pred": 13478,
+                    "n_ref": 12093
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000071.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000071.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 388,
+                    "IoU": 0.0,
+                    "TN": 8927612,
+                    "TP": 0,
+                    "n_pred": 388,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.7688416453090207,
+                    "FN": 17398,
+                    "FP": 10111,
+                    "IoU": 0.6244863972043627,
+                    "TN": 8854743,
+                    "TP": 45748,
+                    "n_pred": 55859,
+                    "n_ref": 63146
+                },
+                "3": {
+                    "Dice": 0.8489057729508006,
+                    "FN": 1638,
+                    "FP": 4845,
+                    "IoU": 0.7374772221097388,
+                    "TN": 8903305,
+                    "TP": 18212,
+                    "n_pred": 23057,
+                    "n_ref": 19850
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1,
+                    "IoU": 0.0,
+                    "TN": 8927999,
+                    "TP": 0,
+                    "n_pred": 1,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000075.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000075.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1821,
+                    "IoU": 0.0,
+                    "TN": 8926179,
+                    "TP": 0,
+                    "n_pred": 1821,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.43283582089552236,
+                    "FN": 113,
+                    "FP": 115,
+                    "IoU": 0.2761904761904762,
+                    "TN": 8927685,
+                    "TP": 87,
+                    "n_pred": 202,
+                    "n_ref": 200
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 3944,
+                    "IoU": 0.0,
+                    "TN": 8924056,
+                    "TP": 0,
+                    "n_pred": 3944,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000078.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000078.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9001297016861219,
+                    "FN": 95,
+                    "FP": 136,
+                    "IoU": 0.8183962264150944,
+                    "TN": 8926728,
+                    "TP": 1041,
+                    "n_pred": 1177,
+                    "n_ref": 1136
+                },
+                "2": {
+                    "Dice": 0.8540729112157683,
+                    "FN": 1662,
+                    "FP": 2521,
+                    "IoU": 0.7453117389186557,
+                    "TN": 8911576,
+                    "TP": 12241,
+                    "n_pred": 14762,
+                    "n_ref": 13903
+                },
+                "3": {
+                    "Dice": 0.8355295265983407,
+                    "FN": 314,
+                    "FP": 697,
+                    "IoU": 0.7175188600167645,
+                    "TN": 8924421,
+                    "TP": 2568,
+                    "n_pred": 3265,
+                    "n_ref": 2882
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000087.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000087.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7584059775840598,
+                    "FN": 170,
+                    "FP": 218,
+                    "IoU": 0.6108324974924775,
+                    "TN": 8927003,
+                    "TP": 609,
+                    "n_pred": 827,
+                    "n_ref": 779
+                },
+                "2": {
+                    "Dice": 0.8109626120791744,
+                    "FN": 2312,
+                    "FP": 3275,
+                    "IoU": 0.6820328951112629,
+                    "TN": 8910429,
+                    "TP": 11984,
+                    "n_pred": 15259,
+                    "n_ref": 14296
+                },
+                "3": {
+                    "Dice": 0.9394900192024294,
+                    "FN": 496,
+                    "FP": 859,
+                    "IoU": 0.8858851271686037,
+                    "TN": 8916126,
+                    "TP": 10519,
+                    "n_pred": 11378,
+                    "n_ref": 11015
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000101.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000101.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2,
+                    "IoU": 0.0,
+                    "TN": 8927998,
+                    "TP": 0,
+                    "n_pred": 2,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.2879908935685828,
+                    "FN": 875,
+                    "FP": 376,
+                    "IoU": 0.16821808510638298,
+                    "TN": 8926496,
+                    "TP": 253,
+                    "n_pred": 629,
+                    "n_ref": 1128
+                },
+                "3": {
+                    "Dice": 0.6761658031088082,
+                    "FN": 81,
+                    "FP": 169,
+                    "IoU": 0.5107632093933464,
+                    "TN": 8927489,
+                    "TP": 261,
+                    "n_pred": 430,
+                    "n_ref": 342
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000102.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000102.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 79,
+                    "IoU": 0.0,
+                    "TN": 8927921,
+                    "TP": 0,
+                    "n_pred": 79,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8888907724712554,
+                    "FN": 4232,
+                    "FP": 21985,
+                    "IoU": 0.8000030514086065,
+                    "TN": 8796913,
+                    "TP": 104870,
+                    "n_pred": 126855,
+                    "n_ref": 109102
+                },
+                "3": {
+                    "Dice": 0.8835081631043458,
+                    "FN": 325,
+                    "FP": 1152,
+                    "IoU": 0.7913252331166997,
+                    "TN": 8920922,
+                    "TP": 5601,
+                    "n_pred": 6753,
+                    "n_ref": 5926
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000107.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000107.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8930041152263375,
+                    "FN": 18,
+                    "FP": 86,
+                    "IoU": 0.8066914498141264,
+                    "TN": 8927462,
+                    "TP": 434,
+                    "n_pred": 520,
+                    "n_ref": 452
+                },
+                "2": {
+                    "Dice": 0.8315229439148748,
+                    "FN": 2284,
+                    "FP": 2276,
+                    "IoU": 0.7116296717890344,
+                    "TN": 8912187,
+                    "TP": 11253,
+                    "n_pred": 13529,
+                    "n_ref": 13537
+                },
+                "3": {
+                    "Dice": 0.8346946713341112,
+                    "FN": 262,
+                    "FP": 163,
+                    "IoU": 0.7162883845126836,
+                    "TN": 8926502,
+                    "TP": 1073,
+                    "n_pred": 1236,
+                    "n_ref": 1335
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000114.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000114.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4309252217997465,
+                    "FN": 1276,
+                    "FP": 71,
+                    "IoU": 0.27463651050080773,
+                    "TN": 8926143,
+                    "TP": 510,
+                    "n_pred": 581,
+                    "n_ref": 1786
+                },
+                "2": {
+                    "Dice": 0.9004949361163946,
+                    "FN": 9762,
+                    "FP": 10222,
+                    "IoU": 0.8190002626597469,
+                    "TN": 8817591,
+                    "TP": 90425,
+                    "n_pred": 100647,
+                    "n_ref": 100187
+                },
+                "3": {
+                    "Dice": 0.7570890840652447,
+                    "FN": 169,
+                    "FP": 1767,
+                    "IoU": 0.6091257823541288,
+                    "TN": 8923047,
+                    "TP": 3017,
+                    "n_pred": 4784,
+                    "n_ref": 3186
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000119.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000119.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.07467532467532467,
+                    "FN": 569,
+                    "FP": 1,
+                    "IoU": 0.0387858347386172,
+                    "TN": 8927407,
+                    "TP": 23,
+                    "n_pred": 24,
+                    "n_ref": 592
+                },
+                "2": {
+                    "Dice": 0.8937299674688463,
+                    "FN": 15788,
+                    "FP": 6393,
+                    "IoU": 0.807876866576586,
+                    "TN": 8812548,
+                    "TP": 93271,
+                    "n_pred": 99664,
+                    "n_ref": 109059
+                },
+                "3": {
+                    "Dice": 0.9091179091179091,
+                    "FN": 306,
+                    "FP": 918,
+                    "IoU": 0.8333787095017696,
+                    "TN": 8920654,
+                    "TP": 6122,
+                    "n_pred": 7040,
+                    "n_ref": 6428
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000132.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000132.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.06960657155209685,
+                    "FN": 4302,
+                    "FP": 2,
+                    "IoU": 0.036058230683090706,
+                    "TN": 8923535,
+                    "TP": 161,
+                    "n_pred": 163,
+                    "n_ref": 4463
+                },
+                "2": {
+                    "Dice": 0.9234486837652254,
+                    "FN": 10424,
+                    "FP": 13779,
+                    "IoU": 0.8577841760437172,
+                    "TN": 8757815,
+                    "TP": 145982,
+                    "n_pred": 159761,
+                    "n_ref": 156406
+                },
+                "3": {
+                    "Dice": 0.5782621858916137,
+                    "FN": 391,
+                    "FP": 5181,
+                    "IoU": 0.4067291311754685,
+                    "TN": 8918608,
+                    "TP": 3820,
+                    "n_pred": 9001,
+                    "n_ref": 4211
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000133.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000133.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8716095982744675,
+                    "FN": 980,
+                    "FP": 1401,
+                    "IoU": 0.7724362037656504,
+                    "TN": 8917537,
+                    "TP": 8082,
+                    "n_pred": 9483,
+                    "n_ref": 9062
+                },
+                "2": {
+                    "Dice": 0.8677614795918367,
+                    "FN": 14461,
+                    "FP": 18715,
+                    "IoU": 0.766412256738108,
+                    "TN": 8785972,
+                    "TP": 108852,
+                    "n_pred": 127567,
+                    "n_ref": 123313
+                },
+                "3": {
+                    "Dice": 0.8125811078478246,
+                    "FN": 3443,
+                    "FP": 2045,
+                    "IoU": 0.6843255680184067,
+                    "TN": 8910615,
+                    "TP": 11897,
+                    "n_pred": 13942,
+                    "n_ref": 15340
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000137.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000137.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.04788295278208823,
+                    "FN": 31,
+                    "FP": 8559,
+                    "IoU": 0.024528730411083353,
+                    "TN": 8919194,
+                    "TP": 216,
+                    "n_pred": 8775,
+                    "n_ref": 247
+                },
+                "2": {
+                    "Dice": 0.7510592882857052,
+                    "FN": 15292,
+                    "FP": 15964,
+                    "IoU": 0.6013570390021172,
+                    "TN": 8849594,
+                    "TP": 47150,
+                    "n_pred": 63114,
+                    "n_ref": 62442
+                },
+                "3": {
+                    "Dice": 0.20403066223511557,
+                    "FN": 40684,
+                    "FP": 747,
+                    "IoU": 0.11360475813525599,
+                    "TN": 8881259,
+                    "TP": 5310,
+                    "n_pred": 6057,
+                    "n_ref": 45994
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 18123,
+                    "IoU": 0.0,
+                    "TN": 8909877,
+                    "TP": 0,
+                    "n_pred": 18123,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000139.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000139.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.29936990932841556,
+                    "FN": 937,
+                    "FP": 8181,
+                    "IoU": 0.17603470088559553,
+                    "TN": 8916934,
+                    "TP": 1948,
+                    "n_pred": 10129,
+                    "n_ref": 2885
+                },
+                "2": {
+                    "Dice": 0.5250550660792952,
+                    "FN": 4870,
+                    "FP": 2030,
+                    "IoU": 0.3559828262086989,
+                    "TN": 8917286,
+                    "TP": 3814,
+                    "n_pred": 5844,
+                    "n_ref": 8684
+                },
+                "3": {
+                    "Dice": 0.692073055921672,
+                    "FN": 1617,
+                    "FP": 6560,
+                    "IoU": 0.5291373949095934,
+                    "TN": 8910634,
+                    "TP": 9189,
+                    "n_pred": 15749,
+                    "n_ref": 10806
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000151.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000151.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.20232492203005387,
+                    "FN": 357,
+                    "FP": 13710,
+                    "IoU": 0.1125481042205539,
+                    "TN": 8912149,
+                    "TP": 1784,
+                    "n_pred": 15494,
+                    "n_ref": 2141
+                },
+                "2": {
+                    "Dice": 0.8896601123878896,
+                    "FN": 20294,
+                    "FP": 12517,
+                    "IoU": 0.8012502498682513,
+                    "TN": 8762913,
+                    "TP": 132276,
+                    "n_pred": 144793,
+                    "n_ref": 152570
+                },
+                "3": {
+                    "Dice": 0.68389662027833,
+                    "FN": 7962,
+                    "FP": 1896,
+                    "IoU": 0.5196374622356495,
+                    "TN": 8907478,
+                    "TP": 10664,
+                    "n_pred": 12560,
+                    "n_ref": 18626
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000188.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000188.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5261151353412123,
+                    "FN": 1167,
+                    "FP": 76,
+                    "IoU": 0.3569580962234868,
+                    "TN": 8926067,
+                    "TP": 690,
+                    "n_pred": 766,
+                    "n_ref": 1857
+                },
+                "2": {
+                    "Dice": 0.9166522435684077,
+                    "FN": 4845,
+                    "FP": 13936,
+                    "IoU": 0.8461292674733936,
+                    "TN": 8805943,
+                    "TP": 103276,
+                    "n_pred": 117212,
+                    "n_ref": 108121
+                },
+                "3": {
+                    "Dice": 0.8166655850476994,
+                    "FN": 188,
+                    "FP": 2637,
+                    "IoU": 0.6901393002084019,
+                    "TN": 8918883,
+                    "TP": 6292,
+                    "n_pred": 8929,
+                    "n_ref": 6480
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000191.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000191.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.616557734204793,
+                    "FN": 178,
+                    "FP": 174,
+                    "IoU": 0.4456692913385827,
+                    "TN": 8927365,
+                    "TP": 283,
+                    "n_pred": 457,
+                    "n_ref": 461
+                },
+                "2": {
+                    "Dice": 0.8482440854180819,
+                    "FN": 1997,
+                    "FP": 8279,
+                    "IoU": 0.7364790357738171,
+                    "TN": 8889005,
+                    "TP": 28719,
+                    "n_pred": 36998,
+                    "n_ref": 30716
+                },
+                "3": {
+                    "Dice": 0.8988802756244617,
+                    "FN": 1031,
+                    "FP": 1904,
+                    "IoU": 0.8163329161451814,
+                    "TN": 8912020,
+                    "TP": 13045,
+                    "n_pred": 14949,
+                    "n_ref": 14076
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 6,
+                    "IoU": 0.0,
+                    "TN": 8927994,
+                    "TP": 0,
+                    "n_pred": 6,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000194.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000194.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.739353988134476,
+                    "FN": 1261,
+                    "FP": 716,
+                    "IoU": 0.5864881823886217,
+                    "TN": 8923219,
+                    "TP": 2804,
+                    "n_pred": 3520,
+                    "n_ref": 4065
+                },
+                "2": {
+                    "Dice": 0.8735105682294474,
+                    "FN": 4732,
+                    "FP": 12168,
+                    "IoU": 0.775427219815558,
+                    "TN": 8852746,
+                    "TP": 58354,
+                    "n_pred": 70522,
+                    "n_ref": 63086
+                },
+                "3": {
+                    "Dice": 0.9559085835880211,
+                    "FN": 1911,
+                    "FP": 2316,
+                    "IoU": 0.9155410805626598,
+                    "TN": 8877952,
+                    "TP": 45821,
+                    "n_pred": 48137,
+                    "n_ref": 47732
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000216.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000216.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7222857142857143,
+                    "FN": 656,
+                    "FP": 73,
+                    "IoU": 0.5652951699463328,
+                    "TN": 8926323,
+                    "TP": 948,
+                    "n_pred": 1021,
+                    "n_ref": 1604
+                },
+                "2": {
+                    "Dice": 0.8932791106191496,
+                    "FN": 10451,
+                    "FP": 16159,
+                    "IoU": 0.8071403722386502,
+                    "TN": 8790024,
+                    "TP": 111366,
+                    "n_pred": 127525,
+                    "n_ref": 121817
+                },
+                "3": {
+                    "Dice": 0.8486888234469219,
+                    "FN": 937,
+                    "FP": 1221,
+                    "IoU": 0.7371498172959805,
+                    "TN": 8919790,
+                    "TP": 6052,
+                    "n_pred": 7273,
+                    "n_ref": 6989
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000222.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000222.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.16340621403912542,
+                    "FN": 686,
+                    "FP": 41,
+                    "IoU": 0.08897243107769423,
+                    "TN": 8927202,
+                    "TP": 71,
+                    "n_pred": 112,
+                    "n_ref": 757
+                },
+                "2": {
+                    "Dice": 0.9154799693254512,
+                    "FN": 4553,
+                    "FP": 12861,
+                    "IoU": 0.844133758189825,
+                    "TN": 8816276,
+                    "TP": 94310,
+                    "n_pred": 107171,
+                    "n_ref": 98863
+                },
+                "3": {
+                    "Dice": 0.7959697732997482,
+                    "FN": 79,
+                    "FP": 1298,
+                    "IoU": 0.6610878661087866,
+                    "TN": 8923937,
+                    "TP": 2686,
+                    "n_pred": 3984,
+                    "n_ref": 2765
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000223.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000223.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.650380370727526,
+                    "FN": 2800,
+                    "FP": 463,
+                    "IoU": 0.4818990155604954,
+                    "TN": 8921702,
+                    "TP": 3035,
+                    "n_pred": 3498,
+                    "n_ref": 5835
+                },
+                "2": {
+                    "Dice": 0.9216133632104299,
+                    "FN": 3055,
+                    "FP": 793,
+                    "IoU": 0.8546223884544184,
+                    "TN": 8901531,
+                    "TP": 22621,
+                    "n_pred": 23414,
+                    "n_ref": 25676
+                },
+                "3": {
+                    "Dice": 0.8348003967270022,
+                    "FN": 1741,
+                    "FP": 3589,
+                    "IoU": 0.7164441134223546,
+                    "TN": 8909203,
+                    "TP": 13467,
+                    "n_pred": 17056,
+                    "n_ref": 15208
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 7,
+                    "IoU": 0.0,
+                    "TN": 8927993,
+                    "TP": 0,
+                    "n_pred": 7,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000241.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000241.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9671340929009641,
+                    "FN": 483,
+                    "FP": 117,
+                    "IoU": 0.9363597793805685,
+                    "TN": 8918572,
+                    "TP": 8828,
+                    "n_pred": 8945,
+                    "n_ref": 9311
+                },
+                "3": {
+                    "Dice": 0.96875,
+                    "FN": 11,
+                    "FP": 11,
+                    "IoU": 0.9393939393939394,
+                    "TN": 8927637,
+                    "TP": 341,
+                    "n_pred": 352,
+                    "n_ref": 352
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000263.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000263.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 13,
+                    "IoU": 0.0,
+                    "TN": 8927987,
+                    "TP": 0,
+                    "n_pred": 13,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9609203877599705,
+                    "FN": 2565,
+                    "FP": 1039,
+                    "IoU": 0.9247803310166344,
+                    "TN": 8880087,
+                    "TP": 44309,
+                    "n_pred": 45348,
+                    "n_ref": 46874
+                },
+                "3": {
+                    "Dice": 0.919984387197502,
+                    "FN": 385,
+                    "FP": 25,
+                    "IoU": 0.8518250813155042,
+                    "TN": 8925233,
+                    "TP": 2357,
+                    "n_pred": 2382,
+                    "n_ref": 2742
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000283.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000283.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7340032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.918235294117647,
+                    "FN": 219,
+                    "FP": 59,
+                    "IoU": 0.8488308863512779,
+                    "TN": 7338193,
+                    "TP": 1561,
+                    "n_pred": 1620,
+                    "n_ref": 1780
+                },
+                "3": {
+                    "Dice": 0.9384164222873901,
+                    "FN": 15,
+                    "FP": 6,
+                    "IoU": 0.8839779005524862,
+                    "TN": 7339851,
+                    "TP": 160,
+                    "n_pred": 166,
+                    "n_ref": 175
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7340032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000311.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000311.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 16,
+                    "IoU": 0.0,
+                    "TN": 40894448,
+                    "TP": 0,
+                    "n_pred": 16,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.5167088607594936,
+                    "FN": 264,
+                    "FP": 3554,
+                    "IoU": 0.3483529612561871,
+                    "TN": 40888605,
+                    "TP": 2041,
+                    "n_pred": 5595,
+                    "n_ref": 2305
+                },
+                "3": {
+                    "Dice": 0.8962607861936721,
+                    "FN": 114,
+                    "FP": 427,
+                    "IoU": 0.8120222376650452,
+                    "TN": 40891586,
+                    "TP": 2337,
+                    "n_pred": 2764,
+                    "n_ref": 2451
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 5,
+                    "IoU": 0.0,
+                    "TN": 40894459,
+                    "TP": 0,
+                    "n_pred": 5,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000317.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000317.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1,
+                    "IoU": 0.0,
+                    "TN": 8388607,
+                    "TP": 0,
+                    "n_pred": 1,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8196969696969697,
+                    "FN": 152,
+                    "FP": 86,
+                    "IoU": 0.6944801026957638,
+                    "TN": 8387829,
+                    "TP": 541,
+                    "n_pred": 627,
+                    "n_ref": 693
+                },
+                "3": {
+                    "Dice": 0.8886389201349831,
+                    "FN": 78,
+                    "FP": 21,
+                    "IoU": 0.7995951417004049,
+                    "TN": 8388114,
+                    "TP": 395,
+                    "n_pred": 416,
+                    "n_ref": 473
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000369.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000369.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4971751412429379,
+                    "FN": 9,
+                    "FP": 258,
+                    "IoU": 0.3308270676691729,
+                    "TN": 40894065,
+                    "TP": 132,
+                    "n_pred": 390,
+                    "n_ref": 141
+                },
+                "2": {
+                    "Dice": 0.9615093185207636,
+                    "FN": 12615,
+                    "FP": 14562,
+                    "IoU": 0.9258718789379797,
+                    "TN": 40527842,
+                    "TP": 339445,
+                    "n_pred": 354007,
+                    "n_ref": 352060
+                },
+                "3": {
+                    "Dice": 0.882548023085537,
+                    "FN": 5305,
+                    "FP": 149,
+                    "IoU": 0.7897860859510503,
+                    "TN": 40868519,
+                    "TP": 20491,
+                    "n_pred": 20640,
+                    "n_ref": 25796
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40894464,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000370.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000370.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 55002112,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.017766886200030634,
+                    "FN": 128,
+                    "FP": 6285,
+                    "IoU": 0.008963065986709937,
+                    "TN": 54995641,
+                    "TP": 58,
+                    "n_pred": 6343,
+                    "n_ref": 186
+                },
+                "3": {
+                    "Dice": 0.4207980652962515,
+                    "FN": 66,
+                    "FP": 413,
+                    "IoU": 0.2664624808575804,
+                    "TN": 55001459,
+                    "TP": 174,
+                    "n_pred": 587,
+                    "n_ref": 240
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 13,
+                    "IoU": 0.0,
+                    "TN": 55002099,
+                    "TP": 0,
+                    "n_pred": 13,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000383.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000383.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9122807017543859,
+                    "FN": 4,
+                    "FP": 1,
+                    "IoU": 0.8387096774193549,
+                    "TN": 8388577,
+                    "TP": 26,
+                    "n_pred": 27,
+                    "n_ref": 30
+                },
+                "2": {
+                    "Dice": 0.771807678724585,
+                    "FN": 3951,
+                    "FP": 572,
+                    "IoU": 0.6284094643443969,
+                    "TN": 8376436,
+                    "TP": 7649,
+                    "n_pred": 8221,
+                    "n_ref": 11600
+                },
+                "3": {
+                    "Dice": 0.7404950242408778,
+                    "FN": 878,
+                    "FP": 139,
+                    "IoU": 0.5879254457050244,
+                    "TN": 8386140,
+                    "TP": 1451,
+                    "n_pred": 1590,
+                    "n_ref": 2329
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 20,
+                    "IoU": 0.0,
+                    "TN": 8388588,
+                    "TP": 0,
+                    "n_pred": 20,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000448.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000448.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6844484629294756,
+                    "FN": 3,
+                    "FP": 695,
+                    "IoU": 0.5202749140893471,
+                    "TN": 8387153,
+                    "TP": 757,
+                    "n_pred": 1452,
+                    "n_ref": 760
+                },
+                "2": {
+                    "Dice": 0.8708516305521561,
+                    "FN": 1251,
+                    "FP": 2337,
+                    "IoU": 0.7712464137711189,
+                    "TN": 8372923,
+                    "TP": 12097,
+                    "n_pred": 14434,
+                    "n_ref": 13348
+                },
+                "3": {
+                    "Dice": 0.7433494558645707,
+                    "FN": 1449,
+                    "FP": 249,
+                    "IoU": 0.5915323550637479,
+                    "TN": 8384451,
+                    "TP": 2459,
+                    "n_pred": 2708,
+                    "n_ref": 3908
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000473.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000473.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.725,
+                    "FN": 4,
+                    "FP": 40,
+                    "IoU": 0.5686274509803921,
+                    "TN": 8388506,
+                    "TP": 58,
+                    "n_pred": 98,
+                    "n_ref": 62
+                },
+                "2": {
+                    "Dice": 0.8870204939569102,
+                    "FN": 475,
+                    "FP": 385,
+                    "IoU": 0.7969782813975449,
+                    "TN": 8384372,
+                    "TP": 3376,
+                    "n_pred": 3761,
+                    "n_ref": 3851
+                },
+                "3": {
+                    "Dice": 0.9078737647433854,
+                    "FN": 173,
+                    "FP": 116,
+                    "IoU": 0.8312901342673672,
+                    "TN": 8386895,
+                    "TP": 1424,
+                    "n_pred": 1540,
+                    "n_ref": 1597
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000498.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000498.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.4824120603015075,
+                    "FN": 62,
+                    "FP": 41,
+                    "IoU": 0.31788079470198677,
+                    "TN": 8927849,
+                    "TP": 48,
+                    "n_pred": 89,
+                    "n_ref": 110
+                },
+                "3": {
+                    "Dice": 0.6266094420600858,
+                    "FN": 128,
+                    "FP": 46,
+                    "IoU": 0.45625,
+                    "TN": 8927680,
+                    "TP": 146,
+                    "n_pred": 192,
+                    "n_ref": 274
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000617.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000617.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9455676516329704,
+                    "FN": 188,
+                    "FP": 57,
+                    "IoU": 0.8967551622418879,
+                    "TN": 8925627,
+                    "TP": 2128,
+                    "n_pred": 2185,
+                    "n_ref": 2316
+                },
+                "2": {
+                    "Dice": 0.8440202803459589,
+                    "FN": 568,
+                    "FP": 1001,
+                    "IoU": 0.7301341589267286,
+                    "TN": 8922186,
+                    "TP": 4245,
+                    "n_pred": 5246,
+                    "n_ref": 4813
+                },
+                "3": {
+                    "Dice": 0.8470250438666453,
+                    "FN": 784,
+                    "FP": 175,
+                    "IoU": 0.7346430547869397,
+                    "TN": 8924386,
+                    "TP": 2655,
+                    "n_pred": 2830,
+                    "n_ref": 3439
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000621.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000621.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6484018264840182,
+                    "FN": 62,
+                    "FP": 15,
+                    "IoU": 0.4797297297297297,
+                    "TN": 8927852,
+                    "TP": 71,
+                    "n_pred": 86,
+                    "n_ref": 133
+                },
+                "2": {
+                    "Dice": 0.6093928980526919,
+                    "FN": 228,
+                    "FP": 113,
+                    "IoU": 0.4382207578253707,
+                    "TN": 8927393,
+                    "TP": 266,
+                    "n_pred": 379,
+                    "n_ref": 494
+                },
+                "3": {
+                    "Dice": 0.8295964125560538,
+                    "FN": 295,
+                    "FP": 85,
+                    "IoU": 0.7088122605363985,
+                    "TN": 8926695,
+                    "TP": 925,
+                    "n_pred": 1010,
+                    "n_ref": 1220
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000626.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000626.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5798816568047337,
+                    "FN": 173,
+                    "FP": 40,
+                    "IoU": 0.4083333333333333,
+                    "TN": 8927640,
+                    "TP": 147,
+                    "n_pred": 187,
+                    "n_ref": 320
+                },
+                "2": {
+                    "Dice": 0.9102402498447877,
+                    "FN": 3743,
+                    "FP": 1028,
+                    "IoU": 0.8352669014570817,
+                    "TN": 8899038,
+                    "TP": 24191,
+                    "n_pred": 25219,
+                    "n_ref": 27934
+                },
+                "3": {
+                    "Dice": 0.8684719535783365,
+                    "FN": 168,
+                    "FP": 240,
+                    "IoU": 0.7675213675213676,
+                    "TN": 8926245,
+                    "TP": 1347,
+                    "n_pred": 1587,
+                    "n_ref": 1515
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000628.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000628.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.04184100418410042,
+                    "FN": 179,
+                    "FP": 50,
+                    "IoU": 0.021367521367521368,
+                    "TN": 8927766,
+                    "TP": 5,
+                    "n_pred": 55,
+                    "n_ref": 184
+                },
+                "2": {
+                    "Dice": 0.8791563461682804,
+                    "FN": 2562,
+                    "FP": 658,
+                    "IoU": 0.7843701868345275,
+                    "TN": 8913067,
+                    "TP": 11713,
+                    "n_pred": 12371,
+                    "n_ref": 14275
+                },
+                "3": {
+                    "Dice": 0.8358477820310741,
+                    "FN": 554,
+                    "FP": 175,
+                    "IoU": 0.7179883945841392,
+                    "TN": 8925415,
+                    "TP": 1856,
+                    "n_pred": 2031,
+                    "n_ref": 2410
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000635.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000635.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5869176085511175,
+                    "FN": 7934,
+                    "FP": 143,
+                    "IoU": 0.4153456387984075,
+                    "TN": 65260041,
+                    "TP": 5738,
+                    "n_pred": 5881,
+                    "n_ref": 13672
+                },
+                "2": {
+                    "Dice": 0.8507506450856205,
+                    "FN": 655,
+                    "FP": 4435,
+                    "IoU": 0.7402663673011175,
+                    "TN": 65254259,
+                    "TP": 14507,
+                    "n_pred": 18942,
+                    "n_ref": 15162
+                },
+                "3": {
+                    "Dice": 0.2529622485533205,
+                    "FN": 1030,
+                    "FP": 4392,
+                    "IoU": 0.144794952681388,
+                    "TN": 65267516,
+                    "TP": 918,
+                    "n_pred": 5310,
+                    "n_ref": 1948
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 153,
+                    "IoU": 0.0,
+                    "TN": 65273703,
+                    "TP": 0,
+                    "n_pred": 153,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000654.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000654.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9083503054989817,
+                    "FN": 626,
+                    "FP": 49,
+                    "IoU": 0.832089552238806,
+                    "TN": 24637516,
+                    "TP": 3345,
+                    "n_pred": 3394,
+                    "n_ref": 3971
+                },
+                "2": {
+                    "Dice": 0.9106012039715425,
+                    "FN": 521,
+                    "FP": 4053,
+                    "IoU": 0.8358749865441889,
+                    "TN": 24613667,
+                    "TP": 23295,
+                    "n_pred": 27348,
+                    "n_ref": 23816
+                },
+                "3": {
+                    "Dice": 0.8744943581009155,
+                    "FN": 902,
+                    "FP": 1456,
+                    "IoU": 0.776979097701693,
+                    "TN": 24630963,
+                    "TP": 8215,
+                    "n_pred": 9671,
+                    "n_ref": 9117
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 13,
+                    "IoU": 0.0,
+                    "TN": 24641523,
+                    "TP": 0,
+                    "n_pred": 13,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000657.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000657.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8482328482328483,
+                    "FN": 169,
+                    "FP": 50,
+                    "IoU": 0.7364620938628159,
+                    "TN": 8256705,
+                    "TP": 612,
+                    "n_pred": 662,
+                    "n_ref": 781
+                },
+                "3": {
+                    "Dice": 0.888268156424581,
+                    "FN": 54,
+                    "FP": 26,
+                    "IoU": 0.7989949748743719,
+                    "TN": 8257138,
+                    "TP": 318,
+                    "n_pred": 344,
+                    "n_ref": 372
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000736.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000736.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8663343905754418,
+                    "FN": 223,
+                    "FP": 72,
+                    "IoU": 0.7641886490807354,
+                    "TN": 8256285,
+                    "TP": 956,
+                    "n_pred": 1028,
+                    "n_ref": 1179
+                },
+                "3": {
+                    "Dice": 0.9150460593654043,
+                    "FN": 60,
+                    "FP": 23,
+                    "IoU": 0.8433962264150944,
+                    "TN": 8257006,
+                    "TP": 447,
+                    "n_pred": 470,
+                    "n_ref": 507
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000737.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000737.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8512304250559284,
+                    "FN": 464,
+                    "FP": 68,
+                    "IoU": 0.7409931840311588,
+                    "TN": 8255482,
+                    "TP": 1522,
+                    "n_pred": 1590,
+                    "n_ref": 1986
+                },
+                "3": {
+                    "Dice": 0.9245283018867925,
+                    "FN": 65,
+                    "FP": 7,
+                    "IoU": 0.8596491228070176,
+                    "TN": 8257023,
+                    "TP": 441,
+                    "n_pred": 448,
+                    "n_ref": 506
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000738.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000738.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 89128960,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.43805215916319173,
+                    "FN": 4837,
+                    "FP": 3114,
+                    "IoU": 0.28045248868778283,
+                    "TN": 89117910,
+                    "TP": 3099,
+                    "n_pred": 6213,
+                    "n_ref": 7936
+                },
+                "3": {
+                    "Dice": 0.5422964132641552,
+                    "FN": 704,
+                    "FP": 1325,
+                    "IoU": 0.37202104611575365,
+                    "TN": 89125729,
+                    "TP": 1202,
+                    "n_pred": 2527,
+                    "n_ref": 1906
+                },
+                "4": {
+                    "Dice": 0.7791884490913618,
+                    "FN": 3986,
+                    "FP": 449,
+                    "IoU": 0.6382544861337683,
+                    "TN": 89116700,
+                    "TP": 7825,
+                    "n_pred": 8274,
+                    "n_ref": 11811
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000760.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000760.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 89128960,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.3578635014836795,
+                    "FN": 3565,
+                    "FP": 763,
+                    "IoU": 0.21792555113841705,
+                    "TN": 89123426,
+                    "TP": 1206,
+                    "n_pred": 1969,
+                    "n_ref": 4771
+                },
+                "3": {
+                    "Dice": 0.5777281607591404,
+                    "FN": 536,
+                    "FP": 977,
+                    "IoU": 0.40620094191522765,
+                    "TN": 89126412,
+                    "TP": 1035,
+                    "n_pred": 2012,
+                    "n_ref": 1571
+                },
+                "4": {
+                    "Dice": 0.7069119196175351,
+                    "FN": 3258,
+                    "FP": 359,
+                    "IoU": 0.5466850482516606,
+                    "TN": 89120981,
+                    "TP": 4362,
+                    "n_pred": 4721,
+                    "n_ref": 7620
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000761.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000761.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 10,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46137334,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 10
+                },
+                "2": {
+                    "Dice": 0.6366689053055742,
+                    "FN": 442,
+                    "FP": 99,
+                    "IoU": 0.4669950738916256,
+                    "TN": 46136329,
+                    "TP": 474,
+                    "n_pred": 573,
+                    "n_ref": 916
+                },
+                "3": {
+                    "Dice": 0.8806296458242239,
+                    "FN": 159,
+                    "FP": 114,
+                    "IoU": 0.78671875,
+                    "TN": 46136064,
+                    "TP": 1007,
+                    "n_pred": 1121,
+                    "n_ref": 1166
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000770.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000770.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 53,
+                    "FP": 27,
+                    "IoU": 0.0,
+                    "TN": 46137264,
+                    "TP": 0,
+                    "n_pred": 27,
+                    "n_ref": 53
+                },
+                "3": {
+                    "Dice": 0.41605839416058393,
+                    "FN": 135,
+                    "FP": 25,
+                    "IoU": 0.2626728110599078,
+                    "TN": 46137127,
+                    "TP": 57,
+                    "n_pred": 82,
+                    "n_ref": 192
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000771.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000771.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 17,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46137327,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 17
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 33,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46137311,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 33
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000772.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000772.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6846361185983828,
+                    "FN": 31,
+                    "FP": 86,
+                    "IoU": 0.5204918032786885,
+                    "TN": 97517324,
+                    "TP": 127,
+                    "n_pred": 213,
+                    "n_ref": 158
+                },
+                "2": {
+                    "Dice": 0.8506979459688976,
+                    "FN": 959,
+                    "FP": 1854,
+                    "IoU": 0.7401865706105107,
+                    "TN": 97506741,
+                    "TP": 8014,
+                    "n_pred": 9868,
+                    "n_ref": 8973
+                },
+                "3": {
+                    "Dice": 0.7268445839874411,
+                    "FN": 101,
+                    "FP": 247,
+                    "IoU": 0.5709001233045623,
+                    "TN": 97516757,
+                    "TP": 463,
+                    "n_pred": 710,
+                    "n_ref": 564
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 7,
+                    "IoU": 0.0,
+                    "TN": 97517561,
+                    "TP": 0,
+                    "n_pred": 7,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000791.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000791.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 136,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 97517432,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 136
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 152,
+                    "IoU": 0.0,
+                    "TN": 97517416,
+                    "TP": 0,
+                    "n_pred": 152,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 163,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 97517405,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 163
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 473,
+                    "IoU": 0.0,
+                    "TN": 97517095,
+                    "TP": 0,
+                    "n_pred": 473,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000792.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000792.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 45,
+                    "IoU": 0.0,
+                    "TN": 97517523,
+                    "TP": 0,
+                    "n_pred": 45,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 15,
+                    "IoU": 0.0,
+                    "TN": 97517553,
+                    "TP": 0,
+                    "n_pred": 15,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1259,
+                    "IoU": 0.0,
+                    "TN": 97516309,
+                    "TP": 0,
+                    "n_pred": 1259,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000793.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000793.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.845372460496614,
+                    "FN": 402,
+                    "FP": 146,
+                    "IoU": 0.7321603128054741,
+                    "TN": 94369794,
+                    "TP": 1498,
+                    "n_pred": 1644,
+                    "n_ref": 1900
+                },
+                "2": {
+                    "Dice": 0.8945889245141115,
+                    "FN": 671,
+                    "FP": 1992,
+                    "IoU": 0.8092816729929099,
+                    "TN": 94357877,
+                    "TP": 11300,
+                    "n_pred": 13292,
+                    "n_ref": 11971
+                },
+                "3": {
+                    "Dice": 0.9035922748462413,
+                    "FN": 1608,
+                    "FP": 853,
+                    "IoU": 0.8241389166785765,
+                    "TN": 94357846,
+                    "TP": 11533,
+                    "n_pred": 12386,
+                    "n_ref": 13141
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 6,
+                    "IoU": 0.0,
+                    "TN": 94371834,
+                    "TP": 0,
+                    "n_pred": 6,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000796.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000796.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9155384831592261,
+                    "FN": 1121,
+                    "FP": 682,
+                    "IoU": 0.8442332613390928,
+                    "TN": 94360265,
+                    "TP": 9772,
+                    "n_pred": 10454,
+                    "n_ref": 10893
+                },
+                "2": {
+                    "Dice": 0.8880040837161818,
+                    "FN": 1879,
+                    "FP": 4703,
+                    "IoU": 0.7985677561513037,
+                    "TN": 94339164,
+                    "TP": 26094,
+                    "n_pred": 30797,
+                    "n_ref": 27973
+                },
+                "3": {
+                    "Dice": 0.8846932469580412,
+                    "FN": 2503,
+                    "FP": 2908,
+                    "IoU": 0.793228629294203,
+                    "TN": 94345671,
+                    "TP": 20758,
+                    "n_pred": 23666,
+                    "n_ref": 23261
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 94371840,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000797.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000797.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9104777527168341,
+                    "FN": 1748,
+                    "FP": 435,
+                    "IoU": 0.835666967780789,
+                    "TN": 94358556,
+                    "TP": 11101,
+                    "n_pred": 11536,
+                    "n_ref": 12849
+                },
+                "2": {
+                    "Dice": 0.9202744229257486,
+                    "FN": 5149,
+                    "FP": 6007,
+                    "IoU": 0.8523225183008353,
+                    "TN": 94296297,
+                    "TP": 64387,
+                    "n_pred": 70394,
+                    "n_ref": 69536
+                },
+                "3": {
+                    "Dice": 0.900280834914611,
+                    "FN": 2278,
+                    "FP": 4291,
+                    "IoU": 0.8186461266633538,
+                    "TN": 94335618,
+                    "TP": 29653,
+                    "n_pred": 33944,
+                    "n_ref": 31931
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 279,
+                    "IoU": 0.0,
+                    "TN": 94371561,
+                    "TP": 0,
+                    "n_pred": 279,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000798.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000798.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1,
+                    "IoU": 0.0,
+                    "TN": 8257535,
+                    "TP": 0,
+                    "n_pred": 1,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.7282321899736148,
+                    "FN": 86,
+                    "FP": 17,
+                    "IoU": 0.5726141078838174,
+                    "TN": 8257295,
+                    "TP": 138,
+                    "n_pred": 155,
+                    "n_ref": 224
+                },
+                "3": {
+                    "Dice": 0.9376558603491272,
+                    "FN": 18,
+                    "FP": 7,
+                    "IoU": 0.8826291079812206,
+                    "TN": 8257323,
+                    "TP": 188,
+                    "n_pred": 195,
+                    "n_ref": 206
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000827.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000827.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 23,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 8257513,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 23
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000828.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000828.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8061940944503222,
+                    "FN": 815,
+                    "FP": 1200,
+                    "IoU": 0.675314212052852,
+                    "TN": 94365634,
+                    "TP": 4191,
+                    "n_pred": 5391,
+                    "n_ref": 5006
+                },
+                "2": {
+                    "Dice": 0.9842104806130946,
+                    "FN": 6257,
+                    "FP": 26473,
+                    "IoU": 0.9689118285125929,
+                    "TN": 93319028,
+                    "TP": 1020082,
+                    "n_pred": 1046555,
+                    "n_ref": 1026339
+                },
+                "3": {
+                    "Dice": 0.8365226544681902,
+                    "FN": 23986,
+                    "FP": 1173,
+                    "IoU": 0.7189849099174569,
+                    "TN": 94282311,
+                    "TP": 64370,
+                    "n_pred": 65543,
+                    "n_ref": 88356
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 90,
+                    "IoU": 0.0,
+                    "TN": 94371750,
+                    "TP": 0,
+                    "n_pred": 90,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000858.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000858.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.008522727272727272,
+                    "FN": 674,
+                    "FP": 24,
+                    "IoU": 0.0042796005706134095,
+                    "TN": 94371139,
+                    "TP": 3,
+                    "n_pred": 27,
+                    "n_ref": 677
+                },
+                "2": {
+                    "Dice": 0.6235303613226075,
+                    "FN": 6304,
+                    "FP": 7689,
+                    "IoU": 0.45299245533794613,
+                    "TN": 94346259,
+                    "TP": 11588,
+                    "n_pred": 19277,
+                    "n_ref": 17892
+                },
+                "3": {
+                    "Dice": 0.5021089308637448,
+                    "FN": 2645,
+                    "FP": 70,
+                    "IoU": 0.3352105778648384,
+                    "TN": 94367756,
+                    "TP": 1369,
+                    "n_pred": 1439,
+                    "n_ref": 4014
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 405,
+                    "IoU": 0.0,
+                    "TN": 94371435,
+                    "TP": 0,
+                    "n_pred": 405,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000859.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000859.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9312977099236641,
+                    "FN": 36,
+                    "FP": 0,
+                    "IoU": 0.8714285714285714,
+                    "TN": 15466216,
+                    "TP": 244,
+                    "n_pred": 244,
+                    "n_ref": 280
+                },
+                "2": {
+                    "Dice": 0.9092296604061559,
+                    "FN": 1359,
+                    "FP": 2923,
+                    "IoU": 0.8335665422885572,
+                    "TN": 15440768,
+                    "TP": 21446,
+                    "n_pred": 24369,
+                    "n_ref": 22805
+                },
+                "3": {
+                    "Dice": 0.8558866634098681,
+                    "FN": 395,
+                    "FP": 195,
+                    "IoU": 0.7480785653287788,
+                    "TN": 15464154,
+                    "TP": 1752,
+                    "n_pred": 1947,
+                    "n_ref": 2147
+                },
+                "4": {
+                    "Dice": 0.8406875511570802,
+                    "FN": 543,
+                    "FP": 1598,
+                    "IoU": 0.7251604621309371,
+                    "TN": 15458706,
+                    "TP": 5649,
+                    "n_pred": 7247,
+                    "n_ref": 6192
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000913.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000913.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 15466496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.32739273927392737,
+                    "FN": 811,
+                    "FP": 208,
+                    "IoU": 0.1957379636937648,
+                    "TN": 15465229,
+                    "TP": 248,
+                    "n_pred": 456,
+                    "n_ref": 1059
+                },
+                "3": {
+                    "Dice": 0.4666666666666667,
+                    "FN": 49,
+                    "FP": 15,
+                    "IoU": 0.30434782608695654,
+                    "TN": 15466404,
+                    "TP": 28,
+                    "n_pred": 43,
+                    "n_ref": 77
+                },
+                "4": {
+                    "Dice": 0.6497764530551415,
+                    "FN": 549,
+                    "FP": 1096,
+                    "IoU": 0.48123620309050774,
+                    "TN": 15463325,
+                    "TP": 1526,
+                    "n_pred": 2622,
+                    "n_ref": 2075
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000914.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000914.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 15466496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.43348440415889095,
+                    "FN": 1976,
+                    "FP": 149,
+                    "IoU": 0.2767188563648741,
+                    "TN": 15463558,
+                    "TP": 813,
+                    "n_pred": 962,
+                    "n_ref": 2789
+                },
+                "3": {
+                    "Dice": 0.6160714285714286,
+                    "FN": 75,
+                    "FP": 11,
+                    "IoU": 0.44516129032258067,
+                    "TN": 15466341,
+                    "TP": 69,
+                    "n_pred": 80,
+                    "n_ref": 144
+                },
+                "4": {
+                    "Dice": 0.5684853109500191,
+                    "FN": 548,
+                    "FP": 583,
+                    "IoU": 0.39712153518123666,
+                    "TN": 15464620,
+                    "TP": 745,
+                    "n_pred": 1328,
+                    "n_ref": 1293
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000915.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000915.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0046282904252241824,
+                    "FN": 3441,
+                    "FP": 0,
+                    "IoU": 0.002319512902290519,
+                    "TN": 16773767,
+                    "TP": 8,
+                    "n_pred": 8,
+                    "n_ref": 3449
+                },
+                "2": {
+                    "Dice": 0.8605857230018303,
+                    "FN": 425,
+                    "FP": 489,
+                    "IoU": 0.7552878179384204,
+                    "TN": 16773481,
+                    "TP": 2821,
+                    "n_pred": 3310,
+                    "n_ref": 3246
+                },
+                "3": {
+                    "Dice": 0.6038528896672505,
+                    "FN": 479,
+                    "FP": 652,
+                    "IoU": 0.4325137982940291,
+                    "TN": 16775223,
+                    "TP": 862,
+                    "n_pred": 1514,
+                    "n_ref": 1341
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 3033,
+                    "IoU": 0.0,
+                    "TN": 16774183,
+                    "TP": 0,
+                    "n_pred": 3033,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000927.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000927.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.3602941176470588,
+                    "FN": 153,
+                    "FP": 21,
+                    "IoU": 0.21973094170403587,
+                    "TN": 16776993,
+                    "TP": 49,
+                    "n_pred": 70,
+                    "n_ref": 202
+                },
+                "2": {
+                    "Dice": 0.9299332697807435,
+                    "FN": 442,
+                    "FP": 146,
+                    "IoU": 0.8690423162583519,
+                    "TN": 16772726,
+                    "TP": 3902,
+                    "n_pred": 4048,
+                    "n_ref": 4344
+                },
+                "3": {
+                    "Dice": 0.8343777976723367,
+                    "FN": 110,
+                    "FP": 260,
+                    "IoU": 0.7158218125960062,
+                    "TN": 16775914,
+                    "TP": 932,
+                    "n_pred": 1192,
+                    "n_ref": 1042
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 93,
+                    "IoU": 0.0,
+                    "TN": 16777123,
+                    "TP": 0,
+                    "n_pred": 93,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000928.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000928.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9193231669103823,
+                    "FN": 1416,
+                    "FP": 515,
+                    "IoU": 0.8506920281450553,
+                    "TN": 24628603,
+                    "TP": 11002,
+                    "n_pred": 11517,
+                    "n_ref": 12418
+                },
+                "2": {
+                    "Dice": 0.9305156970171319,
+                    "FN": 4568,
+                    "FP": 5020,
+                    "IoU": 0.8700601723857537,
+                    "TN": 24567748,
+                    "TP": 64200,
+                    "n_pred": 69220,
+                    "n_ref": 68768
+                },
+                "3": {
+                    "Dice": 0.855312553814362,
+                    "FN": 1876,
+                    "FP": 2325,
+                    "IoU": 0.7472018293416777,
+                    "TN": 24624918,
+                    "TP": 12417,
+                    "n_pred": 14742,
+                    "n_ref": 14293
+                },
+                "4": {
+                    "Dice": 0.78101012076468,
+                    "FN": 1151,
+                    "FP": 3328,
+                    "IoU": 0.6407027113749398,
+                    "TN": 24629070,
+                    "TP": 7987,
+                    "n_pred": 11315,
+                    "n_ref": 9138
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000929.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000929.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7420454545454546,
+                    "FN": 4218,
+                    "FP": 322,
+                    "IoU": 0.5898825654923215,
+                    "TN": 24630466,
+                    "TP": 6530,
+                    "n_pred": 6852,
+                    "n_ref": 10748
+                },
+                "2": {
+                    "Dice": 0.893627991578465,
+                    "FN": 1517,
+                    "FP": 5910,
+                    "IoU": 0.807710231980116,
+                    "TN": 24602912,
+                    "TP": 31197,
+                    "n_pred": 37107,
+                    "n_ref": 32714
+                },
+                "3": {
+                    "Dice": 0.6754330151997172,
+                    "FN": 2089,
+                    "FP": 2502,
+                    "IoU": 0.5099274124679761,
+                    "TN": 24632168,
+                    "TP": 4777,
+                    "n_pred": 7279,
+                    "n_ref": 6866
+                },
+                "4": {
+                    "Dice": 0.8821284483698615,
+                    "FN": 1165,
+                    "FP": 997,
+                    "IoU": 0.7891143191572376,
+                    "TN": 24631284,
+                    "TP": 8090,
+                    "n_pred": 9087,
+                    "n_ref": 9255
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000930.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000930.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.795449573397506,
+                    "FN": 826,
+                    "FP": 1044,
+                    "IoU": 0.6603705049037414,
+                    "TN": 97512062,
+                    "TP": 3636,
+                    "n_pred": 4680,
+                    "n_ref": 4462
+                },
+                "3": {
+                    "Dice": 0.6467129877071085,
+                    "FN": 5430,
+                    "FP": 519,
+                    "IoU": 0.47788309636650866,
+                    "TN": 97506174,
+                    "TP": 5445,
+                    "n_pred": 5964,
+                    "n_ref": 10875
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000935.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000935.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 59,
+                    "IoU": 0.0,
+                    "TN": 97517509,
+                    "TP": 0,
+                    "n_pred": 59,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000936.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000936.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 92,
+                    "IoU": 0.0,
+                    "TN": 97517476,
+                    "TP": 0,
+                    "n_pred": 92,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000937.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000937.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 5039,
+                    "IoU": 0.0,
+                    "TN": 46132305,
+                    "TP": 0,
+                    "n_pred": 5039,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9168109339407745,
+                    "FN": 1276,
+                    "FP": 2376,
+                    "IoU": 0.846399730820996,
+                    "TN": 46113568,
+                    "TP": 20124,
+                    "n_pred": 22500,
+                    "n_ref": 21400
+                },
+                "3": {
+                    "Dice": 0.9067730735347463,
+                    "FN": 476,
+                    "FP": 1323,
+                    "IoU": 0.8294463405384908,
+                    "TN": 46126796,
+                    "TP": 8749,
+                    "n_pred": 10072,
+                    "n_ref": 9225
+                },
+                "4": {
+                    "Dice": 0.25929623159470927,
+                    "FN": 5921,
+                    "FP": 15,
+                    "IoU": 0.1489605734767025,
+                    "TN": 46130369,
+                    "TP": 1039,
+                    "n_pred": 1054,
+                    "n_ref": 6960
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000945.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000945.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1230,
+                    "IoU": 0.0,
+                    "TN": 46136114,
+                    "TP": 0,
+                    "n_pred": 1230,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9281289167412713,
+                    "FN": 1689,
+                    "FP": 2325,
+                    "IoU": 0.8658960310036081,
+                    "TN": 46107412,
+                    "TP": 25918,
+                    "n_pred": 28243,
+                    "n_ref": 27607
+                },
+                "3": {
+                    "Dice": 0.9094042712626452,
+                    "FN": 290,
+                    "FP": 919,
+                    "IoU": 0.8338601071870276,
+                    "TN": 46130067,
+                    "TP": 6068,
+                    "n_pred": 6987,
+                    "n_ref": 6358
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1207,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46136137,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1207
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000946.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000946.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 777,
+                    "IoU": 0.0,
+                    "TN": 46136567,
+                    "TP": 0,
+                    "n_pred": 777,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8739051396463394,
+                    "FN": 5088,
+                    "FP": 1016,
+                    "IoU": 0.7760493102436161,
+                    "TN": 46110088,
+                    "TP": 21152,
+                    "n_pred": 22168,
+                    "n_ref": 26240
+                },
+                "3": {
+                    "Dice": 0.8858703071672355,
+                    "FN": 1203,
+                    "FP": 469,
+                    "IoU": 0.7951231466732018,
+                    "TN": 46129183,
+                    "TP": 6489,
+                    "n_pred": 6958,
+                    "n_ref": 7692
+                },
+                "4": {
+                    "Dice": 0.16630196936542668,
+                    "FN": 759,
+                    "FP": 384,
+                    "IoU": 0.09069212410501193,
+                    "TN": 46136087,
+                    "TP": 114,
+                    "n_pred": 498,
+                    "n_ref": 873
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000947.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000947.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9003885003885004,
+                    "FN": 22,
+                    "FP": 619,
+                    "IoU": 0.818824194460147,
+                    "TN": 46133806,
+                    "TP": 2897,
+                    "n_pred": 3516,
+                    "n_ref": 2919
+                },
+                "2": {
+                    "Dice": 0.9132557168215516,
+                    "FN": 11670,
+                    "FP": 1622,
+                    "IoU": 0.840359347601547,
+                    "TN": 46054082,
+                    "TP": 69970,
+                    "n_pred": 71592,
+                    "n_ref": 81640
+                },
+                "3": {
+                    "Dice": 0.9376675276572932,
+                    "FN": 1354,
+                    "FP": 1204,
+                    "IoU": 0.8826497843838884,
+                    "TN": 46115546,
+                    "TP": 19240,
+                    "n_pred": 20444,
+                    "n_ref": 20594
+                },
+                "4": {
+                    "Dice": 0.22355289421157684,
+                    "FN": 389,
+                    "FP": 0,
+                    "IoU": 0.1258426966292135,
+                    "TN": 46136899,
+                    "TP": 56,
+                    "n_pred": 56,
+                    "n_ref": 445
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000948.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000948.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.5763747454175153,
+                    "FN": 366,
+                    "FP": 50,
+                    "IoU": 0.40486409155937053,
+                    "TN": 46136645,
+                    "TP": 283,
+                    "n_pred": 333,
+                    "n_ref": 649
+                },
+                "3": {
+                    "Dice": 0.691358024691358,
+                    "FN": 164,
+                    "FP": 286,
+                    "IoU": 0.5283018867924528,
+                    "TN": 46136390,
+                    "TP": 504,
+                    "n_pred": 790,
+                    "n_ref": 668
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001006.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001006.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001007.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001007.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001008.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001008.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 12,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 21757940,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 12
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 20,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 21757932,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 20
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001087.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001087.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 62,
+                    "IoU": 0.0,
+                    "TN": 21757890,
+                    "TP": 0,
+                    "n_pred": 62,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001088.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001088.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 87031808,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8597446574840983,
+                    "FN": 2659,
+                    "FP": 3471,
+                    "IoU": 0.7539930973593386,
+                    "TN": 87006890,
+                    "TP": 18788,
+                    "n_pred": 22259,
+                    "n_ref": 21447
+                },
+                "3": {
+                    "Dice": 0.8322493701294896,
+                    "FN": 2421,
+                    "FP": 3305,
+                    "IoU": 0.7126944305067737,
+                    "TN": 87011878,
+                    "TP": 14204,
+                    "n_pred": 17509,
+                    "n_ref": 16625
+                },
+                "4": {
+                    "Dice": 0.821435582019237,
+                    "FN": 2564,
+                    "FP": 165,
+                    "IoU": 0.6969797912502776,
+                    "TN": 87022802,
+                    "TP": 6277,
+                    "n_pred": 6442,
+                    "n_ref": 8841
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001126.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001126.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9449095983497149,
+                    "FN": 4453,
+                    "FP": 995,
+                    "IoU": 0.8955721679125934,
+                    "TN": 46085174,
+                    "TP": 46722,
+                    "n_pred": 47717,
+                    "n_ref": 51175
+                },
+                "2": {
+                    "Dice": 0.876807848622133,
+                    "FN": 9358,
+                    "FP": 2797,
+                    "IoU": 0.7806392232589197,
+                    "TN": 46081933,
+                    "TP": 43256,
+                    "n_pred": 46053,
+                    "n_ref": 52614
+                },
+                "3": {
+                    "Dice": 0.8647928738216726,
+                    "FN": 2523,
+                    "FP": 5294,
+                    "IoU": 0.7617930277913213,
+                    "TN": 46104528,
+                    "TP": 24999,
+                    "n_pred": 30293,
+                    "n_ref": 27522
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001131.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001131.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9118076620604426,
+                    "FN": 587,
+                    "FP": 198,
+                    "IoU": 0.8379103861243031,
+                    "TN": 46132501,
+                    "TP": 4058,
+                    "n_pred": 4256,
+                    "n_ref": 4645
+                },
+                "2": {
+                    "Dice": 0.9043846926252371,
+                    "FN": 1270,
+                    "FP": 1301,
+                    "IoU": 0.825458248472505,
+                    "TN": 46122614,
+                    "TP": 12159,
+                    "n_pred": 13460,
+                    "n_ref": 13429
+                },
+                "3": {
+                    "Dice": 0.7913468248429868,
+                    "FN": 1017,
+                    "FP": 1375,
+                    "IoU": 0.6547344110854504,
+                    "TN": 46130416,
+                    "TP": 4536,
+                    "n_pred": 5911,
+                    "n_ref": 5553
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 20,
+                    "IoU": 0.0,
+                    "TN": 46137324,
+                    "TP": 0,
+                    "n_pred": 20,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001132.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001132.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7383177570093458,
+                    "FN": 865,
+                    "FP": 31,
+                    "IoU": 0.5851851851851851,
+                    "TN": 46135184,
+                    "TP": 1264,
+                    "n_pred": 1295,
+                    "n_ref": 2129
+                },
+                "2": {
+                    "Dice": 0.6466480446927374,
+                    "FN": 820,
+                    "FP": 192,
+                    "IoU": 0.47781217750258,
+                    "TN": 46135406,
+                    "TP": 926,
+                    "n_pred": 1118,
+                    "n_ref": 1746
+                },
+                "3": {
+                    "Dice": 0.7006755182855812,
+                    "FN": 621,
+                    "FP": 664,
+                    "IoU": 0.5392613840086052,
+                    "TN": 46134555,
+                    "TP": 1504,
+                    "n_pred": 2168,
+                    "n_ref": 2125
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 20,
+                    "IoU": 0.0,
+                    "TN": 46137324,
+                    "TP": 0,
+                    "n_pred": 20,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001133.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001133.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 20447232,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 20447232,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.5827814569536424,
+                    "FN": 1011,
+                    "FP": 60,
+                    "IoU": 0.411214953271028,
+                    "TN": 20445413,
+                    "TP": 748,
+                    "n_pred": 808,
+                    "n_ref": 1759
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 20447232,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001144.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001144.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9448925558771012,
+                    "FN": 2435,
+                    "FP": 250,
+                    "IoU": 0.8955415499533147,
+                    "TN": 40868760,
+                    "TP": 23019,
+                    "n_pred": 23269,
+                    "n_ref": 25454
+                },
+                "2": {
+                    "Dice": 0.9542358932767195,
+                    "FN": 39161,
+                    "FP": 6883,
+                    "IoU": 0.9124771897810219,
+                    "TN": 40368384,
+                    "TP": 480036,
+                    "n_pred": 486919,
+                    "n_ref": 519197
+                },
+                "3": {
+                    "Dice": 0.9197701253450382,
+                    "FN": 8604,
+                    "FP": 3807,
+                    "IoU": 0.8514577747989276,
+                    "TN": 40810912,
+                    "TP": 71141,
+                    "n_pred": 74948,
+                    "n_ref": 79745
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 165,
+                    "IoU": 0.0,
+                    "TN": 40894299,
+                    "TP": 0,
+                    "n_pred": 165,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001160.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001160.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.798828125,
+                    "FN": 192,
+                    "FP": 14,
+                    "IoU": 0.6650406504065041,
+                    "TN": 40893849,
+                    "TP": 409,
+                    "n_pred": 423,
+                    "n_ref": 601
+                },
+                "2": {
+                    "Dice": 0.8659178822761803,
+                    "FN": 1832,
+                    "FP": 1045,
+                    "IoU": 0.7635407249116463,
+                    "TN": 40882297,
+                    "TP": 9290,
+                    "n_pred": 10335,
+                    "n_ref": 11122
+                },
+                "3": {
+                    "Dice": 0.8329198576205371,
+                    "FN": 1185,
+                    "FP": 364,
+                    "IoU": 0.7136783733826247,
+                    "TN": 40889054,
+                    "TP": 3861,
+                    "n_pred": 4225,
+                    "n_ref": 5046
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40894464,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001161.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001161.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 19922944,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8421281171167445,
+                    "FN": 13685,
+                    "FP": 1585,
+                    "IoU": 0.7273068200082147,
+                    "TN": 19866947,
+                    "TP": 40727,
+                    "n_pred": 42312,
+                    "n_ref": 54412
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 102,
+                    "IoU": 0.0,
+                    "TN": 19922842,
+                    "TP": 0,
+                    "n_pred": 102,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.8523203592814371,
+                    "FN": 1129,
+                    "FP": 2817,
+                    "IoU": 0.7426465792734624,
+                    "TN": 19907611,
+                    "TP": 11387,
+                    "n_pred": 14204,
+                    "n_ref": 12516
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001164.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001164.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2970,
+                    "IoU": 0.0,
+                    "TN": 19919974,
+                    "TP": 0,
+                    "n_pred": 2970,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.5672897196261683,
+                    "FN": 267,
+                    "FP": 659,
+                    "IoU": 0.395955642530985,
+                    "TN": 19921411,
+                    "TP": 607,
+                    "n_pred": 1266,
+                    "n_ref": 874
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 68,
+                    "FP": 5068,
+                    "IoU": 0.0,
+                    "TN": 19917808,
+                    "TP": 0,
+                    "n_pred": 5068,
+                    "n_ref": 68
+                },
+                "4": {
+                    "Dice": 0.3744200121040952,
+                    "FN": 9251,
+                    "FP": 52,
+                    "IoU": 0.2303301067262348,
+                    "TN": 19910857,
+                    "TP": 2784,
+                    "n_pred": 2836,
+                    "n_ref": 12035
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001165.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001165.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.864406779661017,
+                    "FN": 0,
+                    "FP": 16,
+                    "IoU": 0.7611940298507462,
+                    "TN": 9437117,
+                    "TP": 51,
+                    "n_pred": 67,
+                    "n_ref": 51
+                },
+                "2": {
+                    "Dice": 0.978147670123281,
+                    "FN": 750,
+                    "FP": 232,
+                    "IoU": 0.9572299651567944,
+                    "TN": 9414224,
+                    "TP": 21978,
+                    "n_pred": 22210,
+                    "n_ref": 22728
+                },
+                "3": {
+                    "Dice": 0.8625592417061612,
+                    "FN": 192,
+                    "FP": 11,
+                    "IoU": 0.7583333333333333,
+                    "TN": 9436344,
+                    "TP": 637,
+                    "n_pred": 648,
+                    "n_ref": 829
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001185.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001185.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 30,
+                    "FP": 2,
+                    "IoU": 0.0,
+                    "TN": 9437152,
+                    "TP": 0,
+                    "n_pred": 2,
+                    "n_ref": 30
+                },
+                "3": {
+                    "Dice": 0.72,
+                    "FN": 14,
+                    "FP": 0,
+                    "IoU": 0.5625,
+                    "TN": 9437152,
+                    "TP": 18,
+                    "n_pred": 18,
+                    "n_ref": 32
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 976,
+                    "IoU": 0.0,
+                    "TN": 9436208,
+                    "TP": 0,
+                    "n_pred": 976,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001186.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001186.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001187.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001187.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 31,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 48234465,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 31
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001195.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001195.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 29,
+                    "IoU": 0.0,
+                    "TN": 48234467,
+                    "TP": 0,
+                    "n_pred": 29,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 9,
+                    "FP": 109,
+                    "IoU": 0.0,
+                    "TN": 48234378,
+                    "TP": 0,
+                    "n_pred": 109,
+                    "n_ref": 9
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 188,
+                    "IoU": 0.0,
+                    "TN": 48234308,
+                    "TP": 0,
+                    "n_pred": 188,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001196.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001196.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001204.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001204.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 41,
+                    "IoU": 0.0,
+                    "TN": 51904471,
+                    "TP": 0,
+                    "n_pred": 41,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001205.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001205.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6310911016949152,
+                    "FN": 2760,
+                    "FP": 26,
+                    "IoU": 0.4610176049526021,
+                    "TN": 92269519,
+                    "TP": 2383,
+                    "n_pred": 2409,
+                    "n_ref": 5143
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 136,
+                    "IoU": 0.0,
+                    "TN": 92274552,
+                    "TP": 0,
+                    "n_pred": 136,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.6446886446886447,
+                    "FN": 353,
+                    "FP": 1199,
+                    "IoU": 0.4756756756756757,
+                    "TN": 92271728,
+                    "TP": 1408,
+                    "n_pred": 2607,
+                    "n_ref": 1761
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 92274688,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001246.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001246.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8823529411764706,
+                    "FN": 21,
+                    "FP": 3,
+                    "IoU": 0.7894736842105263,
+                    "TN": 102760334,
+                    "TP": 90,
+                    "n_pred": 93,
+                    "n_ref": 111
+                },
+                "2": {
+                    "Dice": 0.5279734769995856,
+                    "FN": 694,
+                    "FP": 445,
+                    "IoU": 0.35867117117117114,
+                    "TN": 102758672,
+                    "TP": 637,
+                    "n_pred": 1082,
+                    "n_ref": 1331
+                },
+                "3": {
+                    "Dice": 0.9230769230769231,
+                    "FN": 59,
+                    "FP": 251,
+                    "IoU": 0.8571428571428571,
+                    "TN": 102758278,
+                    "TP": 1860,
+                    "n_pred": 2111,
+                    "n_ref": 1919
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 102760448,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001284.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001284.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 101,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 102760347,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 101
+                },
+                "2": {
+                    "Dice": 0.7887715512769975,
+                    "FN": 8665,
+                    "FP": 1516,
+                    "IoU": 0.6512161699212059,
+                    "TN": 102731258,
+                    "TP": 19009,
+                    "n_pred": 20525,
+                    "n_ref": 27674
+                },
+                "3": {
+                    "Dice": 0.7013145294680944,
+                    "FN": 6112,
+                    "FP": 750,
+                    "IoU": 0.5400187692720204,
+                    "TN": 102745530,
+                    "TP": 8056,
+                    "n_pred": 8806,
+                    "n_ref": 14168
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 102760448,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001285.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001285.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 54,
+                    "FP": 15,
+                    "IoU": 0.0,
+                    "TN": 102760379,
+                    "TP": 0,
+                    "n_pred": 15,
+                    "n_ref": 54
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 25,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 102760423,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 25
+                },
+                "3": {
+                    "Dice": 0.21856639247943596,
+                    "FN": 407,
+                    "FP": 258,
+                    "IoU": 0.12269129287598944,
+                    "TN": 102759690,
+                    "TP": 93,
+                    "n_pred": 351,
+                    "n_ref": 500
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 102760448,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCA1CompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001286.nii.gz",
+            "reference_file": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001286.nii.gz"
+        }
+    ]
+}

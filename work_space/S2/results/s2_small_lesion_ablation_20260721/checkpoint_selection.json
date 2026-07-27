@@ -1,0 +1,124 @@
+{
+  "generated_at": "2026-07-24T13:24:49+0800",
+  "status": "complete",
+  "dataset": "Dataset264_BraTS2026_MET_Completion",
+  "fixed_split": {
+    "train": 1035,
+    "validation": 103,
+    "locked_test": 104
+  },
+  "training_contract": {
+    "epochs": 200,
+    "fold": 0,
+    "checkpoint_every_epochs": 25,
+    "initial_lr": 0.001,
+    "focal_gamma": 2.0,
+    "rc_class_weight": 3.0
+  },
+  "evaluation_contract": {
+    "protocol": "BraTS-evaluation mets official-compatible",
+    "brats_evaluation_version": "0.0.8",
+    "panoptica_version": "2.1.0",
+    "numpy_version": "1.26.4",
+    "configuration": "mets",
+    "volume_threshold_voxels": 27,
+    "overlap_threshold": 0.2,
+    "case_count": 103,
+    "prediction_count_per_candidate": 103,
+    "reference_count_per_candidate": 103,
+    "missing_cases": [],
+    "size_bins_reported": [
+      "small_instance",
+      "large_instance"
+    ],
+    "tiny_metric_available": false
+  },
+  "candidates": {
+    "B": {
+      "trainer": "nnUNetTrainerBraTS2026RCCompletionFineTune",
+      "training_job": null,
+      "evaluation_job": null,
+      "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_completion_dataset264_t2w_20260720/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5",
+      "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_eval_results",
+      "role": "overall_conservative_baseline"
+    },
+    "A-1": {
+      "trainer": "nnUNetTrainerBraTS2026RCA1CompletionFineTune",
+      "training_job": 3128521,
+      "evaluation_job": 3154513,
+      "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/a1/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "ef60fc1b489e5dba2ec19bd1120b3e4f21b085a47098a6e5b90b9c383f88a0d2",
+      "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126/a1",
+      "partial_warmstart": {
+        "audit_present": true,
+        "loaded_parameter_fraction": 0.6896551724137931
+      },
+      "role": "rejected_overall_and_followup"
+    },
+    "E": {
+      "trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune",
+      "training_job": 3141629,
+      "evaluation_job": 3154514,
+      "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/focal/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+      "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126/focal",
+      "role": "selected_small_lesion_followup_base"
+    },
+    "A-1+E": {
+      "trainer": "nnUNetTrainerBraTS2026RCA1FocalCompletionFineTune",
+      "training_job": 3141630,
+      "evaluation_job": 3154517,
+      "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/a1_focal/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "665efedd73d715147f829a4768ec0bdca07227b0f27609e1f08db5bad7de3262",
+      "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126/a1_focal",
+      "partial_warmstart": {
+        "audit_present": true,
+        "loaded_parameter_fraction": 0.6896551724137931
+      },
+      "role": "rejected_no_combination_net_gain"
+    }
+  },
+  "aggregate_metrics": {
+    "WT": {
+      "B": {"lesionwise_dsc": 0.625729, "lesionwise_nsd": 0.621359, "all_instance_f1": 0.710078, "small_instance_f1": 0.277048, "large_instance_f1": 0.683899, "all_fn": 3.116505, "all_fp": 0.747573},
+      "A-1": {"lesionwise_dsc": 0.580821, "lesionwise_nsd": 0.569390, "all_instance_f1": 0.683197, "small_instance_f1": 0.292404, "large_instance_f1": 0.662586, "all_fn": 2.873786, "all_fp": 1.097087},
+      "E": {"lesionwise_dsc": 0.587819, "lesionwise_nsd": 0.585794, "all_instance_f1": 0.712277, "small_instance_f1": 0.333083, "large_instance_f1": 0.672686, "all_fn": 2.912621, "all_fp": 0.970874},
+      "A-1+E": {"lesionwise_dsc": 0.578306, "lesionwise_nsd": 0.567496, "all_instance_f1": 0.657227, "small_instance_f1": 0.342887, "large_instance_f1": 0.660221, "all_fn": 2.834951, "all_fp": 1.310680}
+    },
+    "RC": {
+      "B": {"lesionwise_dsc": 0.423506, "lesionwise_nsd": 0.363712, "all_instance_f1": 0.236232, "small_instance_f1": 0.0, "large_instance_f1": 0.085437, "all_fn": 0.067961, "all_fp": 0.776699},
+      "A-1": {"lesionwise_dsc": 0.421768, "lesionwise_nsd": 0.386169, "all_instance_f1": 0.248505, "small_instance_f1": 0.0, "large_instance_f1": 0.103098, "all_fn": 0.067961, "all_fp": 0.611650},
+      "E": {"lesionwise_dsc": 0.377022, "lesionwise_nsd": 0.273118, "all_instance_f1": 0.421053, "small_instance_f1": 0.0, "large_instance_f1": 0.080906, "all_fn": 0.116505, "all_fp": 0.038835},
+      "A-1+E": {"lesionwise_dsc": 0.380900, "lesionwise_nsd": 0.332156, "all_instance_f1": 0.194070, "small_instance_f1": 0.166667, "large_instance_f1": 0.086916, "all_fn": 0.058252, "all_fp": 0.689320}
+    }
+  },
+  "selection": {
+    "overall_conservative_baseline": "B",
+    "small_lesion_followup_base": "E",
+    "a1_rejected_reason": "Overall WT DSC/NSD/F1 declined; WT FP increased; RC gains were limited.",
+    "a1_focal_rejected_reason": "Small-instance F1 improved in isolation, but overall and RC F1/DSC/NSD declined and WT FP was highest.",
+    "selection_scope": "internal fixed validation only; not an official 179-case submission result"
+  },
+  "deep_supervision_D": {
+    "status": "designed_not_started",
+    "base_candidate": "E",
+    "architecture": "original 6-stage network",
+    "decoder_output_count": 5,
+    "loss_wrapper": "DeepSupervisionWrapper in _build_loss",
+    "proposed_weights": [0.40, 0.30, 0.15, 0.10, 0.05],
+    "must_not_change": [
+      "_get_deep_supervision_scales label downsampling semantics",
+      "Focal gamma=2.0",
+      "RC class weight=3.0",
+      "fixed split and evaluation cohort"
+    ],
+    "training_authorized": false
+  },
+  "prohibited_actions_confirmed": [
+    "online Diffusion",
+    "official 179-case inference",
+    "official submission",
+    "retraining completed candidates"
+  ]
+}

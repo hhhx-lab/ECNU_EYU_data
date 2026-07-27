@@ -124,7 +124,7 @@ class CloneBaselinePlansTests(unittest.TestCase):
             self.assertEqual(cloned["configurations"], payload["configurations"])
             audit = json.loads((target / "completion_plans_audit.json").read_text())
             self.assertEqual(audit["plans_source_kind"], "checkpoint_init_args")
-            self.assertEqual(audit["baseline_checkpoint"], str(checkpoint))
+            self.assertEqual(audit["baseline_checkpoint"], str(checkpoint.resolve()))
 
 
 if __name__ == "__main__":

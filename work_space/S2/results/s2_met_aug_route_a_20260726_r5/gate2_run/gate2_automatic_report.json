@@ -1,0 +1,45 @@
+{
+  "automatic_report_sha256": "d219c85781af98d62df6a13f06b308b37f3daedbb48ead5fe9ed6213bd1ac9ce",
+  "automatic_status": "pass",
+  "case_results_file": "automatic_case_results.jsonl",
+  "case_results_sha256": "b8aa69a3e521bd51fa2447c87c934856ab6878144b32789eeaa8ee32d8cf3eec",
+  "component_manifest_sha256": "c8a413bc180b3a120ee3415f548eab98c305cbe3a63867db89d09f19243da26e",
+  "event_audit_file": "gate2_events.jsonl",
+  "event_audit_sha256": "75a46554ce1570368ed6b752a29173c6e131a26538fc414679ac85d097938787",
+  "g1_checkpoint_selection_sha256": "85574c51c4f77ea14e18507aab93f6fea86cf4b8ab0a0c407b0e3ec97e18b209",
+  "g1_runtime_code": {
+    "files": {
+      "GliGAN/src/infer/diffusion_inference_utils.py": "666e8db288fb25a9d2522f10c8da27613479744c6e971bf0c171bb2b20417171",
+      "GliGAN/src/networks/DiffusionNetwork.py": "5efe183474a118124a891ac4f65e9434680040c1faced488af0881102182719f",
+      "repository/model.py": "848f89929ce9d6158f51acdecb6c50e71c74070644c9e9c0e176cbebc55d262d"
+    },
+    "sha256": "511d59e0c237e109e2b3fb775a8e731e0507bd4e305fc8e86d84aa7d38c430a9"
+  },
+  "g2_parent_gate_sha256": "3103a3057132b9166a398ff2f10aefee77c957e142563c3b7f93e3898718f408",
+  "manual_review_status": "hold_for_manual_review",
+  "manual_review_template": "manual_review_template.csv",
+  "manual_review_template_sha256": "b3d46f7b68e21ec1647524f4776059b15964e8988ccf243c38d5c53a4359ac35",
+  "per_volume_bin": {
+    "27_49": 8,
+    "50_275": 8,
+    "gt_275": 8
+  },
+  "route_config_sha256": "832cd9e03c3d8a9bb63409c02afdaf9d46755bab0ed308b346a2337c824c755a",
+  "route_id": "MET-AUG-A",
+  "runtime_code": {
+    "files": {
+      "custom_nnunet/met_aug_core.py": "2ab6d9ec532a6b424495bc09a2505c56f38690adfaddf9649330c3b85da112ad",
+      "custom_nnunet/met_aug_diffusion.py": "2cac1af7ebfa8963e7b4215ca866905d95f880eb8d78be616579ad74842a96d9",
+      "custom_nnunet/met_aug_gate2.py": "bcb678d098492cedb0b196f510bf811a387e301a12f45232a9c1f1a478dd6562",
+      "custom_nnunet/online_diffusion_contract.py": "3a86afd0685364874fe1fc03a6bbc6e1bcef668b20c5875139b805ecef954528",
+      "scripts/18_run_met_aug_gate2_smoke.py": "6e7531fa4e15963c4b5cb22353f80a832cd3d6da28b2c31faffbb8309bac119d"
+    },
+    "sha256": "ae0536480ef92384a21c38f6ee02b2e4c77c5b8a61ceb0587bba4851c729c840"
+  },
+  "schema_version": 3,
+  "smoke_count": 24,
+  "smoke_manifest_sha256": "269943da4ad46225c2456b2345e4799536e6c779b702a3dfacfaf195a5fef455",
+  "status": "hold_for_manual_review",
+  "valid_mask_manifest_sha256": "a381b24ab508b7eba758b971e4ffe05b4a10e319c6299c1aa4a67f955bc6a169",
+  "violations": []
+}

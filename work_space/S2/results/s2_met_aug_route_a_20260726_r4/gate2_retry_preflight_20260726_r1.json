@@ -1,0 +1,45 @@
+{
+  "checkpoint_selection_sha256": "85574c51c4f77ea14e18507aab93f6fea86cf4b8ab0a0c407b0e3ec97e18b209",
+  "checkpoints": {
+    "t1c": {
+      "bytes": 53749405,
+      "relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t1c/weights/diffusion_150000.pt",
+      "sha256": "cc49de179dee75af561df377ba323052da99525a58a99c60d2fe48f2c34d51a5"
+    },
+    "t1n": {
+      "bytes": 53749405,
+      "relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t1n/weights/diffusion_150000.pt",
+      "sha256": "bc98c9423dad396ee235c89893c308b5e6d340667a8b10880825020b6e976ad6"
+    },
+    "t2f": {
+      "bytes": 53749405,
+      "relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t2f/weights/diffusion_150000.pt",
+      "sha256": "de2f219fe126dbb7974d61d8fe8697d239d1e0b18f735344feeab36d3f7d9e6c"
+    },
+    "t2w": {
+      "bytes": 53749405,
+      "relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t2w/weights/diffusion_150000.pt",
+      "sha256": "1b42542f378375406e38a17ca380a608fd0005be4591ef2bcedabca925c3ff60"
+    }
+  },
+  "completed_at": "2026-07-26T09:56:09.855205+00:00",
+  "device": "NVIDIA H20",
+  "g2_parent_gate_sha256": "3103a3057132b9166a398ff2f10aefee77c957e142563c3b7f93e3898718f408",
+  "import_preflight": "pass",
+  "loaded_modalities": [
+    "t1c",
+    "t1n",
+    "t2f",
+    "t2w"
+  ],
+  "runtime_code": {
+    "files": {
+      "GliGAN/src/infer/diffusion_inference_utils.py": "666e8db288fb25a9d2522f10c8da27613479744c6e971bf0c171bb2b20417171",
+      "GliGAN/src/networks/DiffusionNetwork.py": "5efe183474a118124a891ac4f65e9434680040c1faced488af0881102182719f",
+      "repository/model.py": "848f89929ce9d6158f51acdecb6c50e71c74070644c9e9c0e176cbebc55d262d"
+    },
+    "sha256": "511d59e0c237e109e2b3fb775a8e731e0507bd4e305fc8e86d84aa7d38c430a9"
+  },
+  "schema_version": 1,
+  "status": "pass"
+}

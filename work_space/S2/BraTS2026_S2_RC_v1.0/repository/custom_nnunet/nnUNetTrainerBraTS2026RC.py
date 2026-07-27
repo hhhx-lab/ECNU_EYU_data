@@ -682,6 +682,41 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
         """Hook for transforms that must update image and integer segmentation together."""
         return []
 
+    def build_training_dataloader(
+        self,
+        dataset_tr,
+        initial_patch_size,
+        transforms,
+    ):
+        """Factory hook for train-only loaders that need patch sidecar metadata."""
+        return nnUNetDataLoader(
+            dataset_tr, self.batch_size,
+            initial_patch_size,
+            self.configuration_manager.patch_size,
+            self.label_manager,
+            oversample_foreground_percent=self.oversample_foreground_percent,
+            sampling_probabilities=None, pad_sides=None, transforms=transforms,
+            probabilistic_oversampling=self.probabilistic_oversampling,
+        )
+
+    def build_validation_dataloader(self, dataset_val, transforms):
+        """Keep validation free of all train-only augmentation sidecars."""
+        return nnUNetDataLoader(
+            dataset_val, self.batch_size,
+            self.configuration_manager.patch_size,
+            self.configuration_manager.patch_size,
+            self.label_manager,
+            oversample_foreground_percent=self.oversample_foreground_percent,
+            sampling_probabilities=None, pad_sides=None, transforms=transforms,
+            probabilistic_oversampling=self.probabilistic_oversampling,
+        )
+
+    def _prime_dataloaders(self, train_augmenter, validation_augmenter) -> None:
+        """Start loaders without spending a paired MET-AUG training patch."""
+        if not getattr(self, "skip_training_dataloader_warmup", False):
+            _ = next(train_augmenter)
+        _ = next(validation_augmenter)
+
     def get_dataloaders(self):
         if self.dataset_class is None:
             self.dataset_class = infer_dataset_class(self.preprocessed_dataset_folder)
@@ -718,20 +753,8 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
                                                         ignore_label=self.label_manager.ignore_label)
 
         dataset_tr, dataset_val = self.get_tr_and_val_datasets()
-        dl_tr = nnUNetDataLoader(dataset_tr, self.batch_size,
-                                 initial_patch_size,
-                                 self.configuration_manager.patch_size,
-                                 self.label_manager,
-                                 oversample_foreground_percent=self.oversample_foreground_percent,
-                                 sampling_probabilities=None, pad_sides=None, transforms=tr_transforms,
-                                 probabilistic_oversampling=self.probabilistic_oversampling)
-        dl_val = nnUNetDataLoader(dataset_val, self.batch_size,
-                                  self.configuration_manager.patch_size,
-                                  self.configuration_manager.patch_size,
-                                  self.label_manager,
-                                  oversample_foreground_percent=self.oversample_foreground_percent,
-                                  sampling_probabilities=None, pad_sides=None, transforms=val_transforms,
-                                  probabilistic_oversampling=self.probabilistic_oversampling)
+        dl_tr = self.build_training_dataloader(dataset_tr, initial_patch_size, tr_transforms)
+        dl_val = self.build_validation_dataloader(dataset_val, val_transforms)
 
         allowed_num_processes = (
             0 if getattr(self, "requires_single_threaded_augmentation", False)
@@ -750,9 +773,9 @@ class nnUNetTrainerBraTS2026RC(nnUNetTrainer):
                                                       num_cached=max(3, allowed_num_processes // 4), seeds=None,
                                                       pin_memory=self.device.type == 'cuda',
                                                       wait_time=0.002)
-        # # let's get this party started
-        _ = next(mt_gen_train)
-        _ = next(mt_gen_val)
+        # Prime ordinary asynchronous loaders, but never spend a train patch in
+        # paired MET-AUG runs: that would execute an unaudited phantom event.
+        self._prime_dataloaders(mt_gen_train, mt_gen_val)
         return mt_gen_train, mt_gen_val
 
     def get_training_transforms(

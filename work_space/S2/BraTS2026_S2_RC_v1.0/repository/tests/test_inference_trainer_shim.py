@@ -8,6 +8,8 @@ SHIM_PATH = (
     / "custom_nnunet"
     / "nnUNetTrainerBraTS2026RC_inference.py"
 )
+FROZEN_INFERENCE_PATH = Path(__file__).resolve().parents[1] / "inference_frozen.py"
+INFER_SH_PATH = Path(__file__).resolve().parents[1] / "infer.sh"
 
 
 class InferenceTrainerShimTest(unittest.TestCase):
@@ -33,6 +35,16 @@ class InferenceTrainerShimTest(unittest.TestCase):
                 "enable_deep_supervision",
             ],
         )
+
+    def test_met_aug_checkpoint_uses_the_non_augmenting_inference_shim(self):
+        frozen_source = FROZEN_INFERENCE_PATH.read_text(encoding="utf-8")
+        infer_source = INFER_SH_PATH.read_text(encoding="utf-8")
+
+        self.assertIn("nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune", frozen_source)
+        self.assertIn("nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune", frozen_source)
+        self.assertIn("met_aug_route_a)", infer_source)
+        self.assertIn("DEFAULT_USE_INFERENCE_TRAINER_SHIM=1", infer_source)
+        self.assertIn("training-only Diffusion code is forbidden", infer_source)
 
 
 if __name__ == "__main__":

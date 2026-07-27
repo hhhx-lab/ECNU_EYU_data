@@ -4,6 +4,7 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 S2_EXPERIMENT_MODE="${S2_EXPERIMENT_MODE:-current}"
+DEFAULT_S2_SPLIT_MODE="${S2_EXPERIMENT_MODE}"
 
 case "${S2_EXPERIMENT_MODE}" in
     current)
@@ -28,14 +29,27 @@ case "${S2_EXPERIMENT_MODE}" in
         DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCCompletionFineTune
         ;;
     completion_online)
+        echo "completion_online is retired: it uses the legacy whole-label bridge. Use met_aug_route_a after Route A approval." >&2
+        exit 2
+        ;;
+    met_aug_route_a)
         DEFAULT_S2_DATASET_ID=264
         DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_Completion
         DEFAULT_S2_TRAIN_COUNT=1035
         DEFAULT_S2_VAL_COUNT=103
-        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCOnlineDiffusion
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune
+        DEFAULT_S2_SPLIT_MODE=completion_warmstart
+        ;;
+    met_aug_route_a_control)
+        DEFAULT_S2_DATASET_ID=264
+        DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_Completion
+        DEFAULT_S2_TRAIN_COUNT=1035
+        DEFAULT_S2_VAL_COUNT=103
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune
+        DEFAULT_S2_SPLIT_MODE=completion_warmstart
         ;;
     *)
-        echo "S2_EXPERIMENT_MODE must be current, legacy, completion_warmstart, or completion_online, got: ${S2_EXPERIMENT_MODE}" >&2
+        echo "S2_EXPERIMENT_MODE must be current, legacy, completion_warmstart, met_aug_route_a, or met_aug_route_a_control, got: ${S2_EXPERIMENT_MODE}" >&2
         exit 2
         ;;
 esac
@@ -43,7 +57,7 @@ esac
 export nnUNet_raw="${nnUNet_raw:-${REPO_DIR}/data/nnunet_raw}"
 export nnUNet_preprocessed="${nnUNet_preprocessed:-${REPO_DIR}/data/nnunet_preprocessed}"
 export nnUNet_results="${nnUNet_results:-${REPO_DIR}/data/nnunet_results}"
-export BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${REPO_DIR}/data/splits/${S2_EXPERIMENT_MODE}}"
+export BRATS_SPLIT_DIR="${BRATS_SPLIT_DIR:-${REPO_DIR}/data/splits/${DEFAULT_S2_SPLIT_MODE}}"
 export BRATS_S2_REPO_DIR="${BRATS_S2_REPO_DIR:-${REPO_DIR}}"
 export S2_DATASET_ID="${S2_DATASET_ID:-${DEFAULT_S2_DATASET_ID}}"
 export S2_DATASET_NAME="${S2_DATASET_NAME:-${DEFAULT_S2_DATASET_NAME}}"
@@ -77,6 +91,35 @@ if [[ "${S2_DATASET_ID}" != "${DEFAULT_S2_DATASET_ID}" || "${S2_DATASET_NAME}" !
     echo "${S2_EXPERIMENT_MODE} mode is locked to dataset ${DEFAULT_S2_DATASET_ID}/${DEFAULT_S2_DATASET_NAME}." >&2
     exit 2
 fi
+if [[ "${S2_EXPERIMENT_MODE}" == met_aug_route_a* && "${S2_TRAINER}" != "${DEFAULT_S2_TRAINER}" ]]; then
+    echo "${S2_EXPERIMENT_MODE} is locked to trainer ${DEFAULT_S2_TRAINER}." >&2
+    exit 2
+fi
+if [[ "${S2_EXPERIMENT_MODE}" == met_aug_route_a* ]]; then
+    export S2_PAIRED_TRAINING_SEED="${S2_PAIRED_TRAINING_SEED:-20260724}"
+    if [[ "${S2_PAIRED_TRAINING_SEED}" != "20260724" ]]; then
+        echo "${S2_EXPERIMENT_MODE} is locked to S2_PAIRED_TRAINING_SEED=20260724." >&2
+        exit 2
+    fi
+    export CUBLAS_WORKSPACE_CONFIG="${CUBLAS_WORKSPACE_CONFIG:-:4096:8}"
+    if [[ "${CUBLAS_WORKSPACE_CONFIG}" != ":4096:8" ]]; then
+        echo "${S2_EXPERIMENT_MODE} is locked to CUBLAS_WORKSPACE_CONFIG=:4096:8." >&2
+        exit 2
+    fi
+    export S2_COMPLETION_EPOCHS="${S2_COMPLETION_EPOCHS:-200}"
+    export S2_COMPLETION_INITIAL_LR="${S2_COMPLETION_INITIAL_LR:-0.001}"
+    export S2_COMPLETION_SAVE_EVERY="${S2_COMPLETION_SAVE_EVERY:-25}"
+    export S2_FOCAL_GAMMA="${S2_FOCAL_GAMMA:-2.0}"
+    export nnUNet_compile="${nnUNet_compile:-0}"
+    if [[ "${S2_COMPLETION_EPOCHS}" != "200" || \
+          "${S2_COMPLETION_INITIAL_LR}" != "0.001" || \
+          "${S2_COMPLETION_SAVE_EVERY}" != "25" || \
+          "${S2_FOCAL_GAMMA}" != "2.0" || \
+          "${nnUNet_compile}" != "0" ]]; then
+        echo "${S2_EXPERIMENT_MODE} requires epochs=200, lr=0.001, save_every=25, focal_gamma=2.0, nnUNet_compile=0." >&2
+        exit 2
+    fi
+fi
 
 export nnUNet_extTrainer="${REPO_DIR}/custom_nnunet"
 export PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}"
@@ -93,8 +136,21 @@ filenames = [
     "nnUNetTrainerBraTS2026RC.py",
     "nnUNetTrainerBraTS2026RCCompletionFineTune.py",
     "nnUNetTrainerBraTS2026RCOnlineDiffusion.py",
+    "nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune.py",
+    "nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune.py",
+    "small_lesion_variants.py",
+    "small_lesion_trainer_mixins.py",
+    "nnUNetTrainerBraTS2026RCA1CompletionFineTune.py",
+    "nnUNetTrainerBraTS2026RCFocalCompletionFineTune.py",
+    "nnUNetTrainerBraTS2026RCA1FocalCompletionFineTune.py",
     "online_diffusion_transform.py",
     "online_diffusion_contract.py",
+    "met_aug_core.py",
+    "met_aug_data_loader.py",
+    "met_aug_diffusion.py",
+    "met_aug_gate.py",
+    "met_aug_paired_training.py",
+    "met_aug_transform.py",
 ]
 spec = importlib.util.find_spec("nnunetv2")
 if spec is None or not spec.submodule_search_locations:
@@ -120,6 +176,14 @@ CHECKPOINT_LATEST="${RESULT_FOLD_DIR}/checkpoint_latest.pth"
 CHECKPOINT_FINAL="${RESULT_FOLD_DIR}/checkpoint_final.pth"
 VALIDATION_DIR="${RESULT_FOLD_DIR}/validation"
 VALIDATION_SUMMARY="${VALIDATION_DIR}/summary.json"
+if [[ "${S2_EXPERIMENT_MODE}" == "met_aug_route_a" ]]; then
+    EXPECTED_MET_AUG_AUDIT_PATH="${RESULT_FOLD_DIR}/met_aug_events.jsonl"
+    export S2_MET_AUG_AUDIT_PATH="${S2_MET_AUG_AUDIT_PATH:-${EXPECTED_MET_AUG_AUDIT_PATH}}"
+    if [[ "${S2_MET_AUG_AUDIT_PATH}" != "${EXPECTED_MET_AUG_AUDIT_PATH}" ]]; then
+        echo "met_aug_route_a requires its audit log inside the current fold result directory: ${EXPECTED_MET_AUG_AUDIT_PATH}" >&2
+        exit 2
+    fi
+fi
 
 if [[ ! -s "${TRAIN_FILE}" || ! -s "${VAL_FILE}" ]]; then
     echo "Missing fixed split files:" >&2
@@ -154,6 +218,35 @@ if [[ -d "${VALIDATION_DIR}" ]]; then
     VALIDATION_PREDICTIONS=$(find "${VALIDATION_DIR}" -maxdepth 1 -type f -name '*.nii.gz' | wc -l | tr -d ' ')
 fi
 
+if [[ "${S2_EXPERIMENT_MODE}" == "met_aug_route_a" ]]; then
+    if [[ "${S2_MET_AUG_ENABLE:-0}" != "1" ]]; then
+        echo "met_aug_route_a requires S2_MET_AUG_ENABLE=1 after Route A approval." >&2
+        exit 2
+    fi
+    for required_path_var in \
+        S2_MET_AUG_COMPONENT_MANIFEST \
+        S2_MET_AUG_ROUTE_CONFIG \
+        S2_MET_AUG_VALID_MASK_MANIFEST \
+        S2_MET_AUG_ROUTE_GATE \
+        S2_MET_AUG_G1_CHECKPOINT_SELECTION \
+        S2_MET_AUG_G2_QC_GATE; do
+        if [[ -z "${!required_path_var:-}" || ! -f "${!required_path_var}" ]]; then
+            echo "met_aug_route_a requires file variable ${required_path_var}." >&2
+            exit 2
+        fi
+    done
+    for required_dir_var in S2_MET_AUG_G1_CODE_DIR S2_MET_AUG_G1_CHECKPOINT_ROOT; do
+        if [[ -z "${!required_dir_var:-}" || ! -d "${!required_dir_var}" ]]; then
+            echo "met_aug_route_a requires directory variable ${required_dir_var}." >&2
+            exit 2
+        fi
+    done
+fi
+if [[ "${S2_EXPERIMENT_MODE}" == "met_aug_route_a_control" && "${S2_MET_AUG_ENABLE:-0}" != "0" ]]; then
+    echo "met_aug_route_a_control requires S2_MET_AUG_ENABLE=0." >&2
+    exit 2
+fi
+
 TRAIN_CMD=(
     nnUNetv2_train
     "${S2_DATASET_ID}" "${S2_CONFIGURATION}" 0
@@ -179,14 +272,34 @@ elif [[ "${S2_CONTINUE}" == "auto" && -f "${CHECKPOINT_LATEST}" ]]; then
     TRAIN_CMD+=(--c)
 else
     echo "No resumable checkpoint found; starting fixed-split training from scratch."
-    if [[ "${S2_EXPERIMENT_MODE}" == "completion_warmstart" || "${S2_EXPERIMENT_MODE}" == "completion_online" ]]; then
+    if [[ "${S2_EXPERIMENT_MODE}" == "completion_warmstart" || "${S2_EXPERIMENT_MODE}" == met_aug_route_a* ]]; then
         S2_PRETRAINED_WEIGHTS="${S2_PRETRAINED_WEIGHTS:-}"
         if [[ ! -f "${S2_PRETRAINED_WEIGHTS}" ]]; then
-            echo "${S2_EXPERIMENT_MODE} requires S2_PRETRAINED_WEIGHTS from Dataset263 real-only: ${S2_PRETRAINED_WEIGHTS:-unset}" >&2
+            echo "${S2_EXPERIMENT_MODE} requires S2_PRETRAINED_WEIGHTS: ${S2_PRETRAINED_WEIGHTS:-unset}" >&2
             exit 1
         fi
-        TRAIN_CMD+=(-pretrained_weights "${S2_PRETRAINED_WEIGHTS}")
-        echo "Warm-starting ${S2_EXPERIMENT_MODE} from: ${S2_PRETRAINED_WEIGHTS}"
+        if [[ "${S2_EXPERIMENT_MODE}" == met_aug_route_a* ]]; then
+            EXPECTED_E_SHA256="4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267"
+            if command -v sha256sum >/dev/null 2>&1; then
+                ACTUAL_PRETRAINED_SHA256="$(sha256sum "${S2_PRETRAINED_WEIGHTS}" | awk '{print $1}')"
+            elif command -v shasum >/dev/null 2>&1; then
+                ACTUAL_PRETRAINED_SHA256="$(shasum -a 256 "${S2_PRETRAINED_WEIGHTS}" | awk '{print $1}')"
+            else
+                echo "No SHA256 command is available." >&2
+                exit 1
+            fi
+            if [[ "${ACTUAL_PRETRAINED_SHA256}" != "${EXPECTED_E_SHA256}" ]]; then
+                echo "${S2_EXPERIMENT_MODE} must warm-start from the frozen E checkpoint; SHA256 mismatch." >&2
+                exit 1
+            fi
+        fi
+        if [[ "${S2_TRAINER}" == *RCA1* ]]; then
+            export S2_PARTIAL_PRETRAINED_WEIGHTS="${S2_PRETRAINED_WEIGHTS}"
+            echo "Partial warm-starting ${S2_EXPERIMENT_MODE} from: ${S2_PRETRAINED_WEIGHTS}"
+        else
+            TRAIN_CMD+=(-pretrained_weights "${S2_PRETRAINED_WEIGHTS}")
+            echo "Warm-starting ${S2_EXPERIMENT_MODE} from: ${S2_PRETRAINED_WEIGHTS}"
+        fi
     fi
 fi
 

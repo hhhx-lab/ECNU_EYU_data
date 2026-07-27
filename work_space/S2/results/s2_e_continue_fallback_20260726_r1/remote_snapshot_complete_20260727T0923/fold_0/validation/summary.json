@@ -1,0 +1,4794 @@
+{
+    "foreground_mean": {
+        "Dice": 0.5501021638092497,
+        "FN": 1791.148058252427,
+        "FP": 1399.5315533980586,
+        "IoU": 0.46879235330316676,
+        "TN": 33928398.08252427,
+        "TP": 13235.78155339806,
+        "n_pred": 14635.313106796115,
+        "n_ref": 15026.929611650487
+    },
+    "mean": {
+        "1": {
+            "Dice": 0.48822311227438975,
+            "FN": 651.5145631067961,
+            "FP": 574.7184466019418,
+            "IoU": 0.41022901752869,
+            "TN": 33941855.310679615,
+            "TP": 1743.0,
+            "n_pred": 2317.7184466019417,
+            "n_ref": 2394.5145631067962
+        },
+        "2": {
+            "Dice": 0.7355145538044237,
+            "FN": 4288.184466019417,
+            "FP": 3706.854368932039,
+            "IoU": 0.644417277014053,
+            "TN": 33892979.08737864,
+            "TP": 43850.41747572816,
+            "n_pred": 47557.271844660194,
+            "n_ref": 48138.601941747576
+        },
+        "3": {
+            "Dice": 0.6907175413104384,
+            "FN": 1761.8543689320388,
+            "FP": 1088.7766990291261,
+            "IoU": 0.5910175046986463,
+            "TN": 33935037.902912624,
+            "TP": 6936.0097087378645,
+            "n_pred": 8024.78640776699,
+            "n_ref": 8697.864077669903
+        },
+        "4": {
+            "Dice": 0.28595344784774707,
+            "FN": 463.0388349514563,
+            "FP": 227.7766990291262,
+            "IoU": 0.22950561397127767,
+            "TN": 33943720.02912621,
+            "TP": 413.6990291262136,
+            "n_pred": 641.4757281553398,
+            "n_ref": 876.7378640776699
+        }
+    },
+    "metric_per_case": [
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4630541871921182,
+                    "FN": 216,
+                    "FP": 2,
+                    "IoU": 0.30128205128205127,
+                    "TN": 8927688,
+                    "TP": 94,
+                    "n_pred": 96,
+                    "n_ref": 310
+                },
+                "2": {
+                    "Dice": 0.9029947484881554,
+                    "FN": 10854,
+                    "FP": 5235,
+                    "IoU": 0.8231453288338298,
+                    "TN": 8837027,
+                    "TP": 74884,
+                    "n_pred": 80119,
+                    "n_ref": 85738
+                },
+                "3": {
+                    "Dice": 0.9292553146058778,
+                    "FN": 8161,
+                    "FP": 122,
+                    "IoU": 0.8678589091141139,
+                    "TN": 8865317,
+                    "TP": 54400,
+                    "n_pred": 54522,
+                    "n_ref": 62561
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000006.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000006.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8701170117011701,
+                    "FN": 2740,
+                    "FP": 146,
+                    "IoU": 0.7700947980562415,
+                    "TN": 8915447,
+                    "TP": 9667,
+                    "n_pred": 9813,
+                    "n_ref": 12407
+                },
+                "2": {
+                    "Dice": 0.8814554617183246,
+                    "FN": 9532,
+                    "FP": 1571,
+                    "IoU": 0.7880378756061243,
+                    "TN": 8875618,
+                    "TP": 41279,
+                    "n_pred": 42850,
+                    "n_ref": 50811
+                },
+                "3": {
+                    "Dice": 0.9103779845738641,
+                    "FN": 3278,
+                    "FP": 2799,
+                    "IoU": 0.8354988901521304,
+                    "TN": 8891058,
+                    "TP": 30865,
+                    "n_pred": 33664,
+                    "n_ref": 34143
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000009.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000009.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4462474645030426,
+                    "FN": 139,
+                    "FP": 134,
+                    "IoU": 0.28720626631853785,
+                    "TN": 8927617,
+                    "TP": 110,
+                    "n_pred": 244,
+                    "n_ref": 249
+                },
+                "2": {
+                    "Dice": 0.9045541453095761,
+                    "FN": 3403,
+                    "FP": 15367,
+                    "IoU": 0.8257406255512334,
+                    "TN": 8820287,
+                    "TP": 88943,
+                    "n_pred": 104310,
+                    "n_ref": 92346
+                },
+                "3": {
+                    "Dice": 0.8336923941551143,
+                    "FN": 4537,
+                    "FP": 2565,
+                    "IoU": 0.7148134762879974,
+                    "TN": 8903097,
+                    "TP": 17801,
+                    "n_pred": 20366,
+                    "n_ref": 22338
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000014.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000014.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8888937120668019,
+                    "FN": 54489,
+                    "FP": 1821,
+                    "IoU": 0.8000078135821367,
+                    "TN": 8646439,
+                    "TP": 225251,
+                    "n_pred": 227072,
+                    "n_ref": 279740
+                },
+                "3": {
+                    "Dice": 0.8759011021745606,
+                    "FN": 1767,
+                    "FP": 316,
+                    "IoU": 0.7792028831884672,
+                    "TN": 8918566,
+                    "TP": 7351,
+                    "n_pred": 7667,
+                    "n_ref": 9118
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000016.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000016.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 363,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 8927637,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 363
+                },
+                "2": {
+                    "Dice": 0.941033556710087,
+                    "FN": 2836,
+                    "FP": 8911,
+                    "IoU": 0.8886339719949564,
+                    "TN": 8822519,
+                    "TP": 93734,
+                    "n_pred": 102645,
+                    "n_ref": 96570
+                },
+                "3": {
+                    "Dice": 0.9029889879391715,
+                    "FN": 298,
+                    "FP": 627,
+                    "IoU": 0.8231357552581262,
+                    "TN": 8922770,
+                    "TP": 4305,
+                    "n_pred": 4932,
+                    "n_ref": 4603
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000019.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000019.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.26179702650290887,
+                    "FN": 2277,
+                    "FP": 7,
+                    "IoU": 0.1506136110078096,
+                    "TN": 8925311,
+                    "TP": 405,
+                    "n_pred": 412,
+                    "n_ref": 2682
+                },
+                "2": {
+                    "Dice": 0.5067812022365392,
+                    "FN": 23564,
+                    "FP": 1929,
+                    "IoU": 0.3393884426017103,
+                    "TN": 8889410,
+                    "TP": 13097,
+                    "n_pred": 15026,
+                    "n_ref": 36661
+                },
+                "3": {
+                    "Dice": 0.7454031354046412,
+                    "FN": 11495,
+                    "FP": 3722,
+                    "IoU": 0.5941375723468381,
+                    "TN": 8890507,
+                    "TP": 22276,
+                    "n_pred": 25998,
+                    "n_ref": 33771
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000022.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000022.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9199270789510587,
+                    "FN": 131,
+                    "FP": 440,
+                    "IoU": 0.8517268242015061,
+                    "TN": 8924149,
+                    "TP": 3280,
+                    "n_pred": 3720,
+                    "n_ref": 3411
+                },
+                "2": {
+                    "Dice": 0.9483935408689862,
+                    "FN": 1597,
+                    "FP": 2743,
+                    "IoU": 0.9018521450055406,
+                    "TN": 8883781,
+                    "TP": 39879,
+                    "n_pred": 42622,
+                    "n_ref": 41476
+                },
+                "3": {
+                    "Dice": 0.9057324840764331,
+                    "FN": 1513,
+                    "FP": 411,
+                    "IoU": 0.8277066356228172,
+                    "TN": 8916833,
+                    "TP": 9243,
+                    "n_pred": 9654,
+                    "n_ref": 10756
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000025.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000025.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.891861157740835,
+                    "FN": 910,
+                    "FP": 3084,
+                    "IoU": 0.8048279906176701,
+                    "TN": 8907536,
+                    "TP": 16470,
+                    "n_pred": 19554,
+                    "n_ref": 17380
+                },
+                "3": {
+                    "Dice": 0.8091954022988506,
+                    "FN": 29,
+                    "FP": 54,
+                    "IoU": 0.6795366795366795,
+                    "TN": 8927741,
+                    "TP": 176,
+                    "n_pred": 230,
+                    "n_ref": 205
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000043.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000043.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9120349313199309,
+                    "FN": 1354,
+                    "FP": 1547,
+                    "IoU": 0.8382943143812709,
+                    "TN": 8910060,
+                    "TP": 15039,
+                    "n_pred": 16586,
+                    "n_ref": 16393
+                },
+                "2": {
+                    "Dice": 0.8919209084202762,
+                    "FN": 12576,
+                    "FP": 20242,
+                    "IoU": 0.8049253119185891,
+                    "TN": 8759767,
+                    "TP": 135415,
+                    "n_pred": 155657,
+                    "n_ref": 147991
+                },
+                "3": {
+                    "Dice": 0.776390116435461,
+                    "FN": 1991,
+                    "FP": 3828,
+                    "IoU": 0.6345078826706865,
+                    "TN": 8912079,
+                    "TP": 10102,
+                    "n_pred": 13930,
+                    "n_ref": 12093
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000071.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000071.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 335,
+                    "IoU": 0.0,
+                    "TN": 8927665,
+                    "TP": 0,
+                    "n_pred": 335,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.7728282080613686,
+                    "FN": 17206,
+                    "FP": 9802,
+                    "IoU": 0.629763667269836,
+                    "TN": 8855052,
+                    "TP": 45940,
+                    "n_pred": 55742,
+                    "n_ref": 63146
+                },
+                "3": {
+                    "Dice": 0.8480069681619181,
+                    "FN": 1352,
+                    "FP": 5279,
+                    "IoU": 0.7361216124796053,
+                    "TN": 8902871,
+                    "TP": 18498,
+                    "n_pred": 23777,
+                    "n_ref": 19850
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000075.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000075.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1940,
+                    "IoU": 0.0,
+                    "TN": 8926060,
+                    "TP": 0,
+                    "n_pred": 1940,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.5263157894736842,
+                    "FN": 75,
+                    "FP": 150,
+                    "IoU": 0.35714285714285715,
+                    "TN": 8927650,
+                    "TP": 125,
+                    "n_pred": 275,
+                    "n_ref": 200
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 5489,
+                    "IoU": 0.0,
+                    "TN": 8922511,
+                    "TP": 0,
+                    "n_pred": 5489,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000078.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000078.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8966397277754147,
+                    "FN": 82,
+                    "FP": 161,
+                    "IoU": 0.812644564379337,
+                    "TN": 8926703,
+                    "TP": 1054,
+                    "n_pred": 1215,
+                    "n_ref": 1136
+                },
+                "2": {
+                    "Dice": 0.8542104356810746,
+                    "FN": 1502,
+                    "FP": 2731,
+                    "IoU": 0.7455212215943249,
+                    "TN": 8911366,
+                    "TP": 12401,
+                    "n_pred": 15132,
+                    "n_ref": 13903
+                },
+                "3": {
+                    "Dice": 0.8415610406937959,
+                    "FN": 359,
+                    "FP": 591,
+                    "IoU": 0.7264612726749208,
+                    "TN": 8924527,
+                    "TP": 2523,
+                    "n_pred": 3114,
+                    "n_ref": 2882
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000087.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000087.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7714464621164684,
+                    "FN": 163,
+                    "FP": 202,
+                    "IoU": 0.6279306829765545,
+                    "TN": 8927019,
+                    "TP": 616,
+                    "n_pred": 818,
+                    "n_ref": 779
+                },
+                "2": {
+                    "Dice": 0.8023750686436024,
+                    "FN": 2607,
+                    "FP": 3151,
+                    "IoU": 0.6699719149423969,
+                    "TN": 8910553,
+                    "TP": 11689,
+                    "n_pred": 14840,
+                    "n_ref": 14296
+                },
+                "3": {
+                    "Dice": 0.9377357653219722,
+                    "FN": 450,
+                    "FP": 953,
+                    "IoU": 0.8827707219251337,
+                    "TN": 8916032,
+                    "TP": 10565,
+                    "n_pred": 11518,
+                    "n_ref": 11015
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000101.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000101.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.316505955757232,
+                    "FN": 849,
+                    "FP": 356,
+                    "IoU": 0.18800539083557952,
+                    "TN": 8926516,
+                    "TP": 279,
+                    "n_pred": 635,
+                    "n_ref": 1128
+                },
+                "3": {
+                    "Dice": 0.676056338028169,
+                    "FN": 78,
+                    "FP": 175,
+                    "IoU": 0.5106382978723404,
+                    "TN": 8927483,
+                    "TP": 264,
+                    "n_pred": 439,
+                    "n_ref": 342
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000102.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000102.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 44,
+                    "IoU": 0.0,
+                    "TN": 8927956,
+                    "TP": 0,
+                    "n_pred": 44,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.890703341285738,
+                    "FN": 4378,
+                    "FP": 21323,
+                    "IoU": 0.8029442208165612,
+                    "TN": 8797575,
+                    "TP": 104724,
+                    "n_pred": 126047,
+                    "n_ref": 109102
+                },
+                "3": {
+                    "Dice": 0.8888185987664083,
+                    "FN": 306,
+                    "FP": 1100,
+                    "IoU": 0.7998861372046684,
+                    "TN": 8920974,
+                    "TP": 5620,
+                    "n_pred": 6720,
+                    "n_ref": 5926
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000107.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000107.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8927477017364658,
+                    "FN": 15,
+                    "FP": 90,
+                    "IoU": 0.8062730627306273,
+                    "TN": 8927458,
+                    "TP": 437,
+                    "n_pred": 527,
+                    "n_ref": 452
+                },
+                "2": {
+                    "Dice": 0.8334538259579164,
+                    "FN": 2585,
+                    "FP": 1792,
+                    "IoU": 0.7144627829604019,
+                    "TN": 8912671,
+                    "TP": 10952,
+                    "n_pred": 12744,
+                    "n_ref": 13537
+                },
+                "3": {
+                    "Dice": 0.8380363355237727,
+                    "FN": 251,
+                    "FP": 168,
+                    "IoU": 0.7212242182302062,
+                    "TN": 8926497,
+                    "TP": 1084,
+                    "n_pred": 1252,
+                    "n_ref": 1335
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000114.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000114.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4189655172413793,
+                    "FN": 1300,
+                    "FP": 48,
+                    "IoU": 0.2649945474372955,
+                    "TN": 8926166,
+                    "TP": 486,
+                    "n_pred": 534,
+                    "n_ref": 1786
+                },
+                "2": {
+                    "Dice": 0.9017036555825817,
+                    "FN": 10660,
+                    "FP": 8859,
+                    "IoU": 0.8210021458833887,
+                    "TN": 8818954,
+                    "TP": 89527,
+                    "n_pred": 98386,
+                    "n_ref": 100187
+                },
+                "3": {
+                    "Dice": 0.7562250996015937,
+                    "FN": 149,
+                    "FP": 1809,
+                    "IoU": 0.608008008008008,
+                    "TN": 8923005,
+                    "TP": 3037,
+                    "n_pred": 4846,
+                    "n_ref": 3186
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000119.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000119.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 592,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 8927408,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 592
+                },
+                "2": {
+                    "Dice": 0.8869641167479438,
+                    "FN": 17664,
+                    "FP": 5631,
+                    "IoU": 0.7968872613131049,
+                    "TN": 8813310,
+                    "TP": 91395,
+                    "n_pred": 97026,
+                    "n_ref": 109059
+                },
+                "3": {
+                    "Dice": 0.9005856515373353,
+                    "FN": 277,
+                    "FP": 1081,
+                    "IoU": 0.8191503529098415,
+                    "TN": 8920491,
+                    "TP": 6151,
+                    "n_pred": 7232,
+                    "n_ref": 6428
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000132.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000132.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0365156181258249,
+                    "FN": 4380,
+                    "FP": 0,
+                    "IoU": 0.018597356038539098,
+                    "TN": 8923537,
+                    "TP": 83,
+                    "n_pred": 83,
+                    "n_ref": 4463
+                },
+                "2": {
+                    "Dice": 0.9242446596455982,
+                    "FN": 9190,
+                    "FP": 14943,
+                    "IoU": 0.8591587928730252,
+                    "TN": 8756651,
+                    "TP": 147216,
+                    "n_pred": 162159,
+                    "n_ref": 156406
+                },
+                "3": {
+                    "Dice": 0.5835343787696019,
+                    "FN": 341,
+                    "FP": 5183,
+                    "IoU": 0.4119650840962316,
+                    "TN": 8918606,
+                    "TP": 3870,
+                    "n_pred": 9053,
+                    "n_ref": 4211
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000133.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000133.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8777009742557013,
+                    "FN": 999,
+                    "FP": 1248,
+                    "IoU": 0.7820562560620756,
+                    "TN": 8917690,
+                    "TP": 8063,
+                    "n_pred": 9311,
+                    "n_ref": 9062
+                },
+                "2": {
+                    "Dice": 0.8679889170171626,
+                    "FN": 14452,
+                    "FP": 18661,
+                    "IoU": 0.7667671545494246,
+                    "TN": 8786026,
+                    "TP": 108861,
+                    "n_pred": 127522,
+                    "n_ref": 123313
+                },
+                "3": {
+                    "Dice": 0.8182307071793493,
+                    "FN": 3168,
+                    "FP": 2240,
+                    "IoU": 0.6923777019340159,
+                    "TN": 8910420,
+                    "TP": 12172,
+                    "n_pred": 14412,
+                    "n_ref": 15340
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000137.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000137.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.02129185283247835,
+                    "FN": 54,
+                    "FP": 17689,
+                    "IoU": 0.010760481712756467,
+                    "TN": 8910064,
+                    "TP": 193,
+                    "n_pred": 17882,
+                    "n_ref": 247
+                },
+                "2": {
+                    "Dice": 0.7503155596493024,
+                    "FN": 18454,
+                    "FP": 10822,
+                    "IoU": 0.6004040183446168,
+                    "TN": 8854736,
+                    "TP": 43988,
+                    "n_pred": 54810,
+                    "n_ref": 62442
+                },
+                "3": {
+                    "Dice": 0.2729442632509156,
+                    "FN": 38504,
+                    "FP": 1399,
+                    "IoU": 0.1580402169096702,
+                    "TN": 8880607,
+                    "TP": 7490,
+                    "n_pred": 8889,
+                    "n_ref": 45994
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2076,
+                    "IoU": 0.0,
+                    "TN": 8925924,
+                    "TP": 0,
+                    "n_pred": 2076,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000139.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000139.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.2790102389078498,
+                    "FN": 1250,
+                    "FP": 7200,
+                    "IoU": 0.16212196331184928,
+                    "TN": 8917915,
+                    "TP": 1635,
+                    "n_pred": 8835,
+                    "n_ref": 2885
+                },
+                "2": {
+                    "Dice": 0.5402089652847994,
+                    "FN": 4677,
+                    "FP": 2144,
+                    "IoU": 0.37005910602142594,
+                    "TN": 8917172,
+                    "TP": 4007,
+                    "n_pred": 6151,
+                    "n_ref": 8684
+                },
+                "3": {
+                    "Dice": 0.6681067069877956,
+                    "FN": 1527,
+                    "FP": 7692,
+                    "IoU": 0.5016217969510217,
+                    "TN": 8909502,
+                    "TP": 9279,
+                    "n_pred": 16971,
+                    "n_ref": 10806
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000151.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000151.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.2141707883916334,
+                    "FN": 344,
+                    "FP": 12843,
+                    "IoU": 0.11992792311799252,
+                    "TN": 8913016,
+                    "TP": 1797,
+                    "n_pred": 14640,
+                    "n_ref": 2141
+                },
+                "2": {
+                    "Dice": 0.8910550612162976,
+                    "FN": 19384,
+                    "FP": 13184,
+                    "IoU": 0.8035160539112178,
+                    "TN": 8762246,
+                    "TP": 133186,
+                    "n_pred": 146370,
+                    "n_ref": 152570
+                },
+                "3": {
+                    "Dice": 0.7245151208750804,
+                    "FN": 6803,
+                    "FP": 2188,
+                    "IoU": 0.5680311328913231,
+                    "TN": 8907186,
+                    "TP": 11823,
+                    "n_pred": 14011,
+                    "n_ref": 18626
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000188.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000188.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5805054151624549,
+                    "FN": 1053,
+                    "FP": 109,
+                    "IoU": 0.40895218718209564,
+                    "TN": 8926034,
+                    "TP": 804,
+                    "n_pred": 913,
+                    "n_ref": 1857
+                },
+                "2": {
+                    "Dice": 0.9195609429163653,
+                    "FN": 4532,
+                    "FP": 13591,
+                    "IoU": 0.8510993164190876,
+                    "TN": 8806288,
+                    "TP": 103589,
+                    "n_pred": 117180,
+                    "n_ref": 108121
+                },
+                "3": {
+                    "Dice": 0.82652589904322,
+                    "FN": 217,
+                    "FP": 2412,
+                    "IoU": 0.7043409806567701,
+                    "TN": 8919108,
+                    "TP": 6263,
+                    "n_pred": 8675,
+                    "n_ref": 6480
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000191.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000191.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5870393900889453,
+                    "FN": 230,
+                    "FP": 95,
+                    "IoU": 0.4154676258992806,
+                    "TN": 8927444,
+                    "TP": 231,
+                    "n_pred": 326,
+                    "n_ref": 461
+                },
+                "2": {
+                    "Dice": 0.8586748603015378,
+                    "FN": 2211,
+                    "FP": 7172,
+                    "IoU": 0.7523490287162162,
+                    "TN": 8890112,
+                    "TP": 28505,
+                    "n_pred": 35677,
+                    "n_ref": 30716
+                },
+                "3": {
+                    "Dice": 0.887469647074477,
+                    "FN": 736,
+                    "FP": 2647,
+                    "IoU": 0.7977037612868505,
+                    "TN": 8911277,
+                    "TP": 13340,
+                    "n_pred": 15987,
+                    "n_ref": 14076
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000194.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000194.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.73256288239293,
+                    "FN": 1371,
+                    "FP": 596,
+                    "IoU": 0.5779875563183866,
+                    "TN": 8923339,
+                    "TP": 2694,
+                    "n_pred": 3290,
+                    "n_ref": 4065
+                },
+                "2": {
+                    "Dice": 0.866226180216413,
+                    "FN": 4287,
+                    "FP": 13874,
+                    "IoU": 0.7640202702702703,
+                    "TN": 8851040,
+                    "TP": 58799,
+                    "n_pred": 72673,
+                    "n_ref": 63086
+                },
+                "3": {
+                    "Dice": 0.955806953814219,
+                    "FN": 1686,
+                    "FP": 2572,
+                    "IoU": 0.9153546437659033,
+                    "TN": 8877696,
+                    "TP": 46046,
+                    "n_pred": 48618,
+                    "n_ref": 47732
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000216.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000216.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4967741935483871,
+                    "FN": 1065,
+                    "FP": 27,
+                    "IoU": 0.33047210300429186,
+                    "TN": 8926369,
+                    "TP": 539,
+                    "n_pred": 566,
+                    "n_ref": 1604
+                },
+                "2": {
+                    "Dice": 0.8931072349364994,
+                    "FN": 9582,
+                    "FP": 17284,
+                    "IoU": 0.8068597637687723,
+                    "TN": 8788899,
+                    "TP": 112235,
+                    "n_pred": 129519,
+                    "n_ref": 121817
+                },
+                "3": {
+                    "Dice": 0.8270913067249863,
+                    "FN": 938,
+                    "FP": 1592,
+                    "IoU": 0.7051625684652139,
+                    "TN": 8919419,
+                    "TP": 6051,
+                    "n_pred": 7643,
+                    "n_ref": 6989
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000222.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000222.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 757,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 8927243,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 757
+                },
+                "2": {
+                    "Dice": 0.9175835400554502,
+                    "FN": 4540,
+                    "FP": 12404,
+                    "IoU": 0.8477176521340559,
+                    "TN": 8816733,
+                    "TP": 94323,
+                    "n_pred": 106727,
+                    "n_ref": 98863
+                },
+                "3": {
+                    "Dice": 0.8002945508100148,
+                    "FN": 48,
+                    "FP": 1308,
+                    "IoU": 0.6670758654554383,
+                    "TN": 8923927,
+                    "TP": 2717,
+                    "n_pred": 4025,
+                    "n_ref": 2765
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000223.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000223.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7157852644206738,
+                    "FN": 2255,
+                    "FP": 588,
+                    "IoU": 0.5573719445741865,
+                    "TN": 8921577,
+                    "TP": 3580,
+                    "n_pred": 4168,
+                    "n_ref": 5835
+                },
+                "2": {
+                    "Dice": 0.9198725106071987,
+                    "FN": 3020,
+                    "FP": 927,
+                    "IoU": 0.8516332744427321,
+                    "TN": 8901397,
+                    "TP": 22656,
+                    "n_pred": 23583,
+                    "n_ref": 25676
+                },
+                "3": {
+                    "Dice": 0.8139619761770464,
+                    "FN": 2942,
+                    "FP": 2665,
+                    "IoU": 0.686286577519163,
+                    "TN": 8910127,
+                    "TP": 12266,
+                    "n_pred": 14931,
+                    "n_ref": 15208
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000241.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000241.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9673877237289996,
+                    "FN": 501,
+                    "FP": 93,
+                    "IoU": 0.9368353891960868,
+                    "TN": 8918596,
+                    "TP": 8810,
+                    "n_pred": 8903,
+                    "n_ref": 9311
+                },
+                "3": {
+                    "Dice": 0.9740634005763689,
+                    "FN": 14,
+                    "FP": 4,
+                    "IoU": 0.949438202247191,
+                    "TN": 8927644,
+                    "TP": 338,
+                    "n_pred": 342,
+                    "n_ref": 352
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000263.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000263.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9595750702048458,
+                    "FN": 2794,
+                    "FP": 920,
+                    "IoU": 0.9222915010252333,
+                    "TN": 8880206,
+                    "TP": 44080,
+                    "n_pred": 45000,
+                    "n_ref": 46874
+                },
+                "3": {
+                    "Dice": 0.9318832283915284,
+                    "FN": 300,
+                    "FP": 57,
+                    "IoU": 0.872454448017149,
+                    "TN": 8925201,
+                    "TP": 2442,
+                    "n_pred": 2499,
+                    "n_ref": 2742
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000283.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000283.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7340032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9020321504397938,
+                    "FN": 293,
+                    "FP": 30,
+                    "IoU": 0.8215469613259668,
+                    "TN": 7338222,
+                    "TP": 1487,
+                    "n_pred": 1517,
+                    "n_ref": 1780
+                },
+                "3": {
+                    "Dice": 0.9314285714285714,
+                    "FN": 12,
+                    "FP": 12,
+                    "IoU": 0.8716577540106952,
+                    "TN": 7339845,
+                    "TP": 163,
+                    "n_pred": 175,
+                    "n_ref": 175
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7340032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000311.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000311.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40894464,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.5242463958060288,
+                    "FN": 305,
+                    "FP": 3325,
+                    "IoU": 0.3552397868561279,
+                    "TN": 40888834,
+                    "TP": 2000,
+                    "n_pred": 5325,
+                    "n_ref": 2305
+                },
+                "3": {
+                    "Dice": 0.8845408756296009,
+                    "FN": 168,
+                    "FP": 428,
+                    "IoU": 0.7929836748871136,
+                    "TN": 40891585,
+                    "TP": 2283,
+                    "n_pred": 2711,
+                    "n_ref": 2451
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40894464,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000317.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000317.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8305084745762712,
+                    "FN": 154,
+                    "FP": 66,
+                    "IoU": 0.7101449275362319,
+                    "TN": 8387849,
+                    "TP": 539,
+                    "n_pred": 605,
+                    "n_ref": 693
+                },
+                "3": {
+                    "Dice": 0.8903803131991052,
+                    "FN": 75,
+                    "FP": 23,
+                    "IoU": 0.8024193548387096,
+                    "TN": 8388112,
+                    "TP": 398,
+                    "n_pred": 421,
+                    "n_ref": 473
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000369.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000369.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5438972162740899,
+                    "FN": 14,
+                    "FP": 199,
+                    "IoU": 0.3735294117647059,
+                    "TN": 40894124,
+                    "TP": 127,
+                    "n_pred": 326,
+                    "n_ref": 141
+                },
+                "2": {
+                    "Dice": 0.958757537312369,
+                    "FN": 15771,
+                    "FP": 13161,
+                    "IoU": 0.9207822113186263,
+                    "TN": 40529243,
+                    "TP": 336289,
+                    "n_pred": 349450,
+                    "n_ref": 352060
+                },
+                "3": {
+                    "Dice": 0.8924655338249439,
+                    "FN": 4919,
+                    "FP": 112,
+                    "IoU": 0.805812876331635,
+                    "TN": 40868556,
+                    "TP": 20877,
+                    "n_pred": 20989,
+                    "n_ref": 25796
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40894464,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000370.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000370.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 55002112,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 186,
+                    "FP": 5628,
+                    "IoU": 0.0,
+                    "TN": 54996298,
+                    "TP": 0,
+                    "n_pred": 5628,
+                    "n_ref": 186
+                },
+                "3": {
+                    "Dice": 0.19321148825065274,
+                    "FN": 166,
+                    "FP": 452,
+                    "IoU": 0.1069364161849711,
+                    "TN": 55001420,
+                    "TP": 74,
+                    "n_pred": 526,
+                    "n_ref": 240
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 55002112,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000383.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000383.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8928571428571429,
+                    "FN": 5,
+                    "FP": 1,
+                    "IoU": 0.8064516129032258,
+                    "TN": 8388577,
+                    "TP": 25,
+                    "n_pred": 26,
+                    "n_ref": 30
+                },
+                "2": {
+                    "Dice": 0.7673531655225019,
+                    "FN": 4055,
+                    "FP": 520,
+                    "IoU": 0.6225247524752475,
+                    "TN": 8376488,
+                    "TP": 7545,
+                    "n_pred": 8065,
+                    "n_ref": 11600
+                },
+                "3": {
+                    "Dice": 0.7586558044806517,
+                    "FN": 839,
+                    "FP": 109,
+                    "IoU": 0.6111566858080394,
+                    "TN": 8386170,
+                    "TP": 1490,
+                    "n_pred": 1599,
+                    "n_ref": 2329
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000448.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000448.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7241379310344828,
+                    "FN": 4,
+                    "FP": 572,
+                    "IoU": 0.5675675675675675,
+                    "TN": 8387276,
+                    "TP": 756,
+                    "n_pred": 1328,
+                    "n_ref": 760
+                },
+                "2": {
+                    "Dice": 0.809281012004647,
+                    "FN": 809,
+                    "FP": 5101,
+                    "IoU": 0.6796574340072633,
+                    "TN": 8370159,
+                    "TP": 12539,
+                    "n_pred": 17640,
+                    "n_ref": 13348
+                },
+                "3": {
+                    "Dice": 0.761702729458351,
+                    "FN": 1215,
+                    "FP": 470,
+                    "IoU": 0.6151210598446779,
+                    "TN": 8384230,
+                    "TP": 2693,
+                    "n_pred": 3163,
+                    "n_ref": 3908
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000473.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000473.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7450980392156863,
+                    "FN": 5,
+                    "FP": 34,
+                    "IoU": 0.59375,
+                    "TN": 8388512,
+                    "TP": 57,
+                    "n_pred": 91,
+                    "n_ref": 62
+                },
+                "2": {
+                    "Dice": 0.8885945158299112,
+                    "FN": 497,
+                    "FP": 344,
+                    "IoU": 0.799523241954708,
+                    "TN": 8384413,
+                    "TP": 3354,
+                    "n_pred": 3698,
+                    "n_ref": 3851
+                },
+                "3": {
+                    "Dice": 0.9096967677440853,
+                    "FN": 232,
+                    "FP": 39,
+                    "IoU": 0.8343520782396088,
+                    "TN": 8386972,
+                    "TP": 1365,
+                    "n_pred": 1404,
+                    "n_ref": 1597
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8388608,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000498.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000498.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.4819277108433735,
+                    "FN": 70,
+                    "FP": 16,
+                    "IoU": 0.31746031746031744,
+                    "TN": 8927874,
+                    "TP": 40,
+                    "n_pred": 56,
+                    "n_ref": 110
+                },
+                "3": {
+                    "Dice": 0.6326034063260341,
+                    "FN": 144,
+                    "FP": 7,
+                    "IoU": 0.4626334519572954,
+                    "TN": 8927719,
+                    "TP": 130,
+                    "n_pred": 137,
+                    "n_ref": 274
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000617.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000617.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9512248951666299,
+                    "FN": 161,
+                    "FP": 60,
+                    "IoU": 0.906986531986532,
+                    "TN": 8925624,
+                    "TP": 2155,
+                    "n_pred": 2215,
+                    "n_ref": 2316
+                },
+                "2": {
+                    "Dice": 0.8261984612349575,
+                    "FN": 625,
+                    "FP": 1137,
+                    "IoU": 0.7038655462184874,
+                    "TN": 8922050,
+                    "TP": 4188,
+                    "n_pred": 5325,
+                    "n_ref": 4813
+                },
+                "3": {
+                    "Dice": 0.8461167390255668,
+                    "FN": 808,
+                    "FP": 149,
+                    "IoU": 0.7332775919732442,
+                    "TN": 8924412,
+                    "TP": 2631,
+                    "n_pred": 2780,
+                    "n_ref": 3439
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000621.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000621.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6422018348623854,
+                    "FN": 63,
+                    "FP": 15,
+                    "IoU": 0.47297297297297297,
+                    "TN": 8927852,
+                    "TP": 70,
+                    "n_pred": 85,
+                    "n_ref": 133
+                },
+                "2": {
+                    "Dice": 0.6094853683148335,
+                    "FN": 192,
+                    "FP": 195,
+                    "IoU": 0.43831640058055155,
+                    "TN": 8927311,
+                    "TP": 302,
+                    "n_pred": 497,
+                    "n_ref": 494
+                },
+                "3": {
+                    "Dice": 0.8321554770318021,
+                    "FN": 278,
+                    "FP": 102,
+                    "IoU": 0.7125567322239031,
+                    "TN": 8926678,
+                    "TP": 942,
+                    "n_pred": 1044,
+                    "n_ref": 1220
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000626.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000626.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.549266247379455,
+                    "FN": 189,
+                    "FP": 26,
+                    "IoU": 0.3786127167630058,
+                    "TN": 8927654,
+                    "TP": 131,
+                    "n_pred": 157,
+                    "n_ref": 320
+                },
+                "2": {
+                    "Dice": 0.9150639826386291,
+                    "FN": 3478,
+                    "FP": 1062,
+                    "IoU": 0.8434266795420058,
+                    "TN": 8899004,
+                    "TP": 24456,
+                    "n_pred": 25518,
+                    "n_ref": 27934
+                },
+                "3": {
+                    "Dice": 0.8646907216494846,
+                    "FN": 173,
+                    "FP": 247,
+                    "IoU": 0.7616345062429057,
+                    "TN": 8926238,
+                    "TP": 1342,
+                    "n_pred": 1589,
+                    "n_ref": 1515
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000628.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000628.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 184,
+                    "FP": 23,
+                    "IoU": 0.0,
+                    "TN": 8927793,
+                    "TP": 0,
+                    "n_pred": 23,
+                    "n_ref": 184
+                },
+                "2": {
+                    "Dice": 0.8830953547074558,
+                    "FN": 2555,
+                    "FP": 548,
+                    "IoU": 0.7906631586048708,
+                    "TN": 8913177,
+                    "TP": 11720,
+                    "n_pred": 12268,
+                    "n_ref": 14275
+                },
+                "3": {
+                    "Dice": 0.846686007587592,
+                    "FN": 513,
+                    "FP": 174,
+                    "IoU": 0.7341331269349846,
+                    "TN": 8925416,
+                    "TP": 1897,
+                    "n_pred": 2071,
+                    "n_ref": 2410
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8928000,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000635.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000635.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.3660613277761238,
+                    "FN": 10598,
+                    "FP": 49,
+                    "IoU": 0.22403614896873406,
+                    "TN": 65260135,
+                    "TP": 3074,
+                    "n_pred": 3123,
+                    "n_ref": 13672
+                },
+                "2": {
+                    "Dice": 0.8134322045845434,
+                    "FN": 737,
+                    "FP": 5880,
+                    "IoU": 0.6855336945157304,
+                    "TN": 65252814,
+                    "TP": 14425,
+                    "n_pred": 20305,
+                    "n_ref": 15162
+                },
+                "3": {
+                    "Dice": 0.22764609246655715,
+                    "FN": 978,
+                    "FP": 5604,
+                    "IoU": 0.1284427966101695,
+                    "TN": 65266304,
+                    "TP": 970,
+                    "n_pred": 6574,
+                    "n_ref": 1948
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65273856,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000654.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000654.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9550403484052773,
+                    "FN": 243,
+                    "FP": 108,
+                    "IoU": 0.9139494974258396,
+                    "TN": 24637457,
+                    "TP": 3728,
+                    "n_pred": 3836,
+                    "n_ref": 3971
+                },
+                "2": {
+                    "Dice": 0.9271217712177122,
+                    "FN": 701,
+                    "FP": 2933,
+                    "IoU": 0.8641444539982803,
+                    "TN": 24614787,
+                    "TP": 23115,
+                    "n_pred": 26048,
+                    "n_ref": 23816
+                },
+                "3": {
+                    "Dice": 0.8828837963901845,
+                    "FN": 410,
+                    "FP": 1900,
+                    "IoU": 0.7903240446582555,
+                    "TN": 24630519,
+                    "TP": 8707,
+                    "n_pred": 10607,
+                    "n_ref": 9117
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 24641536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000657.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000657.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8753180661577609,
+                    "FN": 93,
+                    "FP": 103,
+                    "IoU": 0.7782805429864253,
+                    "TN": 8256652,
+                    "TP": 688,
+                    "n_pred": 791,
+                    "n_ref": 781
+                },
+                "3": {
+                    "Dice": 0.9032258064516129,
+                    "FN": 50,
+                    "FP": 19,
+                    "IoU": 0.8235294117647058,
+                    "TN": 8257145,
+                    "TP": 322,
+                    "n_pred": 341,
+                    "n_ref": 372
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000736.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000736.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9354838709677419,
+                    "FN": 77,
+                    "FP": 75,
+                    "IoU": 0.8787878787878788,
+                    "TN": 8256282,
+                    "TP": 1102,
+                    "n_pred": 1177,
+                    "n_ref": 1179
+                },
+                "3": {
+                    "Dice": 0.923391215526047,
+                    "FN": 55,
+                    "FP": 20,
+                    "IoU": 0.857685009487666,
+                    "TN": 8257009,
+                    "TP": 452,
+                    "n_pred": 472,
+                    "n_ref": 507
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000737.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000737.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8986051502145923,
+                    "FN": 311,
+                    "FP": 67,
+                    "IoU": 0.8158792011690209,
+                    "TN": 8255483,
+                    "TP": 1675,
+                    "n_pred": 1742,
+                    "n_ref": 1986
+                },
+                "3": {
+                    "Dice": 0.9224318658280922,
+                    "FN": 66,
+                    "FP": 8,
+                    "IoU": 0.8560311284046692,
+                    "TN": 8257022,
+                    "TP": 440,
+                    "n_pred": 448,
+                    "n_ref": 506
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000738.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000738.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 89128960,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 7936,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 89121024,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 7936
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1906,
+                    "FP": 49,
+                    "IoU": 0.0,
+                    "TN": 89127005,
+                    "TP": 0,
+                    "n_pred": 49,
+                    "n_ref": 1906
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 11811,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 89117149,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 11811
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000760.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000760.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 89128960,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 4771,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 89124189,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 4771
+                },
+                "3": {
+                    "Dice": 0.18486424032351242,
+                    "FN": 1411,
+                    "FP": 0,
+                    "IoU": 0.10184595798854233,
+                    "TN": 89127389,
+                    "TP": 160,
+                    "n_pred": 160,
+                    "n_ref": 1571
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 7620,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 89121340,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 7620
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000761.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000761.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 10,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46137334,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 10
+                },
+                "2": {
+                    "Dice": 0.6319543509272468,
+                    "FN": 473,
+                    "FP": 43,
+                    "IoU": 0.4619395203336809,
+                    "TN": 46136385,
+                    "TP": 443,
+                    "n_pred": 486,
+                    "n_ref": 916
+                },
+                "3": {
+                    "Dice": 0.863448275862069,
+                    "FN": 227,
+                    "FP": 70,
+                    "IoU": 0.7597087378640777,
+                    "TN": 46136108,
+                    "TP": 939,
+                    "n_pred": 1009,
+                    "n_ref": 1166
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000770.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000770.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 53,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46137291,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 53
+                },
+                "3": {
+                    "Dice": 0.24,
+                    "FN": 165,
+                    "FP": 6,
+                    "IoU": 0.13636363636363635,
+                    "TN": 46137146,
+                    "TP": 27,
+                    "n_pred": 33,
+                    "n_ref": 192
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000771.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000771.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 17,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46137327,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 17
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 33,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46137311,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 33
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000772.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000772.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7164179104477612,
+                    "FN": 62,
+                    "FP": 14,
+                    "IoU": 0.5581395348837209,
+                    "TN": 97517396,
+                    "TP": 96,
+                    "n_pred": 110,
+                    "n_ref": 158
+                },
+                "2": {
+                    "Dice": 0.8524359943826294,
+                    "FN": 1082,
+                    "FP": 1650,
+                    "IoU": 0.7428221782923844,
+                    "TN": 97506945,
+                    "TP": 7891,
+                    "n_pred": 9541,
+                    "n_ref": 8973
+                },
+                "3": {
+                    "Dice": 0.7477341389728097,
+                    "FN": 69,
+                    "FP": 265,
+                    "IoU": 0.5971049457177322,
+                    "TN": 97516739,
+                    "TP": 495,
+                    "n_pred": 760,
+                    "n_ref": 564
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000791.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000791.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 136,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 97517432,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 136
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 163,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 97517405,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 163
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000792.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000792.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000793.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000793.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8133414932680538,
+                    "FN": 571,
+                    "FP": 39,
+                    "IoU": 0.6854048478597216,
+                    "TN": 94369901,
+                    "TP": 1329,
+                    "n_pred": 1368,
+                    "n_ref": 1900
+                },
+                "2": {
+                    "Dice": 0.8911781083446026,
+                    "FN": 768,
+                    "FP": 1968,
+                    "IoU": 0.8037161919793385,
+                    "TN": 94357901,
+                    "TP": 11203,
+                    "n_pred": 13171,
+                    "n_ref": 11971
+                },
+                "3": {
+                    "Dice": 0.9019668337832626,
+                    "FN": 1447,
+                    "FP": 1095,
+                    "IoU": 0.8214386063500984,
+                    "TN": 94357604,
+                    "TP": 11694,
+                    "n_pred": 12789,
+                    "n_ref": 13141
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 94371840,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000796.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000796.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9112832075286736,
+                    "FN": 1597,
+                    "FP": 213,
+                    "IoU": 0.8370250315144967,
+                    "TN": 94360734,
+                    "TP": 9296,
+                    "n_pred": 9509,
+                    "n_ref": 10893
+                },
+                "2": {
+                    "Dice": 0.8879854858217981,
+                    "FN": 1543,
+                    "FP": 5125,
+                    "IoU": 0.7985376759925071,
+                    "TN": 94338742,
+                    "TP": 26430,
+                    "n_pred": 31555,
+                    "n_ref": 27973
+                },
+                "3": {
+                    "Dice": 0.8951888601684316,
+                    "FN": 1789,
+                    "FP": 3239,
+                    "IoU": 0.8102641509433962,
+                    "TN": 94345340,
+                    "TP": 21472,
+                    "n_pred": 24711,
+                    "n_ref": 23261
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 94371840,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000797.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000797.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9036312260132427,
+                    "FN": 2136,
+                    "FP": 149,
+                    "IoU": 0.8242037236497923,
+                    "TN": 94358842,
+                    "TP": 10713,
+                    "n_pred": 10862,
+                    "n_ref": 12849
+                },
+                "2": {
+                    "Dice": 0.9271144728243489,
+                    "FN": 2857,
+                    "FP": 7627,
+                    "IoU": 0.864131773000013,
+                    "TN": 94294677,
+                    "TP": 66679,
+                    "n_pred": 74306,
+                    "n_ref": 69536
+                },
+                "3": {
+                    "Dice": 0.9040841676768584,
+                    "FN": 1726,
+                    "FP": 4683,
+                    "IoU": 0.824957666466379,
+                    "TN": 94335226,
+                    "TP": 30205,
+                    "n_pred": 34888,
+                    "n_ref": 31931
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 94371840,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000798.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000798.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.6515580736543909,
+                    "FN": 109,
+                    "FP": 14,
+                    "IoU": 0.4831932773109244,
+                    "TN": 8257298,
+                    "TP": 115,
+                    "n_pred": 129,
+                    "n_ref": 224
+                },
+                "3": {
+                    "Dice": 0.9020618556701031,
+                    "FN": 31,
+                    "FP": 7,
+                    "IoU": 0.8215962441314554,
+                    "TN": 8257323,
+                    "TP": 175,
+                    "n_pred": 182,
+                    "n_ref": 206
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000827.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000827.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 8257536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 23,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 8257513,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 23
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000828.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000828.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7691620111731844,
+                    "FN": 1564,
+                    "FP": 502,
+                    "IoU": 0.6249092229484386,
+                    "TN": 94366332,
+                    "TP": 3442,
+                    "n_pred": 3944,
+                    "n_ref": 5006
+                },
+                "2": {
+                    "Dice": 0.9838540196014548,
+                    "FN": 7172,
+                    "FP": 26279,
+                    "IoU": 0.9682211400527067,
+                    "TN": 93319222,
+                    "TP": 1019167,
+                    "n_pred": 1045446,
+                    "n_ref": 1026339
+                },
+                "3": {
+                    "Dice": 0.8274364275512134,
+                    "FN": 24921,
+                    "FP": 1538,
+                    "IoU": 0.7056644492402162,
+                    "TN": 94281946,
+                    "TP": 63435,
+                    "n_pred": 64973,
+                    "n_ref": 88356
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 94371840,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000858.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000858.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 677,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 94371163,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 677
+                },
+                "2": {
+                    "Dice": 0.6603538802391575,
+                    "FN": 7013,
+                    "FP": 4178,
+                    "IoU": 0.49293158133212506,
+                    "TN": 94349770,
+                    "TP": 10879,
+                    "n_pred": 15057,
+                    "n_ref": 17892
+                },
+                "3": {
+                    "Dice": 0.5308555399719496,
+                    "FN": 2500,
+                    "FP": 176,
+                    "IoU": 0.3613365155131265,
+                    "TN": 94367650,
+                    "TP": 1514,
+                    "n_pred": 1690,
+                    "n_ref": 4014
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 94371840,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000859.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000859.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9690346083788707,
+                    "FN": 14,
+                    "FP": 3,
+                    "IoU": 0.9399293286219081,
+                    "TN": 15466213,
+                    "TP": 266,
+                    "n_pred": 269,
+                    "n_ref": 280
+                },
+                "2": {
+                    "Dice": 0.914844014920312,
+                    "FN": 1222,
+                    "FP": 2796,
+                    "IoU": 0.8430530057419632,
+                    "TN": 15440895,
+                    "TP": 21583,
+                    "n_pred": 24379,
+                    "n_ref": 22805
+                },
+                "3": {
+                    "Dice": 0.8588778236580034,
+                    "FN": 379,
+                    "FP": 202,
+                    "IoU": 0.7526607066836952,
+                    "TN": 15464147,
+                    "TP": 1768,
+                    "n_pred": 1970,
+                    "n_ref": 2147
+                },
+                "4": {
+                    "Dice": 0.8287501818710897,
+                    "FN": 496,
+                    "FP": 1858,
+                    "IoU": 0.7075776397515527,
+                    "TN": 15458446,
+                    "TP": 5696,
+                    "n_pred": 7554,
+                    "n_ref": 6192
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000913.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000913.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 15466496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.295376121463078,
+                    "FN": 845,
+                    "FP": 176,
+                    "IoU": 0.17327935222672064,
+                    "TN": 15465261,
+                    "TP": 214,
+                    "n_pred": 390,
+                    "n_ref": 1059
+                },
+                "3": {
+                    "Dice": 0.4230769230769231,
+                    "FN": 55,
+                    "FP": 5,
+                    "IoU": 0.2682926829268293,
+                    "TN": 15466414,
+                    "TP": 22,
+                    "n_pred": 27,
+                    "n_ref": 77
+                },
+                "4": {
+                    "Dice": 0.5909764880321966,
+                    "FN": 680,
+                    "FP": 1251,
+                    "IoU": 0.4194227300060132,
+                    "TN": 15463170,
+                    "TP": 1395,
+                    "n_pred": 2646,
+                    "n_ref": 2075
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000914.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000914.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 15466496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.38682668155177224,
+                    "FN": 2096,
+                    "FP": 101,
+                    "IoU": 0.2397923875432526,
+                    "TN": 15463606,
+                    "TP": 693,
+                    "n_pred": 794,
+                    "n_ref": 2789
+                },
+                "3": {
+                    "Dice": 0.7148936170212766,
+                    "FN": 60,
+                    "FP": 7,
+                    "IoU": 0.5562913907284768,
+                    "TN": 15466345,
+                    "TP": 84,
+                    "n_pred": 91,
+                    "n_ref": 144
+                },
+                "4": {
+                    "Dice": 0.5477941176470589,
+                    "FN": 548,
+                    "FP": 682,
+                    "IoU": 0.37721518987341773,
+                    "TN": 15464521,
+                    "TP": 745,
+                    "n_pred": 1427,
+                    "n_ref": 1293
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000915.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000915.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 3449,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 16773767,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 3449
+                },
+                "2": {
+                    "Dice": 0.8519145009995387,
+                    "FN": 476,
+                    "FP": 487,
+                    "IoU": 0.7420305384409323,
+                    "TN": 16773483,
+                    "TP": 2770,
+                    "n_pred": 3257,
+                    "n_ref": 3246
+                },
+                "3": {
+                    "Dice": 0.6740146960587843,
+                    "FN": 332,
+                    "FP": 644,
+                    "IoU": 0.5083123425692695,
+                    "TN": 16775231,
+                    "TP": 1009,
+                    "n_pred": 1653,
+                    "n_ref": 1341
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2824,
+                    "IoU": 0.0,
+                    "TN": 16774392,
+                    "TP": 0,
+                    "n_pred": 2824,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000927.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000927.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 202,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 16777014,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 202
+                },
+                "2": {
+                    "Dice": 0.8864097363083164,
+                    "FN": 848,
+                    "FP": 48,
+                    "IoU": 0.7959927140255009,
+                    "TN": 16772824,
+                    "TP": 3496,
+                    "n_pred": 3544,
+                    "n_ref": 4344
+                },
+                "3": {
+                    "Dice": 0.8514311676510677,
+                    "FN": 105,
+                    "FP": 222,
+                    "IoU": 0.7412974683544303,
+                    "TN": 16775952,
+                    "TP": 937,
+                    "n_pred": 1159,
+                    "n_ref": 1042
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 16777216,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000928.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000928.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9325208942319568,
+                    "FN": 1093,
+                    "FP": 546,
+                    "IoU": 0.8735729713051528,
+                    "TN": 24628572,
+                    "TP": 11325,
+                    "n_pred": 11871,
+                    "n_ref": 12418
+                },
+                "2": {
+                    "Dice": 0.9276946834965816,
+                    "FN": 4790,
+                    "FP": 5183,
+                    "IoU": 0.865140430825817,
+                    "TN": 24567585,
+                    "TP": 63978,
+                    "n_pred": 69161,
+                    "n_ref": 68768
+                },
+                "3": {
+                    "Dice": 0.8696066421668708,
+                    "FN": 1515,
+                    "FP": 2317,
+                    "IoU": 0.7692956050571944,
+                    "TN": 24624926,
+                    "TP": 12778,
+                    "n_pred": 15095,
+                    "n_ref": 14293
+                },
+                "4": {
+                    "Dice": 0.7269467213114754,
+                    "FN": 624,
+                    "FP": 5772,
+                    "IoU": 0.5710261569416499,
+                    "TN": 24626626,
+                    "TP": 8514,
+                    "n_pred": 14286,
+                    "n_ref": 9138
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000929.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000929.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7182027649769586,
+                    "FN": 4514,
+                    "FP": 378,
+                    "IoU": 0.5603091856911738,
+                    "TN": 24630410,
+                    "TP": 6234,
+                    "n_pred": 6612,
+                    "n_ref": 10748
+                },
+                "2": {
+                    "Dice": 0.9052141035786512,
+                    "FN": 1829,
+                    "FP": 4639,
+                    "IoU": 0.8268412175728858,
+                    "TN": 24604183,
+                    "TP": 30885,
+                    "n_pred": 35524,
+                    "n_ref": 32714
+                },
+                "3": {
+                    "Dice": 0.6670044882003764,
+                    "FN": 2259,
+                    "FP": 2341,
+                    "IoU": 0.5003801455414358,
+                    "TN": 24632329,
+                    "TP": 4607,
+                    "n_pred": 6948,
+                    "n_ref": 6866
+                },
+                "4": {
+                    "Dice": 0.8732409850483729,
+                    "FN": 1312,
+                    "FP": 994,
+                    "IoU": 0.7750024392623671,
+                    "TN": 24631287,
+                    "TP": 7943,
+                    "n_pred": 8937,
+                    "n_ref": 9255
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000930.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000930.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.6646715120421832,
+                    "FN": 2130,
+                    "FP": 223,
+                    "IoU": 0.4977588046958378,
+                    "TN": 97512883,
+                    "TP": 2332,
+                    "n_pred": 2555,
+                    "n_ref": 4462
+                },
+                "3": {
+                    "Dice": 0.5187813860060261,
+                    "FN": 7001,
+                    "FP": 186,
+                    "IoU": 0.3502395805080915,
+                    "TN": 97506507,
+                    "TP": 3874,
+                    "n_pred": 4060,
+                    "n_ref": 10875
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000935.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000935.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000936.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000936.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 97517568,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000937.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000937.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 6204,
+                    "IoU": 0.0,
+                    "TN": 46131140,
+                    "TP": 0,
+                    "n_pred": 6204,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8833798724148108,
+                    "FN": 1944,
+                    "FP": 3193,
+                    "IoU": 0.7911194242264059,
+                    "TN": 46112751,
+                    "TP": 19456,
+                    "n_pred": 22649,
+                    "n_ref": 21400
+                },
+                "3": {
+                    "Dice": 0.919343778023949,
+                    "FN": 511,
+                    "FP": 1018,
+                    "IoU": 0.8507273259787171,
+                    "TN": 46127101,
+                    "TP": 8714,
+                    "n_pred": 9732,
+                    "n_ref": 9225
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 6960,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46130384,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 6960
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000945.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000945.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1106,
+                    "IoU": 0.0,
+                    "TN": 46136238,
+                    "TP": 0,
+                    "n_pred": 1106,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.9114029892345747,
+                    "FN": 1447,
+                    "FP": 3639,
+                    "IoU": 0.8372271650771299,
+                    "TN": 46106098,
+                    "TP": 26160,
+                    "n_pred": 29799,
+                    "n_ref": 27607
+                },
+                "3": {
+                    "Dice": 0.9200369060433646,
+                    "FN": 375,
+                    "FP": 665,
+                    "IoU": 0.8519151359817742,
+                    "TN": 46130321,
+                    "TP": 5983,
+                    "n_pred": 6648,
+                    "n_ref": 6358
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1207,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46136137,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1207
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000946.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000946.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 763,
+                    "IoU": 0.0,
+                    "TN": 46136581,
+                    "TP": 0,
+                    "n_pred": 763,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8835145148813159,
+                    "FN": 4540,
+                    "FP": 1182,
+                    "IoU": 0.7913354241120268,
+                    "TN": 46109922,
+                    "TP": 21700,
+                    "n_pred": 22882,
+                    "n_ref": 26240
+                },
+                "3": {
+                    "Dice": 0.8949542837792076,
+                    "FN": 1085,
+                    "FP": 466,
+                    "IoU": 0.8098798725177739,
+                    "TN": 46129186,
+                    "TP": 6607,
+                    "n_pred": 7073,
+                    "n_ref": 7692
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 873,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46136471,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 873
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000947.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000947.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8959950325985718,
+                    "FN": 33,
+                    "FP": 637,
+                    "IoU": 0.811586051743532,
+                    "TN": 46133788,
+                    "TP": 2886,
+                    "n_pred": 3523,
+                    "n_ref": 2919
+                },
+                "2": {
+                    "Dice": 0.9216509291458029,
+                    "FN": 9948,
+                    "FP": 2241,
+                    "IoU": 0.8546869970553522,
+                    "TN": 46053463,
+                    "TP": 71692,
+                    "n_pred": 73933,
+                    "n_ref": 81640
+                },
+                "3": {
+                    "Dice": 0.9409184980782497,
+                    "FN": 1499,
+                    "FP": 899,
+                    "IoU": 0.8884287907690877,
+                    "TN": 46115851,
+                    "TP": 19095,
+                    "n_pred": 19994,
+                    "n_ref": 20594
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 445,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 46136899,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 445
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_000948.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_000948.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.48267898383371827,
+                    "FN": 440,
+                    "FP": 8,
+                    "IoU": 0.3181126331811263,
+                    "TN": 46136687,
+                    "TP": 209,
+                    "n_pred": 217,
+                    "n_ref": 649
+                },
+                "3": {
+                    "Dice": 0.6973478939157566,
+                    "FN": 221,
+                    "FP": 167,
+                    "IoU": 0.5353293413173653,
+                    "TN": 46136509,
+                    "TP": 447,
+                    "n_pred": 614,
+                    "n_ref": 668
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001006.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001006.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001007.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001007.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001008.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001008.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 12,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 21757940,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 12
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 20,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 21757932,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 20
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001087.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001087.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 21757952,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001088.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001088.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 87031808,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.8597155522718877,
+                    "FN": 2829,
+                    "FP": 3247,
+                    "IoU": 0.7539483275289544,
+                    "TN": 87007114,
+                    "TP": 18618,
+                    "n_pred": 21865,
+                    "n_ref": 21447
+                },
+                "3": {
+                    "Dice": 0.8024517003728392,
+                    "FN": 2420,
+                    "FP": 4574,
+                    "IoU": 0.6700787773008161,
+                    "TN": 87010609,
+                    "TP": 14205,
+                    "n_pred": 18779,
+                    "n_ref": 16625
+                },
+                "4": {
+                    "Dice": 0.7814452594403695,
+                    "FN": 3088,
+                    "FP": 130,
+                    "IoU": 0.641288596589009,
+                    "TN": 87022837,
+                    "TP": 5753,
+                    "n_pred": 5883,
+                    "n_ref": 8841
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001126.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001126.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9374595311263451,
+                    "FN": 5569,
+                    "FP": 516,
+                    "IoU": 0.882281248186338,
+                    "TN": 46085653,
+                    "TP": 45606,
+                    "n_pred": 46122,
+                    "n_ref": 51175
+                },
+                "2": {
+                    "Dice": 0.8591572456320657,
+                    "FN": 10816,
+                    "FP": 2888,
+                    "IoU": 0.7530899787395049,
+                    "TN": 46081842,
+                    "TP": 41798,
+                    "n_pred": 44686,
+                    "n_ref": 52614
+                },
+                "3": {
+                    "Dice": 0.8556442337852438,
+                    "FN": 2971,
+                    "FP": 5313,
+                    "IoU": 0.7477082381604995,
+                    "TN": 46104509,
+                    "TP": 24551,
+                    "n_pred": 29864,
+                    "n_ref": 27522
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001131.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001131.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8206686930091185,
+                    "FN": 1405,
+                    "FP": 11,
+                    "IoU": 0.6958762886597938,
+                    "TN": 46132688,
+                    "TP": 3240,
+                    "n_pred": 3251,
+                    "n_ref": 4645
+                },
+                "2": {
+                    "Dice": 0.907423160853645,
+                    "FN": 1162,
+                    "FP": 1341,
+                    "IoU": 0.8305348679756263,
+                    "TN": 46122574,
+                    "TP": 12267,
+                    "n_pred": 13608,
+                    "n_ref": 13429
+                },
+                "3": {
+                    "Dice": 0.7909732508495252,
+                    "FN": 1014,
+                    "FP": 1385,
+                    "IoU": 0.6542231190544826,
+                    "TN": 46130406,
+                    "TP": 4539,
+                    "n_pred": 5924,
+                    "n_ref": 5553
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001132.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001132.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.07678410117434507,
+                    "FN": 2044,
+                    "FP": 0,
+                    "IoU": 0.03992484734617191,
+                    "TN": 46135215,
+                    "TP": 85,
+                    "n_pred": 85,
+                    "n_ref": 2129
+                },
+                "2": {
+                    "Dice": 0.11576470588235294,
+                    "FN": 1623,
+                    "FP": 256,
+                    "IoU": 0.06143856143856144,
+                    "TN": 46135342,
+                    "TP": 123,
+                    "n_pred": 379,
+                    "n_ref": 1746
+                },
+                "3": {
+                    "Dice": 0.5461677730838865,
+                    "FN": 1220,
+                    "FP": 284,
+                    "IoU": 0.3756745537567455,
+                    "TN": 46134935,
+                    "TP": 905,
+                    "n_pred": 1189,
+                    "n_ref": 2125
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 46137344,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001133.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001133.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 20447232,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 20447232,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.3464788732394366,
+                    "FN": 1390,
+                    "FP": 2,
+                    "IoU": 0.20954003407155025,
+                    "TN": 20445471,
+                    "TP": 369,
+                    "n_pred": 371,
+                    "n_ref": 1759
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 20447232,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001144.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001144.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9562409892988405,
+                    "FN": 1908,
+                    "FP": 247,
+                    "IoU": 0.9161511225244154,
+                    "TN": 40868763,
+                    "TP": 23546,
+                    "n_pred": 23793,
+                    "n_ref": 25454
+                },
+                "2": {
+                    "Dice": 0.9581985107793068,
+                    "FN": 27622,
+                    "FP": 15268,
+                    "IoU": 0.9197515272281628,
+                    "TN": 40359999,
+                    "TP": 491575,
+                    "n_pred": 506843,
+                    "n_ref": 519197
+                },
+                "3": {
+                    "Dice": 0.9316327571261027,
+                    "FN": 6664,
+                    "FP": 4062,
+                    "IoU": 0.872015464102044,
+                    "TN": 40810657,
+                    "TP": 73081,
+                    "n_pred": 77143,
+                    "n_ref": 79745
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40894464,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001160.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001160.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7746478873239436,
+                    "FN": 216,
+                    "FP": 8,
+                    "IoU": 0.632183908045977,
+                    "TN": 40893855,
+                    "TP": 385,
+                    "n_pred": 393,
+                    "n_ref": 601
+                },
+                "2": {
+                    "Dice": 0.8694791421164271,
+                    "FN": 1899,
+                    "FP": 870,
+                    "IoU": 0.7690960640426951,
+                    "TN": 40882472,
+                    "TP": 9223,
+                    "n_pred": 10093,
+                    "n_ref": 11122
+                },
+                "3": {
+                    "Dice": 0.8270106221547799,
+                    "FN": 1231,
+                    "FP": 365,
+                    "IoU": 0.705045278137128,
+                    "TN": 40889053,
+                    "TP": 3815,
+                    "n_pred": 4180,
+                    "n_ref": 5046
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40894464,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001161.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001161.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 19922944,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.856123158818014,
+                    "FN": 11953,
+                    "FP": 2318,
+                    "IoU": 0.7484399788471708,
+                    "TN": 19866214,
+                    "TP": 42459,
+                    "n_pred": 44777,
+                    "n_ref": 54412
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 176,
+                    "IoU": 0.0,
+                    "TN": 19922768,
+                    "TP": 0,
+                    "n_pred": 176,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.847073387751944,
+                    "FN": 1568,
+                    "FP": 2385,
+                    "IoU": 0.7347157908865177,
+                    "TN": 19908043,
+                    "TP": 10948,
+                    "n_pred": 13333,
+                    "n_ref": 12516
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001164.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001164.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 3211,
+                    "IoU": 0.0,
+                    "TN": 19919733,
+                    "TP": 0,
+                    "n_pred": 3211,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.5492813141683778,
+                    "FN": 339,
+                    "FP": 539,
+                    "IoU": 0.3786270346779901,
+                    "TN": 19921531,
+                    "TP": 535,
+                    "n_pred": 1074,
+                    "n_ref": 874
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 68,
+                    "FP": 5812,
+                    "IoU": 0.0,
+                    "TN": 19917064,
+                    "TP": 0,
+                    "n_pred": 5812,
+                    "n_ref": 68
+                },
+                "4": {
+                    "Dice": 0.23688836800468796,
+                    "FN": 10418,
+                    "FP": 0,
+                    "IoU": 0.1343581221437474,
+                    "TN": 19910909,
+                    "TP": 1617,
+                    "n_pred": 1617,
+                    "n_ref": 12035
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001165.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001165.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9174311926605505,
+                    "FN": 1,
+                    "FP": 8,
+                    "IoU": 0.847457627118644,
+                    "TN": 9437125,
+                    "TP": 50,
+                    "n_pred": 58,
+                    "n_ref": 51
+                },
+                "2": {
+                    "Dice": 0.9816908276809859,
+                    "FN": 584,
+                    "FP": 242,
+                    "IoU": 0.9640400522420548,
+                    "TN": 9414214,
+                    "TP": 22144,
+                    "n_pred": 22386,
+                    "n_ref": 22728
+                },
+                "3": {
+                    "Dice": 0.8795180722891566,
+                    "FN": 172,
+                    "FP": 8,
+                    "IoU": 0.7849462365591398,
+                    "TN": 9436347,
+                    "TP": 657,
+                    "n_pred": 665,
+                    "n_ref": 829
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001185.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001185.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 30,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 9437154,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 30
+                },
+                "3": {
+                    "Dice": 0.7450980392156863,
+                    "FN": 13,
+                    "FP": 0,
+                    "IoU": 0.59375,
+                    "TN": 9437152,
+                    "TP": 19,
+                    "n_pred": 19,
+                    "n_ref": 32
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001186.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001186.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 9437184,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001187.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001187.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 31,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 48234465,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 31
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001195.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001195.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 9,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 48234487,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 9
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 48234496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001196.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001196.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001204.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001204.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 133,
+                    "IoU": 0.0,
+                    "TN": 51904379,
+                    "TP": 0,
+                    "n_pred": 133,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 51904512,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001205.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001205.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.004268529297632906,
+                    "FN": 5132,
+                    "FP": 0,
+                    "IoU": 0.0021388294769589733,
+                    "TN": 92269545,
+                    "TP": 11,
+                    "n_pred": 11,
+                    "n_ref": 5143
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 92274688,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.551828608526293,
+                    "FN": 486,
+                    "FP": 1585,
+                    "IoU": 0.3810520023909145,
+                    "TN": 92271342,
+                    "TP": 1275,
+                    "n_pred": 2860,
+                    "n_ref": 1761
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 92274688,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001246.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001246.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8768472906403941,
+                    "FN": 22,
+                    "FP": 3,
+                    "IoU": 0.7807017543859649,
+                    "TN": 102760334,
+                    "TP": 89,
+                    "n_pred": 92,
+                    "n_ref": 111
+                },
+                "2": {
+                    "Dice": 0.7389922832501135,
+                    "FN": 517,
+                    "FP": 58,
+                    "IoU": 0.5860331173506119,
+                    "TN": 102759059,
+                    "TP": 814,
+                    "n_pred": 872,
+                    "n_ref": 1331
+                },
+                "3": {
+                    "Dice": 0.9352850539291218,
+                    "FN": 98,
+                    "FP": 154,
+                    "IoU": 0.8784370477568741,
+                    "TN": 102758375,
+                    "TP": 1821,
+                    "n_pred": 1975,
+                    "n_ref": 1919
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 102760448,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001284.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001284.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 101,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 102760347,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 101
+                },
+                "2": {
+                    "Dice": 0.7529877904347639,
+                    "FN": 10190,
+                    "FP": 1281,
+                    "IoU": 0.6038335347953722,
+                    "TN": 102731493,
+                    "TP": 17484,
+                    "n_pred": 18765,
+                    "n_ref": 27674
+                },
+                "3": {
+                    "Dice": 0.6768115942028986,
+                    "FN": 6696,
+                    "FP": 440,
+                    "IoU": 0.511500547645126,
+                    "TN": 102745840,
+                    "TP": 7472,
+                    "n_pred": 7912,
+                    "n_ref": 14168
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 102760448,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001285.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001285.nii.gz"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 54,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 102760394,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 54
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 25,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 102760423,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 25
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 500,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 102759948,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 500
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 102760448,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation/BraTSMET_001286.nii.gz",
+            "reference_file": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/preprocessed_overlay/Dataset264_BraTS2026_MET_Completion/gt_segmentations/BraTSMET_001286.nii.gz"
+        }
+    ]
+}
