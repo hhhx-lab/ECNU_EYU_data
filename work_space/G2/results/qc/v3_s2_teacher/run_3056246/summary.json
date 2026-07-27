@@ -1,0 +1,72 @@
+{
+  "case_count": 103,
+  "teacher_model_role": "frozen_real_only_s2",
+  "comparison": "real_t2w_baseline_vs_g1_v3_generated_t2w",
+  "region_metrics": {
+    "label_1_NETC": {
+      "baseline": 0.4761838656965293,
+      "generated": 0.47889146892512163,
+      "delta": 0.0027076032285923146,
+      "prediction_consistency": 0.8674456658448554
+    },
+    "label_2_SNFH": {
+      "baseline": 0.7273238235431958,
+      "generated": 0.7174188165671913,
+      "delta": -0.009905006976004493,
+      "prediction_consistency": 0.916692561671996
+    },
+    "label_3_ET": {
+      "baseline": 0.6827276359679653,
+      "generated": 0.6736501575295661,
+      "delta": -0.009077478438399122,
+      "prediction_consistency": 0.8746638940360016
+    },
+    "label_4_RC": {
+      "baseline": 0.16048168650370262,
+      "generated": 0.13506047854540706,
+      "delta": -0.025421207958295555,
+      "prediction_consistency": 0.45312671983191133
+    },
+    "ET": {
+      "baseline": 0.6827276359679653,
+      "generated": 0.6736501575295661,
+      "delta": -0.009077478438399122,
+      "prediction_consistency": 0.8746638940360016
+    },
+    "RC": {
+      "baseline": 0.16048168650370262,
+      "generated": 0.13506047854540706,
+      "delta": -0.025421207958295555,
+      "prediction_consistency": 0.45312671983191133
+    },
+    "TC": {
+      "baseline": 0.733086520435611,
+      "generated": 0.707228014671197,
+      "delta": -0.025858505764413953,
+      "prediction_consistency": 0.8595200351990238
+    },
+    "WT": {
+      "baseline": 0.7328528052084761,
+      "generated": 0.7161857957418709,
+      "delta": -0.016667009466605154,
+      "prediction_consistency": 0.8683165016652086
+    }
+  },
+  "metrics": {
+    "macro_region_dice_baseline": 0.5772871620289387,
+    "macro_region_dice_generated": 0.5580311116220102,
+    "macro_region_dice_delta": -0.01925605040692846,
+    "baseline_large_lesion_count": 172,
+    "missing_large_lesion_count": 0,
+    "missing_large_lesion_fraction": 0.0,
+    "extra_large_lesion_count": 4
+  },
+  "thresholds": {
+    "max_macro_dice_drop": 0.02,
+    "max_region_dice_drop": 0.03,
+    "max_missing_large_fraction": 0.05
+  },
+  "failure_reasons": [],
+  "teacher_technical_gate": "pass",
+  "stage6_gate": "hold_for_review"
+}

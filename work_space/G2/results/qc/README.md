@@ -25,6 +25,30 @@ paired validation 必须保留同一 Stage 5 run 的 `spatial_audit.csv`，并�
 和 foreground/lesion FOV containment。两个目录都完成后仍需人工复核
 paired validation 的 high/medium/routine 分层病例；单独一个目录不能作为阶段 6 批准依据。
 
+## Diffusion 150k checkpoint gate
+
+```text
+diffusion_checkpoint_smoke20_150000_*/  # 20 例 smoke 技术与人工复核
+diffusion_checkpoint_full94_150000_*/   # 94 个 lesion-positive 全量技术与人工复核
+```
+
+固定 validation 口径为 103 例，其中 94 例有病灶并进入四模态生成，9 例 segmentation
+全零并单列验证 validation strict no-op。最终 gate 必须同时归档 cohort SHA256、9/9
+`was_modified=False + image_equal + seg_equal`、94/94 四模态输出、checkpoint SHA256、
+自动 QC、人工复核和冻结的 `checkpoint_selection.json`。
+
+2026-07-21 最终 gate 已完成：
+
+```text
+diffusion_checkpoint_full94_150000_a800_recovery_20260721/
+```
+
+该目录包含 `automatic_qc/`、`generation_evidence/`、`input_evidence/`、
+`manual_review/`、`checkpoint_selection.json`、`g2_diffusion_qc_gate.json` 和
+`SHA256SUMS.txt`。最终 `decision=approve`，固定四模态 `150000` checkpoint，
+不触发 `145000/140000` 回退对比；本 gate 完成后仍不得自动启动 S2 D 或官方
+179 例推理。
+
 ## Release 原则
 
 硬门失败为 `rejected`；技术通过但没有人工/teacher 审批为 `pending_review`；只有正确角色审批后才可成为 `accepted_for_training` 或 `accepted_for_evaluation`。

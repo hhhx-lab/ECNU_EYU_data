@@ -1,0 +1,81 @@
+{
+  "case_count": 103,
+  "montage_count": 103,
+  "region_row_count": 515,
+  "lesion_row_count": 749,
+  "rc_case_count": 16,
+  "tiny_lesion_case_count": 47,
+  "small_lesion_case_count": 49,
+  "artifact_flag_case_count": 86,
+  "review_priority_counts": {
+    "high": 86,
+    "medium": 14,
+    "routine": 3
+  },
+  "metrics": {
+    "saved_t2w_whole_ssim": {
+      "n": 103,
+      "mean": 0.9248929481872123,
+      "std": 0.01861815873262652,
+      "median": 0.9279757109374038,
+      "p05": 0.8899076149178635,
+      "p95": 0.9480343890754434
+    },
+    "saved_t2w_brain_ssim": {
+      "n": 103,
+      "mean": 0.7813311911882677,
+      "std": 0.06172199135570911,
+      "median": 0.7848934087954177,
+      "p05": 0.6924846471634337,
+      "p95": 0.879808041059088
+    },
+    "saved_t2w_tumor_ssim": {
+      "n": 94,
+      "mean": 0.9431310686524288,
+      "std": 0.07494645074669723,
+      "median": 0.9726875466779108,
+      "p05": 0.8083813765333295,
+      "p95": 0.9995787354873551
+    },
+    "saved_t2w_tumor_mae": {
+      "n": 94,
+      "mean": 0.14049971683048654,
+      "std": 0.08788885821745336,
+      "median": 0.12718162587594734,
+      "p05": 0.039744006694229186,
+      "p95": 0.30690749711546406
+    },
+    "lesion_contrast_abs_error": {
+      "n": 94,
+      "mean": 0.04607966170752139,
+      "std": 0.04344587358449152,
+      "median": 0.032040342688560486,
+      "p05": 0.004038375616073609,
+      "p95": 0.12422653026878831
+    },
+    "lesion_blur_ratio": {
+      "n": 103,
+      "mean": 0.6317636470015897,
+      "std": 0.26788891772400253,
+      "median": 0.6402822481585339,
+      "p05": 0.16616351033296864,
+      "p95": 1.0567876897874506
+    },
+    "boundary_gradient_mae": {
+      "n": 103,
+      "mean": 0.03176511139202031,
+      "std": 0.016727937914050875,
+      "median": 0.02782326377928257,
+      "p05": 0.014351077936589718,
+      "p95": 0.06581329107284545
+    }
+  },
+  "screening_thresholds": {
+    "brain_void_excess": 0.05,
+    "external_signal_fraction": 0.001,
+    "lesion_blur_ratio_low": 0.5,
+    "lesion_blur_ratio_high": 2.0,
+    "boundary_gradient_mae": 0.15
+  },
+  "stage6_gate": "hold_for_review"
+}

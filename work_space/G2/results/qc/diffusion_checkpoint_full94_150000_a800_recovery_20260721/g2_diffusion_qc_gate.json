@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "decision": "approve",
+  "generated_at_utc": "2026-07-21T02:24:38.875301+00:00",
+  "checkpoint_selection_sha256": "85574c51c4f77ea14e18507aab93f6fea86cf4b8ab0a0c407b0e3ec97e18b209",
+  "normalization": "zscore",
+  "sampling_method": "edm_heun",
+  "sampling_steps": 18,
+  "seed": 20260720,
+  "case_count": 103,
+  "generated_positive_count": 94,
+  "strict_noop_negative_count": 9,
+  "strict_noop_pass_count": 9,
+  "reviewed_case_count": 94,
+  "mandatory_reviewed_case_count": 94,
+  "mandatory_review_reasons": {
+    "BraTS-MET-01301-001": [
+      "artifact",
+      "low_score"
+    ],
+    "BraTS-MET-01134-003": [
+      "artifact",
+      "low_score",
+      "rc",
+      "smoke_risk"
+    ],
+    "BraTS-MET-01310-001": [
+      "artifact",
+      "low_score",
+      "tiny"
+    ],
+    "BraTS-MET-01250-001": [
+      "low_score",
+      "rc",
+      "smoke_risk",
+      "tiny"
+    ],
+    "BraTS-MET-01134-000": [
+      "large",
+      "low_score"
+    ],
+    "BraTS-MET-01310-002": [
+      "low_score",
+      "tiny"
+    ],
+    "BraTS-MET-00572-000": [
+      "artifact",
+      "large",
+      "low_score"
+    ],
+    "BraTS-MET-01109-003": [
+      "artifact",
+      "low_score",
+      "tiny"
+    ],
+    "BraTS-MET-01117-002": [
+      "low_score"
+    ],
+    "BraTS-MET-01096-001": [
+      "large",
+      "low_score"
+    ],
+    "BraTS-MET-01096-000": [
+      "large"
+    ],
+    "BraTS-MET-00699-000": [
+      "large"
+    ],
+    "BraTS-MET-00532-000": [
+      "large"
+    ],
+    "BraTS-MET-01180-000": [
+      "large"
+    ],
+    "BraTS-MET-00161-000": [
+      "large"
+    ],
+    "BraTS-MET-00264-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01191-001": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-00791-000": [
+      "large"
+    ],
+    "BraTS-MET-01276-001": [
+      "large"
+    ],
+    "BraTS-MET-00098-000": [
+      "large"
+    ],
+    "BraTS-MET-01058-001": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00195-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01096-002": [
+      "large"
+    ],
+    "BraTS-MET-01117-001": [
+      "large"
+    ],
+    "BraTS-MET-00300-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01149-001": [
+      "large"
+    ],
+    "BraTS-MET-00268-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00180-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01149-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00129-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00194-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00009-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01191-003": [
+      "artifact",
+      "large",
+      "rc",
+      "smoke_risk",
+      "tiled"
+    ],
+    "BraTS-MET-01287-001": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-01191-002": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-00260-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00167-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01268-002": [
+      "artifact",
+      "large",
+      "rc",
+      "smoke_risk",
+      "tiled"
+    ],
+    "BraTS-MET-01191-004": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-00175-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00292-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01287-002": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01172-001": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-01301-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00147-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00016-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00019-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00025-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01172-002": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-00006-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00299-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01284-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00202-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00552-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00200-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00014-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01181-001": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-00022-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00625-000": [
+      "artifact",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00613-001": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01060-001": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00137-000": [
+      "artifact",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00380-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00133-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01181-002": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-00214-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00682-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00663-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00799-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01180-003": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01270-001": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01105-001": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-01105-002": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled"
+    ],
+    "BraTS-MET-00613-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01172-004": [
+      "artifact",
+      "large",
+      "rc",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01119-003": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00807-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01331-002": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01119-001": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00577-001": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-00796-000": [
+      "artifact",
+      "large",
+      "tiled"
+    ],
+    "BraTS-MET-01284-002": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01119-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01351-002": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01270-002": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00162-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-00787-000": [
+      "artifact",
+      "tiled"
+    ],
+    "BraTS-MET-01187-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01270-003": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01109-001": [
+      "artifact",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01351-000": [
+      "artifact",
+      "large",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01217-000": [
+      "artifact",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01109-002": [
+      "artifact",
+      "tiled",
+      "tiny"
+    ],
+    "BraTS-MET-01351-003": [
+      "artifact",
+      "tiled",
+      "tiny"
+    ]
+  },
+  "hard_failure_count": 0,
+  "checkpoint_step": 150000,
+  "rollback_comparison_required": false,
+  "report": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G2/results/qc/diffusion_checkpoint_full94_150000_a800_recovery_20260721/manual_review/HUMAN_REVIEW_2026-07-21.md",
+  "source_sha256": {
+    "qc_summary": "12dba17bb446988b3ca705554ef7a13f703f28c8ff7e4dd9b2c4182416a40b03",
+    "noop_csv": "64ad0df47baf74d4c2e32f63d3e2d0817beba5d6d05324218966990711dfe80c",
+    "manual_decisions": "948e49b54157f18c0c177e5dacf31eb38ddba6c18b9bd739a2e5e3fefad73d88"
+  }
+}

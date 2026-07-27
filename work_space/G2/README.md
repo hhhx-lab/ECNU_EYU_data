@@ -27,6 +27,8 @@ G2 接收 G1 生成结果，负责数据身份、标准化、质量控制、训�
 
 ## 正式入口
 
+完整代码分层和保留规则见 [`code/README.md`](code/README.md)，Slurm 对应关系见 [`slurm/README.md`](slurm/README.md)，测试映射见 [`tests/README.md`](tests/README.md)。已完成阶段的实现仍属于完整流水线，不因本轮已经跑完而删除。
+
 ```text
 code/g2_build_realonly_from_raw.py
 code/g2_create_train_val_test_split.py
@@ -34,10 +36,22 @@ code/g2_v2_compose_augmentation.py
 code/g2_v3_completion_intake.py
 code/g2_v3_paired_quality.py
 code/g2_s2_v3_teacher_eval.py
+code/g2_freeze_diffusion_full_eval.py
+code/g2_diffusion_checkpoint_qc.py
 code/g2_synthetic_raw_intake_qc.py
 code/g2_materialize_nnunet_dataset.py
 code/g2_official_mets_metrics_parser.py
 ```
+
+四模态 Diffusion checkpoint 先由 `g2_freeze_diffusion_full_eval.py` 冻结固定
+`94 lesion-positive + 9 lesion-negative strict no-op` 口径，再通过
+`g2_diffusion_checkpoint_qc.py` 核对 150000 checkpoint 清单、四模态
+生成/参考/support/seg 几何与数值、checkpoint SHA256、边界、零块、相邻层连续性
+和高频伪影，并输出区域指标、复核优先级和三平面 montage。`technical_gate=pass`
+只表示技术完整；2026-07-21 已完成 full94+9 全量人工复核并冻结
+`checkpoint_selection.json`、`g2_diffusion_qc_gate.json` 和 `SHA256SUMS.txt`，
+最终决策为 `approve`。封存产物位于
+`results/qc/diffusion_checkpoint_full94_150000_a800_recovery_20260721/`。
 
 G1 V3 阶段 5 审批使用两个独立入口：
 
@@ -82,4 +96,5 @@ labels={0,1,2,3,4}
 python -m unittest discover -s work_space/G2/tests -v
 ```
 
-当前 G2 共 49 项测试，使用临时小型 NIfTI，不依赖本机保存 40GB 数据，也不向仓库写入临时影像。
+G2 测试使用临时小型 NIfTI，不依赖本机保存 40GB 数据，也不向仓库写入临时影像；
+测试总数以当前 `unittest discover` 输出为准。

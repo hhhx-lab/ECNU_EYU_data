@@ -1,0 +1,90 @@
+{
+  "case_count": 14,
+  "montage_count": 14,
+  "region_row_count": 70,
+  "lesion_row_count": 129,
+  "rc_case_count": 2,
+  "tiny_lesion_case_count": 11,
+  "small_lesion_case_count": 8,
+  "artifact_flag_case_count": 12,
+  "spatial_gate": {
+    "status": "pass",
+    "source": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/evaluation/val/spatial_smoke_3104457/spatial_audit.csv",
+    "case_count": 14,
+    "foreground_outside_voxel_count": 0,
+    "lesion_outside_voxel_count": 0,
+    "target_spacing_mm_min": 1.0,
+    "target_spacing_mm_max": 1.0
+  },
+  "review_priority_counts": {
+    "high": 12,
+    "medium": 2,
+    "routine": 0
+  },
+  "metrics": {
+    "saved_t2w_whole_ssim": {
+      "n": 14,
+      "mean": 0.9201074492986168,
+      "std": 0.01826198472012475,
+      "median": 0.9184720218351122,
+      "p05": 0.8985549717579645,
+      "p95": 0.9513352789280741
+    },
+    "saved_t2w_brain_ssim": {
+      "n": 14,
+      "mean": 0.7613579359222921,
+      "std": 0.05974442373742391,
+      "median": 0.7435416926601724,
+      "p05": 0.7148737371229373,
+      "p95": 0.8567176789939093
+    },
+    "saved_t2w_tumor_ssim": {
+      "n": 14,
+      "mean": 0.9658949413561597,
+      "std": 0.05267295084448886,
+      "median": 0.9886757483000892,
+      "p05": 0.8572369541402223,
+      "p95": 0.9981447747613204
+    },
+    "saved_t2w_tumor_mae": {
+      "n": 14,
+      "mean": 0.12618037862786752,
+      "std": 0.047175928660357816,
+      "median": 0.11605981958385883,
+      "p05": 0.0711065302713452,
+      "p95": 0.20884656078227776
+    },
+    "lesion_contrast_abs_error": {
+      "n": 14,
+      "mean": 0.0388301493866103,
+      "std": 0.03843691167704635,
+      "median": 0.027591213583946228,
+      "p05": 0.0015676997601985932,
+      "p95": 0.106464197486639
+    },
+    "lesion_blur_ratio": {
+      "n": 14,
+      "mean": 0.4400577299395429,
+      "std": 0.21524316404140661,
+      "median": 0.3647702723378696,
+      "p05": 0.18582162630166382,
+      "p95": 0.8667537869585545
+    },
+    "boundary_gradient_mae": {
+      "n": 14,
+      "mean": 0.028934361013982977,
+      "std": 0.011486437497574666,
+      "median": 0.02553221397101879,
+      "p05": 0.02146343542262912,
+      "p95": 0.04498853813856839
+    }
+  },
+  "screening_thresholds": {
+    "brain_void_excess": 0.05,
+    "external_signal_fraction": 0.001,
+    "lesion_blur_ratio_low": 0.5,
+    "lesion_blur_ratio_high": 2.0,
+    "boundary_gradient_mae": 0.15
+  },
+  "stage6_gate": "hold_for_review"
+}

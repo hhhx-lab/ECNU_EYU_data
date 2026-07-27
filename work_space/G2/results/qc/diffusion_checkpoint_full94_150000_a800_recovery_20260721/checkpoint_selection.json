@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "frozen",
+  "generated_at_utc": "2026-07-21T02:24:38.875301+00:00",
+  "checkpoint_steps": {
+    "t1c": 150000,
+    "t1n": 150000,
+    "t2w": 150000,
+    "t2f": 150000
+  },
+  "checkpoint_files": {
+    "t1c": {
+      "step": 150000,
+      "bytes": 53749405,
+      "sha256": "cc49de179dee75af561df377ba323052da99525a58a99c60d2fe48f2c34d51a5",
+      "canonical_relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t1c/weights/diffusion_150000.pt"
+    },
+    "t1n": {
+      "step": 150000,
+      "bytes": 53749405,
+      "sha256": "bc98c9423dad396ee235c89893c308b5e6d340667a8b10880825020b6e976ad6",
+      "canonical_relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t1n/weights/diffusion_150000.pt"
+    },
+    "t2w": {
+      "step": 150000,
+      "bytes": 53749405,
+      "sha256": "1b42542f378375406e38a17ca380a608fd0005be4591ef2bcedabca925c3ff60",
+      "canonical_relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t2w/weights/diffusion_150000.pt"
+    },
+    "t2f": {
+      "step": 150000,
+      "bytes": 53749405,
+      "sha256": "de2f219fe126dbb7974d61d8fe8697d239d1e0b18f735344feeab36d3f7d9e6c",
+      "canonical_relative_path": "canonical/checkpoints/brats2026_diffusion_v3_edm_zscore/t2f/weights/diffusion_150000.pt"
+    }
+  },
+  "normalization": "zscore",
+  "noise_schedule": "edm",
+  "sampling_method": "edm_heun",
+  "sampling_steps": 18,
+  "seed": 20260720,
+  "crop_size": 64,
+  "large_lesion_mode": "tile",
+  "selection_decision": "keep_150000_no_rollback_comparison_required",
+  "selection_rationale": "150k completed the fixed 94+9 gate without technical failure; 145k/140k comparison was not triggered",
+  "evidence_sha256": {
+    "generation_metrics": "bc2e9e348811d84a3f3c57048abc76db4368f8af962439d6b5c51a35dc62f234",
+    "generation_manifest": "051e6863b327d4ee4b7892d35c70242426add0e1098848086441e302ea1eb10c",
+    "cohort_summary": "c675886bcf315b2d3e32d8746af5beb71bb03c5fa96acde8b6468cecf9f7b4d8",
+    "g2_qc_summary": "12dba17bb446988b3ca705554ef7a13f703f28c8ff7e4dd9b2c4182416a40b03",
+    "manual_decisions": "948e49b54157f18c0c177e5dacf31eb38ddba6c18b9bd739a2e5e3fefad73d88",
+    "human_report": "48ee3e5afa68d8b598129bfde362fd37119adf8a252da6921d35a17a17cc2fcb"
+  }
+}

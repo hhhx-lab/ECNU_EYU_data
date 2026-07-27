@@ -1,0 +1,51 @@
+{
+  "run_id": "run_3056246",
+  "decision_date": "2026-07-16",
+  "decision": "reject_and_retune",
+  "reviewed_case_count": 103,
+  "review_priority_counts": {
+    "high": 86,
+    "medium": 14,
+    "routine": 3
+  },
+  "paired_qc": {
+    "case_count": 103,
+    "region_row_count": 515,
+    "lesion_row_count": 749,
+    "montage_count": 103,
+    "brain_void_flag_count": 49,
+    "lesion_void_fraction_gt_0_50_count": 10,
+    "lesion_void_fraction_gt_0_80_count": 7
+  },
+  "geometry_audit": {
+    "case_count": 103,
+    "geometry_mismatch_before_count": 103,
+    "repaired_count": 103,
+    "voxel_resampling_performed": false,
+    "max_abs_voxel_difference_after_repair": 0.0
+  },
+  "fixed_crop_audit": {
+    "model_input_shape": [256, 256, 160],
+    "native_shape_exceeds_model_input_count": 54,
+    "brain_void_flags_in_exceeding_group": 49,
+    "brain_void_flags_in_non_exceeding_group": 0,
+    "non_exceeding_group_count": 49
+  },
+  "frozen_s2_teacher": {
+    "case_count": 103,
+    "technical_gate": "pass",
+    "macro_region_dice_delta": -0.01925605040692846,
+    "case_macro_drop_gt_0_02_count": 24,
+    "case_macro_drop_gt_0_05_count": 11,
+    "case_any_region_drop_gt_0_10_count": 10,
+    "missing_large_lesion_count": 0,
+    "extra_large_lesion_count": 4
+  },
+  "blocking_reasons": [
+    "fixed center cropping discards native brain and lesion support in oversized volumes",
+    "manual tri-planar review found blank or truncated generated views",
+    "case-level frozen-teacher degradation is severe despite a borderline passing batch mean",
+    "header-only geometry repair cannot restore discarded voxels"
+  ],
+  "report": "HUMAN_REVIEW_2026-07-16.md"
+}
