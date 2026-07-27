@@ -14,6 +14,12 @@ __pycache__/
 venv/
 env/
 
+# 本地环境变量与凭据（只提交脱敏示例）
+.env
+.env.*
+!.env.example
+!.env.*.example
+
 # Jupyter 与临时输出
 .ipynb_checkpoints/
 tmp/
@@ -31,49 +37,6 @@ outputs/tmp/
 *.nrrd
 *.mha
 *.mhd
-
-# G1 往年方案导入包：只提交源码/配置/文本，排除数据和运行产物。
-# 模型参数扩展名不在这里一刀切忽略，统一由 .gitattributes 交给 Git LFS 管理。
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pkl
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pdf
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.png
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.jpg
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.jpeg
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/__pycache__/
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*.pyc
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/*egg-info/
-# Checkpoint/ 是训练运行输出目录；确认为交付权重时再显式加入 Git LFS。
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/Checkpoint/
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/DataSet/**
-!work_space/G1/code/BraTS_2023_2024_solutions-main/Segmentation_Tasks/GliGAN/DataSet/
-!work_space/G1/code/BraTS_2023_2024_solutions-main/Segmentation_Tasks/GliGAN/DataSet/.gitkeep
-!work_space/G1/code/BraTS_2023_2024_solutions-main/Segmentation_Tasks/GliGAN/DataSet/README.md
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/New_DataSet/
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/predictions/
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/results/
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/runs/
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/metadata/
-work_space/G1/code/BraTS_2023_2024_solutions-main/**/nnUNet_results/
-
-# G1 Diffusion V2 imported code: keep source/docs/scripts/splits, exclude data and runtime artifacts.
-# Model parameter files are not ignored here; .gitattributes sends *.pt/*.pth/*.ckpt to Git LFS.
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.pdf
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.png
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.jpg
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.jpeg
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.pkl
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/Checkpoint/
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/DataSet/**
-!work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/DataSet/
-!work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/DataSet/.gitkeep
-!work_space/G1/code/BraTS_2023_2024_solutions-main 2/Segmentation_Tasks/GliGAN/DataSet/README.md
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/New_DataSet/
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/predictions/
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/results/
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/runs/
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/metadata/
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/nnUNet_results/
-work_space/G1/code/BraTS_2023_2024_solutions-main 2/**/*.egg-info/
 
 # G1 Diffusion V3 imported code: keep source/docs/scripts, exclude data and runtime artifacts.
 # Model parameter files are not ignored here; .gitattributes sends *.pt/*.pth/*.ckpt to Git LFS.
@@ -107,4 +70,11 @@ work_space/G1/data/attention_masks/**
 !work_space/G1/data/attention_masks/.gitkeep
 work_space/G1/data/diffusion_cache/**
 !work_space/G1/data/diffusion_cache/.gitkeep
-work_space/G1/code/brats2025-latent-ensemble-synthesis-main/training/
+# 可由清单重新生成的逐病例影像与空间变换中间目录。
+# 顶层配置、manifest、日志和审计结果仍保留在版本库中。
+work_space/G1/results/missing_t2w_completion/run_*/BraTS-*/
+
+# S2 实验只归档完成快照和轻量审计证据。
+work_space/S2/results/**/remote_snapshot_timeout_*/
+work_space/S2/results/s2_met_aug_route_a_*/gate2_run/artifacts/
+work_space/S2/results/s2_official_validation_transfer_*/
