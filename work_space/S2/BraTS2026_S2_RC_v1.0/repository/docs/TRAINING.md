@@ -13,11 +13,11 @@
 
 ```bash
 PREP_JOB=$(sbatch --parsable --export=ALL,S2_EXPERIMENT_MODE=current \
-  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_prepare_nyu.slurm)
+  work_space/S2/slurm/legacy_realonly/04_s2_realonly_prepare_nyu.slurm)
 
 TRAIN_JOB=$(sbatch --parsable --dependency=afterok:${PREP_JOB} \
   --export=ALL,S2_EXPERIMENT_MODE=current \
-  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_nyu.slurm)
+  work_space/S2/slurm/legacy_realonly/04_s2_realonly_nyu.slurm)
 ```
 
 The job is submitted once and always calls nnU-Net key `0`. `train.sh` rejects other fold values, validates the `823/103` contract and cache ID space, resumes `checkpoint_latest.pth`, validates an existing final checkpoint, or skips a fully completed model.

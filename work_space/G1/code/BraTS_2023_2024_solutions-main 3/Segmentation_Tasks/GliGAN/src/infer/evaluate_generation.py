@@ -29,8 +29,11 @@ Usage:
 import os
 import sys
 import argparse
+import csv
 import glob
+import hashlib
 import json
+import random
 import re
 
 import numpy as np
@@ -76,15 +79,46 @@ _diffusion_utils_local = _import_from_path(
 ALL_MODALITIES = ["t1c", "t1n", "t2w", "t2f"]
 
 
+def _derive_case_seed(base_seed, case_id, modality):
+    payload = f"{int(base_seed)}:{case_id}:{modality}".encode("utf-8")
+    return int.from_bytes(hashlib.sha256(payload).digest()[:8], "big") % (2**31)
+
+
+def _set_random_seed(seed):
+    random.seed(int(seed))
+    np.random.seed(int(seed))
+    torch.manual_seed(int(seed))
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(int(seed))
+
+
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def _checkpoint_step(path):
     match = re.search(r"diffusion_(\d+)\.pt$", os.path.basename(path))
     return int(match.group(1)) if match else -1
 
 
-def _find_checkpoint(ckpt_dir, modality):
+def _find_checkpoint(ckpt_dir, modality, checkpoint_step=None):
     weights_dir = os.path.join(ckpt_dir, modality, "weights")
     if not os.path.isdir(weights_dir):
         raise FileNotFoundError(f"Weight directory not found: {weights_dir}")
+    if checkpoint_step is not None:
+        checkpoint_path = os.path.join(
+            weights_dir, f"diffusion_{int(checkpoint_step)}.pt"
+        )
+        if not os.path.isfile(checkpoint_path):
+            raise FileNotFoundError(
+                f"Diffusion checkpoint step {checkpoint_step} not found: "
+                f"{checkpoint_path}"
+            )
+        return checkpoint_path
     candidates = glob.glob(os.path.join(weights_dir, "diffusion_*.pt"))
     if not candidates:
         raise FileNotFoundError(f"No diffusion checkpoint found in: {weights_dir}")
@@ -219,6 +253,133 @@ def compute_per_lesion_ssim(real_whole, gen_whole, cc_list, max_val=2.0):
         return compute_ssim_3d(real_whole, gen_whole, max_val)
 
     return float(np.average(ssim_vals, weights=weights))
+
+
+def _extract_reference_content(scan_whole, coords, content_shape, crop_size):
+    """Build a training-aligned z-score reference for one generated crop."""
+    z0, z1, y0, y1, x0, x1 = coords
+    window = np.asarray(scan_whole[z0:z1, y0:y1, x0:x1], dtype=np.float32)
+    window_shape = tuple(int(value) for value in window.shape)
+    content_shape = tuple(int(value) for value in content_shape)
+    if window_shape != content_shape:
+        factors = tuple(
+            target / source for target, source in zip(content_shape, window_shape)
+        )
+        window = ndimage.zoom(window, factors, order=1)
+
+    padding = []
+    for dimension in content_shape:
+        total = crop_size - dimension
+        if total < 0:
+            raise ValueError(
+                f"Reference content dimension {dimension} exceeds crop_size={crop_size}"
+            )
+        before = total // 2
+        padding.append((before, total - before))
+    padded = np.pad(window, padding, mode="constant", constant_values=0)
+    normalized = brain_zscore_normalize(padded)
+    slices = tuple(
+        slice(before, before + dimension)
+        for (before, _), dimension in zip(padding, content_shape)
+    )
+    content = normalized[slices]
+    if window_shape != content_shape:
+        factors = tuple(
+            target / source for target, source in zip(window_shape, content_shape)
+        )
+        content = ndimage.zoom(content, factors, order=1)
+    if content.shape != window_shape:
+        raise ValueError(
+            f"Reference content shape mismatch: actual={content.shape} expected={window_shape}"
+        )
+    return np.asarray(content, dtype=np.float32)
+
+
+def _tile_reference_content(scan_whole, coords, crop_size):
+    """Blend per-tile z-score references using the generation tile geometry."""
+    z0, z1, y0, y1, x0, x1 = coords
+    window_shape = (z1 - z0, y1 - y0, x1 - x0)
+    accum = np.zeros(window_shape, dtype=np.float32)
+    weight = np.zeros(window_shape, dtype=np.float32)
+    stride = max(crop_size // 2, 1)
+    gaussian = make_gaussian_weight_3d(
+        (crop_size, crop_size, crop_size), sigma=crop_size / 3.0
+    )
+
+    starts = [list(range(0, dimension, stride)) for dimension in window_shape]
+    for local_z in starts[0]:
+        for local_y in starts[1]:
+            for local_x in starts[2]:
+                end_z = min(local_z + crop_size, window_shape[0])
+                end_y = min(local_y + crop_size, window_shape[1])
+                end_x = min(local_x + crop_size, window_shape[2])
+                tile_shape = (
+                    end_z - local_z,
+                    end_y - local_y,
+                    end_x - local_x,
+                )
+                global_slices = (
+                    slice(z0 + local_z, z0 + end_z),
+                    slice(y0 + local_y, y0 + end_y),
+                    slice(x0 + local_x, x0 + end_x),
+                )
+                tile = np.asarray(scan_whole[global_slices], dtype=np.float32)
+                padding = []
+                for dimension in tile_shape:
+                    total = crop_size - dimension
+                    before = total // 2
+                    padding.append((before, total - before))
+                padded = np.pad(tile, padding, mode="constant", constant_values=0)
+                normalized = brain_zscore_normalize(padded)
+                valid_slices = tuple(
+                    slice(before, before + dimension)
+                    for (before, _), dimension in zip(padding, tile_shape)
+                )
+                normalized_valid = normalized[valid_slices]
+                gaussian_valid = gaussian[valid_slices]
+                local_slices = (
+                    slice(local_z, end_z),
+                    slice(local_y, end_y),
+                    slice(local_x, end_x),
+                )
+                accum[local_slices] += normalized_valid * gaussian_valid
+                weight[local_slices] += gaussian_valid
+
+    reference = np.zeros_like(accum)
+    valid = weight > 1e-8
+    reference[valid] = accum[valid] / weight[valid]
+    return reference, weight
+
+
+def _compute_masked_ssim_3d(reference, generated, mask, max_val):
+    coordinates = np.argwhere(mask)
+    if coordinates.size == 0:
+        raise ValueError("SSIM support mask is empty")
+    lower = np.maximum(coordinates.min(axis=0) - 4, 0)
+    upper = np.minimum(coordinates.max(axis=0) + 5, np.asarray(mask.shape))
+    slices = tuple(slice(int(start), int(stop)) for start, stop in zip(lower, upper))
+    local_mask = mask[slices].astype(np.float32)
+    return compute_ssim_3d(
+        reference[slices] * local_mask,
+        generated[slices] * local_mask,
+        max_val=max_val,
+    )
+
+
+def _save_array_like(array, reference_image, output_path, dtype):
+    values = np.asarray(array, dtype=dtype)
+    if values.shape != reference_image.shape:
+        raise ValueError(
+            f"Output shape {values.shape} does not match reference {reference_image.shape}"
+        )
+    output_path = os.fspath(output_path)
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    header = reference_image.header.copy()
+    header.set_data_dtype(dtype)
+    nib.save(
+        nib.Nifti1Image(values, reference_image.affine, header=header),
+        output_path,
+    )
 
 
 # ===========================================================================
@@ -372,6 +533,13 @@ def main():
     parser.add_argument("--diffusion_ckpt_dir", type=str, default="",
                         help="Root dir: {dir}/{modality}/weights/diffusion_*.pt "
                              "(not needed for --self_test)")
+    parser.add_argument(
+        "--checkpoint_step",
+        type=int,
+        default=None,
+        help="Load exactly diffusion_<step>.pt for every selected modality. "
+             "If omitted, the highest available step is used.",
+    )
     parser.add_argument("--dataset", type=str, default="BRATS_2024",
                         choices=["BRATS_2023", "BRATS_2024", "BRATS_GOAT_2024"])
     parser.add_argument("--output_dir", type=str, default="./eval_results",
@@ -392,6 +560,8 @@ def main():
                         choices=["all", "t1c", "t1n", "t2w", "t2f"])
     parser.add_argument("--max_cases", type=int, default=0,
                         help="Limit number of test cases (0=all)")
+    parser.add_argument("--seed", type=int, default=20260720,
+                        help="Base seed; each patient/modality gets a stable derived seed")
     parser.add_argument("--split", default="val", choices=["train", "val", "all"],
                         help="CSV split to evaluate (default: val)")
     parser.add_argument("--self_test", action="store_true",
@@ -408,12 +578,20 @@ def main():
     parser.add_argument("--evaluation_mode", default="patch", type=str,
                         choices=["patch", "whole_brain"],
                         help="patch: per-lesion crop eval; whole_brain: multi-lesion full-brain eval")
+    parser.add_argument(
+        "--save_support_volumes",
+        action="store_true",
+        help="Save generated/reference z-score support NIfTI files for G2 QC.",
+    )
     _diffusion_utils_local.add_noise_schedule_args(parser)
     parser.add_argument("--cfg_weight", default=1.0, type=float,
                         help="CFG weight: 1.0=normal, >1=stronger conditioning (2.0-3.0 typical)")
     args = parser.parse_args()
+    if args.save_support_volumes and args.evaluation_mode != "whole_brain":
+        parser.error("--save_support_volumes requires --evaluation_mode whole_brain")
 
     os.makedirs(args.output_dir, exist_ok=True)
+    _set_random_seed(args.seed)
 
     if not args.self_test and not args.diffusion_ckpt_dir:
         parser.error("--diffusion_ckpt_dir is required (unless --self_test)")
@@ -424,7 +602,11 @@ def main():
         for mod in (args.modality.split(",") if args.modality != "all"
                     else ["t1c", "t1n", "t2w", "t2f"]):
             try:
-                ckpt_path = _find_checkpoint(args.diffusion_ckpt_dir, mod.strip())
+                ckpt_path = _find_checkpoint(
+                    args.diffusion_ckpt_dir,
+                    mod.strip(),
+                    checkpoint_step=args.checkpoint_step,
+                )
             except FileNotFoundError:
                 continue
             ckpt_metadata = torch.load(ckpt_path, map_location="cpu")
@@ -529,7 +711,11 @@ def main():
     if not args.self_test:
         for mod in modalities:
             try:
-                ckpt_paths[mod] = _find_checkpoint(args.diffusion_ckpt_dir, mod)
+                ckpt_paths[mod] = _find_checkpoint(
+                    args.diffusion_ckpt_dir,
+                    mod,
+                    checkpoint_step=args.checkpoint_step,
+                )
             except FileNotFoundError as exc:
                 print(f"[WARN] {exc}")
         if not ckpt_paths:
@@ -538,9 +724,11 @@ def main():
 
     # Accumulate results
     all_results = {}
+    generation_manifest_rows = []
     per_modality_sums = {m: {"mse": [], "mae": [], "psnr": [],
                                "ssim": [],           # patch mode SSIM
                                "ssim_whole": [],     # whole_brain: full-volume SSIM (dominated by background)
+                               "ssim_support": [],   # whole_brain: generated-support bbox SSIM
                                "ssim_lesion": [],}   # whole_brain: per-lesion weighted SSIM (tumour-region quality)
                          for m in modalities}
 
@@ -631,6 +819,8 @@ def main():
                 if args.self_test:
                     gen_np = real_np
                 else:
+                    case_seed = _derive_case_seed(args.seed, case_id, mod)
+                    _set_random_seed(case_seed)
                     label_tensor = torch.from_numpy(label_mc).float().unsqueeze(0).to(device)
                     generated = sample_tumour_diffusion_full(
                         model=model,
@@ -703,6 +893,7 @@ def main():
 
         if not models:
             raise RuntimeError("No diffusion models loaded. Check --diffusion_ckpt_dir")
+        primary_modality = next(iter(models))
 
         sample_kwargs_full = {}
         if not args.self_test:
@@ -725,7 +916,8 @@ def main():
                 print(f"    [WARN] Missing label: {label_full}")
                 continue
 
-            label_data = nib.load(label_full).get_fdata().astype(np.int16)
+            label_image = nib.load(label_full)
+            label_data = label_image.get_fdata().astype(np.int16)
             original_shape = label_data.shape
             mask_binary = (label_data != 0)
             if not np.any(mask_binary):
@@ -748,9 +940,26 @@ def main():
                 if mod not in models:
                     continue
                 model = models[mod]
+                case_seed = _derive_case_seed(args.seed, patient_id, mod)
+                _set_random_seed(case_seed)
+
+                scan_path = patient_rows.iloc[0][f"scan_{mod}"]
+                scan_full = os.path.join(gli_gan_root, scan_path)
+                if not os.path.isfile(scan_full):
+                    print(f"    [WARN] Missing scan for {mod}: {scan_full}")
+                    continue
+                scan_image = nib.load(scan_full)
+                scan_whole = scan_image.get_fdata().astype(np.float32)
+                if scan_whole.shape != original_shape:
+                    raise ValueError(
+                        f"{patient_id}/{mod}: scan shape {scan_whole.shape} "
+                        f"does not match label shape {original_shape}"
+                    )
 
                 accum = np.zeros(original_shape, dtype=np.float32)
                 weight_blend = np.zeros(original_shape, dtype=np.float32)
+                reference_accum = np.zeros(original_shape, dtype=np.float32)
+                reference_weight = np.zeros(original_shape, dtype=np.float32)
 
                 for lesion_idx, cc in enumerate(cc_list):
                     label_cube, coords, content_shape = extract_single_crop(
@@ -772,8 +981,21 @@ def main():
                             spatial_size=spatial_size, device=device,
                             sample_kwargs=sample_kwargs_full,
                         )
+                        reference_content, reference_tile_weight = _tile_reference_content(
+                            scan_whole, coords, args.crop_size
+                        )
+                        if not np.allclose(
+                            gw_content, reference_tile_weight, atol=1e-6, rtol=0.0
+                        ):
+                            raise ValueError(
+                                f"{patient_id}/{mod}: generated/reference tile weights differ"
+                            )
                         accum[z0:z1, y0:y1, x0:x1] += gen_content * gw_content
                         weight_blend[z0:z1, y0:y1, x0:x1] += gw_content
+                        reference_accum[z0:z1, y0:y1, x0:x1] += (
+                            reference_content * reference_tile_weight
+                        )
+                        reference_weight[z0:z1, y0:y1, x0:x1] += reference_tile_weight
                     else:
                         # RESIZE or small lesion
                         if args.self_test:
@@ -796,6 +1018,9 @@ def main():
 
                         gen_valid = gen_np[z_pb:z_pb + cz, y_pb:y_pb + cy, x_pb:x_pb + cx]
                         gw_valid = gauss_weight[z_pb:z_pb + cz, y_pb:y_pb + cy, x_pb:x_pb + cx]
+                        reference_valid = _extract_reference_content(
+                            scan_whole, coords, content_shape, args.crop_size
+                        )
 
                         if was_resized:
                             wz, wy, wx = window_shape
@@ -807,31 +1032,38 @@ def main():
 
                         accum[z0:z1, y0:y1, x0:x1] += gen_valid * gw_valid
                         weight_blend[z0:z1, y0:y1, x0:x1] += gw_valid
+                        reference_accum[z0:z1, y0:y1, x0:x1] += (
+                            reference_valid * gw_valid
+                        )
+                        reference_weight[z0:z1, y0:y1, x0:x1] += gw_valid
 
                 # Normalize blended whole-brain result
                 gen_whole = np.zeros_like(accum)
                 valid_mask = weight_blend > 1e-8
                 gen_whole[valid_mask] = accum[valid_mask] / weight_blend[valid_mask]
 
-                # Load & normalize real whole-brain scan
-                scan_path = patient_rows.iloc[0][f"scan_{mod}"]
-                scan_full = os.path.join(gli_gan_root, scan_path)
-                if not os.path.isfile(scan_full):
-                    print(f"    [WARN] Missing scan for {mod}: {scan_full}")
-                    continue
-                real_whole = nib.load(scan_full).get_fdata().astype(np.float32)
-
-                if args.normalization == "zscore":
-                    # Pure z-score (matching S2 nnUNet preprocessing)
-                    real_whole = brain_zscore_normalize(real_whole)
-                    # Match: generated scan is also in z-score space
-                else:
-                    rmin, rmax = np.min(real_whole), np.max(real_whole)
-                    if rmax > rmin:
-                        real_whole = (real_whole - rmin) / (rmax - rmin) * 2.0 - 1.0
+                reference_mask = reference_weight > 1e-8
+                if not np.array_equal(valid_mask, reference_mask):
+                    raise ValueError(
+                        f"{patient_id}/{mod}: generated/reference support masks differ"
+                    )
+                real_whole = np.zeros_like(reference_accum)
+                real_whole[reference_mask] = (
+                    reference_accum[reference_mask] / reference_weight[reference_mask]
+                )
+                if not np.isfinite(gen_whole[valid_mask]).all():
+                    raise ValueError(f"{patient_id}/{mod}: non-finite generated support")
+                if not np.isfinite(real_whole[reference_mask]).all():
+                    raise ValueError(f"{patient_id}/{mod}: non-finite reference support")
 
                 # Masked metrics (tumour region only)
                 tumour_mask = mask_binary
+                tumour_outside_support = int(np.count_nonzero(tumour_mask & ~valid_mask))
+                if tumour_outside_support:
+                    raise ValueError(
+                        f"{patient_id}/{mod}: {tumour_outside_support} tumour voxels "
+                        "fall outside generation support"
+                    )
                 real_tumour = real_whole[tumour_mask]
                 gen_tumour = gen_whole[tumour_mask]
 
@@ -843,16 +1075,18 @@ def main():
                 mse = compute_mse(real_tumour, gen_tumour)
                 mae = compute_mae(real_tumour, gen_tumour)
                 psnr = compute_psnr(real_tumour, gen_tumour, max_val=data_range)
-                # Two SSIM variants, served different purposes:
-                #   ssim_whole : whole-brain volume — dominated by background, signals pipeline health
-                #   ssim_lesion: per-lesion bbox, voxel-count weighted — signals tumour quality
+                # Full-volume SSIM remains background-sensitive and is auxiliary only.
                 ssim_whole = compute_ssim_3d(real_whole, gen_whole, max_val=data_range)
+                ssim_support = _compute_masked_ssim_3d(
+                    real_whole, gen_whole, valid_mask, max_val=data_range
+                )
                 ssim_lesion = compute_per_lesion_ssim(real_whole, gen_whole, cc_list, max_val=data_range)
 
                 per_modality_sums[mod]["mse"].append(mse)
                 per_modality_sums[mod]["mae"].append(mae)
                 per_modality_sums[mod]["psnr"].append(psnr if not np.isinf(psnr) else 100.0)
                 per_modality_sums[mod]["ssim_whole"].append(ssim_whole)
+                per_modality_sums[mod]["ssim_support"].append(ssim_support)
                 per_modality_sums[mod]["ssim_lesion"].append(ssim_lesion)
 
                 case_id = str(patient_id)
@@ -860,9 +1094,77 @@ def main():
                     "mse": round(mse, 6), "mae": round(mae, 6),
                     "psnr": round(psnr, 3),
                     "ssim_whole": round(ssim_whole, 4),
-                    "ssim_lesion": round(ssim_lesion, 4)}
+                    "ssim_support": round(ssim_support, 4),
+                    "ssim_lesion": round(ssim_lesion, 4),
+                    "support_voxels": int(valid_mask.sum()),
+                    "tumour_outside_support": tumour_outside_support,
+                    "case_seed": case_seed}
+                if args.save_support_volumes:
+                    source_case_id = f"BraTS-MET-{patient_id}"
+                    generated_path = os.path.join(
+                        args.output_dir,
+                        "generated_zscore",
+                        f"{source_case_id}-{mod}.nii.gz",
+                    )
+                    reference_path = os.path.join(
+                        args.output_dir,
+                        "reference_zscore",
+                        f"{source_case_id}-{mod}.nii.gz",
+                    )
+                    support_path = os.path.join(
+                        args.output_dir,
+                        "support",
+                        f"{source_case_id}-support.nii.gz",
+                    )
+                    output_label_path = os.path.join(
+                        args.output_dir,
+                        "labels",
+                        f"{source_case_id}-seg.nii.gz",
+                    )
+                    _save_array_like(
+                        gen_whole, scan_image, generated_path, np.float32
+                    )
+                    _save_array_like(
+                        real_whole, scan_image, reference_path, np.float32
+                    )
+                    if mod == primary_modality:
+                        _save_array_like(
+                            valid_mask.astype(np.uint8),
+                            scan_image,
+                            support_path,
+                            np.uint8,
+                        )
+                        _save_array_like(
+                            label_data.astype(np.uint8),
+                            label_image,
+                            output_label_path,
+                            np.uint8,
+                        )
+                    generation_manifest_rows.append(
+                        {
+                            "source_case_id": source_case_id,
+                            "patient_id": str(patient_id),
+                            "modality": mod,
+                            "case_seed": case_seed,
+                            "checkpoint_path": ckpt_paths.get(mod, "self_test"),
+                            "checkpoint_step": (
+                                _checkpoint_step(ckpt_paths[mod])
+                                if mod in ckpt_paths
+                                else "self_test"
+                            ),
+                            "generated_zscore_path": os.path.abspath(generated_path),
+                            "reference_zscore_path": os.path.abspath(reference_path),
+                            "support_path": os.path.abspath(support_path),
+                            "label_path": os.path.abspath(output_label_path),
+                            "support_voxels": int(valid_mask.sum()),
+                            "tumour_voxels": int(tumour_mask.sum()),
+                            "tumour_outside_support": tumour_outside_support,
+                            "normalization": "per_crop_or_tile_brain_zscore",
+                        }
+                    )
                 print(f"    [{mod}] masked-MSE={mse:.4f} MAE={mae:.4f} "
                       f"PSNR={psnr:.2f}dB ssim_whole={ssim_whole:.4f} "
+                      f"ssim_support={ssim_support:.4f} "
                       f"ssim_lesion={ssim_lesion:.4f}")
 
     # Summary
@@ -893,6 +1195,11 @@ def main():
             parts.append(f"SSIM={avg['ssim']:.4f}±{std['ssim_std']:.4f}")
         if avg.get("ssim_whole") is not None:
             parts.append(f"ssim_whole={avg['ssim_whole']:.4f}±{std['ssim_whole_std']:.4f} (full-brain)")
+        if avg.get("ssim_support") is not None:
+            parts.append(
+                f"ssim_support={avg['ssim_support']:.4f}±"
+                f"{std['ssim_support_std']:.4f} (generated-support bbox)"
+            )
         if avg.get("ssim_lesion") is not None:
             parts.append(f"ssim_lesion={avg['ssim_lesion']:.4f}±{std['ssim_lesion_std']:.4f} (per-lesion weighted)")
 
@@ -906,9 +1213,62 @@ def main():
             return v.tolist()
         return v
 
+    generation_manifest_path = None
+    if args.save_support_volumes:
+        if not generation_manifest_rows:
+            raise RuntimeError("No support volumes were generated")
+        generation_manifest_path = os.path.join(
+            args.output_dir, "generation_manifest.csv"
+        )
+        with open(generation_manifest_path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(
+                handle, fieldnames=list(generation_manifest_rows[0])
+            )
+            writer.writeheader()
+            writer.writerows(generation_manifest_rows)
+
     result_path = os.path.join(args.output_dir, "metrics.json")
+    checkpoint_metadata = {}
+    for modality, checkpoint_path in ckpt_paths.items():
+        checkpoint_metadata[modality] = {
+            "path": os.path.abspath(checkpoint_path),
+            "step": _checkpoint_step(checkpoint_path),
+            "bytes": os.path.getsize(checkpoint_path),
+            "sha256": _sha256_file(checkpoint_path),
+        }
+    run_metadata = {
+        "csv_path": os.path.abspath(args.csv_path),
+        "csv_sha256": _sha256_file(args.csv_path),
+        "dataset": args.dataset,
+        "split": args.split,
+        "evaluation_mode": args.evaluation_mode,
+        "modalities": modalities,
+        "checkpoint_step": args.checkpoint_step,
+        "checkpoints": checkpoint_metadata,
+        "normalization": args.normalization,
+        "reference_normalization": "per_crop_or_tile_brain_zscore",
+        "noise_schedule": args.noise_schedule,
+        "sampling_method": args.sampling_method,
+        "sampling_steps": sampling_steps,
+        "seed": args.seed,
+        "large_lesion_mode": args.large_lesion_mode,
+        "crop_size": args.crop_size,
+        "max_cases": args.max_cases,
+        "save_support_volumes": args.save_support_volumes,
+        "generation_manifest": (
+            os.path.abspath(generation_manifest_path)
+            if generation_manifest_path is not None
+            else None
+        ),
+        "generation_manifest_rows": len(generation_manifest_rows),
+    }
     with open(result_path, "w") as f:
-        json.dump({"per_case": all_results, "summary": summary}, f, indent=2, default=_to_python)
+        json.dump(
+            {"metadata": run_metadata, "per_case": all_results, "summary": summary},
+            f,
+            indent=2,
+            default=_to_python,
+        )
     print(f"\nMetrics saved to: {result_path}")
 
 

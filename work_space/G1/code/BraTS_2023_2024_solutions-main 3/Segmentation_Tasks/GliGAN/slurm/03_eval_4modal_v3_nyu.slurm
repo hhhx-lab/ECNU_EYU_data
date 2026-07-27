@@ -27,6 +27,7 @@ EVAL_SPLIT=${EVAL_SPLIT:-val}
 MAX_CASES=${MAX_CASES:-0}
 SAMPLING_METHOD=${SAMPLING_METHOD:-edm_heun}
 SAMPLING_STEPS=${SAMPLING_STEPS:-18}
+CHECKPOINT_STEP=${CHECKPOINT_STEP:-150000}
 # NYU default: compile on. Set USE_COMPILE=0 if Triton fails.
 USE_COMPILE=${USE_COMPILE:-1}
 OUTPUT_DIR=${OUTPUT_DIR:-"${RUN_ROOT}/eval/${LOGDIR}_${EVAL_MODE}"}
@@ -39,6 +40,7 @@ echo "Date   : $(date)"
 echo "Logdir : ${LOGDIR}"
 echo "Mode   : ${EVAL_MODE}"
 echo "Split  : ${EVAL_SPLIT}"
+echo "Ckpt   : ${CHECKPOINT_STEP}"
 echo "===================="
 
 mkdir -p "${PROJ}/logs" "${OUTPUT_DIR}"
@@ -57,7 +59,11 @@ if [[ ! -f "${CSV_PATH}" ]]; then
   exit 1
 fi
 for modality in t1c t1n t2w t2f; do
-  test -s "${CKPT_DIR}/${modality}/weights/diffusion_100000.pt"
+  checkpoint="${CKPT_DIR}/${modality}/weights/diffusion_${CHECKPOINT_STEP}.pt"
+  if [[ ! -s "${checkpoint}" ]]; then
+    echo "ERROR: checkpoint not found or empty: ${checkpoint}" >&2
+    exit 1
+  fi
 done
 
 COMPILE_ARGS=()
@@ -67,6 +73,7 @@ fi
 
 python src/infer/evaluate_generation.py \
   --diffusion_ckpt_dir "${CKPT_DIR}" \
+  --checkpoint_step "${CHECKPOINT_STEP}" \
   --csv_path "${CSV_PATH}" \
   --dataset BRATS_2024 \
   --output_dir "${OUTPUT_DIR}" \

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "status": "frozen",
+  "generated_at_utc": "2026-07-20T08:28:16.123436+00:00",
+  "evaluation_split": "fixed_103_val",
+  "fixed_val_count": 103,
+  "lesion_positive_val_count": 94,
+  "lesion_negative_val_count": 9,
+  "lesion_negative_source_case_ids": [
+    "BraTS-MET-01117-003",
+    "BraTS-MET-01187-001",
+    "BraTS-MET-01187-003",
+    "BraTS-MET-01217-002",
+    "BraTS-MET-01217-003",
+    "BraTS-MET-01250-003",
+    "BraTS-MET-01301-002",
+    "BraTS-MET-01314-002",
+    "BraTS-MET-01314-003"
+  ],
+  "smoke_case_count": 20,
+  "smoke_lesion_row_count": 172,
+  "requirements": {
+    "min_rc": 8,
+    "min_tiny_small": 8,
+    "regular_count": 4,
+    "burden_strata": [
+      "low",
+      "mid",
+      "high"
+    ]
+  },
+  "observed": {
+    "rc": 9,
+    "tiny_small": 12,
+    "regular": 5,
+    "burden_strata": [
+      "high",
+      "low",
+      "mid"
+    ],
+    "patient_groups": [
+      "BraTS-MET-00175",
+      "BraTS-MET-00214",
+      "BraTS-MET-00532",
+      "BraTS-MET-00699",
+      "BraTS-MET-00791",
+      "BraTS-MET-01058",
+      "BraTS-MET-01105",
+      "BraTS-MET-01119",
+      "BraTS-MET-01134",
+      "BraTS-MET-01172",
+      "BraTS-MET-01180",
+      "BraTS-MET-01181",
+      "BraTS-MET-01191",
+      "BraTS-MET-01250",
+      "BraTS-MET-01268",
+      "BraTS-MET-01270",
+      "BraTS-MET-01284",
+      "BraTS-MET-01287",
+      "BraTS-MET-01351"
+    ]
+  },
+  "selected_source_case_ids": [
+    "BraTS-MET-00532-000",
+    "BraTS-MET-00791-000",
+    "BraTS-MET-01180-000",
+    "BraTS-MET-01058-001",
+    "BraTS-MET-01250-001",
+    "BraTS-MET-01287-002",
+    "BraTS-MET-01172-004",
+    "BraTS-MET-01105-001",
+    "BraTS-MET-01134-003",
+    "BraTS-MET-01105-002",
+    "BraTS-MET-01181-001",
+    "BraTS-MET-01191-003",
+    "BraTS-MET-01351-002",
+    "BraTS-MET-00214-000",
+    "BraTS-MET-00699-000",
+    "BraTS-MET-01119-001",
+    "BraTS-MET-01270-002",
+    "BraTS-MET-01268-002",
+    "BraTS-MET-01284-002",
+    "BraTS-MET-00175-000"
+  ],
+  "source_files": {
+    "lesions_csv": "/root/brats2026/runs/g1_diffusion_v3/splits/current/lesions.csv",
+    "lesions_csv_sha256": "80031cf4d3612cc77eef13a44dcaaf257394aecb2cbbbfa2fa1f18f191ecd859",
+    "membership_csv": "/root/brats2026/runs/g1_diffusion_v3/splits/current/dataset_membership.csv",
+    "membership_csv_sha256": "7844e222f83162faf626b161a3e0bf4c739e363dbbbedc958790702486669e85"
+  },
+  "outputs": {
+    "smoke_csv": "/cloud/cloud-ssd1/brats2026/g1_diffusion_v3_final/splits/val_smoke20.csv",
+    "selection_csv": "/cloud/cloud-ssd1/brats2026/g1_diffusion_v3_final/splits/val_smoke20_selection.csv"
+  }
+}

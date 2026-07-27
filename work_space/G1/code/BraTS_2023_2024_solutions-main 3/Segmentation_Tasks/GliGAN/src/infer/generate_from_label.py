@@ -342,7 +342,10 @@ def _tile_generate_lesion(label_mc, coords, crop_size, model, spatial_size, devi
                       f"pos=({tz0}:{tz1},{ty0}:{ty1},{tx0}:{tx1}) "
                       f"content=({tz},{ty},{tx})")
 
-    return accum, weight
+    generated = np.zeros_like(accum)
+    valid = weight > 1e-8
+    generated[valid] = accum[valid] / weight[valid]
+    return generated, weight
 
 
 # ---------------------------------------------------------------------------

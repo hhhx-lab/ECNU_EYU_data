@@ -1,0 +1,513 @@
+[Metadata] architecture params from /root/brats2026/recovery/g1_diffusion_v3_final_a800_recovery_20260720/checkpoints/brats2026_diffusion_v3_edm_zscore/t1c/weights/diffusion_150000.pt
+[Metadata] in_channels=5 (checkpoint metadata)
+[Device] cuda
+[CSV] 172 case(s), split=val, from /root/brats2026/recovery/g1_diffusion_v3_final_a800_recovery_20260720/splits/val_smoke20.csv
+[Schedule] edm, n_steps=1000, sampling_method=edm_heun
+
+[Mode] whole_brain — grouping by patient_id, crop_size=64, large_lesion=tile
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=79.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=39
+  [t1c] loaded: /root/brats2026/recovery/g1_diffusion_v3_final_a800_recovery_20260720/checkpoints/brats2026_diffusion_v3_edm_zscore/t1c/weights/diffusion_150000.pt
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=79.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=39
+  [t1n] loaded: /root/brats2026/recovery/g1_diffusion_v3_final_a800_recovery_20260720/checkpoints/brats2026_diffusion_v3_edm_zscore/t1n/weights/diffusion_150000.pt
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=79.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=39
+  [t2w] loaded: /root/brats2026/recovery/g1_diffusion_v3_final_a800_recovery_20260720/checkpoints/brats2026_diffusion_v3_edm_zscore/t2w/weights/diffusion_150000.pt
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=79.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=39
+  [t2f] loaded: /root/brats2026/recovery/g1_diffusion_v3_final_a800_recovery_20260720/checkpoints/brats2026_diffusion_v3_edm_zscore/t2f/weights/diffusion_150000.pt
+
+  Patient: 00175-000 (3 lesion(s) in CSV)
+    3 lesion(s) after merging
+    [t1c] masked-MSE=0.7997 MAE=0.5957 PSNR=16.53dB ssim_whole=0.9901 ssim_support=0.5637 ssim_lesion=0.0698
+    [t1n] masked-MSE=0.8705 MAE=0.7564 PSNR=16.17dB ssim_whole=0.9903 ssim_support=0.5744 ssim_lesion=0.0751
+    [t2w] masked-MSE=1.4310 MAE=0.8753 PSNR=14.01dB ssim_whole=0.9901 ssim_support=0.5604 ssim_lesion=0.0134
+    [t2f] masked-MSE=1.7385 MAE=1.0553 PSNR=13.16dB ssim_whole=0.9904 ssim_support=0.5784 ssim_lesion=0.1420
+
+  Patient: 00214-000 (6 lesion(s) in CSV)
+    6 lesion(s) after merging
+    [t1c] masked-MSE=2.7912 MAE=1.2201 PSNR=11.11dB ssim_whole=0.9775 ssim_support=0.8388 ssim_lesion=0.0392
+    [t1n] masked-MSE=1.4227 MAE=0.9198 PSNR=14.03dB ssim_whole=0.9776 ssim_support=0.8407 ssim_lesion=0.0251
+    [t2w] masked-MSE=1.7999 MAE=0.9817 PSNR=13.01dB ssim_whole=0.9785 ssim_support=0.8473 ssim_lesion=0.0760
+    [t2f] masked-MSE=1.5772 MAE=0.9958 PSNR=13.58dB ssim_whole=0.9771 ssim_support=0.8366 ssim_lesion=0.0149
+
+  Patient: 00532-000 (1 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [t1c] masked-MSE=1.1390 MAE=0.7249 PSNR=15.00dB ssim_whole=0.9929 ssim_support=0.2119 ssim_lesion=0.0024
+    [t1n] masked-MSE=0.8205 MAE=0.7622 PSNR=16.42dB ssim_whole=0.9932 ssim_support=0.2418 ssim_lesion=-0.0121
+    [t2w] masked-MSE=1.5823 MAE=1.0005 PSNR=13.57dB ssim_whole=0.9937 ssim_support=0.2900 ssim_lesion=0.0920
+    [t2f] masked-MSE=1.0326 MAE=0.8179 PSNR=15.42dB ssim_whole=0.9932 ssim_support=0.2358 ssim_lesion=0.0984
+
+  Patient: 00699-000 (1 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [t1c] masked-MSE=1.5223 MAE=0.9210 PSNR=13.74dB ssim_whole=0.9951 ssim_support=0.2450 ssim_lesion=0.0255
+    [t1n] masked-MSE=1.5122 MAE=1.0076 PSNR=13.77dB ssim_whole=0.9949 ssim_support=0.2329 ssim_lesion=-0.0023
+    [t2w] masked-MSE=1.3713 MAE=0.9444 PSNR=14.19dB ssim_whole=0.9949 ssim_support=0.2280 ssim_lesion=-0.0574
+    [t2f] masked-MSE=1.0705 MAE=0.8432 PSNR=15.27dB ssim_whole=0.9950 ssim_support=0.2541 ssim_lesion=0.1784
+
+  Patient: 00791-000 (1 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [t1c] masked-MSE=2.2583 MAE=1.0865 PSNR=12.03dB ssim_whole=0.9921 ssim_support=0.2317 ssim_lesion=0.0309
+    [t1n] masked-MSE=1.5589 MAE=1.0091 PSNR=13.63dB ssim_whole=0.9920 ssim_support=0.2387 ssim_lesion=0.0142
+    [t2w] masked-MSE=2.9063 MAE=1.2629 PSNR=10.93dB ssim_whole=0.9923 ssim_support=0.2548 ssim_lesion=0.0131
+    [t2f] masked-MSE=1.1674 MAE=0.8217 PSNR=14.89dB ssim_whole=0.9921 ssim_support=0.2377 ssim_lesion=0.1167
+
+  Patient: 01058-001 (2 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [tile 1/12] pos=(0:35,0:55,0:64) content=(35,55,64)
+    [tile 2/12] pos=(0:35,0:55,32:77) content=(35,55,45)
+    [tile 3/12] pos=(0:35,0:55,64:77) content=(35,55,13)
+    [tile 4/12] pos=(0:35,32:55,0:64) content=(35,23,64)
+    [tile 5/12] pos=(0:35,32:55,32:77) content=(35,23,45)
+    [tile 6/12] pos=(0:35,32:55,64:77) content=(35,23,13)
+    [tile 7/12] pos=(32:35,0:55,0:64) content=(3,55,64)
+    [tile 8/12] pos=(32:35,0:55,32:77) content=(3,55,45)
+    [tile 9/12] pos=(32:35,0:55,64:77) content=(3,55,13)
+    [tile 10/12] pos=(32:35,32:55,0:64) content=(3,23,64)
+    [tile 11/12] pos=(32:35,32:55,32:77) content=(3,23,45)
+    [tile 12/12] pos=(32:35,32:55,64:77) content=(3,23,13)
+    [t1c] masked-MSE=2.7831 MAE=1.1721 PSNR=11.12dB ssim_whole=0.9974 ssim_support=0.2256 ssim_lesion=0.0278
+    [tile 1/12] pos=(0:35,0:55,0:64) content=(35,55,64)
+    [tile 2/12] pos=(0:35,0:55,32:77) content=(35,55,45)
+    [tile 3/12] pos=(0:35,0:55,64:77) content=(35,55,13)
+    [tile 4/12] pos=(0:35,32:55,0:64) content=(35,23,64)
+    [tile 5/12] pos=(0:35,32:55,32:77) content=(35,23,45)
+    [tile 6/12] pos=(0:35,32:55,64:77) content=(35,23,13)
+    [tile 7/12] pos=(32:35,0:55,0:64) content=(3,55,64)
+    [tile 8/12] pos=(32:35,0:55,32:77) content=(3,55,45)
+    [tile 9/12] pos=(32:35,0:55,64:77) content=(3,55,13)
+    [tile 10/12] pos=(32:35,32:55,0:64) content=(3,23,64)
+    [tile 11/12] pos=(32:35,32:55,32:77) content=(3,23,45)
+    [tile 12/12] pos=(32:35,32:55,64:77) content=(3,23,13)
+    [t1n] masked-MSE=2.9754 MAE=1.3439 PSNR=10.83dB ssim_whole=0.9974 ssim_support=0.2381 ssim_lesion=0.0323
+    [tile 1/12] pos=(0:35,0:55,0:64) content=(35,55,64)
+    [tile 2/12] pos=(0:35,0:55,32:77) content=(35,55,45)
+    [tile 3/12] pos=(0:35,0:55,64:77) content=(35,55,13)
+    [tile 4/12] pos=(0:35,32:55,0:64) content=(35,23,64)
+    [tile 5/12] pos=(0:35,32:55,32:77) content=(35,23,45)
+    [tile 6/12] pos=(0:35,32:55,64:77) content=(35,23,13)
+    [tile 7/12] pos=(32:35,0:55,0:64) content=(3,55,64)
+    [tile 8/12] pos=(32:35,0:55,32:77) content=(3,55,45)
+    [tile 9/12] pos=(32:35,0:55,64:77) content=(3,55,13)
+    [tile 10/12] pos=(32:35,32:55,0:64) content=(3,23,64)
+    [tile 11/12] pos=(32:35,32:55,32:77) content=(3,23,45)
+    [tile 12/12] pos=(32:35,32:55,64:77) content=(3,23,13)
+    [t2w] masked-MSE=1.7198 MAE=0.9608 PSNR=13.21dB ssim_whole=0.9975 ssim_support=0.2631 ssim_lesion=0.0825
+    [tile 1/12] pos=(0:35,0:55,0:64) content=(35,55,64)
+    [tile 2/12] pos=(0:35,0:55,32:77) content=(35,55,45)
+    [tile 3/12] pos=(0:35,0:55,64:77) content=(35,55,13)
+    [tile 4/12] pos=(0:35,32:55,0:64) content=(35,23,64)
+    [tile 5/12] pos=(0:35,32:55,32:77) content=(35,23,45)
+    [tile 6/12] pos=(0:35,32:55,64:77) content=(35,23,13)
+    [tile 7/12] pos=(32:35,0:55,0:64) content=(3,55,64)
+    [tile 8/12] pos=(32:35,0:55,32:77) content=(3,55,45)
+    [tile 9/12] pos=(32:35,0:55,64:77) content=(3,55,13)
+    [tile 10/12] pos=(32:35,32:55,0:64) content=(3,23,64)
+    [tile 11/12] pos=(32:35,32:55,32:77) content=(3,23,45)
+    [tile 12/12] pos=(32:35,32:55,64:77) content=(3,23,13)
+    [t2f] masked-MSE=1.8163 MAE=1.0731 PSNR=12.97dB ssim_whole=0.9975 ssim_support=0.2629 ssim_lesion=0.1091
+
+  Patient: 01105-001 (2 lesion(s) in CSV)
+    2 lesion(s) after merging
+    [tile 1/12] pos=(0:61,0:64,0:43) content=(61,64,43)
+    [tile 2/12] pos=(0:61,0:64,32:43) content=(61,64,11)
+    [tile 3/12] pos=(0:61,32:75,0:43) content=(61,43,43)
+    [tile 4/12] pos=(0:61,32:75,32:43) content=(61,43,11)
+    [tile 5/12] pos=(0:61,64:75,0:43) content=(61,11,43)
+    [tile 6/12] pos=(0:61,64:75,32:43) content=(61,11,11)
+    [tile 7/12] pos=(32:61,0:64,0:43) content=(29,64,43)
+    [tile 8/12] pos=(32:61,0:64,32:43) content=(29,64,11)
+    [tile 9/12] pos=(32:61,32:75,0:43) content=(29,43,43)
+    [tile 10/12] pos=(32:61,32:75,32:43) content=(29,43,11)
+    [tile 11/12] pos=(32:61,64:75,0:43) content=(29,11,43)
+    [tile 12/12] pos=(32:61,64:75,32:43) content=(29,11,11)
+    [t1c] masked-MSE=1.9607 MAE=1.1257 PSNR=12.64dB ssim_whole=0.9974 ssim_support=0.8397 ssim_lesion=0.0343
+    [tile 1/12] pos=(0:61,0:64,0:43) content=(61,64,43)
+    [tile 2/12] pos=(0:61,0:64,32:43) content=(61,64,11)
+    [tile 3/12] pos=(0:61,32:75,0:43) content=(61,43,43)
+    [tile 4/12] pos=(0:61,32:75,32:43) content=(61,43,11)
+    [tile 5/12] pos=(0:61,64:75,0:43) content=(61,11,43)
+    [tile 6/12] pos=(0:61,64:75,32:43) content=(61,11,11)
+    [tile 7/12] pos=(32:61,0:64,0:43) content=(29,64,43)
+    [tile 8/12] pos=(32:61,0:64,32:43) content=(29,64,11)
+    [tile 9/12] pos=(32:61,32:75,0:43) content=(29,43,43)
+    [tile 10/12] pos=(32:61,32:75,32:43) content=(29,43,11)
+    [tile 11/12] pos=(32:61,64:75,0:43) content=(29,11,43)
+    [tile 12/12] pos=(32:61,64:75,32:43) content=(29,11,11)
+    [t1n] masked-MSE=2.3874 MAE=1.3052 PSNR=11.78dB ssim_whole=0.9974 ssim_support=0.8400 ssim_lesion=0.0023
+    [tile 1/12] pos=(0:61,0:64,0:43) content=(61,64,43)
+    [tile 2/12] pos=(0:61,0:64,32:43) content=(61,64,11)
+    [tile 3/12] pos=(0:61,32:75,0:43) content=(61,43,43)
+    [tile 4/12] pos=(0:61,32:75,32:43) content=(61,43,11)
+    [tile 5/12] pos=(0:61,64:75,0:43) content=(61,11,43)
+    [tile 6/12] pos=(0:61,64:75,32:43) content=(61,11,11)
+    [tile 7/12] pos=(32:61,0:64,0:43) content=(29,64,43)
+    [tile 8/12] pos=(32:61,0:64,32:43) content=(29,64,11)
+    [tile 9/12] pos=(32:61,32:75,0:43) content=(29,43,43)
+    [tile 10/12] pos=(32:61,32:75,32:43) content=(29,43,11)
+    [tile 11/12] pos=(32:61,64:75,0:43) content=(29,11,43)
+    [tile 12/12] pos=(32:61,64:75,32:43) content=(29,11,11)
+    [t2w] masked-MSE=3.2631 MAE=1.3987 PSNR=10.43dB ssim_whole=0.9974 ssim_support=0.8438 ssim_lesion=0.0743
+    [tile 1/12] pos=(0:61,0:64,0:43) content=(61,64,43)
+    [tile 2/12] pos=(0:61,0:64,32:43) content=(61,64,11)
+    [tile 3/12] pos=(0:61,32:75,0:43) content=(61,43,43)
+    [tile 4/12] pos=(0:61,32:75,32:43) content=(61,43,11)
+    [tile 5/12] pos=(0:61,64:75,0:43) content=(61,11,43)
+    [tile 6/12] pos=(0:61,64:75,32:43) content=(61,11,11)
+    [tile 7/12] pos=(32:61,0:64,0:43) content=(29,64,43)
+    [tile 8/12] pos=(32:61,0:64,32:43) content=(29,64,11)
+    [tile 9/12] pos=(32:61,32:75,0:43) content=(29,43,43)
+    [tile 10/12] pos=(32:61,32:75,32:43) content=(29,43,11)
+    [tile 11/12] pos=(32:61,64:75,0:43) content=(29,11,43)
+    [tile 12/12] pos=(32:61,64:75,32:43) content=(29,11,11)
+    [t2f] masked-MSE=1.6281 MAE=1.0009 PSNR=13.45dB ssim_whole=0.9974 ssim_support=0.8422 ssim_lesion=0.0450
+
+  Patient: 01105-002 (2 lesion(s) in CSV)
+    2 lesion(s) after merging
+    [t1c] masked-MSE=1.9844 MAE=1.0459 PSNR=12.59dB ssim_whole=0.9982 ssim_support=0.8673 ssim_lesion=0.0369
+    [t1n] masked-MSE=1.1109 MAE=0.8507 PSNR=15.11dB ssim_whole=0.9982 ssim_support=0.8739 ssim_lesion=0.0379
+    [t2w] masked-MSE=3.6318 MAE=1.4507 PSNR=9.96dB ssim_whole=0.9983 ssim_support=0.8759 ssim_lesion=0.0892
+    [t2f] masked-MSE=1.9574 MAE=1.0438 PSNR=12.65dB ssim_whole=0.9982 ssim_support=0.8691 ssim_lesion=0.0497
+
+  Patient: 01119-001 (10 lesion(s) in CSV)
+    10 lesion(s) after merging
+    [t1c] masked-MSE=2.3473 MAE=1.0928 PSNR=11.86dB ssim_whole=0.9960 ssim_support=0.9502 ssim_lesion=0.0216
+    [t1n] masked-MSE=1.3548 MAE=0.8923 PSNR=14.24dB ssim_whole=0.9962 ssim_support=0.9518 ssim_lesion=0.0377
+    [t2w] masked-MSE=1.3733 MAE=0.9319 PSNR=14.19dB ssim_whole=0.9962 ssim_support=0.9525 ssim_lesion=0.0183
+    [t2f] masked-MSE=0.7964 MAE=0.6991 PSNR=16.55dB ssim_whole=0.9962 ssim_support=0.9528 ssim_lesion=0.1448
+
+  Patient: 01134-003 (1 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [t1c] masked-MSE=0.4727 MAE=0.5593 PSNR=18.82dB ssim_whole=0.9996 ssim_support=0.4370 ssim_lesion=0.0048
+    [t1n] masked-MSE=1.0468 MAE=0.8561 PSNR=15.36dB ssim_whole=0.9995 ssim_support=0.4496 ssim_lesion=-0.0243
+    [t2w] masked-MSE=3.9423 MAE=1.8729 PSNR=9.61dB ssim_whole=0.9996 ssim_support=0.4854 ssim_lesion=-0.0148
+    [t2f] masked-MSE=0.2186 MAE=0.3898 PSNR=22.17dB ssim_whole=0.9996 ssim_support=0.4987 ssim_lesion=-0.1176
+
+  Patient: 01172-004 (5 lesion(s) in CSV)
+    5 lesion(s) after merging
+    [t1c] masked-MSE=1.3049 MAE=0.8407 PSNR=14.41dB ssim_whole=0.9955 ssim_support=0.8885 ssim_lesion=0.0033
+    [t1n] masked-MSE=0.7443 MAE=0.6533 PSNR=16.85dB ssim_whole=0.9955 ssim_support=0.8900 ssim_lesion=0.0082
+    [t2w] masked-MSE=0.7656 MAE=0.6844 PSNR=16.72dB ssim_whole=0.9956 ssim_support=0.8916 ssim_lesion=0.0851
+    [t2f] masked-MSE=2.5736 MAE=1.2174 PSNR=11.46dB ssim_whole=0.9955 ssim_support=0.8899 ssim_lesion=0.0080
+
+  Patient: 01180-000 (1 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [t1c] masked-MSE=1.9318 MAE=1.0359 PSNR=12.70dB ssim_whole=0.9964 ssim_support=0.2704 ssim_lesion=0.0129
+    [t1n] masked-MSE=2.2550 MAE=1.1009 PSNR=12.03dB ssim_whole=0.9966 ssim_support=0.2970 ssim_lesion=0.0278
+    [t2w] masked-MSE=2.7178 MAE=1.2516 PSNR=11.22dB ssim_whole=0.9968 ssim_support=0.3341 ssim_lesion=0.1158
+    [t2f] masked-MSE=2.7552 MAE=1.3393 PSNR=11.16dB ssim_whole=0.9964 ssim_support=0.2667 ssim_lesion=0.0267
+
+  Patient: 01181-001 (5 lesion(s) in CSV)
+    4 lesion(s) after merging
+    [tile 1/24] pos=(0:63,0:64,0:64) content=(63,64,64)
+    [tile 2/24] pos=(0:63,0:64,32:96) content=(63,64,64)
+    [tile 3/24] pos=(0:63,0:64,64:104) content=(63,64,40)
+    [tile 4/24] pos=(0:63,0:64,96:104) content=(63,64,8)
+    [tile 5/24] pos=(0:63,32:66,0:64) content=(63,34,64)
+    [tile 6/24] pos=(0:63,32:66,32:96) content=(63,34,64)
+    [tile 7/24] pos=(0:63,32:66,64:104) content=(63,34,40)
+    [tile 8/24] pos=(0:63,32:66,96:104) content=(63,34,8)
+    [tile 9/24] pos=(0:63,64:66,0:64) content=(63,2,64)
+    [tile 10/24] pos=(0:63,64:66,32:96) content=(63,2,64)
+    [tile 11/24] pos=(0:63,64:66,64:104) content=(63,2,40)
+    [tile 12/24] pos=(0:63,64:66,96:104) content=(63,2,8)
+    [tile 13/24] pos=(32:63,0:64,0:64) content=(31,64,64)
+    [tile 14/24] pos=(32:63,0:64,32:96) content=(31,64,64)
+    [tile 15/24] pos=(32:63,0:64,64:104) content=(31,64,40)
+    [tile 16/24] pos=(32:63,0:64,96:104) content=(31,64,8)
+    [tile 17/24] pos=(32:63,32:66,0:64) content=(31,34,64)
+    [tile 18/24] pos=(32:63,32:66,32:96) content=(31,34,64)
+    [tile 19/24] pos=(32:63,32:66,64:104) content=(31,34,40)
+    [tile 20/24] pos=(32:63,32:66,96:104) content=(31,34,8)
+    [tile 21/24] pos=(32:63,64:66,0:64) content=(31,2,64)
+    [tile 22/24] pos=(32:63,64:66,32:96) content=(31,2,64)
+    [tile 23/24] pos=(32:63,64:66,64:104) content=(31,2,40)
+    [tile 24/24] pos=(32:63,64:66,96:104) content=(31,2,8)
+    [t1c] masked-MSE=2.6099 MAE=1.1113 PSNR=11.40dB ssim_whole=0.9737 ssim_support=0.7090 ssim_lesion=0.0144
+    [tile 1/24] pos=(0:63,0:64,0:64) content=(63,64,64)
+    [tile 2/24] pos=(0:63,0:64,32:96) content=(63,64,64)
+    [tile 3/24] pos=(0:63,0:64,64:104) content=(63,64,40)
+    [tile 4/24] pos=(0:63,0:64,96:104) content=(63,64,8)
+    [tile 5/24] pos=(0:63,32:66,0:64) content=(63,34,64)
+    [tile 6/24] pos=(0:63,32:66,32:96) content=(63,34,64)
+    [tile 7/24] pos=(0:63,32:66,64:104) content=(63,34,40)
+    [tile 8/24] pos=(0:63,32:66,96:104) content=(63,34,8)
+    [tile 9/24] pos=(0:63,64:66,0:64) content=(63,2,64)
+    [tile 10/24] pos=(0:63,64:66,32:96) content=(63,2,64)
+    [tile 11/24] pos=(0:63,64:66,64:104) content=(63,2,40)
+    [tile 12/24] pos=(0:63,64:66,96:104) content=(63,2,8)
+    [tile 13/24] pos=(32:63,0:64,0:64) content=(31,64,64)
+    [tile 14/24] pos=(32:63,0:64,32:96) content=(31,64,64)
+    [tile 15/24] pos=(32:63,0:64,64:104) content=(31,64,40)
+    [tile 16/24] pos=(32:63,0:64,96:104) content=(31,64,8)
+    [tile 17/24] pos=(32:63,32:66,0:64) content=(31,34,64)
+    [tile 18/24] pos=(32:63,32:66,32:96) content=(31,34,64)
+    [tile 19/24] pos=(32:63,32:66,64:104) content=(31,34,40)
+    [tile 20/24] pos=(32:63,32:66,96:104) content=(31,34,8)
+    [tile 21/24] pos=(32:63,64:66,0:64) content=(31,2,64)
+    [tile 22/24] pos=(32:63,64:66,32:96) content=(31,2,64)
+    [tile 23/24] pos=(32:63,64:66,64:104) content=(31,2,40)
+    [tile 24/24] pos=(32:63,64:66,96:104) content=(31,2,8)
+    [t1n] masked-MSE=2.0393 MAE=1.1142 PSNR=12.47dB ssim_whole=0.9742 ssim_support=0.7143 ssim_lesion=0.0241
+    [tile 1/24] pos=(0:63,0:64,0:64) content=(63,64,64)
+    [tile 2/24] pos=(0:63,0:64,32:96) content=(63,64,64)
+    [tile 3/24] pos=(0:63,0:64,64:104) content=(63,64,40)
+    [tile 4/24] pos=(0:63,0:64,96:104) content=(63,64,8)
+    [tile 5/24] pos=(0:63,32:66,0:64) content=(63,34,64)
+    [tile 6/24] pos=(0:63,32:66,32:96) content=(63,34,64)
+    [tile 7/24] pos=(0:63,32:66,64:104) content=(63,34,40)
+    [tile 8/24] pos=(0:63,32:66,96:104) content=(63,34,8)
+    [tile 9/24] pos=(0:63,64:66,0:64) content=(63,2,64)
+    [tile 10/24] pos=(0:63,64:66,32:96) content=(63,2,64)
+    [tile 11/24] pos=(0:63,64:66,64:104) content=(63,2,40)
+    [tile 12/24] pos=(0:63,64:66,96:104) content=(63,2,8)
+    [tile 13/24] pos=(32:63,0:64,0:64) content=(31,64,64)
+    [tile 14/24] pos=(32:63,0:64,32:96) content=(31,64,64)
+    [tile 15/24] pos=(32:63,0:64,64:104) content=(31,64,40)
+    [tile 16/24] pos=(32:63,0:64,96:104) content=(31,64,8)
+    [tile 17/24] pos=(32:63,32:66,0:64) content=(31,34,64)
+    [tile 18/24] pos=(32:63,32:66,32:96) content=(31,34,64)
+    [tile 19/24] pos=(32:63,32:66,64:104) content=(31,34,40)
+    [tile 20/24] pos=(32:63,32:66,96:104) content=(31,34,8)
+    [tile 21/24] pos=(32:63,64:66,0:64) content=(31,2,64)
+    [tile 22/24] pos=(32:63,64:66,32:96) content=(31,2,64)
+    [tile 23/24] pos=(32:63,64:66,64:104) content=(31,2,40)
+    [tile 24/24] pos=(32:63,64:66,96:104) content=(31,2,8)
+    [t2w] masked-MSE=1.6586 MAE=1.0158 PSNR=13.37dB ssim_whole=0.9748 ssim_support=0.7204 ssim_lesion=0.0430
+    [tile 1/24] pos=(0:63,0:64,0:64) content=(63,64,64)
+    [tile 2/24] pos=(0:63,0:64,32:96) content=(63,64,64)
+    [tile 3/24] pos=(0:63,0:64,64:104) content=(63,64,40)
+    [tile 4/24] pos=(0:63,0:64,96:104) content=(63,64,8)
+    [tile 5/24] pos=(0:63,32:66,0:64) content=(63,34,64)
+    [tile 6/24] pos=(0:63,32:66,32:96) content=(63,34,64)
+    [tile 7/24] pos=(0:63,32:66,64:104) content=(63,34,40)
+    [tile 8/24] pos=(0:63,32:66,96:104) content=(63,34,8)
+    [tile 9/24] pos=(0:63,64:66,0:64) content=(63,2,64)
+    [tile 10/24] pos=(0:63,64:66,32:96) content=(63,2,64)
+    [tile 11/24] pos=(0:63,64:66,64:104) content=(63,2,40)
+    [tile 12/24] pos=(0:63,64:66,96:104) content=(63,2,8)
+    [tile 13/24] pos=(32:63,0:64,0:64) content=(31,64,64)
+    [tile 14/24] pos=(32:63,0:64,32:96) content=(31,64,64)
+    [tile 15/24] pos=(32:63,0:64,64:104) content=(31,64,40)
+    [tile 16/24] pos=(32:63,0:64,96:104) content=(31,64,8)
+    [tile 17/24] pos=(32:63,32:66,0:64) content=(31,34,64)
+    [tile 18/24] pos=(32:63,32:66,32:96) content=(31,34,64)
+    [tile 19/24] pos=(32:63,32:66,64:104) content=(31,34,40)
+    [tile 20/24] pos=(32:63,32:66,96:104) content=(31,34,8)
+    [tile 21/24] pos=(32:63,64:66,0:64) content=(31,2,64)
+    [tile 22/24] pos=(32:63,64:66,32:96) content=(31,2,64)
+    [tile 23/24] pos=(32:63,64:66,64:104) content=(31,2,40)
+    [tile 24/24] pos=(32:63,64:66,96:104) content=(31,2,8)
+    [t2f] masked-MSE=5.1392 MAE=1.5958 PSNR=8.45dB ssim_whole=0.9752 ssim_support=0.7264 ssim_lesion=0.1055
+
+  Patient: 01191-003 (4 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [tile 1/18] pos=(0:64,0:64,0:39) content=(64,64,39)
+    [tile 2/18] pos=(0:64,0:64,32:39) content=(64,64,7)
+    [tile 3/18] pos=(0:64,32:78,0:39) content=(64,46,39)
+    [tile 4/18] pos=(0:64,32:78,32:39) content=(64,46,7)
+    [tile 5/18] pos=(0:64,64:78,0:39) content=(64,14,39)
+    [tile 6/18] pos=(0:64,64:78,32:39) content=(64,14,7)
+    [tile 7/18] pos=(32:78,0:64,0:39) content=(46,64,39)
+    [tile 8/18] pos=(32:78,0:64,32:39) content=(46,64,7)
+    [tile 9/18] pos=(32:78,32:78,0:39) content=(46,46,39)
+    [tile 10/18] pos=(32:78,32:78,32:39) content=(46,46,7)
+    [tile 11/18] pos=(32:78,64:78,0:39) content=(46,14,39)
+    [tile 12/18] pos=(32:78,64:78,32:39) content=(46,14,7)
+    [tile 13/18] pos=(64:78,0:64,0:39) content=(14,64,39)
+    [tile 14/18] pos=(64:78,0:64,32:39) content=(14,64,7)
+    [tile 15/18] pos=(64:78,32:78,0:39) content=(14,46,39)
+    [tile 16/18] pos=(64:78,32:78,32:39) content=(14,46,7)
+    [tile 17/18] pos=(64:78,64:78,0:39) content=(14,14,39)
+    [tile 18/18] pos=(64:78,64:78,32:39) content=(14,14,7)
+    [t1c] masked-MSE=2.8655 MAE=1.1306 PSNR=10.99dB ssim_whole=0.9939 ssim_support=0.1367 ssim_lesion=0.0348
+    [tile 1/18] pos=(0:64,0:64,0:39) content=(64,64,39)
+    [tile 2/18] pos=(0:64,0:64,32:39) content=(64,64,7)
+    [tile 3/18] pos=(0:64,32:78,0:39) content=(64,46,39)
+    [tile 4/18] pos=(0:64,32:78,32:39) content=(64,46,7)
+    [tile 5/18] pos=(0:64,64:78,0:39) content=(64,14,39)
+    [tile 6/18] pos=(0:64,64:78,32:39) content=(64,14,7)
+    [tile 7/18] pos=(32:78,0:64,0:39) content=(46,64,39)
+    [tile 8/18] pos=(32:78,0:64,32:39) content=(46,64,7)
+    [tile 9/18] pos=(32:78,32:78,0:39) content=(46,46,39)
+    [tile 10/18] pos=(32:78,32:78,32:39) content=(46,46,7)
+    [tile 11/18] pos=(32:78,64:78,0:39) content=(46,14,39)
+    [tile 12/18] pos=(32:78,64:78,32:39) content=(46,14,7)
+    [tile 13/18] pos=(64:78,0:64,0:39) content=(14,64,39)
+    [tile 14/18] pos=(64:78,0:64,32:39) content=(14,64,7)
+    [tile 15/18] pos=(64:78,32:78,0:39) content=(14,46,39)
+    [tile 16/18] pos=(64:78,32:78,32:39) content=(14,46,7)
+    [tile 17/18] pos=(64:78,64:78,0:39) content=(14,14,39)
+    [tile 18/18] pos=(64:78,64:78,32:39) content=(14,14,7)
+    [t1n] masked-MSE=1.1647 MAE=0.8316 PSNR=14.90dB ssim_whole=0.9941 ssim_support=0.1647 ssim_lesion=0.0209
+    [tile 1/18] pos=(0:64,0:64,0:39) content=(64,64,39)
+    [tile 2/18] pos=(0:64,0:64,32:39) content=(64,64,7)
+    [tile 3/18] pos=(0:64,32:78,0:39) content=(64,46,39)
+    [tile 4/18] pos=(0:64,32:78,32:39) content=(64,46,7)
+    [tile 5/18] pos=(0:64,64:78,0:39) content=(64,14,39)
+    [tile 6/18] pos=(0:64,64:78,32:39) content=(64,14,7)
+    [tile 7/18] pos=(32:78,0:64,0:39) content=(46,64,39)
+    [tile 8/18] pos=(32:78,0:64,32:39) content=(46,64,7)
+    [tile 9/18] pos=(32:78,32:78,0:39) content=(46,46,39)
+    [tile 10/18] pos=(32:78,32:78,32:39) content=(46,46,7)
+    [tile 11/18] pos=(32:78,64:78,0:39) content=(46,14,39)
+    [tile 12/18] pos=(32:78,64:78,32:39) content=(46,14,7)
+    [tile 13/18] pos=(64:78,0:64,0:39) content=(14,64,39)
+    [tile 14/18] pos=(64:78,0:64,32:39) content=(14,64,7)
+    [tile 15/18] pos=(64:78,32:78,0:39) content=(14,46,39)
+    [tile 16/18] pos=(64:78,32:78,32:39) content=(14,46,7)
+    [tile 17/18] pos=(64:78,64:78,0:39) content=(14,14,39)
+    [tile 18/18] pos=(64:78,64:78,32:39) content=(14,14,7)
+    [t2w] masked-MSE=1.8257 MAE=1.0127 PSNR=12.95dB ssim_whole=0.9941 ssim_support=0.1708 ssim_lesion=0.0471
+    [tile 1/18] pos=(0:64,0:64,0:39) content=(64,64,39)
+    [tile 2/18] pos=(0:64,0:64,32:39) content=(64,64,7)
+    [tile 3/18] pos=(0:64,32:78,0:39) content=(64,46,39)
+    [tile 4/18] pos=(0:64,32:78,32:39) content=(64,46,7)
+    [tile 5/18] pos=(0:64,64:78,0:39) content=(64,14,39)
+    [tile 6/18] pos=(0:64,64:78,32:39) content=(64,14,7)
+    [tile 7/18] pos=(32:78,0:64,0:39) content=(46,64,39)
+    [tile 8/18] pos=(32:78,0:64,32:39) content=(46,64,7)
+    [tile 9/18] pos=(32:78,32:78,0:39) content=(46,46,39)
+    [tile 10/18] pos=(32:78,32:78,32:39) content=(46,46,7)
+    [tile 11/18] pos=(32:78,64:78,0:39) content=(46,14,39)
+    [tile 12/18] pos=(32:78,64:78,32:39) content=(46,14,7)
+    [tile 13/18] pos=(64:78,0:64,0:39) content=(14,64,39)
+    [tile 14/18] pos=(64:78,0:64,32:39) content=(14,64,7)
+    [tile 15/18] pos=(64:78,32:78,0:39) content=(14,46,39)
+    [tile 16/18] pos=(64:78,32:78,32:39) content=(14,46,7)
+    [tile 17/18] pos=(64:78,64:78,0:39) content=(14,14,39)
+    [tile 18/18] pos=(64:78,64:78,32:39) content=(14,14,7)
+    [t2f] masked-MSE=1.5925 MAE=0.9545 PSNR=13.54dB ssim_whole=0.9942 ssim_support=0.1898 ssim_lesion=0.1158
+
+  Patient: 01250-001 (1 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [t1c] masked-MSE=1.2454 MAE=0.8747 PSNR=14.61dB ssim_whole=0.9998 ssim_support=0.4941 ssim_lesion=-0.0881
+    [t1n] masked-MSE=0.1806 MAE=0.3488 PSNR=22.99dB ssim_whole=0.9998 ssim_support=0.5032 ssim_lesion=0.1358
+    [t2w] masked-MSE=2.4692 MAE=1.5153 PSNR=11.64dB ssim_whole=0.9998 ssim_support=0.5533 ssim_lesion=-0.0896
+    [t2f] masked-MSE=0.7942 MAE=0.7640 PSNR=16.56dB ssim_whole=0.9998 ssim_support=0.5461 ssim_lesion=-0.0606
+
+  Patient: 01268-002 (3 lesion(s) in CSV)
+    1 lesion(s) after merging
+    [tile 1/18] pos=(0:64,0:64,0:50) content=(64,64,50)
+    [tile 2/18] pos=(0:64,0:64,32:50) content=(64,64,18)
+    [tile 3/18] pos=(0:64,32:91,0:50) content=(64,59,50)
+    [tile 4/18] pos=(0:64,32:91,32:50) content=(64,59,18)
+    [tile 5/18] pos=(0:64,64:91,0:50) content=(64,27,50)
+    [tile 6/18] pos=(0:64,64:91,32:50) content=(64,27,18)
+    [tile 7/18] pos=(32:77,0:64,0:50) content=(45,64,50)
+    [tile 8/18] pos=(32:77,0:64,32:50) content=(45,64,18)
+    [tile 9/18] pos=(32:77,32:91,0:50) content=(45,59,50)
+    [tile 10/18] pos=(32:77,32:91,32:50) content=(45,59,18)
+    [tile 11/18] pos=(32:77,64:91,0:50) content=(45,27,50)
+    [tile 12/18] pos=(32:77,64:91,32:50) content=(45,27,18)
+    [tile 13/18] pos=(64:77,0:64,0:50) content=(13,64,50)
+    [tile 14/18] pos=(64:77,0:64,32:50) content=(13,64,18)
+    [tile 15/18] pos=(64:77,32:91,0:50) content=(13,59,50)
+    [tile 16/18] pos=(64:77,32:91,32:50) content=(13,59,18)
+    [tile 17/18] pos=(64:77,64:91,0:50) content=(13,27,50)
+    [tile 18/18] pos=(64:77,64:91,32:50) content=(13,27,18)
+    [t1c] masked-MSE=3.2407 MAE=1.3293 PSNR=10.46dB ssim_whole=0.9953 ssim_support=0.1223 ssim_lesion=0.0051
+    [tile 1/18] pos=(0:64,0:64,0:50) content=(64,64,50)
+    [tile 2/18] pos=(0:64,0:64,32:50) content=(64,64,18)
+    [tile 3/18] pos=(0:64,32:91,0:50) content=(64,59,50)
+    [tile 4/18] pos=(0:64,32:91,32:50) content=(64,59,18)
+    [tile 5/18] pos=(0:64,64:91,0:50) content=(64,27,50)
+    [tile 6/18] pos=(0:64,64:91,32:50) content=(64,27,18)
+    [tile 7/18] pos=(32:77,0:64,0:50) content=(45,64,50)
+    [tile 8/18] pos=(32:77,0:64,32:50) content=(45,64,18)
+    [tile 9/18] pos=(32:77,32:91,0:50) content=(45,59,50)
+    [tile 10/18] pos=(32:77,32:91,32:50) content=(45,59,18)
+    [tile 11/18] pos=(32:77,64:91,0:50) content=(45,27,50)
+    [tile 12/18] pos=(32:77,64:91,32:50) content=(45,27,18)
+    [tile 13/18] pos=(64:77,0:64,0:50) content=(13,64,50)
+    [tile 14/18] pos=(64:77,0:64,32:50) content=(13,64,18)
+    [tile 15/18] pos=(64:77,32:91,0:50) content=(13,59,50)
+    [tile 16/18] pos=(64:77,32:91,32:50) content=(13,59,18)
+    [tile 17/18] pos=(64:77,64:91,0:50) content=(13,27,50)
+    [tile 18/18] pos=(64:77,64:91,32:50) content=(13,27,18)
+    [t1n] masked-MSE=1.9108 MAE=1.0696 PSNR=12.75dB ssim_whole=0.9954 ssim_support=0.1457 ssim_lesion=0.0166
+    [tile 1/18] pos=(0:64,0:64,0:50) content=(64,64,50)
+    [tile 2/18] pos=(0:64,0:64,32:50) content=(64,64,18)
+    [tile 3/18] pos=(0:64,32:91,0:50) content=(64,59,50)
+    [tile 4/18] pos=(0:64,32:91,32:50) content=(64,59,18)
+    [tile 5/18] pos=(0:64,64:91,0:50) content=(64,27,50)
+    [tile 6/18] pos=(0:64,64:91,32:50) content=(64,27,18)
+    [tile 7/18] pos=(32:77,0:64,0:50) content=(45,64,50)
+    [tile 8/18] pos=(32:77,0:64,32:50) content=(45,64,18)
+    [tile 9/18] pos=(32:77,32:91,0:50) content=(45,59,50)
+    [tile 10/18] pos=(32:77,32:91,32:50) content=(45,59,18)
+    [tile 11/18] pos=(32:77,64:91,0:50) content=(45,27,50)
+    [tile 12/18] pos=(32:77,64:91,32:50) content=(45,27,18)
+    [tile 13/18] pos=(64:77,0:64,0:50) content=(13,64,50)
+    [tile 14/18] pos=(64:77,0:64,32:50) content=(13,64,18)
+    [tile 15/18] pos=(64:77,32:91,0:50) content=(13,59,50)
+    [tile 16/18] pos=(64:77,32:91,32:50) content=(13,59,18)
+    [tile 17/18] pos=(64:77,64:91,0:50) content=(13,27,50)
+    [tile 18/18] pos=(64:77,64:91,32:50) content=(13,27,18)
+    [t2w] masked-MSE=1.6604 MAE=1.0035 PSNR=13.36dB ssim_whole=0.9954 ssim_support=0.1360 ssim_lesion=-0.0011
+    [tile 1/18] pos=(0:64,0:64,0:50) content=(64,64,50)
+    [tile 2/18] pos=(0:64,0:64,32:50) content=(64,64,18)
+    [tile 3/18] pos=(0:64,32:91,0:50) content=(64,59,50)
+    [tile 4/18] pos=(0:64,32:91,32:50) content=(64,59,18)
+    [tile 5/18] pos=(0:64,64:91,0:50) content=(64,27,50)
+    [tile 6/18] pos=(0:64,64:91,32:50) content=(64,27,18)
+    [tile 7/18] pos=(32:77,0:64,0:50) content=(45,64,50)
+    [tile 8/18] pos=(32:77,0:64,32:50) content=(45,64,18)
+    [tile 9/18] pos=(32:77,32:91,0:50) content=(45,59,50)
+    [tile 10/18] pos=(32:77,32:91,32:50) content=(45,59,18)
+    [tile 11/18] pos=(32:77,64:91,0:50) content=(45,27,50)
+    [tile 12/18] pos=(32:77,64:91,32:50) content=(45,27,18)
+    [tile 13/18] pos=(64:77,0:64,0:50) content=(13,64,50)
+    [tile 14/18] pos=(64:77,0:64,32:50) content=(13,64,18)
+    [tile 15/18] pos=(64:77,32:91,0:50) content=(13,59,50)
+    [tile 16/18] pos=(64:77,32:91,32:50) content=(13,59,18)
+    [tile 17/18] pos=(64:77,64:91,0:50) content=(13,27,50)
+    [tile 18/18] pos=(64:77,64:91,32:50) content=(13,27,18)
+    [t2f] masked-MSE=2.6270 MAE=1.2459 PSNR=11.37dB ssim_whole=0.9956 ssim_support=0.1682 ssim_lesion=0.0884
+
+  Patient: 01270-002 (9 lesion(s) in CSV)
+    9 lesion(s) after merging
+    [t1c] masked-MSE=1.7315 MAE=0.9554 PSNR=13.18dB ssim_whole=0.9956 ssim_support=0.9617 ssim_lesion=0.0324
+    [t1n] masked-MSE=1.5060 MAE=0.9271 PSNR=13.78dB ssim_whole=0.9958 ssim_support=0.9631 ssim_lesion=0.0621
+    [t2w] masked-MSE=1.7623 MAE=0.9972 PSNR=13.10dB ssim_whole=0.9957 ssim_support=0.9630 ssim_lesion=0.0035
+    [t2f] masked-MSE=1.8566 MAE=1.0495 PSNR=12.88dB ssim_whole=0.9956 ssim_support=0.9619 ssim_lesion=0.0570
+
+  Patient: 01284-002 (16 lesion(s) in CSV)
+    16 lesion(s) after merging
+    [t1c] masked-MSE=2.3377 MAE=1.1309 PSNR=11.88dB ssim_whole=0.9951 ssim_support=0.9610 ssim_lesion=0.0138
+    [t1n] masked-MSE=1.2188 MAE=0.8677 PSNR=14.70dB ssim_whole=0.9953 ssim_support=0.9625 ssim_lesion=0.0344
+    [t2w] masked-MSE=1.2133 MAE=0.8406 PSNR=14.72dB ssim_whole=0.9952 ssim_support=0.9622 ssim_lesion=0.0343
+    [t2f] masked-MSE=1.0153 MAE=0.7769 PSNR=15.50dB ssim_whole=0.9952 ssim_support=0.9623 ssim_lesion=0.0692
+
+  Patient: 01287-002 (3 lesion(s) in CSV)
+    3 lesion(s) after merging
+    [t1c] masked-MSE=1.3098 MAE=0.8853 PSNR=14.39dB ssim_whole=0.9946 ssim_support=0.5483 ssim_lesion=0.0261
+    [t1n] masked-MSE=3.1116 MAE=1.5133 PSNR=10.63dB ssim_whole=0.9945 ssim_support=0.5362 ssim_lesion=-0.0217
+    [t2w] masked-MSE=2.1709 MAE=1.1524 PSNR=12.20dB ssim_whole=0.9948 ssim_support=0.5664 ssim_lesion=0.0390
+    [t2f] masked-MSE=2.3789 MAE=1.2009 PSNR=11.80dB ssim_whole=0.9946 ssim_support=0.5457 ssim_lesion=0.0213
+
+  Patient: 01351-002 (96 lesion(s) in CSV)
+    96 lesion(s) after merging
+    [t1c] masked-MSE=2.9231 MAE=1.2078 PSNR=10.90dB ssim_whole=0.9929 ssim_support=0.9552 ssim_lesion=0.0172
+    [t1n] masked-MSE=1.1448 MAE=0.8178 PSNR=14.98dB ssim_whole=0.9933 ssim_support=0.9577 ssim_lesion=0.0336
+    [t2w] masked-MSE=1.2159 MAE=0.8541 PSNR=14.71dB ssim_whole=0.9931 ssim_support=0.9563 ssim_lesion=0.0016
+    [t2f] masked-MSE=0.9725 MAE=0.7542 PSNR=15.68dB ssim_whole=0.9931 ssim_support=0.9567 ssim_lesion=0.0989
+
+============================================================
+SUMMARY
+============================================================
+  t1c: MSE=1.9780±0.7548  MAE=1.0023±0.2009  PSNR=13.02±2.07dB  ssim_whole=0.9934±0.0064 (full-brain)  ssim_support=0.5729±0.3100 (generated-support bbox)  ssim_lesion=0.0183±0.0289 (per-lesion weighted)
+  t1n: MSE=1.5168±0.7232  MAE=0.9474±0.2503  PSNR=14.37±2.61dB  ssim_whole=0.9936±0.0063 (full-brain)  ssim_support=0.5808±0.3037 (generated-support bbox)  ssim_lesion=0.0264±0.0349 (per-lesion weighted)
+  t2w: MSE=2.0240±0.8392  MAE=1.1004±0.2753  PSNR=12.85±1.75dB  ssim_whole=0.9937±0.0062 (full-brain)  ssim_support=0.5928±0.2971 (generated-support bbox)  ssim_lesion=0.0333±0.0510 (per-lesion weighted)
+  t2f: MSE=1.7354±1.0269  MAE=0.9820±0.2593  PSNR=13.93±2.75dB  ssim_whole=0.9936±0.0063 (full-brain)  ssim_support=0.5891±0.2982 (generated-support bbox)  ssim_lesion=0.0656±0.0692 (per-lesion weighted)
+
+Metrics saved to: /root/brats2026/recovery/g1_diffusion_v3_final_a800_recovery_20260720/eval/150000_smoke20_a800_recovery_v2/metrics.json

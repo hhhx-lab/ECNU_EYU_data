@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-07-17T07:18:53.747739+00:00",
+  "slurm_job_id": "3104668",
+  "generation_run_id": "run_3104668",
+  "generator_name": "g1_missing_t2w_v3",
+  "generation_mode": "completion",
+  "generator_io": "t1n_t1c_t2f_to_t2w_completion",
+  "source_csv": "data/g1_v3_data_placement_manifest.csv",
+  "source_csv_version": "g1_v3_data_placement_manifest.csv",
+  "seed": 42,
+  "case_count": 265,
+  "synthesis_type": "ensamble",
+  "validation_run": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/evaluation/val/run_3056246",
+  "operator_approved_validation": true,
+  "g2_final_gate": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/qc/v3_paired_validation/run_3056246/FINAL_GATE_OPERATOR_OVERRIDE_2026-07-17.json",
+  "g2_gate_decision": "approve_stage6",
+  "vae_weights": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+  "encdec_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+  "bbdm_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+  "bbdm_s": 0.01
+}

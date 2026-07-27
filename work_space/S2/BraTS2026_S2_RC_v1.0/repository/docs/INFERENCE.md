@@ -56,7 +56,7 @@ mkdir -p logs
 
 S2_OFFICIAL_JOB=$(sbatch --parsable \
   --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_TARGET=official_validation \
-  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm)
+  work_space/S2/slurm/legacy_realonly/04_s2_realonly_infer_nyu.slurm)
 
 echo "S2_OFFICIAL_JOB=${S2_OFFICIAL_JOB}"
 ```
@@ -66,7 +66,7 @@ Override the source only when the server uses another location:
 ```bash
 sbatch \
   --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_TARGET=official_validation,S2_OFFICIAL_VALIDATION_ROOT=/absolute/path/to/Validation \
-  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+  work_space/S2/slurm/legacy_realonly/04_s2_realonly_infer_nyu.slurm
 ```
 
 The Slurm job performs the complete submission pipeline:
@@ -117,7 +117,7 @@ Run:
 ```bash
 sbatch \
   --export=ALL,S2_EXPERIMENT_MODE=current,S2_INFERENCE_TARGET=nnunet_input,S2_INFERENCE_INPUT=/path/to/nnunet_input \
-  work_space/G1/code/brats2025-latent-ensemble-synthesis-main/slurm/04_s2_realonly_infer_nyu.slurm
+  work_space/S2/slurm/legacy_realonly/04_s2_realonly_infer_nyu.slurm
 ```
 
 The generic output defaults to `work_space/S2/results/realonly_current_fixed_inference/`. It does not create an official submission ZIP.
