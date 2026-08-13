@@ -1,0 +1,32 @@
+JobId=3396611 JobName=s2_e_val27
+   UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A
+   Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:01:42 TimeLimit=04:00:00 TimeMin=N/A
+   SubmitTime=2026-08-14T02:41:00 EligibleTime=2026-08-14T02:41:00
+   AccrueTime=2026-08-14T02:41:00
+   StartTime=2026-08-14T02:41:14 EndTime=2026-08-14T06:41:14 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-08-14T02:41:14
+   Partition=a100 AllocNode:Sid=10.11.100.253:124648
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=gpu9
+   BatchHost=gpu9
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   JOB_GRES=gpu:1
+     Nodes=gpu9 CPU_IDs=2-9 Mem=65536 GRES=gpu:1(IDX:1)
+   MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/runtime/experimental_unvalidated_e_missing_t2w_val27_20260814_r1/run_e_missing_t2w_val27_attempt03.slurm
+   WorkDir=/public/home/zqchen
+   StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/runtime/experimental_unvalidated_e_missing_t2w_val27_20260814_r1/logs/s2_e_val27_3396611.err
+   StdIn=/dev/null
+   StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/runtime/experimental_unvalidated_e_missing_t2w_val27_20260814_r1/logs/s2_e_val27_3396611.out
+   Power=
+   TresPerNode=gpu:1,gpu:1
+   NtasksPerTRES:0
+

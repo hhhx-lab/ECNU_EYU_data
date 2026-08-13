@@ -1,0 +1,44 @@
+{
+  "artifact_sha256": {
+    "evaluation_manifest": "24c84e1b90cb4ebfd1f034e311130dfd2ea714c288f09728c8da46c7aeadbc37",
+    "inference_script": "fa367326d18d6e03ef3b313daca7213af43a96ecfa818fe29e64c52d75df9b38",
+    "inference_trainer": "c7c464c9ec283d75ab7d2f353d50025dc52e8b59dcc0d1f0256abdff7b78df13",
+    "master_split": "5b77bf4ae92e08df2495a17ace104d5e4160c77ed718bba1a7f2cdde87adfcc6",
+    "model_dataset": "831cda304b75c8d94bb38c70542f80b385f0a9e5c0c21c7d627ed07167ea6459",
+    "model_plans": "6f8ca43c30913efcbc0b5ea7c3107ff092bb0bf416e937b180665a55f6d9c3d2"
+  },
+  "case_count": 27,
+  "checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth",
+  "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+  "created_at_utc": "2026-08-13T18:44:35.742404+00:00",
+  "evaluation": {
+    "config": "mets",
+    "numpy": "1.26.4",
+    "overlap_threshold": 0.2,
+    "package": "BraTS-evaluation==0.0.8",
+    "panoptica": "2.1.0",
+    "volume_threshold": 27
+  },
+  "experiment": "S2-E-missing-T2W-complete-pipeline-val27",
+  "inference": {
+    "execution": "two_shards_sequential_on_one_gpu",
+    "gpu_count": 1,
+    "save_probabilities": false,
+    "shard_counts": {
+      "0": 14,
+      "1": 13
+    },
+    "tile_step_size": 0.5,
+    "use_gaussian": true,
+    "use_mirroring": true
+  },
+  "locked_test_case_count_excluded": 26,
+  "model": "E_completion_plus_focal_loss",
+  "operator_approved": false,
+  "schema_version": 1,
+  "scope": "27-case internal validation with synthesized T2W only",
+  "slurm_job_id": "3396633",
+  "source_split": "val",
+  "status": "experimental_unvalidated",
+  "training_required": false
+}
