@@ -20,6 +20,9 @@ from typing import Any, Mapping
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_TRAINER = "nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune"
+EMERGENCY_FIX_V3_TRAINER = (
+    "nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune"
+)
 EXPECTED_DATASET = "Dataset264_BraTS2026_MET_Completion"
 EXPECTED_E_SHA256 = "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267"
 EXPECTED_TRAIN_COUNT = 1035
@@ -37,6 +40,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--route-config", required=True)
     parser.add_argument("--valid-mask-manifest", required=True)
     parser.add_argument("--route-approval", required=True)
+    parser.add_argument("--fix-v3-calibration")
+    parser.add_argument("--fix-v2-failure-audit")
     parser.add_argument("--g1-code-dir", required=True)
     parser.add_argument("--g1-checkpoint-root", required=True)
     parser.add_argument("--g1-checkpoint-selection", required=True)
@@ -116,6 +121,14 @@ def _lock_environment(name: str, value: str) -> None:
     os.environ[name] = value
 
 
+def authorization_environment(trainer: str, path: Path) -> dict[str, str]:
+    if trainer == EXPECTED_TRAINER:
+        return {"S2_MET_AUG_ROUTE_GATE": str(path)}
+    if trainer == EMERGENCY_FIX_V3_TRAINER:
+        return {"S2_MET_AUG_EMERGENCY_DECISION": str(path)}
+    raise ValueError(f"unsupported training smoke trainer: {trainer}")
+
+
 def configure_environment(args: argparse.Namespace, output_dir: Path) -> dict[str, Any]:
     nnunet_raw = _resolved_existing(args.nnunet_raw, label="nnUNet raw root", directory=True)
     nnunet_preprocessed = _resolved_existing(
@@ -155,8 +168,11 @@ def configure_environment(args: argparse.Namespace, output_dir: Path) -> dict[st
             "training smoke must warm-start from the frozen E checkpoint: "
             f"observed={e_sha256}, expected={EXPECTED_E_SHA256}"
         )
-    if args.trainer != EXPECTED_TRAINER:
-        raise RuntimeError(f"training smoke is locked to trainer {EXPECTED_TRAINER}")
+    if args.trainer not in {EXPECTED_TRAINER, EMERGENCY_FIX_V3_TRAINER}:
+        raise RuntimeError(
+            "training smoke trainer is unsupported: "
+            f"{args.trainer}; allowed={EXPECTED_TRAINER},{EMERGENCY_FIX_V3_TRAINER}"
+        )
     if str(args.dataset) != "264":
         raise RuntimeError("training smoke is locked to Dataset264 via --dataset 264")
     if args.configuration != "3d_fullres" or args.plans != "nnUNetPlans":
@@ -192,7 +208,6 @@ def configure_environment(args: argparse.Namespace, output_dir: Path) -> dict[st
         "S2_MET_AUG_COMPONENT_MANIFEST": str(files["component_manifest"]),
         "S2_MET_AUG_ROUTE_CONFIG": str(files["route_config"]),
         "S2_MET_AUG_VALID_MASK_MANIFEST": str(files["valid_mask_manifest"]),
-        "S2_MET_AUG_ROUTE_GATE": str(files["route_approval"]),
         "S2_MET_AUG_G1_CODE_DIR": str(directories["g1_code_dir"]),
         "S2_MET_AUG_G1_CHECKPOINT_ROOT": str(directories["g1_checkpoint_root"]),
         "S2_MET_AUG_G1_CHECKPOINT_SELECTION": str(files["g1_checkpoint_selection"]),
@@ -205,6 +220,25 @@ def configure_environment(args: argparse.Namespace, output_dir: Path) -> dict[st
         "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
         "nnUNet_compile": "0",
     }
+    locked.update(authorization_environment(args.trainer, files["route_approval"]))
+    if args.trainer == EMERGENCY_FIX_V3_TRAINER:
+        files["fix_v3_calibration"] = _resolved_existing(
+            args.fix_v3_calibration,
+            label="Fix-v3 calibration",
+            directory=False,
+        )
+        files["fix_v2_failure_audit"] = _resolved_existing(
+            args.fix_v2_failure_audit,
+            label="Fix-v2 failure audit",
+            directory=False,
+        )
+        locked.update(
+            {
+                "S2_MET_AUG_FIX_V3_CALIBRATION": str(files["fix_v3_calibration"]),
+                "S2_MET_AUG_ORIGINAL_E_CHECKPOINT": str(files["pretrained_weights"]),
+                "S2_MET_AUG_FIX_V2_FAILURE_AUDIT": str(files["fix_v2_failure_audit"]),
+            }
+        )
     for name, value in forced.items():
         os.environ[name] = value
     for name, value in locked.items():

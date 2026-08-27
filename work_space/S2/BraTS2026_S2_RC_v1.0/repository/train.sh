@@ -48,8 +48,16 @@ case "${S2_EXPERIMENT_MODE}" in
         DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune
         DEFAULT_S2_SPLIT_MODE=completion_warmstart
         ;;
+    met_aug_route_a_fix_v3_emergency)
+        DEFAULT_S2_DATASET_ID=264
+        DEFAULT_S2_DATASET_NAME=Dataset264_BraTS2026_MET_Completion
+        DEFAULT_S2_TRAIN_COUNT=1035
+        DEFAULT_S2_VAL_COUNT=103
+        DEFAULT_S2_TRAINER=nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune
+        DEFAULT_S2_SPLIT_MODE=completion_warmstart
+        ;;
     *)
-        echo "S2_EXPERIMENT_MODE must be current, legacy, completion_warmstart, met_aug_route_a, or met_aug_route_a_control, got: ${S2_EXPERIMENT_MODE}" >&2
+        echo "S2_EXPERIMENT_MODE must be current, legacy, completion_warmstart, met_aug_route_a, met_aug_route_a_control, or met_aug_route_a_fix_v3_emergency, got: ${S2_EXPERIMENT_MODE}" >&2
         exit 2
         ;;
 esac
@@ -138,6 +146,7 @@ filenames = [
     "nnUNetTrainerBraTS2026RCOnlineDiffusion.py",
     "nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune.py",
     "nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune.py",
+    "nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune.py",
     "small_lesion_variants.py",
     "small_lesion_trainer_mixins.py",
     "nnUNetTrainerBraTS2026RCA1CompletionFineTune.py",
@@ -148,6 +157,9 @@ filenames = [
     "met_aug_core.py",
     "met_aug_data_loader.py",
     "met_aug_diffusion.py",
+    "met_aug_fix_v2.py",
+    "met_aug_fix_v3.py",
+    "met_aug_fix_v3_emergency.py",
     "met_aug_gate.py",
     "met_aug_paired_training.py",
     "met_aug_transform.py",
@@ -176,7 +188,7 @@ CHECKPOINT_LATEST="${RESULT_FOLD_DIR}/checkpoint_latest.pth"
 CHECKPOINT_FINAL="${RESULT_FOLD_DIR}/checkpoint_final.pth"
 VALIDATION_DIR="${RESULT_FOLD_DIR}/validation"
 VALIDATION_SUMMARY="${VALIDATION_DIR}/summary.json"
-if [[ "${S2_EXPERIMENT_MODE}" == "met_aug_route_a" ]]; then
+if [[ "${S2_EXPERIMENT_MODE}" == "met_aug_route_a" || "${S2_EXPERIMENT_MODE}" == "met_aug_route_a_fix_v3_emergency" ]]; then
     EXPECTED_MET_AUG_AUDIT_PATH="${RESULT_FOLD_DIR}/met_aug_events.jsonl"
     export S2_MET_AUG_AUDIT_PATH="${S2_MET_AUG_AUDIT_PATH:-${EXPECTED_MET_AUG_AUDIT_PATH}}"
     if [[ "${S2_MET_AUG_AUDIT_PATH}" != "${EXPECTED_MET_AUG_AUDIT_PATH}" ]]; then
@@ -238,6 +250,33 @@ if [[ "${S2_EXPERIMENT_MODE}" == "met_aug_route_a" ]]; then
     for required_dir_var in S2_MET_AUG_G1_CODE_DIR S2_MET_AUG_G1_CHECKPOINT_ROOT; do
         if [[ -z "${!required_dir_var:-}" || ! -d "${!required_dir_var}" ]]; then
             echo "met_aug_route_a requires directory variable ${required_dir_var}." >&2
+            exit 2
+        fi
+    done
+fi
+if [[ "${S2_EXPERIMENT_MODE}" == "met_aug_route_a_fix_v3_emergency" ]]; then
+    if [[ "${S2_MET_AUG_ENABLE:-0}" != "1" ]]; then
+        echo "met_aug_route_a_fix_v3_emergency requires S2_MET_AUG_ENABLE=1." >&2
+        exit 2
+    fi
+    for required_path_var in \
+        S2_MET_AUG_COMPONENT_MANIFEST \
+        S2_MET_AUG_ROUTE_CONFIG \
+        S2_MET_AUG_VALID_MASK_MANIFEST \
+        S2_MET_AUG_EMERGENCY_DECISION \
+        S2_MET_AUG_FIX_V3_CALIBRATION \
+        S2_MET_AUG_ORIGINAL_E_CHECKPOINT \
+        S2_MET_AUG_FIX_V2_FAILURE_AUDIT \
+        S2_MET_AUG_G1_CHECKPOINT_SELECTION \
+        S2_MET_AUG_G2_QC_GATE; do
+        if [[ -z "${!required_path_var:-}" || ! -f "${!required_path_var}" ]]; then
+            echo "met_aug_route_a_fix_v3_emergency requires file variable ${required_path_var}." >&2
+            exit 2
+        fi
+    done
+    for required_dir_var in S2_MET_AUG_G1_CODE_DIR S2_MET_AUG_G1_CHECKPOINT_ROOT; do
+        if [[ -z "${!required_dir_var:-}" || ! -d "${!required_dir_var}" ]]; then
+            echo "met_aug_route_a_fix_v3_emergency requires directory variable ${required_dir_var}." >&2
             exit 2
         fi
     done

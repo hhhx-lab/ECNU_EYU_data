@@ -1,0 +1,38 @@
+ENDPOINT_VALIDATION_EXECUTION_PLAN_20260824_R2.json: OK
+README.md: OK
+evidence/STATIC_PREFLIGHT.json: OK
+manifests/FIXED103_REAL_SYNTHETIC_CASES.csv: OK
+manifests/TEST26_LOCKED_MISSING_T2W_CASES.csv: OK
+manifests/VAL27_MISSING_T2W_CASES.csv: OK
+runtime/advance_pipeline.py: OK
+runtime/assemble_model_snapshot.py: OK
+runtime/build_static_bundle.py: OK
+runtime/compare_paired_met.py: OK
+runtime/custom_nnunet/__init__.py: OK
+runtime/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py: OK
+runtime/frozen_s2_inference.py: OK
+runtime/g1_r4_frozen/configs.py: OK
+runtime/g1_r4_frozen/models/__init__.py: OK
+runtime/g1_r4_frozen/models/bbdm/bb_scheduler.py: OK
+runtime/g1_r4_frozen/models/bbdm/condition_tokens.py: OK
+runtime/g1_r4_frozen/models/bbdm/unet.py: OK
+runtime/g1_r4_frozen/models/encdec/__init__.py: OK
+runtime/g1_r4_frozen/models/encdec/unet.py: OK
+runtime/g1_r4_frozen/synthesis/__init__.py: OK
+runtime/g1_r4_frozen/synthesis/pipeline.py: OK
+runtime/g1_r4_frozen/synthesis/segment_brain_mask.py: OK
+runtime/g1_r4_frozen/synthesis/spatial.py: OK
+runtime/g1_r4_frozen/synthesis/utils.py: OK
+runtime/materialize_s2_inputs.py: OK
+runtime/run_official_met_eval.sh: OK
+runtime/synthesize_missing_t2w_r4.py: OK
+runtime/validate_remote_static.py: OK
+slurm/01_val27_synthesize_r4.slurm: OK
+slurm/02_val27_four_model_eval.slurm: OK
+slurm/03_fixed103_real_vs_synthetic.slurm: OK
+slurm/04_test26_locked_endpoint.slurm: OK
+tests/test_static_runtime.py: OK
+NVIDIA A100-PCIE-40GB
+{"artifact_status": "experimental_unvalidated", "audit_csv_sha256": "ec9adfc098f3295c138eb82133dbb84f93538d99da84448d915a728884ef3e7c", "case_count": 27, "channel_order": {"0000": "t1n", "0001": "t1c", "0002": "t2w", "0003": "t2f"}, "formal_gate_status": "not_run_not_passed", "generated_at_utc": "2026-08-26T09:56:26.946765+00:00", "geometry_mismatch_count": 0, "geometry_repaired_count": 0, "input_file_count": 108, "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/manifests/VAL27_MISSING_T2W_CASES.csv", "manifest_sha256": "c9f8157070e78be77c13f839bf2e2e4401c0af223e59be367ed2db3d294b9f36", "operator_approved": false, "reference_file_count": 27, "route": "synthetic", "schema_version": 1, "source_t2w_used": false, "status": "pass"}
+{"case_count": 27, "methods": ["R", "B", "E", "FixV3"], "status": "pass"}
+{"artifact_status": "experimental_unvalidated", "case_count": 27, "completed_at_utc": "2026-08-26T10:11:14.809598+00:00", "formal_gate_status": "not_run_not_passed", "job_id": "3535754", "locked_test_used": false, "models": {"B": {"checkpoint_sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5", "metrics_sha256": "5a25326a26a1d8c03024a47b3d36b6c1bc4c1596ca72f92cb86c779c97de349d"}, "E": {"checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267", "metrics_sha256": "b0dab83a17d35b9e144529c3ea83115756ef43fb0c37f2da5fd2b4e916acb526"}, "FixV3": {"checkpoint_sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e", "metrics_sha256": "b25a8d2b9ea10b29c3b37733b07f7cad595a794ed6c2a931dc07102afa83b539"}, "R": {"checkpoint_sha256": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1", "metrics_sha256": "6d2313907236e0af6c9e761561258b8ec01064be0858bab5c7cbd95c27985f49"}}, "operator_approved": false, "paired_comparison_sha256": "d977b664c62193da6682b902e5d8dca1a23a5644fd7fc912bc1e12069cfa3b76", "schema_version": 1, "stage": "val27_four_models", "status": "pass"}

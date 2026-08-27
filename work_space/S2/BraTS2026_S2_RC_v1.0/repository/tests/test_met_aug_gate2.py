@@ -203,6 +203,47 @@ def _write_gate2_inputs(
 
 
 class Gate2ManifestTests(unittest.TestCase):
+    def test_scoped_pre_registration_and_reload_keep_targets_and_donors_in_scope(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            manifest_path, config_path, valid_path = _write_gate2_inputs(root)
+            manifest = ComponentManifest.load(manifest_path)
+            config = RouteConfig.load(config_path, manifest)
+            target_ids = set(sorted(manifest.target_groups)[:48])
+            target_groups = {manifest.target_groups[case_id] for case_id in target_ids}
+            donor_groups = {record.patient_group for record in manifest.records}
+            assets = load_valid_mask_assets(valid_path, expected_ids=target_ids)
+            payload = prepare_smoke_manifest(
+                manifest=manifest,
+                config=config,
+                valid_mask_manifest_path=valid_path,
+                assets=assets,
+                search_seed=41,
+                max_candidates=10000,
+                allowed_target_groups=target_groups,
+                allowed_donor_groups=donor_groups,
+                smoke_id_prefix="development",
+            )
+            smoke_path = root / "scoped.json"
+            smoke_path.write_text(json.dumps(payload, sort_keys=True), encoding="utf-8")
+            loaded = load_smoke_manifest(
+                smoke_path,
+                manifest=manifest,
+                config=config,
+                valid_mask_manifest_path=valid_path,
+            )
+
+        self.assertEqual(loaded["selection_scope"]["target_case_count"], 48)
+        self.assertTrue(
+            all(row["target_case_id"] in target_ids for row in loaded["smoke_cases"])
+        )
+        self.assertTrue(
+            all(
+                row["donor_patient_group"] in donor_groups
+                for row in loaded["smoke_cases"]
+            )
+        )
+
     def test_pre_registration_is_fixed_stratified_and_unique(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -313,6 +354,7 @@ class Gate2ManualReviewTests(unittest.TestCase):
                 "custom_nnunet/met_aug_gate2.py",
                 "custom_nnunet/met_aug_core.py",
                 "custom_nnunet/met_aug_diffusion.py",
+                "custom_nnunet/met_aug_fix_v2.py",
                 "custom_nnunet/online_diffusion_contract.py",
             )
             for index, relative in enumerate(expected_files):

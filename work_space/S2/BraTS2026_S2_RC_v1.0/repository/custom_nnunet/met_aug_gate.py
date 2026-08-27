@@ -52,6 +52,7 @@ ROUTE_A_RUNTIME_FILES = (
     "met_aug_core.py",
     "met_aug_data_loader.py",
     "met_aug_diffusion.py",
+    "met_aug_fix_v2.py",
     "met_aug_gate.py",
     "met_aug_paired_training.py",
     "met_aug_transform.py",
@@ -161,6 +162,7 @@ def _validate_gate_report(
     g1_checkpoint_selection_sha256: str | None = None,
     g2_parent_gate_sha256: str | None = None,
     g1_runtime_code: Mapping[str, Any] | None = None,
+    fix_v2: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     payload = load_json_object(path, label=label)
     if payload.get("status") != "pass" or payload.get("route_id") != ROUTE_A:
@@ -205,6 +207,8 @@ def _validate_gate_report(
         for key, value in external_expected.items():
             if value is None or payload.get(key) != value:
                 raise MetAugContractError(f"Gate 2 final report does not bind {key}")
+        if payload.get("fix_v2") != (dict(fix_v2) if fix_v2 is not None else None):
+            raise MetAugContractError("Gate 2 final report Fix-v2 policy drifted")
     return payload
 
 
@@ -252,6 +256,7 @@ def build_route_a_approval(
         g1_checkpoint_selection_sha256=selection_sha256,
         g2_parent_gate_sha256=parent_gate_sha256,
         g1_runtime_code=g1_runtime_code,
+        fix_v2=config.fix_v2.as_mapping() if config.fix_v2 is not None else None,
     )
     approval = {
         "schema_version": ROUTE_A_APPROVAL_SCHEMA,
@@ -268,6 +273,8 @@ def build_route_a_approval(
         "training_contract": ROUTE_A_TRAINING_CONTRACT,
         "runtime_code": route_a_runtime_code_snapshot(code_dir),
     }
+    if config.fix_v2 is not None:
+        approval["fix_v2"] = config.fix_v2.as_mapping()
     approval["approval_sha256"] = canonical_json_sha256(approval, exclude=("approval_sha256",))
     return approval
 
@@ -289,6 +296,7 @@ def validate_route_a_approval(
         from met_aug_diffusion import g1_runtime_code_snapshot  # type: ignore
 
     payload = load_json_object(approval_path, label="MET-AUG Route A approval")
+    config = RouteConfig.load(route_config_path, component_manifest)
     if payload.get("schema_version") != ROUTE_A_APPROVAL_SCHEMA:
         raise MetAugContractError("unsupported MET-AUG Route A approval schema")
     if payload.get("approval_sha256") != canonical_json_sha256(payload, exclude=("approval_sha256",)):
@@ -306,6 +314,9 @@ def validate_route_a_approval(
     for key, value in expected.items():
         if payload.get(key) != value:
             raise MetAugContractError(f"MET-AUG Route A approval does not bind {key}")
+    expected_fix_v2 = config.fix_v2.as_mapping() if config.fix_v2 is not None else None
+    if payload.get("fix_v2") != expected_fix_v2:
+        raise MetAugContractError("MET-AUG Route A approval Fix-v2 policy drifted")
     expected_g1_code = g1_runtime_code_snapshot(g1_code_dir)
     if payload.get("g1_runtime_code") != expected_g1_code:
         raise MetAugContractError("MET-AUG Route A approval does not match deployed G1 runtime code")

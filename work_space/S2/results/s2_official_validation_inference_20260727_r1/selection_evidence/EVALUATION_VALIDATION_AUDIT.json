@@ -1,0 +1,118 @@
+{
+  "cross_model_checks": {
+    "csv_schema_identical": true,
+    "reference_content_identical": true,
+    "reference_manifest_sha256": "bc80433080a94491a65b2c82db8549cda5afa24cfc172bc3f7b75a884817161a"
+  },
+  "environment": {
+    "environment": "/root/brats2026/envs/s2_brats_eval_numpy126_r2",
+    "executables_sha256": {
+      "brats-evaluate": "498422db4d6626ae978c90c726aabfc401a293bd0e14b61cb08a2867afe5d47e",
+      "brats-parse-metrics": "bb541686e963d37c5c0aa06011fb3a211e9a3eeecdec8126f589d7713eb55a67",
+      "python": "2bf2dfc43ccf9cc5a5292e721c34f123915e5a2f03d26810acde80f91b01e5c1"
+    },
+    "packages": {
+      "BraTS-evaluation": "0.0.8",
+      "numpy": "1.26.4",
+      "panoptica": "2.1.0"
+    },
+    "python": "3.10.20"
+  },
+  "evaluation_script": "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/11_run_internal_official_eval.sh",
+  "evaluation_script_sha256": "fa83c0133c7a6de17cb90ac16a343bcaec2c500d3690531f148e7bab46ea049a",
+  "expected_cases_per_model": 103,
+  "finalizer_script": "/root/brats2026/runs/s2_e_continue_selection_20260727_r1/tools/27_finalize_e_continue_selection.py",
+  "finalizer_script_sha256": "81b01fa3653b02efe591063f7ba6e9f7556098a22a0d40fcd361a53e06378b34",
+  "generated_at_utc": "2026-07-27T14:09:25.054780+00:00",
+  "models": {
+    "B": {
+      "checkpoint_path": "/root/brats2026/ECNU_EYU_data/work_space/S2/results/s2_completion_dataset264_t2w_20260720/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5",
+      "completion_marker_sha256": "e5776c04ba0b6e804b8ec553c724c38b56fa55a5b54702d82688254348968d55",
+      "csv_columns": 73,
+      "csv_data_rows": 106,
+      "csv_sha256": "43b635e541a16a789d0a3709dec8ce3fe2dca0afe5e49e99359f138a51d220c7",
+      "evaluation_pid": 212856,
+      "evaluation_pid_stopped": true,
+      "manifest_sha256": "5716155fe1455ee1239e7fdba1aa5b7a63acfd1a6db2ff31181bca424ed1d243",
+      "prediction_files": 103,
+      "prediction_manifest_sha256": "c9cab3ac1f65df786686ae1ab2897b056d49e2d04cae4ffc9e166cb3db5d82ce",
+      "prediction_total_bytes": 4246448,
+      "preparation_summary_sha256": "62bc8c8043608e2492054786392d7795796d07d96e399c49097777023ea69e44",
+      "reference_files": 103,
+      "reference_manifest_sha256": "bc80433080a94491a65b2c82db8549cda5afa24cfc172bc3f7b75a884817161a",
+      "reference_total_bytes": 13022825,
+      "summary_metrics": 103,
+      "summary_missings": 0,
+      "summary_sha256": "9469506b1aeb228058ded16c560b1be4f3665fde42572a62b14415900f790e9b"
+    },
+    "E": {
+      "checkpoint_path": "/root/brats2026/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/focal/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+      "completion_marker_sha256": "d7f8564383c0c181af9992ab019fd6514475c80e0ea4bb8271b7d99842f4420e",
+      "csv_columns": 73,
+      "csv_data_rows": 106,
+      "csv_sha256": "294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167",
+      "evaluation_pid": 212857,
+      "evaluation_pid_stopped": true,
+      "manifest_sha256": "6b19d3bda6476c0ca2b71ddd26d905406df5c806d64a6d6f770c1709f3445a2e",
+      "prediction_files": 103,
+      "prediction_manifest_sha256": "c7c461ac22e1a1c8a1015d31b9279d5366fc2b504d6e86689adfe0141daee614",
+      "prediction_total_bytes": 4229661,
+      "preparation_summary_sha256": "5badf640092d847b57358b8ac399b25bb616707a8b1d983cb6aadef3721f16cc",
+      "reference_files": 103,
+      "reference_manifest_sha256": "bc80433080a94491a65b2c82db8549cda5afa24cfc172bc3f7b75a884817161a",
+      "reference_total_bytes": 13022825,
+      "summary_metrics": 103,
+      "summary_missings": 0,
+      "summary_sha256": "84386da89e89d24003579bfbdfe36728ed4e49856b16a84c4f9edf1d65569fc1"
+    },
+    "E_continue_final": {
+      "checkpoint_path": "/root/brats2026/runs/s2_e_continue_fallback_20260726_r1/training/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth",
+      "checkpoint_sha256": "535e89644121a0c0f1f591f0c1a211581d6d3dd6c1df334a7ccb1bb7825328b1",
+      "completion_marker_sha256": "39048345ef0e5de20413e88756c92528dac899e2e5f0779bcca0c92b6b3a48a0",
+      "csv_columns": 73,
+      "csv_data_rows": 106,
+      "csv_sha256": "008a218255968571f0eb7076ed732b45a5085b5c9e174d10eeef1eb737521041",
+      "evaluation_pid": 212858,
+      "evaluation_pid_stopped": true,
+      "manifest_sha256": "35e07e2307b19e665bbb3cefe2296702ac7a6792fc6c0a5360e81bc6337c2da0",
+      "prediction_files": 103,
+      "prediction_manifest_sha256": "39d5f081ded17d37d688a76ff2007cd10d7c9983adff89127963b28335ba16c2",
+      "prediction_total_bytes": 4241468,
+      "preparation_summary_sha256": "7be95e7755e246ee2f8707021c119c9ed0216db0278c5565312b4cae663c0a5f",
+      "reference_files": 103,
+      "reference_manifest_sha256": "bc80433080a94491a65b2c82db8549cda5afa24cfc172bc3f7b75a884817161a",
+      "reference_total_bytes": 13022825,
+      "summary_metrics": 103,
+      "summary_missings": 0,
+      "summary_sha256": "b1a455c58a1d85378f1edaa4d4b0aca874fed6294b33ca6479541a1e6e531513"
+    }
+  },
+  "root_audits": {
+    "evaluation_environment": {
+      "claimed_identity": "365a6c3ed12bac55e9f771140faae7753f50249257df4adbabd55ad45d90fb6b",
+      "file_sha256": "d7efbf1eadb1918b9a8276c8c4243d40d958287ac03968ece07b14dc845ba2b5"
+    },
+    "evaluation_launch": {
+      "claimed_identity": "4506513b205ca8162316dd5de5089fd304d5899f3a3f8f692ed82128cb44ef46",
+      "file_sha256": "bd87bc733d5739040d5acc3edad8446536efee82b93d29e95b51c3fd364cf0fe"
+    },
+    "selection_preparation": {
+      "claimed_identity": "2b644cfdd1220395aa152ef34402b8f3d11dc2bb9730792bbd9e12da071b2995",
+      "file_sha256": "11136bb8eef23f104c0481a22377dfb550b81c2830471e3b10a533160b58dbac"
+    }
+  },
+  "schema_version": 1,
+  "selection_root": "/root/brats2026/runs/s2_e_continue_selection_20260727_r1",
+  "status": "pass",
+  "violations": [],
+  "warnings": [
+    {
+      "code": "preserved_launch_candidate_map_malformed",
+      "launch_audit_file_sha256": "bd87bc733d5739040d5acc3edad8446536efee82b93d29e95b51c3fd364cf0fe",
+      "message": "The immutable launch audit candidate map contains only B and concatenates the E/E-continue launch records into B.wrapper_log. It was not rewritten. Each run is independently validated from its PID file, wrapper log, outputs, and marker.",
+      "severity": "noncritical_provenance_format"
+    }
+  ]
+}

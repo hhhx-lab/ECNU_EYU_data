@@ -28,9 +28,21 @@ COMPONENT_MANIFEST_SCHEMA = 2
 VALID_MASK_MANIFEST_SCHEMA = 2
 ROUTE_CONFIG_SCHEMA = 2
 COMPACT_SUPPORT_ROUTE_CONFIG_SCHEMA = 3
+FIX_V2_ROUTE_CONFIG_SCHEMA = 4
+FIX_V3_ROUTE_CONFIG_SCHEMA = 5
 COMPACT_SUPPORT_POLICY = "compact_support_v1"
+FIX_V2_PROCESSOR_POLICY = "fix_v2_qc_v1"
+FIX_V3_PROCESSOR_POLICY = "fix_v3_qc_v1"
+FIX_V2_BOUNDARY_POLICIES = frozenset(
+    {"label_only_qc_v1", "halo_cosine_v1", "halo_cosine_harmonized_v1"}
+)
 SUPPORTED_ROUTE_CONFIG_SCHEMAS = frozenset(
-    {ROUTE_CONFIG_SCHEMA, COMPACT_SUPPORT_ROUTE_CONFIG_SCHEMA}
+    {
+        ROUTE_CONFIG_SCHEMA,
+        COMPACT_SUPPORT_ROUTE_CONFIG_SCHEMA,
+        FIX_V2_ROUTE_CONFIG_SCHEMA,
+        FIX_V3_ROUTE_CONFIG_SCHEMA,
+    }
 )
 
 
@@ -560,6 +572,93 @@ class CompactSupportEligibility:
         }
 
 
+@dataclass(frozen=True)
+class FixV2RoutePolicy:
+    boundary_policy: str
+    calibration_sha256: str
+
+    @classmethod
+    def from_mapping(cls, value: Mapping[str, Any]) -> "FixV2RoutePolicy":
+        required = {"boundary_policy", "calibration_sha256"}
+        missing = sorted(required - set(value))
+        if missing:
+            raise MetAugContractError(f"Fix-v2 policy misses fields: {missing}")
+        unexpected = sorted(set(value) - required)
+        if unexpected:
+            raise MetAugContractError(
+                f"Fix-v2 policy has unexpected fields: {unexpected}"
+            )
+        result = cls(
+            boundary_policy=str(value["boundary_policy"]),
+            calibration_sha256=str(value["calibration_sha256"]),
+        )
+        if result.boundary_policy not in FIX_V2_BOUNDARY_POLICIES:
+            raise MetAugContractError(
+                f"unsupported Fix-v2 boundary policy: {result.boundary_policy}"
+            )
+        if len(result.calibration_sha256) != 64 or any(
+            character not in "0123456789abcdef"
+            for character in result.calibration_sha256
+        ):
+            raise MetAugContractError("Fix-v2 calibration SHA256 is malformed")
+        return result
+
+    def as_mapping(self) -> dict[str, str]:
+        return {
+            "boundary_policy": self.boundary_policy,
+            "calibration_sha256": self.calibration_sha256,
+        }
+
+    @property
+    def processor_policy(self) -> str:
+        return FIX_V2_PROCESSOR_POLICY
+
+
+@dataclass(frozen=True)
+class FixV3RoutePolicy:
+    boundary_policy: str
+    calibration_sha256: str
+    processor_policy: str
+
+    @classmethod
+    def from_mapping(cls, value: Mapping[str, Any]) -> "FixV3RoutePolicy":
+        required = {"boundary_policy", "calibration_sha256", "processor_policy"}
+        missing = sorted(required - set(value))
+        if missing:
+            raise MetAugContractError(f"Fix-v3 policy misses fields: {missing}")
+        unexpected = sorted(set(value) - required)
+        if unexpected:
+            raise MetAugContractError(
+                f"Fix-v3 policy has unexpected fields: {unexpected}"
+            )
+        result = cls(
+            boundary_policy=str(value["boundary_policy"]),
+            calibration_sha256=str(value["calibration_sha256"]),
+            processor_policy=str(value["processor_policy"]),
+        )
+        if result.boundary_policy not in FIX_V2_BOUNDARY_POLICIES:
+            raise MetAugContractError(
+                f"unsupported Fix-v3 boundary policy: {result.boundary_policy}"
+            )
+        if result.processor_policy != FIX_V3_PROCESSOR_POLICY:
+            raise MetAugContractError(
+                f"unsupported Fix-v3 processor policy: {result.processor_policy}"
+            )
+        if len(result.calibration_sha256) != 64 or any(
+            character not in "0123456789abcdef"
+            for character in result.calibration_sha256
+        ):
+            raise MetAugContractError("Fix-v3 calibration SHA256 is malformed")
+        return result
+
+    def as_mapping(self) -> dict[str, str]:
+        return {
+            "boundary_policy": self.boundary_policy,
+            "calibration_sha256": self.calibration_sha256,
+            "processor_policy": self.processor_policy,
+        }
+
+
 def _make_compact_support_eligibility(
     records: Iterable[ComponentRecord],
     *,
@@ -627,6 +726,8 @@ class RouteConfig:
     max_bbox_mm: float
     strata: tuple[RouteStratum, ...]
     donor_eligibility: CompactSupportEligibility | None = None
+    fix_v2: FixV2RoutePolicy | None = None
+    fix_v3: FixV3RoutePolicy | None = None
 
     @classmethod
     def load(cls, path: str | Path, manifest: ComponentManifest) -> "RouteConfig":
@@ -642,13 +743,26 @@ class RouteConfig:
         if payload.get("target_groups_sha256") != manifest.target_groups_sha256:
             raise MetAugContractError("route config does not bind the target group map")
         eligibility_payload = payload.get("donor_eligibility")
-        if (
-            schema_version == COMPACT_SUPPORT_ROUTE_CONFIG_SCHEMA
-            and not isinstance(eligibility_payload, Mapping)
+        if schema_version == COMPACT_SUPPORT_ROUTE_CONFIG_SCHEMA and not isinstance(
+            eligibility_payload, Mapping
         ):
             raise MetAugContractError(
                 "compact-support Route A config lacks donor_eligibility"
             )
+        if eligibility_payload is not None and not isinstance(
+            eligibility_payload, Mapping
+        ):
+            raise MetAugContractError("donor_eligibility must be an object")
+        fix_v2_payload = payload.get("fix_v2")
+        if schema_version == FIX_V2_ROUTE_CONFIG_SCHEMA and not isinstance(
+            fix_v2_payload, Mapping
+        ):
+            raise MetAugContractError("Fix-v2 Route A config lacks fix_v2 policy")
+        fix_v3_payload = payload.get("fix_v3")
+        if schema_version == FIX_V3_ROUTE_CONFIG_SCHEMA and not isinstance(
+            fix_v3_payload, Mapping
+        ):
+            raise MetAugContractError("Fix-v3 Route A config lacks fix_v3 policy")
         config = cls(
             path=route_path,
             schema_version=schema_version,
@@ -670,13 +784,31 @@ class RouteConfig:
             strata=tuple(RouteStratum.from_mapping(item) for item in payload["strata"]),
             donor_eligibility=(
                 CompactSupportEligibility.from_mapping(eligibility_payload)
-                if schema_version == COMPACT_SUPPORT_ROUTE_CONFIG_SCHEMA
+                if isinstance(eligibility_payload, Mapping)
+                else None
+            ),
+            fix_v2=(
+                FixV2RoutePolicy.from_mapping(fix_v2_payload)
+                if isinstance(fix_v2_payload, Mapping)
+                else None
+            ),
+            fix_v3=(
+                FixV3RoutePolicy.from_mapping(fix_v3_payload)
+                if isinstance(fix_v3_payload, Mapping)
                 else None
             ),
         )
-        if schema_version == ROUTE_CONFIG_SCHEMA and "donor_eligibility" in payload:
+        if schema_version == ROUTE_CONFIG_SCHEMA and eligibility_payload is not None:
             raise MetAugContractError(
                 "legacy Route A schema must not contain donor_eligibility"
+            )
+        if schema_version != FIX_V2_ROUTE_CONFIG_SCHEMA and fix_v2_payload is not None:
+            raise MetAugContractError(
+                "legacy Route A schemas must not contain fix_v2 policy"
+            )
+        if schema_version != FIX_V3_ROUTE_CONFIG_SCHEMA and fix_v3_payload is not None:
+            raise MetAugContractError(
+                "non-Fix-v3 Route A schemas must not contain fix_v3 policy"
             )
         config.validate(manifest)
         return config
@@ -686,6 +818,10 @@ class RouteConfig:
             self.donor_eligibility is None
             or self.donor_eligibility.accepts_record(record)
         )
+
+    @property
+    def candidate_policy(self) -> FixV2RoutePolicy | FixV3RoutePolicy | None:
+        return self.fix_v3 if self.fix_v3 is not None else self.fix_v2
 
     def is_support_eligible(
         self,
@@ -723,6 +859,16 @@ class RouteConfig:
             raise MetAugContractError("Route A clearance contract has drifted")
         if self.min_core_volume_mm3 != 27.0 or self.max_bbox_mm != 56.0:
             raise MetAugContractError("Route A component constraints have drifted")
+        if (self.schema_version == FIX_V2_ROUTE_CONFIG_SCHEMA) != (
+            self.fix_v2 is not None
+        ):
+            raise MetAugContractError("Fix-v2 schema and policy disagree")
+        if (self.schema_version == FIX_V3_ROUTE_CONFIG_SCHEMA) != (
+            self.fix_v3 is not None
+        ):
+            raise MetAugContractError("Fix-v3 schema and policy disagree")
+        if self.fix_v2 is not None and self.fix_v3 is not None:
+            raise MetAugContractError("Route A cannot bind Fix-v2 and Fix-v3 together")
         eligible_records = self.eligible_records(manifest)
         if not eligible_records:
             raise MetAugContractError("route config excludes every donor component")
@@ -816,6 +962,59 @@ def make_route_a_config(
     }
     if eligibility is not None:
         payload["donor_eligibility"] = eligibility.as_mapping()
+    return payload
+
+
+def make_fix_v2_route_a_config(
+    manifest: ComponentManifest,
+    *,
+    boundary_policy: str,
+    calibration_sha256: str,
+    seed: int = 20260725,
+    max_total_support_voxels: int | None = None,
+    max_total_to_core_ratio: float | None = None,
+) -> dict[str, Any]:
+    payload = make_route_a_config(
+        manifest,
+        seed=seed,
+        max_total_support_voxels=max_total_support_voxels,
+        max_total_to_core_ratio=max_total_to_core_ratio,
+    )
+    policy = FixV2RoutePolicy.from_mapping(
+        {
+            "boundary_policy": boundary_policy,
+            "calibration_sha256": calibration_sha256,
+        }
+    )
+    payload["schema_version"] = FIX_V2_ROUTE_CONFIG_SCHEMA
+    payload["fix_v2"] = policy.as_mapping()
+    return payload
+
+
+def make_fix_v3_route_a_config(
+    manifest: ComponentManifest,
+    *,
+    boundary_policy: str,
+    calibration_sha256: str,
+    seed: int = 20260725,
+    max_total_support_voxels: int | None = None,
+    max_total_to_core_ratio: float | None = None,
+) -> dict[str, Any]:
+    payload = make_route_a_config(
+        manifest,
+        seed=seed,
+        max_total_support_voxels=max_total_support_voxels,
+        max_total_to_core_ratio=max_total_to_core_ratio,
+    )
+    policy = FixV3RoutePolicy.from_mapping(
+        {
+            "boundary_policy": boundary_policy,
+            "calibration_sha256": calibration_sha256,
+            "processor_policy": FIX_V3_PROCESSOR_POLICY,
+        }
+    )
+    payload["schema_version"] = FIX_V3_ROUTE_CONFIG_SCHEMA
+    payload["fix_v3"] = policy.as_mapping()
     return payload
 
 
@@ -945,6 +1144,7 @@ class EventResult:
     record: ComponentRecord | None = None
     placement: Placement | None = None
     metadata: Mapping[str, Any] = field(default_factory=dict)
+    evidence: Mapping[str, np.ndarray] = field(default_factory=dict, repr=False)
 
     def audit_mapping(self) -> dict[str, Any]:
         result: dict[str, Any] = {
@@ -1004,7 +1204,46 @@ class MemoryAuditSink:
 
 
 class InpaintingBackend(Protocol):
-    def generate(self, image_crop: np.ndarray, label_crop: np.ndarray, *, seed: int) -> np.ndarray: ...
+    def generate(
+        self,
+        image_crop: np.ndarray,
+        label_crop: np.ndarray,
+        *,
+        seed: int,
+        inpaint_support: np.ndarray | None = None,
+    ) -> np.ndarray: ...
+
+
+@dataclass(frozen=True)
+class CandidateProcessingResult:
+    image: np.ndarray
+    segmentation: np.ndarray
+    image_support: np.ndarray
+    label_support: np.ndarray
+    reason: str | None = None
+    metadata: Mapping[str, Any] = field(default_factory=dict)
+    evidence: Mapping[str, np.ndarray] = field(default_factory=dict, repr=False)
+
+
+class CandidateProcessor(Protocol):
+    processor_policy: str
+    boundary_policy: str
+    calibration_sha256: str
+    component_manifest_sha256: str
+    target_groups_sha256: str
+
+    def process(
+        self,
+        *,
+        original_image: np.ndarray,
+        original_segmentation: np.ndarray,
+        label_cube: np.ndarray,
+        valid_mask: np.ndarray,
+        spacing_mm: tuple[float, float, float],
+        core_volume_mm3: float,
+        seed: int,
+        backend: InpaintingBackend,
+    ) -> CandidateProcessingResult: ...
 
 
 def _centered_label_cube(label: np.ndarray, crop_size: int) -> tuple[np.ndarray, np.ndarray]:
@@ -1111,12 +1350,40 @@ class MetAugEngine:
         config: RouteConfig,
         backend: InpaintingBackend | None,
         audit_sink: AuditSink,
+        candidate_processor: CandidateProcessor | None = None,
     ) -> None:
         config.validate(manifest)
         self.manifest = manifest
         self.config = config
         self.backend = backend
         self.audit_sink = audit_sink
+        self.candidate_processor = candidate_processor
+        route_policy = config.candidate_policy
+        if route_policy is None and candidate_processor is not None:
+            raise MetAugContractError(
+                "legacy Route A config cannot use a versioned candidate processor"
+            )
+        if route_policy is not None and candidate_processor is not None:
+            if candidate_processor.processor_policy != route_policy.processor_policy:
+                raise MetAugContractError(
+                    "candidate processor policy does not match route config"
+                )
+            if candidate_processor.boundary_policy != route_policy.boundary_policy:
+                raise MetAugContractError(
+                    "candidate processor boundary policy does not match route config"
+                )
+            if candidate_processor.calibration_sha256 != route_policy.calibration_sha256:
+                raise MetAugContractError(
+                    "candidate processor calibration does not match route config"
+                )
+            if candidate_processor.component_manifest_sha256 != manifest.identity_sha256:
+                raise MetAugContractError(
+                    "Fix-v2 calibration does not bind the loaded component manifest"
+                )
+            if candidate_processor.target_groups_sha256 != manifest.target_groups_sha256:
+                raise MetAugContractError(
+                    "Fix-v2 calibration does not bind the loaded target group map"
+                )
         self.sampler = ComponentSampler(manifest, config)
 
     def _event_identity(self, context: EventContext) -> tuple[str, int]:
@@ -1261,6 +1528,15 @@ class MetAugEngine:
         stop = tuple(value + self.config.crop_size for value in start)
         slices = tuple(slice(begin, end) for begin, end in zip(start, stop))
         original_crop = image[(slice(None),) + slices].astype(np.float32, copy=True)
+        if self.config.candidate_policy is not None:
+            return self._apply_fix_v2(
+                image=image,
+                segmentation=segmentation,
+                valid_mask=valid_mask,
+                result=result,
+                slices=slices,
+                original_crop=original_crop,
+            )
         try:
             generated = self.backend.generate(original_crop, placement.label_cube, seed=result.event_seed)
         except Exception as exc:
@@ -1304,6 +1580,167 @@ class MetAugEngine:
             raise MetAugAuditError("MET-AUG audit write failed; transaction was not committed") from exc
         return draft_image, draft_segmentation, result
 
+    def _apply_fix_v2(
+        self,
+        *,
+        image: np.ndarray,
+        segmentation: np.ndarray,
+        valid_mask: np.ndarray,
+        result: EventResult,
+        slices: tuple[slice, slice, slice],
+        original_crop: np.ndarray,
+    ) -> tuple[np.ndarray, np.ndarray, EventResult]:
+        version = "fix_v3" if self.config.fix_v3 is not None else "fix_v2"
+        if self.candidate_processor is None:
+            raise MetAugContractError(
+                f"{version} Route A requires a frozen candidate processor"
+            )
+        if self.backend is None:
+            raise MetAugContractError(f"{version} Route A requires a diffusion backend")
+        assert result.placement is not None
+        assert result.record is not None
+        placement = result.placement
+        original_segmentation = segmentation[(0,) + slices].astype(
+            segmentation.dtype, copy=True
+        )
+        valid_crop = valid_mask[slices].astype(bool, copy=False)
+        try:
+            processed = self.candidate_processor.process(
+                original_image=original_crop,
+                original_segmentation=original_segmentation,
+                label_cube=placement.label_cube,
+                valid_mask=valid_crop,
+                spacing_mm=tuple(float(value) for value in result.record.spacing_mm),
+                core_volume_mm3=float(result.record.core_volume_mm3),
+                seed=result.event_seed,
+                backend=self.backend,
+            )
+        except Exception as exc:
+            failed = EventResult(
+                "NO_OP",
+                "FIX_V3_PROCESSING_FAIL" if version == "fix_v3" else "FIX_V2_PROCESSING_FAIL",
+                result.event_id,
+                result.event_seed,
+                record=result.record,
+                placement=placement,
+                metadata={
+                    **result.metadata,
+                    "detail": f"processor: {type(exc).__name__}: {exc}",
+                },
+            )
+            self._append(failed)
+            return image, segmentation, failed
+
+        processor_metadata = {version: dict(processed.metadata)}
+        if processed.reason is not None:
+            rejected = EventResult(
+                "NO_OP",
+                processed.reason,
+                result.event_id,
+                result.event_seed,
+                record=result.record,
+                placement=placement,
+                metadata={**result.metadata, **processor_metadata},
+                evidence=processed.evidence,
+            )
+            self._append(rejected)
+            return image, segmentation, rejected
+
+        expected_image_shape = original_crop.shape
+        expected_segmentation_shape = original_segmentation.shape
+        support_shape = original_segmentation.shape
+        if (
+            processed.image.shape != expected_image_shape
+            or processed.segmentation.shape != expected_segmentation_shape
+            or processed.image_support.shape != support_shape
+            or processed.label_support.shape != support_shape
+            or not np.all(np.isfinite(processed.image))
+        ):
+            rejected = EventResult(
+                "NO_OP",
+                "COMMIT_CONTRACT_FAIL",
+                result.event_id,
+                result.event_seed,
+                record=result.record,
+                placement=placement,
+                metadata={
+                    **result.metadata,
+                    **processor_metadata,
+                    "detail": f"{version} processor returned malformed candidate arrays",
+                },
+            )
+            self._append(rejected)
+            return image, segmentation, rejected
+
+        local_image_support = processed.image_support.astype(bool, copy=False)
+        local_label_support = processed.label_support.astype(bool, copy=False)
+        if (
+            not np.array_equal(local_label_support, placement.support)
+            or np.any(local_label_support & ~local_image_support)
+        ):
+            rejected = EventResult(
+                "NO_OP",
+                "COMMIT_CONTRACT_FAIL",
+                result.event_id,
+                result.event_seed,
+                record=result.record,
+                placement=placement,
+                metadata={
+                    **result.metadata,
+                    **processor_metadata,
+                    "detail": f"{version} support masks violate the placement contract",
+                },
+            )
+            self._append(rejected)
+            return image, segmentation, rejected
+
+        draft_image = image.copy()
+        draft_segmentation = segmentation.copy()
+        draft_image[(slice(None),) + slices] = processed.image.astype(
+            draft_image.dtype, copy=False
+        )
+        draft_segmentation[(0,) + slices] = processed.segmentation.astype(
+            draft_segmentation.dtype, copy=False
+        )
+        if not self._validate_candidate_commit(
+            image,
+            segmentation,
+            draft_image,
+            draft_segmentation,
+            placement,
+            local_image_support=local_image_support,
+            local_label_support=local_label_support,
+        ):
+            rejected = EventResult(
+                "NO_OP",
+                "COMMIT_CONTRACT_FAIL",
+                result.event_id,
+                result.event_seed,
+                record=result.record,
+                placement=placement,
+                metadata={**result.metadata, **processor_metadata},
+            )
+            self._append(rejected)
+            return image, segmentation, rejected
+
+        committed = EventResult(
+            "COMMITTED",
+            None,
+            result.event_id,
+            result.event_seed,
+            record=result.record,
+            placement=placement,
+            metadata={**result.metadata, **processor_metadata},
+            evidence=processed.evidence,
+        )
+        try:
+            self._append(committed)
+        except Exception as exc:
+            raise MetAugAuditError(
+                "MET-AUG audit write failed; transaction was not committed"
+            ) from exc
+        return draft_image, draft_segmentation, committed
+
     def _validate_commit(
         self,
         before_image: np.ndarray,
@@ -1312,23 +1749,47 @@ class MetAugEngine:
         after_segmentation: np.ndarray,
         placement: Placement,
     ) -> bool:
+        return self._validate_candidate_commit(
+            before_image,
+            before_segmentation,
+            after_image,
+            after_segmentation,
+            placement,
+            local_image_support=placement.support,
+            local_label_support=placement.support,
+        )
+
+    def _validate_candidate_commit(
+        self,
+        before_image: np.ndarray,
+        before_segmentation: np.ndarray,
+        after_image: np.ndarray,
+        after_segmentation: np.ndarray,
+        placement: Placement,
+        *,
+        local_image_support: np.ndarray,
+        local_label_support: np.ndarray,
+    ) -> bool:
         start = placement.crop_start
         stop = tuple(value + self.config.crop_size for value in start)
         slices = tuple(slice(begin, end) for begin, end in zip(start, stop))
-        local_support = placement.support
-        global_support = np.zeros(before_segmentation.shape[1:], dtype=bool)
-        global_support[slices] = local_support
+        global_image_support = np.zeros(before_segmentation.shape[1:], dtype=bool)
+        global_image_support[slices] = local_image_support
+        global_label_support = np.zeros(before_segmentation.shape[1:], dtype=bool)
+        global_label_support[slices] = local_label_support
         if not np.all(np.isfinite(after_image)):
             return False
         changed_image = np.any(after_image != before_image, axis=0)
         changed_seg = after_segmentation[0] != before_segmentation[0]
-        if np.any(changed_image & ~global_support) or np.any(changed_seg & ~global_support):
+        if np.any(changed_image & ~global_image_support) or np.any(
+            changed_seg & ~global_label_support
+        ):
             return False
         values = set(int(value) for value in np.unique(after_segmentation))
         if not values.issubset(ALLOWED_LABELS | {-1}):
             return False
-        expected = placement.label_cube[local_support]
-        actual = after_segmentation[(0,) + slices][local_support]
+        expected = placement.label_cube[local_label_support]
+        actual = after_segmentation[(0,) + slices][local_label_support]
         return bool(np.array_equal(actual, expected))
 
     def _append(self, result: EventResult) -> None:

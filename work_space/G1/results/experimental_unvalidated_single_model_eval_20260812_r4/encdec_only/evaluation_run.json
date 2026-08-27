@@ -1,0 +1,24 @@
+{
+  "created_at": "2026-08-11T19:00:50.402964+00:00",
+  "slurm_job_id": "3387051",
+  "split": "val",
+  "case_count": 103,
+  "synthesis_type": "encdec",
+  "vae_weights": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+  "encdec_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+  "bbdm_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+  "bbdm_s": 0.01,
+  "spatial_preprocessing": "foreground_centered_isotropic_resample_v1",
+  "case_list": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/val_fixed_103_case_list.csv",
+  "mean_metrics": {
+    "whole_SSIM": 0.893115790144911,
+    "whole_PSNR": 27.505732108500638,
+    "whole_MSE": 0.0018885865552097703,
+    "whole_MAE": 0.013724694552930813,
+    "brain_SSIM": 0.7565097849345902,
+    "brain_PSNR": 19.167048425807018,
+    "brain_MSE": 0.012816827070619007,
+    "brain_MAE": 0.0851561774327917
+  },
+  "operator_approved": false
+}

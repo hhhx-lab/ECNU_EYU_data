@@ -27,6 +27,20 @@ SMOKE = _load_script()
 
 
 class MetAugTrainingSmokeTests(unittest.TestCase):
+    def test_authorization_environment_is_trainer_specific(self):
+        path = Path("/tmp/authorization.json")
+
+        self.assertEqual(
+            SMOKE.authorization_environment(SMOKE.EXPECTED_TRAINER, path),
+            {"S2_MET_AUG_ROUTE_GATE": str(path)},
+        )
+        self.assertEqual(
+            SMOKE.authorization_environment(SMOKE.EMERGENCY_FIX_V3_TRAINER, path),
+            {"S2_MET_AUG_EMERGENCY_DECISION": str(path)},
+        )
+        with self.assertRaises(ValueError):
+            SMOKE.authorization_environment("unknown", path)
+
     def test_audit_summary_counts_commits_and_no_op_reasons(self):
         summary = SMOKE.summarize_audit_events([
             {"state": "NO_OP", "reason": "NOT_SELECTED"},

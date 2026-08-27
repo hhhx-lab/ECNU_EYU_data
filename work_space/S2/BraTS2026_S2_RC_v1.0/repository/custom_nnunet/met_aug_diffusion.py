@@ -169,6 +169,7 @@ class G1FourModalityInpaintingBackend:
             paths[G1_RUNTIME_FILE_KEYS[2]],
             label="G1 diffusion utility module",
         )
+        self.sample_edm = getattr(diffusion_utils, "sample_edm", None)
 
         required = (
             "add_gaussian_noise_tumour_zscore",
@@ -264,7 +265,14 @@ class G1FourModalityInpaintingBackend:
         result[3] = (label == 4).astype(np.float32)  # RC, always zero for Route A
         return result
 
-    def generate(self, image_crop: np.ndarray, label_crop: np.ndarray, *, seed: int) -> np.ndarray:
+    def generate(
+        self,
+        image_crop: np.ndarray,
+        label_crop: np.ndarray,
+        *,
+        seed: int,
+        inpaint_support: np.ndarray | None = None,
+    ) -> np.ndarray:
         if image_crop.shape != (4, 64, 64, 64) or label_crop.shape != (64, 64, 64):
             raise MetAugContractError("G1 backend requires a 4x64x64x64 S2 crop and 64^3 label")
         if not np.all(np.isfinite(image_crop)):
@@ -276,29 +284,76 @@ class G1FourModalityInpaintingBackend:
         support = g1_label != 0
         if not np.any(support):
             raise MetAugContractError("Route A backend received an empty support")
+        g1_inpaint_support: np.ndarray | None = None
+        if inpaint_support is not None:
+            if not isinstance(inpaint_support, np.ndarray) or inpaint_support.dtype != np.bool_:
+                raise MetAugContractError("halo inpaint support must be a boolean NumPy array")
+            if inpaint_support.shape != label_crop.shape:
+                raise MetAugContractError("halo inpaint support shape differs from the label crop")
+            label_support = label_crop != 0
+            if np.any(label_support & ~inpaint_support):
+                raise MetAugContractError("halo inpaint support must contain label support")
+            if not np.any(inpaint_support) or np.all(inpaint_support):
+                raise MetAugContractError("halo inpaint support must leave a nonempty known region")
+            if not callable(self.sample_edm):
+                raise MetAugContractError("frozen G1 runtime lacks halo-capable EDM sampling")
+            g1_inpaint_support = inpaint_support.transpose(2, 1, 0).copy()
         condition = self._label_to_multichannel(g1_label)
         condition_tensor = torch.from_numpy(condition).unsqueeze(0).to(self.device)
         generated_g1 = g1_image.copy()
         for index, modality in enumerate(G1_MODALITIES):
             with _temporary_rng(seed + index):
-                noisy, _ = self.add_gaussian_noise_tumour_zscore(g1_image[index], g1_label)
-                noisy_tensor = torch.from_numpy(noisy).unsqueeze(0).unsqueeze(0).to(self.device)
-                with torch.inference_mode():
-                    generated = self.sample_tumour_diffusion_inpaint(
-                        model=self.models[modality],
-                        noisy_scan=noisy_tensor,
-                        label_cond=condition_tensor,
-                        n_steps=self.n_steps,
-                        betas=self.schedule_cfg.betas,
-                        alphas_bar_sqrt=self.schedule_cfg.alphas_bar_sqrt,
-                        one_minus_alphas_bar_sqrt=self.schedule_cfg.one_minus_alphas_bar_sqrt,
-                        device=self.device,
-                        method="edm_heun",
-                        sampling_steps=self.sampling_steps,
-                        alphas_bar=self.schedule_cfg.alphas_bar,
-                        noise_schedule_cfg=self.schedule_cfg,
-                        cfg_weight=1.0,
+                if g1_inpaint_support is None:
+                    # Keep the accepted schema-2/3 path byte-for-byte equivalent.
+                    noisy, _ = self.add_gaussian_noise_tumour_zscore(
+                        g1_image[index], g1_label
                     )
+                    noisy_tensor = (
+                        torch.from_numpy(noisy).unsqueeze(0).unsqueeze(0).to(self.device)
+                    )
+                    with torch.inference_mode():
+                        generated = self.sample_tumour_diffusion_inpaint(
+                            model=self.models[modality],
+                            noisy_scan=noisy_tensor,
+                            label_cond=condition_tensor,
+                            n_steps=self.n_steps,
+                            betas=self.schedule_cfg.betas,
+                            alphas_bar_sqrt=self.schedule_cfg.alphas_bar_sqrt,
+                            one_minus_alphas_bar_sqrt=self.schedule_cfg.one_minus_alphas_bar_sqrt,
+                            device=self.device,
+                            method="edm_heun",
+                            sampling_steps=self.sampling_steps,
+                            alphas_bar=self.schedule_cfg.alphas_bar,
+                            noise_schedule_cfg=self.schedule_cfg,
+                            cfg_weight=1.0,
+                        )
+                    commit_support = support
+                else:
+                    known_scan = (
+                        torch.from_numpy(g1_image[index])
+                        .unsqueeze(0)
+                        .unsqueeze(0)
+                        .to(self.device)
+                    )
+                    known_mask = (
+                        torch.from_numpy(~g1_inpaint_support)
+                        .unsqueeze(0)
+                        .unsqueeze(0)
+                        .to(self.device)
+                    )
+                    with torch.inference_mode():
+                        generated = self.sample_edm(
+                            model=self.models[modality],
+                            shape=tuple(known_scan.shape[1:]),
+                            cond=condition_tensor,
+                            schedule_cfg=self.schedule_cfg,
+                            device=self.device,
+                            num_steps=self.sampling_steps,
+                            cfg_weight=1.0,
+                            known_scan=known_scan,
+                            known_mask=known_mask,
+                        )
+                    commit_support = g1_inpaint_support
                 rebuilt = generated.squeeze(0).squeeze(0).detach().cpu().numpy()
                 if not np.all(np.isfinite(rebuilt)):
                     raise MetAugContractError(f"{modality} generation is non-finite")
@@ -306,7 +361,7 @@ class G1FourModalityInpaintingBackend:
                 # never committed, so G1's legacy ``healthy_crop == 0``
                 # background sentinel would incorrectly erase valid in-brain
                 # z-score voxels that happen to equal zero.
-                generated_g1[index][support] = rebuilt[support]
+                generated_g1[index][commit_support] = rebuilt[commit_support]
         output_s2, _ = g1_to_s2_layout(generated_g1, g1_seg)
         if output_s2.shape != image_crop.shape or not np.all(np.isfinite(output_s2)):
             raise MetAugContractError("G1/S2 layout conversion produced invalid output")

@@ -1,0 +1,384 @@
+{
+    "configurations": {
+        "2d": {
+            "architecture": {
+                "_kw_requires_import": [
+                    "conv_op",
+                    "norm_op",
+                    "dropout_op",
+                    "nonlin"
+                ],
+                "arch_kwargs": {
+                    "conv_bias": true,
+                    "conv_op": "torch.nn.modules.conv.Conv2d",
+                    "dropout_op": null,
+                    "dropout_op_kwargs": null,
+                    "features_per_stage": [
+                        32,
+                        64,
+                        128,
+                        256,
+                        512,
+                        512
+                    ],
+                    "kernel_sizes": [
+                        [
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3
+                        ]
+                    ],
+                    "n_conv_per_stage": [
+                        2,
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
+                    ],
+                    "n_conv_per_stage_decoder": [
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
+                    ],
+                    "n_stages": 6,
+                    "nonlin": "torch.nn.LeakyReLU",
+                    "nonlin_kwargs": {
+                        "inplace": true
+                    },
+                    "norm_op": "torch.nn.modules.instancenorm.InstanceNorm2d",
+                    "norm_op_kwargs": {
+                        "affine": true,
+                        "eps": 1e-05
+                    },
+                    "strides": [
+                        [
+                            1,
+                            1
+                        ],
+                        [
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2
+                        ]
+                    ]
+                },
+                "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+            },
+            "batch_dice": true,
+            "batch_size": 105,
+            "data_identifier": "nnUNetPlans_2d",
+            "median_image_size_in_voxels": [
+                172.0,
+                138.0
+            ],
+            "normalization_schemes": [
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization"
+            ],
+            "patch_size": [
+                192,
+                160
+            ],
+            "preprocessor_name": "DefaultPreprocessor",
+            "resampling_fn_data": "resample_data_or_seg_to_shape",
+            "resampling_fn_data_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 3,
+                "order_z": 0
+            },
+            "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+            "resampling_fn_probabilities_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 1,
+                "order_z": 0
+            },
+            "resampling_fn_seg": "resample_data_or_seg_to_shape",
+            "resampling_fn_seg_kwargs": {
+                "force_separate_z": null,
+                "is_seg": true,
+                "order": 1,
+                "order_z": 0
+            },
+            "spacing": [
+                1.0,
+                1.0
+            ],
+            "use_mask_for_norm": [
+                true,
+                true,
+                true,
+                true
+            ]
+        },
+        "3d_fullres": {
+            "architecture": {
+                "_kw_requires_import": [
+                    "conv_op",
+                    "norm_op",
+                    "dropout_op",
+                    "nonlin"
+                ],
+                "arch_kwargs": {
+                    "conv_bias": true,
+                    "conv_op": "torch.nn.modules.conv.Conv3d",
+                    "dropout_op": null,
+                    "dropout_op_kwargs": null,
+                    "features_per_stage": [
+                        32,
+                        64,
+                        128,
+                        256,
+                        320,
+                        320
+                    ],
+                    "kernel_sizes": [
+                        [
+                            3,
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3,
+                            3
+                        ],
+                        [
+                            3,
+                            3,
+                            3
+                        ]
+                    ],
+                    "n_conv_per_stage": [
+                        2,
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
+                    ],
+                    "n_conv_per_stage_decoder": [
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
+                    ],
+                    "n_stages": 6,
+                    "nonlin": "torch.nn.LeakyReLU",
+                    "nonlin_kwargs": {
+                        "inplace": true
+                    },
+                    "norm_op": "torch.nn.modules.instancenorm.InstanceNorm3d",
+                    "norm_op_kwargs": {
+                        "affine": true,
+                        "eps": 1e-05
+                    },
+                    "strides": [
+                        [
+                            1,
+                            1,
+                            1
+                        ],
+                        [
+                            2,
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2,
+                            2
+                        ],
+                        [
+                            2,
+                            2,
+                            2
+                        ]
+                    ]
+                },
+                "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+            },
+            "batch_dice": false,
+            "batch_size": 2,
+            "data_identifier": "nnUNetPlans_3d_fullres",
+            "median_image_size_in_voxels": [
+                142.0,
+                172.0,
+                138.0
+            ],
+            "normalization_schemes": [
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization"
+            ],
+            "patch_size": [
+                128,
+                128,
+                128
+            ],
+            "preprocessor_name": "DefaultPreprocessor",
+            "resampling_fn_data": "resample_data_or_seg_to_shape",
+            "resampling_fn_data_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 3,
+                "order_z": 0
+            },
+            "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+            "resampling_fn_probabilities_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 1,
+                "order_z": 0
+            },
+            "resampling_fn_seg": "resample_data_or_seg_to_shape",
+            "resampling_fn_seg_kwargs": {
+                "force_separate_z": null,
+                "is_seg": true,
+                "order": 1,
+                "order_z": 0
+            },
+            "spacing": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "use_mask_for_norm": [
+                true,
+                true,
+                true,
+                true
+            ]
+        }
+    },
+    "dataset_name": "Dataset263_BraTS2026_MET_RealOnly_Current",
+    "experiment_planner_used": "ExperimentPlanner",
+    "foreground_intensity_properties_per_channel": {
+        "0": {
+            "max": 928143.5625,
+            "mean": 3039.8280702146203,
+            "median": 560.0,
+            "min": 0.0,
+            "percentile_00_5": 0.0,
+            "percentile_99_5": 279089.125,
+            "std": 30277.599333243168
+        },
+        "1": {
+            "max": 3275090.5,
+            "mean": 8953.127035010677,
+            "median": 1313.0,
+            "min": 0.0,
+            "percentile_00_5": 91.37364540100097,
+            "percentile_99_5": 519260.375,
+            "std": 64807.28179898762
+        },
+        "2": {
+            "max": 61955.71484375,
+            "mean": 1090.6741356434293,
+            "median": 806.0,
+            "min": 0.0,
+            "percentile_00_5": 0.0,
+            "percentile_99_5": 4947.0,
+            "std": 1535.1662643475227
+        },
+        "3": {
+            "max": 134197.65625,
+            "mean": 1187.6043663859352,
+            "median": 693.0,
+            "min": 0.0,
+            "percentile_00_5": 0.0,
+            "percentile_99_5": 7288.0,
+            "std": 3628.1990882570967
+        }
+    },
+    "image_reader_writer": "SimpleITKIO",
+    "label_manager": "LabelManager",
+    "original_median_shape_after_transp": [
+        146,
+        180,
+        144
+    ],
+    "original_median_spacing_after_transp": [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "plans_name": "nnUNetPlans",
+    "transpose_backward": [
+        0,
+        1,
+        2
+    ],
+    "transpose_forward": [
+        0,
+        1,
+        2
+    ]
+}

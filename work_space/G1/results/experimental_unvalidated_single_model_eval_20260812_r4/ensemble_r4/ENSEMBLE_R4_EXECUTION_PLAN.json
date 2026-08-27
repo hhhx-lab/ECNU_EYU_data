@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-13T04:11:36Z",
+  "status": "experimental_unvalidated",
+  "operator_approved": false,
+  "training_required": false,
+  "case_count": 103,
+  "synthesis_type": "ensamble",
+  "spatial_preprocessing": "foreground_centered_isotropic_resample_v1",
+  "bbdm_s": 0.01,
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 20260813
+  },
+  "comparison_scope": "missing_t2w_image_quality_only",
+  "downstream_nnunet_segmentation_evaluated": false,
+  "interpretation_boundary": "This execution compares missing-T2W reconstruction quality under the matched r4 contract. It does not establish which completion method benefits nnU-Net segmentation.",
+  "paths": {
+    "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4",
+    "ensemble_output": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/ensemble_r4",
+    "comparison_output": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/paired_comparison_r4",
+    "case_list": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/val_fixed_103_case_list.csv",
+    "locked_manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/encdec_only/evaluation_run.json"
+  },
+  "checkpoints": {
+    "vae": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+      "sha256": "004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294"
+    },
+    "encdec": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+      "sha256": "aed9bc96d6cb285b60d092fd48f572c60f76dba2d654dba4e60754ad55c0c558"
+    },
+    "bbdm": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+      "sha256": "969eef82241a9500d843bb38b4fcf3230eb0b55ecfb1876aa83c65b59ec05541"
+    }
+  },
+  "artifact_sha256": {
+    "case_list": "53080017b900e0bf2b09fcb129d58d0e2383b7b1090f50eb6328f1247848f2c6",
+    "locked_manifest": "bdb4efccd6a440c780bf4e5657e435cfa9fb733f5e3a86b73b351100c757ae64",
+    "evaluate_slurm": "0040c778bf3c767cd4e143d067ff362da2f3fd5c56afd6ae29d73b960228e456",
+    "evaluate_py": "2068ddbf1b9f5af847609dbbe317fc25cae9f06230ba462cac50c46dade4fe3c",
+    "vae": "004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294",
+    "encdec": "aed9bc96d6cb285b60d092fd48f572c60f76dba2d654dba4e60754ad55c0c558",
+    "bbdm": "969eef82241a9500d843bb38b4fcf3230eb0b55ecfb1876aa83c65b59ec05541",
+    "wrapper": "3985da783c426a3bd189320b9c262d9b7023947a7aaa599e325033061433ac57",
+    "comparison": "426c4afc2dbc5b4ba22521b12ee147325c7620a1afefff952ceb1d6fab652179"
+  },
+  "expected_outputs": {
+    "ensemble_metrics_rows": 103,
+    "ensemble_nifti_count": 103,
+    "spatial_audit_rows": 103,
+    "geometry_mismatch_before_count": 0,
+    "geometry_repaired_count": 0,
+    "paired_methods": [
+      "ensemble_r4",
+      "encdec_only",
+      "bbdm_only"
+    ],
+    "paired_metrics": [
+      "whole_SSIM",
+      "whole_PSNR",
+      "whole_MSE",
+      "whole_MAE",
+      "brain_SSIM",
+      "brain_PSNR",
+      "brain_MSE",
+      "brain_MAE"
+    ]
+  },
+  "side_effect_policy": {
+    "update_latest_run": false,
+    "publish_shared_eval_csv": false,
+    "overwrite_existing_results": false,
+    "install_dependencies": false,
+    "retrain_models": false
+  }
+}

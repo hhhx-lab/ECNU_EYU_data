@@ -22,6 +22,7 @@ env/
 
 # Jupyter 与临时输出
 .ipynb_checkpoints/
+.playwright-mcp/
 tmp/
 temp/
 cache/
@@ -79,3 +80,13 @@ work_space/G1/results/missing_t2w_completion/run_*/.rsync*.log
 work_space/S2/results/**/remote_snapshot_timeout_*/
 work_space/S2/results/s2_met_aug_route_a_*/gate2_run/artifacts/
 work_space/S2/results/s2_official_validation_transfer_*/
+work_space/S2/results/**/*.pid
+
+# Fix-v2 的体数据、评审渲染图和盲法映射只保留在本地受控存储中。
+# 公开仓库仅归档脱敏的汇总、决策、校验清单和冻结运行时源码。
+work_space/S2/results/s2_met_aug_fix_v2_20260728_r1/**/*.npz
+work_space/S2/results/s2_met_aug_fix_v2_20260728_r1/**/*.png
+work_space/S2/results/s2_met_aug_fix_v2_20260728_r1/**/*.jpg
+work_space/S2/results/s2_met_aug_fix_v2_20260728_r1/**/*.jpeg
+work_space/S2/results/s2_met_aug_fix_v2_20260728_r1/**/PRIVATE_BLINDING_MAP.json
+work_space/S2/results/s2_met_aug_fix_v2_20260728_r1/**/development_measurements.jsonl

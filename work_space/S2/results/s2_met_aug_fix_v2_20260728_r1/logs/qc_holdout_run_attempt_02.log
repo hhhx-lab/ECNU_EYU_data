@@ -1,0 +1,71 @@
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+{
+  "schema_version": 1,
+  "status": "fail",
+  "stage": "qc_holdout",
+  "calibration_partition": "qc_holdout",
+  "attempt_count": 48,
+  "reviewable_count": 48,
+  "committed_count": 24,
+  "rejected_count": 24,
+  "generation_pass_rate": 0.5,
+  "effective_aug_rate": 0.1,
+  "state_counts": {
+    "COMMITTED": 24,
+    "NO_OP": 24
+  },
+  "reason_counts": {
+    "CANDIDATE_BOUNDARY_QC_FAIL": 9,
+    "CANDIDATE_CONTENT_QC_FAIL": 2,
+    "COMMITTED": 24,
+    "RAW_GENERATION_QC_FAIL": 13
+  },
+  "per_volume_bin": {
+    "27_49": 16,
+    "50_275": 16,
+    "gt_275": 16
+  },
+  "violations": [
+    "generation_pass_rate_below_frozen_minimum",
+    "effective_aug_rate_below_frozen_minimum"
+  ],
+  "component_manifest_sha256": "c8a413bc180b3a120ee3415f548eab98c305cbe3a63867db89d09f19243da26e",
+  "route_config_sha256": "9c2a45dd1d4eab365919e8fb1613ca6b7e1a009f6ddf417d6852dd5c1b725b11",
+  "strict_calibration_sha256": "5065d3cddf0d7d3671bd453e6d0171792ef08954fd3f89fc7134d182e9cfa1ac",
+  "measurement_calibration_sha256": "49f2002c2bf5bc0d6a44bf96a981c00ed2a28e4a498832663f60ff7dd0b50a44",
+  "valid_mask_manifest_sha256": "a381b24ab508b7eba758b971e4ffe05b4a10e319c6299c1aa4a67f955bc6a169",
+  "event_manifest_sha256": "737caff49e0dd8adf430617e4de8f99935bec4e44cfc90649ed11af1cc2ded87",
+  "g1_checkpoint_selection_sha256": "85574c51c4f77ea14e18507aab93f6fea86cf4b8ab0a0c407b0e3ec97e18b209",
+  "g2_parent_gate_sha256": "3103a3057132b9166a398ff2f10aefee77c957e142563c3b7f93e3898718f408",
+  "g1_runtime_code": {
+    "files": {
+      "GliGAN/src/infer/diffusion_inference_utils.py": "666e8db288fb25a9d2522f10c8da27613479744c6e971bf0c171bb2b20417171",
+      "GliGAN/src/networks/DiffusionNetwork.py": "5efe183474a118124a891ac4f65e9434680040c1faced488af0881102182719f",
+      "repository/model.py": "848f89929ce9d6158f51acdecb6c50e71c74070644c9e9c0e176cbebc55d262d"
+    },
+    "sha256": "511d59e0c237e109e2b3fb775a8e731e0507bd4e305fc8e86d84aa7d38c430a9"
+  },
+  "runner_sha256": "3d0aee9b6212370a6b2e407d298acf26afba71a5d42c6f06c3415a5fd27b10ed",
+  "results_file": "fixed_event_results.jsonl",
+  "results_sha256": "6abbf7af53dccffeacbbe5cdf02fee1aaab06a1bbcc0f3372ff15661cfc1c80a",
+  "review_template": "blinded_manual_review_template.csv",
+  "review_template_sha256": "ed5e0b195e6e49faca6ee9288678438819aca320f655bfdcdb3b362d914e0d6b",
+  "private_blinding_map_sha256": "43da22b66e76cb1dc508ba56a9ad2f37d969dc3f6e8835bc654495a97a568432",
+  "transaction_audit_sha256": "45d7f51109629c7c42fac05ec7acaf693a8afe140848c572dca718204c10e90c",
+  "report_sha256": "ff9c12a690d6179620582290571ad00b67ccec98ddf97c8269416ce608e500a9"
+}

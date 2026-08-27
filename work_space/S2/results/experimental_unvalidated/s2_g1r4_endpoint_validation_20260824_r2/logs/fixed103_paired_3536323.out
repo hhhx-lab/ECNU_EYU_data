@@ -1,0 +1,39 @@
+ENDPOINT_VALIDATION_EXECUTION_PLAN_20260824_R2.json: OK
+README.md: OK
+evidence/STATIC_PREFLIGHT.json: OK
+manifests/FIXED103_REAL_SYNTHETIC_CASES.csv: OK
+manifests/TEST26_LOCKED_MISSING_T2W_CASES.csv: OK
+manifests/VAL27_MISSING_T2W_CASES.csv: OK
+runtime/advance_pipeline.py: OK
+runtime/assemble_model_snapshot.py: OK
+runtime/build_static_bundle.py: OK
+runtime/compare_paired_met.py: OK
+runtime/custom_nnunet/__init__.py: OK
+runtime/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py: OK
+runtime/frozen_s2_inference.py: OK
+runtime/g1_r4_frozen/configs.py: OK
+runtime/g1_r4_frozen/models/__init__.py: OK
+runtime/g1_r4_frozen/models/bbdm/bb_scheduler.py: OK
+runtime/g1_r4_frozen/models/bbdm/condition_tokens.py: OK
+runtime/g1_r4_frozen/models/bbdm/unet.py: OK
+runtime/g1_r4_frozen/models/encdec/__init__.py: OK
+runtime/g1_r4_frozen/models/encdec/unet.py: OK
+runtime/g1_r4_frozen/synthesis/__init__.py: OK
+runtime/g1_r4_frozen/synthesis/pipeline.py: OK
+runtime/g1_r4_frozen/synthesis/segment_brain_mask.py: OK
+runtime/g1_r4_frozen/synthesis/spatial.py: OK
+runtime/g1_r4_frozen/synthesis/utils.py: OK
+runtime/materialize_s2_inputs.py: OK
+runtime/run_official_met_eval.sh: OK
+runtime/synthesize_missing_t2w_r4.py: OK
+runtime/validate_remote_static.py: OK
+slurm/01_val27_synthesize_r4.slurm: OK
+slurm/02_val27_four_model_eval.slurm: OK
+slurm/03_fixed103_real_vs_synthetic.slurm: OK
+slurm/04_test26_locked_endpoint.slurm: OK
+tests/test_static_runtime.py: OK
+NVIDIA A100-PCIE-40GB
+{"artifact_status": "experimental_unvalidated", "audit_csv_sha256": "7335aee3869fdc10fe776b62465a09600eb0f510f71f397102bbe45d6a63446e", "case_count": 103, "channel_order": {"0000": "t1n", "0001": "t1c", "0002": "t2w", "0003": "t2f"}, "formal_gate_status": "not_run_not_passed", "generated_at_utc": "2026-08-26T11:53:39.366099+00:00", "geometry_mismatch_count": 0, "geometry_repaired_count": 0, "input_file_count": 412, "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/manifests/FIXED103_REAL_SYNTHETIC_CASES.csv", "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e", "operator_approved": false, "reference_file_count": 103, "route": "real", "schema_version": 1, "source_t2w_used": true, "status": "pass"}
+{"artifact_status": "experimental_unvalidated", "audit_csv_sha256": "11a155f939c4881ed5737ff72f536d9102bc292c1fb95b82ba32a110e99b655c", "case_count": 103, "channel_order": {"0000": "t1n", "0001": "t1c", "0002": "t2w", "0003": "t2f"}, "formal_gate_status": "not_run_not_passed", "generated_at_utc": "2026-08-26T12:18:11.528070+00:00", "geometry_mismatch_count": 0, "geometry_repaired_count": 0, "input_file_count": 412, "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/manifests/FIXED103_REAL_SYNTHETIC_CASES.csv", "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e", "operator_approved": false, "reference_file_count": 103, "route": "synthetic", "schema_version": 1, "source_t2w_used": false, "status": "pass"}
+{"case_count": 103, "methods": ["real_T2W", "r4_ensemble_T2W"], "status": "pass"}
+{"artifact_status": "experimental_unvalidated", "case_count": 103, "checkpoint_sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e", "completed_at_utc": "2026-08-26T12:37:14.535560+00:00", "formal_gate_status": "not_run_not_passed", "job_id": "3536323", "operator_approved": false, "paired_comparison_sha256": "18ce51823458526ca98ca233a2755e38e79bb0a16097ee920cf1684de72ab642", "routes": {"real": {"input_audit_sha256": "b0e8d6954f557a24dd779bef35c6f5fb12e41d4dc72ac7aaa661b86ab6dd11c3", "metrics_sha256": "19cec61da53dfe2e64b25807fb0bece94688c116b8e78d0ab1e081ecc59f8553"}, "synthetic": {"input_audit_sha256": "52afc90db4833e9b57b52d17e66cb0201c98dd04b1126a8ad002868cef164d03", "metrics_sha256": "8c7c50e77020813a95ee3d49bf84f5b2566b6d5ea5400bc893344087e746547c"}}, "same_case_ids": true, "same_checkpoint": true, "same_non_t2w_channels": true, "same_reference_labels": true, "schema_version": 1, "stage": "fixed103_real_vs_synthetic", "status": "pass"}

@@ -1,0 +1,205 @@
+{"case_count": 103, "plan_sha256": "26dc9ca8d730d13d021756db0e45ac5aaf65dfc5d6cc742e6b136e2c8bf93516", "status": "experimental_unvalidated_preflight_pass"}
+===== G1 V3 Evaluate val =====
+Expected cases: 103
+Synthesis type: ensamble
+VAE: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt
+EncDec checkpoints: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points
+BBDM checkpoints: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points
+BBDM s: 0.01
+Evaluation run: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/ensemble_r4
+Case list: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/val_fixed_103_case_list.csv
+Thu Aug 13 12:10:23 2026       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.154.05             Driver Version: 535.154.05   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  | 00000000:D8:00.0 Off |                    0 |
+| N/A   25C    P0              30W / 250W |      0MiB / 40960MiB |      0%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+Found 103 subjects (split='val').
+Loading VAE ...
+Loading EncDec model ...
+Loading BBDM model ...
+Loaded BBDM EMA parameters from: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt
+  BraTS-MET-00006-000: whole SSIM=0.9192  PSNR=28.94  brain SSIM=0.8033  PSNR=20.11
+  BraTS-MET-00009-000: whole SSIM=0.9203  PSNR=28.03  brain SSIM=0.7983  PSNR=18.92
+  BraTS-MET-00014-000: whole SSIM=0.9240  PSNR=30.11  brain SSIM=0.8275  PSNR=21.80
+  BraTS-MET-00016-000: whole SSIM=0.9155  PSNR=27.37  brain SSIM=0.8109  PSNR=19.24
+  BraTS-MET-00019-000: whole SSIM=0.9280  PSNR=28.65  brain SSIM=0.8302  PSNR=19.59
+  BraTS-MET-00022-000: whole SSIM=0.9335  PSNR=29.56  brain SSIM=0.8258  PSNR=19.77
+  BraTS-MET-00025-000: whole SSIM=0.9356  PSNR=30.65  brain SSIM=0.8445  PSNR=21.35
+  BraTS-MET-00098-000: whole SSIM=0.8789  PSNR=25.63  brain SSIM=0.7192  PSNR=17.68
+  BraTS-MET-00129-000: whole SSIM=0.9129  PSNR=28.71  brain SSIM=0.8139  PSNR=20.72
+  BraTS-MET-00133-000: whole SSIM=0.8837  PSNR=24.53  brain SSIM=0.7444  PSNR=16.82
+  BraTS-MET-00137-000: whole SSIM=0.8869  PSNR=25.93  brain SSIM=0.7392  PSNR=17.88
+  BraTS-MET-00147-000: whole SSIM=0.9136  PSNR=29.00  brain SSIM=0.8217  PSNR=21.00
+  BraTS-MET-00161-000: whole SSIM=0.8970  PSNR=26.78  brain SSIM=0.7730  PSNR=18.61
+  BraTS-MET-00162-000: whole SSIM=0.9069  PSNR=27.85  brain SSIM=0.7995  PSNR=20.06
+  BraTS-MET-00167-000: whole SSIM=0.9100  PSNR=29.91  brain SSIM=0.8107  PSNR=21.80
+  BraTS-MET-00175-000: whole SSIM=0.9050  PSNR=27.31  brain SSIM=0.7984  PSNR=19.10
+  BraTS-MET-00180-000: whole SSIM=0.8950  PSNR=28.30  brain SSIM=0.7742  PSNR=20.30
+  BraTS-MET-00194-000: whole SSIM=0.9024  PSNR=27.97  brain SSIM=0.7986  PSNR=19.86
+  BraTS-MET-00195-000: whole SSIM=0.9153  PSNR=29.19  brain SSIM=0.8124  PSNR=21.04
+  BraTS-MET-00200-000: whole SSIM=0.9040  PSNR=27.45  brain SSIM=0.7957  PSNR=19.33
+  BraTS-MET-00202-000: whole SSIM=0.8945  PSNR=26.80  brain SSIM=0.7793  PSNR=18.71
+  BraTS-MET-00214-000: whole SSIM=0.9139  PSNR=30.12  brain SSIM=0.8193  PSNR=21.95
+  BraTS-MET-00260-000: whole SSIM=0.9154  PSNR=30.15  brain SSIM=0.8188  PSNR=21.84
+  BraTS-MET-00264-000: whole SSIM=0.9070  PSNR=26.98  brain SSIM=0.8099  PSNR=18.93
+  BraTS-MET-00268-000: whole SSIM=0.8875  PSNR=25.07  brain SSIM=0.7469  PSNR=16.94
+  BraTS-MET-00292-000: whole SSIM=0.8997  PSNR=26.43  brain SSIM=0.7910  PSNR=18.27
+  BraTS-MET-00299-000: whole SSIM=0.8831  PSNR=25.43  brain SSIM=0.7503  PSNR=18.21
+  BraTS-MET-00300-000: whole SSIM=0.8872  PSNR=25.37  brain SSIM=0.7455  PSNR=17.19
+  BraTS-MET-00380-000: whole SSIM=0.9275  PSNR=28.23  brain SSIM=0.8404  PSNR=19.36
+  BraTS-MET-00532-000: whole SSIM=0.9157  PSNR=28.39  brain SSIM=0.8010  PSNR=19.51
+  BraTS-MET-00552-000: whole SSIM=0.9079  PSNR=27.54  brain SSIM=0.7736  PSNR=19.24
+  BraTS-MET-00572-000: whole SSIM=0.9163  PSNR=28.35  brain SSIM=0.8048  PSNR=20.03
+  BraTS-MET-00577-001: whole SSIM=0.8826  PSNR=26.65  brain SSIM=0.7411  PSNR=18.48
+  BraTS-MET-00613-000: whole SSIM=0.9150  PSNR=26.38  brain SSIM=0.8089  PSNR=18.11
+  BraTS-MET-00613-001: whole SSIM=0.8893  PSNR=26.34  brain SSIM=0.7246  PSNR=17.99
+  BraTS-MET-00625-000: whole SSIM=0.8664  PSNR=24.77  brain SSIM=0.7146  PSNR=17.05
+  BraTS-MET-00663-000: whole SSIM=0.9103  PSNR=26.82  brain SSIM=0.8020  PSNR=18.56
+  BraTS-MET-00682-000: whole SSIM=0.9185  PSNR=26.74  brain SSIM=0.8223  PSNR=18.38
+  BraTS-MET-00699-000: whole SSIM=0.9168  PSNR=24.84  brain SSIM=0.8109  PSNR=16.45
+  BraTS-MET-00787-000: whole SSIM=0.9216  PSNR=28.88  brain SSIM=0.8334  PSNR=20.65
+  BraTS-MET-00791-000: whole SSIM=0.9280  PSNR=30.08  brain SSIM=0.8329  PSNR=21.07
+  BraTS-MET-00796-000: whole SSIM=0.9127  PSNR=27.55  brain SSIM=0.7917  PSNR=19.25
+  BraTS-MET-00799-000: whole SSIM=0.9185  PSNR=28.21  brain SSIM=0.7973  PSNR=19.17
+  BraTS-MET-00807-000: whole SSIM=0.9147  PSNR=28.62  brain SSIM=0.8083  PSNR=20.29
+  BraTS-MET-01058-001: whole SSIM=0.9072  PSNR=26.76  brain SSIM=0.7545  PSNR=17.81
+  BraTS-MET-01060-001: whole SSIM=0.8999  PSNR=28.22  brain SSIM=0.7721  PSNR=19.68
+  BraTS-MET-01096-000: whole SSIM=0.8936  PSNR=26.86  brain SSIM=0.7466  PSNR=18.50
+  BraTS-MET-01096-001: whole SSIM=0.9166  PSNR=29.05  brain SSIM=0.8108  PSNR=20.69
+  BraTS-MET-01096-002: whole SSIM=0.9244  PSNR=29.92  brain SSIM=0.8414  PSNR=21.69
+  BraTS-MET-01105-001: whole SSIM=0.9003  PSNR=27.19  brain SSIM=0.7202  PSNR=18.01
+  BraTS-MET-01105-002: whole SSIM=0.9071  PSNR=28.43  brain SSIM=0.7435  PSNR=19.26
+  BraTS-MET-01109-001: whole SSIM=0.9159  PSNR=29.97  brain SSIM=0.8069  PSNR=21.56
+  BraTS-MET-01109-002: whole SSIM=0.9134  PSNR=30.19  brain SSIM=0.8029  PSNR=21.85
+  BraTS-MET-01109-003: whole SSIM=0.9188  PSNR=28.94  brain SSIM=0.8167  PSNR=20.50
+  BraTS-MET-01117-001: whole SSIM=0.8826  PSNR=26.40  brain SSIM=0.7117  PSNR=17.99
+  BraTS-MET-01117-002: whole SSIM=0.8879  PSNR=26.62  brain SSIM=0.7449  PSNR=18.34
+  BraTS-MET-01117-003: whole SSIM=0.8891  PSNR=26.97  brain SSIM=0.7482  PSNR=18.63
+  BraTS-MET-01119-000: whole SSIM=0.8971  PSNR=28.94  brain SSIM=0.7581  PSNR=20.53
+  BraTS-MET-01119-001: whole SSIM=0.8955  PSNR=27.36  brain SSIM=0.7504  PSNR=18.94
+  BraTS-MET-01119-003: whole SSIM=0.8979  PSNR=27.62  brain SSIM=0.7536  PSNR=19.12
+  BraTS-MET-01134-000: whole SSIM=0.8964  PSNR=28.12  brain SSIM=0.7828  PSNR=20.17
+  BraTS-MET-01134-003: whole SSIM=0.9182  PSNR=28.37  brain SSIM=0.8354  PSNR=20.59
+  BraTS-MET-01149-000: whole SSIM=0.9164  PSNR=29.22  brain SSIM=0.7729  PSNR=20.12
+  BraTS-MET-01149-001: whole SSIM=0.8988  PSNR=27.73  brain SSIM=0.7204  PSNR=18.54
+  BraTS-MET-01172-001: whole SSIM=0.8989  PSNR=28.51  brain SSIM=0.7945  PSNR=20.66
+  BraTS-MET-01172-002: whole SSIM=0.9032  PSNR=28.30  brain SSIM=0.8016  PSNR=20.45
+  BraTS-MET-01172-004: whole SSIM=0.8982  PSNR=27.73  brain SSIM=0.7793  PSNR=19.58
+  BraTS-MET-01180-000: whole SSIM=0.9071  PSNR=29.74  brain SSIM=0.8180  PSNR=21.78
+  BraTS-MET-01180-003: whole SSIM=0.8911  PSNR=28.42  brain SSIM=0.7703  PSNR=20.38
+  BraTS-MET-01181-001: whole SSIM=0.9113  PSNR=28.92  brain SSIM=0.7987  PSNR=21.72
+  BraTS-MET-01181-002: whole SSIM=0.8897  PSNR=27.61  brain SSIM=0.7391  PSNR=19.10
+  BraTS-MET-01187-000: whole SSIM=0.8993  PSNR=29.02  brain SSIM=0.7559  PSNR=20.63
+  BraTS-MET-01187-001: whole SSIM=0.8909  PSNR=28.77  brain SSIM=0.7563  PSNR=20.57
+  BraTS-MET-01187-003: whole SSIM=0.9014  PSNR=28.69  brain SSIM=0.7649  PSNR=20.27
+  BraTS-MET-01191-001: whole SSIM=0.9052  PSNR=28.20  brain SSIM=0.7518  PSNR=18.99
+  BraTS-MET-01191-002: whole SSIM=0.9089  PSNR=29.05  brain SSIM=0.7655  PSNR=19.90
+  BraTS-MET-01191-003: whole SSIM=0.9145  PSNR=28.76  brain SSIM=0.7793  PSNR=19.59
+  BraTS-MET-01191-004: whole SSIM=0.9153  PSNR=28.48  brain SSIM=0.7837  PSNR=19.47
+  BraTS-MET-01217-000: whole SSIM=0.9056  PSNR=27.97  brain SSIM=0.7959  PSNR=19.74
+  BraTS-MET-01217-002: whole SSIM=0.8755  PSNR=25.74  brain SSIM=0.7054  PSNR=17.23
+  BraTS-MET-01217-003: whole SSIM=0.9043  PSNR=28.32  brain SSIM=0.7907  PSNR=19.94
+  BraTS-MET-01250-001: whole SSIM=0.9145  PSNR=29.30  brain SSIM=0.8135  PSNR=20.93
+  BraTS-MET-01250-003: whole SSIM=0.9126  PSNR=29.37  brain SSIM=0.8088  PSNR=21.02
+  BraTS-MET-01268-002: whole SSIM=0.9116  PSNR=29.67  brain SSIM=0.7990  PSNR=20.98
+  BraTS-MET-01270-001: whole SSIM=0.8985  PSNR=28.76  brain SSIM=0.7806  PSNR=20.62
+  BraTS-MET-01270-002: whole SSIM=0.8836  PSNR=26.14  brain SSIM=0.7496  PSNR=18.00
+  BraTS-MET-01270-003: whole SSIM=0.8924  PSNR=26.78  brain SSIM=0.7752  PSNR=18.71
+  BraTS-MET-01276-001: whole SSIM=0.9170  PSNR=29.09  brain SSIM=0.7907  PSNR=20.14
+  BraTS-MET-01284-000: whole SSIM=0.8870  PSNR=27.51  brain SSIM=0.7051  PSNR=18.83
+  BraTS-MET-01284-002: whole SSIM=0.9162  PSNR=30.81  brain SSIM=0.8057  PSNR=22.12
+  BraTS-MET-01287-001: whole SSIM=0.9001  PSNR=28.57  brain SSIM=0.7971  PSNR=20.59
+  BraTS-MET-01287-002: whole SSIM=0.9030  PSNR=28.36  brain SSIM=0.8078  PSNR=20.45
+  BraTS-MET-01301-000: whole SSIM=0.8713  PSNR=24.27  brain SSIM=0.7207  PSNR=16.40
+  BraTS-MET-01301-001: whole SSIM=0.8639  PSNR=24.11  brain SSIM=0.7010  PSNR=16.11
+  BraTS-MET-01301-002: whole SSIM=0.9108  PSNR=26.69  brain SSIM=0.8192  PSNR=19.06
+  BraTS-MET-01310-001: whole SSIM=0.8972  PSNR=25.97  brain SSIM=0.7658  PSNR=18.05
+  BraTS-MET-01310-002: whole SSIM=0.9053  PSNR=27.60  brain SSIM=0.7886  PSNR=19.44
+  BraTS-MET-01314-002: whole SSIM=0.8936  PSNR=27.80  brain SSIM=0.7335  PSNR=19.06
+  BraTS-MET-01314-003: whole SSIM=0.8834  PSNR=27.39  brain SSIM=0.6901  PSNR=18.74
+  BraTS-MET-01331-002: whole SSIM=0.8961  PSNR=26.92  brain SSIM=0.7580  PSNR=18.39
+  BraTS-MET-01351-000: whole SSIM=0.9104  PSNR=28.35  brain SSIM=0.7824  PSNR=19.72
+  BraTS-MET-01351-002: whole SSIM=0.9133  PSNR=29.66  brain SSIM=0.7899  PSNR=20.93
+  BraTS-MET-01351-003: whole SSIM=0.9018  PSNR=28.66  brain SSIM=0.7566  PSNR=19.96
+
+============================================================
+SUMMARY  (n=103, type=ensamble)
+============================================================
+
+  WHOLE VOLUME:
+    SSIM  : 0.9041 ± 0.0142
+    PSNR  : 27.8983 ± 1.4638
+    MSE   : 0.0017 ± 0.0006
+    MAE   : 0.0127 ± 0.0027
+
+  BRAIN VOLUME:
+    SSIM  : 0.7805 ± 0.0360
+    PSNR  : 19.5279 ± 1.3706
+    MSE   : 0.0117 ± 0.0039
+    MAE   : 0.0789 ± 0.0167
+
+Per-subject results saved to /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/ensemble_r4/metrics.csv
+{
+  "case_count": 103,
+  "geometry_mismatch_before_count": 0,
+  "repaired_count": 0,
+  "repair_mode": false,
+  "voxel_resampling_performed": false,
+  "max_abs_voxel_difference_after_repair": 0.0,
+  "source_synthetic_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/ensemble_r4/synthesized",
+  "repair_output_root": null
+}
+{
+  "created_at": "2026-08-13T05:18:36.672833+00:00",
+  "slurm_job_id": "3391396",
+  "split": "val",
+  "case_count": 103,
+  "synthesis_type": "ensamble",
+  "vae_weights": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+  "encdec_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+  "bbdm_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+  "bbdm_s": 0.01,
+  "spatial_preprocessing": "foreground_centered_isotropic_resample_v1",
+  "case_list": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/val_fixed_103_case_list.csv",
+  "mean_metrics": {
+    "whole_SSIM": 0.9040702604553075,
+    "whole_PSNR": 27.898345970309784,
+    "whole_MSE": 0.001722095467520932,
+    "whole_MAE": 0.012688292805286288,
+    "brain_SSIM": 0.7805255136443573,
+    "brain_PSNR": 19.527926502138886,
+    "brain_MSE": 0.011729849122681664,
+    "brain_MAE": 0.07889513530343481
+  },
+  "operator_approved": false
+}
+===== Evaluation finished; inspect metrics/images before stage 06 =====
+Run: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/ensemble_r4
+Date: Thu Aug 13 13:18:39 CST 2026
+{
+  "status": "experimental_unvalidated",
+  "contract_validation": "pass",
+  "output_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated_single_model_eval_20260812_r4/paired_comparison_r4",
+  "unanimous_image_quality_winner": null,
+  "first_place_metric_counts": {
+    "ensemble_r4": 7,
+    "encdec_only": 0,
+    "bbdm_only": 1
+  }
+}
+G1_ENSEMBLE_R4_AND_PAIRED_COMPARISON_COMPLETE

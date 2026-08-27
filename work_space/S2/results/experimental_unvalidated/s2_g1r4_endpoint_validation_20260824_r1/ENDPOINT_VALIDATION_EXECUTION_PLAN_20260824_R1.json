@@ -1,0 +1,159 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "channel_contract": {
+    "0000": "t1n",
+    "0001": "t1c",
+    "0002": "t2w",
+    "0003": "t2f"
+  },
+  "checkpoints": {
+    "B": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r1/model_snapshots/B",
+      "role": "completion_standard_loss",
+      "sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5"
+    },
+    "E": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCFocalCompletionFineTune__nnUNetPlans__3d_fullres",
+      "role": "completion_focal_loss",
+      "sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267"
+    },
+    "FixV3": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/data/nnUNet_results_attempt11/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune__nnUNetPlans__3d_fullres",
+      "role": "online_diffusion_augmented_focal_full200",
+      "sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e"
+    },
+    "R": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r1/model_snapshots/R",
+      "role": "real_only_reference",
+      "sha256": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1"
+    }
+  },
+  "cohorts": {
+    "fixed103": {
+      "count": 103,
+      "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r1/manifests/FIXED103_REAL_SYNTHETIC_CASES.csv",
+      "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+      "role": "authentic_vs_synthesized_t2w_paired_validation",
+      "same_cases_as_fix_v3_training_validation": true
+    },
+    "test26": {
+      "count": 26,
+      "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r1/manifests/TEST26_LOCKED_MISSING_T2W_CASES.csv",
+      "manifest_sha256": "2de10943a822a4f504ede3b4aa78220d6a779f85ba9b86d639707a4bb5c88525",
+      "role": "locked_missing_t2w_endpoint_test",
+      "unlocked_only_after_val27_and_fixed103_pass": true
+    },
+    "val27": {
+      "authentic_t2w_counterfactual_available": false,
+      "count": 27,
+      "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r1/manifests/VAL27_MISSING_T2W_CASES.csv",
+      "manifest_sha256": "f97f5cf9b36d9c747a8d493c8b79f68ec09a4dce52587d67876dfd6a0ae74fe4",
+      "role": "internal_missing_t2w_endpoint_validation"
+    }
+  },
+  "created_at_utc": "2026-08-24T08:09:11.411727+00:00",
+  "evaluation": {
+    "configuration": "mets",
+    "numpy": "1.26.4",
+    "overlap_threshold": 0.2,
+    "package": "BraTS-evaluation==0.0.8",
+    "paired_bootstrap_replicates": 20000,
+    "paired_bootstrap_seed": 20260824,
+    "panoptica": "2.1.0",
+    "volume_threshold_voxels": 27
+  },
+  "experiment": "g1_r4_to_s2_endpoint_validation_20260824_r1",
+  "formal_gate_status": "not_run_not_passed",
+  "freeze_rules": [
+    "no_retraining",
+    "no_post_result_tuning",
+    "no_checkpoint_selection_from_val27_or_fixed103",
+    "test26_locked_until_prior_gates_pass",
+    "no_old_synthesized_t2w_for_val27_or_test26",
+    "same_fixv3_checkpoint_for_fixed103_real_and_synthetic"
+  ],
+  "g1_r4_checkpoints": {
+    "bbdm": {
+      "remote_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+      "sha256": "969eef82241a9500d843bb38b4fcf3230eb0b55ecfb1876aa83c65b59ec05541"
+    },
+    "bbdm_s": 0.01,
+    "encdec": {
+      "remote_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+      "sha256": "aed9bc96d6cb285b60d092fd48f572c60f76dba2d654dba4e60754ad55c0c558"
+    },
+    "ensemble": "voxelwise_mean_encdec_bbdm",
+    "vae": {
+      "remote_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+      "sha256": "004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294"
+    }
+  },
+  "g1_runtime_code_sha256": {
+    "configs.py": "105da207a98a3195fa131679ba7ba3e960e5fb03d2441f878e57a40f58917863",
+    "models/bbdm/bb_scheduler.py": "2b701c696b4bf19628caf5635cd806075b640239519b710ad43b0b59449cf13b",
+    "models/bbdm/condition_tokens.py": "86b054fe73d1a6d07b11ae46a698ea61d84dff4346dc2b9aaebc8c37ffe0cc70",
+    "models/bbdm/unet.py": "2bf3d56a237963808cd6ad486d56290d2dcc2c483c373db3103456f98a74cf1c",
+    "models/encdec/unet.py": "f5be714aa0228316753e891f17d311fe9ba874adcfa949546d2d91b22f7614a0",
+    "synthesis/pipeline.py": "0097c284d5d636dfc93f1dfd8461f5d02d54b666aa337a8f635a1c5b4853d396",
+    "synthesis/spatial.py": "b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb",
+    "synthesis/utils.py": "5d5dd28de7dfed96fe6c3988da52563f37940e89850fc2b84accafd8bd55d3ab"
+  },
+  "interpretation_boundaries": [
+    "g1_image_quality_is_not_segmentation_benefit",
+    "val27_has_no_authentic_t2w_counterfactual",
+    "fixed103_answers_t2w_replacement_effect_only",
+    "online_diffusion_augmentation_and_offline_completion_are_reported_separately",
+    "no_nnunet_superiority_claim_from_g1_reconstruction_metrics"
+  ],
+  "operator_approved": false,
+  "remote_result_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r1",
+  "runtime_sha256": {
+    "runtime/advance_pipeline.py": "5cdb2fde1b5b4e98b086b7969b7915cad76110136ead4e890be77cbdcf7ac715",
+    "runtime/assemble_model_snapshot.py": "02563792c2bb109123bae973c6bf05491f77754f01bd413f594a5a6eedaf46f4",
+    "runtime/build_static_bundle.py": "80d2117e5ea4023eb9c6cef9bba20a76643937928022c7dffe2bd4ac248ffd9b",
+    "runtime/compare_paired_met.py": "8939473e808d6e4b2452b2ca2f08006eb050932603c4c8bdb9e660c8e13a9c05",
+    "runtime/custom_nnunet/__init__.py": "2077a49749928f5588167558a0576d17c5aa820a2ae1ad3f87c9839b40f251ca",
+    "runtime/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py": "c7c464c9ec283d75ab7d2f353d50025dc52e8b59dcc0d1f0256abdff7b78df13",
+    "runtime/frozen_s2_inference.py": "60853b74c53cb05fb655ea785732eceefcf9480a09ea931b51ddcbd5b5825a1a",
+    "runtime/materialize_s2_inputs.py": "bca1eda9236f6e053f43075bff34d0dcf3505099a98be94c6f548fa6778e9028",
+    "runtime/run_official_met_eval.sh": "3401ef6a0513a5c08cf9ee65674d5e4b1cd4f96112ece426f565e4d23d493bb5",
+    "runtime/synthesize_missing_t2w_r4.py": "89ea51006e9b90bdde61d95c12652dcdf91341873dee56344b1b97b9e065340c",
+    "runtime/validate_remote_static.py": "bb28b11bd3b98709accb94c21ae913a9773facd6d9008c13c3c75fcc298aebd9",
+    "slurm/01_val27_synthesize_r4.slurm": "5bae7e2fe5d128b6791017e4cf85608c7e676f9e6625a09cdd1db6eee7a49b42",
+    "slurm/02_val27_four_model_eval.slurm": "ac3f10d820d522a60e2192e47bce4ce053208a3dc5bd931decb6eadfb94f7a02",
+    "slurm/03_fixed103_real_vs_synthetic.slurm": "3df5e6791bcb348d21381b7132b434ad23fea23a7a3a1676e47dbb4c12d8c2b9",
+    "slurm/04_test26_locked_endpoint.slurm": "d9dfa8337d26ce5db7ad4e3e06524c6baddaa3e4ac13b0ff45791f90f4a1c5fd"
+  },
+  "schema_version": 1,
+  "source_artifact_sha256": {
+    "B": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5",
+    "E": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "FixV3": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e",
+    "R": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1",
+    "master_mapping": "b1ff36ea927a3d5c8d4aa976ce5533d320e16c7801a9a30db22e8ecbb6d64672",
+    "master_split": "5b77bf4ae92e08df2495a17ace104d5e4160c77ed718bba1a7f2cdde87adfcc6",
+    "missing_eval_manifest": "24c84e1b90cb4ebfd1f034e311130dfd2ea714c288f09728c8da46c7aeadbc37",
+    "r4_case_list": "53080017b900e0bf2b09fcb129d58d0e2383b7b1090f50eb6328f1247848f2c6",
+    "r4_plan": "26dc9ca8d730d13d021756db0e45ac5aaf65dfc5d6cc742e6b136e2c8bf93516"
+  },
+  "spatial_contract": {
+    "base_spacing_mm": 1.0,
+    "margin_mm": 5.0,
+    "name": "foreground_centered_isotropic_resample_v1",
+    "native_geometry_restored": true,
+    "reference_segmentation_is_model_input": false,
+    "reference_segmentation_used_for_offline_support_audit": true,
+    "target_shape": [
+      256,
+      256,
+      160
+    ]
+  },
+  "stages": [
+    "val27_r4_synthesis",
+    "val27_four_models",
+    "fixed103_real_vs_synthetic",
+    "test26_locked_endpoint"
+  ],
+  "training_required": false
+}

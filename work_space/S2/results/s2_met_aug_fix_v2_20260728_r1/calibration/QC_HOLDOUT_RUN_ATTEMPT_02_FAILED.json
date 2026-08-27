@@ -1,0 +1,118 @@
+{
+  "artifact_validation_count": 48,
+  "attempt_count": 48,
+  "automatic_false_reject_count": 14,
+  "automatic_false_rejects": [
+    "0230aaa6e7aa1b75",
+    "0488c487090b4418",
+    "172739da45d4546e",
+    "19df7e19a0c79625",
+    "6d3bdc302924275f",
+    "80fe875fcd235320",
+    "8860252335f248a0",
+    "8e7d7d628f854d74",
+    "957fc22541345ac6",
+    "a8c1a3e8728fc09b",
+    "bf2114671da996b6",
+    "cd491d1d90985638",
+    "d0d2218321a4b3e3",
+    "e95e91bcddd6e7a2"
+  ],
+  "automatic_reason_counts": {
+    "CANDIDATE_BOUNDARY_QC_FAIL": 9,
+    "CANDIDATE_CONTENT_QC_FAIL": 2,
+    "COMMITTED": 24,
+    "RAW_GENERATION_QC_FAIL": 13
+  },
+  "automatic_reject_count": 24,
+  "committed_count": 24,
+  "committed_visual_reject_count": 1,
+  "committed_visual_rejects": [
+    "3b5132fe840c96c7"
+  ],
+  "decision_lock_at_utc": "2026-07-28T16:36:57Z",
+  "downstream_gates": {
+    "gate0": "blocked",
+    "gate1a_100000": "blocked",
+    "gate1b_96_double_replay": "blocked",
+    "gate2_120": "blocked"
+  },
+  "effective_aug_rate": 0.1,
+  "evidence_validation_status": "pass",
+  "failure_audit_sha256": "c6fd4dde56375bbd33363debad82af243d96d6ee18ac9d6be843d654f03c6f2d",
+  "failure_reasons": [
+    "effective_aug_rate_below_frozen_minimum",
+    "generation_pass_rate_below_frozen_minimum"
+  ],
+  "freeze_at_utc": "2026-07-28T16:50:12Z",
+  "generation_pass_rate": 0.5,
+  "input_sha256": {
+    "component_manifest_identity": "c8a413bc180b3a120ee3415f548eab98c305cbe3a63867db89d09f19243da26e",
+    "event_manifest": "737caff49e0dd8adf430617e4de8f99935bec4e44cfc90649ed11af1cc2ded87",
+    "fixed_event_report_audit": "ff9c12a690d6179620582290571ad00b67ccec98ddf97c8269416ce608e500a9",
+    "fixed_event_report_file": "cb302c15a99a4f47829ceb45c2df8da3c37d67ef4aafd764208b0a10aee0f3ee",
+    "measurement_calibration": "49f2002c2bf5bc0d6a44bf96a981c00ed2a28e4a498832663f60ff7dd0b50a44",
+    "pre_qc_calibration": "5065d3cddf0d7d3671bd453e6d0171792ef08954fd3f89fc7134d182e9cfa1ac",
+    "pre_qc_route_config": "9c2a45dd1d4eab365919e8fb1613ca6b7e1a009f6ddf417d6852dd5c1b725b11",
+    "review_decisions": "dc3c08b72cba7ba08b5240fb0cc1aa6a2dc0d854a5727b06588060d5811e5fb5",
+    "review_runtime_manifest": "1050988d1de90b1551b54b1e7b2cdd506db1ff159f609a0cbe6b60575017c2bd",
+    "review_validation": "f7fc68094dc192a3eb25bc80db7f5fb7a6f334876620f289f5ad01ee538e3d23",
+    "run_log": "3a570a20db46e56db2a5e074f8f4a4469566656efa594527108c8d65c863da8c",
+    "run_runtime_manifest": "3404eae4685ca09f46b53430753a79eaa6d84493359606fc69f4a7837dd751d9",
+    "valid_mask_manifest": "a381b24ab508b7eba758b971e4ffe05b4a10e319c6299c1aa4a67f955bc6a169"
+  },
+  "minimum_effective_aug_rate": 0.16,
+  "minimum_generation_pass_rate": 0.8,
+  "montage_validation_count": 48,
+  "reason_visual_counts": {
+    "CANDIDATE_BOUNDARY_QC_FAIL": {
+      "accept": 8,
+      "reject": 1
+    },
+    "CANDIDATE_CONTENT_QC_FAIL": {
+      "accept": 1,
+      "reject": 1
+    },
+    "COMMITTED": {
+      "accept": 23,
+      "reject": 1
+    },
+    "RAW_GENERATION_QC_FAIL": {
+      "accept": 5,
+      "reject": 8
+    }
+  },
+  "route_decision": "stop_before_gate0",
+  "run_file_count": 101,
+  "run_files_manifest_sha256": "17bc9b2af592da720555a54080c7ac5b8c80763c8abddcc4a95aa35447862a31",
+  "schema_version": 1,
+  "stage": "fix_v2_qc_holdout",
+  "status": "fail",
+  "threshold_promotion_performed": false,
+  "training_or_inference_eligible": false,
+  "transaction_visual_counts": {
+    "COMMITTED": {
+      "accept": 23,
+      "reject": 1
+    },
+    "NO_OP": {
+      "accept": 14,
+      "reject": 10
+    }
+  },
+  "visual_accept_count": 37,
+  "visual_reject_count": 11,
+  "visual_rejects": [
+    "16c4a919708d0cf9",
+    "1a90f3dde7689305",
+    "3b5132fe840c96c7",
+    "43768d457661301b",
+    "442f3e5edc67225a",
+    "9c61c56933f9337d",
+    "a052ffb5549a0686",
+    "b0692053dfc12510",
+    "ca310c8dd0afde0d",
+    "e34a0076416af820",
+    "ffb59e2fc14ddb8e"
+  ]
+}

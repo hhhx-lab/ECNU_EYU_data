@@ -1,0 +1,100 @@
+{
+  "contract_sha256": "8a233fbef07683688c23d82e69d6b57afd48a15060b5151cce06dc4c68eaacf5",
+  "expected_case_count": 179,
+  "generated_at_utc": "2026-07-27T14:31:32.383223+00:00",
+  "inference": {
+    "checkpoint_name": "checkpoint_final.pth",
+    "export_workers_per_shard": 4,
+    "fold": 0,
+    "perform_everything_on_device": true,
+    "preprocess_workers_per_shard": 4,
+    "save_probabilities": false,
+    "test_time_training": false,
+    "tile_step_size": 0.5,
+    "use_gaussian": true,
+    "use_mirroring": true,
+    "uses_g1_g2_diffusion": false,
+    "uses_met_aug": false
+  },
+  "input_preparation": {
+    "case_id_sha256": "f291764eee01f1f947bb391fb6cca80dfafd8d5f7ecc88d53a26d0d52a938492",
+    "manifest_sha256": "7ae36efac2100a5d54dff42a09d19b41e4af772edc0152968278ae10c69a6263",
+    "script": "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/06_prepare_official_validation.py",
+    "script_sha256": "7586e6dc83a02e18288b1c0c5e9bafbb2665471501a4916f4d77ce8d6069bd7e",
+    "summary_sha256": "128dcc76363c5d18b32d7e52bdfe2301c4388e7fad42b718294a3522b21b5b9f"
+  },
+  "model": {
+    "checkpoint_metadata_matches_json": true,
+    "checkpoint_path": "/root/brats2026/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/focal/fold_0/checkpoint_final.pth",
+    "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "dataset_json_path": "/root/brats2026/data/s2_dataset264_true1mm_20260726_r1/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/dataset.json",
+    "dataset_json_sha256": "e6e77a97ed8f43c44b3ae647e4cbd51606cf75393bb1241cb9f862e9579a43e8",
+    "epoch": 200,
+    "model_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/model",
+    "plans_json_path": "/root/brats2026/data/s2_dataset264_true1mm_20260726_r1/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/nnUNetPlans.json",
+    "plans_json_sha256": "c20ac311f0b3db0f0710e98b0b56e65e8bb38c13b95094b6d6f9966ac529ffa5",
+    "trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune"
+  },
+  "packaging": {
+    "synapse_upload_allowed": false,
+    "zip_allowed": false
+  },
+  "role": "BraTS_2026_S2_Task1_official_179_inference",
+  "run_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1",
+  "runtime": {
+    "environment": "/root/brats2026/envs/s2_met_aug_h20",
+    "inference_script": "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/inference_frozen.py",
+    "inference_script_sha256": "fa367326d18d6e03ef3b313daca7213af43a96ecfa818fe29e64c52d75df9b38",
+    "inference_trainer": "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py",
+    "inference_trainer_sha256": "c7c464c9ec283d75ab7d2f353d50025dc52e8b59dcc0d1f0256abdff7b78df13",
+    "nibabel": "5.4.2",
+    "nnunetv2": "2.8.0",
+    "prepare_script": "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/28_prepare_official_inference_dual_h20.py",
+    "prepare_script_sha256": "3293b0102de4101da9b554266bbe7db61f5c7b393f753d7a13560f562145593d",
+    "python": "3.12.11",
+    "torch": "2.7.1+cu128"
+  },
+  "schema_version": 1,
+  "selection": {
+    "completion_marker_sha256": "84b424f9120c1738c2adcffbb1e477fdc3d1077382e9138e5cb012ebd1477a08",
+    "model_selection_sha256": "380467ce9157ffc31b58baaa6d1182e7882cd4c68555ee1a0048304cc708be5f",
+    "root": "/root/brats2026/runs/s2_e_continue_selection_20260727_r1",
+    "selected_checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "selected_model": "E"
+  },
+  "shards": {
+    "gpu0": {
+      "case_count": 90,
+      "case_ids_path": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/gpu0_case_ids.txt",
+      "case_ids_sha256": "8ee3935c2453bdd85b846b3b09ea44b530ab91913c0dc9e50106c111e46a0007",
+      "estimated_voxels": 2796954624,
+      "input_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/input_gpu0",
+      "nifti_count": 360,
+      "output_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/output_gpu0",
+      "physical_gpu": 0
+    },
+    "gpu1": {
+      "case_count": 89,
+      "case_ids_path": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/gpu1_case_ids.txt",
+      "case_ids_sha256": "d719fdb13101583117e1171a32d3285da50220b2741a9ccb98d78b89a945b5d6",
+      "estimated_voxels": 2788828160,
+      "input_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/input_gpu1",
+      "nifti_count": 356,
+      "output_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/output_gpu1",
+      "physical_gpu": 1
+    }
+  },
+  "source_manifest_sha256": "82a2d3e4f928baa7e2e8c066c823aab9c9f0973f53247b0ec9d9e41be4027abc",
+  "source_nifti_count": 716,
+  "source_root": "/root/brats2026/data/s2_official_validation_179_20260727_r1/Validation",
+  "source_total_bytes": 5432819517,
+  "source_transfer": {
+    "audit": "/root/brats2026/data/s2_official_validation_179_20260727_r1/TRANSFER_AUDIT.json",
+    "audit_sha256": "8894ccbd8ad92f3e6991d566fd8fc5328a789b04707f3689ad2555e47a308d9e",
+    "completion_marker": "/root/brats2026/data/s2_official_validation_179_20260727_r1/TRANSFER_COMPLETE.ok",
+    "completion_marker_sha256": "adc785045156079565ebe4abf842e8a2c0b9e39366fb189f4b827742354f8c71",
+    "local_remote_manifest_sha256": "47e4a87c7d079d8005efe7df2d3e4d53232c295fa3afa478b6648bffa2ac5d51",
+    "local_remote_manifests_byte_identical": true
+  },
+  "status": "prepared"
+}

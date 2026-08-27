@@ -1,0 +1,38 @@
+ENDPOINT_VALIDATION_EXECUTION_PLAN_20260824_R2.json: OK
+README.md: OK
+evidence/STATIC_PREFLIGHT.json: OK
+manifests/FIXED103_REAL_SYNTHETIC_CASES.csv: OK
+manifests/TEST26_LOCKED_MISSING_T2W_CASES.csv: OK
+manifests/VAL27_MISSING_T2W_CASES.csv: OK
+runtime/advance_pipeline.py: OK
+runtime/assemble_model_snapshot.py: OK
+runtime/build_static_bundle.py: OK
+runtime/compare_paired_met.py: OK
+runtime/custom_nnunet/__init__.py: OK
+runtime/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py: OK
+runtime/frozen_s2_inference.py: OK
+runtime/g1_r4_frozen/configs.py: OK
+runtime/g1_r4_frozen/models/__init__.py: OK
+runtime/g1_r4_frozen/models/bbdm/bb_scheduler.py: OK
+runtime/g1_r4_frozen/models/bbdm/condition_tokens.py: OK
+runtime/g1_r4_frozen/models/bbdm/unet.py: OK
+runtime/g1_r4_frozen/models/encdec/__init__.py: OK
+runtime/g1_r4_frozen/models/encdec/unet.py: OK
+runtime/g1_r4_frozen/synthesis/__init__.py: OK
+runtime/g1_r4_frozen/synthesis/pipeline.py: OK
+runtime/g1_r4_frozen/synthesis/segment_brain_mask.py: OK
+runtime/g1_r4_frozen/synthesis/spatial.py: OK
+runtime/g1_r4_frozen/synthesis/utils.py: OK
+runtime/materialize_s2_inputs.py: OK
+runtime/run_official_met_eval.sh: OK
+runtime/synthesize_missing_t2w_r4.py: OK
+runtime/validate_remote_static.py: OK
+slurm/01_val27_synthesize_r4.slurm: OK
+slurm/02_val27_four_model_eval.slurm: OK
+slurm/03_fixed103_real_vs_synthetic.slurm: OK
+slurm/04_test26_locked_endpoint.slurm: OK
+tests/test_static_runtime.py: OK
+NVIDIA A100-PCIE-40GB
+Loaded BBDM EMA parameters from: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt
+{"case_count": 27, "cohort": "val27", "status": "pass"}
+{"artifact_status": "experimental_unvalidated", "case_count": 27, "completed_at_utc": "2026-08-24T08:52:38.017154+00:00", "foreground_outside_count": 0, "formal_gate_status": "not_run_not_passed", "geometry_audit_sha256": "219f8b0dcb2156913c94140f99707f15d564e1ebd9fa626d73de05b86e46e8fb", "geometry_mismatch_count": 0, "geometry_repaired_count": 0, "job_id": "3530868", "lesion_outside_count": 0, "nifti_count": 27, "operator_approved": false, "schema_version": 1, "source_t2w_read_count": 0, "spatial_audit_sha256": "c9164c0ac225fc7e3746cf2d32b47b1d06440ce1bbb925d180ef37673fea7926", "spatial_row_count": 27, "stage": "val27_r4_synthesis", "status": "pass", "synthesis_run_sha256": "24f630532081ac4facaa99a3b606bcd8564236868bf0c509ed278b2372e7e13c"}

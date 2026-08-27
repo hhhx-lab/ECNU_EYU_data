@@ -1,0 +1,44 @@
+{
+  "audit_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/data/nnUNet_results_attempt11/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/met_aug_events.jsonl",
+  "authorization": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/calibration_rebuild_20260819_r10/FIX_V3_EMERGENCY_DECISION.json",
+  "authorization_decision": "allow_experimental_smoke_training_and_fixed_103_only",
+  "authorization_kind": "fix_v3_emergency_unvalidated",
+  "authorization_sha256": "cc7a3b7438603355019176b653c7b766d0eaec0e9ce1ef638e4914d7c542422a",
+  "base_trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune",
+  "component_manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/route_rebuild_20260812_r1/component_pool/component_manifest.json",
+  "component_manifest_sha256": "16b9381f6392282462a4f10c9733280ffba0b2270eb2ef04db439e0a6689db80",
+  "fix_v3": {
+    "boundary_policy": "label_only_qc_v1",
+    "calibration": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/calibration_rebuild_20260819_r10/FIX_V2_CALIBRATION_ECNU_FROZEN.json",
+    "calibration_sha256": "68a5d8a6c501804b7a47d626e43a58ff71b781154c0cc955a9c5a5d5b786d37f",
+    "formal_validation_status": "skipped",
+    "processor_policy": "fix_v3_qc_v1",
+    "skipped_stages": [
+      "reference_increment",
+      "development_96",
+      "independent_holdout",
+      "gate_0",
+      "gate_1a_100000",
+      "gate_1b_96_double_replay",
+      "gate_2_120"
+    ]
+  },
+  "g1_checkpoint_selection": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/frozen/g1/checkpoint_selection.json",
+  "g1_checkpoint_selection_sha256": "85574c51c4f77ea14e18507aab93f6fea86cf4b8ab0a0c407b0e3ec97e18b209",
+  "g1_runtime_code_sha256": "511d59e0c237e109e2b3fb775a8e731e0507bd4e305fc8e86d84aa7d38c430a9",
+  "g2_qc_gate": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/frozen/g1/g2_diffusion_qc_gate.json",
+  "g2_qc_gate_sha256": "3103a3057132b9166a398ff2f10aefee77c957e142563c3b7f93e3898718f408",
+  "route_config": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/calibration_rebuild_20260819_r10/FIX_V3_ROUTE_CONFIG_SCHEMA5.json",
+  "route_config_sha256": "c35750fb7b388d1337ed6586a2d5af9ede5e046359ef48b9de40c55838401817",
+  "route_id": "MET-AUG-A",
+  "training_contract": {
+    "candidate_policy": "label_only_qc_v1",
+    "epochs": 200,
+    "fixed_train_count": 1035,
+    "fixed_validation_count": 103,
+    "p_select": 0.2,
+    "processor_policy": "fix_v3_qc_v1"
+  },
+  "valid_mask_manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/route_rebuild_20260812_r1/valid_masks/valid_mask_manifest.json",
+  "valid_mask_manifest_sha256": "e1410212cef4e893bd16c6b9d7c4a4837b8cea123b1ae5b41fe4c40676e43fe7"
+}

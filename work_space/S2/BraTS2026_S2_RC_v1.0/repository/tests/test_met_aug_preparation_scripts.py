@@ -18,6 +18,7 @@ from custom_nnunet.met_aug_diffusion import (
     g1_runtime_code_snapshot,
     resolve_selected_checkpoint,
 )
+from custom_nnunet.met_aug_fix_v2 import _inside_boundary_voxels
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +53,66 @@ class _FakeDataset:
 
 
 class MetAugPreparationScriptTests(unittest.TestCase):
+    def test_fix_v2_montage_renders_readable_nonblank_evidence(self):
+        from PIL import Image
+
+        coordinates = np.indices((64, 64, 64), dtype=np.float32)
+        base = (
+            0.03 * coordinates[0]
+            + 0.02 * coordinates[1]
+            - 0.01 * coordinates[2]
+        )
+        before = np.stack([base + channel for channel in range(4)]).astype(np.float32)
+        label_support = np.zeros((64, 64, 64), dtype=bool)
+        label_support[28:36, 27:37, 29:35] = True
+        image_support = np.zeros_like(label_support)
+        image_support[25:39, 24:40, 26:38] = True
+        raw = before.copy()
+        raw[:, image_support] += np.asarray((0.4, 1.0, 1.4, 1.8))[:, None]
+        harmonized = before + 0.8 * (raw - before)
+        unharmonized_blend = before + 0.6 * (raw - before)
+        final = before + 0.6 * (harmonized - before)
+        segmentation = np.zeros(label_support.shape, dtype=np.int16)
+        segmentation[label_support] = 2
+        segmentation[30:34, 30:34, 30:34] = 3
+        boundaries = []
+        for label_value in (1, 2, 3):
+            boundaries.append(_inside_boundary_voxels(segmentation, label_value))
+
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "fix-v2-montage.png"
+            RUN_GATE2.render_montage(
+                image_before=before,
+                image_after=final,
+                segmentation_after=segmentation,
+                support=image_support,
+                output=output,
+                raw_generation=raw,
+                harmonized_generation=harmonized,
+                pre_harmonization=unharmonized_blend,
+                label_support=label_support,
+                boundary_masks=tuple(boundaries),
+                boundary_policy="halo_cosine_harmonized_v1",
+                qc_metadata={
+                    "geometry": {
+                        "label_support_voxels": int(np.count_nonzero(label_support)),
+                        "image_support_voxels": int(np.count_nonzero(image_support)),
+                    },
+                    "candidate_qc": {"boundary": {"event_max_ratio": 0.7}},
+                },
+            )
+            self.assertTrue(output.is_file())
+            self.assertGreater(output.stat().st_size, 100_000)
+            with Image.open(output) as rendered:
+                self.assertEqual(rendered.format, "PNG")
+                width, height = rendered.size
+                self.assertGreater(height, width)
+                self.assertLess(width, 5_000)
+                preview = np.asarray(
+                    rendered.convert("RGB").resize((256, 256)), dtype=np.uint8
+                )
+            self.assertGreater(float(np.std(preview)), 10.0)
+
     def test_parallel_gate1_promotion_preserves_serial_evidence(self):
         with tempfile.TemporaryDirectory() as temporary:
             route_root = Path(temporary) / "route"

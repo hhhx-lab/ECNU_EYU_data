@@ -1,0 +1,180 @@
+2 channel Terms of Service accepted
+Channels:
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - done
+Solving environment: | done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 25.5.1
+    latest version: 26.5.3
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /root/brats2026/envs/s2_brats_eval_numpy126_r2
+
+  added / updated specs:
+    - pip
+    - python=3.10
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    python-3.10.20             |       h17756b0_1        24.2 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    ------------------------------------------------------------
+                                           Total:        24.2 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      anaconda/pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      anaconda/pkgs/main/linux-64::_openmp_mutex-5.1-52_gnu 
+  bzip2              anaconda/pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 
+  ca-certificates    anaconda/pkgs/main/linux-64::ca-certificates-2026.7.16-h06a4308_0 
+  ld_impl_linux-64   anaconda/pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3 
+  libexpat           anaconda/pkgs/main/linux-64::libexpat-2.8.2-h7354ed3_1 
+  libffi             anaconda/pkgs/main/linux-64::libffi-3.4.8-h06d3fd0_3 
+  libgcc             anaconda/pkgs/main/linux-64::libgcc-15.2.0-h69a1729_8 
+  libgcc-ng          anaconda/pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_8 
+  libnsl             anaconda/pkgs/main/linux-64::libnsl-2.0.0-h5eee18b_0 
+  libstdcxx          anaconda/pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_8 
+  libuuid            anaconda/pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0 
+  libxcb             anaconda/pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0 
+  libzlib            anaconda/pkgs/main/linux-64::libzlib-1.3.2-h47b2149_0 
+  ncurses            anaconda/pkgs/main/linux-64::ncurses-6.5-h7934f7d_0 
+  openssl            anaconda/pkgs/main/linux-64::openssl-3.5.7-h1b28b03_0 
+  packaging          anaconda/pkgs/main/linux-64::packaging-26.0-py310h06a4308_0 
+  pip                anaconda/pkgs/main/noarch::pip-26.1.2-pyhc872135_0 
+  pthread-stubs      anaconda/pkgs/main/linux-64::pthread-stubs-0.3-h47b2149_2 
+  python             anaconda/pkgs/main/linux-64::python-3.10.20-h17756b0_1 
+  readline           anaconda/pkgs/main/linux-64::readline-8.3-hc2a1206_0 
+  setuptools         anaconda/pkgs/main/linux-64::setuptools-83.0.0-py310h06a4308_0 
+  sqlite             anaconda/pkgs/main/linux-64::sqlite-3.53.2-h795bf6d_0 
+  tk                 anaconda/pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0 
+  tzdata             anaconda/pkgs/main/noarch::tzdata-2026c-he532380_0 
+  wheel              anaconda/pkgs/main/linux-64::wheel-0.47.0-py310h06a4308_0 
+  xorg-libx11        anaconda/pkgs/main/linux-64::xorg-libx11-1.8.12-h9b100fa_1 
+  xorg-libxau        anaconda/pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0 
+  xorg-libxdmcp      anaconda/pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0 
+  xorg-xorgproto     anaconda/pkgs/main/linux-64::xorg-xorgproto-2024.1-h47b2149_2 
+  xz                 anaconda/pkgs/main/linux-64::xz-5.8.2-h448239c_0 
+  zlib               anaconda/pkgs/main/linux-64::zlib-1.3.2-h47b2149_0 
+
+
+
+Downloading and Extracting Packages: ...working...python-3.10.20       | 24.2 MB   |            |   0% python-3.10.20       | 24.2 MB   | #9         |  20% python-3.10.20       | 24.2 MB   | ##8        |  28% python-3.10.20       | 24.2 MB   | ####9      |  50% python-3.10.20       | 24.2 MB   | #######5   |  75% python-3.10.20       | 24.2 MB   | ########## | 100% python-3.10.20       | 24.2 MB   | ########## | 100% python-3.10.20       | 24.2 MB   | ########## | 100%                                                       done
+Preparing transaction: - \ done
+Verifying transaction: / - \ | / - \ | / - \ | / - \ done
+Executing transaction: / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ done
+#
+# To activate this environment, use
+#
+#     $ conda activate /root/brats2026/envs/s2_brats_eval_numpy126_r2
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting numpy==1.26.4
+  Downloading numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 47.3 MB/s  0:00:00
+Collecting BraTS-evaluation==0.0.8
+  Downloading brats_evaluation-0.0.8-py3-none-any.whl (18 kB)
+Collecting panoptica==2.1.0
+  Downloading panoptica-2.1.0.tar.gz (93 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting SimpleITK<3.0.0,>=2.2.2 (from BraTS-evaluation==0.0.8)
+  Downloading simpleitk-2.5.5-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (52.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.8/52.8 MB 26.5 MB/s  0:00:01
+Collecting nibabel<6.0.0,>=5.1.0 (from BraTS-evaluation==0.0.8)
+  Downloading nibabel-5.4.2-py3-none-any.whl (3.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 18.7 MB/s  0:00:00
+Collecting pandas<3.0,>=2.0 (from BraTS-evaluation==0.0.8)
+  Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 18.6 MB/s  0:00:00
+Collecting connected-components-3d<4.0.0,>=3.12.3 (from panoptica==2.1.0)
+  Downloading connected_components_3d-3.29.0-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (4.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 18.4 MB/s  0:00:00
+Collecting plotly<6.0.0,>=5.16.1 (from panoptica==2.1.0)
+  Downloading plotly-5.24.1-py3-none-any.whl (19.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.1/19.1 MB 22.2 MB/s  0:00:00
+Collecting rich<14.0.0,>=13.6.0 (from panoptica==2.1.0)
+  Downloading rich-13.9.4-py3-none-any.whl (242 kB)
+Collecting ruamel.yaml<1.0.0,>=0.18.6 (from panoptica==2.1.0)
+  Downloading ruamel_yaml-0.19.1-py3-none-any.whl (118 kB)
+Collecting scikit-image<1.0.0,>=0.22.0 (from panoptica==2.1.0)
+  Downloading scikit_image-0.25.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (14.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.8/14.8 MB 32.6 MB/s  0:00:00
+Collecting scipy<2.0.0,>=1.7.0 (from panoptica==2.1.0)
+  Downloading scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (37.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.7/37.7 MB 28.9 MB/s  0:00:01
+Collecting tqdm>=4.62.3 (from panoptica==2.1.0)
+  Downloading tqdm-4.70.0-py3-none-any.whl (80 kB)
+Collecting typer<1.0.0,>=0.15.0 (from panoptica==2.1.0)
+  Downloading typer-0.27.0-py3-none-any.whl (122 kB)
+Collecting importlib-resources>=5.12 (from nibabel<6.0.0,>=5.1.0->BraTS-evaluation==0.0.8)
+  Downloading importlib_resources-7.1.0-py3-none-any.whl (37 kB)
+Requirement already satisfied: packaging>=20 in ./brats2026/envs/s2_brats_eval_numpy126_r2/lib/python3.10/site-packages (from nibabel<6.0.0,>=5.1.0->BraTS-evaluation==0.0.8) (26.0)
+Collecting typing-extensions>=4.6 (from nibabel<6.0.0,>=5.1.0->BraTS-evaluation==0.0.8)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting python-dateutil>=2.8.2 (from pandas<3.0,>=2.0->BraTS-evaluation==0.0.8)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Collecting pytz>=2020.1 (from pandas<3.0,>=2.0->BraTS-evaluation==0.0.8)
+  Downloading pytz-2026.3.post1-py2.py3-none-any.whl (508 kB)
+Collecting tzdata>=2022.7 (from pandas<3.0,>=2.0->BraTS-evaluation==0.0.8)
+  Downloading tzdata-2026.3-py2.py3-none-any.whl (348 kB)
+Collecting tenacity>=6.2.0 (from plotly<6.0.0,>=5.16.1->panoptica==2.1.0)
+  Downloading tenacity-9.1.4-py3-none-any.whl (28 kB)
+Collecting markdown-it-py>=2.2.0 (from rich<14.0.0,>=13.6.0->panoptica==2.1.0)
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich<14.0.0,>=13.6.0->panoptica==2.1.0)
+  Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 16.5 MB/s  0:00:00
+Collecting networkx>=3.0 (from scikit-image<1.0.0,>=0.22.0->panoptica==2.1.0)
+  Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 14.5 MB/s  0:00:00
+Collecting pillow>=10.1 (from scikit-image<1.0.0,>=0.22.0->panoptica==2.1.0)
+  Downloading pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 6.0 MB/s  0:00:01
+Collecting imageio!=2.35.0,>=2.33 (from scikit-image<1.0.0,>=0.22.0->panoptica==2.1.0)
+  Downloading imageio-2.37.4-py3-none-any.whl (318 kB)
+Collecting tifffile>=2022.8.12 (from scikit-image<1.0.0,>=0.22.0->panoptica==2.1.0)
+  Downloading tifffile-2025.5.10-py3-none-any.whl (226 kB)
+Collecting lazy-loader>=0.4 (from scikit-image<1.0.0,>=0.22.0->panoptica==2.1.0)
+  Downloading lazy_loader-0.5-py3-none-any.whl (8.0 kB)
+Collecting shellingham>=1.3.0 (from typer<1.0.0,>=0.15.0->panoptica==2.1.0)
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Collecting annotated-doc>=0.0.2 (from typer<1.0.0,>=0.15.0->panoptica==2.1.0)
+  Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich<14.0.0,>=13.6.0->panoptica==2.1.0)
+  Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas<3.0,>=2.0->BraTS-evaluation==0.0.8)
+  Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Building wheels for collected packages: panoptica
+  Building wheel for panoptica (pyproject.toml): started
+  Building wheel for panoptica (pyproject.toml): finished with status 'done'
+  Created wheel for panoptica: filename=panoptica-2.1.0-py3-none-any.whl size=120539 sha256=ac7c33ddf008906c7734550228871ee948a43ddb1e33c2a3df68a20beaaf5833
+  Stored in directory: /tmp/pip-ephem-wheel-cache-0hv89_ct/wheels/56/b4/97/5c8bb1464dd5c253513cfd9a58f9793e04b15aa60371bf6777
+Successfully built panoptica
+Installing collected packages: SimpleITK, pytz, tzdata, typing-extensions, tqdm, tenacity, six, shellingham, ruamel.yaml, pygments, pillow, numpy, networkx, mdurl, lazy-loader, importlib-resources, annotated-doc, tifffile, scipy, python-dateutil, plotly, nibabel, markdown-it-py, imageio, connected-components-3d, scikit-image, rich, pandas, typer, panoptica, BraTS-evaluation
+
+Successfully installed BraTS-evaluation-0.0.8 SimpleITK-2.5.5 annotated-doc-0.0.4 connected-components-3d-3.29.0 imageio-2.37.4 importlib-resources-7.1.0 lazy-loader-0.5 markdown-it-py-4.2.0 mdurl-0.1.2 networkx-3.4.2 nibabel-5.4.2 numpy-1.26.4 pandas-2.3.3 panoptica-2.1.0 pillow-12.3.0 plotly-5.24.1 pygments-2.20.0 python-dateutil-2.9.0.post0 pytz-2026.3.post1 rich-13.9.4 ruamel.yaml-0.19.1 scikit-image-0.25.2 scipy-1.15.3 shellingham-1.5.4 six-1.17.0 tenacity-9.1.4 tifffile-2025.5.10 tqdm-4.70.0 typer-0.27.0 typing-extensions-4.16.0 tzdata-2026.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+No broken requirements found.
+S2_EVAL_ENVIRONMENT_PASS audit_sha256=365a6c3ed12bac55e9f771140faae7753f50249257df4adbabd55ad45d90fb6b

@@ -1,0 +1,98 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "base_image": {
+    "architecture": "amd64",
+    "image_id": "sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+    "local_tag": "s2-pytorch-base:2.7.1-cuda12.8-cudnn9-runtime-amd64",
+    "os": "linux",
+    "resolved_digest": "sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2",
+    "source_mirror": "docker.1ms.run/pytorch/pytorch",
+    "upstream_tag": "pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime"
+  },
+  "build": {
+    "archive_generation_status": "not_generated",
+    "architecture": "amd64",
+    "entrypoint": [
+      "python",
+      "/opt/app/run_container.py"
+    ],
+    "image_created_at": "2026-07-30T12:43:11.73937873+08:00",
+    "image_id": "sha256:496b2afef0ee05d1a844856311dfa9d1d4f2c68f8d5d24cdc2d354cd2e5ac70d",
+    "image_manifest_digest": "sha256:496b2afef0ee05d1a844856311dfa9d1d4f2c68f8d5d24cdc2d354cd2e5ac70d",
+    "image_size_bytes": 4737652285,
+    "image_tag": "s2-original-e-reserve:experimental_unvalidated",
+    "os": "linux",
+    "registry_push_status": "not_uploaded",
+    "status": "pass"
+  },
+  "checkpoint": {
+    "current_epoch": 200,
+    "network_tensor_count": 292,
+    "sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune"
+  },
+  "context_bindings": {
+    "context_manifest_sha256": "ee06dc314eea7c045d217c833f7c7d398e95ff806f37c6a7c2bf95b1ff5ef4c4",
+    "dockerfile_sha256": "14a0e9d2c4cffbed690e22df0d5faca700c78c3babe062f5ea19f8948ad9d075",
+    "requirements_sha256": "e33e7207c30418d68b7abeeec1df1826f080172ccdaa1ab01e42109f88366b24",
+    "static_context_manifest_sha256": "7af85ac6c7b23dd86b7121ee1bb0fb79a99d6ada37724e23cd40641820faa23e"
+  },
+  "created_at_utc": "2026-07-30T04:45:21Z",
+  "gates_not_claimed": [
+    "Reference increment",
+    "Development 96",
+    "independent holdout",
+    "Gate-0",
+    "Gate-1A",
+    "Gate-1B",
+    "Gate-2"
+  ],
+  "prior_attempt_evidence": [
+    {
+      "artifact_created": false,
+      "attempt": "docker_hub_base_pull",
+      "reason": "anonymous_token_timeout",
+      "status": "failed"
+    },
+    {
+      "artifact_created": false,
+      "attempt": "daocloud_digest_base_pull",
+      "reason": "unexpected_eof_during_main_layer_download",
+      "status": "failed"
+    },
+    {
+      "artifact_created": true,
+      "attempt": "1ms_digest_base_pull",
+      "status": "pass"
+    },
+    {
+      "artifact_fault": false,
+      "attempt": "container_validation_01",
+      "reason": "validation_shell_quoting_error_unbound_awk_field",
+      "status": "failed"
+    },
+    {
+      "attempt": "container_validation_02",
+      "status": "pass"
+    }
+  ],
+  "receipt_scope": "local_docker_build_and_cpu_static_validation_only",
+  "schema_version": 1,
+  "submission": {
+    "synapse_upload_performed": false,
+    "submission_ready_claimed": false
+  },
+  "validation": {
+    "checkpoint_metadata": "pass",
+    "checkpoint_sha256": "pass",
+    "container_architecture": "pass",
+    "dependency_imports": "pass",
+    "entrypoint_metadata": "pass",
+    "gpu_validation_reason": "local_host_is_arm64_without_nvidia_gpu_and_remote_h20_host_has_no_container_runtime",
+    "gpu_validation_status": "not_run",
+    "network_weights_finite": "pass",
+    "pip_check": "pass",
+    "runtime_mode": "linux_amd64_emulation_on_arm64_orbstack",
+    "static_context": "pass"
+  }
+}

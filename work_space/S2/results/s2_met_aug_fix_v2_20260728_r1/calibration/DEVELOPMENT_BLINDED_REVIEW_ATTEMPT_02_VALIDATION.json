@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "stage": "development_ai_assisted_blinded_visual_review",
+  "attempt": 2,
+  "decision_lock_at_utc": "2026-07-28T13:10:26Z",
+  "validated_at_utc": "2026-07-28T13:37:50Z",
+  "reviewer": "codex-ai-blinded-visual-qc",
+  "reviewer_role": "Codex AI-assisted blinded visual review; not a human clinical signature",
+  "decision_file": "DEVELOPMENT_BLINDED_REVIEW_DECISIONS_ATTEMPT_02.csv",
+  "decision_file_sha256": "05124d86fb6942855f5187e38394503163652a5a0ae332d898bae29ee48db2c6",
+  "template_sha256": "a0ccec31854e5f28710910d1c34241c8b63c9b0494fde300f4239c4e4d6833c3",
+  "development_validation_sha256": "db74e7c8e8c7ac2198e7e477c8e903f565be77345a349c83abb9eb5a24592810",
+  "development_files_manifest_sha256": "be9a7b611a0a7242b9604f5f85de941ce7d0a8225207360fc9dd38fd47165605",
+  "review_view_audit_sha256": "c42ae6f8dbd540eccbcd6232cda42f673c7186c79ed91e010d4b641b14539257",
+  "event_sheet_tree_sha256": "598e8ea389b425e920d515e8c7971bef6208cafc32e960d496ccd4f1374629b3",
+  "expected_rows": 240,
+  "observed_rows": 240,
+  "unique_blind_codes": 240,
+  "accept_count": 230,
+  "reject_count": 10,
+  "pending_count": 0,
+  "rejected_event_count": 2,
+  "rejected_event_ids": [
+    "1e595ee72419bd3a39dd8614",
+    "baebda4cdca655d74dfe68b8"
+  ],
+  "rejection_reason": "cross-modal T2w/T2f contradiction with large homogeneous replacement",
+  "identity_fields_match_template": true,
+  "all_decisions_binary": true,
+  "all_reviewers_match": true,
+  "all_timestamps_present": true,
+  "private_blinding_map_accessed_before_decision_lock": false,
+  "review_sequence_disclosure": {
+    "candidate_identity_exposure_after_decision_lock": true,
+    "source": "first row printed from development_measurements.jsonl during downstream schema inspection",
+    "scope": "one accepted blind code was shown as A_label_only after all 48 event decisions and the 10-code rejection set were locked",
+    "impact_on_locked_decisions": "none",
+    "private_blinding_map_remained_unread": true
+  },
+  "attempt_01_failure_preserved": true,
+  "attempt_01_failure_reason": "CRLF serialization error caught by strict CSV parser before freeze"
+}

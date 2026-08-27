@@ -1,6 +1,12 @@
 {
   "generated_at": "2026-07-24T13:24:49+0800",
+  "corrected_at": "2026-08-14T00:00:00+0800",
   "status": "complete",
+  "correction": {
+    "kind": "evaluation_evidence_binding",
+    "description": "B was previously named as the Dataset264 completion checkpoint but its aggregate metrics and evaluation_dir were taken from Dataset263 real-only s2_eval_results. B is now rebound to its actual Dataset264 official_style_eval; Dataset263 real-only is retained separately as R.",
+    "raw_training_or_evaluation_outputs_modified": false
+  },
   "dataset": "Dataset264_BraTS2026_MET_Completion",
   "fixed_split": {
     "train": 1035,
@@ -34,13 +40,24 @@
     "tiny_metric_available": false
   },
   "candidates": {
+    "R": {
+      "dataset": "Dataset263_BraTS2026_MET_RealOnly_Current",
+      "trainer": "nnUNetTrainerBraTS2026RC",
+      "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/checkpoint_final.pth",
+      "checkpoint_sha256": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1",
+      "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_eval_results",
+      "metrics_csv_sha256": "a1c7e735da723974a600d959bbd775fa4daa510e933308cf7dc54bd73e74ea53",
+      "role": "real_only_training_data_reference_not_dataset264_candidate"
+    },
     "B": {
+      "dataset": "Dataset264_BraTS2026_MET_Completion",
       "trainer": "nnUNetTrainerBraTS2026RCCompletionFineTune",
       "training_job": null,
       "evaluation_job": null,
       "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_completion_dataset264_t2w_20260720/fold_0/checkpoint_final.pth",
       "checkpoint_sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5",
-      "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_eval_results",
+      "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_completion_dataset264_t2w_20260720/official_style_eval",
+      "metrics_csv_sha256": "73f5b9e08aaee848ecb77d59e51698e66d6b050bec7b8073c25418904cce24cc",
       "role": "overall_conservative_baseline"
     },
     "A-1": {
@@ -50,6 +67,7 @@
       "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/a1/fold_0/checkpoint_final.pth",
       "checkpoint_sha256": "ef60fc1b489e5dba2ec19bd1120b3e4f21b085a47098a6e5b90b9c383f88a0d2",
       "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126/a1",
+      "metrics_csv_sha256": "d539908b20caa63bb00c272e374b94567c156937d810004e046128b07da8508b",
       "partial_warmstart": {
         "audit_present": true,
         "loaded_parameter_fraction": 0.6896551724137931
@@ -63,6 +81,7 @@
       "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/focal/fold_0/checkpoint_final.pth",
       "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
       "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126/focal",
+      "metrics_csv_sha256": "74a3722c055c8e60260a4e1baa108a4743f418430f2a95e1325fe6809718ed1b",
       "role": "selected_small_lesion_followup_base"
     },
     "A-1+E": {
@@ -72,6 +91,7 @@
       "checkpoint": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/a1_focal/fold_0/checkpoint_final.pth",
       "checkpoint_sha256": "665efedd73d715147f829a4768ec0bdca07227b0f27609e1f08db5bad7de3262",
       "evaluation_dir": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126/a1_focal",
+      "metrics_csv_sha256": "d00a2d3afa97d3b0cb89e7978228beadeeba9cb0c7c8707d1f37db1ea80c4ec5",
       "partial_warmstart": {
         "audit_present": true,
         "loaded_parameter_fraction": 0.6896551724137931
@@ -81,13 +101,15 @@
   },
   "aggregate_metrics": {
     "WT": {
-      "B": {"lesionwise_dsc": 0.625729, "lesionwise_nsd": 0.621359, "all_instance_f1": 0.710078, "small_instance_f1": 0.277048, "large_instance_f1": 0.683899, "all_fn": 3.116505, "all_fp": 0.747573},
+      "R": {"lesionwise_dsc": 0.625729, "lesionwise_nsd": 0.621359, "all_instance_f1": 0.710078, "small_instance_f1": 0.277048, "large_instance_f1": 0.683899, "all_fn": 3.116505, "all_fp": 0.747573},
+      "B": {"lesionwise_dsc": 0.593539, "lesionwise_nsd": 0.593146, "all_instance_f1": 0.723753, "small_instance_f1": 0.330570, "large_instance_f1": 0.656773, "all_fn": 3.029126, "all_fp": 0.893204},
       "A-1": {"lesionwise_dsc": 0.580821, "lesionwise_nsd": 0.569390, "all_instance_f1": 0.683197, "small_instance_f1": 0.292404, "large_instance_f1": 0.662586, "all_fn": 2.873786, "all_fp": 1.097087},
       "E": {"lesionwise_dsc": 0.587819, "lesionwise_nsd": 0.585794, "all_instance_f1": 0.712277, "small_instance_f1": 0.333083, "large_instance_f1": 0.672686, "all_fn": 2.912621, "all_fp": 0.970874},
       "A-1+E": {"lesionwise_dsc": 0.578306, "lesionwise_nsd": 0.567496, "all_instance_f1": 0.657227, "small_instance_f1": 0.342887, "large_instance_f1": 0.660221, "all_fn": 2.834951, "all_fp": 1.310680}
     },
     "RC": {
-      "B": {"lesionwise_dsc": 0.423506, "lesionwise_nsd": 0.363712, "all_instance_f1": 0.236232, "small_instance_f1": 0.0, "large_instance_f1": 0.085437, "all_fn": 0.067961, "all_fp": 0.776699},
+      "R": {"lesionwise_dsc": 0.423506, "lesionwise_nsd": 0.363712, "all_instance_f1": 0.236232, "small_instance_f1": 0.0, "large_instance_f1": 0.085437, "all_fn": 0.067961, "all_fp": 0.776699},
+      "B": {"lesionwise_dsc": 0.235939, "lesionwise_nsd": 0.212300, "all_instance_f1": 0.155556, "small_instance_f1": 0.0, "large_instance_f1": 0.055016, "all_fn": 0.097087, "all_fp": 0.679612},
       "A-1": {"lesionwise_dsc": 0.421768, "lesionwise_nsd": 0.386169, "all_instance_f1": 0.248505, "small_instance_f1": 0.0, "large_instance_f1": 0.103098, "all_fn": 0.067961, "all_fp": 0.611650},
       "E": {"lesionwise_dsc": 0.377022, "lesionwise_nsd": 0.273118, "all_instance_f1": 0.421053, "small_instance_f1": 0.0, "large_instance_f1": 0.080906, "all_fn": 0.116505, "all_fp": 0.038835},
       "A-1+E": {"lesionwise_dsc": 0.380900, "lesionwise_nsd": 0.332156, "all_instance_f1": 0.194070, "small_instance_f1": 0.166667, "large_instance_f1": 0.086916, "all_fn": 0.058252, "all_fp": 0.689320}
@@ -96,9 +118,12 @@
   "selection": {
     "overall_conservative_baseline": "B",
     "small_lesion_followup_base": "E",
-    "a1_rejected_reason": "Overall WT DSC/NSD/F1 declined; WT FP increased; RC gains were limited.",
-    "a1_focal_rejected_reason": "Small-instance F1 improved in isolation, but overall and RC F1/DSC/NSD declined and WT FP was highest.",
-    "selection_scope": "internal fixed validation only; not an official 179-case submission result"
+    "real_only_training_data_reference": "R",
+    "b_role_reason": "B has the highest WT lesionwise DSC, WT lesionwise NSD, and WT all-instance F1 among the four Dataset264 candidates.",
+    "e_role_reason": "E has only a small WT small-instance F1 gain over B, but substantially improves RC DSC, NSD, all-instance F1, and false positives; it is not a universal overall-metric winner.",
+    "a1_rejected_reason": "Compared with B, overall WT DSC/NSD/F1 declined and WT FP increased; RC gains did not offset the whole-tumour regression.",
+    "a1_focal_rejected_reason": "WT small-instance F1 improved in isolation, but WT DSC/NSD/F1 declined, WT FP was highest, and its RC F1/FP tradeoff was inferior to E.",
+    "selection_scope": "internal fixed validation only; R is a training-data reference, B/A-1/E/A-1+E are Dataset264 architecture/loss candidates; not an official 179-case submission result"
   },
   "deep_supervision_D": {
     "status": "designed_not_started",

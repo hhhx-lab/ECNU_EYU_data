@@ -80,6 +80,10 @@ def main() -> None:
         "g1_runtime_code": automatic["g1_runtime_code"],
         "review": review,
     }
+    if config.fix_v2 is not None:
+        if automatic.get("fix_v2") != config.fix_v2.as_mapping():
+            raise RuntimeError("Gate 2 automatic report Fix-v2 policy drifted")
+        report["fix_v2"] = config.fix_v2.as_mapping()
     report["gate2_report_sha256"] = canonical_json_sha256(report, exclude=("gate2_report_sha256",))
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, ensure_ascii=True, sort_keys=True, indent=2) + "\n", encoding="utf-8")

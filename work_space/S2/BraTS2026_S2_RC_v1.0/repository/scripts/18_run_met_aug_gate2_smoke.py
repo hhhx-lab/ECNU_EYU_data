@@ -31,6 +31,7 @@ from custom_nnunet.met_aug_core import (
     sha256_file,
 )
 from custom_nnunet.met_aug_diffusion import G1FourModalityInpaintingBackend
+from custom_nnunet.met_aug_fix_v2 import FixV2CandidateProcessor
 from custom_nnunet.met_aug_gate2 import (
     GATE2_AUTOMATIC_REPORT_SCHEMA,
     GATE2_VOLUME_BINS,
@@ -52,6 +53,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--g1-checkpoint-root", required=True)
     parser.add_argument("--g1-checkpoint-selection", required=True)
     parser.add_argument("--g2-parent-gate", required=True)
+    parser.add_argument("--fix-v2-calibration")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--device", default="cuda")
     return parser.parse_args()
@@ -84,11 +86,13 @@ def context_from_entry(entry: dict[str, Any]) -> EventContext:
     )
 
 
-def support_in_full_shape(shape: tuple[int, int, int], placement) -> np.ndarray:
+def support_in_full_shape(
+    shape: tuple[int, int, int], placement, local_support: np.ndarray
+) -> np.ndarray:
     result = np.zeros(shape, dtype=bool)
     start = placement.crop_start
     stop = tuple(value + 64 for value in start)
-    result[tuple(slice(begin, end) for begin, end in zip(start, stop))] = placement.support
+    result[tuple(slice(begin, end) for begin, end in zip(start, stop))] = local_support
     return result
 
 
@@ -128,16 +132,31 @@ def event_violations(
     if not labels.issubset(ALLOWED_LABELS | {-1}):
         violations.append("illegal_output_label")
 
-    support = support_in_full_shape(tuple(int(value) for value in seg_before.shape[1:]), result.placement)
+    local_image_support = np.asarray(
+        result.evidence.get("image_support", result.placement.support), dtype=bool
+    )
+    if local_image_support.shape != result.placement.support.shape:
+        violations.append("image_support_shape_drift")
+        return violations
+    image_support = support_in_full_shape(
+        tuple(int(value) for value in seg_before.shape[1:]),
+        result.placement,
+        local_image_support,
+    )
+    label_support = support_in_full_shape(
+        tuple(int(value) for value in seg_before.shape[1:]),
+        result.placement,
+        result.placement.support,
+    )
     changed_image = np.any(image_after != image_before, axis=0)
     changed_segmentation = seg_after[0] != seg_before[0]
-    if np.any(changed_image & ~support):
+    if np.any(changed_image & ~image_support):
         violations.append("image_changed_outside_support")
-    if np.any(changed_segmentation & ~support):
+    if np.any(changed_segmentation & ~label_support):
         violations.append("segmentation_changed_outside_support")
-    if not np.all(valid_mask[support]):
+    if not np.all(valid_mask[image_support]):
         violations.append("support_outside_valid_mask")
-    if np.any(seg_before[0][support] != 0):
+    if np.any(seg_before[0][image_support] != 0):
         violations.append("support_overlaps_existing_or_padding_label")
 
     start = result.placement.crop_start
@@ -168,6 +187,14 @@ def render_montage(
     segmentation_after: np.ndarray,
     support: np.ndarray,
     output: Path,
+    raw_generation: np.ndarray | None = None,
+    harmonized_generation: np.ndarray | None = None,
+    pre_harmonization: np.ndarray | None = None,
+    label_support: np.ndarray | None = None,
+    boundary_masks: tuple[np.ndarray, np.ndarray, np.ndarray] | None = None,
+    boundary_policy: str | None = None,
+    qc_metadata: dict[str, Any] | None = None,
+    display_label: str | None = None,
 ) -> None:
     """Render all four modalities in three planes for independent manual review."""
     import matplotlib
@@ -179,34 +206,152 @@ def render_montage(
     if points.size == 0:
         raise ValueError("cannot render Gate 2 evidence without a committed support")
     focus = tuple(int(round(value)) for value in points.mean(axis=0))
-    figure, axes = plt.subplots(4, 6, figsize=(18, 12), constrained_layout=True)
     labels = ("t1n", "t1c", "t2w", "t2f")
 
     def planes(volume: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         return volume[focus[0], :, :], volume[:, focus[1], :], volume[:, :, focus[2]]
 
     support_planes = planes(support.astype(np.uint8))
-    label_planes = planes(segmentation_after.astype(np.int16))
+    label_support = support if label_support is None else label_support
+    label_planes = planes(label_support.astype(np.uint8))
+    fix_v2 = raw_generation is not None
+    state_count = 6 if fix_v2 else 2
+    if fix_v2:
+        figure, axes = plt.subplots(
+            12,
+            state_count,
+            figsize=(18, 30),
+            constrained_layout=True,
+            squeeze=False,
+        )
+    else:
+        figure, axes = plt.subplots(
+            4,
+            3 * state_count,
+            figsize=(3.2 * 3 * state_count, 12),
+            constrained_layout=True,
+            squeeze=False,
+        )
+    boundary_plane_sets = []
+    if boundary_masks is not None:
+        boundary_plane_sets = [planes(mask.astype(np.uint8)) for mask in boundary_masks]
+    boundary_colors = ("#E69F00", "#CC79A7", "#009E73")
     for channel, name in enumerate(labels):
         before_planes = planes(image_before[channel])
         after_planes = planes(image_after[channel])
+        if fix_v2:
+            assert raw_generation is not None
+            assert harmonized_generation is not None
+            assert pre_harmonization is not None
+            raw_planes = planes(raw_generation[channel])
+            harmonized_planes = planes(harmonized_generation[channel])
+            pre_planes = planes(pre_harmonization[channel])
+            difference_planes = planes(image_after[channel] - image_before[channel])
         brain_values = image_before[channel][np.isfinite(image_before[channel])]
         low, high = np.percentile(brain_values, (1, 99))
         if not np.isfinite(low) or not np.isfinite(high) or low >= high:
             low, high = float(brain_values.min()), float(brain_values.max())
             if low >= high:
                 high = low + 1.0
-        for plane_index, (before_plane, after_plane) in enumerate(zip(before_planes, after_planes)):
-            for offset, (image, title) in enumerate(((before_plane, "before"), (after_plane, "after"))):
-                axis = axes[channel, plane_index * 2 + offset]
-                axis.imshow(image.T, cmap="gray", origin="lower", vmin=low, vmax=high)
+        difference_values = np.abs(image_after[channel] - image_before[channel])[support]
+        difference_limit = float(np.quantile(difference_values, 0.99))
+        difference_limit = max(difference_limit, np.finfo(np.float32).eps)
+        for plane_index, (before_plane, after_plane) in enumerate(
+            zip(before_planes, after_planes)
+        ):
+            if fix_v2:
+                states = (
+                    (before_plane, "original", "gray", low, high),
+                    (raw_planes[plane_index], "raw", "gray", low, high),
+                    (
+                        harmonized_planes[plane_index],
+                        "harmonized",
+                        "gray",
+                        low,
+                        high,
+                    ),
+                    (
+                        pre_planes[plane_index],
+                        "unharmonized blend",
+                        "gray",
+                        low,
+                        high,
+                    ),
+                    (after_plane, "final", "gray", low, high),
+                    (
+                        difference_planes[plane_index],
+                        "difference",
+                        "coolwarm",
+                        -difference_limit,
+                        difference_limit,
+                    ),
+                )
+            else:
+                states = (
+                    (before_plane, "before", "gray", low, high),
+                    (after_plane, "after", "gray", low, high),
+                )
+            for offset, (image, title, cmap, state_low, state_high) in enumerate(states):
+                if fix_v2:
+                    axis = axes[channel * 3 + plane_index, offset]
+                else:
+                    axis = axes[channel, plane_index * state_count + offset]
+                axis.imshow(
+                    image.T,
+                    cmap=cmap,
+                    origin="lower",
+                    vmin=state_low,
+                    vmax=state_high,
+                )
                 axis.contour(support_planes[plane_index].T, levels=[0.5], colors="red", linewidths=0.7)
-                axis.contour((label_planes[plane_index] > 0).T, levels=[0.5], colors="cyan", linewidths=0.5)
+                axis.contour(label_planes[plane_index].T, levels=[0.5], colors="cyan", linewidths=0.7)
+                for boundary_index, boundary_planes in enumerate(boundary_plane_sets):
+                    if np.any(boundary_planes[plane_index]):
+                        axis.contour(
+                            boundary_planes[plane_index].T,
+                            levels=[0.5],
+                            colors=boundary_colors[boundary_index],
+                            linewidths=0.6,
+                        )
                 axis.set_axis_off()
-                if channel == 0:
-                    axis.set_title(f"{('axial', 'coronal', 'sagittal')[plane_index]} {title}")
-                if plane_index == 0 and offset == 0:
+                if fix_v2 and channel == 0 and plane_index == 0:
+                    axis.set_title(title)
+                elif not fix_v2 and channel == 0:
+                    axis.set_title(
+                        f"{('axial', 'coronal', 'sagittal')[plane_index]} {title}"
+                    )
+                if fix_v2 and offset == 0:
+                    axis.text(
+                        -0.10,
+                        0.5,
+                        f"{name}\n{('axial', 'coronal', 'sagittal')[plane_index]}",
+                        transform=axis.transAxes,
+                        ha="right",
+                        va="center",
+                        fontsize=9,
+                        clip_on=False,
+                    )
+                elif not fix_v2 and plane_index == 0 and offset == 0:
                     axis.set_ylabel(name)
+    if fix_v2:
+        summary = [
+            f"candidate={display_label}"
+            if display_label is not None
+            else f"policy={boundary_policy}"
+        ]
+        if qc_metadata:
+            geometry = qc_metadata.get("geometry", {})
+            boundary = (
+                qc_metadata.get("candidate_qc", {}).get("boundary", {})
+            )
+            summary.extend(
+                (
+                    f"L={geometry.get('label_support_voxels', 'NA')}",
+                    f"H={geometry.get('image_support_voxels', 'NA')}",
+                    f"boundary_max={boundary.get('event_max_ratio', 'NA')}",
+                )
+            )
+        figure.suptitle(" | ".join(summary), fontsize=11)
     output.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output, dpi=150)
     plt.close(figure)
@@ -223,6 +368,19 @@ def main() -> None:
 
     manifest = ComponentManifest.load(args.component_manifest)
     config = RouteConfig.load(args.route_config, manifest)
+    candidate_processor = None
+    calibration_path = None
+    if config.fix_v2 is not None:
+        if not args.fix_v2_calibration:
+            raise ValueError("schema-4 Gate 2 requires --fix-v2-calibration")
+        calibration_path = Path(args.fix_v2_calibration).expanduser().resolve()
+        candidate_processor = FixV2CandidateProcessor.load(
+            calibration_path,
+            expected_sha256=config.fix_v2.calibration_sha256,
+            expected_policy=config.fix_v2.boundary_policy,
+        )
+    elif args.fix_v2_calibration:
+        raise ValueError("legacy Gate 2 must not receive --fix-v2-calibration")
     assets = load_valid_mask_assets(args.valid_mask_manifest, expected_ids=set(manifest.target_groups))
     smoke_manifest = load_smoke_manifest(
         args.smoke_manifest,
@@ -253,6 +411,7 @@ def main() -> None:
         config=config,
         backend=backend,
         audit_sink=JsonlAuditSink(audit_path),
+        candidate_processor=candidate_processor,
     )
     case_results: list[dict[str, Any]] = []
     global_violations: list[str] = []
@@ -281,24 +440,61 @@ def main() -> None:
         placement = result.placement
         artifact_path = artifacts_dir / f"{entry['smoke_id']}.npz"
         montage_path = montages_dir / f"{entry['smoke_id']}.png"
-        local_support = np.zeros((64, 64, 64), dtype=np.uint8)
+        label_support = np.zeros((64, 64, 64), dtype=bool)
+        image_support = np.zeros((64, 64, 64), dtype=bool)
         if placement is not None:
             before_crop, seg_before_crop = crop_evidence(image_before, segmentation_before, placement)
             after_crop, seg_after_crop = crop_evidence(image_after, segmentation_after, placement)
-            local_support = placement.support.astype(np.uint8)
+            label_support = placement.support.astype(bool, copy=False)
+            image_support = np.asarray(
+                result.evidence.get("image_support", label_support), dtype=bool
+            )
         else:
             before_crop = after_crop = np.zeros((4, 64, 64, 64), dtype=np.float32)
             seg_before_crop = seg_after_crop = np.zeros((1, 64, 64, 64), dtype=np.int16)
             violations.append("missing_placement_evidence")
+        fix_v2_evidence: dict[str, np.ndarray] = {}
+        if config.fix_v2 is not None:
+            required_evidence = {
+                "raw_generation",
+                "pre_harmonization",
+                "harmonized_generation",
+                "candidate",
+                "alpha",
+                "image_support",
+                "label_support",
+                "reference_ring",
+                "harmonization_ring",
+                "boundary_label_1",
+                "boundary_label_2",
+                "boundary_label_3",
+            }
+            missing_evidence = sorted(required_evidence - set(result.evidence))
+            if missing_evidence:
+                violations.append(f"fix_v2_evidence_missing:{','.join(missing_evidence)}")
+            else:
+                fix_v2_evidence = {
+                    key: np.asarray(result.evidence[key]) for key in sorted(required_evidence)
+                }
+        artifact_payload = {
+            "image_before": before_crop,
+            "image_after": after_crop,
+            "segmentation_before": seg_before_crop,
+            "segmentation_after": seg_after_crop,
+            "support": label_support.astype(np.uint8),
+            "label_support": label_support.astype(np.uint8),
+            "image_support": image_support.astype(np.uint8),
+            **fix_v2_evidence,
+            "smoke_entry_json": np.asarray(
+                json.dumps(entry, ensure_ascii=True, sort_keys=True)
+            ),
+            "event_json": np.asarray(
+                json.dumps(result.audit_mapping(), ensure_ascii=True, sort_keys=True)
+            ),
+        }
         np.savez_compressed(
             artifact_path,
-            image_before=before_crop,
-            image_after=after_crop,
-            segmentation_before=seg_before_crop,
-            segmentation_after=seg_after_crop,
-            support=local_support,
-            smoke_entry_json=np.asarray(json.dumps(entry, ensure_ascii=True, sort_keys=True)),
-            event_json=np.asarray(json.dumps(result.audit_mapping(), ensure_ascii=True, sort_keys=True)),
+            **artifact_payload,
         )
         if placement is not None:
             try:
@@ -306,8 +502,29 @@ def main() -> None:
                     image_before=before_crop,
                     image_after=after_crop,
                     segmentation_after=seg_after_crop[0],
-                    support=local_support.astype(bool),
+                    support=image_support,
                     output=montage_path,
+                    raw_generation=fix_v2_evidence.get("raw_generation"),
+                    harmonized_generation=fix_v2_evidence.get(
+                        "harmonized_generation"
+                    ),
+                    pre_harmonization=fix_v2_evidence.get("pre_harmonization"),
+                    label_support=label_support,
+                    boundary_masks=(
+                        fix_v2_evidence["boundary_label_1"],
+                        fix_v2_evidence["boundary_label_2"],
+                        fix_v2_evidence["boundary_label_3"],
+                    )
+                    if fix_v2_evidence
+                    else None,
+                    boundary_policy=(
+                        config.fix_v2.boundary_policy if config.fix_v2 is not None else None
+                    ),
+                    qc_metadata=(
+                        dict(result.metadata.get("fix_v2", {}))
+                        if config.fix_v2 is not None
+                        else None
+                    ),
                 )
             except Exception as exc:  # A missing renderer blocks manual approval, never the transaction audit.
                 violations.append(f"montage_render_failed:{type(exc).__name__}")
@@ -371,6 +588,12 @@ def main() -> None:
         "event_audit_sha256": sha256_file(audit_path),
         "violations": global_violations,
     }
+    if config.fix_v2 is not None:
+        assert calibration_path is not None
+        report["fix_v2"] = {
+            "boundary_policy": config.fix_v2.boundary_policy,
+            "calibration_sha256": sha256_file(calibration_path),
+        }
     report["automatic_report_sha256"] = canonical_json_sha256(report, exclude=("automatic_report_sha256",))
     report_path = output_dir / "gate2_automatic_report.json"
     report_path.write_text(json.dumps(report, ensure_ascii=True, sort_keys=True, indent=2) + "\n", encoding="utf-8")
