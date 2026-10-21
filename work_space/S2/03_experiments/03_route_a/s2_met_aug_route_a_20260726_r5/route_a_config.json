@@ -1,0 +1,155 @@
+{
+  "boundary_clearance_mm": 3.0,
+  "clearance_mm": 5.0,
+  "component_manifest_sha256": "c8a413bc180b3a120ee3415f548eab98c305cbe3a63867db89d09f19243da26e",
+  "crop_size": 64,
+  "donor_eligibility": {
+    "eligible_by_core_volume_bin": {
+      "27_49": 950,
+      "50_275": 1764,
+      "gt_275": 840
+    },
+    "eligible_component_count": 3554,
+    "eligible_patient_groups_by_core_volume_bin": {
+      "27_49": 263,
+      "50_275": 384,
+      "gt_275": 289
+    },
+    "excluded_component_count": 461,
+    "max_total_support_voxels": 4096,
+    "max_total_to_core_ratio": 20.0,
+    "policy": "compact_support_v1"
+  },
+  "max_bbox_mm": 56.0,
+  "max_tumours": 1,
+  "min_core_volume_mm3": 27.0,
+  "p_select": 0.2,
+  "preserve_classes": true,
+  "route_id": "MET-AUG-A",
+  "scale_max": 1.0,
+  "scale_min": 1.0,
+  "schema_version": 3,
+  "second_tumour_probability": 0.0,
+  "seed": 20260725,
+  "strata": [
+    {
+      "classes_present": [
+        1
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 3.0
+    },
+    {
+      "classes_present": [
+        1
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 1.5
+    },
+    {
+      "classes_present": [
+        1,
+        2
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 1.5
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 21.0
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 133.5
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 133.0
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 21.0
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 64.5
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 69.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 214.5
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 403.5
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 138.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 313.5
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 315.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 98.0
+    }
+  ],
+  "target_groups_sha256": "ef24e6737716d1a5ef1c85ee7da9c07b01c77d435f636843968a7aab5b2d43b4"
+}

@@ -1,0 +1,32 @@
+S2_UHOST_STORAGE_PASS available_gib=774
+S2_UHOST_GPU_PASS name=NVIDIA H20 capability=9.0 memory_gib=95.1
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=95.1GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=47
+{
+  "status": "hold_for_manual_review",
+  "automatic_status": "pass",
+  "manual_review_status": "hold_for_manual_review",
+  "report": "/root/brats2026/runs/s2_met_aug_route_a_20260726_r5/gate2_run/gate2_automatic_report.json",
+  "smoke_count": 24,
+  "per_volume_bin": {
+    "27_49": 8,
+    "50_275": 8,
+    "gt_275": 8
+  },
+  "violations": []
+}
+S2_MET_AUG_GATE2_HOLD review_template=/root/brats2026/runs/s2_met_aug_route_a_20260726_r5/gate2_run/manual_review_template.csv

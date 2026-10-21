@@ -1,0 +1,14 @@
+S2_UHOST_STORAGE_PASS available_gib=774
+S2_UHOST_GPU_PASS name=NVIDIA H20 capability=9.0 memory_gib=95.1
+Traceback (most recent call last):
+  File "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/18_run_met_aug_gate2_smoke.py", line 391, in <module>
+    main()
+  File "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/18_run_met_aug_gate2_smoke.py", line 244, in main
+    backend = G1FourModalityInpaintingBackend(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/custom_nnunet/met_aug_diffusion.py", line 141, in __init__
+    self.runtime_code = g1_runtime_code_snapshot(self.g1_code_dir)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/custom_nnunet/met_aug_diffusion.py", line 58, in g1_runtime_code_snapshot
+    raise FileNotFoundError(f"G1 runtime file is missing: {path}")
+FileNotFoundError: G1 runtime file is missing: /root/brats2026/ECNU_EYU_data/work_space/G1/code/BraTS_2023_2024_solutions-main 3/model.py

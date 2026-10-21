@@ -1,0 +1,2490 @@
+{
+  "calibration_partition": "qc_holdout",
+  "candidate_count_examined": 3151,
+  "component_manifest_sha256": "c8a413bc180b3a120ee3415f548eab98c305cbe3a63867db89d09f19243da26e",
+  "donor_eligibility": null,
+  "eligible_component_count": 609,
+  "eligible_per_volume_bin": {
+    "27_49": 136,
+    "50_275": 271,
+    "gt_275": 202
+  },
+  "fix_v2": {
+    "boundary_policy": "label_only_qc_v1",
+    "calibration_sha256": "5065d3cddf0d7d3671bd453e6d0171792ef08954fd3f89fc7134d182e9cfa1ac"
+  },
+  "max_candidates": 1000000,
+  "partition_file_sha256": "0570828c2592bef29965411b60006572d888a416ec8e11d8ad850056e463b034",
+  "per_volume_bin": {
+    "27_49": 16,
+    "50_275": 16,
+    "gt_275": 16
+  },
+  "per_volume_bin_quota": 16,
+  "route_config_sha256": "9c2a45dd1d4eab365919e8fb1613ca6b7e1a009f6ddf417d6852dd5c1b725b11",
+  "route_id": "MET-AUG-A",
+  "schema_version": 1,
+  "search_seed": 20260729,
+  "selection_scope": {
+    "allowed_donor_groups": [
+      "BraTS-MET-00004",
+      "BraTS-MET-00086",
+      "BraTS-MET-00090",
+      "BraTS-MET-00104",
+      "BraTS-MET-00165",
+      "BraTS-MET-00174",
+      "BraTS-MET-00182",
+      "BraTS-MET-00183",
+      "BraTS-MET-00192",
+      "BraTS-MET-00196",
+      "BraTS-MET-00215",
+      "BraTS-MET-00223",
+      "BraTS-MET-00224",
+      "BraTS-MET-00237",
+      "BraTS-MET-00247",
+      "BraTS-MET-00248",
+      "BraTS-MET-00285",
+      "BraTS-MET-00295",
+      "BraTS-MET-00306",
+      "BraTS-MET-00350",
+      "BraTS-MET-00378",
+      "BraTS-MET-00409",
+      "BraTS-MET-00410",
+      "BraTS-MET-00411",
+      "BraTS-MET-00533",
+      "BraTS-MET-00537",
+      "BraTS-MET-00543",
+      "BraTS-MET-00548",
+      "BraTS-MET-00560",
+      "BraTS-MET-00561",
+      "BraTS-MET-00582",
+      "BraTS-MET-00588",
+      "BraTS-MET-00607",
+      "BraTS-MET-00614",
+      "BraTS-MET-00632",
+      "BraTS-MET-00634",
+      "BraTS-MET-00641",
+      "BraTS-MET-00652",
+      "BraTS-MET-00658",
+      "BraTS-MET-00669",
+      "BraTS-MET-00672",
+      "BraTS-MET-00678",
+      "BraTS-MET-00691",
+      "BraTS-MET-00703",
+      "BraTS-MET-00713",
+      "BraTS-MET-00718",
+      "BraTS-MET-00756",
+      "BraTS-MET-00767",
+      "BraTS-MET-00770",
+      "BraTS-MET-00808",
+      "BraTS-MET-00810",
+      "BraTS-MET-00812",
+      "BraTS-MET-00816",
+      "BraTS-MET-00819",
+      "BraTS-MET-01059",
+      "BraTS-MET-01061",
+      "BraTS-MET-01064",
+      "BraTS-MET-01069",
+      "BraTS-MET-01070",
+      "BraTS-MET-01078",
+      "BraTS-MET-01090",
+      "BraTS-MET-01093",
+      "BraTS-MET-01100",
+      "BraTS-MET-01101",
+      "BraTS-MET-01106",
+      "BraTS-MET-01115",
+      "BraTS-MET-01120",
+      "BraTS-MET-01136",
+      "BraTS-MET-01137",
+      "BraTS-MET-01139",
+      "BraTS-MET-01144",
+      "BraTS-MET-01150",
+      "BraTS-MET-01166",
+      "BraTS-MET-01171",
+      "BraTS-MET-01197",
+      "BraTS-MET-01204",
+      "BraTS-MET-01209",
+      "BraTS-MET-01224",
+      "BraTS-MET-01237",
+      "BraTS-MET-01238",
+      "BraTS-MET-01240",
+      "BraTS-MET-01252",
+      "BraTS-MET-01254",
+      "BraTS-MET-01263",
+      "BraTS-MET-01271",
+      "BraTS-MET-01274",
+      "BraTS-MET-01280",
+      "BraTS-MET-01283",
+      "BraTS-MET-01290",
+      "BraTS-MET-01300",
+      "BraTS-MET-01316",
+      "BraTS-MET-01324",
+      "BraTS-MET-01329",
+      "BraTS-MET-01335",
+      "BraTS-MET-01344",
+      "BraTS-MET-01347",
+      "BraTS-MET-01352"
+    ],
+    "allowed_target_groups": [
+      "BraTS-MET-00004",
+      "BraTS-MET-00086",
+      "BraTS-MET-00090",
+      "BraTS-MET-00104",
+      "BraTS-MET-00165",
+      "BraTS-MET-00174",
+      "BraTS-MET-00182",
+      "BraTS-MET-00183",
+      "BraTS-MET-00192",
+      "BraTS-MET-00196",
+      "BraTS-MET-00215",
+      "BraTS-MET-00223",
+      "BraTS-MET-00224",
+      "BraTS-MET-00237",
+      "BraTS-MET-00247",
+      "BraTS-MET-00248",
+      "BraTS-MET-00285",
+      "BraTS-MET-00295",
+      "BraTS-MET-00306",
+      "BraTS-MET-00350",
+      "BraTS-MET-00378",
+      "BraTS-MET-00409",
+      "BraTS-MET-00410",
+      "BraTS-MET-00411",
+      "BraTS-MET-00533",
+      "BraTS-MET-00537",
+      "BraTS-MET-00543",
+      "BraTS-MET-00548",
+      "BraTS-MET-00560",
+      "BraTS-MET-00561",
+      "BraTS-MET-00582",
+      "BraTS-MET-00588",
+      "BraTS-MET-00607",
+      "BraTS-MET-00614",
+      "BraTS-MET-00632",
+      "BraTS-MET-00634",
+      "BraTS-MET-00641",
+      "BraTS-MET-00652",
+      "BraTS-MET-00658",
+      "BraTS-MET-00669",
+      "BraTS-MET-00672",
+      "BraTS-MET-00678",
+      "BraTS-MET-00691",
+      "BraTS-MET-00703",
+      "BraTS-MET-00713",
+      "BraTS-MET-00718",
+      "BraTS-MET-00756",
+      "BraTS-MET-00767",
+      "BraTS-MET-00770",
+      "BraTS-MET-00808",
+      "BraTS-MET-00810",
+      "BraTS-MET-00812",
+      "BraTS-MET-00816",
+      "BraTS-MET-00819",
+      "BraTS-MET-01059",
+      "BraTS-MET-01061",
+      "BraTS-MET-01064",
+      "BraTS-MET-01069",
+      "BraTS-MET-01070",
+      "BraTS-MET-01078",
+      "BraTS-MET-01090",
+      "BraTS-MET-01093",
+      "BraTS-MET-01100",
+      "BraTS-MET-01101",
+      "BraTS-MET-01106",
+      "BraTS-MET-01115",
+      "BraTS-MET-01120",
+      "BraTS-MET-01136",
+      "BraTS-MET-01137",
+      "BraTS-MET-01139",
+      "BraTS-MET-01144",
+      "BraTS-MET-01150",
+      "BraTS-MET-01166",
+      "BraTS-MET-01171",
+      "BraTS-MET-01197",
+      "BraTS-MET-01204",
+      "BraTS-MET-01209",
+      "BraTS-MET-01224",
+      "BraTS-MET-01237",
+      "BraTS-MET-01238",
+      "BraTS-MET-01240",
+      "BraTS-MET-01252",
+      "BraTS-MET-01254",
+      "BraTS-MET-01263",
+      "BraTS-MET-01271",
+      "BraTS-MET-01274",
+      "BraTS-MET-01280",
+      "BraTS-MET-01283",
+      "BraTS-MET-01290",
+      "BraTS-MET-01300",
+      "BraTS-MET-01316",
+      "BraTS-MET-01324",
+      "BraTS-MET-01329",
+      "BraTS-MET-01335",
+      "BraTS-MET-01344",
+      "BraTS-MET-01347",
+      "BraTS-MET-01352"
+    ],
+    "donor_component_count": 609,
+    "target_case_count": 163
+  },
+  "skipped": {
+    "NOT_SELECTED": 2526,
+    "NO_VALID_PLACEMENT": 3,
+    "donor_outside_allowed_scope": 520,
+    "duplicate_component": 4,
+    "duplicate_target": 10,
+    "quota_reached:27_49": 12,
+    "quota_reached:50_275": 27
+  },
+  "smoke_cases": [
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 794.0,
+      "core_voxels": 794,
+      "donor_component_id": "97428b6cb67dfaa7cefb6f28",
+      "donor_patient_group": "BraTS-MET-01237",
+      "donor_source_case_id": "BraTS-MET-01237-000",
+      "entry_sha256": "f5faddaf085353fa1d23c89fa0191971d4012f876358fdf11baa4aa9f3a9f2f3",
+      "event": {
+        "case_id": "BraTSMET_000180",
+        "epoch": 0,
+        "full_shape": [
+          146,
+          175,
+          136
+        ],
+        "patch_index": 112,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "bdae73e52a931f00c848686d",
+      "event_seed": 12982971789546294804,
+      "planned": {
+        "crop_start": [
+          45,
+          22,
+          62
+        ],
+        "placement_attempts": 6,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 794
+      },
+      "smoke_id": "fix-v2-qc-holdout-001",
+      "target_case_id": "BraTSMET_000180",
+      "target_patient_group": "BraTS-MET-00248",
+      "total_support_voxels": 794,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 230.0,
+      "core_voxels": 230,
+      "donor_component_id": "9b61718ec91e8d6d531fe408",
+      "donor_patient_group": "BraTS-MET-00561",
+      "donor_source_case_id": "BraTS-MET-00561-001",
+      "entry_sha256": "2577179e64391fae8285de7bf6060da4576f787840e14c6df160d0e53ab03d39",
+      "event": {
+        "case_id": "BraTSMET_000412",
+        "epoch": 0,
+        "full_shape": [
+          147,
+          176,
+          150
+        ],
+        "patch_index": 147,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "f4a925b0f10d1ec740ed01f5",
+      "event_seed": 8405731874800637137,
+      "planned": {
+        "crop_start": [
+          41,
+          52,
+          13
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 422
+      },
+      "smoke_id": "fix-v2-qc-holdout-002",
+      "target_case_id": "BraTSMET_000412",
+      "target_patient_group": "BraTS-MET-00641",
+      "total_support_voxels": 422,
+      "total_to_core_ratio": 1.8347826086956522
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 933.0,
+      "core_voxels": 933,
+      "donor_component_id": "6536ad72a566e7e2a13ab429",
+      "donor_patient_group": "BraTS-MET-00691",
+      "donor_source_case_id": "BraTS-MET-00691-001",
+      "entry_sha256": "8382224c0e79fb77698c0b4a1010e15059b5e523a287e6e77d29c89e78ebc9b7",
+      "event": {
+        "case_id": "BraTSMET_000750",
+        "epoch": 0,
+        "full_shape": [
+          135,
+          171,
+          134
+        ],
+        "patch_index": 158,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "5221e2530c45d4e9a891dab6",
+      "event_seed": 10558332966837835525,
+      "planned": {
+        "crop_start": [
+          15,
+          60,
+          23
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 1419
+      },
+      "smoke_id": "fix-v2-qc-holdout-003",
+      "target_case_id": "BraTSMET_000750",
+      "target_patient_group": "BraTS-MET-01101",
+      "total_support_voxels": 1419,
+      "total_to_core_ratio": 1.5209003215434083
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 52.0,
+      "core_voxels": 52,
+      "donor_component_id": "b882933ce1525da6ff9d7ed9",
+      "donor_patient_group": "BraTS-MET-01115",
+      "donor_source_case_id": "BraTS-MET-01115-002",
+      "entry_sha256": "919cdcb864581ba698ace971a276b2b45af35c3d17638d19af89c5e40eef2d3f",
+      "event": {
+        "case_id": "BraTSMET_000658",
+        "epoch": 0,
+        "full_shape": [
+          145,
+          168,
+          137
+        ],
+        "patch_index": 162,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "1a13bd5cd8f1b531b8638c29",
+      "event_seed": 2639258172277478356,
+      "planned": {
+        "crop_start": [
+          40,
+          40,
+          38
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 52
+      },
+      "smoke_id": "fix-v2-qc-holdout-004",
+      "target_case_id": "BraTSMET_000658",
+      "target_patient_group": "BraTS-MET-01061",
+      "total_support_voxels": 52,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 40.0,
+      "core_voxels": 40,
+      "donor_component_id": "e4b9d0a37ef175738e6fb9fd",
+      "donor_patient_group": "BraTS-MET-00607",
+      "donor_source_case_id": "BraTS-MET-00607-000",
+      "entry_sha256": "eb71ff0d7ef343dea724891b70889cb4b5c748412b150bd79039c9aa2f2de34d",
+      "event": {
+        "case_id": "BraTSMET_000250",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          181,
+          132
+        ],
+        "patch_index": 196,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "4cb03771b174e48e690442d4",
+      "event_seed": 13197269468227539649,
+      "planned": {
+        "crop_start": [
+          68,
+          61,
+          23
+        ],
+        "placement_attempts": 6,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 80
+      },
+      "smoke_id": "fix-v2-qc-holdout-005",
+      "target_case_id": "BraTSMET_000250",
+      "target_patient_group": "BraTS-MET-00410",
+      "total_support_voxels": 80,
+      "total_to_core_ratio": 2.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 48.0,
+      "core_voxels": 48,
+      "donor_component_id": "04bcbd89eff59b24170faf20",
+      "donor_patient_group": "BraTS-MET-00658",
+      "donor_source_case_id": "BraTS-MET-00658-002",
+      "entry_sha256": "e94eac2fadf39b66fe113f7d9561fded1aeb671a75c6f7f2e1ba357b15cfb175",
+      "event": {
+        "case_id": "BraTSMET_000784",
+        "epoch": 0,
+        "full_shape": [
+          128,
+          153,
+          131
+        ],
+        "patch_index": 229,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "f503f8caeb5047c919fc397a",
+      "event_seed": 12259074952446646671,
+      "planned": {
+        "crop_start": [
+          26,
+          3,
+          0
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 48
+      },
+      "smoke_id": "fix-v2-qc-holdout-006",
+      "target_case_id": "BraTSMET_000784",
+      "target_patient_group": "BraTS-MET-01115",
+      "total_support_voxels": 48,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 123.0,
+      "core_voxels": 123,
+      "donor_component_id": "57f0ad5eec1e0213cf362c96",
+      "donor_patient_group": "BraTS-MET-00183",
+      "donor_source_case_id": "BraTS-MET-00183-000",
+      "entry_sha256": "928fcad4f00095288a75aa3b228359798fedaeb1f011b4846274fa92674b0ea8",
+      "event": {
+        "case_id": "BraTSMET_000690",
+        "epoch": 0,
+        "full_shape": [
+          149,
+          173,
+          134
+        ],
+        "patch_index": 265,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "fdfbed51196f48bc7e2964e1",
+      "event_seed": 13630370466672568003,
+      "planned": {
+        "crop_start": [
+          63,
+          48,
+          8
+        ],
+        "placement_attempts": 5,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 161
+      },
+      "smoke_id": "fix-v2-qc-holdout-007",
+      "target_case_id": "BraTSMET_000690",
+      "target_patient_group": "BraTS-MET-01078",
+      "total_support_voxels": 161,
+      "total_to_core_ratio": 1.3089430894308942
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 774.0,
+      "core_voxels": 774,
+      "donor_component_id": "defa621b33f10de6ac157cca",
+      "donor_patient_group": "BraTS-MET-00165",
+      "donor_source_case_id": "BraTS-MET-00165-000",
+      "entry_sha256": "9b7893d013d3614b11e3cfbbbf23e9b4b618a942ca0dbf2ffbe34172acc878f0",
+      "event": {
+        "case_id": "BraTSMET_000239",
+        "epoch": 0,
+        "full_shape": [
+          141,
+          178,
+          136
+        ],
+        "patch_index": 281,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "23a21942e0429c9540e1b267",
+      "event_seed": 17224120002128976977,
+      "planned": {
+        "crop_start": [
+          62,
+          16,
+          70
+        ],
+        "placement_attempts": 7,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 867
+      },
+      "smoke_id": "fix-v2-qc-holdout-008",
+      "target_case_id": "BraTSMET_000239",
+      "target_patient_group": "BraTS-MET-00378",
+      "total_support_voxels": 867,
+      "total_to_core_ratio": 1.12015503875969
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 54.0,
+      "core_voxels": 54,
+      "donor_component_id": "a9b89c73c990bd15f0dd2ab1",
+      "donor_patient_group": "BraTS-MET-00669",
+      "donor_source_case_id": "BraTS-MET-00669-000",
+      "entry_sha256": "547aaebb8b6202b33797cab1e134e413edca40126370fc0bd2ffe8d9c0fc2a3d",
+      "event": {
+        "case_id": "BraTSMET_001287",
+        "epoch": 0,
+        "full_shape": [
+          136,
+          170,
+          130
+        ],
+        "patch_index": 368,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "ddd66809be845b21c3eb15ea",
+      "event_seed": 15271429518039213151,
+      "planned": {
+        "crop_start": [
+          16,
+          29,
+          56
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 54
+      },
+      "smoke_id": "fix-v2-qc-holdout-009",
+      "target_case_id": "BraTSMET_001287",
+      "target_patient_group": "BraTS-MET-01352",
+      "total_support_voxels": 54,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 34.0,
+      "core_voxels": 34,
+      "donor_component_id": "91630eae6d2be804fda2c263",
+      "donor_patient_group": "BraTS-MET-00306",
+      "donor_source_case_id": "BraTS-MET-00306-000",
+      "entry_sha256": "58f7fd3b538bc1ddd053af953b10abb9bb5d2e9e2abd3cbe8dfebba7ebf936d3",
+      "event": {
+        "case_id": "BraTSMET_001172",
+        "epoch": 0,
+        "full_shape": [
+          138,
+          160,
+          142
+        ],
+        "patch_index": 396,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "0e3c60ac15cfd658f88d80b0",
+      "event_seed": 16548296270156011194,
+      "planned": {
+        "crop_start": [
+          41,
+          38,
+          70
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 34
+      },
+      "smoke_id": "fix-v2-qc-holdout-010",
+      "target_case_id": "BraTSMET_001172",
+      "target_patient_group": "BraTS-MET-01290",
+      "total_support_voxels": 34,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 37.0,
+      "core_voxels": 37,
+      "donor_component_id": "3f7a2b06e69bed8962737d00",
+      "donor_patient_group": "BraTS-MET-00582",
+      "donor_source_case_id": "BraTS-MET-00582-000",
+      "entry_sha256": "ced02ed5cf08e83d40f89c6715556477ab233cf1afacc0e986031df268e2ab61",
+      "event": {
+        "case_id": "BraTSMET_000836",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          173,
+          141
+        ],
+        "patch_index": 419,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "bea61453fa10f431847bdc07",
+      "event_seed": 7035102914673668793,
+      "planned": {
+        "crop_start": [
+          9,
+          15,
+          48
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 37
+      },
+      "smoke_id": "fix-v2-qc-holdout-011",
+      "target_case_id": "BraTSMET_000836",
+      "target_patient_group": "BraTS-MET-01139",
+      "total_support_voxels": 37,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 275.0,
+      "core_voxels": 275,
+      "donor_component_id": "ab45a363a544f61dc4175c1a",
+      "donor_patient_group": "BraTS-MET-00767",
+      "donor_source_case_id": "BraTS-MET-00767-000",
+      "entry_sha256": "4e125dcca06e26fc68211850a2997490341fa1b36756ff7a077280839bc6728d",
+      "event": {
+        "case_id": "BraTSMET_000636",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          164,
+          126
+        ],
+        "patch_index": 439,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "08f59f76deef0d6206c7657a",
+      "event_seed": 13543157380716025376,
+      "planned": {
+        "crop_start": [
+          73,
+          32,
+          51
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 870
+      },
+      "smoke_id": "fix-v2-qc-holdout-012",
+      "target_case_id": "BraTSMET_000636",
+      "target_patient_group": "BraTS-MET-00808",
+      "total_support_voxels": 870,
+      "total_to_core_ratio": 3.1636363636363636
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 327.0,
+      "core_voxels": 327,
+      "donor_component_id": "01493a9cb962ebe20efff44a",
+      "donor_patient_group": "BraTS-MET-00548",
+      "donor_source_case_id": "BraTS-MET-00548-000",
+      "entry_sha256": "21579df551a3ae3d77b8a94267b6ea781a35faac3812046fafcd429695d96c12",
+      "event": {
+        "case_id": "BraTSMET_000961",
+        "epoch": 0,
+        "full_shape": [
+          138,
+          151,
+          140
+        ],
+        "patch_index": 454,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "f756ff91e4909e65e0da0de3",
+      "event_seed": 523479144481206454,
+      "planned": {
+        "crop_start": [
+          41,
+          70,
+          33
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 512
+      },
+      "smoke_id": "fix-v2-qc-holdout-013",
+      "target_case_id": "BraTSMET_000961",
+      "target_patient_group": "BraTS-MET-01197",
+      "total_support_voxels": 512,
+      "total_to_core_ratio": 1.5657492354740061
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 26390.0,
+      "core_voxels": 26390,
+      "donor_component_id": "d88c9252fcd4eb9b7da0976a",
+      "donor_patient_group": "BraTS-MET-00306",
+      "donor_source_case_id": "BraTS-MET-00306-000",
+      "entry_sha256": "401860eba0dac7cd5a0aacac94c6dbfd3c281523ba09d7ecc0aa406184be1dee",
+      "event": {
+        "case_id": "BraTSMET_000848",
+        "epoch": 0,
+        "full_shape": [
+          148,
+          155,
+          134
+        ],
+        "patch_index": 480,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "6d0e55aa9436e8b604211334",
+      "event_seed": 3711190146514447695,
+      "planned": {
+        "crop_start": [
+          78,
+          19,
+          40
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 26410
+      },
+      "smoke_id": "fix-v2-qc-holdout-014",
+      "target_case_id": "BraTSMET_000848",
+      "target_patient_group": "BraTS-MET-01144",
+      "total_support_voxels": 26410,
+      "total_to_core_ratio": 1.0007578628268283
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 31.0,
+      "core_voxels": 31,
+      "donor_component_id": "ae2f87fd67e503110bb27b3d",
+      "donor_patient_group": "BraTS-MET-00812",
+      "donor_source_case_id": "BraTS-MET-00812-000",
+      "entry_sha256": "c83ae7189e0b57991f5697446dadeec9526c0fd1d463e4e81da7721130516c11",
+      "event": {
+        "case_id": "BraTSMET_000849",
+        "epoch": 0,
+        "full_shape": [
+          146,
+          155,
+          133
+        ],
+        "patch_index": 491,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "5f2597ad81d1c4857aea5fff",
+      "event_seed": 1881305903643005558,
+      "planned": {
+        "crop_start": [
+          67,
+          39,
+          6
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 31
+      },
+      "smoke_id": "fix-v2-qc-holdout-015",
+      "target_case_id": "BraTSMET_000849",
+      "target_patient_group": "BraTS-MET-01144",
+      "total_support_voxels": 31,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 44.0,
+      "core_voxels": 44,
+      "donor_component_id": "82d20f94ac32f02d65a1d3a0",
+      "donor_patient_group": "BraTS-MET-01139",
+      "donor_source_case_id": "BraTS-MET-01139-001",
+      "entry_sha256": "0d70acce93afe17040f806cb3cba53d784da7da9910eab0c66bac8db69fbfad5",
+      "event": {
+        "case_id": "BraTSMET_000295",
+        "epoch": 0,
+        "full_shape": [
+          150,
+          176,
+          198
+        ],
+        "patch_index": 502,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "b65ded772cde2ad4ff750218",
+      "event_seed": 11694691050964488318,
+      "planned": {
+        "crop_start": [
+          64,
+          106,
+          38
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 44
+      },
+      "smoke_id": "fix-v2-qc-holdout-016",
+      "target_case_id": "BraTSMET_000295",
+      "target_patient_group": "BraTS-MET-00560",
+      "total_support_voxels": 44,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 58.0,
+      "core_voxels": 58,
+      "donor_component_id": "97917bee43d567bb7631be23",
+      "donor_patient_group": "BraTS-MET-01352",
+      "donor_source_case_id": "BraTS-MET-01352-001",
+      "entry_sha256": "5267a4d5cbd6e185dd4ecf0a0ce933a4d1c2e1fecfcfd21dc0434cfa9f1d95ea",
+      "event": {
+        "case_id": "BraTSMET_001182",
+        "epoch": 0,
+        "full_shape": [
+          131,
+          174,
+          142
+        ],
+        "patch_index": 548,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "20c6ba4eaf2df590ad277fc8",
+      "event_seed": 12357475295030008541,
+      "planned": {
+        "crop_start": [
+          39,
+          31,
+          38
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 58
+      },
+      "smoke_id": "fix-v2-qc-holdout-017",
+      "target_case_id": "BraTSMET_001182",
+      "target_patient_group": "BraTS-MET-01300",
+      "total_support_voxels": 58,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 28.0,
+      "core_voxels": 28,
+      "donor_component_id": "42b8d2b63e73857407c722d4",
+      "donor_patient_group": "BraTS-MET-01078",
+      "donor_source_case_id": "BraTS-MET-01078-001",
+      "entry_sha256": "3f3c88e8a1b36d93c998e135220949e3b3c0d4dbcab2dd5c326c345d10285882",
+      "event": {
+        "case_id": "BraTSMET_000298",
+        "epoch": 0,
+        "full_shape": [
+          130,
+          176,
+          144
+        ],
+        "patch_index": 563,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "3a684d3dc455d0f662836b95",
+      "event_seed": 9712386991731309093,
+      "planned": {
+        "crop_start": [
+          4,
+          54,
+          65
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 28
+      },
+      "smoke_id": "fix-v2-qc-holdout-018",
+      "target_case_id": "BraTSMET_000298",
+      "target_patient_group": "BraTS-MET-00561",
+      "total_support_voxels": 28,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 245.0,
+      "core_voxels": 245,
+      "donor_component_id": "8409cdfbc81d5aafd82df0bd",
+      "donor_patient_group": "BraTS-MET-00614",
+      "donor_source_case_id": "BraTS-MET-00614-000",
+      "entry_sha256": "1464d26541b009cc2f8afb922df4cbef3946cee3e7705707d9335912a3a9c047",
+      "event": {
+        "case_id": "BraTSMET_000896",
+        "epoch": 0,
+        "full_shape": [
+          143,
+          179,
+          133
+        ],
+        "patch_index": 577,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "65e0a69235936cee3b8a9917",
+      "event_seed": 9322747338940979936,
+      "planned": {
+        "crop_start": [
+          60,
+          26,
+          26
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 1098
+      },
+      "smoke_id": "fix-v2-qc-holdout-019",
+      "target_case_id": "BraTSMET_000896",
+      "target_patient_group": "BraTS-MET-01166",
+      "total_support_voxels": 1098,
+      "total_to_core_ratio": 4.481632653061224
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 115.0,
+      "core_voxels": 115,
+      "donor_component_id": "e4079a18a0fcf64e6cc9ae1a",
+      "donor_patient_group": "BraTS-MET-01204",
+      "donor_source_case_id": "BraTS-MET-01204-000",
+      "entry_sha256": "d8765e44dc0e3af8c8d526153a6ec89f7f67ef313a2cbd20dbcb0fe4abfea49a",
+      "event": {
+        "case_id": "BraTSMET_001096",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          144,
+          128
+        ],
+        "patch_index": 652,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "bc57529f37dbcb33a2c15f91",
+      "event_seed": 3922507883619648037,
+      "planned": {
+        "crop_start": [
+          32,
+          28,
+          27
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 182
+      },
+      "smoke_id": "fix-v2-qc-holdout-020",
+      "target_case_id": "BraTSMET_001096",
+      "target_patient_group": "BraTS-MET-01254",
+      "total_support_voxels": 182,
+      "total_to_core_ratio": 1.5826086956521739
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 154.0,
+      "core_voxels": 154,
+      "donor_component_id": "c64144b47d01e409c5d01a39",
+      "donor_patient_group": "BraTS-MET-00810",
+      "donor_source_case_id": "BraTS-MET-00810-000",
+      "entry_sha256": "19ba5811eea8b1c997064b40044cdbb0a3840042f69c5ad8b5a0636b70a2316e",
+      "event": {
+        "case_id": "BraTSMET_000170",
+        "epoch": 0,
+        "full_shape": [
+          141,
+          177,
+          137
+        ],
+        "patch_index": 787,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "5c1278d85d41065d24afb082",
+      "event_seed": 13100389655846039928,
+      "planned": {
+        "crop_start": [
+          62,
+          18,
+          14
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 154
+      },
+      "smoke_id": "fix-v2-qc-holdout-021",
+      "target_case_id": "BraTSMET_000170",
+      "target_patient_group": "BraTS-MET-00237",
+      "total_support_voxels": 154,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 82.0,
+      "core_voxels": 82,
+      "donor_component_id": "296000fc0cbcc11958e1f6c4",
+      "donor_patient_group": "BraTS-MET-00658",
+      "donor_source_case_id": "BraTS-MET-00658-002",
+      "entry_sha256": "5312c6a44c393e460d1554616bda11d4fe3ba69bbe7753081884894f2a0bdc70",
+      "event": {
+        "case_id": "BraTSMET_000331",
+        "epoch": 0,
+        "full_shape": [
+          136,
+          172,
+          138
+        ],
+        "patch_index": 886,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "a9e49887da69f14057d28a6d",
+      "event_seed": 9911447019546716935,
+      "planned": {
+        "crop_start": [
+          22,
+          8,
+          24
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 82
+      },
+      "smoke_id": "fix-v2-qc-holdout-022",
+      "target_case_id": "BraTSMET_000331",
+      "target_patient_group": "BraTS-MET-00588",
+      "total_support_voxels": 82,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 37.0,
+      "core_voxels": 37,
+      "donor_component_id": "5339598858d5dc43f1aa0f27",
+      "donor_patient_group": "BraTS-MET-01352",
+      "donor_source_case_id": "BraTS-MET-01352-001",
+      "entry_sha256": "f463d217126b4a770df9844865bbd45bc8077c6448a25d4e2636677ffa5abb80",
+      "event": {
+        "case_id": "BraTSMET_000580",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          178,
+          140
+        ],
+        "patch_index": 958,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "9b1ea5c646ad5d252f6ed05e",
+      "event_seed": 6835417235102083715,
+      "planned": {
+        "crop_start": [
+          24,
+          55,
+          51
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 37
+      },
+      "smoke_id": "fix-v2-qc-holdout-023",
+      "target_case_id": "BraTSMET_000580",
+      "target_patient_group": "BraTS-MET-00756",
+      "total_support_voxels": 37,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 49.0,
+      "core_voxels": 49,
+      "donor_component_id": "66dc562e925553cd0c190afd",
+      "donor_patient_group": "BraTS-MET-01347",
+      "donor_source_case_id": "BraTS-MET-01347-000",
+      "entry_sha256": "922a78fb80434856c651b271bd097e7c5b08ce643b46a37ba99e6234176713b8",
+      "event": {
+        "case_id": "BraTSMET_000764",
+        "epoch": 0,
+        "full_shape": [
+          137,
+          152,
+          145
+        ],
+        "patch_index": 992,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "dd7da9e557b1764556d3948c",
+      "event_seed": 2990467006471320687,
+      "planned": {
+        "crop_start": [
+          26,
+          5,
+          30
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 50
+      },
+      "smoke_id": "fix-v2-qc-holdout-024",
+      "target_case_id": "BraTSMET_000764",
+      "target_patient_group": "BraTS-MET-01106",
+      "total_support_voxels": 50,
+      "total_to_core_ratio": 1.0204081632653061
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 3244.0,
+      "core_voxels": 3244,
+      "donor_component_id": "611ff473ba397511bcae9bd5",
+      "donor_patient_group": "BraTS-MET-01283",
+      "donor_source_case_id": "BraTS-MET-01283-001",
+      "entry_sha256": "e6e037ca1ab33ced579b9d99ee81d6e0c23de0878cf911c496e68bd15a4b165b",
+      "event": {
+        "case_id": "BraTSMET_000669",
+        "epoch": 0,
+        "full_shape": [
+          137,
+          155,
+          131
+        ],
+        "patch_index": 1023,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "2ed33c200b121539a8d57f98",
+      "event_seed": 13499337039102651465,
+      "planned": {
+        "crop_start": [
+          27,
+          9,
+          17
+        ],
+        "placement_attempts": 43,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 22277
+      },
+      "smoke_id": "fix-v2-qc-holdout-025",
+      "target_case_id": "BraTSMET_000669",
+      "target_patient_group": "BraTS-MET-01069",
+      "total_support_voxels": 22277,
+      "total_to_core_ratio": 6.867139334155364
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 163.0,
+      "core_voxels": 163,
+      "donor_component_id": "8a8cfdf35e25bec54144a202",
+      "donor_patient_group": "BraTS-MET-01090",
+      "donor_source_case_id": "BraTS-MET-01090-001",
+      "entry_sha256": "33631068de657a92789eb201cbcbca25d8316c33e043181d18626341a92ac2bc",
+      "event": {
+        "case_id": "BraTSMET_000371",
+        "epoch": 0,
+        "full_shape": [
+          135,
+          194,
+          147
+        ],
+        "patch_index": 1057,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "113af3e35aa32b4dd8b0512e",
+      "event_seed": 14053712202519203243,
+      "planned": {
+        "crop_start": [
+          66,
+          68,
+          10
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 1635
+      },
+      "smoke_id": "fix-v2-qc-holdout-026",
+      "target_case_id": "BraTSMET_000371",
+      "target_patient_group": "BraTS-MET-00614",
+      "total_support_voxels": 1635,
+      "total_to_core_ratio": 10.030674846625766
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 47.0,
+      "core_voxels": 47,
+      "donor_component_id": "64b8f55d49b7731d1cb3feaf",
+      "donor_patient_group": "BraTS-MET-01254",
+      "donor_source_case_id": "BraTS-MET-01254-000",
+      "entry_sha256": "22780fc735d853c9300bf6e83b00a20513165ed8cade3f9760b8968f82919550",
+      "event": {
+        "case_id": "BraTSMET_000121",
+        "epoch": 0,
+        "full_shape": [
+          143,
+          176,
+          140
+        ],
+        "patch_index": 1095,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "12fd3d7facdf7af50df45f8b",
+      "event_seed": 11400793349939078050,
+      "planned": {
+        "crop_start": [
+          14,
+          61,
+          48
+        ],
+        "placement_attempts": 5,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 47
+      },
+      "smoke_id": "fix-v2-qc-holdout-027",
+      "target_case_id": "BraTSMET_000121",
+      "target_patient_group": "BraTS-MET-00182",
+      "total_support_voxels": 47,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 194.0,
+      "core_voxels": 194,
+      "donor_component_id": "fe6cff4936798665968c3c66",
+      "donor_patient_group": "BraTS-MET-01204",
+      "donor_source_case_id": "BraTS-MET-01204-000",
+      "entry_sha256": "8efbde0776a8259a792c3e7d8fca5b3aaae6fce94f9fe74abdb27e4c7913e636",
+      "event": {
+        "case_id": "BraTSMET_000861",
+        "epoch": 0,
+        "full_shape": [
+          138,
+          181,
+          135
+        ],
+        "patch_index": 1117,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "b1c60e94e6e28e82826eb28c",
+      "event_seed": 17827795720557730766,
+      "planned": {
+        "crop_start": [
+          49,
+          5,
+          15
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 194
+      },
+      "smoke_id": "fix-v2-qc-holdout-028",
+      "target_case_id": "BraTSMET_000861",
+      "target_patient_group": "BraTS-MET-01150",
+      "total_support_voxels": 194,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 264.0,
+      "core_voxels": 264,
+      "donor_component_id": "ed78920118035218579c5653",
+      "donor_patient_group": "BraTS-MET-00718",
+      "donor_source_case_id": "BraTS-MET-00718-000",
+      "entry_sha256": "44b78614845ef8dc107f977708a5c22ec983096105159e28164ee3850f98d9c5",
+      "event": {
+        "case_id": "BraTSMET_000847",
+        "epoch": 0,
+        "full_shape": [
+          147,
+          156,
+          134
+        ],
+        "patch_index": 1222,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "e52ad546c3753191a9e63863",
+      "event_seed": 7797528029771469484,
+      "planned": {
+        "crop_start": [
+          80,
+          38,
+          19
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 366
+      },
+      "smoke_id": "fix-v2-qc-holdout-029",
+      "target_case_id": "BraTSMET_000847",
+      "target_patient_group": "BraTS-MET-01144",
+      "total_support_voxels": 366,
+      "total_to_core_ratio": 1.3863636363636365
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 45.0,
+      "core_voxels": 45,
+      "donor_component_id": "fdf0c838eb106c3faed48b32",
+      "donor_patient_group": "BraTS-MET-01352",
+      "donor_source_case_id": "BraTS-MET-01352-000",
+      "entry_sha256": "94537ff8facd29a2af2dd36e2ed52ede423efee3a46fa0879dfcd45d8f151615",
+      "event": {
+        "case_id": "BraTSMET_000296",
+        "epoch": 0,
+        "full_shape": [
+          134,
+          180,
+          144
+        ],
+        "patch_index": 1239,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "32c26b44fc8cd52cb36d3bf8",
+      "event_seed": 15759121742462876053,
+      "planned": {
+        "crop_start": [
+          12,
+          26,
+          70
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 45
+      },
+      "smoke_id": "fix-v2-qc-holdout-030",
+      "target_case_id": "BraTSMET_000296",
+      "target_patient_group": "BraTS-MET-00561",
+      "total_support_voxels": 45,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 41.0,
+      "core_voxels": 41,
+      "donor_component_id": "c9583cfbc319d0137f027d80",
+      "donor_patient_group": "BraTS-MET-01064",
+      "donor_source_case_id": "BraTS-MET-01064-001",
+      "entry_sha256": "d1a82d7fc2229217b480877563140897af0271a8120eaec3608c311ab1703402",
+      "event": {
+        "case_id": "BraTSMET_001288",
+        "epoch": 0,
+        "full_shape": [
+          143,
+          172,
+          130
+        ],
+        "patch_index": 1244,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "c16b78d77e5098f0a4d5777d",
+      "event_seed": 11393686170234619050,
+      "planned": {
+        "crop_start": [
+          62,
+          15,
+          37
+        ],
+        "placement_attempts": 6,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 50
+      },
+      "smoke_id": "fix-v2-qc-holdout-031",
+      "target_case_id": "BraTSMET_001288",
+      "target_patient_group": "BraTS-MET-01352",
+      "total_support_voxels": 50,
+      "total_to_core_ratio": 1.2195121951219512
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 74.0,
+      "core_voxels": 74,
+      "donor_component_id": "2503068630e867f829f92ca1",
+      "donor_patient_group": "BraTS-MET-00196",
+      "donor_source_case_id": "BraTS-MET-00196-000",
+      "entry_sha256": "a59a03517b45705f327b0462d8e141116808e0125b1741dd09bbc18a8dfa4f57",
+      "event": {
+        "case_id": "BraTSMET_000251",
+        "epoch": 0,
+        "full_shape": [
+          136,
+          161,
+          136
+        ],
+        "patch_index": 1307,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "17c21688aeff6c0e557fb379",
+      "event_seed": 3326241321751409811,
+      "planned": {
+        "crop_start": [
+          21,
+          33,
+          10
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 74
+      },
+      "smoke_id": "fix-v2-qc-holdout-032",
+      "target_case_id": "BraTSMET_000251",
+      "target_patient_group": "BraTS-MET-00411",
+      "total_support_voxels": 74,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 79.0,
+      "core_voxels": 79,
+      "donor_component_id": "3ea5b711467bafda79aea70f",
+      "donor_patient_group": "BraTS-MET-00678",
+      "donor_source_case_id": "BraTS-MET-00678-000",
+      "entry_sha256": "70b7a0a857a134501f78330d3a713db14dd791a1775efbebd4c040e393df9c65",
+      "event": {
+        "case_id": "BraTSMET_000394",
+        "epoch": 0,
+        "full_shape": [
+          243,
+          211,
+          256
+        ],
+        "patch_index": 1369,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "5dd4e9b91394825730c3a9b5",
+      "event_seed": 11257652990286340126,
+      "planned": {
+        "crop_start": [
+          87,
+          66,
+          150
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 79
+      },
+      "smoke_id": "fix-v2-qc-holdout-033",
+      "target_case_id": "BraTSMET_000394",
+      "target_patient_group": "BraTS-MET-00632",
+      "total_support_voxels": 79,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 33.0,
+      "core_voxels": 33,
+      "donor_component_id": "8f03e7b288288c649a43d5d4",
+      "donor_patient_group": "BraTS-MET-00223",
+      "donor_source_case_id": "BraTS-MET-00223-000",
+      "entry_sha256": "1c65bce5296dbb0a9a4b2e6d860f310cd0db650a3ca296549e1d9500171bb33a",
+      "event": {
+        "case_id": "BraTSMET_000832",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          160,
+          133
+        ],
+        "patch_index": 1398,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "f257f62c38e6b425f2fd6d93",
+      "event_seed": 10434291540470576465,
+      "planned": {
+        "crop_start": [
+          41,
+          62,
+          66
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 49
+      },
+      "smoke_id": "fix-v2-qc-holdout-034",
+      "target_case_id": "BraTSMET_000832",
+      "target_patient_group": "BraTS-MET-01136",
+      "total_support_voxels": 49,
+      "total_to_core_ratio": 1.4848484848484849
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 171.0,
+      "core_voxels": 171,
+      "donor_component_id": "4c42b5ed6dc8248c8f6f97e0",
+      "donor_patient_group": "BraTS-MET-00192",
+      "donor_source_case_id": "BraTS-MET-00192-000",
+      "entry_sha256": "01d17935b2965c8810609d5705c5b3bbec9ec2b5bbb9da51dc11e887e7c39112",
+      "event": {
+        "case_id": "BraTSMET_000279",
+        "epoch": 0,
+        "full_shape": [
+          143,
+          168,
+          132
+        ],
+        "patch_index": 1475,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "97d229afcb35168eff8f2d17",
+      "event_seed": 16777936314665666059,
+      "planned": {
+        "crop_start": [
+          68,
+          26,
+          7
+        ],
+        "placement_attempts": 4,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 1008
+      },
+      "smoke_id": "fix-v2-qc-holdout-035",
+      "target_case_id": "BraTSMET_000279",
+      "target_patient_group": "BraTS-MET-00548",
+      "total_support_voxels": 1008,
+      "total_to_core_ratio": 5.894736842105263
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 39.0,
+      "core_voxels": 39,
+      "donor_component_id": "8e7b03451e334a7ea1f5f224",
+      "donor_patient_group": "BraTS-MET-00691",
+      "donor_source_case_id": "BraTS-MET-00691-001",
+      "entry_sha256": "ef051994cde7265fc7fd1d0386e8e431f95881f958512edc36d2a010c01efbd7",
+      "event": {
+        "case_id": "BraTSMET_000897",
+        "epoch": 0,
+        "full_shape": [
+          143,
+          180,
+          132
+        ],
+        "patch_index": 1511,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "a87769b244cc6d074b83d36f",
+      "event_seed": 7308963912778684896,
+      "planned": {
+        "crop_start": [
+          76,
+          55,
+          7
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 57
+      },
+      "smoke_id": "fix-v2-qc-holdout-036",
+      "target_case_id": "BraTSMET_000897",
+      "target_patient_group": "BraTS-MET-01166",
+      "total_support_voxels": 57,
+      "total_to_core_ratio": 1.4615384615384615
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 29.0,
+      "core_voxels": 29,
+      "donor_component_id": "8461360bfec17e069101d036",
+      "donor_patient_group": "BraTS-MET-01115",
+      "donor_source_case_id": "BraTS-MET-01115-003",
+      "entry_sha256": "4cd652734575601956d21fd81b87fe3e68f83d653e8e83bc87c4db1cad8ec830",
+      "event": {
+        "case_id": "BraTSMET_001092",
+        "epoch": 0,
+        "full_shape": [
+          141,
+          178,
+          136
+        ],
+        "patch_index": 1516,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "3d2e4d2f16b153d67940a1cf",
+      "event_seed": 8538252969502553340,
+      "planned": {
+        "crop_start": [
+          32,
+          56,
+          4
+        ],
+        "placement_attempts": 8,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 29
+      },
+      "smoke_id": "fix-v2-qc-holdout-037",
+      "target_case_id": "BraTSMET_001092",
+      "target_patient_group": "BraTS-MET-01252",
+      "total_support_voxels": 29,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 32.0,
+      "core_voxels": 32,
+      "donor_component_id": "fe4564f332660fadc7654b1a",
+      "donor_patient_group": "BraTS-MET-01106",
+      "donor_source_case_id": "BraTS-MET-01106-002",
+      "entry_sha256": "4e386d96c5ec7a6f6a8c2c508cc0907aaabf581cab28e53e38341f01ec423860",
+      "event": {
+        "case_id": "BraTSMET_000640",
+        "epoch": 0,
+        "full_shape": [
+          134,
+          179,
+          130
+        ],
+        "patch_index": 1684,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "2a4cf59adb853f1fbb859419",
+      "event_seed": 9461221419321967382,
+      "planned": {
+        "crop_start": [
+          24,
+          38,
+          45
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 32
+      },
+      "smoke_id": "fix-v2-qc-holdout-038",
+      "target_case_id": "BraTSMET_000640",
+      "target_patient_group": "BraTS-MET-00812",
+      "total_support_voxels": 32,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 378.0,
+      "core_voxels": 378,
+      "donor_component_id": "738016f9f9d56eed0ab8ff44",
+      "donor_patient_group": "BraTS-MET-00561",
+      "donor_source_case_id": "BraTS-MET-00561-001",
+      "entry_sha256": "8ace3ca2bf0bf0771e4f841da2d93268a1ffc232f908be64fb7630d0ac56c26c",
+      "event": {
+        "case_id": "BraTSMET_000800",
+        "epoch": 0,
+        "full_shape": [
+          153,
+          166,
+          146
+        ],
+        "patch_index": 1707,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "1dc39bc492218d29093c35b8",
+      "event_seed": 3803255468846848916,
+      "planned": {
+        "crop_start": [
+          48,
+          62,
+          13
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 580
+      },
+      "smoke_id": "fix-v2-qc-holdout-039",
+      "target_case_id": "BraTSMET_000800",
+      "target_patient_group": "BraTS-MET-01120",
+      "total_support_voxels": 580,
+      "total_to_core_ratio": 1.5343915343915344
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 2537.0,
+      "core_voxels": 2537,
+      "donor_component_id": "9659910b94da1093f15b62e1",
+      "donor_patient_group": "BraTS-MET-00812",
+      "donor_source_case_id": "BraTS-MET-00812-000",
+      "entry_sha256": "54ba63115de4efc7ba095aba025ff04f29a09eeb9433cf997d9f014ef92d6dd0",
+      "event": {
+        "case_id": "BraTSMET_000747",
+        "epoch": 0,
+        "full_shape": [
+          149,
+          178,
+          142
+        ],
+        "patch_index": 1810,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "008024a8ce248e6b56db2682",
+      "event_seed": 2478461381704953397,
+      "planned": {
+        "crop_start": [
+          17,
+          46,
+          52
+        ],
+        "placement_attempts": 7,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 2537
+      },
+      "smoke_id": "fix-v2-qc-holdout-040",
+      "target_case_id": "BraTSMET_000747",
+      "target_patient_group": "BraTS-MET-01100",
+      "total_support_voxels": 2537,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 1026.0,
+      "core_voxels": 1026,
+      "donor_component_id": "06ae7b4ed7ee75c3083be3a4",
+      "donor_patient_group": "BraTS-MET-01300",
+      "donor_source_case_id": "BraTS-MET-01300-002",
+      "entry_sha256": "a8676d9e67ba1fb3203a992e85a3efefb8a7000225cd33a3792fa9d7f284cfcb",
+      "event": {
+        "case_id": "BraTSMET_000990",
+        "epoch": 0,
+        "full_shape": [
+          130,
+          164,
+          124
+        ],
+        "patch_index": 1856,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "7e421b80debfb6406cee1dd9",
+      "event_seed": 2303721689964102950,
+      "planned": {
+        "crop_start": [
+          66,
+          59,
+          29
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 14005
+      },
+      "smoke_id": "fix-v2-qc-holdout-041",
+      "target_case_id": "BraTSMET_000990",
+      "target_patient_group": "BraTS-MET-01209",
+      "total_support_voxels": 14005,
+      "total_to_core_ratio": 13.65009746588694
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 911.0,
+      "core_voxels": 911,
+      "donor_component_id": "0ec461b8e76fe745222fb744",
+      "donor_patient_group": "BraTS-MET-00295",
+      "donor_source_case_id": "BraTS-MET-00295-000",
+      "entry_sha256": "22e1a73755ec68b93b85cb2856fe14202936e67a495f4de6c62fda51a8310f43",
+      "event": {
+        "case_id": "BraTSMET_001057",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          168,
+          136
+        ],
+        "patch_index": 2011,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "3d782dd6d799b726e81f2761",
+      "event_seed": 12273302616385451668,
+      "planned": {
+        "crop_start": [
+          36,
+          100,
+          22
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 1380
+      },
+      "smoke_id": "fix-v2-qc-holdout-042",
+      "target_case_id": "BraTSMET_001057",
+      "target_patient_group": "BraTS-MET-01237",
+      "total_support_voxels": 1380,
+      "total_to_core_ratio": 1.5148188803512623
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 21726.0,
+      "core_voxels": 21726,
+      "donor_component_id": "e75d426a0ea346aee5d8c39b",
+      "donor_patient_group": "BraTS-MET-00224",
+      "donor_source_case_id": "BraTS-MET-00224-000",
+      "entry_sha256": "a4d222bd929a44edcff681a834528fcd17aad06bac8e2a5982de721ddf9e1c38",
+      "event": {
+        "case_id": "BraTSMET_000521",
+        "epoch": 0,
+        "full_shape": [
+          152,
+          177,
+          141
+        ],
+        "patch_index": 2389,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "bdb5b50379f48d270c5f2a2a",
+      "event_seed": 8057560180719834854,
+      "planned": {
+        "crop_start": [
+          9,
+          34,
+          25
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 21726
+      },
+      "smoke_id": "fix-v2-qc-holdout-043",
+      "target_case_id": "BraTSMET_000521",
+      "target_patient_group": "BraTS-MET-00713",
+      "total_support_voxels": 21726,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 2554.0,
+      "core_voxels": 2554,
+      "donor_component_id": "7a1c1323eecd2c81f0ed676d",
+      "donor_patient_group": "BraTS-MET-01347",
+      "donor_source_case_id": "BraTS-MET-01347-000",
+      "entry_sha256": "8c5a467539d9111686fe49de9a3e1fe357b0de5d33376990471a75e075431258",
+      "event": {
+        "case_id": "BraTSMET_000219",
+        "epoch": 0,
+        "full_shape": [
+          141,
+          179,
+          138
+        ],
+        "patch_index": 2427,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "367c438a854002ac009c09a8",
+      "event_seed": 11799431431827323711,
+      "planned": {
+        "crop_start": [
+          62,
+          72,
+          5
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 2554
+      },
+      "smoke_id": "fix-v2-qc-holdout-044",
+      "target_case_id": "BraTSMET_000219",
+      "target_patient_group": "BraTS-MET-00295",
+      "total_support_voxels": 2554,
+      "total_to_core_ratio": 1.0
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 1458.0,
+      "core_voxels": 1458,
+      "donor_component_id": "eef9353f49178b5a6a938c95",
+      "donor_patient_group": "BraTS-MET-01069",
+      "donor_source_case_id": "BraTS-MET-01069-001",
+      "entry_sha256": "884d26dde97742518a1184c3c869ab24c1b330a6c3ff090a7d1d2a5755b73942",
+      "event": {
+        "case_id": "BraTSMET_001158",
+        "epoch": 0,
+        "full_shape": [
+          153,
+          165,
+          131
+        ],
+        "patch_index": 2567,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "f5e79a21fa1ad767ebe477db",
+      "event_seed": 14054820126928960964,
+      "planned": {
+        "crop_start": [
+          78,
+          24,
+          40
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 6053
+      },
+      "smoke_id": "fix-v2-qc-holdout-045",
+      "target_case_id": "BraTSMET_001158",
+      "target_patient_group": "BraTS-MET-01283",
+      "total_support_voxels": 6053,
+      "total_to_core_ratio": 4.151577503429356
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 302.0,
+      "core_voxels": 302,
+      "donor_component_id": "925032dad55c2f4b4460cd82",
+      "donor_patient_group": "BraTS-MET-00658",
+      "donor_source_case_id": "BraTS-MET-00658-001",
+      "entry_sha256": "595c662a2ca2b62e787981004a1f9f361168519445aebcf4062d866c6394a60f",
+      "event": {
+        "case_id": "BraTSMET_001276",
+        "epoch": 0,
+        "full_shape": [
+          145,
+          156,
+          140
+        ],
+        "patch_index": 2782,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "5be579d7732031d5bf575a7f",
+      "event_seed": 11695180634634316907,
+      "planned": {
+        "crop_start": [
+          12,
+          17,
+          0
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 1100
+      },
+      "smoke_id": "fix-v2-qc-holdout-046",
+      "target_case_id": "BraTSMET_001276",
+      "target_patient_group": "BraTS-MET-01347",
+      "total_support_voxels": 1100,
+      "total_to_core_ratio": 3.642384105960265
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 1941.0,
+      "core_voxels": 1941,
+      "donor_component_id": "210737a780d6947a23f819bd",
+      "donor_patient_group": "BraTS-MET-00237",
+      "donor_source_case_id": "BraTS-MET-00237-000",
+      "entry_sha256": "d0c8d49d9a7c634de50f4c434fc496bf94e9b8277735ebe6e28c5b9c4a483447",
+      "event": {
+        "case_id": "BraTSMET_000325",
+        "epoch": 0,
+        "full_shape": [
+          144,
+          186,
+          142
+        ],
+        "patch_index": 3086,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "a85d883507b3fbd5b876c00c",
+      "event_seed": 18365009675447034250,
+      "planned": {
+        "crop_start": [
+          57,
+          26,
+          70
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 6951
+      },
+      "smoke_id": "fix-v2-qc-holdout-047",
+      "target_case_id": "BraTSMET_000325",
+      "target_patient_group": "BraTS-MET-00582",
+      "total_support_voxels": 6951,
+      "total_to_core_ratio": 3.581143740340031
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 429.0,
+      "core_voxels": 429,
+      "donor_component_id": "2c962ec24b89ea22d2ab28ea",
+      "donor_patient_group": "BraTS-MET-00410",
+      "donor_source_case_id": "BraTS-MET-00410-000",
+      "entry_sha256": "832e4a3651dbba733a5c58fcf7d4a4ce3f2ad184899af27c16a38025c151c94c",
+      "event": {
+        "case_id": "BraTSMET_000004",
+        "epoch": 0,
+        "full_shape": [
+          135,
+          177,
+          128
+        ],
+        "patch_index": 3149,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "ca8d1bfb640d8f19c1b3ab35",
+      "event_seed": 16404453086050304058,
+      "planned": {
+        "crop_start": [
+          67,
+          108,
+          17
+        ],
+        "placement_attempts": 4,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 3659
+      },
+      "smoke_id": "fix-v2-qc-holdout-048",
+      "target_case_id": "BraTSMET_000004",
+      "target_patient_group": "BraTS-MET-00004",
+      "total_support_voxels": 3659,
+      "total_to_core_ratio": 8.529137529137529
+    }
+  ],
+  "smoke_count": 48,
+  "smoke_manifest_sha256": "25fcc7e08a40921797ac409e4bcc7a17f9aca044a022e6d2dd0bbe86fa2864c5",
+  "valid_mask_manifest_sha256": "a381b24ab508b7eba758b971e4ffe05b4a10e319c6299c1aa4a67f955bc6a169"
+}

@@ -1,0 +1,1081 @@
+{
+  "candidate_count_examined": 152,
+  "component_manifest_sha256": "c8a413bc180b3a120ee3415f548eab98c305cbe3a63867db89d09f19243da26e",
+  "max_candidates": 100000,
+  "per_volume_bin": {
+    "27_49": 8,
+    "50_275": 8,
+    "gt_275": 8
+  },
+  "per_volume_bin_quota": 8,
+  "route_config_sha256": "552c69d76b3dc71ffd8bd2a9f9a771fda4b95d611d87861f0f9abada7e374a21",
+  "route_id": "MET-AUG-A",
+  "schema_version": 1,
+  "search_seed": 20260725,
+  "skipped": {
+    "NOT_SELECTED": 120,
+    "quota_reached:50_275": 4,
+    "quota_reached:gt_275": 3
+  },
+  "smoke_cases": [
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 27.0,
+      "donor_component_id": "c99370f000104dddee4ebaf2",
+      "donor_patient_group": "BraTS-MET-01078",
+      "donor_source_case_id": "BraTS-MET-01078-000",
+      "entry_sha256": "2b9171c2d463c1b6967ce78ed70c71c6fdbffcd683034f737513cb9397b34766",
+      "event": {
+        "case_id": "BraTSMET_000421",
+        "epoch": 0,
+        "full_shape": [
+          132,
+          175,
+          144
+        ],
+        "patch_index": 1,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "4f33b1c791489d6af2ef8afa",
+      "event_seed": 13916201497858115098,
+      "planned": {
+        "crop_start": [
+          67,
+          19,
+          69
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 38
+      },
+      "smoke_id": "route-a-smoke-001",
+      "target_case_id": "BraTSMET_000421",
+      "target_patient_group": "BraTS-MET-00647"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 300.0,
+      "donor_component_id": "674e39f9856ab204ec8c7f28",
+      "donor_patient_group": "BraTS-MET-00782",
+      "donor_source_case_id": "BraTS-MET-00782-000",
+      "entry_sha256": "91a79ccba297b8bd73afb797dde58e0ff9f0445b1cd96dbb934f92dd90e3ad56",
+      "event": {
+        "case_id": "BraTSMET_000150",
+        "epoch": 0,
+        "full_shape": [
+          141,
+          175,
+          138
+        ],
+        "patch_index": 2,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "178a6edc352599e072fe0ca6",
+      "event_seed": 16874087226061933546,
+      "planned": {
+        "crop_start": [
+          60,
+          82,
+          38
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 468
+      },
+      "smoke_id": "route-a-smoke-002",
+      "target_case_id": "BraTSMET_000150",
+      "target_patient_group": "BraTS-MET-00213"
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 161.0,
+      "donor_component_id": "529498db339c377a16f7c512",
+      "donor_patient_group": "BraTS-MET-00688",
+      "donor_source_case_id": "BraTS-MET-00688-000",
+      "entry_sha256": "2a5a6e3eb7f124929f316fb82a3a32d4ffbefd27988a887a48d196992ca80aa7",
+      "event": {
+        "case_id": "BraTSMET_001258",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          170,
+          144
+        ],
+        "patch_index": 3,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "862cd7828edfd905f10bbf02",
+      "event_seed": 1040764867264208228,
+      "planned": {
+        "crop_start": [
+          48,
+          56,
+          10
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 161
+      },
+      "smoke_id": "route-a-smoke-003",
+      "target_case_id": "BraTSMET_001258",
+      "target_patient_group": "BraTS-MET-01338"
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 21726.0,
+      "donor_component_id": "e75d426a0ea346aee5d8c39b",
+      "donor_patient_group": "BraTS-MET-00224",
+      "donor_source_case_id": "BraTS-MET-00224-000",
+      "entry_sha256": "9ff3988a97975ec3b97305695e4d4a5c2e47ed8bc46aaaf2bb56b5b2f92dbfd2",
+      "event": {
+        "case_id": "BraTSMET_001225",
+        "epoch": 0,
+        "full_shape": [
+          145,
+          168,
+          136
+        ],
+        "patch_index": 4,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "d81d4284dcfe9e326ff679b8",
+      "event_seed": 16766420784999781283,
+      "planned": {
+        "crop_start": [
+          23,
+          20,
+          17
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 21726
+      },
+      "smoke_id": "route-a-smoke-004",
+      "target_case_id": "BraTSMET_001225",
+      "target_patient_group": "BraTS-MET-01323"
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 288.0,
+      "donor_component_id": "0090a41868a0c825e4fafd95",
+      "donor_patient_group": "BraTS-MET-01210",
+      "donor_source_case_id": "BraTS-MET-01210-000",
+      "entry_sha256": "6298c14fe792347bd2a261ca967216fd5cca9e3a614343de111dbb70b124a404",
+      "event": {
+        "case_id": "BraTSMET_000872",
+        "epoch": 0,
+        "full_shape": [
+          142,
+          163,
+          134
+        ],
+        "patch_index": 15,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "ba85ae0304ede35b09d71d38",
+      "event_seed": 2653606034971753508,
+      "planned": {
+        "crop_start": [
+          37,
+          79,
+          32
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 288
+      },
+      "smoke_id": "route-a-smoke-005",
+      "target_case_id": "BraTSMET_000872",
+      "target_patient_group": "BraTS-MET-01157"
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 38.0,
+      "donor_component_id": "81f9372409ceadd65b98d55a",
+      "donor_patient_group": "BraTS-MET-00114",
+      "donor_source_case_id": "BraTS-MET-00114-000",
+      "entry_sha256": "c1aad9e9d20bcfd942ab03ddf72c2d9dddde9db64048c5415502b1900b11d4c3",
+      "event": {
+        "case_id": "BraTSMET_000959",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          166,
+          133
+        ],
+        "patch_index": 17,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "e1ff819939d314064efff11a",
+      "event_seed": 1878861812458765801,
+      "planned": {
+        "crop_start": [
+          22,
+          36,
+          45
+        ],
+        "placement_attempts": 7,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 38
+      },
+      "smoke_id": "route-a-smoke-006",
+      "target_case_id": "BraTSMET_000959",
+      "target_patient_group": "BraTS-MET-01196"
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 132.0,
+      "donor_component_id": "9a9e5c31d937dbe536fcc3b9",
+      "donor_patient_group": "BraTS-MET-01104",
+      "donor_source_case_id": "BraTS-MET-01104-001",
+      "entry_sha256": "1ac670674b7b1b44675fc46795e1a491f484dfc7b5656e540f8f8930fe29f021",
+      "event": {
+        "case_id": "BraTSMET_000287",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          180,
+          141
+        ],
+        "patch_index": 20,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "3795764e97720cfd2273eef2",
+      "event_seed": 15149562653949984574,
+      "planned": {
+        "crop_start": [
+          75,
+          92,
+          44
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 132
+      },
+      "smoke_id": "route-a-smoke-007",
+      "target_case_id": "BraTSMET_000287",
+      "target_patient_group": "BraTS-MET-00556"
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 70.0,
+      "donor_component_id": "fbb89ef6c93da8be08a742b7",
+      "donor_patient_group": "BraTS-MET-01292",
+      "donor_source_case_id": "BraTS-MET-01292-001",
+      "entry_sha256": "bb89ea9ec3fe2311097676fccbc375150727c93c8a95885f9657e38f1bb36945",
+      "event": {
+        "case_id": "BraTSMET_001293",
+        "epoch": 0,
+        "full_shape": [
+          139,
+          175,
+          133
+        ],
+        "patch_index": 22,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "362bad0be9aef2fb1654cce9",
+      "event_seed": 2082378643408251167,
+      "planned": {
+        "crop_start": [
+          64,
+          73,
+          19
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 123
+      },
+      "smoke_id": "route-a-smoke-008",
+      "target_case_id": "BraTSMET_001293",
+      "target_patient_group": "BraTS-MET-01354"
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 8997.0,
+      "donor_component_id": "db7ca8bb12f6f8a170dbaa34",
+      "donor_patient_group": "BraTS-MET-01239",
+      "donor_source_case_id": "BraTS-MET-01239-001",
+      "entry_sha256": "4798a7dfc712b7c89d8560073a00f789168458bd264064513fd0f88b79420bf7",
+      "event": {
+        "case_id": "BraTSMET_001030",
+        "epoch": 0,
+        "full_shape": [
+          148,
+          187,
+          150
+        ],
+        "patch_index": 24,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "2bdb011801059587cf366e40",
+      "event_seed": 5475606586219068271,
+      "planned": {
+        "crop_start": [
+          50,
+          38,
+          74
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 26432
+      },
+      "smoke_id": "route-a-smoke-009",
+      "target_case_id": "BraTSMET_001030",
+      "target_patient_group": "BraTS-MET-01225"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 32.0,
+      "donor_component_id": "509195faca5255e820802a78",
+      "donor_patient_group": "BraTS-MET-01141",
+      "donor_source_case_id": "BraTS-MET-01141-000",
+      "entry_sha256": "69460f2dd8d22411b0af5c9e992940ab00691d08a3355fa5c17e32e6df8ea23f",
+      "event": {
+        "case_id": "BraTSMET_000256",
+        "epoch": 0,
+        "full_shape": [
+          130,
+          157,
+          124
+        ],
+        "patch_index": 27,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "84bd14bcb7114cc9370cafe0",
+      "event_seed": 14281803218325341855,
+      "planned": {
+        "crop_start": [
+          38,
+          47,
+          47
+        ],
+        "placement_attempts": 9,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 34
+      },
+      "smoke_id": "route-a-smoke-010",
+      "target_case_id": "BraTSMET_000256",
+      "target_patient_group": "BraTS-MET-00416"
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 34.0,
+      "donor_component_id": "e171378626296239818862ce",
+      "donor_patient_group": "BraTS-MET-00638",
+      "donor_source_case_id": "BraTS-MET-00638-002",
+      "entry_sha256": "3ca91a4d26084564ff118a3f0dfc08c9caf28e4c695f7101d8bc1b3cf5761e05",
+      "event": {
+        "case_id": "BraTSMET_000901",
+        "epoch": 0,
+        "full_shape": [
+          161,
+          163,
+          133
+        ],
+        "patch_index": 28,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "969aff815a0d985d6b8d51f7",
+      "event_seed": 10524353396943031363,
+      "planned": {
+        "crop_start": [
+          10,
+          47,
+          64
+        ],
+        "placement_attempts": 4,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 34
+      },
+      "smoke_id": "route-a-smoke-011",
+      "target_case_id": "BraTSMET_000901",
+      "target_patient_group": "BraTS-MET-01168"
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 1009.0,
+      "donor_component_id": "5bc284913ddcfad372fd966e",
+      "donor_patient_group": "BraTS-MET-00717",
+      "donor_source_case_id": "BraTS-MET-00717-000",
+      "entry_sha256": "e015e79bd97855800aa6181adc27529ef24606a472b2f6d15007fbf0a5b34eba",
+      "event": {
+        "case_id": "BraTSMET_000162",
+        "epoch": 0,
+        "full_shape": [
+          142,
+          172,
+          138
+        ],
+        "patch_index": 43,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "f7032c5dbc81fc250825e25f",
+      "event_seed": 5850548091998168533,
+      "planned": {
+        "crop_start": [
+          15,
+          20,
+          57
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 1769
+      },
+      "smoke_id": "route-a-smoke-012",
+      "target_case_id": "BraTSMET_000162",
+      "target_patient_group": "BraTS-MET-00226"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 62.0,
+      "donor_component_id": "f8086307a3d0c43befea3c60",
+      "donor_patient_group": "BraTS-MET-01106",
+      "donor_source_case_id": "BraTS-MET-01106-003",
+      "entry_sha256": "923a9116ccbb43a50182dc62b6ec64ae22a2f8de3e14951e2b67315361d5ea78",
+      "event": {
+        "case_id": "BraTSMET_000703",
+        "epoch": 0,
+        "full_shape": [
+          133,
+          165,
+          143
+        ],
+        "patch_index": 57,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "239254b34f90fc70ab371245",
+      "event_seed": 5599834269583730655,
+      "planned": {
+        "crop_start": [
+          6,
+          41,
+          42
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 84
+      },
+      "smoke_id": "route-a-smoke-013",
+      "target_case_id": "BraTSMET_000703",
+      "target_patient_group": "BraTS-MET-01083"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 80.0,
+      "donor_component_id": "9342c0ead22e69a7fa252aad",
+      "donor_patient_group": "BraTS-MET-00210",
+      "donor_source_case_id": "BraTS-MET-00210-000",
+      "entry_sha256": "d96d6e90c802e3823c4edc6e9af80916b3084566fa99c9abced2662f4f336c28",
+      "event": {
+        "case_id": "BraTSMET_000954",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          178,
+          135
+        ],
+        "patch_index": 76,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "5b7b7852d9d1104334352d4a",
+      "event_seed": 8478475900030996919,
+      "planned": {
+        "crop_start": [
+          11,
+          64,
+          32
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 129
+      },
+      "smoke_id": "route-a-smoke-014",
+      "target_case_id": "BraTSMET_000954",
+      "target_patient_group": "BraTS-MET-01195"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 119.0,
+      "donor_component_id": "24d8c0cc3ed858ff356a4538",
+      "donor_patient_group": "BraTS-MET-00641",
+      "donor_source_case_id": "BraTS-MET-00641-002",
+      "entry_sha256": "a6a68a050c1a53f87f19de2f3272cecbde2bcf10eea6413f3ee4d7badd9380e3",
+      "event": {
+        "case_id": "BraTSMET_001173",
+        "epoch": 0,
+        "full_shape": [
+          144,
+          160,
+          142
+        ],
+        "patch_index": 79,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "1c9419d3cf7bc5943d57db72",
+      "event_seed": 14773511054078092998,
+      "planned": {
+        "crop_start": [
+          42,
+          33,
+          71
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 147
+      },
+      "smoke_id": "route-a-smoke-015",
+      "target_case_id": "BraTSMET_001173",
+      "target_patient_group": "BraTS-MET-01290"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 28.0,
+      "donor_component_id": "2489e335f0ba8d66ead06739",
+      "donor_patient_group": "BraTS-MET-00773",
+      "donor_source_case_id": "BraTS-MET-00773-000",
+      "entry_sha256": "284c50f4d1917a7f9b54bdaa88abd33a7fd16eb08f15002c88b020f9efc11ab1",
+      "event": {
+        "case_id": "BraTSMET_001202",
+        "epoch": 0,
+        "full_shape": [
+          146,
+          172,
+          131
+        ],
+        "patch_index": 83,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "2a8ac6d476be17354a7f860a",
+      "event_seed": 7051049402947671927,
+      "planned": {
+        "crop_start": [
+          23,
+          25,
+          22
+        ],
+        "placement_attempts": 6,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 849
+      },
+      "smoke_id": "route-a-smoke-016",
+      "target_case_id": "BraTSMET_001202",
+      "target_patient_group": "BraTS-MET-01312"
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 33.0,
+      "donor_component_id": "3af184930db689762135ef03",
+      "donor_patient_group": "BraTS-MET-01334",
+      "donor_source_case_id": "BraTS-MET-01334-000",
+      "entry_sha256": "3be8d23b1f29e627cb6f09726af4c682c55708aede860fbdff1b2711f845e34e",
+      "event": {
+        "case_id": "BraTSMET_001182",
+        "epoch": 0,
+        "full_shape": [
+          131,
+          174,
+          142
+        ],
+        "patch_index": 87,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "e11d7007655ae47c4cb13deb",
+      "event_seed": 10363329880429768301,
+      "planned": {
+        "crop_start": [
+          6,
+          94,
+          16
+        ],
+        "placement_attempts": 5,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 33
+      },
+      "smoke_id": "route-a-smoke-017",
+      "target_case_id": "BraTSMET_001182",
+      "target_patient_group": "BraTS-MET-01300"
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 719.0,
+      "donor_component_id": "c2687c4404743a947889ffa8",
+      "donor_patient_group": "BraTS-MET-00666",
+      "donor_source_case_id": "BraTS-MET-00666-000",
+      "entry_sha256": "8117b2dedf5b4958b42542dd8051319d93a1b94cafaa83884ff20089789098c0",
+      "event": {
+        "case_id": "BraTSMET_000409",
+        "epoch": 0,
+        "full_shape": [
+          146,
+          173,
+          200
+        ],
+        "patch_index": 89,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "034071b9d2605aa36c523e70",
+      "event_seed": 677871009151306697,
+      "planned": {
+        "crop_start": [
+          35,
+          92,
+          7
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 719
+      },
+      "smoke_id": "route-a-smoke-018",
+      "target_case_id": "BraTSMET_000409",
+      "target_patient_group": "BraTS-MET-00640"
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 263.0,
+      "donor_component_id": "e88c4f229d27ee686f98c4e7",
+      "donor_patient_group": "BraTS-MET-00112",
+      "donor_source_case_id": "BraTS-MET-00112-000",
+      "entry_sha256": "31678e443b4ee96748101352b9f3b0c8e0df449d4790f793c8cd670135bcb7d9",
+      "event": {
+        "case_id": "BraTSMET_000572",
+        "epoch": 0,
+        "full_shape": [
+          142,
+          177,
+          138
+        ],
+        "patch_index": 97,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "3c7fca944ca99890568c17e4",
+      "event_seed": 3028560945529465097,
+      "planned": {
+        "crop_start": [
+          69,
+          83,
+          36
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 263
+      },
+      "smoke_id": "route-a-smoke-019",
+      "target_case_id": "BraTSMET_000572",
+      "target_patient_group": "BraTS-MET-00749"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "core_volume_mm3": 105.0,
+      "donor_component_id": "06ecf7ce513f1f51908784be",
+      "donor_patient_group": "BraTS-MET-00658",
+      "donor_source_case_id": "BraTS-MET-00658-002",
+      "entry_sha256": "c262e32c9f05a5bc685ce7dc2473865c43ad7f8232617c55d04725cf4b6f2f56",
+      "event": {
+        "case_id": "BraTSMET_000430",
+        "epoch": 0,
+        "full_shape": [
+          192,
+          207,
+          188
+        ],
+        "patch_index": 104,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "4359dda8932c3f0899aaaf55",
+      "event_seed": 9821698859839474201,
+      "planned": {
+        "crop_start": [
+          58,
+          94,
+          106
+        ],
+        "placement_attempts": 3,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 349
+      },
+      "smoke_id": "route-a-smoke-020",
+      "target_case_id": "BraTSMET_000430",
+      "target_patient_group": "BraTS-MET-00653"
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 1760.0,
+      "donor_component_id": "4dcb4cf2d0c205d5f663d779",
+      "donor_patient_group": "BraTS-MET-00173",
+      "donor_source_case_id": "BraTS-MET-00173-000",
+      "entry_sha256": "66194a77926cad5d059071227fea3f73765778d176732853ab26c11e503ed340",
+      "event": {
+        "case_id": "BraTSMET_000178",
+        "epoch": 0,
+        "full_shape": [
+          138,
+          176,
+          137
+        ],
+        "patch_index": 105,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "ee8863b0dc13172407b0aef3",
+      "event_seed": 13327459610695297899,
+      "planned": {
+        "crop_start": [
+          43,
+          33,
+          0
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 16607
+      },
+      "smoke_id": "route-a-smoke-021",
+      "target_case_id": "BraTSMET_000178",
+      "target_patient_group": "BraTS-MET-00245"
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 33.0,
+      "donor_component_id": "2b5458a48c7eaba70a509fc0",
+      "donor_patient_group": "BraTS-MET-01257",
+      "donor_source_case_id": "BraTS-MET-01257-002",
+      "entry_sha256": "88a84fd9b84e706177f33ff9389496bfc722f0c5f9973244dda0d51316a69dc7",
+      "event": {
+        "case_id": "BraTSMET_001075",
+        "epoch": 0,
+        "full_shape": [
+          139,
+          152,
+          128
+        ],
+        "patch_index": 106,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "42556bd96ed31cb9645b1523",
+      "event_seed": 17096815775872812885,
+      "planned": {
+        "crop_start": [
+          73,
+          35,
+          13
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 516
+      },
+      "smoke_id": "route-a-smoke-022",
+      "target_case_id": "BraTSMET_001075",
+      "target_patient_group": "BraTS-MET-01245"
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "core_volume_mm3": 26390.0,
+      "donor_component_id": "d88c9252fcd4eb9b7da0976a",
+      "donor_patient_group": "BraTS-MET-00306",
+      "donor_source_case_id": "BraTS-MET-00306-000",
+      "entry_sha256": "52207e37380fa2a494e51b5a8973811990f8e67a3a14370b0cc4dc76737af41f",
+      "event": {
+        "case_id": "BraTSMET_001153",
+        "epoch": 0,
+        "full_shape": [
+          154,
+          177,
+          140
+        ],
+        "patch_index": 109,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "b535a4012236c5ba852a38aa",
+      "event_seed": 13952244087434627844,
+      "planned": {
+        "crop_start": [
+          38,
+          8,
+          73
+        ],
+        "placement_attempts": 1,
+        "placement_strategy": "donor_centroid_prior",
+        "support_voxels": 26410
+      },
+      "smoke_id": "route-a-smoke-023",
+      "target_case_id": "BraTSMET_001153",
+      "target_patient_group": "BraTS-MET-01280"
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "core_volume_mm3": 30.0,
+      "donor_component_id": "802a027343d447947925bf64",
+      "donor_patient_group": "BraTS-MET-01135",
+      "donor_source_case_id": "BraTS-MET-01135-002",
+      "entry_sha256": "d04961b6c33db1c921a6c7c2e954828b0ea64d099c6328c1cbc64db2303bb60e",
+      "event": {
+        "case_id": "BraTSMET_000149",
+        "epoch": 0,
+        "full_shape": [
+          140,
+          179,
+          138
+        ],
+        "patch_index": 150,
+        "patch_origin": [
+          0,
+          0,
+          0
+        ],
+        "rank": 0,
+        "worker": 0
+      },
+      "event_id": "61e23de0f5e7e8ec8521b6d8",
+      "event_seed": 5608850291107840575,
+      "planned": {
+        "crop_start": [
+          29,
+          71,
+          31
+        ],
+        "placement_attempts": 2,
+        "placement_strategy": "valid_mask_fallback",
+        "support_voxels": 44
+      },
+      "smoke_id": "route-a-smoke-024",
+      "target_case_id": "BraTSMET_000149",
+      "target_patient_group": "BraTS-MET-00212"
+    }
+  ],
+  "smoke_count": 24,
+  "smoke_manifest_sha256": "0089d44b105bd03f1f33de7c5c2bb8ac465e830914226e21e9503b71390780bc",
+  "valid_mask_manifest_sha256": "a381b24ab508b7eba758b971e4ffe05b4a10e319c6299c1aa4a67f955bc6a169"
+}
