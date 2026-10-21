@@ -1,40 +1,11 @@
-# S1 工作区
+# S1
 
-## 整体任务
+本地保留多任务分割代码、方案、运行手册和实验记录；未发现独立训练结果或模型包，不创建空目录。
+- [代码](01_code/repository/README.md)
+- [文档](05_documents/README.md)
+- [运行资料](06_operations/README.md)
 
-详见 [task_assignment.md](task_assignment.md)。
+两份服务器手册内容不同，均保留在03_operations，并标明原代码文档版。
 
-## 快速入口
 
-| 文档 / 脚本 | 路径 |
-| --- | --- |
-| **服务器运行手册（权威）** | [docs/S1_服务器运行手册.md](docs/S1_服务器运行手册.md) |
-| **推荐 Slurm** | [slurm/01_s1_realonly.slurm](slurm/01_s1_realonly.slurm) |
-| 执行逻辑 | [slurm/run_s1_realonly.sh](slurm/run_s1_realonly.sh) |
-| 代码仓库 | [brats2026_multitask_S1_v2/repository](brats2026_multitask_S1_v2/repository) |
-| 环境创建 | [brats2026_multitask_S1_v2/repository/docs/S1_experiment.txt](brats2026_multitask_S1_v2/repository/docs/S1_experiment.txt) |
-
-正式训练（在项目根目录）：
-
-```bash
-export PROJECT_ROOT=/scratch/bf2260/ECNU_EYU_data
-cd "${PROJECT_ROOT}" && mkdir -p logs
-sbatch --gres=gpu:a100:1 \
-  --export=ALL,PROJ="${PROJECT_ROOT}" \
-  work_space/S1/slurm/01_s1_realonly.slurm
-```
-
-## 当前进度
-
-- 多任务训练代码已按 96³ 显存安全默认 + 全量 SWI 验证优化
-- Slurm / 运行手册已 fail-fast 重写
-
-## 本周计划
-
-待填写。
-
-## 提交记录
-
-| 日期 | 内容 | 备注 |
-| --- | --- | --- |
-| 2026-07-15 | 重写 S1 Slurm 与服务器运行手册 | fail-fast 预检、≥40GB、G2 view 审计 |
+整理时间：2026-09-19。本地整理标记：experimental_unvalidated；operator_approved=false；formal_gate_status=not_run_not_passed。
