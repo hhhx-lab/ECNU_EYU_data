@@ -1,0 +1,15 @@
+# G1 Diffusion augmentation V3 runtime.
+# Install PyTorch from the CUDA-specific channel appropriate for the server;
+# do not use sudo pip or mix this file into the system Python.
+torch>=2.6,<2.8
+monai>=1.4,<1.6
+nibabel>=5,<6
+numpy>=1.24,<2
+scipy>=1.10,<2
+pandas>=2,<3
+matplotlib>=3.7,<4
+blobfile>=2,<4
+PyWavelets>=1.4,<2
+
+# Only required when --generator_type PlainConvUNet is selected.
+dynamic-network-architectures>=0.3,<0.5
