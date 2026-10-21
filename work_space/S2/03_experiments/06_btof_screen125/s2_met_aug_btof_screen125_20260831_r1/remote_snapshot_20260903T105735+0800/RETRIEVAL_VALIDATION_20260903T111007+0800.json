@@ -1,0 +1,20 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "generated_at_local": "2026-09-03T11:10:07+08:00",
+  "generated_at_utc": "2026-09-03T03:10:07Z",
+  "operator_approved": false,
+  "remote_snapshot_at_utc": "2026-09-03T02:57:35Z",
+  "retrieved_file_count_before_local_summary": 46,
+  "status": "pass_with_scope_limitation",
+  "validation": {
+    "all_five_case_counts": 103,
+    "all_five_training_complete_markers_present": true,
+    "all_five_training_validation_status": "pass",
+    "checkpoint_files_retrieved": 0,
+    "critical_log_errors_found": 0,
+    "event_jsonl_files_retrieved": 0,
+    "nifti_files_retrieved": 0
+  },
+  "scope_limitation": "The retrieved validation/summary.json files are automatic nnUNet validation summaries for each route at epoch 125. The pre-registered selected-checkpoint official MET paired comparison has not yet been executed; C40 and D select epoch 50 and therefore cannot be represented by their epoch-125 summaries in that future comparison."
+}

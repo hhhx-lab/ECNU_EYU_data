@@ -1,0 +1,13 @@
+README.md: OK
+SELECTED103_OFFICIAL_MET_RECOVERY_PLAN_20260907_R4.json: OK
+manifests/FIXED103_REAL_T2W_CASES.csv: OK
+runtime/compare_paired_met.py: OK
+runtime/custom_nnunet/__init__.py: OK
+runtime/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py: OK
+runtime/frozen_s2_inference.py: OK
+runtime/launch_recovery.py: OK
+runtime/run_official_met_eval.sh: OK
+runtime/run_remote_static_preflight.py: OK
+slurm/01_eval_recovery_route.slurm: OK
+slurm/02_compare_recovered_routes.slurm: OK
+{"artifact_status": "experimental_unvalidated", "case_count": 103, "checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82", "completed_at_utc": "2026-09-07T12:49:21.058740+00:00", "execution_mode": "sequential_in_process", "export_workers": 0, "formal_gate_status": "not_run_not_passed", "job_id": "3652758", "locked_test_used": false, "metrics_csv_sha256": "48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5", "operator_approved": false, "prediction_count": 103, "preprocess_workers": 0, "route": "C40", "schema_version": 1, "selected_epoch": 50, "status": "pass"}

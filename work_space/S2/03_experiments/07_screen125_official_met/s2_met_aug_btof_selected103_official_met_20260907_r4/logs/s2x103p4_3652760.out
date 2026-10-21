@@ -1,0 +1,14 @@
+README.md: OK
+SELECTED103_OFFICIAL_MET_RECOVERY_PLAN_20260907_R4.json: OK
+manifests/FIXED103_REAL_T2W_CASES.csv: OK
+runtime/compare_paired_met.py: OK
+runtime/custom_nnunet/__init__.py: OK
+runtime/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py: OK
+runtime/frozen_s2_inference.py: OK
+runtime/launch_recovery.py: OK
+runtime/run_official_met_eval.sh: OK
+runtime/run_remote_static_preflight.py: OK
+slurm/01_eval_recovery_route.slurm: OK
+slurm/02_compare_recovered_routes.slurm: OK
+{"case_count": 103, "methods": ["B", "C40", "D", "E_SNFH", "F"], "status": "pass"}
+{"artifact_status": "experimental_unvalidated", "bootstrap_replicates": 20000, "bootstrap_seed": 20260831, "case_count": 103, "completed_at_utc": "2026-09-07T13:23:26.432692+00:00", "formal_gate_status": "not_run_not_passed", "interpretation": "exploratory because fixed103 was used for checkpoint selection and reporting", "job_id": "3652760", "locked_test_used": false, "method_count": 5, "operator_approved": false, "pair_count": 10, "paired_comparison_sha256": "172bebbd17966796b55be1f96ddf2f46ec2e26af267beb982d26bdc4e254c386", "routes": {"B": {"checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6", "metrics_csv_sha256": "cde3a50e2c8e5daa0afc4a06d29e1925e825989578c4524073011246a83bdf39", "selected_epoch": 125, "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r2"}, "C40": {"checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82", "metrics_csv_sha256": "48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5", "selected_epoch": 50, "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r4"}, "D": {"checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209", "metrics_csv_sha256": "7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2", "selected_epoch": 50, "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r4"}, "E_SNFH": {"checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6", "metrics_csv_sha256": "6620bc7b7540755ca8c212c8c355be21b7a7e8d2daf5e09173970b39af8b90c2", "selected_epoch": 125, "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r2"}, "F": {"checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf", "metrics_csv_sha256": "54ee07f5e92fa1c8967612685513a80119d89a6101a7cdd90e956c91df9921c6", "selected_epoch": 125, "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r2"}}, "schema_version": 1, "status": "pass"}

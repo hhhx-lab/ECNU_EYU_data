@@ -1,0 +1,43 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "case_count": 103,
+  "checksum_lines": 12,
+  "completed_at_utc": "2026-09-07T12:17:54.768845+00:00",
+  "deep_validated": 111,
+  "execution_plan_sha256": "b733d54fc32391143baf1c3fde30f8004b1d507878d7b05be65dbc3112a46513",
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "input_file_count": 412,
+  "locked_test_used": false,
+  "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+  "operator_approved": false,
+  "prior_r2_failures": {
+    "C40": {
+      "failure_sha256": "06b5a96ebd31ef4e2c7536b8ccb189ffec252130262605a88fef05b4ce12623d",
+      "job_id": "3652703",
+      "log_sha256": "d45ecf54995f1ff790db6473167efe0e1ae1555692bac2a70a8f829878a84313"
+    },
+    "D": {
+      "failure_sha256": "3dfc1be65d7684b165694cb600fffd199e09ea42869cabb577b06d34b6a42e62",
+      "job_id": "3652704",
+      "log_sha256": "ac6bb0d1cae5686ea1f4691e07903a84b9fd8f4534027dec7acf0461d187df85"
+    }
+  },
+  "prior_r3_failure": {
+    "failure_sha256": "cd7203c4a54036110b1be7e0689ad7ce63c8e0dfe17d1f17755664fa5fba7217",
+    "job_id": "3652753"
+  },
+  "r2_plan_sha256": "1767372636d82e5d02bbd0e9d8ce4b982b1777a60c36c27b655c3b3b5b429c3b",
+  "reference_file_count": 103,
+  "repair": {
+    "exclusive_node": false,
+    "execution_mode": "sequential_in_process",
+    "export_workers": 0,
+    "multiprocessing_queue_used": false,
+    "preprocess_workers": 0,
+    "serial_routes": true,
+    "single_gpu_allocation": true
+  },
+  "schema_version": 1,
+  "status": "pass"
+}

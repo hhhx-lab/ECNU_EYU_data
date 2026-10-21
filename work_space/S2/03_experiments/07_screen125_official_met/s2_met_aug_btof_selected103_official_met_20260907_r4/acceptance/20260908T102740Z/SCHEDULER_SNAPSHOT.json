@@ -1,0 +1,862 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "local_snapshot_started_utc": "2026-09-08T10:27:40Z",
+  "remote_utc": "2026-09-08T10:17:24.635736+00:00",
+  "hostname": "login1",
+  "disk": {
+    "rc": 0,
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  217T   32T  88% /public\n"
+  },
+  "squeue": {
+    "rc": 0,
+    "stdout": ""
+  },
+  "sacct": {
+    "rc": 0,
+    "stdout": "3652699|s2ab175r4|COMPLETED|0:0|17:22:16|gpu9|billing=8,cpu=8,gres/gpu=1,mem=64G,node=1\n3652700|s2ae175r4|COMPLETED|0:0|17:22:16|gpu9|billing=8,cpu=8,gres/gpu=1,mem=64G,node=1\n3652701|s2af175r4|COMPLETED|0:0|16:48:37|gpu11|billing=8,cpu=8,gres/gpu=1,mem=64G,node=1\n3652702|s2b103m2|COMPLETED|0:0|00:17:12|gpu11|billing=8,cpu=8,gres/gpu=1,mem=64G,node=1\n3652705|s2e103m2|COMPLETED|0:0|00:16:35|gpu14|billing=8,cpu=8,gres/gpu=1,mem=64G,node=1\n3652706|s2f103m2|COMPLETED|0:0|00:16:35|gpu14|billing=8,cpu=8,gres/gpu=1,mem=64G,node=1\n3652758|s2c103m4|COMPLETED|0:0|00:32:06|gpu16|billing=4,cpu=4,gres/gpu=1,mem=64G,node=1\n3652759|s2d103m4|COMPLETED|0:0|00:33:11|gpu11|billing=4,cpu=4,gres/gpu=1,mem=64G,node=1\n3652760|s2x103p4|COMPLETED|0:0|00:00:22|node201|billing=4,cpu=4,mem=32G,node=1\n"
+  },
+  "extend": {
+    "evidence": {
+      "B_EXTENSION_TRAINING_COMPLETE.ok": "complete\n",
+      "B_EXTENSION_TRAINING_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "candidate_total_epochs": [
+          125,
+          150,
+          175
+        ],
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "extension_epochs": 50,
+        "extension_start_lr": 0.000012965252773542109,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652699",
+        "operator_approved": false,
+        "resume": true,
+        "resume_optimizer_state": true,
+        "route_token": "B",
+        "source_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_btof_screen125_20260831_r1/results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen125FocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+        "source_checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+        "source_total_epoch": 125,
+        "status": "started",
+        "target_total_epoch": 175,
+        "timestamp_utc": "2026-09-07T11:54:47.306508Z"
+      },
+      "B_EXTENSION_TRAINING_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "best_checkpoint": {
+          "ema_fg_dice": 0.7616883194341121,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+          "sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+          "total_epoch": 175
+        },
+        "candidate_checkpoints": [
+          {
+            "ema_fg_dice": 0.7503726224575267,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+            "sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+            "total_epoch": 125
+          },
+          {
+            "ema_fg_dice": 0.7601913179271474,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+            "sha256": "0a592b6621ad4e2a41da21bc8db44aa83c010d4e80441d491b3f0d2c1436ba7b",
+            "total_epoch": 150
+          },
+          {
+            "ema_fg_dice": 0.7616883194341121,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+            "sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+            "total_epoch": 175
+          }
+        ],
+        "checkpoint_selection_metric": "development_validation_ema_fg_dice",
+        "checkpoint_selection_tie_break": "earliest_total_epoch",
+        "completed_total_epochs": 175,
+        "extension_epochs": 50,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652699",
+        "operator_approved": false,
+        "route_token": "B",
+        "status": "pass",
+        "timestamp_utc": "2026-09-08T05:15:41.386050Z"
+      },
+      "E_SNFH_EXTENSION_TRAINING_COMPLETE.ok": "complete\n",
+      "E_SNFH_EXTENSION_TRAINING_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "candidate_total_epochs": [
+          125,
+          150,
+          175
+        ],
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "extension_epochs": 50,
+        "extension_start_lr": 0.000012965252773542109,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652700",
+        "operator_approved": false,
+        "resume": true,
+        "resume_optimizer_state": true,
+        "route_token": "E_SNFH",
+        "source_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_btof_screen125_20260831_r1/results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen125FocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+        "source_checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+        "source_total_epoch": 125,
+        "status": "started",
+        "target_total_epoch": 175,
+        "timestamp_utc": "2026-09-07T11:54:47.306496Z"
+      },
+      "E_SNFH_EXTENSION_TRAINING_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "best_checkpoint": {
+          "ema_fg_dice": 0.7619467845849863,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+          "sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+          "total_epoch": 175
+        },
+        "candidate_checkpoints": [
+          {
+            "ema_fg_dice": 0.7545076718075368,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+            "sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+            "total_epoch": 125
+          },
+          {
+            "ema_fg_dice": 0.7603079900385978,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+            "sha256": "3bf2ba121c0b2c615bee73b5101d1db70bac68d6a02467c631c667aeb688ecae",
+            "total_epoch": 150
+          },
+          {
+            "ema_fg_dice": 0.7619467845849863,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+            "sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+            "total_epoch": 175
+          }
+        ],
+        "checkpoint_selection_metric": "development_validation_ema_fg_dice",
+        "checkpoint_selection_tie_break": "earliest_total_epoch",
+        "completed_total_epochs": 175,
+        "extension_epochs": 50,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652700",
+        "operator_approved": false,
+        "route_token": "E_SNFH",
+        "status": "pass",
+        "timestamp_utc": "2026-09-08T05:15:40.438863Z"
+      },
+      "F_EXTENSION_TRAINING_COMPLETE.ok": "complete\n",
+      "F_EXTENSION_TRAINING_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "candidate_total_epochs": [
+          125,
+          150,
+          175
+        ],
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "extension_epochs": 50,
+        "extension_start_lr": 0.000012965252773542109,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652701",
+        "operator_approved": false,
+        "resume": true,
+        "resume_optimizer_state": true,
+        "route_token": "F",
+        "source_checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_btof_screen125_20260831_r1/results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen125FocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+        "source_checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+        "source_total_epoch": 125,
+        "status": "started",
+        "target_total_epoch": 175,
+        "timestamp_utc": "2026-09-07T11:54:14.631178Z"
+      },
+      "F_EXTENSION_TRAINING_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "best_checkpoint": {
+          "ema_fg_dice": 0.7560746800284527,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+          "sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+          "total_epoch": 175
+        },
+        "candidate_checkpoints": [
+          {
+            "ema_fg_dice": 0.7491822956737153,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+            "sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+            "total_epoch": 125
+          },
+          {
+            "ema_fg_dice": 0.7550553760039483,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+            "sha256": "1169f2cbc11cf155bdc0c695ba284d125408ef100544444e73dcca9df7064393",
+            "total_epoch": 150
+          },
+          {
+            "ema_fg_dice": 0.7560746800284527,
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+            "sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+            "total_epoch": 175
+          }
+        ],
+        "checkpoint_selection_metric": "development_validation_ema_fg_dice",
+        "checkpoint_selection_tie_break": "earliest_total_epoch",
+        "completed_total_epochs": 175,
+        "extension_epochs": 50,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652701",
+        "operator_approved": false,
+        "route_token": "F",
+        "status": "pass",
+        "timestamp_utc": "2026-09-08T04:42:03.419515Z"
+      }
+    },
+    "plans": {
+      "EXTEND175_EXECUTION_PLAN_20260907_R4.json": "cdc19fe9b3d4d3373822c0aa0a80f594f8718d284dc12424be68114314f963ae"
+    },
+    "logs": {
+      "logs/s2ab175r4_3652699.err": {
+        "bytes": 632,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "  _torch_pytree._register_pytree_node(",
+          "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.",
+          "  _torch_pytree._register_pytree_node("
+        ]
+      },
+      "logs/s2ab175r4_3652699.out": {
+        "bytes": 40653,
+        "errors": [],
+        "latest_epoch": [
+          "2026-09-08 12:47:06.725002: Epoch 174"
+        ],
+        "tail": [
+          "2026-09-08 13:13:21.427539: BraTSMET_001286, shape torch.Size([4, 132, 169, 135]), rank 0",
+          "2026-09-08 13:15:10.433452: Validation complete",
+          "2026-09-08 13:15:10.434219: Mean Validation Dice:  0.5582994500848677"
+        ]
+      },
+      "logs/s2ae175r4_3652700.err": {
+        "bytes": 632,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "  _torch_pytree._register_pytree_node(",
+          "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.",
+          "  _torch_pytree._register_pytree_node("
+        ]
+      },
+      "logs/s2ae175r4_3652700.out": {
+        "bytes": 40736,
+        "errors": [],
+        "latest_epoch": [
+          "2026-09-08 12:47:06.725000: Epoch 174"
+        ],
+        "tail": [
+          "2026-09-08 13:13:21.427539: BraTSMET_001286, shape torch.Size([4, 132, 169, 135]), rank 0",
+          "2026-09-08 13:15:10.434253: Validation complete",
+          "2026-09-08 13:15:10.434372: Mean Validation Dice:  0.5534455125093604"
+        ]
+      },
+      "logs/s2af175r4_3652701.err": {
+        "bytes": 632,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "  _torch_pytree._register_pytree_node(",
+          "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.",
+          "  _torch_pytree._register_pytree_node("
+        ]
+      },
+      "logs/s2af175r4_3652701.out": {
+        "bytes": 40731,
+        "errors": [],
+        "latest_epoch": [
+          "2026-09-08 12:14:19.151760: Epoch 174"
+        ],
+        "tail": [
+          "2026-09-08 12:39:58.856456: BraTSMET_001286, shape torch.Size([4, 132, 169, 135]), rank 0",
+          "2026-09-08 12:41:39.545610: Validation complete",
+          "2026-09-08 12:41:39.561839: Mean Validation Dice:  0.5519151636541845"
+        ]
+      },
+      "results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/training_log_2026_9_7_19_55_33.txt": {
+        "bytes": 37317,
+        "errors": [],
+        "latest_epoch": [
+          "2026-09-08 12:47:06.725002: Epoch 174 "
+        ],
+        "tail": [
+          "2026-09-08 13:13:21.427539: BraTSMET_001286, shape torch.Size([4, 132, 169, 135]), rank 0 ",
+          "2026-09-08 13:15:10.433452: Validation complete ",
+          "2026-09-08 13:15:10.434219: Mean Validation Dice:  0.5582994500848677 "
+        ]
+      },
+      "results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/training_log_2026_9_7_19_55_33.txt": {
+        "bytes": 37401,
+        "errors": [],
+        "latest_epoch": [
+          "2026-09-08 12:47:06.725000: Epoch 174 "
+        ],
+        "tail": [
+          "2026-09-08 13:13:21.427539: BraTSMET_001286, shape torch.Size([4, 132, 169, 135]), rank 0 ",
+          "2026-09-08 13:15:10.434253: Validation complete ",
+          "2026-09-08 13:15:10.434372: Mean Validation Dice:  0.5534455125093604 "
+        ]
+      },
+      "results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/training_log_2026_9_7_19_55_33.txt": {
+        "bytes": 37396,
+        "errors": [],
+        "latest_epoch": [
+          "2026-09-08 12:14:19.151760: Epoch 174 "
+        ],
+        "tail": [
+          "2026-09-08 12:39:58.856456: BraTSMET_001286, shape torch.Size([4, 132, 169, 135]), rank 0 ",
+          "2026-09-08 12:41:39.545610: Validation complete ",
+          "2026-09-08 12:41:39.561839: Mean Validation Dice:  0.5519151636541845 "
+        ]
+      }
+    },
+    "checkpoints": [
+      {
+        "path": "results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+        "mode": "0o400",
+        "bytes": 249789682
+      },
+      {
+        "path": "results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_best.pth",
+        "mode": "0o600",
+        "bytes": 249795542
+      },
+      {
+        "path": "results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+        "mode": "0o600",
+        "bytes": 249803506
+      },
+      {
+        "path": "results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+        "mode": "0o600",
+        "bytes": 249817266
+      },
+      {
+        "path": "results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth",
+        "mode": "0o600",
+        "bytes": 249816176
+      },
+      {
+        "path": "results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+        "mode": "0o400",
+        "bytes": 249789746
+      },
+      {
+        "path": "results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_best.pth",
+        "mode": "0o600",
+        "bytes": 249795094
+      },
+      {
+        "path": "results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+        "mode": "0o600",
+        "bytes": 249803570
+      },
+      {
+        "path": "results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+        "mode": "0o600",
+        "bytes": 249817266
+      },
+      {
+        "path": "results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth",
+        "mode": "0o600",
+        "bytes": 249816176
+      },
+      {
+        "path": "results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+        "mode": "0o400",
+        "bytes": 249789682
+      },
+      {
+        "path": "results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_best.pth",
+        "mode": "0o600",
+        "bytes": 249795542
+      },
+      {
+        "path": "results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+        "mode": "0o600",
+        "bytes": 249803442
+      },
+      {
+        "path": "results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+        "mode": "0o600",
+        "bytes": 249817202
+      },
+      {
+        "path": "results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth",
+        "mode": "0o600",
+        "bytes": 249816112
+      }
+    ]
+  },
+  "met_r2": {
+    "evidence": {
+      "B_EVALUATION_COMPLETE.ok": "status=pass\nartifact_status=experimental_unvalidated\noperator_approved=false\nformal_gate_status=not_run_not_passed\n",
+      "B_EVALUATION_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652702",
+        "operator_approved": false,
+        "route": "B",
+        "schema_version": 1,
+        "selected_epoch": 125,
+        "single_gpu": true,
+        "started_at_utc": "2026-09-07T11:54:12.446966+00:00",
+        "status": "started"
+      },
+      "B_EVALUATION_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+        "completed_at_utc": "2026-09-07T12:10:41.543455+00:00",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652702",
+        "locked_test_used": false,
+        "metrics_csv_sha256": "cde3a50e2c8e5daa0afc4a06d29e1925e825989578c4524073011246a83bdf39",
+        "operator_approved": false,
+        "prediction_count": 103,
+        "route": "B",
+        "schema_version": 1,
+        "selected_epoch": 125,
+        "status": "pass"
+      },
+      "E_SNFH_EVALUATION_COMPLETE.ok": "status=pass\nartifact_status=experimental_unvalidated\noperator_approved=false\nformal_gate_status=not_run_not_passed\n",
+      "E_SNFH_EVALUATION_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652705",
+        "operator_approved": false,
+        "route": "E_SNFH",
+        "schema_version": 1,
+        "selected_epoch": 125,
+        "single_gpu": true,
+        "started_at_utc": "2026-09-07T11:54:12.383552+00:00",
+        "status": "started"
+      },
+      "E_SNFH_EVALUATION_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+        "completed_at_utc": "2026-09-07T12:10:04.567377+00:00",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652705",
+        "locked_test_used": false,
+        "metrics_csv_sha256": "6620bc7b7540755ca8c212c8c355be21b7a7e8d2daf5e09173970b39af8b90c2",
+        "operator_approved": false,
+        "prediction_count": 103,
+        "route": "E_SNFH",
+        "schema_version": 1,
+        "selected_epoch": 125,
+        "status": "pass"
+      },
+      "F_EVALUATION_COMPLETE.ok": "status=pass\nartifact_status=experimental_unvalidated\noperator_approved=false\nformal_gate_status=not_run_not_passed\n",
+      "F_EVALUATION_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652706",
+        "operator_approved": false,
+        "route": "F",
+        "schema_version": 1,
+        "selected_epoch": 125,
+        "single_gpu": true,
+        "started_at_utc": "2026-09-07T11:54:12.404393+00:00",
+        "status": "started"
+      },
+      "F_EVALUATION_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+        "completed_at_utc": "2026-09-07T12:10:04.567384+00:00",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652706",
+        "locked_test_used": false,
+        "metrics_csv_sha256": "54ee07f5e92fa1c8967612685513a80119d89a6101a7cdd90e956c91df9921c6",
+        "operator_approved": false,
+        "prediction_count": 103,
+        "route": "F",
+        "schema_version": 1,
+        "selected_epoch": 125,
+        "status": "pass"
+      }
+    },
+    "plans": {
+      "SELECTED103_OFFICIAL_MET_EXECUTION_PLAN_20260907_R2.json": "1767372636d82e5d02bbd0e9d8ce4b982b1777a60c36c27b655c3b3b5b429c3b"
+    },
+    "logs": {
+      "logs/B_inference_3652702.log": {
+        "bytes": 81516,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "Collecting results: 100%|██████████| 103/103 [00:06<00:00, 15.71it/s]",
+          "Segmentation export complete.",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/B/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6\", \"completed_at_utc\": \"2026-09-07T12:00:25.049801+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"formal_gate_status\": \"not_run_not_passed\""
+        ]
+      },
+      "logs/B_official_met_3652702.log": {
+        "bytes": 8176,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "",
+          "[5 rows x 73 columns]",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-09-07T12:10:40.831837+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"cde3a50e2c8e5daa0afc4a06d29e1925e825989578c4524073011246a83bdf39\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"9391644cee1c617ad4fdf2624e383edb59c4e8b251fa4d02a50"
+        ]
+      },
+      "logs/E_SNFH_inference_3652705.log": {
+        "bytes": 81528,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "Collecting results: 100%|██████████| 103/103 [00:04<00:00, 25.32it/s] ",
+          "Segmentation export complete.",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/E_SNFH/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6\", \"completed_at_utc\": \"2026-09-07T12:00:20.106645+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"formal_gate_status\": \"not_run_not_pa"
+        ]
+      },
+      "logs/E_SNFH_official_met_3652705.log": {
+        "bytes": 8186,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "",
+          "[5 rows x 73 columns]",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-09-07T12:10:03.572502+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"6620bc7b7540755ca8c212c8c355be21b7a7e8d2daf5e09173970b39af8b90c2\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"737e9790c4027894c2161d4f0f79275dcd0f387264e1a449b44"
+        ]
+      },
+      "logs/F_inference_3652706.log": {
+        "bytes": 81518,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "Collecting results: 100%|██████████| 103/103 [00:04<00:00, 25.11it/s] ",
+          "Segmentation export complete.",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/F/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf\", \"completed_at_utc\": \"2026-09-07T12:00:20.106628+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"formal_gate_status\": \"not_run_not_passed\""
+        ]
+      },
+      "logs/F_official_met_3652706.log": {
+        "bytes": 8176,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "",
+          "[5 rows x 73 columns]",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-09-07T12:10:03.912173+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"54ee07f5e92fa1c8967612685513a80119d89a6101a7cdd90e956c91df9921c6\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"1f6c64178c692e48d5ca6db044d7a92b45889454577af6a63c0"
+        ]
+      },
+      "logs/s2b103m2_3652702.err": {
+        "bytes": 65,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+        ]
+      },
+      "logs/s2b103m2_3652702.out": {
+        "bytes": 1091,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "slurm/01_eval_selected_route.slurm: OK",
+          "slurm/02_compare_selected_routes.slurm: OK",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint_sha256\": \"efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6\", \"completed_at_utc\": \"2026-09-07T12:10:41.543455+00:00\", \"formal_gate_status\": \"not_run_not_passed\", \"job_id\": \"3652702\", \"locked_test_used\": false, \"metrics_csv_sha256\": \"cde3a50e2c8e5daa0afc4a06d29e1925e825989578c4524073011246a83bdf39\", \"operator_approved\": false, \"prediction_count\": 103, \"route\": \"B\", \"schema_version\": 1, \"selected_epoch\": "
+        ]
+      },
+      "logs/s2e103m2_3652705.err": {
+        "bytes": 65,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+        ]
+      },
+      "logs/s2e103m2_3652705.out": {
+        "bytes": 1096,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "slurm/01_eval_selected_route.slurm: OK",
+          "slurm/02_compare_selected_routes.slurm: OK",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint_sha256\": \"1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6\", \"completed_at_utc\": \"2026-09-07T12:10:04.567377+00:00\", \"formal_gate_status\": \"not_run_not_passed\", \"job_id\": \"3652705\", \"locked_test_used\": false, \"metrics_csv_sha256\": \"6620bc7b7540755ca8c212c8c355be21b7a7e8d2daf5e09173970b39af8b90c2\", \"operator_approved\": false, \"prediction_count\": 103, \"route\": \"E_SNFH\", \"schema_version\": 1, \"selected_epo"
+        ]
+      },
+      "logs/s2f103m2_3652706.err": {
+        "bytes": 65,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+        ]
+      },
+      "logs/s2f103m2_3652706.out": {
+        "bytes": 1091,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "slurm/01_eval_selected_route.slurm: OK",
+          "slurm/02_compare_selected_routes.slurm: OK",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint_sha256\": \"0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf\", \"completed_at_utc\": \"2026-09-07T12:10:04.567384+00:00\", \"formal_gate_status\": \"not_run_not_passed\", \"job_id\": \"3652706\", \"locked_test_used\": false, \"metrics_csv_sha256\": \"54ee07f5e92fa1c8967612685513a80119d89a6101a7cdd90e956c91df9921c6\", \"operator_approved\": false, \"prediction_count\": 103, \"route\": \"F\", \"schema_version\": 1, \"selected_epoch\": "
+        ]
+      }
+    },
+    "prediction_counts": {
+      "B": 103,
+      "E_SNFH": 103,
+      "F": 103
+    }
+  },
+  "met_r4": {
+    "evidence": {
+      "C40_RECOVERY_COMPLETE.ok": "status=pass\nartifact_status=experimental_unvalidated\noperator_approved=false\nformal_gate_status=not_run_not_passed\n",
+      "C40_RECOVERY_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82",
+        "dev_shm_free_bytes": 163760582656,
+        "dev_shm_total_bytes": 202528350208,
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "exclusive_node": false,
+        "execution_mode": "sequential_in_process",
+        "export_workers": 0,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652758",
+        "multiprocessing_queue_used": false,
+        "operator_approved": false,
+        "preprocess_workers": 0,
+        "route": "C40",
+        "schema_version": 1,
+        "selected_epoch": 50,
+        "single_gpu": true,
+        "started_at_utc": "2026-09-07T12:18:01.540768+00:00",
+        "status": "started"
+      },
+      "C40_RECOVERY_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82",
+        "completed_at_utc": "2026-09-07T12:49:21.058740+00:00",
+        "execution_mode": "sequential_in_process",
+        "export_workers": 0,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652758",
+        "locked_test_used": false,
+        "metrics_csv_sha256": "48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5",
+        "operator_approved": false,
+        "prediction_count": 103,
+        "preprocess_workers": 0,
+        "route": "C40",
+        "schema_version": 1,
+        "selected_epoch": 50,
+        "status": "pass"
+      },
+      "D_RECOVERY_COMPLETE.ok": "status=pass\nartifact_status=experimental_unvalidated\noperator_approved=false\nformal_gate_status=not_run_not_passed\n",
+      "D_RECOVERY_STARTED.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209",
+        "dev_shm_free_bytes": 202451263488,
+        "dev_shm_total_bytes": 202451263488,
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "exclusive_node": false,
+        "execution_mode": "sequential_in_process",
+        "export_workers": 0,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652759",
+        "multiprocessing_queue_used": false,
+        "operator_approved": false,
+        "preprocess_workers": 0,
+        "route": "D",
+        "schema_version": 1,
+        "selected_epoch": 50,
+        "single_gpu": true,
+        "started_at_utc": "2026-09-07T12:50:19.930529+00:00",
+        "status": "started"
+      },
+      "D_RECOVERY_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "case_count": 103,
+        "checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209",
+        "completed_at_utc": "2026-09-07T13:22:35.942322+00:00",
+        "execution_mode": "sequential_in_process",
+        "export_workers": 0,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "3652759",
+        "locked_test_used": false,
+        "metrics_csv_sha256": "7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2",
+        "operator_approved": false,
+        "prediction_count": 103,
+        "preprocess_workers": 0,
+        "route": "D",
+        "schema_version": 1,
+        "selected_epoch": 50,
+        "status": "pass"
+      },
+      "PAIRED_COMPARISON_COMPLETE.ok": "status=pass\nartifact_status=experimental_unvalidated\noperator_approved=false\nformal_gate_status=not_run_not_passed\n",
+      "PAIRED_COMPARISON_VALIDATION.json": {
+        "artifact_status": "experimental_unvalidated",
+        "bootstrap_replicates": 20000,
+        "bootstrap_seed": 20260831,
+        "case_count": 103,
+        "completed_at_utc": "2026-09-07T13:23:26.432692+00:00",
+        "formal_gate_status": "not_run_not_passed",
+        "interpretation": "exploratory because fixed103 was used for checkpoint selection and reporting",
+        "job_id": "3652760",
+        "locked_test_used": false,
+        "method_count": 5,
+        "operator_approved": false,
+        "pair_count": 10,
+        "paired_comparison_sha256": "172bebbd17966796b55be1f96ddf2f46ec2e26af267beb982d26bdc4e254c386",
+        "routes": {
+          "B": {
+            "checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+            "metrics_csv_sha256": "cde3a50e2c8e5daa0afc4a06d29e1925e825989578c4524073011246a83bdf39",
+            "selected_epoch": 125,
+            "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r2"
+          },
+          "C40": {
+            "checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82",
+            "metrics_csv_sha256": "48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5",
+            "selected_epoch": 50,
+            "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r4"
+          },
+          "D": {
+            "checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209",
+            "metrics_csv_sha256": "7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2",
+            "selected_epoch": 50,
+            "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r4"
+          },
+          "E_SNFH": {
+            "checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+            "metrics_csv_sha256": "6620bc7b7540755ca8c212c8c355be21b7a7e8d2daf5e09173970b39af8b90c2",
+            "selected_epoch": 125,
+            "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r2"
+          },
+          "F": {
+            "checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+            "metrics_csv_sha256": "54ee07f5e92fa1c8967612685513a80119d89a6101a7cdd90e956c91df9921c6",
+            "selected_epoch": 125,
+            "source_attempt": "s2_met_aug_btof_selected103_official_met_20260907_r2"
+          }
+        },
+        "schema_version": 1,
+        "status": "pass"
+      }
+    },
+    "plans": {
+      "SELECTED103_OFFICIAL_MET_RECOVERY_PLAN_20260907_R4.json": "b733d54fc32391143baf1c3fde30f8004b1d507878d7b05be65dbc3112a46513"
+    },
+    "logs": {
+      "logs/C40_inference_3652758.log": {
+        "bytes": 63717,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "100%|██████████| 8/8 [00:01<00:00,  5.01it/s]",
+          "100%|██████████| 8/8 [00:01<00:00,  4.60it/s]",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/C40/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82\", \"completed_at_utc\": \"2026-09-07T12:39:51.930757+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"execution_mode\": \"sequential_in_process"
+        ]
+      },
+      "logs/C40_official_met_3652758.log": {
+        "bytes": 8180,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "",
+          "[5 rows x 73 columns]",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-09-07T12:49:19.629978+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"18ea60282b68ae1fc185e4efeb0733e1d3e9ecafe86976d217d"
+        ]
+      },
+      "logs/D_inference_3652759.log": {
+        "bytes": 63713,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "100%|██████████| 8/8 [00:01<00:00,  5.21it/s]",
+          "100%|██████████| 8/8 [00:01<00:00,  5.27it/s]",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/D/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209\", \"completed_at_utc\": \"2026-09-07T13:12:37.838099+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"execution_mode\": \"sequential_in_process\","
+        ]
+      },
+      "logs/D_official_met_3652759.log": {
+        "bytes": 8176,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "",
+          "[5 rows x 73 columns]",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-09-07T13:22:35.029493+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"b288045148ca993ec0ae5cafd917320bcc15bf9a9fcc54fdad1"
+        ]
+      },
+      "logs/s2c103m4_3652758.err": {
+        "bytes": 65,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+        ]
+      },
+      "logs/s2c103m4_3652758.out": {
+        "bytes": 1094,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "slurm/01_eval_recovery_route.slurm: OK",
+          "slurm/02_compare_recovered_routes.slurm: OK",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint_sha256\": \"67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82\", \"completed_at_utc\": \"2026-09-07T12:49:21.058740+00:00\", \"execution_mode\": \"sequential_in_process\", \"export_workers\": 0, \"formal_gate_status\": \"not_run_not_passed\", \"job_id\": \"3652758\", \"locked_test_used\": false, \"metrics_csv_sha256\": \"48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5\", \"operator_approved\": false, \"prediction_co"
+        ]
+      },
+      "logs/s2d103m4_3652759.err": {
+        "bytes": 65,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+        ]
+      },
+      "logs/s2d103m4_3652759.out": {
+        "bytes": 1092,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "slurm/01_eval_recovery_route.slurm: OK",
+          "slurm/02_compare_recovered_routes.slurm: OK",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint_sha256\": \"c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209\", \"completed_at_utc\": \"2026-09-07T13:22:35.942322+00:00\", \"execution_mode\": \"sequential_in_process\", \"export_workers\": 0, \"formal_gate_status\": \"not_run_not_passed\", \"job_id\": \"3652759\", \"locked_test_used\": false, \"metrics_csv_sha256\": \"7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2\", \"operator_approved\": false, \"prediction_co"
+        ]
+      },
+      "logs/s2x103p4_3652760.err": {
+        "bytes": 65,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+        ]
+      },
+      "logs/s2x103p4_3652760.out": {
+        "bytes": 2568,
+        "errors": [],
+        "latest_epoch": [],
+        "tail": [
+          "slurm/02_compare_recovered_routes.slurm: OK",
+          "{\"case_count\": 103, \"methods\": [\"B\", \"C40\", \"D\", \"E_SNFH\", \"F\"], \"status\": \"pass\"}",
+          "{\"artifact_status\": \"experimental_unvalidated\", \"bootstrap_replicates\": 20000, \"bootstrap_seed\": 20260831, \"case_count\": 103, \"completed_at_utc\": \"2026-09-07T13:23:26.432692+00:00\", \"formal_gate_status\": \"not_run_not_passed\", \"interpretation\": \"exploratory because fixed103 was used for checkpoint selection and reporting\", \"job_id\": \"3652760\", \"locked_test_used\": false, \"method_count\": 5, \"operator_approved\": false, \"pair_count\": 10, \"paired_comparison_sha256\": \"172bebbd17966796b55be1f96ddf2f46ec"
+        ]
+      }
+    },
+    "prediction_counts": {
+      "C40": 103,
+      "D": 103
+    }
+  }
+}

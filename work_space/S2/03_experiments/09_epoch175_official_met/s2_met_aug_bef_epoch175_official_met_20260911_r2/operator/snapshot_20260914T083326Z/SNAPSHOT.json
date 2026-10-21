@@ -1,0 +1,247 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "complete",
+  "remote_utc": "2026-09-14T08:23:02.701277+00:00",
+  "hostname": "login1",
+  "job_id": "3679404",
+  "sacct": "3679404|s2x175cr2|COMPLETED|0:0|billing=4,cpu=4,mem=32G,node=1|node230\n3679404.batch|batch|COMPLETED|0:0|cpu=4,mem=32G,node=1|node230\n",
+  "squeue": "",
+  "scontrol": "completed job not in scontrol cache",
+  "disk_public": {
+    "total": 272678883688448,
+    "used": 240347009515520,
+    "free": 32331874172928
+  },
+  "evidence": {
+    "B_CPU_VALIDATION.json": {
+      "allowed_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "artifact_status": "experimental_unvalidated",
+      "baseline_checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+      "cases_with_label4": 11,
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+      "formal_gate_status": "not_run_not_passed",
+      "geometry_mismatch_count": 0,
+      "hostname": "b146",
+      "invalid_label_count": 0,
+      "job_id": "3679404",
+      "nonfinite_count": 0,
+      "operator_approved": false,
+      "prediction_count": 103,
+      "remote_utc": "2026-09-11T08:12:15.886145+00:00",
+      "selected_epoch": 175,
+      "status": "pass"
+    },
+    "CPU_LAUNCH.json": {
+      "artifact_status": "experimental_unvalidated",
+      "canonical_job_id": "3679404",
+      "command": [
+        "sbatch",
+        "--hold",
+        "--parsable",
+        "--job-name=s2x175cr2",
+        "slurm/cpu_recovery.slurm"
+      ],
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "plan_sha256": "4cd81d9b3cb3b5876f4db83825061fc23549cdd3fffdedc980544b0cec705511",
+      "remote_utc": "2026-09-11T08:09:15.424655+00:00",
+      "status": "submitted_held"
+    },
+    "CPU_RECOVERY_COMPLETE.ok": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "operator_approved": false,
+      "original_jobs_remain_failed": true,
+      "status": "pass"
+    },
+    "CPU_RECOVERY_VALIDATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "bootstrap": {
+        "replicates": 20000,
+        "seed": 20260831
+      },
+      "formal_gate_status": "not_run_not_passed",
+      "gpu_jobs": 0,
+      "hostname": "b146",
+      "input_reference_count": 515,
+      "job_id": "3679404",
+      "method_count": 3,
+      "metric_count": 72,
+      "operator_approved": false,
+      "original_failures_preserved": true,
+      "original_jobs_remain_failed": true,
+      "pair_count": 6,
+      "paired_metric_records": 432,
+      "prediction_count": 309,
+      "remote_utc": "2026-09-11T08:18:01.915789+00:00",
+      "status": "pass"
+    },
+    "CPU_RELEASED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "canonical_job_id": "3679404",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "remote_utc": "2026-09-11T08:09:15.541707+00:00",
+      "status": "released"
+    },
+    "CPU_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "plan_sha256": "4cd81d9b3cb3b5876f4db83825061fc23549cdd3fffdedc980544b0cec705511",
+      "remote_utc": "2026-09-11T08:09:15.330209+00:00",
+      "status": "reserved"
+    },
+    "CPU_STARTED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "gpu_jobs": 0,
+      "hostname": "b146",
+      "job_id": "3679404",
+      "operation": "read-only original outputs, corrected 0-4 ontology, immutable CPU-only recovery",
+      "operator_approved": false,
+      "plan_sha256": "4cd81d9b3cb3b5876f4db83825061fc23549cdd3fffdedc980544b0cec705511",
+      "remote_utc": "2026-09-11T08:08:45.222469+00:00",
+      "status": "started"
+    },
+    "E_SNFH_CPU_VALIDATION.json": {
+      "allowed_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "artifact_status": "experimental_unvalidated",
+      "baseline_checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+      "cases_with_label4": 11,
+      "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+      "formal_gate_status": "not_run_not_passed",
+      "geometry_mismatch_count": 0,
+      "hostname": "b146",
+      "invalid_label_count": 0,
+      "job_id": "3679404",
+      "nonfinite_count": 0,
+      "operator_approved": false,
+      "prediction_count": 103,
+      "remote_utc": "2026-09-11T08:15:01.113253+00:00",
+      "selected_epoch": 175,
+      "status": "pass"
+    },
+    "F_CPU_VALIDATION.json": {
+      "allowed_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "artifact_status": "experimental_unvalidated",
+      "baseline_checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+      "cases_with_label4": 11,
+      "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+      "formal_gate_status": "not_run_not_passed",
+      "geometry_mismatch_count": 0,
+      "hostname": "b146",
+      "invalid_label_count": 0,
+      "job_id": "3679404",
+      "nonfinite_count": 0,
+      "operator_approved": false,
+      "prediction_count": 103,
+      "remote_utc": "2026-09-11T08:17:46.953410+00:00",
+      "selected_epoch": 175,
+      "status": "pass"
+    },
+    "LABEL_ONTOLOGY_TESTS.json": {
+      "allowed": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "b146",
+      "job_id": "3679404",
+      "operator_approved": false,
+      "rejects": [
+        5,
+        "NaN",
+        1.5
+      ],
+      "remote_utc": "2026-09-11T08:08:45.224381+00:00",
+      "status": "pass"
+    },
+    "REMOTE_STATIC_PREFLIGHT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "cpu_jobs": 1,
+      "formal_gate_status": "not_run_not_passed",
+      "gpu_jobs": 0,
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "plan_sha256": "4cd81d9b3cb3b5876f4db83825061fc23549cdd3fffdedc980544b0cec705511",
+      "remote_utc": "2026-09-11T08:09:15.185926+00:00",
+      "source_failed_jobs_preserved": {
+        "B": "3671905",
+        "E_SNFH": "3671906",
+        "F": "3671908",
+        "PAIRED": "3671909"
+      },
+      "source_failure_sha256": {
+        "B": "a396a1fd8e453508ba4dd335f42b85e52415fc2e48e463455bd9b2a539f75cd5",
+        "E_SNFH": "86b1bb95be29b147069fe8787a281ae8f95fefdf4a031e27ab3aae9b540727ef",
+        "F": "70022846f7e830893565531957bc81d548d72630b0b2acee8b370608ee3b4611"
+      },
+      "status": "pass",
+      "validation_scope": "lightweight metadata, hashes and file counts; full voxel audit scheduled on CPU"
+    }
+  },
+  "logs": {
+    "s2x175cr2_3679404.err": {
+      "size": 65,
+      "sha256": "956c70518ba64f566516d055a51cb9dc8fdc8942ab6340a3660ecd4f57fe8b09",
+      "tail": [
+        "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+      ],
+      "errors": []
+    },
+    "s2x175cr2_3679404.out": {
+      "size": 388,
+      "sha256": "5ef44b8cb7863da4657c8d56d953d978dc7bb8acdec505a24040109b8d8a1d31",
+      "tail": [
+        "INPUT_REFERENCE_515_PASS",
+        "B_CPU_103_PASS",
+        "E_SNFH_CPU_103_PASS",
+        "F_CPU_103_PASS",
+        "{\"case_count\": 103, \"methods\": [\"B175\", \"E_SNFH175\", \"F175\"], \"status\": \"pass\"}",
+        "{\"case_count\": 103, \"methods\": [\"B175\", \"B125\"], \"status\": \"pass\"}",
+        "{\"case_count\": 103, \"methods\": [\"E_SNFH175\", \"E_SNFH125\"], \"status\": \"pass\"}",
+        "{\"case_count\": 103, \"methods\": [\"F175\", \"F125\"], \"status\": \"pass\"}",
+        "CPU_RECOVERY_COMPLETE"
+      ],
+      "errors": []
+    }
+  },
+  "failed_steps": [],
+  "pull_allowed": true,
+  "local_started_utc": "2026-09-14T08:33:26.893854+00:00",
+  "local_completed_utc": "2026-09-14T08:33:48.328571+00:00",
+  "vpn_closed": true,
+  "preexisting_vpn_left_unchanged": false
+}

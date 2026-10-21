@@ -1,0 +1,128 @@
+{
+  "acceptance": [
+    "source plan/runtime/failure hashes",
+    "six frozen checkpoint SHA175 and125",
+    "515 shared input/reference SHA",
+    "309 prediction hashes, finite voxels, legal dataset labels and reference geometry",
+    "six CSV103 cases/72metrics, existing official MET pass/complete, baseline epoch175 source audits",
+    "six pairs20000 bootstrap seed20260831, original means, finite n, paired means, CI, W/T/L, p and FP/FN"
+  ],
+  "artifact_status": "experimental_unvalidated",
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 20260831
+  },
+  "comparator_sha256": "9ff245240c438beb998652ee59f130fc8c012be29ac3b689c862d04135df6e12",
+  "comparisons": {
+    "epoch175_cross_route_pairs": 3,
+    "metric_count": 72,
+    "per_metric_complete_case": true,
+    "report": [
+      "mean",
+      "wins/ties/losses",
+      "95%CI",
+      "unadjusted_bootstrap_p",
+      "FP",
+      "FN",
+      "small_and_large_lesion_F1"
+    ],
+    "same_route_175_vs125_pairs": 3,
+    "total_pairs": 6
+  },
+  "cpu_job": {
+    "cpus": 4,
+    "gpu_count": 0,
+    "memory_gb": 32,
+    "name": "s2x175cr2",
+    "partition": "cpu_192G",
+    "time_limit": "02:00:00"
+  },
+  "created_local_utc": "2026-09-11T08:18:58.271492+00:00",
+  "experiment_id": "s2_met_aug_bef_epoch175_official_met_20260911_r2",
+  "failed_jobs": {
+    "B": "3671905",
+    "E_SNFH": "3671906",
+    "F": "3671908",
+    "PAIRED": "3671909"
+  },
+  "failure_correction": "Derive legal labels0-4 from frozen dataset.json; fix omitted legal label4 in new recovery only.",
+  "formal_gate_status": "not_run_not_passed",
+  "inference": false,
+  "interpretation": {
+    "exploratory": true,
+    "extension_not_equal_budget_to125": true,
+    "formal_superiority_allowed": false,
+    "input_is_not_G1_synthetic": true,
+    "original_five_route_equal_budget_comparison_unchanged": true,
+    "same103_used_for_checkpoint_selection_and_reporting": true
+  },
+  "launch_policy": "one exclusive reservation; submit held, write canonical job id, release own job; never retry or overwrite",
+  "light_pull_excludes": [
+    "checkpoint",
+    "NIfTI",
+    "events JSONL"
+  ],
+  "operator_approved": false,
+  "original_failures_preserved": true,
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260911_r2",
+  "rerun_official_evaluator": false,
+  "routes": {
+    "B": {
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+      "failed_job_id": "3671905",
+      "metrics175_sha256": "4a806aee8fd879e1abaac2bd925638b9d9822aca1fcf91f358ab0c23237d0e68",
+      "source_failure_json": {
+        "artifact_status": "experimental_unvalidated",
+        "error": "prediction labels: BraTS-MET-01268-002.nii.gz",
+        "error_type": "RuntimeError",
+        "formal_gate_status": "not_run_not_passed",
+        "hostname": "gpu19",
+        "job_id": "3671905",
+        "operator_approved": false,
+        "recorded_at_utc": "2026-09-10T15:06:41.885411+00:00",
+        "status": "failed"
+      },
+      "summary175_sha256": "f85941978d19e3cb70e73f5ee98a4f353d9e5a9d1729ab0af334f20512c069d0"
+    },
+    "E_SNFH": {
+      "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+      "failed_job_id": "3671906",
+      "metrics175_sha256": "1bb2dcc5a063105c15fc75f0cf8b635ac0d9f953775adbfe2d933dec2873dd61",
+      "source_failure_json": {
+        "artifact_status": "experimental_unvalidated",
+        "error": "prediction labels: BraTS-MET-01268-002.nii.gz",
+        "error_type": "RuntimeError",
+        "formal_gate_status": "not_run_not_passed",
+        "hostname": "gpu19",
+        "job_id": "3671906",
+        "operator_approved": false,
+        "recorded_at_utc": "2026-09-10T15:38:31.474219+00:00",
+        "status": "failed"
+      },
+      "summary175_sha256": "6daf34f3454dff7d4fa5be8ad75d349af95cb499b76c6e541795f56aa99ce2f2"
+    },
+    "F": {
+      "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+      "failed_job_id": "3671908",
+      "metrics175_sha256": "55bd220495c19bc6881e9679733832410d6f5989ab837354563001452e9781b1",
+      "source_failure_json": {
+        "artifact_status": "experimental_unvalidated",
+        "error": "prediction labels: BraTS-MET-01268-002.nii.gz",
+        "error_type": "RuntimeError",
+        "formal_gate_status": "not_run_not_passed",
+        "hostname": "gpu19",
+        "job_id": "3671908",
+        "operator_approved": false,
+        "recorded_at_utc": "2026-09-10T16:10:26.075032+00:00",
+        "status": "failed"
+      },
+      "summary175_sha256": "408279ad4c657447f86010b821c2175ad489779c78c83a2f341b22b27c0395d3"
+    }
+  },
+  "source_outputs_read_only": true,
+  "source_plan_name": "EPOCH175_OFFICIAL_MET_EXECUTION_PLAN_20260910_R1.json",
+  "source_plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+  "source_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260910_r1",
+  "train": false,
+  "user_authorization": "New CPU-only recovery; report original125 and175 values side by side, not just differences."
+}

@@ -1,0 +1,379 @@
+{
+  "remote_utc": "2026-09-11T02:58:02.723416+00:00",
+  "hostname": "login1",
+  "evidence": {
+    "B_MODEL_SNAPSHOT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+      "cpu_network_strict_load": true,
+      "epoch": 175,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "recorded_at_utc": "2026-09-10T13:26:19.929631+00:00",
+      "source_copy_not_hardlink": true,
+      "status": "pass",
+      "trainer": "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune"
+    },
+    "E_SNFH_MODEL_SNAPSHOT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+      "cpu_network_strict_load": true,
+      "epoch": 175,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "recorded_at_utc": "2026-09-10T13:26:27.999027+00:00",
+      "source_copy_not_hardlink": true,
+      "status": "pass",
+      "trainer": "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune"
+    },
+    "F_MODEL_SNAPSHOT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+      "cpu_network_strict_load": true,
+      "epoch": 175,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "recorded_at_utc": "2026-09-10T13:26:36.469191+00:00",
+      "source_copy_not_hardlink": true,
+      "status": "pass",
+      "trainer": "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune"
+    },
+    "REMOTE_STATIC_PREFLIGHT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "case_count": 103,
+      "deep_validated": 521,
+      "evaluation_versions": {
+        "BraTS-evaluation": "0.0.8",
+        "numpy": "1.26.4",
+        "panoptica": "2.1.0"
+      },
+      "exclusive_node": false,
+      "execution_mode": "sequential_in_process",
+      "export_workers": 0,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "input_and_reference_sha_checked": 515,
+      "job_id": null,
+      "locked_test_used": false,
+      "models": {
+        "B": {
+          "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+          "cpu_network_strict_load": true,
+          "epoch": 175,
+          "source_copy_not_hardlink": true,
+          "trainer": "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune"
+        },
+        "E_SNFH": {
+          "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+          "cpu_network_strict_load": true,
+          "epoch": 175,
+          "source_copy_not_hardlink": true,
+          "trainer": "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune"
+        },
+        "F": {
+          "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+          "cpu_network_strict_load": true,
+          "epoch": 175,
+          "source_copy_not_hardlink": true,
+          "trainer": "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune"
+        }
+      },
+      "multiprocessing_queue_used": false,
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "preprocess_workers": 0,
+      "recorded_at_utc": "2026-09-10T13:26:36.772646+00:00",
+      "single_gpu": true,
+      "source_job_states": {
+        "3652699": [
+          "COMPLETED",
+          "0:0"
+        ],
+        "3652700": [
+          "COMPLETED",
+          "0:0"
+        ],
+        "3652701": [
+          "COMPLETED",
+          "0:0"
+        ],
+        "3652702": [
+          "COMPLETED",
+          "0:0"
+        ],
+        "3652705": [
+          "COMPLETED",
+          "0:0"
+        ],
+        "3652706": [
+          "COMPLETED",
+          "0:0"
+        ]
+      },
+      "status": "pass"
+    },
+    "PIPELINE_SUBMISSION_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.504462+00:00",
+      "status": "reserved"
+    },
+    "B_EVALUATION_SUBMISSION_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "job_name": "s2b175m1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.508671+00:00",
+      "status": "reserved"
+    },
+    "B_EVALUATION_LAUNCH.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": "3671905",
+      "job_name": "s2b175m1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.634501+00:00",
+      "status": "submitted"
+    },
+    "E_SNFH_EVALUATION_SUBMISSION_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "job_name": "s2e175m1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.639542+00:00",
+      "status": "reserved"
+    },
+    "E_SNFH_EVALUATION_LAUNCH.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": "3671906",
+      "job_name": "s2e175m1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.764178+00:00",
+      "status": "submitted"
+    },
+    "F_EVALUATION_SUBMISSION_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "job_name": "s2f175m1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.774670+00:00",
+      "status": "reserved"
+    },
+    "F_EVALUATION_LAUNCH.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": "3671908",
+      "job_name": "s2f175m1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.897860+00:00",
+      "status": "submitted"
+    },
+    "PAIRED_COMPARISON_SUBMISSION_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:3671905:3671906:3671908",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "job_name": "s2x175p1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:38.906902+00:00",
+      "status": "reserved"
+    },
+    "PAIRED_COMPARISON_LAUNCH.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:3671905:3671906:3671908",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": "3671909",
+      "job_name": "s2x175p1",
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:39.023797+00:00",
+      "status": "submitted"
+    },
+    "LAUNCH_SUMMARY.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "job_names": {
+        "B": "s2b175m1",
+        "E_SNFH": "s2e175m1",
+        "F": "s2f175m1",
+        "PAIRED": "s2x175p1"
+      },
+      "jobs": {
+        "B": "3671905",
+        "E_SNFH": "3671906",
+        "F": "3671908",
+        "PAIRED": "3671909"
+      },
+      "operator_approved": false,
+      "paired_dependency": "afterok:3671905:3671906:3671908",
+      "parallel_gpu_routes": true,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:39.028285+00:00",
+      "single_gpu_per_route": true,
+      "status": "submitted"
+    },
+    "LAUNCH_RELEASED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "jobs": {
+        "B": "3671905",
+        "E_SNFH": "3671906",
+        "F": "3671908",
+        "PAIRED": "3671909"
+      },
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "recorded_at_utc": "2026-09-10T13:26:39.113238+00:00",
+      "status": "released"
+    },
+    "B_EVALUATION_STARTED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "case_count": 103,
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+      "device_name": "NVIDIA A100-PCIE-40GB",
+      "exclusive_node": false,
+      "execution_mode": "sequential_in_process",
+      "export_workers": 0,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "gpu19",
+      "job_id": "3671905",
+      "multiprocessing_queue_used": false,
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "preprocess_workers": 0,
+      "recorded_at_utc": "2026-09-10T14:34:23.885596+00:00",
+      "route": "B",
+      "selected_epoch": 175,
+      "single_gpu": true,
+      "status": "started"
+    },
+    "B_EVALUATION_FAILED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "error": "prediction labels: BraTS-MET-01268-002.nii.gz",
+      "error_type": "RuntimeError",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "gpu19",
+      "job_id": "3671905",
+      "operator_approved": false,
+      "recorded_at_utc": "2026-09-10T15:06:41.885411+00:00",
+      "status": "failed"
+    },
+    "E_SNFH_EVALUATION_STARTED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "case_count": 103,
+      "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+      "device_name": "NVIDIA A100-PCIE-40GB",
+      "exclusive_node": false,
+      "execution_mode": "sequential_in_process",
+      "export_workers": 0,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "gpu19",
+      "job_id": "3671906",
+      "multiprocessing_queue_used": false,
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "preprocess_workers": 0,
+      "recorded_at_utc": "2026-09-10T15:07:22.824255+00:00",
+      "route": "E_SNFH",
+      "selected_epoch": 175,
+      "single_gpu": true,
+      "status": "started"
+    },
+    "E_SNFH_EVALUATION_FAILED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "error": "prediction labels: BraTS-MET-01268-002.nii.gz",
+      "error_type": "RuntimeError",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "gpu19",
+      "job_id": "3671906",
+      "operator_approved": false,
+      "recorded_at_utc": "2026-09-10T15:38:31.474219+00:00",
+      "status": "failed"
+    },
+    "F_EVALUATION_STARTED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "case_count": 103,
+      "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+      "device_name": "NVIDIA A100-PCIE-40GB",
+      "exclusive_node": false,
+      "execution_mode": "sequential_in_process",
+      "export_workers": 0,
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "gpu19",
+      "job_id": "3671908",
+      "multiprocessing_queue_used": false,
+      "operator_approved": false,
+      "plan_sha256": "11e5dd46ceeaceb57594976a9e271a99e590a1cf692d8f369a47a969852b645e",
+      "preprocess_workers": 0,
+      "recorded_at_utc": "2026-09-10T15:39:09.167246+00:00",
+      "route": "F",
+      "selected_epoch": 175,
+      "single_gpu": true,
+      "status": "started"
+    },
+    "F_EVALUATION_FAILED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "error": "prediction labels: BraTS-MET-01268-002.nii.gz",
+      "error_type": "RuntimeError",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "gpu19",
+      "job_id": "3671908",
+      "operator_approved": false,
+      "recorded_at_utc": "2026-09-10T16:10:26.075032+00:00",
+      "status": "failed"
+    }
+  },
+  "processes": [],
+  "input_manifest_exists": true,
+  "model_snapshots": [
+    "model_snapshots/B/fold_0/checkpoint_final.pth",
+    "model_snapshots/E_SNFH/fold_0/checkpoint_final.pth",
+    "model_snapshots/F/fold_0/checkpoint_final.pth"
+  ],
+  "sacct": "3671905|s2b175m1|FAILED|1:0\n3671906|s2e175m1|FAILED|1:0\n3671908|s2f175m1|FAILED|1:0\n3671909|s2x175p1|CANCELLED|0:0\n",
+  "squeue": "",
+  "local_utc": "2026-09-11T03:08:32.550038+00:00",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "vpn_closed": true
+}

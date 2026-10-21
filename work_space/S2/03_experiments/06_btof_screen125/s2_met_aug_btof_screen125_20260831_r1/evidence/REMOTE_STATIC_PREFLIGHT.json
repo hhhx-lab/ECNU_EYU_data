@@ -1,0 +1,36 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "base_route_config_sha256": "c35750fb7b388d1337ed6586a2d5af9ede5e046359ef48b9de40c55838401817",
+  "code_sha256": {
+    "01_train_screen125_route.slurm": "77cc4f564f165d34c4d86159acf5f5acdef361243cbe86cb778365e296b1bc60",
+    "launch_five_screening_jobs.py": "ef0e5ca399be045be2f944ef0a19b7fadb630656ca442d33a39734d500ce20a5",
+    "met_aug_screening.py": "5a06f374e05d3c08dea7f406a2909c59b94ef1576fb21ae5533368f9225bf7f9",
+    "nnUNetTrainerBraTS2026RCMetAugScreen125FocalCompletionFineTune.py": "10a7c4869ae77079f28e9715a50b639af47e3517657a563bb5416cd9d0f77679",
+    "prepare_screening_configs.py": "9ae9ca0f5821547ad15900ff4bbc1197c51ba7d877fe9d33dc677c3110d24657",
+    "run_remote_static_preflight.py": "466f8a8dd4446c6649a7f8c08655778b4675a9a7851c758a86fe74eea754fdb0"
+  },
+  "config_sha256": {
+    "B": "e24c6d030bba515591a2cdda6161b0ef5b23a946d6d3cb023656638073af8b7c",
+    "C40": "31a088518e8caf49d57da8adde5c1a43d31362d1bb006955a949e50f3590b274",
+    "D": "9054bb231eb24640d206a95eff71ed47ae630052cfb60d8a9e956658334d1618",
+    "E_SNFH": "dcfe6b16e8076e56e99e33aac2ebac57ad7c71810936948764545839e0a754b8",
+    "F": "de258a3e5258425ca9bf98011619dff698edbe5ddb05eefd6361390cc82a4d99"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "free_public_bytes": 28482043117568,
+  "operator_approved": false,
+  "original_e_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+  "plan_sha256": "50578b0146f2c79a99216026b0fcaa02727a75ee4a3f4a9b492fc8502c633ca2",
+  "route_ids": [
+    "MET-AUG-B",
+    "MET-AUG-C40",
+    "MET-AUG-D",
+    "MET-AUG-E-SNFH",
+    "MET-AUG-F"
+  ],
+  "status": "pass",
+  "timestamp_utc": "2026-08-31T07:31:06.922877Z",
+  "train_count": 1035,
+  "trainer": "nnUNetTrainerBraTS2026RCMetAugScreen125FocalCompletionFineTune",
+  "validation_count": 103
+}

@@ -1,0 +1,166 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "schema_version": 1,
+  "experiment_id": "s2_met_aug_bef_epoch175_official_met_20260910_r1",
+  "created_at_utc": "2026-09-10T13:32:29.048820+00:00",
+  "purpose": "Evaluate frozen B/E_SNFH/F epoch175 on fixed103 authentic T2W and compare each against its frozen epoch125 official MET result.",
+  "training_allowed": false,
+  "epoch225_allowed": false,
+  "source_jobs": [
+    "3652699",
+    "3652702",
+    "3652700",
+    "3652705",
+    "3652701",
+    "3652706"
+  ],
+  "routes": {
+    "B": {
+      "checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/B/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+      "checkpoint_epoch": 175,
+      "ema_fg_dice": 0.7616883194341121,
+      "training_validation": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/evidence/B_EXTENSION_TRAINING_VALIDATION.json",
+      "training_validation_sha256": "b38a7691d23beb62525ac3690c690bfa9b3b9f2b844c1f4cd3252b1f2165da9e",
+      "training_complete": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/evidence/B_EXTENSION_TRAINING_COMPLETE.ok",
+      "baseline_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/B",
+      "baseline_checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+      "baseline_metrics_csv": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/cohort/fixed103/models/B/evaluation/leaderboard_metrics.csv",
+      "baseline_metrics_sha256": "cde3a50e2c8e5daa0afc4a06d29e1925e825989578c4524073011246a83bdf39",
+      "baseline_validation": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/evidence/B_EVALUATION_VALIDATION.json",
+      "baseline_complete": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/evidence/B_EVALUATION_COMPLETE.ok"
+    },
+    "E_SNFH": {
+      "checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/E_SNFH/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+      "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+      "checkpoint_epoch": 175,
+      "ema_fg_dice": 0.7619467845849863,
+      "training_validation": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/evidence/E_SNFH_EXTENSION_TRAINING_VALIDATION.json",
+      "training_validation_sha256": "4be7f1b2601060923f4f3fef8eaab7972b5ce80c41bc22e30a60557746168f22",
+      "training_complete": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/evidence/E_SNFH_EXTENSION_TRAINING_COMPLETE.ok",
+      "baseline_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/E_SNFH",
+      "baseline_checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+      "baseline_metrics_csv": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/cohort/fixed103/models/E_SNFH/evaluation/leaderboard_metrics.csv",
+      "baseline_metrics_sha256": "6620bc7b7540755ca8c212c8c355be21b7a7e8d2daf5e09173970b39af8b90c2",
+      "baseline_validation": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/evidence/E_SNFH_EVALUATION_VALIDATION.json",
+      "baseline_complete": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/evidence/E_SNFH_EVALUATION_COMPLETE.ok"
+    },
+    "F": {
+      "checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/results/F/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+      "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+      "checkpoint_epoch": 175,
+      "ema_fg_dice": 0.7560746800284527,
+      "training_validation": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/evidence/F_EXTENSION_TRAINING_VALIDATION.json",
+      "training_validation_sha256": "527fc4f47ff526016b0a18fb3848e04206aee7a612a1d6cdacf24907a6d0f57e",
+      "training_complete": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/evidence/F_EXTENSION_TRAINING_COMPLETE.ok",
+      "baseline_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/model_snapshots/F",
+      "baseline_checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+      "baseline_metrics_csv": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/cohort/fixed103/models/F/evaluation/leaderboard_metrics.csv",
+      "baseline_metrics_sha256": "54ee07f5e92fa1c8967612685513a80119d89a6101a7cdd90e956c91df9921c6",
+      "baseline_validation": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/evidence/F_EVALUATION_VALIDATION.json",
+      "baseline_complete": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/evidence/F_EVALUATION_COMPLETE.ok"
+    }
+  },
+  "upstream_plans": [
+    {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4/EXTEND175_EXECUTION_PLAN_20260907_R4.json",
+      "sha256": "cdc19fe9b3d4d3373822c0aa0a80f594f8718d284dc12424be68114314f963ae"
+    },
+    {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/SELECTED103_OFFICIAL_MET_EXECUTION_PLAN_20260907_R2.json",
+      "sha256": "1767372636d82e5d02bbd0e9d8ce4b982b1777a60c36c27b655c3b3b5b429c3b"
+    }
+  ],
+  "case_contract": {
+    "count": 103,
+    "source_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/cohort/fixed103",
+    "input_route": "authentic_real_T2W",
+    "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "audit_sha256": {
+      "input_audit.json": "4c3e998a84e04a2d050bd5421c0c1069954b85ce0d39ee5f86ad0c018cac59ba",
+      "input_audit.csv": "7335aee3869fdc10fe776b62465a09600eb0f510f71f397102bbe45d6a63446e"
+    },
+    "same_inputs_labels_and_split_as125": true,
+    "locked_test_used": false
+  },
+  "inference": {
+    "single_gpu": true,
+    "gpu_type": "A100",
+    "exclusive_node": false,
+    "execution_mode": "sequential_in_process",
+    "preprocess_workers": 0,
+    "export_workers": 0,
+    "multiprocessing_queue_used": false,
+    "tile_step_size": 0.5,
+    "mirroring": true,
+    "gaussian": true,
+    "fold": 0
+  },
+  "launch": {
+    "parallel_routes": true,
+    "gpu_jobs": 3,
+    "dependent_cpu_jobs": 1,
+    "no_resubmission": true,
+    "submit_held_then_audit_then_release": true
+  },
+  "job_names": {
+    "B": "s2b175m1",
+    "E_SNFH": "s2e175m1",
+    "F": "s2f175m1",
+    "PAIRED": "s2x175p1"
+  },
+  "official_met": {
+    "config": "mets",
+    "BraTS_evaluation": "0.0.8",
+    "panoptica": "2.1.0",
+    "numpy": "1.26.4",
+    "volume_threshold": 27,
+    "overlap_threshold": 0.2
+  },
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 20260831
+  },
+  "comparisons": {
+    "epoch175_cross_route_pairs": 3,
+    "same_route_175_vs125_pairs": 3,
+    "total_pairs": 6,
+    "metric_count": 72,
+    "per_metric_complete_case": true,
+    "report": [
+      "mean",
+      "wins/ties/losses",
+      "95%CI",
+      "unadjusted_bootstrap_p",
+      "FP",
+      "FN",
+      "small_and_large_lesion_F1"
+    ]
+  },
+  "reused_runtime_sha256": {
+    "frozen_s2_inference.py": "f6159023ecc8c5a584412150d0002001fff1d86d72ac87b4ab5914c54a86b272",
+    "compare_paired_met.py": "4ef881cc9ecaec7bb9b8b06cc3cf59b98ada188c7c8eb163e7796c9adc732aab",
+    "run_official_met_eval.sh": "3401ef6a0513a5c08cf9ee65674d5e4b1cd4f96112ece426f565e4d23d493bb5"
+  },
+  "runtime_deltas": [
+    "inference allowlist adds exact Screen175 trainer only; network and prediction settings unchanged",
+    "paired method count allows explicit2 or3; statistic, seed, metric definitions unchanged"
+  ],
+  "interpretation": {
+    "exploratory": true,
+    "same103_used_for_checkpoint_selection_and_reporting": true,
+    "formal_superiority_allowed": false,
+    "original_five_route_equal_budget_comparison_unchanged": true,
+    "extension_not_equal_budget_to125": true,
+    "input_is_not_G1_synthetic": true
+  },
+  "evidence_policy": {
+    "preserve_old_attempts": true,
+    "fresh_output_root": true,
+    "pull_checkpoint": false,
+    "pull_nifti": false,
+    "pull_events_jsonl": false
+  }
+}

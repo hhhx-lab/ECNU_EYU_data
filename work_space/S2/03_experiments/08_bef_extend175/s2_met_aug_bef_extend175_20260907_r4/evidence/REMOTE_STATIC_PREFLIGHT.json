@@ -1,0 +1,85 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "checkpoint_count_deep_validated": 25,
+  "formal_gate_status": "not_run_not_passed",
+  "free_public_bytes": 27838791024640,
+  "implementation_sha256": {
+    "01_train_extend175_route.slurm": "57bac047b435eda8c48c18242825c433793c269c69f43139698f3fb2d36023fe",
+    "launch_three_extension_jobs.py": "ac40e98eea017b73c4cf7e0788bf8625c567721cfc1afe9009e33961cf9e495f",
+    "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune.py": "bdd4df53da3695dee20950a6e11efe161ca86fdebf99f569dede6eb44566225c",
+    "run_remote_static_preflight.py": "76de14b76e46c6f8ede459d262129b1e5fd17ea8e07382958db523d0b524df3f"
+  },
+  "operator_approved": false,
+  "plan_sha256": "cdc19fe9b3d4d3373822c0aa0a80f594f8718d284dc12424be68114314f963ae",
+  "prior_r3_failures": {
+    "B": {
+      "evidence_sha256": "30855cc0628811b963743d588daaaa217cb00269ecc654fd053d432b0e73e82b",
+      "job_id": "3593717",
+      "stderr_sha256": "92ed4a5c3b01927713c1c1d0bb9914cb690967a9735139b015e7a9ebc91a686b"
+    },
+    "E_SNFH": {
+      "evidence_sha256": "1ac4f58f8e312201d6f55d9655d05c26e1daecd5bb18086b328048e26db044ce",
+      "job_id": "3593718",
+      "stderr_sha256": "2ccb6e3ee61ee1ec5900049f15827528cf10a6238ddb6b372e73d62193ce1107"
+    },
+    "F": {
+      "evidence_sha256": "d66626e26a435dea816c7a8d4af4f3b8bb8740954fd64675227928145b297e13",
+      "job_id": "3593719",
+      "stderr_sha256": "de8e9fe428a948b3f7104a4df73c04cb9841755e4bc76a64ceda5dd21f06c6ed"
+    }
+  },
+  "r4_fix": {
+    "checkpoint_epoch_0125_mode": "0400",
+    "checkpoint_latest_mode": "0600",
+    "pytorch_double_write_probe": true,
+    "restart_from_original_epoch125": true
+  },
+  "source_plan_sha256": "50578b0146f2c79a99216026b0fcaa02727a75ee4a3f4a9b492fc8502c633ca2",
+  "source_routes": [
+    {
+      "checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+      "optimizer_lrs": [
+        1.2965252773542109e-05
+      ],
+      "route_token": "B"
+    },
+    {
+      "checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+      "optimizer_lrs": [
+        1.2965252773542109e-05
+      ],
+      "route_token": "E_SNFH"
+    },
+    {
+      "checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+      "optimizer_lrs": [
+        1.2965252773542109e-05
+      ],
+      "route_token": "F"
+    }
+  ],
+  "source_scheduler_accounting": {
+    "3554452": [
+      "COMPLETED",
+      "0:0"
+    ],
+    "3554453": [
+      "COMPLETED",
+      "0:0"
+    ],
+    "3554454": [
+      "COMPLETED",
+      "0:0"
+    ],
+    "3554455": [
+      "COMPLETED",
+      "0:0"
+    ],
+    "3554456": [
+      "COMPLETED",
+      "0:0"
+    ]
+  },
+  "status": "pass",
+  "timestamp_utc": "2026-09-07T11:47:06.241432Z"
+}

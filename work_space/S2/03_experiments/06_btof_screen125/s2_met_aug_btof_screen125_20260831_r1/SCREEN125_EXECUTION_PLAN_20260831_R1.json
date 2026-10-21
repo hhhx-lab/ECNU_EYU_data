@@ -1,0 +1,93 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "checkpoint_selection": {
+    "candidate_epochs": [
+      25,
+      50,
+      75,
+      100,
+      125
+    ],
+    "primary_score": "nnUNet development-validation ema_fg_dice at the candidate epoch",
+    "report_all_candidates": true,
+    "tie_break": "earliest_epoch",
+    "selection_cohort": "the existing fixed 103 internal validation cases",
+    "use_fixed_103_for_checkpoint_selection": true
+  },
+  "created_at_local": "2026-08-31T15:28:38+08:00",
+  "created_at_utc": "2026-08-31T07:28:38Z",
+  "experiment_id": "s2_met_aug_btof_screen125_20260831_r1",
+  "formal_gate_status": "not_run_not_passed",
+  "horizontal_comparison": {
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 20260831,
+    "checkpoint_rule": "one preselected best checkpoint per route",
+    "evaluation": "official MET metrics on the same frozen 103 cases after all five trainings complete",
+    "interpretation": "exploratory model-selection comparison; not an untouched-test superiority claim",
+    "paired_by_case": true
+  },
+  "operator_approved": false,
+  "parent_fix_v3": {
+    "completed_route": "MET-AUG-A",
+    "checkpoint_epoch": 200,
+    "checkpoint_sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e",
+    "status": "experimental_unvalidated"
+  },
+  "routes": [
+    {
+      "route_id": "MET-AUG-B",
+      "screen_label": "A+B",
+      "single_new_variable": "core-volume-controlled isotropic component scaling"
+    },
+    {
+      "route_id": "MET-AUG-C40",
+      "screen_label": "A+C40",
+      "single_new_variable": "p_select increased from 0.20 to 0.40"
+    },
+    {
+      "route_id": "MET-AUG-D",
+      "screen_label": "A+D",
+      "single_new_variable": "second independent tumour attempted with probability 0.20 after first commit"
+    },
+    {
+      "route_id": "MET-AUG-E-SNFH",
+      "screen_label": "A+E-SNFH",
+      "single_new_variable": "1 mm SNFH shell on at most 10 percent of eligible pure-ET committed candidates"
+    },
+    {
+      "route_id": "MET-AUG-F",
+      "screen_label": "A+F",
+      "single_new_variable": "train-only native-lesion-burden allocation with mean p_select fixed at 0.20"
+    }
+  ],
+  "schema_version": 1,
+  "scope_exclusions": [
+    "MET-AUG-E-NETC",
+    "MET-AUG-E-COMB",
+    "all multi-route combinations",
+    "locked-test evaluation",
+    "formal gate claims"
+  ],
+  "training_contract": {
+    "augmentation_workers": 0,
+    "checkpoint_epochs": [
+      25,
+      50,
+      75,
+      100,
+      125
+    ],
+    "epochs": 125,
+    "fixed_train_count": 1035,
+    "fixed_validation_count": 103,
+    "focal_gamma": 2.0,
+    "initial_lr": 0.001,
+    "launch_mode": "five_independent_jobs_submitted_concurrently",
+    "pretrained_original_e_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "resume": false,
+    "save_every": 25,
+    "seed": 20260724,
+    "single_gpu_non_ddp": true,
+    "torch_compile": false
+  }
+}

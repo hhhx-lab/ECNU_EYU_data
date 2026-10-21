@@ -1,0 +1,10 @@
+# S2 / 07_screen125_official_met
+
+按研究路线分组的独立实验及其原始结果
+
+- [s2_met_aug_btof_selected103_official_met_20260903_r1](s2_met_aug_btof_selected103_official_met_20260903_r1)
+- [s2_met_aug_btof_selected103_official_met_20260907_r2](s2_met_aug_btof_selected103_official_met_20260907_r2)
+- [s2_met_aug_btof_selected103_official_met_20260907_r3](s2_met_aug_btof_selected103_official_met_20260907_r3)
+- [s2_met_aug_btof_selected103_official_met_20260907_r4](s2_met_aug_btof_selected103_official_met_20260907_r4)
+
+整理说明仅帮助定位，不改变任何原实验的批准或失败状态。新说明为experimental_unvalidated。

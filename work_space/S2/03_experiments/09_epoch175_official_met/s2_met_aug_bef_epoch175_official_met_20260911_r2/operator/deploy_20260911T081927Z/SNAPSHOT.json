@@ -1,0 +1,103 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "pending_or_running",
+  "remote_utc": "2026-09-11T08:09:19.138816+00:00",
+  "hostname": "login1",
+  "job_id": "3679404",
+  "sacct": "3679404|s2x175cr2|RUNNING|0:0|billing=4,cpu=4,mem=32G,node=1|node230\n3679404.batch|batch|RUNNING|0:0|cpu=4,mem=32G,node=1|node230\n",
+  "squeue": "3679404|s2x175cr2|RUNNING|node230\n",
+  "scontrol": "JobId=3679404 JobName=s2x175cr2 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=RUNNING Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:45 TimeLimit=02:00:00 TimeMin=N/A SubmitTime=2026-09-11T16:08:34 EligibleTime=2026-09-11T16:08:34 AccrueTime=Unknown StartTime=2026-09-11T16:08:34 EndTime=2026-09-11T18:08:34 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-11T16:08:34 Partition=cpu_192G AllocNode:Sid=10.11.100.253:90605 ReqNodeList=(null) ExcNodeList=(null) NodeList=node230 BatchHost=node230 NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:* TRES=cpu=4,mem=32G,node=1,billing=4 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260911_r2/slurm/cpu_recovery.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260911_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260911_r2/logs/s2x175cr2_3679404.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260911_r2/logs/s2x175cr2_3679404.out Power= NtasksPerTRES:0\n",
+  "disk_public": {
+    "total": 272678883688448,
+    "used": 239100129968128,
+    "free": 33578753720320
+  },
+  "evidence": {
+    "CPU_LAUNCH.json": {
+      "artifact_status": "experimental_unvalidated",
+      "canonical_job_id": "3679404",
+      "command": [
+        "sbatch",
+        "--hold",
+        "--parsable",
+        "--job-name=s2x175cr2",
+        "slurm/cpu_recovery.slurm"
+      ],
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "plan_sha256": "4cd81d9b3cb3b5876f4db83825061fc23549cdd3fffdedc980544b0cec705511",
+      "remote_utc": "2026-09-11T08:09:15.424655+00:00",
+      "status": "submitted_held"
+    },
+    "CPU_RELEASED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "canonical_job_id": "3679404",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "remote_utc": "2026-09-11T08:09:15.541707+00:00",
+      "status": "released"
+    },
+    "CPU_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "plan_sha256": "4cd81d9b3cb3b5876f4db83825061fc23549cdd3fffdedc980544b0cec705511",
+      "remote_utc": "2026-09-11T08:09:15.330209+00:00",
+      "status": "reserved"
+    },
+    "REMOTE_STATIC_PREFLIGHT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "cpu_jobs": 1,
+      "formal_gate_status": "not_run_not_passed",
+      "gpu_jobs": 0,
+      "hostname": "login1",
+      "job_id": null,
+      "operator_approved": false,
+      "plan_sha256": "4cd81d9b3cb3b5876f4db83825061fc23549cdd3fffdedc980544b0cec705511",
+      "remote_utc": "2026-09-11T08:09:15.185926+00:00",
+      "source_failed_jobs_preserved": {
+        "B": "3671905",
+        "E_SNFH": "3671906",
+        "F": "3671908",
+        "PAIRED": "3671909"
+      },
+      "source_failure_sha256": {
+        "B": "a396a1fd8e453508ba4dd335f42b85e52415fc2e48e463455bd9b2a539f75cd5",
+        "E_SNFH": "86b1bb95be29b147069fe8787a281ae8f95fefdf4a031e27ab3aae9b540727ef",
+        "F": "70022846f7e830893565531957bc81d548d72630b0b2acee8b370608ee3b4611"
+      },
+      "status": "pass",
+      "validation_scope": "lightweight metadata, hashes and file counts; full voxel audit scheduled on CPU"
+    }
+  },
+  "logs": {
+    "s2x175cr2_3679404.err": {
+      "size": 65,
+      "sha256": "956c70518ba64f566516d055a51cb9dc8fdc8942ab6340a3660ecd4f57fe8b09",
+      "tail": [
+        "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+      ],
+      "errors": []
+    },
+    "s2x175cr2_3679404.out": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tail": [],
+      "errors": []
+    }
+  },
+  "failed_steps": [],
+  "pull_allowed": false,
+  "local_started_utc": "2026-09-11T08:19:27.127969+00:00",
+  "local_completed_utc": "2026-09-11T08:19:49.024956+00:00",
+  "vpn_closed": true,
+  "preexisting_vpn_left_unchanged": false
+}

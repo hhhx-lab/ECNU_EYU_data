@@ -1,0 +1,84 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "checkpoint_selection": {
+    "candidate_total_epochs": [
+      125,
+      150,
+      175
+    ],
+    "primary_score": "nnUNet development-validation ema_fg_dice at the candidate total epoch",
+    "tie_break": "earliest_total_epoch",
+    "selection_cohort": "the existing fixed 103 internal validation cases",
+    "interpretation": "exploratory convergence extension only; not an untouched-test superiority claim"
+  },
+  "created_at_local": "2026-09-03T14:56:55+08:00",
+  "created_at_utc": "2026-09-03T06:56:55Z",
+  "experiment_id": "s2_met_aug_bef_extend175_20260903_r3",
+  "formal_gate_status": "not_run_not_passed",
+  "implementation_sha256": {
+    "launch_three_extension_jobs.py": "404c95b9502db7f5bc5a42df3947ef026d32637764c6973e70a62634ce43ca6c",
+    "nnUNetTrainerBraTS2026RCMetAugScreen175ExtensionFocalCompletionFineTune.py": "bdd4df53da3695dee20950a6e11efe161ca86fdebf99f569dede6eb44566225c",
+    "run_remote_static_preflight.py": "9ca8c3faac4cae762ed23f3768117f2e545cd4fd9f69c8a3e9607bb9cebf5460",
+    "01_train_extend175_route.slurm": "af67ba3a1bcf1e9c798358bfcb38a66c0638bb0107db34c6255dd6a91de44101"
+  },
+  "operator_approved": false,
+  "prior_attempts": {
+    "r1": "stopped before submission because tuple/list JSON round-trip self-check was too strict",
+    "r2": "all three jobs exited before training because nnUNetv2_train was called with -c instead of --c; jobs 3592966/3592967/3592968",
+    "preserve_all_failure_evidence": true
+  },
+  "parent_screen125": {
+    "experiment_id": "s2_met_aug_btof_screen125_20260831_r1",
+    "plan_sha256": "50578b0146f2c79a99216026b0fcaa02727a75ee4a3f4a9b492fc8502c633ca2",
+    "frozen_five_route_comparison_unchanged": true,
+    "official_met_must_use_original_preregistered_selections": true
+  },
+  "routes": [
+    {
+      "route_token": "B",
+      "route_id": "MET-AUG-B",
+      "source_checkpoint_epoch": 125,
+      "source_checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6",
+      "source_ema_fg_dice": 0.7503726224575267,
+      "screen_config_sha256": "e24c6d030bba515591a2cdda6161b0ef5b23a946d6d3cb023656638073af8b7c"
+    },
+    {
+      "route_token": "E_SNFH",
+      "route_id": "MET-AUG-E-SNFH",
+      "source_checkpoint_epoch": 125,
+      "source_checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6",
+      "source_ema_fg_dice": 0.7545076718075368,
+      "screen_config_sha256": "dcfe6b16e8076e56e99e33aac2ebac57ad7c71810936948764545839e0a754b8"
+    },
+    {
+      "route_token": "F",
+      "route_id": "MET-AUG-F",
+      "source_checkpoint_epoch": 125,
+      "source_checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf",
+      "source_ema_fg_dice": 0.7491822956737153,
+      "screen_config_sha256": "de258a3e5258425ca9bf98011619dff698edbe5ddb05eefd6361390cc82a4d99"
+    }
+  ],
+  "schema_version": 1,
+  "training_contract": {
+    "augmentation_workers": 0,
+    "continuation_cli_flag": "--c",
+    "extension_epochs": 50,
+    "extension_lr_policy": "continuous_poly_decay_from_epoch125_optimizer_lr",
+    "extension_lr_power": 0.9,
+    "extension_start_lr": 1.2965252773542109e-05,
+    "fixed_train_count": 1035,
+    "fixed_validation_count": 103,
+    "focal_gamma": 2.0,
+    "launch_mode": "three_independent_single_A100_jobs_submitted_concurrently",
+    "resume_optimizer_state": true,
+    "resume_logging_state": true,
+    "resume_network_state": true,
+    "save_every": 25,
+    "seed": 20260724,
+    "single_gpu_non_ddp": true,
+    "source_total_epoch": 125,
+    "target_total_epoch": 175,
+    "torch_compile": false
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "experiment_id": "s2_met_aug_btof_selected103_official_met_20260907_r4",
+  "created_at_local": "2026-09-07T20:17:39+08:00",
+  "created_at_utc": "2026-09-07T12:17:39Z",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "purpose": "isolated in-process recovery of C40 and D after r2 node shared-memory exhaustion and the r3 exclusive-allocation contract failure, followed by the frozen five-route paired comparison",
+  "prior_r2": {
+    "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2",
+    "plan_sha256": "1767372636d82e5d02bbd0e9d8ce4b982b1777a60c36c27b655c3b3b5b429c3b",
+    "failed_routes": {
+      "C40": {"job_id": "3652703", "prediction_count_before_failure": 37},
+      "D": {"job_id": "3652704", "prediction_count_before_failure": 37}
+    },
+    "root_cause": "concurrent four-worker inference processes on gpu13 exhausted /dev/shm and PyTorch shared tensor creation failed with errno 28",
+    "preserve_all_evidence": true,
+    "reused_success_routes": {
+      "B": "3652702",
+      "E_SNFH": "3652705",
+      "F": "3652706"
+    }
+  },
+  "prior_r3": {
+    "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r3",
+    "failed_job": "3652753",
+    "cancelled_jobs": ["3652754", "3652755"],
+    "root_cause": "Slurm exclusive allocation assigned both node GPUs, correctly failing the exact-single-visible-GPU assertion before inference",
+    "preserve_all_evidence": true
+  },
+  "repair_contract": {
+    "routes": ["C40", "D"],
+    "fresh_output_directories": true,
+    "execution_mode": "sequential_in_process",
+    "preprocess_workers": 0,
+    "export_workers": 0,
+    "multiprocessing_queue_used": false,
+    "single_gpu_allocation": true,
+    "exclusive_node": false,
+    "serial_order": ["C40", "D"]
+  },
+  "case_contract": {
+    "count": 103,
+    "manifest": "manifests/FIXED103_REAL_T2W_CASES.csv",
+    "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "input_route": "authentic_real_T2W",
+    "source_root": "r2/cohort/fixed103",
+    "locked_test_used": false
+  },
+  "routes": {
+    "B": {"checkpoint_epoch": 125, "checkpoint_sha256": "efc710f5d55537a88c7a801281c935b81c2331989d7a777c524ba243f0ca38c6", "evaluation_source": "r2"},
+    "C40": {"checkpoint_epoch": 50, "checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82", "evaluation_source": "r4"},
+    "D": {"checkpoint_epoch": 50, "checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209", "evaluation_source": "r4"},
+    "E_SNFH": {"checkpoint_epoch": 125, "checkpoint_sha256": "1a930dda957da8a367239f386f8332bff2eec3a67b44efbb36cf0484a04d41b6", "evaluation_source": "r2"},
+    "F": {"checkpoint_epoch": 125, "checkpoint_sha256": "0198f206832e46509c9b8d00066f3b206bd7fe813426e872a5e756bd9c5021cf", "evaluation_source": "r2"}
+  },
+  "bootstrap": {"paired_by_case": true, "replicates": 20000, "seed": 20260831},
+  "interpretation": {
+    "claim": "exploratory selected-checkpoint official MET comparison",
+    "checkpoint_selection_and_reporting_share_cohort": true,
+    "formal_superiority_allowed": false
+  }
+}
