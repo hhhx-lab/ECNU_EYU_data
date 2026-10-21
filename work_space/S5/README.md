@@ -1,48 +1,16 @@
-# S5 工作区
+# S5：SegMamba分割
 
-更新日期：2026-07-12
+整理于2026-09-19。这里是实体文件分类，不是快捷方式视图。
 
-## 任务
+2026-10-13用户明确停用此路线：[旧远端SegMamba轻量留存与删除验收](03_experiments/20261013_remote_segmamba_retirement/README.md)。已保存远端代码/配置/原指标表/曲线/日志节选和文件metadata，指定`/public/home/zqchen/SegMamba-main`已删除，账号可用增至208.79 GiB。本地S5代码/历史文档和Conda segmamba环境保留；不再将旧远端路径当可用模型仓库，轻量留存不能完整恢复权重或训练。S3/S4及原E/K未删除。
 
-S5 是 SegMamba 分割线。任务详情见 `task_assignment.md`。
+| 目录 | 内容 |
+|---|---|
+| [01_code](01_code) | 活动代码、测试和必要的包内README/许可证 |
+| [05_documents](05_documents) | 方法、计划、报告、环境和历史说明文档 |
 
-## 当前 G2 对齐状态
+当前分类内原文件 575 份，7,389,087 字节。每个数据集、模型或结果批次内均有 `00_说明_20260919.md`。
 
-1. 预处理通道已统一为 `t1n,t1c,t2w,t2f`。
-2. 预处理可直接读取 G2 带病例前缀的 case-folder view，不需要破坏性重命名。
-3. G2 case-folder root 必须包含 `train/val/test`。
-4. 训练和预测默认读取固定的 `data/fullres/train|val|test`，不再默认随机 70/10/20。
-5. 旧随机切分只有显式配置 `allow_random_split: true` 时才能用于探索，不得用于正式对比。
-6. `5_compute_metrics_brats2026.py` 是内部辅助指标脚本，不是官方 BraTS evaluation 替代品。
+未在本地发现独立结果包的分类没有创建空文件夹；原模板与占位文件在99_archive保留，不推断远端是否有结果。
 
-## 数据准备
-
-先由 G2 materializer 生成病例目录，再在 S5 code 根运行：
-
-```bash
-python 2_preprocessing_mri.py \
-  --g2-case-folder-root ./data/g2_case_folders \
-  --output-root ./data/fullres
-```
-
-预期 real-only 数量：823 train、103 val、104 locked test。completion/real+synth 使用新的 G2 物化根和新的输出目录。
-
-## 训练
-
-```bash
-cd work_space/S5/code
-python 3_train_brats2026.py --config configs/exp_ce_dice.yaml
-python 4_predict_brats2026.py --config configs/exp_ce_dice.yaml
-python 5_compute_metrics_brats2026.py --config configs/exp_ce_dice.yaml \
-  --pred_name segmamba_brats2026_exp_ce_dice
-```
-
-正式实验必须确认 config 的 `data_dir` 指向 train，兄弟目录 `val`、`test` 存在，且 `raw_test_dir` 指向同一 G2 case-folder root 的 test。
-
-## 禁止事项
-
-1. 不运行旧 `1_rename_mri_data.py` 处理 G2 数据。
-2. 不直接读取 G1 raw output。
-3. 不把 locked test 用于训练、调参或 checkpoint 选择。
-4. 不用不同 split 比较 real-only 与 real+synth。
-5. 不把内部 Dice/HD95/AUC 当作官方最终榜单结果。
+历史文档、冻结实验runtime及manifest不改写。活动路径配置见项目根.env和tools/project_paths.py；7份路径适配代码的原件另存99_archive。重新训练或提交前须另做实验预检，不能直接复用旧Slurm绝对路径。
