@@ -1,0 +1,182 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "reviewed_at": "2026-10-13T03:05:21.386955Z",
+  "active_root": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/01_code/tumour_diffusion_1mm",
+  "source_unchanged": true,
+  "status": "not_ready_for_full_training",
+  "checks": [
+    {
+      "name": "syntax",
+      "status": "pass",
+      "python_files": 23,
+      "shell_exit_codes": {
+        "train_4gpu.sh": 0,
+        "smoke_test.sh": 0
+      }
+    },
+    {
+      "name": "real_import",
+      "status": "pass",
+      "modules": [
+        "src.utils.data_utils",
+        "src.infer.evaluate_generation",
+        "src.infer.generate_from_label",
+        "src.infer.on_the_fly_augmentation",
+        "src.train.tumour_main_diffusion"
+      ]
+    },
+    {
+      "name": "xyz_and_tiles",
+      "status": "pass",
+      "bbox": [
+        10,
+        34,
+        4,
+        9,
+        2,
+        7
+      ],
+      "centroid": [
+        22,
+        6,
+        4
+      ],
+      "tile_count": 2,
+      "tile_voxel_counts": [
+        400,
+        300
+      ]
+    },
+    {
+      "name": "rc_crop_24_offsets",
+      "status": "probe_error",
+      "error": "'n_voxels'",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_revision3_readiness/audit_revision.py\", line 57, in probe\n    checks.append(dict(name=name, **function()))\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_revision3_readiness/audit_revision.py\", line 117, in rc_crop\n    roi = transforms.CropLesionROId([\"scan_t1c\", \"label\"], target_size=64)(row)\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/01_code/tumour_diffusion_1mm/src/utils/gaussian_noise_tumour.py\", line 142, in __call__\n    n_row = int(d[\"n_voxels\"])\nKeyError: 'n_voxels'\n"
+    },
+    {
+      "name": "input_rejection",
+      "status": "pass",
+      "results": {
+        "affine": "rejected: t2w grid differs from seg by 10.00 mm (tolerance 0.1 mm)",
+        "nan": "rejected: NaN/Inf in t1c",
+        "label9": "rejected: label values [9] not in [0, 1, 2, 3, 4]",
+        "fractional": "rejected: non-integer label values in seg"
+      }
+    },
+    {
+      "name": "physical_sampling_grid",
+      "status": "fail",
+      "process_status": "ok",
+      "header_spacing": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "reported_resize_spacing": "1.0286x0.9692x1.0074",
+      "max_sample_location_vs_saved_world_mm": 0.5580173443781833,
+      "saved_output_finite": true
+    },
+    {
+      "name": "strict_complete_and_existing_output",
+      "status": "fail",
+      "rejected_case_cli_exit": 0,
+      "absent_required_case_cli_exit": 0,
+      "corrupt_existing_output_status": "skipped (exists)",
+      "rejected_cli_tail": "Backend: nnunetv2 | cases to process: 1 | target spacing: [1.0, 1.0, 1.0]\n[1/1] 0.0 min elapsed, ETA 0.0 min, failed 0\nDone. Report: /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/ecnu_revision3_8dbq9x5g/rejected_cli/preprocess_report.csv\n[WARN] 1 case(s) rejected by the data checks (not written to /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/ecnu_revision3_8dbq9x5g/rejected_cli):\n    BraTS-MET-nan-000: rejected: NaN/Inf in t1c\n",
+      "absent_cli_tail": "[WARN] 1 listed cases not found, e.g. ['BraTS-MET-absent-000']\nBackend: nnunetv2 | cases to process: 0 | target spacing: [1.0, 1.0, 1.0]\nDone. Report: /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/ecnu_revision3_8dbq9x5g/absent_cli/preprocess_report.csv\n"
+    },
+    {
+      "name": "validation_split_guard",
+      "status": "partial",
+      "scope": "actual_ast_branch_executed_no_sampling",
+      "results": {
+        "only_train": {
+          "rejected": true,
+          "error": "No rows with split == 'val' in synthetic.csv. Specify a validation set in csv_creator (--val_patients / --val_list), or pass --eval_split all to evaluate every row (including training rows) on purpose."
+        },
+        "missing_split_column": {
+          "rejected": false,
+          "rows": 1
+        },
+        "has_val": {
+          "rejected": false,
+          "rows": 1
+        }
+      }
+    },
+    {
+      "name": "atomic_save_and_amp_restore",
+      "status": "pass",
+      "existing_checkpoint_survives_interrupted_save": true,
+      "amp_scale_restored": 256.0,
+      "incomplete_tmp_retained": true,
+      "scope": "CPU_scaler_roundtrip_not_cuda_recovery"
+    },
+    {
+      "name": "exact_optimizer_step_count",
+      "status": "probe_error",
+      "error": "Conv3d.forward() takes 2 positional arguments but 4 were given",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_revision3_readiness/audit_revision.py\", line 57, in probe\n    checks.append(dict(name=name, **function()))\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_revision3_readiness/audit_revision.py\", line 280, in exact_steps\n    outcome = trainer.train(args, 0, [batch]*5, model, optimizer, scaler,\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/01_code/tumour_diffusion_1mm/src/train/tumour_main_diffusion.py\", line 210, in train\n    loss = _diffusion_utils.edm_loss_fn(\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/01_code/tumour_diffusion_1mm/src/train/../../model.py\", line 389, in edm_loss_fn\n    pred = model(x_in, t_input, cond_dropped)\n  File \"/Users/hwaigc/miniforge3/envs/g1_t2w_bbdm/lib/python3.10/site-packages/torch/nn/modules/module.py\", line 1751, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"/Users/hwaigc/miniforge3/envs/g1_t2w_bbdm/lib/python3.10/site-packages/torch/nn/modules/module.py\", line 1762, in _call_impl\n    return forward_call(*args, **kwargs)\nTypeError: Conv3d.forward() takes 2 positional arguments but 4 were given\n"
+    },
+    {
+      "name": "compile_to_uncompiled_restore",
+      "status": "fail",
+      "restore_error": "Error(s) in loading state_dict for Linear:\n\tMissing key(s) in state_dict: \"weight\", \"bias\". \n\tUnexpected key(s) in state_dict: \"_orig_mod.weight\", \"_orig_mod.bias\". ",
+      "scope": "actual_loader_test_using_compile_state_dict_prefix_no_compiler_invoked"
+    },
+    {
+      "name": "reference_edm_network_cpu",
+      "status": "pass",
+      "params": 4475999,
+      "forward_shape": [
+        1,
+        1,
+        64,
+        64,
+        64
+      ],
+      "backward_shape": [
+        1,
+        1,
+        16,
+        16,
+        16
+      ],
+      "loss": 14.10125732421875,
+      "finite_gradients": true,
+      "cuda_available": false,
+      "full_size_gpu_batch16_test": "not_run"
+    },
+    {
+      "name": "remaining_static_contracts",
+      "status": "unresolved",
+      "rng_saved": false,
+      "signal_handler": false,
+      "lognsr_called_function_exists": false,
+      "csv_sha_not_image_sha": true,
+      "invalid_t2w_count": 266,
+      "smoke_script_deletes_existing_work_and_checkpoint": true
+    }
+  ],
+  "environment": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:47) [Clang 19.1.7 ]",
+    "executable": "/Users/hwaigc/miniforge3/envs/g1_t2w_bbdm/bin/python",
+    "packages": {
+      "torch": "2.7.1",
+      "monai": "1.5.2",
+      "numpy": "1.26.4",
+      "nibabel": "5.4.2",
+      "nnunetv2": "2.8.0"
+    }
+  },
+  "boundaries": {
+    "server_access": false,
+    "source_edits": false,
+    "installed_dependencies": false,
+    "training_submitted": false,
+    "real_data_download": false,
+    "upstream_destructive_smoke_run": false
+  }
+}

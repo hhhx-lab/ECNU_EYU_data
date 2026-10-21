@@ -1,0 +1,75 @@
+{
+  "account_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1975191076864 223832178688  90% /public\n"
+  },
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 223832178688,
+  "case_reports": 638,
+  "drift": [],
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "job_detail": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "JobId=4088612 JobName=g1dmaskr6 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=RUNNING Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:56:12 TimeLimit=1-00:00:00 TimeMin=N/A SubmitTime=2026-10-15T17:08:56 EligibleTime=2026-10-15T17:08:56 AccrueTime=2026-10-15T17:08:56 StartTime=2026-10-15T17:17:39 EndTime=2026-10-16T17:17:40 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-15T17:17:39 Partition=cpu_192G AllocNode:Sid=10.11.100.253:14251 ReqNodeList=(null) ExcNodeList=(null) NodeList=node230 BatchHost=node230 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=90G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=90G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_mask_diagnostics_20261015_r6/slurm/scan.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_mask_diagnostics_20261015_r6 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_mask_diagnostics_20261015_r6/logs/g1dmaskr6_4088612.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_mask_diagnostics_20261015_r6/logs/g1dmaskr6_4088612.out Power= NtasksPerTRES:0\n"
+  },
+  "job_id": "4088612",
+  "local_utc": "2026-10-15T10:24:56.200479+00:00",
+  "logs": {
+    "g1dmaskr6_4088612.err": {
+      "bytes": 0,
+      "critical": [],
+      "exists": true,
+      "tail": ""
+    },
+    "g1dmaskr6_4088612.out": {
+      "bytes": 463070,
+      "critical": [],
+      "exists": true,
+      "tail": " \"source_support_comparison_v1_no_label_repair\", \"label_voxels\": 4383, \"positive_support_voxels\": 11962062, \"nonzero_support_voxels\": 11962062, \"positive_missing_voxels\": 0, \"nonzero_missing_voxels\": 0, \"old_missing_with_negative_source\": 0, \"old_missing_all_three_zero\": 0, \"nonzero_missing_all_three_zero\": 0, \"label_all_three_zero\": 0, \"label_counts\": {\"0\": 92270305, \"1\": 595, \"2\": 193, \"3\": 3595, \"4\": 0}, \"positive_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"nonzero_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"positive_support_nonempty\": true, \"nonzero_support_nonempty\": true}}\n{\"case\": \"BraTS-MET-01203-002\", \"status\": \"strict_coverage_pass\", \"cases_scanned\": 635, \"coverage\": {\"algorithm_version\": \"source_support_comparison_v1_no_label_repair\", \"label_voxels\": 616, \"positive_support_voxels\": 12154371, \"nonzero_support_voxels\": 12154371, \"positive_missing_voxels\": 0, \"nonzero_missing_voxels\": 0, \"old_missing_with_negative_source\": 0, \"old_missing_all_three_zero\": 0, \"nonzero_missing_all_three_zero\": 0, \"label_all_three_zero\": 0, \"label_counts\": {\"0\": 92274072, \"1\": 0, \"2\": 301, \"3\": 315, \"4\": 0}, \"positive_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"nonzero_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"positive_support_nonempty\": true, \"nonzero_support_nonempty\": true}}\n{\"case\": \"BraTS-MET-01203-003\", \"status\": \"strict_coverage_pass\", \"cases_scanned\": 636, \"coverage\": {\"algorithm_version\": \"source_support_comparison_v1_no_label_repair\", \"label_voxels\": 0, \"positive_support_voxels\": 12022472, \"nonzero_support_voxels\": 12022472, \"positive_missing_voxels\": 0, \"nonzero_missing_voxels\": 0, \"old_missing_with_negative_source\": 0, \"old_missing_all_three_zero\": 0, \"nonzero_missing_all_three_zero\": 0, \"label_all_three_zero\": 0, \"label_counts\": {\"0\": 92274688, \"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"positive_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"nonzero_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"positive_support_nonempty\": true, \"nonzero_support_nonempty\": true}}\n{\"case\": \"BraTS-MET-01204-000\", \"status\": \"strict_coverage_pass\", \"cases_scanned\": 637, \"coverage\": {\"algorithm_version\": \"source_support_comparison_v1_no_label_repair\", \"label_voxels\": 36851, \"positive_support_voxels\": 7309587, \"nonzero_support_voxels\": 7309587, \"positive_missing_voxels\": 0, \"nonzero_missing_voxels\": 0, \"old_missing_with_negative_source\": 0, \"old_missing_all_three_zero\": 0, \"nonzero_missing_all_three_zero\": 0, \"label_all_three_zero\": 0, \"label_counts\": {\"0\": 49246221, \"1\": 465, \"2\": 27573, \"3\": 8813, \"4\": 0}, \"positive_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"nonzero_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"positive_support_nonempty\": true, \"nonzero_support_nonempty\": true}}\n{\"case\": \"BraTS-MET-01204-002\", \"status\": \"strict_coverage_pass\", \"cases_scanned\": 638, \"coverage\": {\"algorithm_version\": \"source_support_comparison_v1_no_label_repair\", \"label_voxels\": 3801, \"positive_support_voxels\": 7286395, \"nonzero_support_voxels\": 7286395, \"positive_missing_voxels\": 0, \"nonzero_missing_voxels\": 0, \"old_missing_with_negative_source\": 0, \"old_missing_all_three_zero\": 0, \"nonzero_missing_all_three_zero\": 0, \"label_all_three_zero\": 0, \"label_counts\": {\"0\": 49279271, \"1\": 100, \"2\": 2292, \"3\": 1409, \"4\": 0}, \"positive_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"nonzero_missing_by_label\": {\"1\": 0, \"2\": 0, \"3\": 0, \"4\": 0}, \"positive_support_nonempty\": true, \"nonzero_support_nonempty\": true}}\n"
+    }
+  },
+  "operator_approved": false,
+  "package_sha256": "b17c632444a3bc5af2fd1877ba6c444916b42275818c4e041235ac5eceae7d90",
+  "public_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  223T   26T  90% /public\n"
+  },
+  "remote_utc": "2026-10-15T10:13:51.019309+00:00",
+  "reports": {
+    "COMPLETE.ok": {
+      "exists": false
+    },
+    "FAILED.json": {
+      "exists": false
+    },
+    "STARTED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "exists": true,
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4088612",
+      "operator_approved": false,
+      "sha256": "c217b90c914ccc8d8e8906f4a6bc9f9298d9519e4b91b027d06fdc83e36c030f",
+      "utc": "2026-10-15T09:18:08.095044+00:00"
+    },
+    "VALIDATION.json": {
+      "exists": false
+    }
+  },
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4088612|RUNNING|0:0|00:55:23|1-00:00:00|billing=8,cpu=8,mem=90G,node=1\n4088612.batch|RUNNING|0:0|00:55:23||cpu=8,mem=90G,node=1\n"
+  },
+  "source_csv_sha256": "0d1765e12cdad7d8a5df57a5d2c46c79414ed99a2015a4d8fed57cd4c4fc836b",
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4088612|RUNNING|g1dmaskr6|cpu_192G|None|56:12\n"
+  },
+  "test_images_read_by_scan_contract": 0,
+  "training_submitted": false
+}

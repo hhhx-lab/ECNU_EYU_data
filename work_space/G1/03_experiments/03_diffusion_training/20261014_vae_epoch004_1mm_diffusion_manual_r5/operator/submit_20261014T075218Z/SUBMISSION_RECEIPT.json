@@ -1,0 +1,31 @@
+{
+  "acceptance": "waived_by_user_not_pass",
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "jobs": {
+    "prepare": "4069915",
+    "t1c": "4069916",
+    "t1n": "4069917",
+    "t2f": "4069919",
+    "t2w": "4069918"
+  },
+  "local_utc": "2026-10-14T07:53:35.218288+00:00",
+  "operator_approved": false,
+  "package_sha256": "13f188b2609ba57544c1258aa368daeabe0201ecbdb81c3ec86700f6441b6ede",
+  "queue_after_release": "4069919|PENDING|g1d1m5t2f|a100|None|gpu:1,gpu:1\n4069918|PENDING|g1d1m5t2w|a100|None|gpu:1,gpu:1\n4069917|PENDING|g1d1m5t1n|a100|None|gpu:1,gpu:1\n4069916|PENDING|g1d1m5t1c|a100|None|gpu:1,gpu:1\n4069915|PENDING|g1d1m5p1|cpu_96G|None|N/A\n",
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5",
+  "remote_utc": "2026-10-14T07:42:32.059927+00:00",
+  "status": "all_five_released",
+  "storage": {
+    "available_bytes": 224162480128,
+    "cases": 926,
+    "checkpoint_reserve_bytes": 12884901888,
+    "compressed_worst_bound_bytes": 192404457654,
+    "data_upper_bytes": 192322829808,
+    "metadata_reserve_bytes": 1073741824,
+    "method": "full_FOV+zlib_compressBound_default+metadata+temporary+all_checkpoints+4GiB",
+    "required_bytes": 213513415862,
+    "temporary_upper_bytes": 2855347200
+  }
+}

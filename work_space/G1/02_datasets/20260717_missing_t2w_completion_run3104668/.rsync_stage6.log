@@ -1,0 +1,24 @@
+spawn rsync -a --partial --stats -e ssh -p 2323 -o StrictHostKeyChecking=accept-new -o ServerAliveInterval=30 -o ServerAliveCountMax=10 zqchen@59.78.189.133:/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/output/run_3104668/ /Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/results/missing_t2w_completion/run_3104668/
+zqchen@59.78.189.133's password: 
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = "C.UTF-8",
+	LC_CTYPE = "C.UTF-8",
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+
+sent 76978 bytes  received 14807588197 bytes  148076651750000 bytes/sec
+total size is 17585709944  speedup is 1.19
+Number of files: 2655
+Number of files transferred: 1770
+Total file size: 17585709944 B
+Total transferred file size: 14837545113 B
+Unmatched data: 14803783209 B
+Matched data: 33761904 B
+File list size: 89330 B
+Total sent: 76982 B
+Total received: 14805784345 B

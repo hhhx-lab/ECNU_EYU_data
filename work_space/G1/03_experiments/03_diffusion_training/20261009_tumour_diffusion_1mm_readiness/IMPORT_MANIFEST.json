@@ -1,0 +1,194 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "captured_at": "2026-10-09T09:05:57.650263Z",
+  "source": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/01_code/tumour_diffusion_1mm",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 44879,
+      "sha256": "2d691930b79e35312d6e05827f0dd8c8dde4d74169ed93099947253c03faed65",
+      "symlink": false
+    },
+    {
+      "path": "README_DIFFUSION.md",
+      "bytes": 68156,
+      "sha256": "6a25f3e20c016fffe29a27ef213b726bda9f493112596492ce1443de80e245bc",
+      "symlink": false
+    },
+    {
+      "path": "docs/diffusion_model_for_brain_tumor_generation.md",
+      "bytes": 21467,
+      "sha256": "2c606a73f876c9316d8a6e13ffd488d59cb19518d24af13076b16976c8ecb631",
+      "symlink": false
+    },
+    {
+      "path": "docs/扩散模型加速方法.md",
+      "bytes": 8816,
+      "sha256": "e7169fff455aa45b4f6124b12ac55f0624cd5fde8c556c7cd39de4e508e00025",
+      "symlink": false
+    },
+    {
+      "path": "lists/t2w_invalid_cases.txt",
+      "bytes": 5953,
+      "sha256": "5826d0ca1c4bdbefbbd49cedb81953b81c84d0f15f510886cd0e1bc2a913cab7",
+      "symlink": false
+    },
+    {
+      "path": "model.py",
+      "bytes": 34537,
+      "sha256": "be2616cf2d2388dd8f341274b73db5080bf5705e4bdeb78c733f6fe926ef8354",
+      "symlink": false
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 571,
+      "sha256": "815f6d8f924506aa536ef7f37af7061c6af505d4aeaff66672d8bffc949d53eb",
+      "symlink": false
+    },
+    {
+      "path": "scripts/eval_checkpoints.py",
+      "bytes": 6401,
+      "sha256": "ff79566d63ac6ac94a59d25f04be60181a7fd7b5a95e55e57d91ac5c3826c9b7",
+      "symlink": false
+    },
+    {
+      "path": "scripts/make_case_lists.py",
+      "bytes": 2390,
+      "sha256": "91cebc3f3ac1dee50263cbc32e13f00ca2cb18c9a4f85213df484d67e014fc96",
+      "symlink": false
+    },
+    {
+      "path": "scripts/preprocess_dataset.py",
+      "bytes": 8090,
+      "sha256": "1a36de4f50277170325f0103ad3c06ba2d9306317bcaa3819b2f15274eea01c3",
+      "symlink": false
+    },
+    {
+      "path": "scripts/train_4gpu.sh",
+      "bytes": 1789,
+      "sha256": "769b990f4662ce3031bd9bcd945082c35aa58ae348545962c8a6bc156df4c5aa",
+      "symlink": false
+    },
+    {
+      "path": "scripts/watch_loss.py",
+      "bytes": 4900,
+      "sha256": "9b2f1ce399cd16d0c2763a56ca4f41929e434d1efaef80192edf8ffc878d3d3f",
+      "symlink": false
+    },
+    {
+      "path": "src/infer/diffusion_inference_utils.py",
+      "bytes": 32633,
+      "sha256": "d5b4ff94a3103aef1ca45c73c60fdbb6768a47601fefd72ca74e779fec50e58a",
+      "symlink": false
+    },
+    {
+      "path": "src/infer/evaluate_generation.py",
+      "bytes": 39345,
+      "sha256": "45e9cb84a5242bfa8202c1475822dc8834342ad66d2de2d0df17593a54f62099",
+      "symlink": false
+    },
+    {
+      "path": "src/infer/generate_from_label.py",
+      "bytes": 30729,
+      "sha256": "0b580c87dc79a74139319a8ecd0aee8b0e6edcfa452eed06b8ba829bf529a22f",
+      "symlink": false
+    },
+    {
+      "path": "src/infer/on_the_fly_augmentation.py",
+      "bytes": 33055,
+      "sha256": "594ffd1d583fb4bee14b4dee6f4712dd228d51806b0c565c8bacb6196ab37947",
+      "symlink": false
+    },
+    {
+      "path": "src/networks/DiffusionNetwork.py",
+      "bytes": 23419,
+      "sha256": "182ec3fca9c63b100401c04e63ed1c931c123f8c50ffbf9dfcea6bde53741346",
+      "symlink": false
+    },
+    {
+      "path": "src/networks/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "symlink": false
+    },
+    {
+      "path": "src/preprocess/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "symlink": false
+    },
+    {
+      "path": "src/preprocess/nnunet_like.py",
+      "bytes": 11344,
+      "sha256": "6a26c941a667a4e2fcae8ee7c9d65847daf0314497d02a13632f9b5671a04f74",
+      "symlink": false
+    },
+    {
+      "path": "src/train/csv_creator.py",
+      "bytes": 17778,
+      "sha256": "0818bc0ec6af1a571c5a563e370dde8408aacd98e14e75cbd7bc7b0607cb4f04",
+      "symlink": false
+    },
+    {
+      "path": "src/train/label_main_diffusion.py",
+      "bytes": 13753,
+      "sha256": "ca3328a9e0e6faa67629a347b4b02793a82ee15d6e11b7da00788309796374ec",
+      "symlink": false
+    },
+    {
+      "path": "src/train/tumour_main_diffusion.py",
+      "bytes": 21494,
+      "sha256": "7af4aff805c3b67c6f8afcb026a1763313ca13c56876180f3f4a5a9df56a1c84",
+      "symlink": false
+    },
+    {
+      "path": "src/utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "symlink": false
+    },
+    {
+      "path": "src/utils/convert_to_multi_channel_based_on_brats_classes.py",
+      "bytes": 6912,
+      "sha256": "100ff13430ebc3ea0f33c5a0f610b5320f93cd0b3a3104712029737e545d4d01",
+      "symlink": false
+    },
+    {
+      "path": "src/utils/crop_label.py",
+      "bytes": 2721,
+      "sha256": "dad83a917770beb6b7fa213bf9ac859ee2a2a37637202bac6d2e746db47e7ca4",
+      "symlink": false
+    },
+    {
+      "path": "src/utils/data_utils.py",
+      "bytes": 10578,
+      "sha256": "be52e3069e827a8a752175a570a9d7afd1906f5081bb2e5db2792cdfe024c487",
+      "symlink": false
+    },
+    {
+      "path": "src/utils/gaussian_noise_tumour.py",
+      "bytes": 17981,
+      "sha256": "52b2061ac3b0ec8793551cfe6f733bab6ba0e6b3092f4eb84f046c45bb6ba1bf",
+      "symlink": false
+    },
+    {
+      "path": "src/utils/gaussian_noise_tumour_extended.py",
+      "bytes": 14705,
+      "sha256": "21959aa5c6abfcb9a097cfaca0f06074e604533d5b6694004d9627d53071b74b",
+      "symlink": false
+    },
+    {
+      "path": "src/utils/label_modifier.py",
+      "bytes": 7495,
+      "sha256": "bd75587ab47d8aee61a7f105d505a651a7bf32304d01d827b7fd6693b17d8b10",
+      "symlink": false
+    }
+  ],
+  "empty_directories": [
+    "Checkpoint",
+    "DataSet"
+  ],
+  "total_bytes": 491891
+}

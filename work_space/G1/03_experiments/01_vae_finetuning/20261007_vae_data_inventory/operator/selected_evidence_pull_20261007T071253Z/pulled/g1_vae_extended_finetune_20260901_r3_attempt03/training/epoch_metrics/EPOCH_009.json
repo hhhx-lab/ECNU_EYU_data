@@ -1,0 +1,330 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "generated_at_utc": "2026-09-04T17:10:47.602844+00:00",
+  "operator_approved": false,
+  "record": {
+    "epoch": 9,
+    "training": {
+      "brain_patches": 176,
+      "epoch_seconds": 23601.922244653106,
+      "lr_decoder": 8.145033635316129e-07,
+      "lr_encoder": 1.6083959896778503e-06,
+      "train_healthy_mse": 0.00058604176646709,
+      "train_kl": 0.5530112928813855,
+      "train_total": 0.018375244921238532,
+      "train_tumor_mse": 0.00046796256698015113,
+      "train_whole_mse": 0.0002542869864221802,
+      "tumor_patches": 647
+    },
+    "validation": {
+      "by_modality": {
+        "t1c": {
+          "healthy_mse": 0.007380333227225215,
+          "kl": 0.23534718230366708,
+          "tumor_mse": 0.008751359544343387,
+          "tumor_ssim": 0.4612746208906174,
+          "whole_mse": 0.0030818245839327576,
+          "whole_ssim": 0.15195307731628419
+        },
+        "t1n": {
+          "healthy_mse": 0.0009843917361177681,
+          "kl": 0.24758644625544549,
+          "tumor_mse": 0.0009628037188928139,
+          "tumor_ssim": 0.7207213759422302,
+          "whole_mse": 0.002043054031673819,
+          "whole_ssim": 0.20747849643230437
+        },
+        "t2f": {
+          "healthy_mse": 0.001225924657710769,
+          "kl": 0.26519217193126676,
+          "tumor_mse": 0.0011880581165595414,
+          "tumor_ssim": 0.6954481661319732,
+          "whole_mse": 0.0020086325064767154,
+          "whole_ssim": 0.2010118693113327
+        },
+        "t2w": {
+          "healthy_mse": 0.0011485983226941963,
+          "kl": 0.2790664166212082,
+          "tumor_mse": 0.000768907342342835,
+          "tumor_ssim": 0.7098093539476394,
+          "whole_mse": 0.0019278580672107636,
+          "whole_ssim": 0.20598008036613463
+        }
+      },
+      "overall": {
+        "healthy_mse": 0.002684811985936987,
+        "kl": 0.25679805427789687,
+        "tumor_mse": 0.002917782180534645,
+        "tumor_ssim": 0.6468133792281151,
+        "whole_mse": 0.002265342297323514,
+        "whole_ssim": 0.19160588085651398
+      },
+      "row_count": 80
+    }
+  },
+  "schema_version": 1,
+  "selection_after_epoch": {
+    "evaluated": [
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.004599768571791087,
+            "tumor_ssim": 0.05194464325904846,
+            "whole_ssim": 0.022039094567298884
+          },
+          "t1n": {
+            "tumor_mse": -0.0007433045896400791,
+            "tumor_ssim": 0.03229286074638371,
+            "whole_ssim": 0.012691700458526606
+          },
+          "t2f": {
+            "tumor_mse": -0.0004406605947155835,
+            "tumor_ssim": 0.031809017062187195,
+            "whole_ssim": 0.014789780974388128
+          },
+          "t2w": {
+            "tumor_mse": -0.0018222824528380229,
+            "tumor_ssim": 0.04838080108165732,
+            "whole_ssim": 0.01604586243629455
+          }
+        },
+        "eligible": true,
+        "epoch": 1,
+        "violations": []
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.006993794674710797,
+            "tumor_ssim": 0.0815373599529266,
+            "whole_ssim": 0.014634567499160783
+          },
+          "t1n": {
+            "tumor_mse": -0.0011767844093682098,
+            "tumor_ssim": 0.028737881779670738,
+            "whole_ssim": -0.0006537318229675182
+          },
+          "t2f": {
+            "tumor_mse": -0.0005828673842807801,
+            "tumor_ssim": 0.023765322566032365,
+            "whole_ssim": 0.0010744929313659668
+          },
+          "t2w": {
+            "tumor_mse": -0.002048446925138249,
+            "tumor_ssim": 0.045121750235557534,
+            "whole_ssim": 0.0024980813264846857
+          }
+        },
+        "eligible": true,
+        "epoch": 2,
+        "violations": []
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.005596773799901105,
+            "tumor_ssim": 0.048016712069511414,
+            "whole_ssim": 0.0061481803655624445
+          },
+          "t1n": {
+            "tumor_mse": -0.0008872195428065541,
+            "tumor_ssim": 0.024712345004081704,
+            "whole_ssim": -0.0021397382020950373
+          },
+          "t2f": {
+            "tumor_mse": -0.0009393695176060897,
+            "tumor_ssim": 0.024433967471122697,
+            "whole_ssim": -0.0009820133447647206
+          },
+          "t2w": {
+            "tumor_mse": -0.002055347075684953,
+            "tumor_ssim": 0.043361437320709184,
+            "whole_ssim": 0.0008630931377411055
+          }
+        },
+        "eligible": true,
+        "epoch": 3,
+        "violations": []
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.0072167078328644624,
+            "tumor_ssim": 0.07858893573284148,
+            "whole_ssim": 0.012708055973052995
+          },
+          "t1n": {
+            "tumor_mse": -0.001256167908734067,
+            "tumor_ssim": 0.028220686316490218,
+            "whole_ssim": -0.0017071604728698675
+          },
+          "t2f": {
+            "tumor_mse": -0.0009978521013311646,
+            "tumor_ssim": 0.0234359413385391,
+            "whole_ssim": -0.00028626024723052423
+          },
+          "t2w": {
+            "tumor_mse": -0.002158097949209046,
+            "tumor_ssim": 0.04658267498016355,
+            "whole_ssim": 0.0014384090900421143
+          }
+        },
+        "eligible": true,
+        "epoch": 4,
+        "violations": []
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.007452364774599313,
+            "tumor_ssim": 0.08150931000709533,
+            "whole_ssim": 0.008797165751457225
+          },
+          "t1n": {
+            "tumor_mse": -0.0011933332996720398,
+            "tumor_ssim": 0.03095336854457853,
+            "whole_ssim": -0.0032530486583709772
+          },
+          "t2f": {
+            "tumor_mse": -0.0007372326819514395,
+            "tumor_ssim": 0.02558415830135341,
+            "whole_ssim": -0.0028166264295577947
+          },
+          "t2w": {
+            "tumor_mse": -0.0020634278285687063,
+            "tumor_ssim": 0.048221027851104714,
+            "whole_ssim": -0.001463633775711043
+          }
+        },
+        "eligible": true,
+        "epoch": 5,
+        "violations": []
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.00855211312842753,
+            "tumor_ssim": 0.10012996494770049,
+            "whole_ssim": 0.005208259820938116
+          },
+          "t1n": {
+            "tumor_mse": -0.001317674819328703,
+            "tumor_ssim": 0.027084821462631248,
+            "whole_ssim": -0.011584270000457753
+          },
+          "t2f": {
+            "tumor_mse": -0.00029745946922204655,
+            "tumor_ssim": 0.01762399673461912,
+            "whole_ssim": -0.012101563811302202
+          },
+          "t2w": {
+            "tumor_mse": -0.001942902031626942,
+            "tumor_ssim": 0.041751161217689514,
+            "whole_ssim": -0.010538342595100392
+          }
+        },
+        "eligible": false,
+        "epoch": 6,
+        "violations": [
+          "t2w_whole_ssim_safety_failed",
+          "t1n_whole_ssim_safety_failed",
+          "t2f_whole_ssim_safety_failed"
+        ]
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.008045236852079567,
+            "tumor_ssim": 0.08990075290203092,
+            "whole_ssim": 0.00729831457138061
+          },
+          "t1n": {
+            "tumor_mse": -0.0013382128458351772,
+            "tumor_ssim": 0.022867172956466675,
+            "whole_ssim": -0.0077957153320312444
+          },
+          "t2f": {
+            "tumor_mse": -0.001023288553816671,
+            "tumor_ssim": 0.017295208573341325,
+            "whole_ssim": -0.008071416616439814
+          },
+          "t2w": {
+            "tumor_mse": -0.00219851016480621,
+            "tumor_ssim": 0.04206382334232328,
+            "whole_ssim": -0.006175106763839727
+          }
+        },
+        "eligible": false,
+        "epoch": 7,
+        "violations": [
+          "t2w_whole_ssim_safety_failed",
+          "t1n_whole_ssim_safety_failed",
+          "t2f_whole_ssim_safety_failed"
+        ]
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.01010347533940872,
+            "tumor_ssim": 0.1341398388147354,
+            "whole_ssim": 0.01650178730487825
+          },
+          "t1n": {
+            "tumor_mse": -0.0014922859317276708,
+            "tumor_ssim": 0.027838999032974265,
+            "whole_ssim": -0.005949702858924849
+          },
+          "t2f": {
+            "tumor_mse": -0.0007558946744864628,
+            "tumor_ssim": 0.018271514773368858,
+            "whole_ssim": -0.006203779578208918
+          },
+          "t2w": {
+            "tumor_mse": -0.0020741786400650516,
+            "tumor_ssim": 0.04350837171077726,
+            "whole_ssim": -0.004038435220718367
+          }
+        },
+        "eligible": false,
+        "epoch": 8,
+        "violations": [
+          "t1n_whole_ssim_safety_failed",
+          "t2f_whole_ssim_safety_failed"
+        ]
+      },
+      {
+        "deltas": {
+          "t1c": {
+            "tumor_mse": -0.009940444111869711,
+            "tumor_ssim": 0.12743525207042694,
+            "whole_ssim": 0.015204694867134105
+          },
+          "t1n": {
+            "tumor_mse": -0.0014403277391531594,
+            "tumor_ssim": 0.02696166634559627,
+            "whole_ssim": -0.005639722943305975
+          },
+          "t2f": {
+            "tumor_mse": -0.0008967468999016113,
+            "tumor_ssim": 0.019826155900955156,
+            "whole_ssim": -0.005419495701789873
+          },
+          "t2w": {
+            "tumor_mse": -0.0021423934563782818,
+            "tumor_ssim": 0.045654776692390375,
+            "whole_ssim": -0.0027402997016906794
+          }
+        },
+        "eligible": false,
+        "epoch": 9,
+        "violations": [
+          "t1n_whole_ssim_safety_failed",
+          "t2f_whole_ssim_safety_failed"
+        ]
+      }
+    ],
+    "selected_epoch": 4,
+    "status": "pass"
+  },
+  "status": "pass"
+}

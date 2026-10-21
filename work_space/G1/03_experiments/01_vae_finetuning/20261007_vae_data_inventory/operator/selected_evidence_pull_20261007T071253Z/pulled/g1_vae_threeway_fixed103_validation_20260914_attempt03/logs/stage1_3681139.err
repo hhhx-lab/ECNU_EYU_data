@@ -1,0 +1,13 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+Traceback (most recent call last):
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_threeway_fixed103_validation_20260914_attempt03/runtime/evaluate_three_vae_fixed103.py", line 317, in <module>
+    main()
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_threeway_fixed103_validation_20260914_attempt03/runtime/evaluate_three_vae_fixed103.py", line 236, in main
+    require(bool(np.any(seg_model)) and bool(np.any(source_seg)), f"empty tumor in fixed103: {case_id}")
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_threeway_fixed103_validation_20260914_attempt03/runtime/evaluate_three_vae_fixed103.py", line 32, in require
+    raise RuntimeError(message)
+RuntimeError: empty tumor in fixed103: BraTS-MET-01117-003

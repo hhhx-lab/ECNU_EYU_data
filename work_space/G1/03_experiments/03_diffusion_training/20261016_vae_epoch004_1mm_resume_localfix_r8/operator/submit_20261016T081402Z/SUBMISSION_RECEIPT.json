@@ -1,0 +1,819 @@
+{
+  "NONZERO_COMPARISON_GATE": false,
+  "STRICT_ORIGINAL_GATE": false,
+  "artifact_status": "experimental_unvalidated",
+  "evidence": {
+    "PREPARE_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4124867",
+      "operator_approved": false,
+      "script_sha256": "f15f679b12178d98c764a8e90757fe1939d5bea37a8b7e7370918f9129dc71f8",
+      "status": "held"
+    },
+    "PREPARE_LAUNCH_AUDIT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "job": {
+        "argv": [
+          "scontrol",
+          "show",
+          "job",
+          "4124867",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "JobId=4124867 JobName=g1d1m8p1 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=1-00:00:00 TimeMin=N/A SubmitTime=2026-10-16T16:05:00 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-16T16:05:00 Partition=cpu_192G AllocNode:Sid=10.11.100.253:129376 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=90G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=90G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/prepare.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8p1_4124867.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8p1_4124867.out Power= NtasksPerTRES:0\n",
+        "utc": "2026-10-16T08:05:49.541261+00:00"
+      },
+      "operator_approved": false,
+      "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+      "static_sha256": "3996fe3bbf98c3b5c18f53ac7b5b7231c4578ea91cb2d85db3993ae98307ee21",
+      "status": "held_audited",
+      "utc": "2026-10-16T08:05:49.541793+00:00"
+    },
+    "PREPARE_RELEASE_RECEIPT.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4124867"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-16T08:05:52.100562+00:00"
+    },
+    "PREPARE_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "operator_approved": false,
+      "script_sha256": "f15f679b12178d98c764a8e90757fe1939d5bea37a8b7e7370918f9129dc71f8",
+      "utc": "2026-10-16T08:05:49.297212+00:00"
+    },
+    "PREPARE_SUBMISSION_RESPONSE.json": {
+      "argv": [
+        "sbatch",
+        "--parsable",
+        "--hold",
+        "--export=NONE",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/prepare.slurm"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4124867\n",
+      "utc": "2026-10-16T08:05:49.420539+00:00"
+    },
+    "STATIC_PREFLIGHT.json": {
+      "account_disk": {
+        "argv": [
+          "df",
+          "-B1",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1986227339264 212795916288  91% /public\n",
+        "utc": "2026-10-16T08:05:49.287426+00:00"
+      },
+      "accounting": {
+        "argv": [
+          "sacct",
+          "-n",
+          "-P",
+          "-j",
+          "4096309,4096310,4096311,4096312,4096313",
+          "--format=JobID,State,ExitCode,Elapsed"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4096309|FAILED|1:0|05:01:38\n4096309.batch|FAILED|1:0|05:01:38\n4096310|CANCELLED|0:0|00:00:00\n4096311|CANCELLED|0:0|00:00:00\n4096312|CANCELLED|0:0|00:00:00\n4096313|CANCELLED|0:0|00:00:00\n",
+        "utc": "2026-10-16T08:03:15.749584+00:00"
+      },
+      "actual_one_case_local_fix": {
+        "argv": [
+          "/public/home/zqchen/.conda/envs/segmamba/bin/python",
+          "-B",
+          "-c",
+          "import pathlib;import sys,json,numpy as np,nibabel as nib;sys.path.insert(0,\"runtime\");import prepare as p;c=json.load(open(\"config/RUN.json\"));e=json.load(open(\"plan/LOCAL_LABEL_EXCEPTION.json\"));path=pathlib.Path(c[\"recon\"])/\"dataset/cases\"/e[\"case_id\"]/(e[\"case_id\"]+\"-seg.nii.gz\");im=nib.load(str(path));a=im.get_fdata(dtype=np.float32).astype(np.uint8);s=np.asarray(im.header.get_zooms()[:3],float);n,f,o=p.physical_grid(a.shape,s,(1.,1.,1.));b=p.resample_physical(a[None],n,f,o,s,(1.,1.,1.),is_seg=True)[0];v,r=p.apply_local_exception(e[\"case_id\"],p.sha(path),a,b,n,f,o,s,e);assert np.count_nonzero(v==4)==4;assert np.count_nonzero(v!=b)==4;assert all(np.count_nonzero(v==k)==np.count_nonzero(b==k) for k in (1,2,3));print(json.dumps(r))"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "{\"schema\": \"r8_one_case_nearest_background_restore_v1\", \"case_id\": \"BraTS-MET-01110-002\", \"restored_target_ijk\": [[168, 153, 132], [169, 153, 131], [169, 153, 132], [170, 153, 132]], \"original_class4_voxels\": 19, \"target_class4_voxels\": 4, \"all_native_components_preserved\": false, \"global_algorithm_unchanged\": true}\n",
+        "utc": "2026-10-16T08:05:16.504538+00:00"
+      },
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "independent_full_revalidation": "waived_by_user_not_pass",
+      "network_import": {
+        "argv": [
+          "/public/home/zqchen/.conda/envs/segmamba/bin/python",
+          "-B",
+          "-c",
+          "import sys,json;sys.path.insert(0,\"runtime/upstream_source\");from src.networks.DiffusionNetwork import get_diffusion_network;from types import SimpleNamespace;c=json.load(open(\"config/RUN.json\"));n=get_diffusion_network(SimpleNamespace(**c[\"training\"]),n_steps=1000);p=sum(v.numel() for v in n.parameters());assert p==4475999;print(p)"
+        ],
+        "returncode": 0,
+        "stderr": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/monai/networks/nets/unet.py:130: UserWarning: `len(strides) > len(channels) - 1`, the last 1 values of strides will not be used.\n  warnings.warn(f\"`len(strides) > len(channels) - 1`, the last {delta} values of strides will not be used.\")\n",
+        "stdout": "[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n4475999\n",
+        "utc": "2026-10-16T08:05:49.282971+00:00"
+      },
+      "operator_approved": false,
+      "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+      "partitions": {
+        "a100": {
+          "argv": [
+            "scontrol",
+            "show",
+            "partition",
+            "a100",
+            "-o"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "PartitionName=a100 AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_a100 DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=gpu[9,11-14,16-19,22] PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=480 TotalNodes=10 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n",
+          "utc": "2026-10-16T08:03:15.934986+00:00"
+        },
+        "cpu_192G": {
+          "argv": [
+            "scontrol",
+            "show",
+            "partition",
+            "cpu_192G",
+            "-o"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "PartitionName=cpu_192G AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,tianzhixiong,gtshi,mxbai,yliu,a_test,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,yshen,hysun,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,syzhang,scjiang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,test_block1,qzhang,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_cpu_192G DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=node[201-228,230] PriorityJobFactor=1 PriorityTier=9000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=812 TotalNodes=29 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n",
+          "utc": "2026-10-16T08:03:15.870247+00:00"
+        }
+      },
+      "public_disk": {
+        "argv": [
+          "df",
+          "-h",
+          "/public"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  223T   26T  90% /public\n",
+        "utc": "2026-10-16T08:05:49.289567+00:00"
+      },
+      "qos": {
+        "argv": [
+          "sacctmgr",
+          "-n",
+          "-P",
+          "show",
+          "qos",
+          "where",
+          "name=user_zqchen,partition_a100",
+          "format=Name,MaxWall,MaxJobsPU,MaxSubmitPU"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "partition_a100|||100\nuser_zqchen||1000|\n",
+        "utc": "2026-10-16T08:03:16.391865+00:00"
+      },
+      "queue": {
+        "argv": [
+          "squeue",
+          "-h",
+          "-u",
+          "zqchen",
+          "-o",
+          "%i|%T|%j|%P|%r"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "",
+        "utc": "2026-10-16T08:03:15.821619+00:00"
+      },
+      "remote_utc": "2026-10-16T08:05:49.283013+00:00",
+      "scope": "engineering_only_no_full_source_scan_no_scientific_pass",
+      "status": "pass",
+      "storage": {
+        "available_bytes": 212795916288,
+        "cases": 926,
+        "checkpoint_reserve_bytes": 12884901888,
+        "compressed_worst_bound_bytes": 105500883892,
+        "data_upper_bytes": 105457430520,
+        "metadata_reserve_bytes": 1073741824,
+        "method": "remaining455_full_FOV+zlib_compressBound+metadata+temporary+all_checkpoints+4GiB",
+        "new_cases": 455,
+        "required_bytes": 126305944500,
+        "reused_candidates": 471,
+        "temporary_upper_bytes": 2551449600
+      },
+      "suitable_nodes": {
+        "a100": [
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375762,
+            "node": "gpu9",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375765,
+            "node": "gpu11",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375765,
+            "node": "gpu12",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375852,
+            "node": "gpu13",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375760,
+            "node": "gpu14",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375760,
+            "node": "gpu16",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375762,
+            "node": "gpu17",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375765,
+            "node": "gpu18",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 375762,
+            "node": "gpu19",
+            "state": "MIXED"
+          },
+          {
+            "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+            "memory_mib": 504833,
+            "node": "gpu22",
+            "state": "MIXED"
+          }
+        ],
+        "cpu_192G": [
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node201",
+            "state": "ALLOCATED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node202",
+            "state": "ALLOCATED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node203",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node204",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node205",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node206",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node207",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node208",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node209",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node210",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node211",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node212",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node213",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node214",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node215",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node216",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node217",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node218",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node219",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node220",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node221",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node222",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node223",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node224",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node225",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node226",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node227",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node228",
+            "state": "MIXED"
+          },
+          {
+            "gres": "(null)",
+            "memory_mib": 180673,
+            "node": "node230",
+            "state": "MIXED"
+          }
+        ]
+      },
+      "synthetic_cpu_tests": {
+        "argv": [
+          "/public/home/zqchen/.conda/envs/segmamba/bin/python",
+          "-B",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/tests/test_runtime.py",
+          "-v"
+        ],
+        "returncode": 0,
+        "stderr": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\ntest_actual_preprocess_csv_loader (__main__.RuntimeTests.test_actual_preprocess_csv_loader) ... /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/runtime/upstream_source/src/utils/data_utils.py:160: UserWarning: CacheDataset cache_rate=1.0. Reduce --cache_rate if the process runs out of memory.\n  warnings.warn(f\"CacheDataset cache_rate={cache_rate}. Reduce --cache_rate if the process runs out of memory.\")\n\nLoading dataset:   0%|          | 0/2 [00:00<?, ?it/s]\nLoading dataset:  50%|\u2588\u2588\u2588\u2588\u2588     | 1/2 [00:01<00:01,  1.44s/it]\nLoading dataset: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2/2 [00:01<00:00,  1.37it/s]\nok\ntest_complete_checkpoint_and_rng (__main__.RuntimeTests.test_complete_checkpoint_and_rng) ... ok\ntest_cursor_resume (__main__.RuntimeTests.test_cursor_resume) ... ok\ntest_local_exception_scoped_and_fail_closed (__main__.RuntimeTests.test_local_exception_scoped_and_fail_closed) ... ok\ntest_mask_and_normalization (__main__.RuntimeTests.test_mask_and_normalization) ... ok\ntest_membership (__main__.RuntimeTests.test_membership) ... ok\ntest_physical_affine (__main__.RuntimeTests.test_physical_affine) ... ok\ntest_stop_signal (__main__.RuntimeTests.test_stop_signal) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 3.547s\n\nOK\n",
+        "stdout": "CSV_PATH: /tmp/tmpcwfn07k2/lesions.csv\nScan Modality: scan_t1c\nNormalization: nnunet\nUsing dataset: BRATS_2024\nUsing Gaussian noise only in the tumour zone (ROI cache, per-iteration random offset)\nCSV rows: 2 total -> 2 used for training (1 patients)\nNumber of training images: 2\nDataset training: number of batches: 2\nLeaving the data loader. Good luck!\n",
+        "utc": "2026-10-16T08:04:52.494542+00:00"
+      }
+    },
+    "SUBMISSION_RECEIPT.json": {
+      "NONZERO_COMPARISON_GATE": false,
+      "STRICT_ORIGINAL_GATE": false,
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "independent_full_revalidation": "waived_by_user_not_pass",
+      "jobs": {
+        "prepare": "4124867",
+        "t1c": "4124868",
+        "t1n": "4124869",
+        "t2f": "4124871",
+        "t2w": "4124870"
+      },
+      "operator_approved": false,
+      "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+      "queue_after_release": {
+        "argv": [
+          "squeue",
+          "-h",
+          "-j",
+          "4124867,4124868,4124869,4124870,4124871",
+          "-o",
+          "%i|%T|%j|%P|%r|%b|%M"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4124871|PENDING|g1d1m8t2f|a100|None|gpu:1,gpu:1|0:00\n4124870|PENDING|g1d1m8t2w|a100|None|gpu:1,gpu:1|0:00\n4124869|PENDING|g1d1m8t1n|a100|None|gpu:1,gpu:1|0:00\n4124868|PENDING|g1d1m8t1c|a100|None|gpu:1,gpu:1|0:00\n4124867|PENDING|g1d1m8p1|cpu_192G|None|N/A|0:00\n",
+        "utc": "2026-10-16T08:05:52.182876+00:00"
+      },
+      "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8",
+      "remote_utc": "2026-10-16T08:05:52.116159+00:00",
+      "status": "all_five_released",
+      "storage": {
+        "available_bytes": 212795916288,
+        "cases": 926,
+        "checkpoint_reserve_bytes": 12884901888,
+        "compressed_worst_bound_bytes": 105500883892,
+        "data_upper_bytes": 105457430520,
+        "metadata_reserve_bytes": 1073741824,
+        "method": "remaining455_full_FOV+zlib_compressBound+metadata+temporary+all_checkpoints+4GiB",
+        "new_cases": 455,
+        "required_bytes": 126305944500,
+        "reused_candidates": 471,
+        "temporary_upper_bytes": 2551449600
+      }
+    },
+    "T1C_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4124868",
+      "operator_approved": false,
+      "script_sha256": "00ebbc3934f3fe40bcc1e5979511d294e894551e62d585727f6d144b0e940b6f",
+      "status": "held"
+    },
+    "T1C_LAUNCH_AUDIT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job": {
+        "argv": [
+          "scontrol",
+          "show",
+          "job",
+          "4124868",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "JobId=4124868 JobName=g1d1m8t1c UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4124867(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-16T16:05:01 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-16T16:05:01 Partition=a100 AllocNode:Sid=10.11.100.253:129376 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t1c.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t1c_4124868.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t1c_4124868.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+        "utc": "2026-10-16T08:05:49.820894+00:00"
+      },
+      "operator_approved": false,
+      "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+      "static_sha256": "3996fe3bbf98c3b5c18f53ac7b5b7231c4578ea91cb2d85db3993ae98307ee21",
+      "status": "held_audited",
+      "utc": "2026-10-16T08:05:49.821584+00:00"
+    },
+    "T1C_RELEASE_RECEIPT.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4124868"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-16T08:05:50.694636+00:00"
+    },
+    "T1C_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "operator_approved": false,
+      "script_sha256": "00ebbc3934f3fe40bcc1e5979511d294e894551e62d585727f6d144b0e940b6f",
+      "utc": "2026-10-16T08:05:49.553392+00:00"
+    },
+    "T1C_SUBMISSION_RESPONSE.json": {
+      "argv": [
+        "sbatch",
+        "--parsable",
+        "--hold",
+        "--export=NONE",
+        "--dependency=afterok:4124867",
+        "--kill-on-invalid-dep=yes",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t1c.slurm"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4124868\n",
+      "utc": "2026-10-16T08:05:49.733008+00:00"
+    },
+    "T1N_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4124869",
+      "operator_approved": false,
+      "script_sha256": "d69d9cad056943a59568c56d8b85fd1f3aade9cd630b9ced11a055c6b761c08b",
+      "status": "held"
+    },
+    "T1N_LAUNCH_AUDIT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job": {
+        "argv": [
+          "scontrol",
+          "show",
+          "job",
+          "4124869",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "JobId=4124869 JobName=g1d1m8t1n UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4124867(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-16T16:05:01 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-16T16:05:01 Partition=a100 AllocNode:Sid=10.11.100.253:129376 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t1n.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t1n_4124869.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t1n_4124869.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+        "utc": "2026-10-16T08:05:50.080668+00:00"
+      },
+      "operator_approved": false,
+      "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+      "static_sha256": "3996fe3bbf98c3b5c18f53ac7b5b7231c4578ea91cb2d85db3993ae98307ee21",
+      "status": "held_audited",
+      "utc": "2026-10-16T08:05:50.081284+00:00"
+    },
+    "T1N_RELEASE_RECEIPT.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4124869"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-16T08:05:50.794435+00:00"
+    },
+    "T1N_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "operator_approved": false,
+      "script_sha256": "d69d9cad056943a59568c56d8b85fd1f3aade9cd630b9ced11a055c6b761c08b",
+      "utc": "2026-10-16T08:05:49.834488+00:00"
+    },
+    "T1N_SUBMISSION_RESPONSE.json": {
+      "argv": [
+        "sbatch",
+        "--parsable",
+        "--hold",
+        "--export=NONE",
+        "--dependency=afterok:4124867",
+        "--kill-on-invalid-dep=yes",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t1n.slurm"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4124869\n",
+      "utc": "2026-10-16T08:05:49.983100+00:00"
+    },
+    "T2F_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4124871",
+      "operator_approved": false,
+      "script_sha256": "7064c5cd992fa0b3ff892fa01b694f5974fb32e734b880567a1ba2a97ddf9fb1",
+      "status": "held"
+    },
+    "T2F_LAUNCH_AUDIT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job": {
+        "argv": [
+          "scontrol",
+          "show",
+          "job",
+          "4124871",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "JobId=4124871 JobName=g1d1m8t2f UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4124867(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-16T16:05:02 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-16T16:05:02 Partition=a100 AllocNode:Sid=10.11.100.253:129376 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t2f.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t2f_4124871.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t2f_4124871.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+        "utc": "2026-10-16T08:05:50.624392+00:00"
+      },
+      "operator_approved": false,
+      "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+      "static_sha256": "3996fe3bbf98c3b5c18f53ac7b5b7231c4578ea91cb2d85db3993ae98307ee21",
+      "status": "held_audited",
+      "utc": "2026-10-16T08:05:50.624996+00:00"
+    },
+    "T2F_RELEASE_RECEIPT.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4124871"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-16T08:05:51.049255+00:00"
+    },
+    "T2F_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "operator_approved": false,
+      "script_sha256": "7064c5cd992fa0b3ff892fa01b694f5974fb32e734b880567a1ba2a97ddf9fb1",
+      "utc": "2026-10-16T08:05:50.367828+00:00"
+    },
+    "T2F_SUBMISSION_RESPONSE.json": {
+      "argv": [
+        "sbatch",
+        "--parsable",
+        "--hold",
+        "--export=NONE",
+        "--dependency=afterok:4124867",
+        "--kill-on-invalid-dep=yes",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t2f.slurm"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4124871\n",
+      "utc": "2026-10-16T08:05:50.496458+00:00"
+    },
+    "T2W_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4124870",
+      "operator_approved": false,
+      "script_sha256": "53002e900da37386ce131b9b8572ff7e2e55832fae55d669fcf5e4fbf1501be4",
+      "status": "held"
+    },
+    "T2W_LAUNCH_AUDIT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "job": {
+        "argv": [
+          "scontrol",
+          "show",
+          "job",
+          "4124870",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "JobId=4124870 JobName=g1d1m8t2w UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4124867(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-16T16:05:01 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-16T16:05:01 Partition=a100 AllocNode:Sid=10.11.100.253:129376 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t2w.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t2w_4124870.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/logs/g1d1m8t2w_4124870.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+        "utc": "2026-10-16T08:05:50.362353+00:00"
+      },
+      "operator_approved": false,
+      "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+      "static_sha256": "3996fe3bbf98c3b5c18f53ac7b5b7231c4578ea91cb2d85db3993ae98307ee21",
+      "status": "held_audited",
+      "utc": "2026-10-16T08:05:50.362880+00:00"
+    },
+    "T2W_RELEASE_RECEIPT.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4124870"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-16T08:05:50.916262+00:00"
+    },
+    "T2W_RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4124867",
+      "formal_gate_status": "not_run_not_passed",
+      "operator_approved": false,
+      "script_sha256": "53002e900da37386ce131b9b8572ff7e2e55832fae55d669fcf5e4fbf1501be4",
+      "utc": "2026-10-16T08:05:50.091136+00:00"
+    },
+    "T2W_SUBMISSION_RESPONSE.json": {
+      "argv": [
+        "sbatch",
+        "--parsable",
+        "--hold",
+        "--export=NONE",
+        "--dependency=afterok:4124867",
+        "--kill-on-invalid-dep=yes",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/slurm/t2w.slurm"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4124870\n",
+      "utc": "2026-10-16T08:05:50.251144+00:00"
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "independent_full_revalidation": "waived_by_user_not_pass",
+  "jobs": {
+    "prepare": "4124867",
+    "t1c": "4124868",
+    "t1n": "4124869",
+    "t2f": "4124871",
+    "t2w": "4124870"
+  },
+  "local_utc": "2026-10-16T08:16:57.680637+00:00",
+  "operator_approved": false,
+  "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+  "queue_after_release": {
+    "argv": [
+      "squeue",
+      "-h",
+      "-j",
+      "4124867,4124868,4124869,4124870,4124871",
+      "-o",
+      "%i|%T|%j|%P|%r|%b|%M"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4124871|PENDING|g1d1m8t2f|a100|None|gpu:1,gpu:1|0:00\n4124870|PENDING|g1d1m8t2w|a100|None|gpu:1,gpu:1|0:00\n4124869|PENDING|g1d1m8t1n|a100|None|gpu:1,gpu:1|0:00\n4124868|PENDING|g1d1m8t1c|a100|None|gpu:1,gpu:1|0:00\n4124867|PENDING|g1d1m8p1|cpu_192G|None|N/A|0:00\n",
+    "utc": "2026-10-16T08:05:52.182876+00:00"
+  },
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8",
+  "remote_utc": "2026-10-16T08:05:52.116159+00:00",
+  "status": "all_five_released",
+  "storage": {
+    "available_bytes": 212795916288,
+    "cases": 926,
+    "checkpoint_reserve_bytes": 12884901888,
+    "compressed_worst_bound_bytes": 105500883892,
+    "data_upper_bytes": 105457430520,
+    "metadata_reserve_bytes": 1073741824,
+    "method": "remaining455_full_FOV+zlib_compressBound+metadata+temporary+all_checkpoints+4GiB",
+    "new_cases": 455,
+    "required_bytes": 126305944500,
+    "reused_candidates": 471,
+    "temporary_upper_bytes": 2551449600
+  }
+}

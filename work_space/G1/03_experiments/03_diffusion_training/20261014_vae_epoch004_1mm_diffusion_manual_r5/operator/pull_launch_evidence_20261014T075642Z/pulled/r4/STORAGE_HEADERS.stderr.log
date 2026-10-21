@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r4/runtime/prepare.py", line 90, in estimate
+    raise RuntimeError('Insufficient measured input/checkpoint capacity: ' + json.dumps(result))
+RuntimeError: Insufficient measured input/checkpoint capacity: {"data_upper_bytes": 192322829808, "temporary_upper_bytes": 2855347200, "checkpoint_reserve_bytes": 12884901888, "required_bytes": 231590329172, "available_bytes": 224164577280, "cases": 926}

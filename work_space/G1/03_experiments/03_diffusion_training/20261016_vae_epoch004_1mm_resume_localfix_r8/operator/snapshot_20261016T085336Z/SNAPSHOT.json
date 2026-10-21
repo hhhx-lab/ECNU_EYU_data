@@ -1,0 +1,155 @@
+{
+  "NONZERO_COMPARISON_GATE": false,
+  "STRICT_ORIGINAL_GATE": false,
+  "account_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1986300739584 212722515968  91% /public\n"
+  },
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 212722515968,
+  "drift": [],
+  "evidence": {
+    "dataset/COMPLETE.ok": {
+      "exists": false
+    },
+    "dataset/FAILED.json": {
+      "exists": false
+    },
+    "dataset/STARTED.json": {
+      "exists": true,
+      "sha256": "0719003f35a0acf7bd688d6fd3ec5af15e3a74f9c2f19e0c2faf30ecd3e6cb3b",
+      "utc": "2026-10-16T08:19:07.527867+00:00"
+    },
+    "training/t1c/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1c/FAILED.json": {
+      "exists": false
+    },
+    "training/t1c/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1c/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1c/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1c/STARTED.json": {
+      "exists": false
+    },
+    "training/t1n/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1n/FAILED.json": {
+      "exists": false
+    },
+    "training/t1n/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1n/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1n/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1n/STARTED.json": {
+      "exists": false
+    },
+    "training/t2f/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2f/FAILED.json": {
+      "exists": false
+    },
+    "training/t2f/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2f/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2f/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2f/STARTED.json": {
+      "exists": false
+    },
+    "training/t2w/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2w/FAILED.json": {
+      "exists": false
+    },
+    "training/t2w/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2w/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2w/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2w/STARTED.json": {
+      "exists": false
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "independent_full_revalidation": "waived_by_user_not_pass",
+  "jobs": {
+    "prepare": "4124867",
+    "t1c": "4124868",
+    "t1n": "4124869",
+    "t2f": "4124871",
+    "t2w": "4124870"
+  },
+  "local_utc": "2026-10-16T08:54:01.349698+00:00",
+  "logs": {
+    "g1d1m8p1_4124867.err": {
+      "bytes": 0,
+      "critical": [],
+      "exists": true,
+      "tail": ""
+    },
+    "g1d1m8p1_4124867.out": {
+      "bytes": 30973,
+      "critical": [],
+      "exists": true,
+      "tail": "\", \"cases_completed\": 418, \"rows\": 3}\n{\"case\": \"BraTS-MET-01090-003\", \"cases_completed\": 419, \"rows\": 1}\n{\"case\": \"BraTS-MET-01091-002\", \"cases_completed\": 420, \"rows\": 5}\n{\"case\": \"BraTS-MET-01092-000\", \"cases_completed\": 421, \"rows\": 1}\n{\"case\": \"BraTS-MET-01092-001\", \"cases_completed\": 422, \"rows\": 1}\n{\"case\": \"BraTS-MET-01092-003\", \"cases_completed\": 423, \"rows\": 1}\n{\"case\": \"BraTS-MET-01093-001\", \"cases_completed\": 424, \"rows\": 9}\n{\"case\": \"BraTS-MET-01094-003\", \"cases_completed\": 425, \"rows\": 9}\n{\"case\": \"BraTS-MET-01095-001\", \"cases_completed\": 426, \"rows\": 4}\n{\"case\": \"BraTS-MET-01095-002\", \"cases_completed\": 427, \"rows\": 2}\n{\"case\": \"BraTS-MET-01096-000\", \"cases_completed\": 428, \"rows\": 1}\n{\"case\": \"BraTS-MET-01096-001\", \"cases_completed\": 429, \"rows\": 1}\n{\"case\": \"BraTS-MET-01096-002\", \"cases_completed\": 430, \"rows\": 1}\n{\"case\": \"BraTS-MET-01097-001\", \"cases_completed\": 431, \"rows\": 14}\n{\"case\": \"BraTS-MET-01098-001\", \"cases_completed\": 432, \"rows\": 0}\n{\"case\": \"BraTS-MET-01098-002\", \"cases_completed\": 433, \"rows\": 1}\n{\"case\": \"BraTS-MET-01098-003\", \"cases_completed\": 434, \"rows\": 0}\n{\"case\": \"BraTS-MET-01100-000\", \"cases_completed\": 435, \"rows\": 12}\n{\"case\": \"BraTS-MET-01100-001\", \"cases_completed\": 436, \"rows\": 20}\n{\"case\": \"BraTS-MET-01100-002\", \"cases_completed\": 437, \"rows\": 33}\n{\"case\": \"BraTS-MET-01100-003\", \"cases_completed\": 438, \"rows\": 33}\n{\"case\": \"BraTS-MET-01101-001\", \"cases_completed\": 439, \"rows\": 38}\n{\"case\": \"BraTS-MET-01101-002\", \"cases_completed\": 440, \"rows\": 55}\n{\"case\": \"BraTS-MET-01102-001\", \"cases_completed\": 441, \"rows\": 8}\n{\"case\": \"BraTS-MET-01102-003\", \"cases_completed\": 442, \"rows\": 2}\n{\"case\": \"BraTS-MET-01102-004\", \"cases_completed\": 443, \"rows\": 2}\n{\"case\": \"BraTS-MET-01103-001\", \"cases_completed\": 444, \"rows\": 6}\n{\"case\": \"BraTS-MET-01103-002\", \"cases_completed\": 445, \"rows\": 9}\n{\"case\": \"BraTS-MET-01103-003\", \"cases_completed\": 446, \"rows\": 9}\n{\"case\": \"BraTS-MET-01104-001\", \"cases_completed\": 447, \"rows\": 20}\n{\"case\": \"BraTS-MET-01104-002\", \"cases_completed\": 448, \"rows\": 3}\n{\"case\": \"BraTS-MET-01105-001\", \"cases_completed\": 449, \"rows\": 2}\n{\"case\": \"BraTS-MET-01105-002\", \"cases_completed\": 450, \"rows\": 2}\n{\"case\": \"BraTS-MET-01106-001\", \"cases_completed\": 451, \"rows\": 13}\n{\"case\": \"BraTS-MET-01106-002\", \"cases_completed\": 452, \"rows\": 17}\n{\"case\": \"BraTS-MET-01106-003\", \"cases_completed\": 453, \"rows\": 17}\n{\"case\": \"BraTS-MET-01107-000\", \"cases_completed\": 454, \"rows\": 7}\n{\"case\": \"BraTS-MET-01107-002\", \"cases_completed\": 455, \"rows\": 1}\n{\"case\": \"BraTS-MET-01108-000\", \"cases_completed\": 456, \"rows\": 12}\n{\"case\": \"BraTS-MET-01108-001\", \"cases_completed\": 457, \"rows\": 13}\n{\"case\": \"BraTS-MET-01108-002\", \"cases_completed\": 458, \"rows\": 8}\n{\"case\": \"BraTS-MET-01109-001\", \"cases_completed\": 459, \"rows\": 5}\n{\"case\": \"BraTS-MET-01109-002\", \"cases_completed\": 460, \"rows\": 4}\n{\"case\": \"BraTS-MET-01109-003\", \"cases_completed\": 461, \"rows\": 1}\n{\"case\": \"BraTS-MET-01110-001\", \"cases_completed\": 462, \"rows\": 12}\n"
+    }
+  },
+  "operator_approved": false,
+  "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+  "prepared_case_directories": 475,
+  "public_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  223T   26T  90% /public\n"
+  },
+  "remote_utc": "2026-10-16T08:42:54.333767+00:00",
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4124867|RUNNING|0:0|00:24:24|1-00:00:00|billing=8,cpu=8,mem=90G,node=1\n4124867.batch|RUNNING|0:0|00:24:24||cpu=8,mem=90G,node=1\n4124868|PENDING|0:0|00:00:00|2-00:00:00|\n4124869|PENDING|0:0|00:00:00|2-00:00:00|\n4124870|PENDING|0:0|00:00:00|2-00:00:00|\n4124871|PENDING|0:0|00:00:00|2-00:00:00|\n"
+  },
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4124871|PENDING|g1d1m8t2f|a100|Dependency|gpu:1,gpu:1|0:00\n4124870|PENDING|g1d1m8t2w|a100|Dependency|gpu:1,gpu:1|0:00\n4124869|PENDING|g1d1m8t1n|a100|Dependency|gpu:1,gpu:1|0:00\n4124868|PENDING|g1d1m8t1c|a100|Dependency|gpu:1,gpu:1|0:00\n4124867|RUNNING|g1d1m8p1|cpu_192G|None|N/A|25:12\n"
+  },
+  "training_progress": {
+    "t1c": {
+      "exists": false
+    },
+    "t1n": {
+      "exists": false
+    },
+    "t2f": {
+      "exists": false
+    },
+    "t2w": {
+      "exists": false
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "case": "BraTS-MET-01247-001",
+  "case_manifest_sha256": "4b132c382d197413814871f96715c0ca9e7b7299d99534a17e782b1338dd3459",
+  "corrected_overlay": null,
+  "coverage": {
+    "algorithm_version": "source_support_comparison_v1_no_label_repair",
+    "label_all_three_zero": 0,
+    "label_counts": {
+      "0": 51282763,
+      "1": 5682,
+      "2": 75743,
+      "3": 16036,
+      "4": 0
+    },
+    "label_voxels": 97461,
+    "nonzero_missing_all_three_zero": 0,
+    "nonzero_missing_by_label": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "nonzero_missing_voxels": 0,
+    "nonzero_support_nonempty": true,
+    "nonzero_support_voxels": 7703771,
+    "old_missing_all_three_zero": 0,
+    "old_missing_with_negative_source": 0,
+    "positive_missing_by_label": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "positive_missing_voxels": 0,
+    "positive_support_nonempty": true,
+    "positive_support_voxels": 7703771
+  },
+  "finished_utc": "2026-10-15T10:27:35.782118+00:00",
+  "formal_gate_status": "not_run_not_passed",
+  "label_sha256": "fad2a973912e2489cba217e0666b767840991ed3b92075fdd50779152fc8a684",
+  "operator_approved": false,
+  "patient_group": "BraTS-MET-01247",
+  "sources": {
+    "seg": {
+      "geometry": {
+        "affine": [
+          [
+            0.48829999566078186,
+            0.0,
+            -0.0,
+            -123.50830078125
+          ],
+          [
+            0.0,
+            0.48829999566078186,
+            -0.0,
+            -81.24630737304688
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -79.98789978027344
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corner_shift_mm": 0.0,
+        "shape": [
+          512,
+          512,
+          196
+        ],
+        "spacing": [
+          0.48829999566078186,
+          0.48829999566078186,
+          1.0
+        ]
+      },
+      "maximum": 3.0,
+      "minimum": 0.0,
+      "negative_voxels": 0,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input/BraTS-MET-01247-001/BraTS-MET-01247-001-seg.nii.gz",
+      "sha256": "fad2a973912e2489cba217e0666b767840991ed3b92075fdd50779152fc8a684"
+    },
+    "t1c": {
+      "geometry": {
+        "affine": [
+          [
+            0.48829999566078186,
+            0.0,
+            0.0,
+            -123.50830078125
+          ],
+          [
+            0.0,
+            0.48829999566078186,
+            0.0,
+            -81.24630737304688
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -79.98789978027344
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corner_shift_mm": 0.0,
+        "shape": [
+          512,
+          512,
+          196
+        ],
+        "spacing": [
+          0.48829999566078186,
+          0.48829999566078186,
+          1.0
+        ]
+      },
+      "maximum": 19367.0,
+      "minimum": 0.0,
+      "negative_voxels": 0,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input/BraTS-MET-01247-001/BraTS-MET-01247-001-t1c.nii.gz",
+      "sha256": "b02d75c05c7a513afda204eae44521569a5a28eb8ef51f47e893e4df4e7cd0a9"
+    },
+    "t1n": {
+      "geometry": {
+        "affine": [
+          [
+            0.48829999566078186,
+            0.0,
+            0.0,
+            -123.50830078125
+          ],
+          [
+            0.0,
+            0.48829999566078186,
+            0.0,
+            -81.24630737304688
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -79.98789978027344
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corner_shift_mm": 0.0,
+        "shape": [
+          512,
+          512,
+          196
+        ],
+        "spacing": [
+          0.48829999566078186,
+          0.48829999566078186,
+          1.0
+        ]
+      },
+      "maximum": 2793.0,
+      "minimum": 0.0,
+      "negative_voxels": 0,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input/BraTS-MET-01247-001/BraTS-MET-01247-001-t1n.nii.gz",
+      "sha256": "fb55086d40f33b02fab596d2f1e8caa02cdb0c798cc40afb4806dc20916f951c"
+    },
+    "t2f": {
+      "geometry": {
+        "affine": [
+          [
+            0.48829999566078186,
+            0.0,
+            0.0,
+            -123.50830078125
+          ],
+          [
+            0.0,
+            0.48829999566078186,
+            0.0,
+            -81.24630737304688
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -79.98789978027344
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corner_shift_mm": 0.0,
+        "shape": [
+          512,
+          512,
+          196
+        ],
+        "spacing": [
+          0.48829999566078186,
+          0.48829999566078186,
+          1.0
+        ]
+      },
+      "maximum": 2792.0,
+      "minimum": 0.0,
+      "negative_voxels": 0,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input/BraTS-MET-01247-001/BraTS-MET-01247-001-t2f.nii.gz",
+      "sha256": "94e9ec9e939138c59c0b2a9b186b6fd296c8530410f34df765736bc8d4749c79"
+    }
+  },
+  "split": "train",
+  "status": "strict_coverage_pass"
+}

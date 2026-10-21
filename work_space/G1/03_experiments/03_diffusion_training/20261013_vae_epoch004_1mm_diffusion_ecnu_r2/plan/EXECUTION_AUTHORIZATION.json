@@ -1,0 +1,41 @@
+{
+  "approved_plan_sha256": "fe538efa6c4d1c2fae4aed2003270a5dd785366061e8ddede0d71d17c87c5353",
+  "artifact_status": "experimental_unvalidated",
+  "attempt": "r2",
+  "authorized_by": "human_user",
+  "authorized_scope": [
+    "P0_integrity",
+    "P1_train_val_1mm",
+    "independent_runtime_engineering",
+    "P2_smoke_and_review",
+    "P3_only_after_all_gates",
+    "P4_P5_development_selection_and_reports",
+    "controlled_timeout_resume_with_full_unchanged_contract"
+  ],
+  "excluded_scope": [
+    "large_dataset_download",
+    "drive_upload",
+    "locked104_quality_evaluation",
+    "S2_deployment",
+    "dependency_install",
+    "unexpected_failure_retry"
+  ],
+  "formal_gate_status": "not_run_not_passed",
+  "membership_sha256": "0a533791617d44d1ffe1afefe04b1154db2e7f8cf6db9f3421a8c1ff1aec7f9a",
+  "modalities": [
+    "t1c",
+    "t1n",
+    "t2w",
+    "t2f"
+  ],
+  "operator_approved": false,
+  "overlay_sha256": "fe4ed8c206f7b97fb5cd551f65dcbea55612c0fe4c09e2ad6fde1633e1e5e109",
+  "parent_failure_path": "/Users/hwaigc/\u6bd4\u8d5b+\u8bfe\u9898/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_vae_epoch004_1mm_diffusion_ecnu_r1/operator/submit_p0_20261013T130155Z/FAILED.json",
+  "parent_failure_sha256": "26721158ec9c1f8dd89bef5eb205635943e199925fd40c40b72e002daf698c57",
+  "per_modality_successful_updates": 200000,
+  "recorded_at_utc": "2026-10-13T15:54:03.224250+00:00",
+  "retry_scope": "one independent P0 retry; later stages retain all original gates",
+  "status": "execution_authorized",
+  "upstream_source_manifest_sha256": "417c99d5c652bebafa8d4214de7b8fb81c122d6647b040ac54df7737cfaa1758",
+  "user_statement": "\u73b0\u5728\u7a7a\u95f4\u5145\u88d5\uff0c\u8fdb\u884c\u91cd\u63d0\uff01\u5f00\u59cb\u8fdb\u884c\u6269\u6563\u6a21\u578b\u8bad\u7ec3"
+}

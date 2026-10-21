@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "plan_id": "G1_VAE_THREEWAY_FIXED103_VALIDATION_20260914_ATTEMPT03",
+  "created_at_local": "2026-09-14",
+  "previous_failed_jobs": ["3671857", "3679388"],
+  "repair": "SHA256-pin each VAE checkpoint before trusted weights_only_false loading; statically test each load",
+  "status": "prepared_not_submitted",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "cohort": {
+    "name": "fixed103",
+    "count": 103,
+    "role": "development_validation",
+    "manifest": "manifests/FIXED103_CASES.csv",
+    "locked_test": false
+  },
+  "vae_arms": {
+    "pretrained": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt",
+      "sha256": "1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3"
+    },
+    "historical": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+      "sha256": "004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294"
+    },
+    "epoch004": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_004.pt",
+      "sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b"
+    }
+  },
+  "stage_1": {
+    "name": "three_vae_reconstruction_103",
+    "deterministic_latent": "mu",
+    "modalities": ["t1n", "t1c", "t2w", "t2f"],
+    "model_space_rows": 1236,
+    "native_t2w_metric_rows": 618,
+    "native_intensity_variants": ["raw_restored", "deployed_postprocessed"],
+    "native_t2w_outputs_per_arm": 103,
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 20260910
+  },
+  "stage_2": {
+    "name": "fixv3_four_route_103",
+    "routes": ["real_t2w", "pretrained_recon", "historical_recon", "epoch004_recon"],
+    "same_case_ids": true,
+    "same_non_t2w_channels": true,
+    "same_reference_labels": true,
+    "fixv3_checkpoint_sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e",
+    "official_evaluator": "BraTS-evaluation==0.0.8",
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 20260910
+  },
+  "interpretation_boundaries": [
+    "model_space_reconstruction_is_not_native_space_quality",
+    "native_t2w_reconstruction_is_not_missing_t2w_generation",
+    "image_quality_is_not_downstream_segmentation_benefit",
+    "fixed103_is_development_validation_not_locked_test",
+    "no_model_replacement_without_review"
+  ]
+}

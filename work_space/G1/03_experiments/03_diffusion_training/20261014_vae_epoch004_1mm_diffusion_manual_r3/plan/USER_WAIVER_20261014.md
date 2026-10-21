@@ -1,0 +1,11 @@
+# 用户验收豁免与直接训练授权
+
+用户原话：“算了，不验收了吧，直接人工授权通过了；接下来直接提交训练新扩散模型”。
+
+本批次如实解释为：用户授权跳过独立P0完整复验、预处理人工验收、独立P2 smoke及人工审核等待，直接提交预处理和四路依赖训练。不是证明既有未执行测试已经通过。P0_STRICT_ACCEPTANCE=false；P1_MANUAL_REVIEW=waived_by_user；P2_SEPARATE_SMOKE=waived_by_user；SCIENTIFIC_SUPERIORITY=not_established。
+
+豁免只适用于新独立R3，不回写R1/R2冻结方案、源码、结果或失败证据。训练仍需实际准备输入，afterok约束仍保留；消费时发现真实错误则非零退出并保留证据，不自动降batch、减少病例、改训练预算或重试。
+
+原计划训练/选点参数不变，四独立单A100，各200000成功更新。受控TIMEOUT只有本批次完整checkpoint与原合同一致时才能新独立审计恢复；非超时失败无自动重试。
+
+该执行授权与研究结果批准分开：artifact_status=experimental_unvalidated；operator_approved=false；formal_gate_status=not_run_not_passed。用户承担跳过预训练质量审核带来的数据质量与GPU资源风险，不据此宣称质量已验证。

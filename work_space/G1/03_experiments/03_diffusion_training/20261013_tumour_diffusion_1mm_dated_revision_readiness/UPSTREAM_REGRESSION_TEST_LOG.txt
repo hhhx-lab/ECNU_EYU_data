@@ -1,0 +1,134 @@
+test_eval_cache_requires_matching_inputs_and_intact_metrics (test_regressions.CacheRegressionTests) ... ok
+test_identity_changes_when_preprocessed_data_is_rebuilt (test_regressions.CacheRegressionTests) ... ok
+test_adam_beta1_default_and_resume_enforcement (test_regressions.DataRegressionTests) ... skipped 'CUDA unavailable'
+test_csv_failure_preserves_previous_file (test_regressions.DataRegressionTests) ... Doing case ID: 00001-000 (train)
+ok
+test_csv_groups_visits_and_actual_tile_counts (test_regressions.DataRegressionTests) ... Doing case ID: 00001-000 (val)
+  Found 1 lesion(s) (after merging, dist < 0 vox)
+Doing case ID: 00001-001 (val)
+  Found 1 lesion(s) (after merging, dist < 0 vox)
+Doing case ID: 00002-000 (train)
+  Found 1 lesion(s) (after merging, dist < 0 vox)
+    Lesion 0: bbox (22,24,28) > 16, split into 36 tiles
+
+Done. 38 lesions saved to /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tumour-regression-sltjbpu6/.lesions-xefmhq52.csv
+Published 38 validated rows to /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tumour-regression-sltjbpu6/cases.csv
+ok
+test_evaluation_cli_self_test_and_missing_scan (test_regressions.DataRegressionTests) ... Doing case ID: 00001-000 (val)
+  Found 1 lesion(s) (after merging, dist < 0 vox)
+
+Done. 1 lesions saved to /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tumour-regression-3n9rb5yx/.lesions-_vl6ng8y.csv
+Published 1 validated rows to /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tumour-regression-3n9rb5yx/cases.csv
+ok
+test_evaluation_samples_with_the_checkpoint_schedule (test_regressions.DataRegressionTests) ... skipped 'CUDA unavailable'
+test_invalid_volumes_rejected (test_regressions.DataRegressionTests) ... ok
+test_preprocess_cli_fails_for_rejected_missing_and_empty (test_regressions.DataRegressionTests) ... ok
+test_real_csv_loader_preserves_rc_and_small_batch (test_regressions.DataRegressionTests) ... Doing case ID: 00001-000 (train)
+  Found 1 lesion(s) (after merging, dist < 0 vox)
+
+Done. 1 lesions saved to /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tumour-regression-_2qrmww5/.lesions-ooxf4xgu.csv
+Published 1 validated rows to /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tumour-regression-_2qrmww5/cases.csv
+CSV_PATH: /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tumour-regression-_2qrmww5/cases.csv
+Scan Modality: scan_t1c
+Normalization: nnunet
+Using dataset: BRATS_2024
+Using Gaussian noise only in the tumour zone (ROI cache, per-iteration random offset)
+CSV rows: 1 total -> 1 used for training (1 patients)
+Number of training images: 1
+/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/incoming_source/src/utils/data_utils.py:160: UserWarning: CacheDataset cache_rate=1.0. Reduce --cache_rate if the process runs out of memory.
+  warnings.warn(f"CacheDataset cache_rate={cache_rate}. Reduce --cache_rate if the process runs out of memory.")
+Loading dataset:   0%|          | 0/1 [00:00<?, ?it/s]Loading dataset: 100%|██████████| 1/1 [00:00<00:00, 151.13it/s]
+Dataset training: number of batches: 1
+Leaving the data loader. Good luck!
+ok
+test_reuse_validates_outputs_and_provenance (test_regressions.DataRegressionTests) ... ok
+test_smoke_refuses_existing_work_directory (test_regressions.DataRegressionTests) ... ok
+test_training_cli_two_steps_then_resume_one (test_regressions.DataRegressionTests) ... skipped 'CUDA unavailable'
+test_checkpoint_schedule_replaces_command_line_values (test_regressions.EvaluationScheduleTests) ... ok
+test_checkpoint_without_schedule_keeps_command_line (test_regressions.EvaluationScheduleTests) ... ok
+test_modalities_with_different_schedules_are_refused (test_regressions.EvaluationScheduleTests) ... ok
+test_sampler_must_match_trained_schedule (test_regressions.EvaluationScheduleTests) ... ok
+test_anisotropic_grid_keeps_legal_labels (test_regressions.GeometryRegressionTests) ... ok
+test_sampling_coordinates_match_affine_not_rounded_shape (test_regressions.GeometryRegressionTests) ... physical coordinate ramp: max interior error 0.001393 mm
+ok
+test_list_export_does_not_partially_write_on_leakage (test_regressions.SplitRegressionTests) ... ok
+test_missing_split_fails_closed (test_regressions.SplitRegressionTests) ... ok
+test_visits_cannot_cross_splits (test_regressions.SplitRegressionTests) ... ok
+test_amp_skipped_attempt_does_not_count_as_update (test_regressions.TrainingRegressionTests) ... Step:1/2, Loss:3.455069, Time:0.0677
+Step:2/2, Loss:5.013806, Time:0.0003
+ok
+test_compiled_and_eager_checkpoint_roundtrip (test_regressions.TrainingRegressionTests) ... /Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/incoming_source/tests/test_regressions.py:485: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=False)
+Loading model from Checkpoint/exp
+[Resume] AMP scaler restored (scale=1)
+Pre-trained weights loaded. Resuming from epoch 1, step 2
+[Resume][WARNING] legacy step count may under-report updates; historical updates cannot be recovered.
+Loading model from Checkpoint/exp
+[Resume] AMP scaler restored (scale=1)
+Pre-trained weights loaded. Resuming from epoch 1, step 2
+[Resume][WARNING] legacy step count may under-report updates; historical updates cannot be recovered.
+ok
+test_cuda_amp_update_and_scaler_restore (test_regressions.TrainingRegressionTests) ... skipped 'CUDA unavailable'
+test_exact_updates_and_resume_boundary_for_all_schedules (test_regressions.TrainingRegressionTests) ... /Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/incoming_source/tests/test_regressions.py:462: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=False)
+Step:1/2, Loss:5.027009, Time:0.0003
+Step:2/2, Loss:2.577801, Time:0.0002
+Step:3/3, Loss:3.211632, Time:0.0002
+Step:1/2, Loss:2.463169, Time:0.0006
+Step:2/2, Loss:2.115348, Time:0.0001
+Step:3/3, Loss:1.380956, Time:0.0001
+Step:1/2, Loss:1.103452, Time:0.0008
+Step:2/2, Loss:1.183480, Time:0.0001
+Step:3/3, Loss:1.072520, Time:0.0001
+ok
+test_failed_atomic_save_preserves_checkpoint (test_regressions.TrainingRegressionTests) ... ok
+test_label_preview_background_is_zero (test_regressions.TrainingRegressionTests) ... ok
+test_network_cpu_forward_backward (test_regressions.TrainingRegressionTests) ... [Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)
+  time_ch_count=8
+Using TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)
+[Unet_NnU] GPU=8.0GB | channels=(24, 48) strides=(2, 1) | suggested_batch=4
+/Users/hwaigc/miniforge3/envs/g1_t2w_bbdm/lib/python3.10/site-packages/monai/networks/nets/unet.py:130: UserWarning: `len(strides) > len(channels) - 1`, the last 1 values of strides will not be used.
+  warnings.warn(f"`len(strides) > len(channels) - 1`, the last {delta} values of strides will not be used.")
+ok
+test_all_failures_are_reported (test_train_launcher.TrainLauncherTests) ... ok
+test_all_four_succeed (test_train_launcher.TrainLauncherTests) ... ok
+test_invalid_gpu_count_fails_before_starting_jobs (test_train_launcher.TrainLauncherTests) ... ok
+test_launcher_has_unix_line_endings (test_train_launcher.TrainLauncherTests) ... ok
+test_one_failure_is_propagated_and_other_jobs_checked (test_train_launcher.TrainLauncherTests) ... ok
+test_serial_failure_does_not_stop_the_rest_of_the_queue (test_train_launcher.TrainLauncherTests) ... ok
+test_serial_queue_survives_closed_output (test_train_launcher.TrainLauncherTests) ... FAIL
+test_serial_queue_survives_hangup_of_its_process_group (test_train_launcher.TrainLauncherTests) ... ok
+test_single_gpu_trains_all_four_in_series (test_train_launcher.TrainLauncherTests) ... ok
+test_slots_on_different_gpus_run_concurrently (test_train_launcher.TrainLauncherTests) ... ok
+test_stale_status_from_a_previous_run_is_not_reported (test_train_launcher.TrainLauncherTests) ... ok
+test_two_gpus_split_round_robin_and_serialize_per_gpu (test_train_launcher.TrainLauncherTests) ... ok
+test_two_slots_may_share_one_gpu (test_train_launcher.TrainLauncherTests) ... ok
+
+======================================================================
+FAIL: test_serial_queue_survives_closed_output (test_train_launcher.TrainLauncherTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/incoming_source/tests/test_train_launcher.py", line 160, in test_serial_queue_survives_closed_output
+    self.assertEqual([self.status(mod) for mod in MODS], ["0", "0", "0", "0"])
+AssertionError: Lists differ: ['0', 't1c ended on GPU 0 (exit 0)\nstarted t1n [222 chars]\n0'] != ['0', '0', '0', '0']
+
+First differing element 1:
+'t1c ended on GPU 0 (exit 0)\nstarted t1n [41 chars]g\n0'
+'0'
+
++ ['0', '0', '0', '0']
+- ['0',
+-  't1c ended on GPU 0 (exit 0)\n'
+-  'started t1n on GPU 0 (pid 76919) -> logs/train_t1n.log\n'
+-  '0',
+-  't1n ended on GPU 0 (exit 0)\n'
+-  'started t2w on GPU 0 (pid 76922) -> logs/train_t2w.log\n'
+-  '0',
+-  't2w ended on GPU 0 (exit 0)\n'
+-  'started t2f on GPU 0 (pid 76926) -> logs/train_t2f.log\n'
+-  '0']
+
+----------------------------------------------------------------------
+Ran 42 tests in 18.009s
+
+FAILED (failures=1, skipped=4)

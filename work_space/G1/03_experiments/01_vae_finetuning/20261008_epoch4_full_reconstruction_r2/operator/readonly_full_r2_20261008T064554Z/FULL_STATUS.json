@@ -1,0 +1,79 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "case_dirs": 60,
+  "disk": {
+    "code": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  222T   27T  90% /public\n"
+  },
+  "files": {
+    "COMPLETE.ok": {
+      "exists": false
+    },
+    "DATASET_VALIDATION.json": {
+      "exists": false
+    },
+    "FAILED.json": {
+      "exists": false
+    },
+    "RUN_CONTRACT.json": {
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "cases_expected": 1030,
+        "checkpoint_sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "smoke": false,
+        "source_csv_sha256": "0d1765e12cdad7d8a5df57a5d2c46c79414ed99a2015a4d8fed57cd4c4fc836b",
+        "started_at_utc": "2026-10-08T05:56:40.947525+00:00",
+        "status": "started"
+      },
+      "exists": true
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "launch": {
+    "exists": true,
+    "job_id": "3941042",
+    "sha256": "f456caf093e3297cca9c6e8c17a90cab515d5327f7c5893f4d73937292a893a1",
+    "status": "held_audited"
+  },
+  "logs": {
+    "g1vae4fullr2_3941042.err": {
+      "bytes": 632,
+      "critical": [],
+      "exists": true,
+      "tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n"
+    },
+    "g1vae4fullr2_3941042.out": {
+      "bytes": 4779,
+      "critical": [],
+      "exists": true,
+      "tail": "{\"case\": \"BraTS-MET-00001-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00002-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00003-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00004-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00005-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00006-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00007-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00008-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00009-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00010-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00011-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00012-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00013-000\", \"split\": \"test\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00014-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00015-000\", \"split\": \"test\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00016-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00017-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00018-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00019-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00020-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00021-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00022-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00023-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00024-000\", \"split\": \"test\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00025-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00026-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00027-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00028-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00029-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00030-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00031-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00032-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00033-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00034-000\", \"split\": \"test\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00035-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00036-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00037-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00086-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00089-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00090-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00096-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00097-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00098-000\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00100-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00102-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00104-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00105-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00106-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00107-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00108-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00109-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00110-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00111-000\", \"split\": \"test\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00112-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00113-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00114-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00115-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00116-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00117-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-00118-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n"
+    }
+  },
+  "operator_approved": false,
+  "preflight": {
+    "exists": true,
+    "job_id": null,
+    "sha256": "79e74209cb5efe61a77786b306620f94c5cd230959ac4d5cca1aff0d99247122",
+    "status": "pass"
+  },
+  "remote_utc": "2026-10-08T06:35:06.414549+00:00",
+  "sacct": {
+    "code": 0,
+    "stderr": "",
+    "stdout": "3941042|RUNNING|0:0|2026-10-08T13:55:12|Unknown|00:39:07|billing=8,cpu=8,gres/gpu=1,mem=96G,node=1\n3941042.batch|RUNNING|0:0|2026-10-08T13:55:12|Unknown|00:39:07|cpu=8,gres/gpu=1,mem=96G,node=1\n"
+  },
+  "sha256": {
+    "plan": "545a8d6b2fa9fe155bd1da17914734d5da9762e72e321253e82098bf8a25d83e",
+    "runtime": "525b2dd071c956a2d24d6ad9885118a2f45bfe5f7401998e6ea553d96e33a5da",
+    "slurm": "8af5af07a48c1fac6ded338650e61b481ab1374f767816d856c21add1c21365d"
+  },
+  "squeue": {
+    "code": 0,
+    "stderr": "",
+    "stdout": "3941042|RUNNING|g1vae4fullr2|gpu:1,gpu:1\n"
+  }
+}

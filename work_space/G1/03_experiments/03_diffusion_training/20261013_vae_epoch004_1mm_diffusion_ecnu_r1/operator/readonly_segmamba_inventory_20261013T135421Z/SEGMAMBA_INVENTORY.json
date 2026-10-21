@@ -1,0 +1,1312 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "checkpoint_paths": [],
+  "directory_entries": [
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 295,
+      "name": "0_inference.py",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 499,
+      "name": "1_rename_mri_data.py",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 1286,
+      "name": "2_preprocessing_mri.py",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 27013,
+      "name": "3_train_brats2026.py",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 10042,
+      "name": "4_predict_brats2026.py",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 4110,
+      "name": "5_compute_metrics_brats2026.py",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "__pycache__",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "causal-conv1d",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 4445,
+      "name": "config_generator.py",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "configs",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "data",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 907,
+      "name": "data_analysis_result.txt",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "evaluation",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "light_training",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "logs",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 7992,
+      "name": "loss_functions.py",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "mamba",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "model_segmamba",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 8353,
+      "name": "predict_validation.py",
+      "symlink": false
+    },
+    {
+      "directory": false,
+      "link_target": null,
+      "logical_bytes": 1096,
+      "name": "requirements.txt",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "results",
+      "symlink": false
+    },
+    {
+      "directory": true,
+      "link_target": null,
+      "logical_bytes": 4096,
+      "name": "slurm",
+      "symlink": false
+    }
+  ],
+  "directory_sizes": [
+    {
+      "allocated_bytes": 145924839424,
+      "path": "/public/home/zqchen/SegMamba-main"
+    },
+    {
+      "allocated_bytes": 139492388864,
+      "path": "/public/home/zqchen/SegMamba-main/data"
+    },
+    {
+      "allocated_bytes": 120217832960,
+      "path": "/public/home/zqchen/SegMamba-main/data/fullres"
+    },
+    {
+      "allocated_bytes": 120217828864,
+      "path": "/public/home/zqchen/SegMamba-main/data/fullres/train"
+    },
+    {
+      "allocated_bytes": 13382438912,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation_preprocessed"
+    },
+    {
+      "allocated_bytes": 5852929024,
+      "path": "/public/home/zqchen/SegMamba-main/results"
+    },
+    {
+      "allocated_bytes": 5433382912,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation"
+    },
+    {
+      "allocated_bytes": 1940380160,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice"
+    },
+    {
+      "allocated_bytes": 1888469504,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model"
+    },
+    {
+      "allocated_bytes": 1387885568,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal"
+    },
+    {
+      "allocated_bytes": 1348913664,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/model"
+    },
+    {
+      "allocated_bytes": 1117675008,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal"
+    },
+    {
+      "allocated_bytes": 1079129600,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/model"
+    },
+    {
+      "allocated_bytes": 819205632,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp1_larger_patch"
+    },
+    {
+      "allocated_bytes": 809352192,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp1_larger_patch/model"
+    },
+    {
+      "allocated_bytes": 587570688,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp3_deeper_model"
+    },
+    {
+      "allocated_bytes": 586697216,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp3_deeper_model/model"
+    },
+    {
+      "allocated_bytes": 458729984,
+      "path": "/public/home/zqchen/SegMamba-main/data/raw_data"
+    },
+    {
+      "allocated_bytes": 458725888,
+      "path": "/public/home/zqchen/SegMamba-main/data/raw_data/MICCAI-LH-BraTS2025-MET-Challenge-TrainingData"
+    },
+    {
+      "allocated_bytes": 369518080,
+      "path": "/public/home/zqchen/SegMamba-main/mamba"
+    },
+    {
+      "allocated_bytes": 368347136,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/build"
+    },
+    {
+      "allocated_bytes": 184623616,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/build/temp.linux-x86_64-cpython-311"
+    },
+    {
+      "allocated_bytes": 183719424,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/build/lib.linux-x86_64-cpython-311"
+    },
+    {
+      "allocated_bytes": 148063232,
+      "path": "/public/home/zqchen/SegMamba-main/logs"
+    },
+    {
+      "allocated_bytes": 108713984,
+      "path": "/public/home/zqchen/SegMamba-main/logs/slurm"
+    },
+    {
+      "allocated_bytes": 107218432,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01068-003"
+    },
+    {
+      "allocated_bytes": 103711232,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01068-002"
+    },
+    {
+      "allocated_bytes": 82377216,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01165-002"
+    },
+    {
+      "allocated_bytes": 79884288,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01219-000"
+    },
+    {
+      "allocated_bytes": 79307776,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01119-002"
+    },
+    {
+      "allocated_bytes": 78950912,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01219-001"
+    },
+    {
+      "allocated_bytes": 75844608,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01175-002"
+    },
+    {
+      "allocated_bytes": 72966144,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01175-001"
+    },
+    {
+      "allocated_bytes": 72854528,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01244-002"
+    },
+    {
+      "allocated_bytes": 70580736,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01167-003"
+    },
+    {
+      "allocated_bytes": 70360576,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01082-001"
+    },
+    {
+      "allocated_bytes": 67953152,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01320-001"
+    },
+    {
+      "allocated_bytes": 67588096,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01117-000"
+    },
+    {
+      "allocated_bytes": 67053056,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01342-001"
+    },
+    {
+      "allocated_bytes": 65473024,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01263-000"
+    },
+    {
+      "allocated_bytes": 65249280,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01353-003"
+    },
+    {
+      "allocated_bytes": 64920064,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01159-001"
+    },
+    {
+      "allocated_bytes": 63017472,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01127-000"
+    },
+    {
+      "allocated_bytes": 62829568,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01105-000"
+    },
+    {
+      "allocated_bytes": 62729728,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01186-002"
+    },
+    {
+      "allocated_bytes": 62243328,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01143-002"
+    },
+    {
+      "allocated_bytes": 61211136,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01149-002"
+    },
+    {
+      "allocated_bytes": 60857856,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d"
+    },
+    {
+      "allocated_bytes": 60740608,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d/build"
+    },
+    {
+      "allocated_bytes": 60446208,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01344-000"
+    },
+    {
+      "allocated_bytes": 52598784,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00885-000"
+    },
+    {
+      "allocated_bytes": 50632192,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00890-000"
+    },
+    {
+      "allocated_bytes": 50189312,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00882-000"
+    },
+    {
+      "allocated_bytes": 48232960,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00881-000"
+    },
+    {
+      "allocated_bytes": 47954944,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00884-000"
+    },
+    {
+      "allocated_bytes": 47622144,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01248-001"
+    },
+    {
+      "allocated_bytes": 46326272,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01209-003"
+    },
+    {
+      "allocated_bytes": 45731328,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00886-000"
+    },
+    {
+      "allocated_bytes": 45581312,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00892-000"
+    },
+    {
+      "allocated_bytes": 45226496,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00879-000"
+    },
+    {
+      "allocated_bytes": 44365312,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00887-000"
+    },
+    {
+      "allocated_bytes": 43689984,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01133-001"
+    },
+    {
+      "allocated_bytes": 43567104,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00888-000"
+    },
+    {
+      "allocated_bytes": 43545600,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01349-001"
+    },
+    {
+      "allocated_bytes": 42731008,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01200-003"
+    },
+    {
+      "allocated_bytes": 42726400,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01199-003"
+    },
+    {
+      "allocated_bytes": 42583552,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00891-000"
+    },
+    {
+      "allocated_bytes": 42166272,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01312-002"
+    },
+    {
+      "allocated_bytes": 41911296,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01092-002"
+    },
+    {
+      "allocated_bytes": 41409536,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01241-003"
+    },
+    {
+      "allocated_bytes": 40818176,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01266-002"
+    },
+    {
+      "allocated_bytes": 40580608,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01089-003"
+    },
+    {
+      "allocated_bytes": 39703040,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01213-001"
+    },
+    {
+      "allocated_bytes": 39622656,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00883-000"
+    },
+    {
+      "allocated_bytes": 39345152,
+      "path": "/public/home/zqchen/SegMamba-main/logs/experiments"
+    },
+    {
+      "allocated_bytes": 38505984,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01198-003"
+    },
+    {
+      "allocated_bytes": 38151680,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01275-002"
+    },
+    {
+      "allocated_bytes": 37901824,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01097-000"
+    },
+    {
+      "allocated_bytes": 37772800,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01145-001"
+    },
+    {
+      "allocated_bytes": 37585408,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00880-000"
+    },
+    {
+      "allocated_bytes": 37578752,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01132-003"
+    },
+    {
+      "allocated_bytes": 37417472,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01274-001"
+    },
+    {
+      "allocated_bytes": 36859904,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01249-001"
+    },
+    {
+      "allocated_bytes": 36611072,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01107-003"
+    },
+    {
+      "allocated_bytes": 35996160,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01109-000"
+    },
+    {
+      "allocated_bytes": 35485696,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00893-000"
+    },
+    {
+      "allocated_bytes": 35134976,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01064-002"
+    },
+    {
+      "allocated_bytes": 35023872,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01184-001"
+    },
+    {
+      "allocated_bytes": 34949632,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01089-001"
+    },
+    {
+      "allocated_bytes": 34672128,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01103-004"
+    },
+    {
+      "allocated_bytes": 34577920,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01078-002"
+    },
+    {
+      "allocated_bytes": 34523648,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01099-001"
+    },
+    {
+      "allocated_bytes": 34222080,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00889-000"
+    },
+    {
+      "allocated_bytes": 33305600,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01137-003"
+    },
+    {
+      "allocated_bytes": 32813568,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01137-000"
+    },
+    {
+      "allocated_bytes": 32322048,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01314-000"
+    },
+    {
+      "allocated_bytes": 31894016,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01218-001"
+    },
+    {
+      "allocated_bytes": 30528000,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d/build/temp.linux-x86_64-cpython-311"
+    },
+    {
+      "allocated_bytes": 30208512,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d/build/lib.linux-x86_64-cpython-311"
+    },
+    {
+      "allocated_bytes": 29699584,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01314-001"
+    },
+    {
+      "allocated_bytes": 24184832,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00840-000"
+    },
+    {
+      "allocated_bytes": 23889408,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00854-000"
+    },
+    {
+      "allocated_bytes": 23634432,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00843-000"
+    },
+    {
+      "allocated_bytes": 23490560,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01284-003"
+    },
+    {
+      "allocated_bytes": 23394304,
+      "path": "/public/home/zqchen/SegMamba-main/logs/experiments/exp_dice_focal"
+    },
+    {
+      "allocated_bytes": 22382592,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00849-000"
+    },
+    {
+      "allocated_bytes": 22361088,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00837-000"
+    },
+    {
+      "allocated_bytes": 22214656,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00833-000"
+    },
+    {
+      "allocated_bytes": 22003200,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00900-000"
+    },
+    {
+      "allocated_bytes": 21950976,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00908-000"
+    },
+    {
+      "allocated_bytes": 21925888,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00918-000"
+    },
+    {
+      "allocated_bytes": 21706752,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00896-000"
+    },
+    {
+      "allocated_bytes": 21605888,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00866-000"
+    },
+    {
+      "allocated_bytes": 21371392,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00848-000"
+    },
+    {
+      "allocated_bytes": 21325312,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00894-000"
+    },
+    {
+      "allocated_bytes": 20909568,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00907-000"
+    },
+    {
+      "allocated_bytes": 20907008,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00850-000"
+    },
+    {
+      "allocated_bytes": 20818944,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00864-000"
+    },
+    {
+      "allocated_bytes": 20802560,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00865-000"
+    },
+    {
+      "allocated_bytes": 20770816,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00878-000"
+    },
+    {
+      "allocated_bytes": 20718592,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00911-000"
+    },
+    {
+      "allocated_bytes": 20685824,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00834-000"
+    },
+    {
+      "allocated_bytes": 20627456,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00839-000"
+    },
+    {
+      "allocated_bytes": 20606976,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00859-000"
+    },
+    {
+      "allocated_bytes": 20558336,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00916-000"
+    },
+    {
+      "allocated_bytes": 20529152,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00868-000"
+    },
+    {
+      "allocated_bytes": 20497408,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00917-000"
+    },
+    {
+      "allocated_bytes": 20331520,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00913-000"
+    },
+    {
+      "allocated_bytes": 20274176,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00867-000"
+    },
+    {
+      "allocated_bytes": 20225024,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00846-000"
+    },
+    {
+      "allocated_bytes": 20188672,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00872-000"
+    },
+    {
+      "allocated_bytes": 20176384,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00898-000"
+    },
+    {
+      "allocated_bytes": 20088832,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00904-000"
+    },
+    {
+      "allocated_bytes": 20032000,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00842-000"
+    },
+    {
+      "allocated_bytes": 19983872,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00860-000"
+    },
+    {
+      "allocated_bytes": 19846144,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00906-000"
+    },
+    {
+      "allocated_bytes": 19816448,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00914-000"
+    },
+    {
+      "allocated_bytes": 19555840,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00873-000"
+    },
+    {
+      "allocated_bytes": 19489280,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00870-000"
+    },
+    {
+      "allocated_bytes": 19283456,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00920-000"
+    },
+    {
+      "allocated_bytes": 19260928,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00899-000"
+    },
+    {
+      "allocated_bytes": 19233792,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00845-000"
+    },
+    {
+      "allocated_bytes": 19227648,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00871-000"
+    },
+    {
+      "allocated_bytes": 19201024,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00855-000"
+    },
+    {
+      "allocated_bytes": 19193856,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00836-000"
+    },
+    {
+      "allocated_bytes": 18927616,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00915-000"
+    },
+    {
+      "allocated_bytes": 18875392,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00875-000"
+    },
+    {
+      "allocated_bytes": 18860032,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00897-000"
+    },
+    {
+      "allocated_bytes": 18849280,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00857-000"
+    },
+    {
+      "allocated_bytes": 18675712,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00838-000"
+    },
+    {
+      "allocated_bytes": 18616320,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00847-000"
+    },
+    {
+      "allocated_bytes": 18556416,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00863-000"
+    },
+    {
+      "allocated_bytes": 18552832,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00858-000"
+    },
+    {
+      "allocated_bytes": 18497536,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00902-000"
+    },
+    {
+      "allocated_bytes": 18479616,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00835-000"
+    },
+    {
+      "allocated_bytes": 18456064,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00877-000"
+    },
+    {
+      "allocated_bytes": 18382848,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00841-000"
+    },
+    {
+      "allocated_bytes": 18378752,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00910-000"
+    },
+    {
+      "allocated_bytes": 18344960,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00874-000"
+    },
+    {
+      "allocated_bytes": 18304000,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00876-000"
+    },
+    {
+      "allocated_bytes": 18282496,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00905-000"
+    },
+    {
+      "allocated_bytes": 18155520,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00869-000"
+    },
+    {
+      "allocated_bytes": 18000384,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00861-000"
+    },
+    {
+      "allocated_bytes": 17820672,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00909-000"
+    },
+    {
+      "allocated_bytes": 17636864,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00862-000"
+    },
+    {
+      "allocated_bytes": 17631232,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00851-000"
+    },
+    {
+      "allocated_bytes": 17598464,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00919-000"
+    },
+    {
+      "allocated_bytes": 17579008,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01296-004"
+    },
+    {
+      "allocated_bytes": 17440768,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00853-000"
+    },
+    {
+      "allocated_bytes": 17400832,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00844-000"
+    },
+    {
+      "allocated_bytes": 17276928,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00901-000"
+    },
+    {
+      "allocated_bytes": 17238528,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01102-002"
+    },
+    {
+      "allocated_bytes": 17146368,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01131-001"
+    },
+    {
+      "allocated_bytes": 17036800,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00912-000"
+    },
+    {
+      "allocated_bytes": 16876544,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00852-000"
+    },
+    {
+      "allocated_bytes": 16815104,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01346-003"
+    },
+    {
+      "allocated_bytes": 16361984,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00856-000"
+    },
+    {
+      "allocated_bytes": 16286208,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00895-000"
+    },
+    {
+      "allocated_bytes": 16260608,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-00903-000"
+    },
+    {
+      "allocated_bytes": 16245248,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01252-001"
+    },
+    {
+      "allocated_bytes": 15416320,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01139-002"
+    },
+    {
+      "allocated_bytes": 15414784,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01246-000"
+    },
+    {
+      "allocated_bytes": 15404032,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01250-002"
+    },
+    {
+      "allocated_bytes": 15320064,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01108-003"
+    },
+    {
+      "allocated_bytes": 14831104,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01197-003"
+    },
+    {
+      "allocated_bytes": 14757376,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01252-000"
+    },
+    {
+      "allocated_bytes": 14500864,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01173-002"
+    },
+    {
+      "allocated_bytes": 14047232,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01150-003"
+    },
+    {
+      "allocated_bytes": 13835264,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01250-000"
+    },
+    {
+      "allocated_bytes": 13826560,
+      "path": "/public/home/zqchen/SegMamba-main/logs/experiments/exp_ce_dice"
+    },
+    {
+      "allocated_bytes": 13764096,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01264-002"
+    },
+    {
+      "allocated_bytes": 13719040,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01060-000"
+    },
+    {
+      "allocated_bytes": 13619200,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01276-002"
+    },
+    {
+      "allocated_bytes": 13240320,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01076-000"
+    },
+    {
+      "allocated_bytes": 12734464,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01245-000"
+    },
+    {
+      "allocated_bytes": 12672000,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01076-003"
+    },
+    {
+      "allocated_bytes": 12255744,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01276-000"
+    },
+    {
+      "allocated_bytes": 10932224,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01221-002"
+    },
+    {
+      "allocated_bytes": 10108928,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01180-001"
+    },
+    {
+      "allocated_bytes": 9990656,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01180-002"
+    },
+    {
+      "allocated_bytes": 9910784,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01172-003"
+    },
+    {
+      "allocated_bytes": 9435648,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/predictions"
+    },
+    {
+      "allocated_bytes": 9372672,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/predictions"
+    },
+    {
+      "allocated_bytes": 9266176,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01095-003"
+    },
+    {
+      "allocated_bytes": 9242624,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/predictions"
+    },
+    {
+      "allocated_bytes": 8402944,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01319-001"
+    },
+    {
+      "allocated_bytes": 8072192,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01091-003"
+    },
+    {
+      "allocated_bytes": 8036352,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01319-002"
+    },
+    {
+      "allocated_bytes": 7617024,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01134-002"
+    },
+    {
+      "allocated_bytes": 7461376,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01238-003"
+    },
+    {
+      "allocated_bytes": 7385600,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01112-000"
+    },
+    {
+      "allocated_bytes": 7269376,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01259-000"
+    },
+    {
+      "allocated_bytes": 7216640,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01075-001"
+    },
+    {
+      "allocated_bytes": 7139328,
+      "path": "/public/home/zqchen/SegMamba-main/data/validation/BraTS-MET-01112-002"
+    },
+    {
+      "allocated_bytes": 6935040,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/validation_predictions"
+    },
+    {
+      "allocated_bytes": 6862336,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/validation_predictions"
+    },
+    {
+      "allocated_bytes": 6805504,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/validation_predictions"
+    },
+    {
+      "allocated_bytes": 1512960,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/metrics"
+    },
+    {
+      "allocated_bytes": 1510400,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/metrics"
+    },
+    {
+      "allocated_bytes": 1494016,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/metrics"
+    },
+    {
+      "allocated_bytes": 1282560,
+      "path": "/public/home/zqchen/SegMamba-main/logs/experiments/exp_ce_focal"
+    },
+    {
+      "allocated_bytes": 828928,
+      "path": "/public/home/zqchen/SegMamba-main/light_training"
+    },
+    {
+      "allocated_bytes": 822272,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/assets"
+    },
+    {
+      "allocated_bytes": 657920,
+      "path": "/public/home/zqchen/SegMamba-main/logs/experiments/exp3_deeper_model"
+    },
+    {
+      "allocated_bytes": 633856,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/visualizations"
+    },
+    {
+      "allocated_bytes": 623616,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/visualizations"
+    },
+    {
+      "allocated_bytes": 495104,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/visualizations"
+    },
+    {
+      "allocated_bytes": 483840,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp1_larger_patch/visualizations"
+    },
+    {
+      "allocated_bytes": 334336,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp3_deeper_model/visualizations"
+    },
+    {
+      "allocated_bytes": 299520,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/preprocessing"
+    },
+    {
+      "allocated_bytes": 213504,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/preprocessing/preprocessors"
+    },
+    {
+      "allocated_bytes": 207872,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp2_adamw_cosine"
+    },
+    {
+      "allocated_bytes": 137216,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/mamba_ssm"
+    },
+    {
+      "allocated_bytes": 113664,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/csrc"
+    },
+    {
+      "allocated_bytes": 112128,
+      "path": "/public/home/zqchen/SegMamba-main/logs/experiments/exp2_adamw_cosine"
+    },
+    {
+      "allocated_bytes": 109568,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/csrc/selective_scan"
+    },
+    {
+      "allocated_bytes": 92160,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/dataloading"
+    },
+    {
+      "allocated_bytes": 80896,
+      "path": "/public/home/zqchen/SegMamba-main/evaluation"
+    },
+    {
+      "allocated_bytes": 72704,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d/csrc"
+    },
+    {
+      "allocated_bytes": 71680,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/utilities"
+    },
+    {
+      "allocated_bytes": 71680,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/mamba_ssm/ops"
+    },
+    {
+      "allocated_bytes": 67584,
+      "path": "/public/home/zqchen/SegMamba-main/logs/experiments/exp1_larger_patch"
+    },
+    {
+      "allocated_bytes": 58880,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/__pycache__"
+    },
+    {
+      "allocated_bytes": 55808,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/dataloading/__pycache__"
+    },
+    {
+      "allocated_bytes": 47616,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/evaluation"
+    },
+    {
+      "allocated_bytes": 47616,
+      "path": "/public/home/zqchen/SegMamba-main/model_segmamba"
+    },
+    {
+      "allocated_bytes": 46592,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/examples"
+    },
+    {
+      "allocated_bytes": 45056,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/utils"
+    },
+    {
+      "allocated_bytes": 43520,
+      "path": "/public/home/zqchen/SegMamba-main/evaluation/brats_evaluation"
+    },
+    {
+      "allocated_bytes": 41984,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/augment"
+    },
+    {
+      "allocated_bytes": 37376,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/preprocessing/resampling"
+    },
+    {
+      "allocated_bytes": 36864,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/tests"
+    },
+    {
+      "allocated_bytes": 32768,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/tests/ops"
+    },
+    {
+      "allocated_bytes": 31232,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/utils/__pycache__"
+    },
+    {
+      "allocated_bytes": 30720,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/evaluation/__pycache__"
+    },
+    {
+      "allocated_bytes": 30720,
+      "path": "/public/home/zqchen/SegMamba-main/slurm"
+    },
+    {
+      "allocated_bytes": 27136,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/examples/AbdomenAtlas1.0Mini"
+    },
+    {
+      "allocated_bytes": 27136,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/preprocessing/normalization"
+    },
+    {
+      "allocated_bytes": 24576,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/augment/__pycache__"
+    },
+    {
+      "allocated_bytes": 23552,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/mamba_ssm/modules"
+    },
+    {
+      "allocated_bytes": 22016,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/loss"
+    },
+    {
+      "allocated_bytes": 20992,
+      "path": "/public/home/zqchen/SegMamba-main/model_segmamba/__pycache__"
+    },
+    {
+      "allocated_bytes": 20480,
+      "path": "/public/home/zqchen/SegMamba-main/evaluation/brats_evaluation/__pycache__"
+    },
+    {
+      "allocated_bytes": 20480,
+      "path": "/public/home/zqchen/SegMamba-main/evaluation/__pycache__"
+    },
+    {
+      "allocated_bytes": 18944,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/mamba_ssm/utils"
+    },
+    {
+      "allocated_bytes": 18432,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/utilities/label_handling"
+    },
+    {
+      "allocated_bytes": 16384,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/utilities/plans_handling"
+    },
+    {
+      "allocated_bytes": 14848,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/dataloading_global"
+    },
+    {
+      "allocated_bytes": 14848,
+      "path": "/public/home/zqchen/SegMamba-main/__pycache__"
+    },
+    {
+      "allocated_bytes": 13312,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/preprocessing/cropping"
+    },
+    {
+      "allocated_bytes": 12800,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/process_framework"
+    },
+    {
+      "allocated_bytes": 12800,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/mamba_ssm/models"
+    },
+    {
+      "allocated_bytes": 12288,
+      "path": "/public/home/zqchen/SegMamba-main/configs"
+    },
+    {
+      "allocated_bytes": 11776,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/mamba_ssm.egg-info"
+    },
+    {
+      "allocated_bytes": 11264,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d/tests"
+    },
+    {
+      "allocated_bytes": 7680,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/examples/liver2017"
+    },
+    {
+      "allocated_bytes": 7168,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d/causal_conv1d"
+    },
+    {
+      "allocated_bytes": 6656,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/benchmarks"
+    },
+    {
+      "allocated_bytes": 5632,
+      "path": "/public/home/zqchen/SegMamba-main/evaluation/brats_evaluation/configs"
+    },
+    {
+      "allocated_bytes": 5120,
+      "path": "/public/home/zqchen/SegMamba-main/mamba/evals"
+    },
+    {
+      "allocated_bytes": 4608,
+      "path": "/public/home/zqchen/SegMamba-main/causal-conv1d/causal_conv1d.egg-info"
+    },
+    {
+      "allocated_bytes": 4096,
+      "path": "/public/home/zqchen/SegMamba-main/light_training/preprocessing/__pycache__"
+    },
+    {
+      "allocated_bytes": 4096,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp2_adamw_cosine/model"
+    },
+    {
+      "allocated_bytes": 4096,
+      "path": "/public/home/zqchen/SegMamba-main/results/exp2_adamw_cosine/visualizations"
+    }
+  ],
+  "du_complete": true,
+  "du_elapsed_seconds": 5.747,
+  "du_exit_code": 0,
+  "du_stderr": "",
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "large_files": [],
+  "local_utc": "2026-10-13T13:54:38.600419+00:00",
+  "method": "du -x allocated bytes, no symlink dereference; README excerpt and file metadata only; no checkpoint load or image content read",
+  "operator_approved": false,
+  "readme_excerpt": {},
+  "remote_utc": "2026-10-13T13:43:36.012394+00:00",
+  "root": "/public/home/zqchen/SegMamba-main",
+  "selected_metadata_scan_budget_seconds": 45
+}

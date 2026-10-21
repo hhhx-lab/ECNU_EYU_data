@@ -1,0 +1,8 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "diagnostic_tail": "\nzqchen@59.78.189.132's password: \nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n{\"remote_utc\": \"2026-10-16T22:57:08.339452+00:00\", \"hostname\": \"login1\", \"jobs\": {\"prepare\": \"4128262\", \"t1c\": \"4128266\", \"t1n\": \"4128267\", \"t2f\": \"4128269\", \"t2w\": \"4128268\"}, \"squeue\": {\"returncode\": 0, \"stdout\": \"4128267|PENDING|g1d1m9t1n|a100|Priority|gpu:1,gpu:1|0:00\\n4128268|PENDING|g1d1m9t2w|a100|Priority|gpu:1,gpu:1|0:00\\n4128269|PENDING|g1d1m9t2f|a100|Priority|gpu:1,gpu:1|0:00\\n4128266|PENDING|g1d1m9t1c|a100|Resources|gpu:1,gpu:1|0:00\\n\", \"stderr\": \"\"}, \"sacct\": {\"returncode\": 0, \"stdout\": \"4128262|COMPLETED|0:0|09:59:43|1-00:00:00|billing=8,cpu=8,mem=90G,node=1\\n4128262.batch|COMPLETED|0:0|09:59:43||cpu=8,mem=90G,node=1\\n4128266|PENDING|0:0|00:00:00|2-00:00:00|\\n4128267|PENDING|0:0|00:00:00|2-00:00:00|\\n4128268|PENDING|0:0|00:00:00|2-00:00:00|\\n4128269|PENDING|0:0|00:00:00|2-00:00:00|\\n\", \"stderr\": \"\"}, \"account_disk\": {\"returncode\": 0, \"stdout\": \"Filesystem             1B-blocks          Used    Available Use% Mounted on\\n12.12.15.3:/public 2199023255552 1996810616832 202212638720  91% /public\\n\", ",
+  "exit_code": 124,
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false,
+  "status": "failed"
+}

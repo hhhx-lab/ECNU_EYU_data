@@ -1,0 +1,162 @@
+{
+  "NONZERO_COMPARISON_GATE": false,
+  "STRICT_ORIGINAL_GATE": false,
+  "account_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1987246555136 211776700416  91% /public\n"
+  },
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 211776700416,
+  "drift": [],
+  "evidence": {
+    "dataset/COMPLETE.ok": {
+      "exists": false
+    },
+    "dataset/FAILED.json": {
+      "exists": true,
+      "message": "BraTS-MET-01132-002: whole foreground classes lost during 1mm resampling: ['2']",
+      "sha256": "fc254bde644be02374cf0714c0029bda8fd874fdc77a34c46bfd2ae94ca7482d",
+      "utc": "2026-10-16T09:44:08.514890+00:00"
+    },
+    "dataset/STARTED.json": {
+      "exists": true,
+      "sha256": "0719003f35a0acf7bd688d6fd3ec5af15e3a74f9c2f19e0c2faf30ecd3e6cb3b",
+      "utc": "2026-10-16T08:19:07.527867+00:00"
+    },
+    "training/t1c/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1c/FAILED.json": {
+      "exists": false
+    },
+    "training/t1c/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1c/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1c/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1c/STARTED.json": {
+      "exists": false
+    },
+    "training/t1n/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1n/FAILED.json": {
+      "exists": false
+    },
+    "training/t1n/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1n/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1n/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1n/STARTED.json": {
+      "exists": false
+    },
+    "training/t2f/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2f/FAILED.json": {
+      "exists": false
+    },
+    "training/t2f/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2f/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2f/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2f/STARTED.json": {
+      "exists": false
+    },
+    "training/t2w/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2w/FAILED.json": {
+      "exists": false
+    },
+    "training/t2w/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2w/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2w/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2w/STARTED.json": {
+      "exists": false
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "independent_full_revalidation": "waived_by_user_not_pass",
+  "jobs": {
+    "prepare": "4124867",
+    "t1c": "4124868",
+    "t1n": "4124869",
+    "t2f": "4124871",
+    "t2w": "4124870"
+  },
+  "local_utc": "2026-10-16T10:20:49.564089+00:00",
+  "logs": {
+    "g1d1m8p1_4124867.err": {
+      "bytes": 2651,
+      "critical": [
+        "concurrent.futures.process._RemoteTraceback: ",
+        "Traceback (most recent call last):",
+        "Traceback (most recent call last):"
+      ],
+      "exists": true,
+      "tail": "concurrent.futures.process._RemoteTraceback: \n\"\"\"\nTraceback (most recent call last):\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 261, in _process_worker\n    r = call_item.fn(*call_item.args, **call_item.kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 210, in _process_chunk\n    return [fn(*args) for args in chunk]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 210, in <listcomp>\n    return [fn(*args) for args in chunk]\n            ^^^^^^^^^\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/runtime/prepare.py\", line 268, in process\n    raise ValueError(case + ': whole foreground classes lost during 1mm resampling: ' + str(lost_classes))\nValueError: BraTS-MET-01132-002: whole foreground classes lost during 1mm resampling: ['2']\n\"\"\"\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/runtime/prepare.py\", line 378, in <module>\n    main()\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_localfix_r8/runtime/prepare.py\", line 337, in main\n    for result in pool.map(process, jobs, chunksize=1):\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 620, in _chain_from_iterable_of_lists\n    for element in iterable:\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 619, in result_iterator\n    yield _result_or_cancel(fs.pop())\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 317, in _result_or_cancel\n    return fut.result(timeout)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\nValueError: BraTS-MET-01132-002: whole foreground classes lost during 1mm resampling: ['2']\n"
+    },
+    "g1d1m8p1_4124867.out": {
+      "bytes": 33934,
+      "critical": [],
+      "exists": true,
+      "tail": "\", \"cases_completed\": 462, \"rows\": 12}\n{\"case\": \"BraTS-MET-01110-002\", \"cases_completed\": 463, \"rows\": 15}\n{\"case\": \"BraTS-MET-01110-003\", \"cases_completed\": 464, \"rows\": 18}\n{\"case\": \"BraTS-MET-01112-001\", \"cases_completed\": 465, \"rows\": 1}\n{\"case\": \"BraTS-MET-01112-003\", \"cases_completed\": 466, \"rows\": 1}\n{\"case\": \"BraTS-MET-01114-000\", \"cases_completed\": 467, \"rows\": 32}\n{\"case\": \"BraTS-MET-01114-001\", \"cases_completed\": 468, \"rows\": 7}\n{\"case\": \"BraTS-MET-01114-003\", \"cases_completed\": 469, \"rows\": 50}\n{\"case\": \"BraTS-MET-01115-000\", \"cases_completed\": 470, \"rows\": 6}\n{\"case\": \"BraTS-MET-01115-001\", \"cases_completed\": 471, \"rows\": 6}\n{\"case\": \"BraTS-MET-01115-002\", \"cases_completed\": 472, \"rows\": 5}\n{\"case\": \"BraTS-MET-01115-003\", \"cases_completed\": 473, \"rows\": 4}\n{\"case\": \"BraTS-MET-01116-000\", \"cases_completed\": 474, \"rows\": 1}\n{\"case\": \"BraTS-MET-01116-002\", \"cases_completed\": 475, \"rows\": 2}\n{\"case\": \"BraTS-MET-01116-003\", \"cases_completed\": 476, \"rows\": 2}\n{\"case\": \"BraTS-MET-01117-001\", \"cases_completed\": 477, \"rows\": 1}\n{\"case\": \"BraTS-MET-01117-002\", \"cases_completed\": 478, \"rows\": 1}\n{\"case\": \"BraTS-MET-01117-003\", \"cases_completed\": 479, \"rows\": 0}\n{\"case\": \"BraTS-MET-01118-000\", \"cases_completed\": 480, \"rows\": 5}\n{\"case\": \"BraTS-MET-01118-001\", \"cases_completed\": 481, \"rows\": 7}\n{\"case\": \"BraTS-MET-01119-000\", \"cases_completed\": 482, \"rows\": 7}\n{\"case\": \"BraTS-MET-01119-001\", \"cases_completed\": 483, \"rows\": 9}\n{\"case\": \"BraTS-MET-01119-003\", \"cases_completed\": 484, \"rows\": 11}\n{\"case\": \"BraTS-MET-01120-000\", \"cases_completed\": 485, \"rows\": 2}\n{\"case\": \"BraTS-MET-01120-001\", \"cases_completed\": 486, \"rows\": 1}\n{\"case\": \"BraTS-MET-01121-001\", \"cases_completed\": 487, \"rows\": 12}\n{\"case\": \"BraTS-MET-01121-002\", \"cases_completed\": 488, \"rows\": 15}\n{\"case\": \"BraTS-MET-01121-003\", \"cases_completed\": 489, \"rows\": 13}\n{\"case\": \"BraTS-MET-01122-001\", \"cases_completed\": 490, \"rows\": 12}\n{\"case\": \"BraTS-MET-01122-002\", \"cases_completed\": 491, \"rows\": 11}\n{\"case\": \"BraTS-MET-01122-003\", \"cases_completed\": 492, \"rows\": 11}\n{\"case\": \"BraTS-MET-01122-004\", \"cases_completed\": 493, \"rows\": 11}\n{\"case\": \"BraTS-MET-01124-000\", \"cases_completed\": 494, \"rows\": 1}\n{\"case\": \"BraTS-MET-01124-001\", \"cases_completed\": 495, \"rows\": 1}\n{\"case\": \"BraTS-MET-01124-002\", \"cases_completed\": 496, \"rows\": 1}\n{\"case\": \"BraTS-MET-01125-000\", \"cases_completed\": 497, \"rows\": 6}\n{\"case\": \"BraTS-MET-01126-001\", \"cases_completed\": 498, \"rows\": 13}\n{\"case\": \"BraTS-MET-01128-000\", \"cases_completed\": 499, \"rows\": 4}\n{\"case\": \"BraTS-MET-01128-001\", \"cases_completed\": 500, \"rows\": 9}\n{\"case\": \"BraTS-MET-01128-002\", \"cases_completed\": 501, \"rows\": 3}\n{\"case\": \"BraTS-MET-01129-001\", \"cases_completed\": 502, \"rows\": 5}\n{\"case\": \"BraTS-MET-01129-002\", \"cases_completed\": 503, \"rows\": 4}\n{\"case\": \"BraTS-MET-01131-000\", \"cases_completed\": 504, \"rows\": 1}\n{\"case\": \"BraTS-MET-01131-003\", \"cases_completed\": 505, \"rows\": 7}\n{\"case\": \"BraTS-MET-01132-000\", \"cases_completed\": 506, \"rows\": 5}\n"
+    }
+  },
+  "operator_approved": false,
+  "package_sha256": "a73f614ae36e2b237f8c65929faa5547aa191a9701bcc00e689e23bbb806a745",
+  "prepared_case_directories": 514,
+  "public_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  223T   26T  90% /public\n"
+  },
+  "remote_utc": "2026-10-16T10:09:43.149052+00:00",
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4124867|FAILED|1:0|01:26:45|1-00:00:00|billing=8,cpu=8,mem=90G,node=1\n4124867.batch|FAILED|1:0|01:26:45||cpu=8,mem=90G,node=1\n4124868|CANCELLED|0:0|00:00:00|2-00:00:00|\n4124869|CANCELLED|0:0|00:00:00|2-00:00:00|\n4124870|CANCELLED|0:0|00:00:00|2-00:00:00|\n4124871|CANCELLED|0:0|00:00:00|2-00:00:00|\n"
+  },
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "training_progress": {
+    "t1c": {
+      "exists": false
+    },
+    "t1n": {
+      "exists": false
+    },
+    "t2f": {
+      "exists": false
+    },
+    "t2w": {
+      "exists": false
+    }
+  }
+}

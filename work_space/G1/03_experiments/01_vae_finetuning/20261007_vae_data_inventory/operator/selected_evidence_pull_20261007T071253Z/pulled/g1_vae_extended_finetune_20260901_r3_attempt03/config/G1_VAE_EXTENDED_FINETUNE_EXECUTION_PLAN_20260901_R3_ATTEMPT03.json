@@ -1,0 +1,152 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "created_date": "2026-09-01",
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false,
+  "plan_id": "G1_VAE_EXTENDED_FINETUNE_20260901_R3_ATTEMPT03",
+  "execution_attempt": 3,
+  "schema_version": 1,
+  "status": "preflight_scan_required",
+  "remediation": {
+    "supersedes_failed_execution_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2",
+    "failed_job_id": "3554368",
+    "failed_before_training": false,
+    "failed_epoch": 1,
+    "failure_subject": "BraTS-MET-01257-002",
+    "failure_reason": "multiclass_label_collision_after_model_space_projection_removed_label_1",
+    "fix": "vae_private_binary_union_segmentation_before_spatial_resampling",
+    "shared_spatial_runtime_modified": false,
+    "required_remote_scan": "all_823_training_subjects_under_exact_r3_binary_union_contract"
+  },
+  "attempt03_remediation": {
+    "predecessor_scan_job_id": "3554513",
+    "predecessor_scan_status": "failed",
+    "predecessor_scan_exit_code": "2:0",
+    "predecessor_scanned_count": 807,
+    "predecessor_empty_source_count": 16,
+    "failure_reason": "scanner_dereferenced_absent_lesion_support_audit_for_valid_empty_source_segmentation",
+    "fix": "explicit_empty_source_audit_with_zero_source_and_model_lesion_contract",
+    "training_submitted_in_predecessor": false
+  },
+  "baseline": {
+    "historical_run": "run_3034060",
+    "selected_checkpoint": "run_3034060/best_model.pt",
+    "selected_checkpoint_sha256": "004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294",
+    "pretrained_initialization": "weights/vae/autoencoder_epoch273.pt",
+    "pretrained_initialization_sha256": "1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3"
+  },
+  "cohorts": {
+    "development_validation": 103,
+    "fit_train": 823,
+    "fixed_quick_validation": 20,
+    "locked_test": 104,
+    "missing_t2w_inference": 265
+  },
+  "training": {
+    "amp_dtype": "bfloat16",
+    "batch_semantics": "two_subject_gradient_accumulation_each_with_four_modalities",
+    "decoder_lr": 0.000001,
+    "early_stopping_patience": 0,
+    "encoder_lr": 0.000002,
+    "extension_epoch": 30,
+    "extension_rule": "extend_to_30_only_if_provisional_best_epoch_equals_20",
+    "gradient_clip": 1.0,
+    "initial_epoch_limit": 20,
+    "kl_weight": 0.01,
+    "optimizer": "AdamW",
+    "patch_size": [128, 128, 96],
+    "random_seed": 42,
+    "resume_must_restore": [
+      "model_state",
+      "optimizer_state",
+      "scheduler_state",
+      "selection_state",
+      "rng_state"
+    ],
+    "scheduler": "CosineAnnealingLR",
+    "scheduler_min_lr": 1e-7,
+    "scheduler_t_max": 30,
+    "stop_after_epoch_20_is_a_planned_phase_boundary": true,
+    "tumor_patch_probability": 0.8,
+    "weight_decay": 0.0
+  },
+  "execution": {
+    "code_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3",
+    "experiment_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03",
+    "python": "/public/home/zqchen/.conda/envs/segmamba/bin/python",
+    "partition": "a100",
+    "gpu_count": 1,
+    "gpu_contract": "single_non_ddp_A100",
+    "cpus_per_task": 8,
+    "memory_gib": 96,
+    "walltime": "6-00:00:00",
+    "historical_epoch_seconds_range": [14253.1, 14523.1],
+    "estimated_hours_to_epoch_20": 81,
+    "estimated_hours_to_epoch_30": 121,
+    "maximum_checkpoint_storage_gib_approx": 7.5,
+    "trainer_sha256": "175e4a67780c0ca23e0261bd932210fb1e5b263366a74e343ea71b59bb1ed0f1",
+    "pythonpath_contract": "R3_RUNTIME/r3_synthesis:SHARED_CODE_ROOT"
+  },
+  "vae_segmentation_contract": {
+    "mode": "binary_union",
+    "purpose": "tumor_and_healthy_mask_construction_only",
+    "source_multiclass_labels_audited": true,
+    "source_segmentation_changed_on_disk": false,
+    "shared_synthesis_package_changed": false,
+    "bundled_utils_sha256": "cba314ba110ca07ff9f440081108f773eb2d2c09ff4ca3ab5bf44aa4fbbca1b6",
+    "bundled_spatial_sha256": "b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb",
+    "full_training_split_scan_count": 823,
+    "training_submission_requires_scan_pass": true
+  },
+  "epoch_selection": {
+    "checkpoint_every_epoch": true,
+    "co_primary": [
+      "maximize_delta_t2w_tumor_ssim",
+      "minimize_delta_t2w_tumor_mse"
+    ],
+    "condition_modality_constraints": {
+      "modalities": ["t1n", "t1c", "t2f"],
+      "minimum_delta_tumor_ssim": -0.01,
+      "minimum_delta_whole_ssim": -0.005,
+      "maximum_relative_tumor_mse_increase": 0.05
+    },
+    "tie_break": [
+      "higher_delta_t2w_tumor_ssim",
+      "if_ssim_difference_le_0.002_lower_delta_t2w_tumor_mse",
+      "earlier_epoch"
+    ],
+    "t2w_safety": {
+      "minimum_delta_whole_ssim": -0.005
+    }
+  },
+  "full_validation": {
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 20260828,
+    "candidate_policy": "provisional_best_plus_neighbors_plus_phase_boundary_plus_historical_plus_pretrained",
+    "deterministic_latent": "mu",
+    "rows_per_checkpoint": 412,
+    "subjects": 103
+  },
+  "downstream_contract": {
+    "direct_old_generator_reuse_allowed": false,
+    "must_reencode_all_complete_cases": true,
+    "must_retrain_bbdm": true,
+    "must_retrain_encdec": true,
+    "native_space_synthesis_required": true,
+    "paired_segmentation_required": true,
+    "segmentation_safety": {
+      "maximum_dsc_nsd_f1_mean_decrease": 0.01,
+      "maximum_hd95_mean_increase_mm": 5.0
+    }
+  },
+  "automatic_stop": {
+    "after_epoch_30": true,
+    "if_best_epoch_equals_30": "stop_and_record_boundary_hit_at_30_no_automatic_extension"
+  },
+  "interpretation_boundaries": [
+    "model_space_vae_reconstruction_is_not_native_space_synthesis_quality",
+    "image_quality_improvement_is_not_downstream_segmentation_benefit",
+    "development_validation_is_not_an_unseen_test_set",
+    "absence_of_significant_harm_is_not_formal_equivalence"
+  ]
+}

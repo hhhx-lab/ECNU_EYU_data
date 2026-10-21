@@ -1,0 +1,26 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "reviewed_at": "2026-10-13T12:34:16.754229+00:00",
+  "source_unchanged": true,
+  "checks": {
+    "evaluation_identity": {
+      "status": "fail",
+      "actual_branch_finished_without_rejection": true,
+      "loaded_checkpoints": 2,
+      "csv_mismatch_warning_count": 1,
+      "both_checkpoints_csv_identity_mismatched": true,
+      "output": "[Metadata] architecture params from /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/ecnu-dated-extra-aidb02s0/t1c/weights/diffusion_2.pt\n[WARNING] /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/ecnu-dated-extra-aidb02s0/current.csv is not the CSV this checkpoint was trained on (prior.csv); its val rows may overlap the training data.\n",
+      "scope": "actual_AST_metadata_branch_executed_no_sampling_or_GPU"
+    },
+    "optimizer_beta1": {
+      "status": "pass",
+      "parsed_new_default": 0.9,
+      "prior_checkpoint_beta1": 0.5,
+      "default_rejected_legacy_beta1": true,
+      "explicit_point5_resume_succeeded": true,
+      "scope": "actual_CPU_checkpoint_loader_without_GPU"
+    }
+  }
+}

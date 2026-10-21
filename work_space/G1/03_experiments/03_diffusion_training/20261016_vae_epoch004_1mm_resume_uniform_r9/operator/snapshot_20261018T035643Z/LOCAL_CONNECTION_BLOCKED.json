@@ -1,0 +1,38 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "blocked_before_ssh",
+  "local_utc": "2026-10-18T03:59:17.555974Z",
+  "remote_utc": null,
+  "operation": "one_existing_readonly_snapshot",
+  "snapshot_exit_code": 1,
+  "reason": "VPN server TLS certificate expired; snapshot did not reach SSH",
+  "server": "vpn-cn.ecnu.edu.cn",
+  "certificate": {
+    "subject": "CN=*.ecnu.edu.cn",
+    "issuer": "GeoTrust TLS RSA CA G1",
+    "not_before_utc": "2025-09-26T00:00:00Z",
+    "not_after_utc": "2026-10-17T23:59:59Z",
+    "observed_sha256_fingerprint": "F3:AA:DB:53:C7:0D:63:19:59:D5:22:C4:61:2E:88:8A:96:D3:04:B3:76:E1:96:79:6D:69:25:08:03:7B:59:83",
+    "fingerprint_independently_verified": false,
+    "openssl_verify_return_code": 10,
+    "trust_bypass_used": false
+  },
+  "vpn_running_after_operation": false,
+  "default_route_unchanged": true,
+  "local_storage": {
+    "observed_utc": "2026-10-18T03:58:25.234108Z",
+    "available_bytes": 192923701248,
+    "available_gib": 179.67419815063477
+  },
+  "last_complete_snapshot": "operator/snapshot_20261017T065940Z/SNAPSHOT.json",
+  "current_job_completion": "unknown_not_observed",
+  "current_remote_storage": "unknown_not_observed",
+  "downloaded_files": 0,
+  "remote_writes": 0,
+  "user_request": "Check completion, then download lightweight results and finished models, and check storage",
+  "user_followup": "Repair certificate trust before querying; no unverified pin or bypass authorized",
+  "next_requirement": "Renewed valid server certificate or independently verified alternative access",
+  "automatic_monitor": "remains_paused_no_remote_job_change"
+}

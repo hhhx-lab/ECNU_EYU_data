@@ -1,0 +1,17 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1",
+  "training_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9",
+  "candidate_steps": [20000,40000,60000,80000,100000,120000,140000,160000,180000,200000],
+  "seeds": [20261013,20261014,20261015,20261016],
+  "inference": {"steps": 18, "cfg": 1.0, "churn": 0.0, "dtype": "float32", "crop": 64},
+  "primary_target": "vae_reconstructed",
+  "secondary_target": "authentic_real_same_generated_transaction",
+  "selection_tolerance": 0.000001,
+  "bootstrap_replicates": 20000,
+  "bootstrap_seed": 20261013,
+  "locked_test_read_images": false,
+  "no_automatic_retry": true
+}

@@ -1,0 +1,102 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "authorization": "2026-10-21 user: evaluate new and old models under one consistent scoring system",
+  "data_range": 6.0,
+  "formal_gate_status": "not_run_not_passed",
+  "halo": 5,
+  "models": {
+    "july150k": {
+      "t1c": {
+        "bytes": 53749405,
+        "modality": "t1c",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_july150k_vs_r9_shared_eval_20261021_r1/models/july150k/t1c/diffusion_150000.pt",
+        "sha256": "cc49de179dee75af561df377ba323052da99525a58a99c60d2fe48f2c34d51a5",
+        "step": 150000
+      },
+      "t1n": {
+        "bytes": 53749405,
+        "modality": "t1n",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_july150k_vs_r9_shared_eval_20261021_r1/models/july150k/t1n/diffusion_150000.pt",
+        "sha256": "bc98c9423dad396ee235c89893c308b5e6d340667a8b10880825020b6e976ad6",
+        "step": 150000
+      },
+      "t2f": {
+        "bytes": 53749405,
+        "modality": "t2f",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_july150k_vs_r9_shared_eval_20261021_r1/models/july150k/t2f/diffusion_150000.pt",
+        "sha256": "de2f219fe126dbb7974d61d8fe8697d239d1e0b18f735344feeab36d3f7d9e6c",
+        "step": 150000
+      },
+      "t2w": {
+        "bytes": 53749405,
+        "modality": "t2w",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_july150k_vs_r9_shared_eval_20261021_r1/models/july150k/t2w/diffusion_150000.pt",
+        "sha256": "1b42542f378375406e38a17ca380a608fd0005be4591ef2bcedabca925c3ff60",
+        "step": 150000
+      }
+    },
+    "r9": {
+      "t1c": {
+        "bytes": 55806207,
+        "modality": "t1c",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t1c/weights/diffusion_120000.pt",
+        "sha256": "c66c9610634a6e1a06ffdf5df201f627036000c053100a9b8f02299922f892f4",
+        "step": 120000
+      },
+      "t1n": {
+        "bytes": 55806143,
+        "modality": "t1n",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t1n/weights/diffusion_40000.pt",
+        "sha256": "ec418ac7dbdcb72cf6202af30f10d6b2ca79249294842e85e875f7b895a5d6f9",
+        "step": 40000
+      },
+      "t2f": {
+        "bytes": 55806207,
+        "modality": "t2f",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t2f/weights/diffusion_200000.pt",
+        "sha256": "c642ea88fe73e479a2ddf5d663fe220c5bcada31e03cfea9d981ff24d0acc93b",
+        "step": 200000
+      },
+      "t2w": {
+        "bytes": 55806207,
+        "modality": "t2w",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t2w/weights/diffusion_200000.pt",
+        "sha256": "27ea3175e26b7aeaaba28f30a553cd71fa2eab0c7e79989355da46ef39aa28a5",
+        "step": 200000
+      }
+    }
+  },
+  "no_automatic_retry": true,
+  "old_selection_sha256": "85574c51c4f77ea14e18507aab93f6fea86cf4b8ab0a0c407b0e3ec97e18b209",
+  "operator_approved": false,
+  "preregistration_is_after_prior_incompatible_scores": true,
+  "primary": "real_foreground_center_ssim3d",
+  "reference_package_sha256": "3486d52cfa995aff8cd439932384d8393224b90630cb878793aba01f7b41d2d4",
+  "reference_report_sha256": "13e57c28d597e7801e503219da15350eda68a044550ed0d436edee84c1c70d3c",
+  "reference_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1",
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_july150k_vs_r9_shared_eval_20261021_r1",
+  "schedule": {
+    "n_steps": 1000,
+    "name": "edm",
+    "rho": 7.0,
+    "sigma_data": 1.0,
+    "sigma_max": 50.0,
+    "sigma_min": 0.002,
+    "snr_shift": 0.0
+  },
+  "scored_cases": 94,
+  "secondary": "reconstruction_same_generated_output",
+  "seeds": [
+    20261013,
+    20261014,
+    20261015,
+    20261016
+  ],
+  "selection_sha256": "541d0fd245ba66841f35574aed3ad227efa9363c580211a1c8733f528d808902",
+  "test_images_read": false,
+  "tile_stride": 32,
+  "total_cases": 103,
+  "training_package_sha256": "80f432b454ea80cf3d4142cb87d194c7913c0eabd2da473b3821b06d10df63f6",
+  "training_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9",
+  "window": 7
+}

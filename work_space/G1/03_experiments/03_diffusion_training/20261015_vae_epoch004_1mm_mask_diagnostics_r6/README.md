@@ -1,0 +1,9 @@
+# G1严格支持覆盖集中诊断R6
+
+用户授权失败病例诊断、按真实原因修复、集中扫描926例再训练。R5病例00006诊断为1个label3体素三模态全零，正值和非零union+holefill均未覆盖；标签SHA一致、affine无偏移，不是负值过滤问题。故本批次仅提交独立CPU覆盖扫描，不能伪造新mask支持或提前挂四训练。
+
+源R5、原生epoch004重建、标签和旧失败不改；扫描train823+val103的真实T1N/T1C/T2F及原生标签，test104不读影像。逐例保存SHA/几何/finite/正值与非零覆盖比较及遗漏样本，异常收集不提前截断；926报告齐全记扫描complete，STRICT_ORIGINAL_GATE和NONZERO_COMPARISON_GATE分别如实判定，扫描完成不等训练数据门通过。
+
+CPU192单节点8CPU90G24h、4worker，最多轻量JSON/CSV/日志；1GiB仅诊断证据容量，不可转移至1mm/训练。没有NIfTI/checkpoint输出/下载、Drive、依赖安装、旧证据删除或四GPU提交。独占根reservation、唯一held审计后释放；新异常/非0保存停止，无自动重试。
+
+本批次不训练，原四路200k、单A100/batch16及split/选择合同保留待解决覆盖门；artifact_status=experimental_unvalidated，operator_approved=false，formal_gate_status=not_run_not_passed，仅exploratory。状态以独立STATUS与operator回执为准。

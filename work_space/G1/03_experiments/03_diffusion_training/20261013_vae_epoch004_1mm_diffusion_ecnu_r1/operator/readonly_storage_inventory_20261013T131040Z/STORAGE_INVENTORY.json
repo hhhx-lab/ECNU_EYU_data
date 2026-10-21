@@ -1,0 +1,589 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "available_tools": {
+    "findmnt": "/usr/bin/findmnt",
+    "lfs": null,
+    "mmlsquota": null,
+    "quota": "/usr/bin/quota",
+    "xfs_quota": null
+  },
+  "capacity_after": {
+    "available_bytes": 78263615488,
+    "available_inodes": 2235557959,
+    "device_id": 42,
+    "exists": true,
+    "free_bytes": 78263615488,
+    "free_inodes": 2235557959,
+    "resolved": "/public/home/zqchen",
+    "total_bytes": 2199023255552,
+    "total_inodes": 2721923868
+  },
+  "capacity_before": {
+    "/public": {
+      "available_bytes": 28223274483712,
+      "available_inodes": 2235558277,
+      "device_id": 42,
+      "exists": true,
+      "free_bytes": 28223274483712,
+      "free_inodes": 2235558277,
+      "resolved": "/public",
+      "total_bytes": 272678883688448,
+      "total_inodes": 2721923868
+    },
+    "/public/home/zqchen": {
+      "available_bytes": 78263615488,
+      "available_inodes": 2235558277,
+      "device_id": 42,
+      "exists": true,
+      "free_bytes": 78263615488,
+      "free_inodes": 2235558277,
+      "resolved": "/public/home/zqchen",
+      "total_bytes": 2199023255552,
+      "total_inodes": 2721923868
+    },
+    "/public/home/zqchen/data": {
+      "available_bytes": 78263615488,
+      "available_inodes": 2235558277,
+      "device_id": 42,
+      "exists": true,
+      "free_bytes": 78263615488,
+      "free_inodes": 2235558277,
+      "resolved": "/public/home/zqchen/data",
+      "total_bytes": 2199023255552,
+      "total_inodes": 2721923868
+    },
+    "/public/home/zqchen/projects": {
+      "available_bytes": 78263615488,
+      "available_inodes": 2235558277,
+      "device_id": 42,
+      "exists": true,
+      "free_bytes": 78263615488,
+      "free_inodes": 2235558277,
+      "resolved": "/public/home/zqchen/projects",
+      "total_bytes": 2199023255552,
+      "total_inodes": 2721923868
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data": {
+      "available_bytes": 78263615488,
+      "available_inodes": 2235558277,
+      "device_id": 42,
+      "exists": true,
+      "free_bytes": 78263615488,
+      "free_inodes": 2235558277,
+      "resolved": "/public/home/zqchen/projects/ECNU_EYU_data",
+      "total_bytes": 2199023255552,
+      "total_inodes": 2721923868
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space": {
+      "available_bytes": 78263615488,
+      "available_inodes": 2235558277,
+      "device_id": 42,
+      "exists": true,
+      "free_bytes": 78263615488,
+      "free_inodes": 2235558277,
+      "resolved": "/public/home/zqchen/projects/ECNU_EYU_data/work_space",
+      "total_bytes": 2199023255552,
+      "total_inodes": 2721923868
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261013_r1": {
+      "available_bytes": 78263615488,
+      "available_inodes": 2235558277,
+      "device_id": 42,
+      "exists": true,
+      "free_bytes": 78263615488,
+      "free_inodes": 2235558277,
+      "resolved": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261013_r1",
+      "total_bytes": 2199023255552,
+      "total_inodes": 2721923868
+    }
+  },
+  "df_bytes": {
+    "elapsed_seconds": 0.081,
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem               1B-blocks            Used      Available Use% Mounted on\n12.12.15.3:/public 272678883688448 244455551533056 28223332155392  90% /public\n12.12.15.3:/public   2199023255552   2120759640064    78263615488  97% /public\n12.12.15.3:/public   2199023255552   2120759640064    78263615488  97% /public\n12.12.15.3:/public   2199023255552   2120759640064    78263615488  97% /public\n12.12.15.3:/public   2199023255552   2120759640064    78263615488  97% /public\n12.12.15.3:/public   2199023255552   2120759640064    78263615488  97% /public\n12.12.15.3:/public   2199023255552   2120759640064    78263615488  97% /public\n",
+    "timed_out": false
+  },
+  "df_inodes": {
+    "elapsed_seconds": 0.005,
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 486365909 2235557959   18% /public\n",
+    "timed_out": false
+  },
+  "du_walk_complete": false,
+  "formal_gate_status": "not_run_not_passed",
+  "home_du": {
+    "elapsed_seconds": 150.011,
+    "exit_code": 124,
+    "stderr": "",
+    "stdout": "4096\t/public/home/zqchen/.mozilla/plugins\n4096\t/public/home/zqchen/.mozilla/extensions\n12288\t/public/home/zqchen/.mozilla\n4096\t/public/home/zqchen/perl5\n6144\t/public/home/zqchen/.ssh\n6144\t/public/home/zqchen/job_example/dcu\n14336\t/public/home/zqchen/job_example/ompjob\n14848\t/public/home/zqchen/job_example/mpijob\n6144\t/public/home/zqchen/job_example/gpu\n4096\t/public/home/zqchen/job_example/serialjob\n219648\t/public/home/zqchen/job_example\n4096\t/public/home/zqchen/.local/share\n263168\t/public/home/zqchen/.local/lib/python3.13/site-packages\n267264\t/public/home/zqchen/.local/lib/python3.13\n271360\t/public/home/zqchen/.local/lib\n6656\t/public/home/zqchen/.local/state/financial-ts-api-proxy\n10752\t/public/home/zqchen/.local/state\n290304\t/public/home/zqchen/.local\n4096\t/public/home/zqchen/.cache/abrt\n4096\t/public/home/zqchen/.cache/conda-anaconda-tos\n4096\t/public/home/zqchen/.cache/conda/notices\n8192\t/public/home/zqchen/.cache/conda\n2226690560\t/public/home/zqchen/.cache/pip/http-v2/a\n452100096\t/public/home/zqchen/.cache/pip/http-v2/9\n318570496\t/public/home/zqchen/.cache/pip/http-v2/c\n617708032\t/public/home/zqchen/.cache/pip/http-v2/f\n50769920\t/public/home/zqchen/.cache/pip/http-v2/1\n359084032\t/public/home/zqchen/.cache/pip/http-v2/8\n25858048\t/public/home/zqchen/.cache/pip/http-v2/5\n41021952\t/public/home/zqchen/.cache/pip/http-v2/d\n261602816\t/public/home/zqchen/.cache/pip/http-v2/7\n2292713472\t/public/home/zqchen/.cache/pip/http-v2/0\n637732864\t/public/home/zqchen/.cache/pip/http-v2/3\n812289536\t/public/home/zqchen/.cache/pip/http-v2/e\n151841792\t/public/home/zqchen/.cache/pip/http-v2/2\n704863232\t/public/home/zqchen/.cache/pip/http-v2/4\n625543168\t/public/home/zqchen/.cache/pip/http-v2/6\n132259840\t/public/home/zqchen/.cache/pip/http-v2/b\n9710653952\t/public/home/zqchen/.cache/pip/http-v2\n4096\t/public/home/zqchen/.cache/pip/selfcheck\n136704\t/public/home/zqchen/.cache/pip/wheels/11\n16384\t/public/home/zqchen/.cache/pip/wheels/9d\n16384\t/public/home/zqchen/.cache/pip/wheels/82\n105984\t/public/home/zqchen/.cache/pip/wheels/27\n16384\t/public/home/zqchen/.cache/pip/wheels/a3\n16384\t/public/home/zqchen/.cache/pip/wheels/c1\n20992\t/public/home/zqchen/.cache/pip/wheels/93\n926720\t/public/home/zqchen/.cache/pip/wheels/e1\n1260032\t/public/home/zqchen/.cache/pip/wheels\n5666816\t/public/home/zqchen/.cache/pip/http/3\n100568064\t/public/home/zqchen/.cache/pip/http/d\n1278976\t/public/home/zqchen/.cache/pip/http/b\n724992\t/public/home/zqchen/.cache/pip/http/6\n3185664\t/public/home/zqchen/.cache/pip/http/7\n3586560\t/public/home/zqchen/.cache/pip/http/c\n15271424\t/public/home/zqchen/.cache/pip/http/4\n24904192\t/public/home/zqchen/.cache/pip/http/8\n79360\t/public/home/zqchen/.cache/pip/http/2\n169472\t/public/home/zqchen/.cache/pip/http/f\n84992\t/public/home/zqchen/.cache/pip/http/9\n1074688\t/public/home/zqchen/.cache/pip/http/5\n851456\t/public/home/zqchen/.cache/pip/http/1\n99840\t/public/home/zqchen/.cache/pip/http/a\n3101184\t/public/home/zqchen/.cache/pip/http/0\n837120\t/public/home/zqchen/.cache/pip/http/e\n161488896\t/public/home/zqchen/.cache/pip/http\n9873411072\t/public/home/zqchen/.cache/pip\n145408\t/public/home/zqchen/.cache/matplotlib\n4096\t/public/home/zqchen/.cache/huggingface/hub\n8192\t/public/home/zqchen/.cache/huggingface\n174592\t/public/home/zqchen/.cache/torch/kernels\n178688\t/public/home/zqchen/.cache/torch\n7168\t/public/home/zqchen/.cache/python-blosc2\n4096\t/public/home/zqchen/.cache/node-gyp\n388499968\t/public/home/zqchen/.cache/puppeteer/chrome/linux-146.0.7680.76\n388504064\t/public/home/zqchen/.cache/puppeteer/chrome\n267174400\t/public/home/zqchen/.cache/puppeteer/chrome-headless-shell/linux-146.0.7680.76\n267178496\t/public/home/zqchen/.cache/puppeteer/chrome-headless-shell\n655686656\t/public/home/zqchen/.cache/puppeteer\n10529461760\t/public/home/zqchen/.cache\n4096\t/public/home/zqchen/.config/abrt\n4096\t/public/home/zqchen/.config/matplotlib\n4096\t/public/home/zqchen/.config/pip\n6144\t/public/home/zqchen/.config/financial-ts\n22528\t/public/home/zqchen/.config\n5632\t/public/home/zqchen/Code/.idea/inspectionProfiles\n11264\t/public/home/zqchen/Code/.idea\n12877824\t/public/home/zqchen/Code/imgs\n32256\t/public/home/zqchen/Code/Segmentation_Tasks/BraTS2023_inference\n33792\t/public/home/zqchen/Code/Segmentation_Tasks/BraTS2024_inference\n26112\t/public/home/zqchen/Code/Segmentation_Tasks/BraTS2024_meningioma_inference\n28672\t/public/home/zqchen/Code/Segmentation_Tasks/BraTS_ISBI_GoAT_2024_inference\n4645888\t/public/home/zqchen/Code/Segmentation_Tasks/example\n61304832\t/public/home/zqchen/Code/Segmentation_Tasks/GliGAN/DataSet\n361472\t/public/home/zqchen/Code/Segmentation_Tasks/GliGAN/src\n61670400\t/public/home/zqchen/Code/Segmentation_Tasks/GliGAN\n97792\t/public/home/zqchen/Code/Segmentation_Tasks/mednext/documentation\n6144\t/public/home/zqchen/Code/Segmentation_Tasks/mednext/mednextv1.egg-info\n2415104\t/public/home/zqchen/Code/Segmentation_Tasks/mednext/nnunet_mednext\n12800\t/public/home/zqchen/Code/Segmentation_Tasks/mednext/tests\n2563072\t/public/home/zqchen/Code/Segmentation_Tasks/mednext\n45568\t/public/home/zqchen/Code/Segmentation_Tasks/nnUNet\n83456\t/public/home/zqchen/Code/Segmentation_Tasks/nnUNet_install/documentation\n959488\t/public/home/zqchen/Code/Segmentation_Tasks/nnUNet_install/nnunetv2\n1073152\t/public/home/zqchen/Code/Segmentation_Tasks/nnUNet_install\n70123008\t/public/home/zqchen/Code/Segmentation_Tasks\n26624\t/public/home/zqchen/Code/Synthesis/Task7/testing\n5632\t/public/home/zqchen/Code/Synthesis/Task7/utils\n295424\t/public/home/zqchen/Code/Synthesis/Task7/wdm-3d\n331776\t/public/home/zqchen/Code/Synthesis/Task7\n50688\t/public/home/zqchen/Code/Synthesis/Task8/data_creator\n28160\t/public/home/zqchen/Code/Synthesis/Task8/testing\n334848\t/public/home/zqchen/Code/Synthesis/Task8/wdm-3d\n417792\t/public/home/zqchen/Code/Synthesis/Task8\n753664\t/public/home/zqchen/Code/Synthesis\n108630016\t/public/home/zqchen/Code\n12858368\t/public/home/zqchen/.conda/envs/diffusion/conda-meta\n35840\t/public/home/zqchen/.conda/envs/diffusion/etc\n242176\t/public/home/zqchen/.conda/envs/diffusion/ssl\n244459008\t/public/home/zqchen/.conda/envs/diffusion/bin\n8192\t/public/home/zqchen/.conda/envs/diffusion/x86_64-conda-linux-gnu\n8192\t/public/home/zqchen/.conda/envs/diffusion/x86_64-conda_cos7-linux-gnu\n2072673280\t/public/home/zqchen/.conda/envs/diffusion/lib\n42077696\t/public/home/zqchen/.conda/envs/diffusion/share\n43614720\t/public/home/zqchen/.conda/envs/diffusion/include\n807424\t/public/home/zqchen/.conda/envs/diffusion/man\n4096\t/public/home/zqchen/.conda/envs/diffusion/compiler_compat\n115712\t/public/home/zqchen/.conda/envs/diffusion/sbin\n43520\t/public/home/zqchen/.conda/envs/diffusion/licensing\n8704\t/public/home/zqchen/.conda/envs/diffusion/cmake\n425984\t/public/home/zqchen/.conda/envs/diffusion/libexec\n12288\t/public/home/zqchen/.conda/envs/diffusion/var\n6144\t/public/home/zqchen/.conda/envs/diffusion/docs\n304128\t/public/home/zqchen/.conda/envs/diffusion/mysql\n2417827328\t/public/home/zqchen/.conda/envs/diffusion\n3948544\t/public/home/zqchen/.conda/envs/segmamba/conda-meta\n16384\t/public/home/zqchen/.conda/envs/segmamba/etc\n52736\t/public/home/zqchen/.conda/envs/segmamba/ssl\n31916032\t/public/home/zqchen/.conda/envs/segmamba/bin\n8192\t/public/home/zqchen/.conda/envs/segmamba/x86_64-conda-linux-gnu\n8192\t/public/home/zqchen/.conda/envs/segmamba/x86_64-conda_cos7-linux-gnu\n7104415232\t/public/home/zqchen/.conda/envs/segmamba/lib\n19404288\t/public/home/zqchen/.conda/envs/segmamba/share\n8592384\t/public/home/zqchen/.conda/envs/segmamba/include\n29696\t/public/home/zqchen/.conda/envs/segmamba/man\n4096\t/public/home/zqchen/.conda/envs/segmamba/compiler_compat\n12288\t/public/home/zqchen/.conda/envs/segmamba/licensing\n7168412160\t/public/home/zqchen/.conda/envs/segmamba\n10585600\t/public/home/zqchen/.conda/envs/cftrl_ts/conda-meta\n4096\t/public/home/zqchen/.conda/envs/cftrl_ts/etc\n52736\t/public/home/zqchen/.conda/envs/cftrl_ts/ssl\n22615040\t/public/home/zqchen/.conda/envs/cftrl_ts/bin\n8192\t/public/home/zqchen/.conda/envs/cftrl_ts/x86_64-conda-linux-gnu\n8192\t/public/home/zqchen/.conda/envs/cftrl_ts/x86_64-conda_cos7-linux-gnu\n4476872704\t/public/home/zqchen/.conda/envs/cftrl_ts/lib\n10065920\t/public/home/zqchen/.conda/envs/cftrl_ts/share\n9315840\t/public/home/zqchen/.conda/envs/cftrl_ts/include\n29696\t/public/home/zqchen/.conda/envs/cftrl_ts/man\n4096\t/public/home/zqchen/.conda/envs/cftrl_ts/compiler_compat\n12288\t/public/home/zqchen/.conda/envs/cftrl_ts/licensing\n4529578496\t/public/home/zqchen/.conda/envs/cftrl_ts\n1154690048\t/public/home/zqchen/.conda/envs/brats_g1_v2/lib\n73728\t/public/home/zqchen/.conda/envs/brats_g1_v2/bin\n30720\t/public/home/zqchen/.conda/envs/brats_g1_v2/include\n20480\t/public/home/zqchen/.conda/envs/brats_g1_v2/share\n1154819072\t/public/home/zqchen/.conda/envs/brats_g1_v2\n3264000\t/public/home/zqchen/.conda/envs/brats_swin/conda-meta\n4096\t/public/home/zqchen/.conda/envs/brats_swin/etc\n8192\t/public/home/zqchen/.conda/envs/brats_swin/ssl\n16389632\t/public/home/zqchen/.conda/envs/brats_swin/bin\n8192\t/public/home/zqchen/.conda/envs/brats_swin/x86_64-conda-linux-gnu\n8192\t/public/home/zqchen/.conda/envs/brats_swin/x86_64-conda_cos7-linux-gnu\n5887546368\t/public/home/zqchen/.conda/envs/brats_swin/lib\n1190400\t/public/home/zqchen/.conda/envs/brats_swin/share\n73728\t/public/home/zqchen/.conda/envs/brats_swin/include\n8192\t/public/home/zqchen/.conda/envs/brats_swin/man\n4096\t/public/home/zqchen/.conda/envs/brats_swin/compiler_compat\n5908509184\t/public/home/zqchen/.conda/envs/brats_swin\n3236352\t/public/home/zqchen/.conda/envs/brats_eval/conda-meta\n16384\t/public/home/zqchen/.conda/envs/brats_eval/etc\n194560\t/public/home/zqchen/.conda/envs/brats_eval/ssl\n17364992\t/public/home/zqchen/.conda/envs/brats_eval/bin\n8192\t/public/home/zqchen/.conda/envs/brats_eval/x86_64-conda-linux-gnu\n8192\t/public/home/zqchen/.conda/envs/brats_eval/x86_64-conda_cos7-linux-gnu\n",
+    "timed_out": true
+  },
+  "home_total": null,
+  "hostname": "login1",
+  "identity": {
+    "elapsed_seconds": 0.009,
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "uid=2159(zqchen) gid=100(users) groups=100(users) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023\n",
+    "timed_out": false
+  },
+  "largest_reported_directories": [
+    {
+      "allocated_bytes": 10529461760,
+      "path": "/public/home/zqchen/.cache"
+    },
+    {
+      "allocated_bytes": 9873411072,
+      "path": "/public/home/zqchen/.cache/pip"
+    },
+    {
+      "allocated_bytes": 9710653952,
+      "path": "/public/home/zqchen/.cache/pip/http-v2"
+    },
+    {
+      "allocated_bytes": 7168412160,
+      "path": "/public/home/zqchen/.conda/envs/segmamba"
+    },
+    {
+      "allocated_bytes": 7104415232,
+      "path": "/public/home/zqchen/.conda/envs/segmamba/lib"
+    },
+    {
+      "allocated_bytes": 5908509184,
+      "path": "/public/home/zqchen/.conda/envs/brats_swin"
+    },
+    {
+      "allocated_bytes": 5887546368,
+      "path": "/public/home/zqchen/.conda/envs/brats_swin/lib"
+    },
+    {
+      "allocated_bytes": 4529578496,
+      "path": "/public/home/zqchen/.conda/envs/cftrl_ts"
+    },
+    {
+      "allocated_bytes": 4476872704,
+      "path": "/public/home/zqchen/.conda/envs/cftrl_ts/lib"
+    },
+    {
+      "allocated_bytes": 2417827328,
+      "path": "/public/home/zqchen/.conda/envs/diffusion"
+    },
+    {
+      "allocated_bytes": 2292713472,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/0"
+    },
+    {
+      "allocated_bytes": 2226690560,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/a"
+    },
+    {
+      "allocated_bytes": 2072673280,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/lib"
+    },
+    {
+      "allocated_bytes": 1154819072,
+      "path": "/public/home/zqchen/.conda/envs/brats_g1_v2"
+    },
+    {
+      "allocated_bytes": 1154690048,
+      "path": "/public/home/zqchen/.conda/envs/brats_g1_v2/lib"
+    },
+    {
+      "allocated_bytes": 812289536,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/e"
+    },
+    {
+      "allocated_bytes": 704863232,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/4"
+    },
+    {
+      "allocated_bytes": 655686656,
+      "path": "/public/home/zqchen/.cache/puppeteer"
+    },
+    {
+      "allocated_bytes": 637732864,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/3"
+    },
+    {
+      "allocated_bytes": 625543168,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/6"
+    },
+    {
+      "allocated_bytes": 617708032,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/f"
+    },
+    {
+      "allocated_bytes": 452100096,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/9"
+    },
+    {
+      "allocated_bytes": 388504064,
+      "path": "/public/home/zqchen/.cache/puppeteer/chrome"
+    },
+    {
+      "allocated_bytes": 388499968,
+      "path": "/public/home/zqchen/.cache/puppeteer/chrome/linux-146.0.7680.76"
+    },
+    {
+      "allocated_bytes": 359084032,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/8"
+    },
+    {
+      "allocated_bytes": 318570496,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/c"
+    },
+    {
+      "allocated_bytes": 267178496,
+      "path": "/public/home/zqchen/.cache/puppeteer/chrome-headless-shell"
+    },
+    {
+      "allocated_bytes": 267174400,
+      "path": "/public/home/zqchen/.cache/puppeteer/chrome-headless-shell/linux-146.0.7680.76"
+    },
+    {
+      "allocated_bytes": 261602816,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/7"
+    },
+    {
+      "allocated_bytes": 244459008,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/bin"
+    },
+    {
+      "allocated_bytes": 161488896,
+      "path": "/public/home/zqchen/.cache/pip/http"
+    },
+    {
+      "allocated_bytes": 151841792,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/2"
+    },
+    {
+      "allocated_bytes": 132259840,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/b"
+    },
+    {
+      "allocated_bytes": 108630016,
+      "path": "/public/home/zqchen/Code"
+    },
+    {
+      "allocated_bytes": 100568064,
+      "path": "/public/home/zqchen/.cache/pip/http/d"
+    },
+    {
+      "allocated_bytes": 70123008,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks"
+    },
+    {
+      "allocated_bytes": 61670400,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/GliGAN"
+    },
+    {
+      "allocated_bytes": 61304832,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/GliGAN/DataSet"
+    },
+    {
+      "allocated_bytes": 50769920,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/1"
+    },
+    {
+      "allocated_bytes": 43614720,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/include"
+    },
+    {
+      "allocated_bytes": 42077696,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/share"
+    },
+    {
+      "allocated_bytes": 41021952,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/d"
+    },
+    {
+      "allocated_bytes": 31916032,
+      "path": "/public/home/zqchen/.conda/envs/segmamba/bin"
+    },
+    {
+      "allocated_bytes": 25858048,
+      "path": "/public/home/zqchen/.cache/pip/http-v2/5"
+    },
+    {
+      "allocated_bytes": 24904192,
+      "path": "/public/home/zqchen/.cache/pip/http/8"
+    },
+    {
+      "allocated_bytes": 22615040,
+      "path": "/public/home/zqchen/.conda/envs/cftrl_ts/bin"
+    },
+    {
+      "allocated_bytes": 19404288,
+      "path": "/public/home/zqchen/.conda/envs/segmamba/share"
+    },
+    {
+      "allocated_bytes": 17364992,
+      "path": "/public/home/zqchen/.conda/envs/brats_eval/bin"
+    },
+    {
+      "allocated_bytes": 16389632,
+      "path": "/public/home/zqchen/.conda/envs/brats_swin/bin"
+    },
+    {
+      "allocated_bytes": 15271424,
+      "path": "/public/home/zqchen/.cache/pip/http/4"
+    },
+    {
+      "allocated_bytes": 12877824,
+      "path": "/public/home/zqchen/Code/imgs"
+    },
+    {
+      "allocated_bytes": 12858368,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/conda-meta"
+    },
+    {
+      "allocated_bytes": 10585600,
+      "path": "/public/home/zqchen/.conda/envs/cftrl_ts/conda-meta"
+    },
+    {
+      "allocated_bytes": 10065920,
+      "path": "/public/home/zqchen/.conda/envs/cftrl_ts/share"
+    },
+    {
+      "allocated_bytes": 9315840,
+      "path": "/public/home/zqchen/.conda/envs/cftrl_ts/include"
+    },
+    {
+      "allocated_bytes": 8592384,
+      "path": "/public/home/zqchen/.conda/envs/segmamba/include"
+    },
+    {
+      "allocated_bytes": 5666816,
+      "path": "/public/home/zqchen/.cache/pip/http/3"
+    },
+    {
+      "allocated_bytes": 4645888,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/example"
+    },
+    {
+      "allocated_bytes": 3948544,
+      "path": "/public/home/zqchen/.conda/envs/segmamba/conda-meta"
+    },
+    {
+      "allocated_bytes": 3586560,
+      "path": "/public/home/zqchen/.cache/pip/http/c"
+    },
+    {
+      "allocated_bytes": 3264000,
+      "path": "/public/home/zqchen/.conda/envs/brats_swin/conda-meta"
+    },
+    {
+      "allocated_bytes": 3236352,
+      "path": "/public/home/zqchen/.conda/envs/brats_eval/conda-meta"
+    },
+    {
+      "allocated_bytes": 3185664,
+      "path": "/public/home/zqchen/.cache/pip/http/7"
+    },
+    {
+      "allocated_bytes": 3101184,
+      "path": "/public/home/zqchen/.cache/pip/http/0"
+    },
+    {
+      "allocated_bytes": 2563072,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/mednext"
+    },
+    {
+      "allocated_bytes": 2415104,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/mednext/nnunet_mednext"
+    },
+    {
+      "allocated_bytes": 1278976,
+      "path": "/public/home/zqchen/.cache/pip/http/b"
+    },
+    {
+      "allocated_bytes": 1260032,
+      "path": "/public/home/zqchen/.cache/pip/wheels"
+    },
+    {
+      "allocated_bytes": 1190400,
+      "path": "/public/home/zqchen/.conda/envs/brats_swin/share"
+    },
+    {
+      "allocated_bytes": 1074688,
+      "path": "/public/home/zqchen/.cache/pip/http/5"
+    },
+    {
+      "allocated_bytes": 1073152,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/nnUNet_install"
+    },
+    {
+      "allocated_bytes": 959488,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/nnUNet_install/nnunetv2"
+    },
+    {
+      "allocated_bytes": 926720,
+      "path": "/public/home/zqchen/.cache/pip/wheels/e1"
+    },
+    {
+      "allocated_bytes": 851456,
+      "path": "/public/home/zqchen/.cache/pip/http/1"
+    },
+    {
+      "allocated_bytes": 837120,
+      "path": "/public/home/zqchen/.cache/pip/http/e"
+    },
+    {
+      "allocated_bytes": 807424,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/man"
+    },
+    {
+      "allocated_bytes": 753664,
+      "path": "/public/home/zqchen/Code/Synthesis"
+    },
+    {
+      "allocated_bytes": 724992,
+      "path": "/public/home/zqchen/.cache/pip/http/6"
+    },
+    {
+      "allocated_bytes": 425984,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/libexec"
+    },
+    {
+      "allocated_bytes": 417792,
+      "path": "/public/home/zqchen/Code/Synthesis/Task8"
+    },
+    {
+      "allocated_bytes": 361472,
+      "path": "/public/home/zqchen/Code/Segmentation_Tasks/GliGAN/src"
+    },
+    {
+      "allocated_bytes": 334848,
+      "path": "/public/home/zqchen/Code/Synthesis/Task8/wdm-3d"
+    },
+    {
+      "allocated_bytes": 331776,
+      "path": "/public/home/zqchen/Code/Synthesis/Task7"
+    },
+    {
+      "allocated_bytes": 304128,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/mysql"
+    },
+    {
+      "allocated_bytes": 295424,
+      "path": "/public/home/zqchen/Code/Synthesis/Task7/wdm-3d"
+    },
+    {
+      "allocated_bytes": 290304,
+      "path": "/public/home/zqchen/.local"
+    },
+    {
+      "allocated_bytes": 271360,
+      "path": "/public/home/zqchen/.local/lib"
+    },
+    {
+      "allocated_bytes": 267264,
+      "path": "/public/home/zqchen/.local/lib/python3.13"
+    },
+    {
+      "allocated_bytes": 263168,
+      "path": "/public/home/zqchen/.local/lib/python3.13/site-packages"
+    },
+    {
+      "allocated_bytes": 242176,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/ssl"
+    },
+    {
+      "allocated_bytes": 219648,
+      "path": "/public/home/zqchen/job_example"
+    },
+    {
+      "allocated_bytes": 194560,
+      "path": "/public/home/zqchen/.conda/envs/brats_eval/ssl"
+    },
+    {
+      "allocated_bytes": 178688,
+      "path": "/public/home/zqchen/.cache/torch"
+    },
+    {
+      "allocated_bytes": 174592,
+      "path": "/public/home/zqchen/.cache/torch/kernels"
+    },
+    {
+      "allocated_bytes": 169472,
+      "path": "/public/home/zqchen/.cache/pip/http/f"
+    },
+    {
+      "allocated_bytes": 145408,
+      "path": "/public/home/zqchen/.cache/matplotlib"
+    },
+    {
+      "allocated_bytes": 136704,
+      "path": "/public/home/zqchen/.cache/pip/wheels/11"
+    },
+    {
+      "allocated_bytes": 115712,
+      "path": "/public/home/zqchen/.conda/envs/diffusion/sbin"
+    },
+    {
+      "allocated_bytes": 105984,
+      "path": "/public/home/zqchen/.cache/pip/wheels/27"
+    },
+    {
+      "allocated_bytes": 99840,
+      "path": "/public/home/zqchen/.cache/pip/http/a"
+    }
+  ],
+  "local_utc": "2026-10-13T13:13:19.677096+00:00",
+  "method": "du -x -B1 --max-depth=4; allocated sizes, includes hidden files, no symlink dereference; nested sizes must not be added together",
+  "mount": {
+    "elapsed_seconds": 0.009,
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "TARGET  SOURCE             FSTYPE OPTIONS\n/public 12.12.15.3:/public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n",
+    "timed_out": false
+  },
+  "operator_approved": false,
+  "project_modules": [],
+  "quota": {
+    "elapsed_seconds": 0.033,
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "",
+    "timed_out": false
+  },
+  "remote_utc_finished": "2026-10-13T13:02:16.912151+00:00",
+  "remote_utc_started": "2026-10-13T13:02:16.808265+00:00",
+  "reported_directory_count": 184,
+  "top_level_directories": [
+    {
+      "allocated_bytes": 10529461760,
+      "path": "/public/home/zqchen/.cache"
+    },
+    {
+      "allocated_bytes": 108630016,
+      "path": "/public/home/zqchen/Code"
+    },
+    {
+      "allocated_bytes": 290304,
+      "path": "/public/home/zqchen/.local"
+    },
+    {
+      "allocated_bytes": 219648,
+      "path": "/public/home/zqchen/job_example"
+    },
+    {
+      "allocated_bytes": 22528,
+      "path": "/public/home/zqchen/.config"
+    },
+    {
+      "allocated_bytes": 12288,
+      "path": "/public/home/zqchen/.mozilla"
+    },
+    {
+      "allocated_bytes": 6144,
+      "path": "/public/home/zqchen/.ssh"
+    },
+    {
+      "allocated_bytes": 4096,
+      "path": "/public/home/zqchen/perl5"
+    }
+  ]
+}

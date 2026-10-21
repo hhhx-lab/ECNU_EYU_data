@@ -1,0 +1,54 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "generated_at_utc": "2026-09-02T02:39:23.673668+00:00",
+  "metrics": {
+    "by_modality": {
+      "t1c": {
+        "healthy_mse": 0.019625413934887127,
+        "kl": 0.21764006465673447,
+        "tumor_mse": 0.018691803656213098,
+        "tumor_ssim": 0.33383936882019044,
+        "whole_mse": 0.004229851288255304,
+        "whole_ssim": 0.13674838244915008
+      },
+      "t1n": {
+        "healthy_mse": 0.002069962377193461,
+        "kl": 0.22128020152449607,
+        "tumor_mse": 0.0024031314580459733,
+        "tumor_ssim": 0.6937597095966339,
+        "whole_mse": 0.0020010740321595223,
+        "whole_ssim": 0.21311821937561035
+      },
+      "t2f": {
+        "healthy_mse": 0.0027679557803715303,
+        "kl": 0.23225706517696382,
+        "tumor_mse": 0.0020848050164611527,
+        "tumor_ssim": 0.6756220102310181,
+        "whole_mse": 0.002077305456623435,
+        "whole_ssim": 0.20643136501312256
+      },
+      "t2w": {
+        "healthy_mse": 0.004703540537809584,
+        "kl": 0.23468309566378592,
+        "tumor_mse": 0.0029113007987211165,
+        "tumor_ssim": 0.6641545772552491,
+        "whole_mse": 0.0023410905734635888,
+        "whole_ssim": 0.2087203800678253
+      }
+    },
+    "overall": {
+      "healthy_mse": 0.007291718157565424,
+      "kl": 0.22646510675549508,
+      "tumor_mse": 0.0065227602323603365,
+      "tumor_ssim": 0.5918439164757728,
+      "whole_mse": 0.0026623303376254624,
+      "whole_ssim": 0.1912545867264271
+    },
+    "row_count": 80
+  },
+  "operator_approved": false,
+  "schema_version": 1,
+  "status": "pass",
+  "vae_weights": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt",
+  "vae_weights_sha256": "1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3"
+}

@@ -1,0 +1,230 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "reviewed_at": "2026-10-09T09:05:57.646640Z",
+  "status": "not_ready_for_full_training",
+  "code_root": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/01_code/tumour_diffusion_1mm",
+  "source_unchanged": true,
+  "environment": {
+    "executable": "/Users/hwaigc/miniforge3/envs/g1_t2w_bbdm/bin/python",
+    "python": "3.10.20",
+    "packages": {
+      "torch": "2.7.1",
+      "monai": "1.5.2",
+      "numpy": "1.26.4",
+      "nibabel": "5.4.2",
+      "scipy": "1.15.3",
+      "nnunetv2": "2.8.0",
+      "scikit-image": "0.25.2"
+    }
+  },
+  "checks": [
+    {
+      "name": "syntax",
+      "status": "pass",
+      "python_files": 23,
+      "bash_exit": 0,
+      "stderr": ""
+    },
+    {
+      "name": "real_imports",
+      "status": "pass",
+      "modules": [
+        "src.train.tumour_main_diffusion",
+        "src.utils.data_utils",
+        "src.infer.diffusion_inference_utils",
+        "src.infer.generate_from_label",
+        "src.infer.evaluate_generation",
+        "src.infer.on_the_fly_augmentation"
+      ]
+    },
+    {
+      "name": "nifti_xyz_axis",
+      "status": "fail",
+      "expected_bbox": [
+        10,
+        34,
+        4,
+        9,
+        2,
+        7
+      ],
+      "actual_bbox": [
+        2,
+        7,
+        4,
+        9,
+        10,
+        34
+      ],
+      "expected_centroid": [
+        22,
+        6,
+        4
+      ],
+      "actual_centroid": [
+        4,
+        6,
+        22
+      ]
+    },
+    {
+      "name": "tile_xyz_axis",
+      "status": "fail",
+      "actual_tiles": 0,
+      "expected_tiles": 2,
+      "actual_voxel_counts": [],
+      "expected_voxel_counts": [
+        400,
+        300
+      ]
+    },
+    {
+      "name": "actual_roi_crop_rc",
+      "status": "fail",
+      "imported": {
+        "shape": [
+          1,
+          64,
+          64,
+          64
+        ],
+        "rc_voxels": 0,
+        "cached_label_unchanged": true
+      },
+      "correct_xyz_control": {
+        "shape": [
+          1,
+          64,
+          64,
+          64
+        ],
+        "rc_voxels": 216,
+        "cached_label_unchanged": true
+      }
+    },
+    {
+      "name": "preprocess_geometry_and_label_contract",
+      "status": "fail",
+      "backend": "nnunetv2",
+      "process_status": "ok",
+      "target_spacing": [
+        1,
+        1,
+        1
+      ],
+      "actual_header_spacing": [
+        1.0285714864730835,
+        0.9692307710647583,
+        1.0074074268341064
+      ],
+      "exact_1mm": false,
+      "same_shape_t2w_affine_shift_mm": 10,
+      "affine_mismatch_rejected": false,
+      "illegal_input_label": 9,
+      "output_labels": [
+        0,
+        4,
+        9
+      ],
+      "illegal_label_rejected": false
+    },
+    {
+      "name": "preprocess_nonfinite_rejection",
+      "status": "fail",
+      "process_status": "ok",
+      "output_all_finite": false
+    },
+    {
+      "name": "edm_reference_network_cpu",
+      "status": "pass",
+      "params": 4475999,
+      "planned_channels": [
+        48,
+        96,
+        192,
+        384
+      ],
+      "backward_shape": [
+        1,
+        1,
+        16,
+        16,
+        16
+      ],
+      "forward_shape": [
+        1,
+        1,
+        64,
+        64,
+        64
+      ],
+      "loss": 13.073390007019043,
+      "finite_gradients": true,
+      "rc_condition_voxels": 64,
+      "cuda_available": false,
+      "full_size_batch16_amp_compile_stress_test": "not_run"
+    },
+    {
+      "name": "recovery_and_optional_schedule",
+      "status": "fail",
+      "checkpoint_keys": [
+        "global_step",
+        "epoch",
+        "state_dict",
+        "optimizer",
+        "n_steps",
+        "noise_schedule",
+        "noise_embedding_mode",
+        "time_ch_count",
+        "schedule_config",
+        "p_uncond",
+        "planner_gpu_gb",
+        "normalization",
+        "modality",
+        "crop_size",
+        "generator_type"
+      ],
+      "saves_amp_scaler": false,
+      "saves_rng": false,
+      "atomic_replace": false,
+      "term_handler": false,
+      "dataset_sha_locked": false,
+      "lognsr_requested_exists": false,
+      "correct_logsnr_function_exists": true
+    },
+    {
+      "name": "split_and_s2_grid",
+      "status": "fail",
+      "requested_split": "val",
+      "actual_evaluated_splits": [
+        "train",
+        "train"
+      ],
+      "imported_invalid_t2w_count": 266,
+      "invalid_overlap_with_original_complete926": [],
+      "old_complete926_splits": {
+        "train": 823,
+        "val": 103
+      },
+      "s2_original_e_spacing": [
+        1.0,
+        0.8593999743461609,
+        0.8593999743461609
+      ],
+      "imported_preprocessor_spacing": [
+        1,
+        1,
+        1
+      ],
+      "s2_exact_grid_match": false
+    }
+  ],
+  "boundaries": {
+    "server_access": false,
+    "training_submitted": false,
+    "real_dataset_download": false,
+    "installed_dependencies": false
+  }
+}

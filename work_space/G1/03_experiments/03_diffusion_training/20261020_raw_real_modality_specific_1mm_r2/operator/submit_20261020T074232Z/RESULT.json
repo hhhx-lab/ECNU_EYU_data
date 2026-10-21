@@ -1,0 +1,560 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "heartbeat": "paused_manual_queries_only",
+  "held": {
+    "prepare": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4161285",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4161285 JobName=g1raw2prepare UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=1-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T15:31:53 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:31:53 Partition=cpu_192G AllocNode:Sid=10.11.100.253:70819 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=90G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=90G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/slurm/prepare.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2prepare_4161285.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2prepare_4161285.out Power= NtasksPerTRES:0\n",
+      "utc": "2026-10-20T07:32:43.468321+00:00"
+    },
+    "t1c": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4161286",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4161286 JobName=g1raw2t1c UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4161285(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T15:31:54 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:31:54 Partition=a100 AllocNode:Sid=10.11.100.253:70819 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/slurm/t1c.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t1c_4161286.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t1c_4161286.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+      "utc": "2026-10-20T07:32:44.496258+00:00"
+    },
+    "t1n": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4161287",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4161287 JobName=g1raw2t1n UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4161285(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T15:31:55 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:31:55 Partition=a100 AllocNode:Sid=10.11.100.253:70819 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/slurm/t1n.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t1n_4161287.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t1n_4161287.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+      "utc": "2026-10-20T07:32:45.788735+00:00"
+    },
+    "t2f": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4161289",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4161289 JobName=g1raw2t2f UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4161285(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T15:31:58 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:31:58 Partition=a100 AllocNode:Sid=10.11.100.253:70819 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/slurm/t2f.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t2f_4161289.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t2f_4161289.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+      "utc": "2026-10-20T07:32:48.174029+00:00"
+    },
+    "t2w": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4161288",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4161288 JobName=g1raw2t2w UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4161285(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T15:31:57 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:31:57 Partition=a100 AllocNode:Sid=10.11.100.253:70819 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/slurm/t2w.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t2w_4161288.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/logs/g1raw2t2w_4161288.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+      "utc": "2026-10-20T07:32:47.311479+00:00"
+    }
+  },
+  "jobs": {
+    "prepare": "4161285",
+    "t1c": "4161286",
+    "t1n": "4161287",
+    "t2f": "4161289",
+    "t2w": "4161288"
+  },
+  "local_received_utc": "2026-10-20T07:44:00.599944+00:00",
+  "operator_approved": false,
+  "package_sha256": "add5c89469053180559238ea7d9c385133679c72caeba0596eea966498930ba8",
+  "quality_review": "not_run",
+  "queue_after_release": {
+    "argv": [
+      "squeue",
+      "-h",
+      "-j",
+      "4161285,4161286,4161287,4161288,4161289",
+      "-o",
+      "%i|%T|%j|%P|%r|%M"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4161289|PENDING|g1raw2t2f|a100|None|0:00\n4161288|PENDING|g1raw2t2w|a100|None|0:00\n4161287|PENDING|g1raw2t1n|a100|Dependency|0:00\n4161286|PENDING|g1raw2t1c|a100|Dependency|0:00\n4161285|PENDING|g1raw2prepare|cpu_192G|None|0:00\n",
+    "utc": "2026-10-20T07:32:50.528141+00:00"
+  },
+  "releases": {
+    "prepare": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4161285"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T07:32:50.061727+00:00"
+    },
+    "t1c": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4161286"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T07:32:48.392332+00:00"
+    },
+    "t1n": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4161287"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T07:32:48.608660+00:00"
+    },
+    "t2f": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4161289"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T07:32:49.631296+00:00"
+    },
+    "t2w": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4161288"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T07:32:49.294902+00:00"
+    }
+  },
+  "remote_utc": "2026-10-20T07:32:50.456778+00:00",
+  "stage": "all_five_released",
+  "static": {
+    "artifact_status": "experimental_unvalidated",
+    "formal_gate_status": "not_run_not_passed",
+    "network_import": {
+      "argv": [
+        "/public/home/zqchen/.conda/envs/segmamba/bin/python",
+        "-B",
+        "-c",
+        "import sys,json;sys.path.insert(0,'runtime/upstream_source');from src.networks.DiffusionNetwork import get_diffusion_network;from types import SimpleNamespace;cfg=json.load(open('config/RUN.json'));n=get_diffusion_network(SimpleNamespace(**cfg['training']),n_steps=1000);p=sum(x.numel() for x in n.parameters());assert p==4475999;print(p)"
+      ],
+      "returncode": 0,
+      "stderr": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/monai/networks/nets/unet.py:130: UserWarning: `len(strides) > len(channels) - 1`, the last 1 values of strides will not be used.\n  warnings.warn(f\"`len(strides) > len(channels) - 1`, the last {delta} values of strides will not be used.\")\n",
+      "stdout": "[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n4475999\n",
+      "utc": "2026-10-20T07:32:41.072799+00:00"
+    },
+    "operator_approved": false,
+    "package_sha256": "add5c89469053180559238ea7d9c385133679c72caeba0596eea966498930ba8",
+    "partitions": {
+      "a100": {
+        "argv": [
+          "scontrol",
+          "show",
+          "partition",
+          "a100",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "PartitionName=a100 AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_a100 DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=gpu[9,11-14,16-19,22] PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=480 TotalNodes=10 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n",
+        "utc": "2026-10-20T07:32:41.466650+00:00"
+      },
+      "cpu_192G": {
+        "argv": [
+          "scontrol",
+          "show",
+          "partition",
+          "cpu_192G",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "PartitionName=cpu_192G AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,tianzhixiong,gtshi,mxbai,yliu,a_test,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,yshen,hysun,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,syzhang,scjiang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,test_block1,qzhang,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_cpu_192G DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=node[201-228,230] PriorityJobFactor=1 PriorityTier=9000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=812 TotalNodes=29 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n",
+        "utc": "2026-10-20T07:32:41.222663+00:00"
+      }
+    },
+    "qos": {
+      "argv": [
+        "sacctmgr",
+        "-n",
+        "-P",
+        "show",
+        "qos",
+        "where",
+        "name=user_zqchen,partition_a100",
+        "format=Name,MaxWall,MaxJobsPU,MaxSubmitPU"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "partition_a100|||100\nuser_zqchen||1000|\n",
+      "utc": "2026-10-20T07:32:41.813976+00:00"
+    },
+    "quality_review": "not_run",
+    "queue": {
+      "argv": [
+        "squeue",
+        "-h",
+        "-u",
+        "zqchen",
+        "-o",
+        "%i|%T|%j|%P|%r"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4159192|PENDING|g1r9v_eval_t2f|a100|Resources\n4159189|RUNNING|g1r9v_eval_t1c|a100|None\n4159190|RUNNING|g1r9v_eval_t1n|a100|None\n4159191|RUNNING|g1r9v_eval_t2w|a100|None\n4159193|PENDING|g1r9v_select|cpu_192G|Dependency\n",
+      "utc": "2026-10-20T07:32:41.151628+00:00"
+    },
+    "scope": "CPU synthetic and source/header/storage integrity, not A100 or scientific quality pass",
+    "source_records_sha256": "a85942fe95a33b131af8a925949561777ee443af093bf2e19d6e9d229ac02d27",
+    "status": "pass",
+    "storage": {
+      "available_bytes": 1288256356352,
+      "capacity_pass": true,
+      "cases": 1165,
+      "checkpoint_reserve_bytes": 12884901888,
+      "compressed_worst_bound_bytes": 227290914523,
+      "data_upper_bytes": 227193712344,
+      "errors": [],
+      "metadata_reserve_bytes": 1073741824,
+      "method": "available-source-headers_full_FOV_zlib_bound_native_target_workspaces",
+      "modality_counts": {
+        "t1c": {
+          "train": 1035,
+          "val": 130
+        },
+        "t1n": {
+          "train": 1035,
+          "val": 130
+        },
+        "t2f": {
+          "train": 1035,
+          "val": 130
+        },
+        "t2w": {
+          "train": 823,
+          "val": 103
+        }
+      },
+      "required_bytes": 334536679131,
+      "source_kind": "original_authentic_native",
+      "temporary_upper_bytes": 88992153600
+    },
+    "suitable_nodes": {
+      "a100": [
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375762,
+          "node": "gpu9",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375765,
+          "node": "gpu11",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375765,
+          "node": "gpu12",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375852,
+          "node": "gpu13",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375760,
+          "node": "gpu14",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375760,
+          "node": "gpu16",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375762,
+          "node": "gpu17",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375765,
+          "node": "gpu18",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 375762,
+          "node": "gpu19",
+          "state": "MIXED"
+        },
+        {
+          "gres": "gpu:NVIDIAA100-PCIE-40GB:2",
+          "memory_mib": 504833,
+          "node": "gpu22",
+          "state": "MIXED"
+        }
+      ],
+      "cpu_192G": [
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node201",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node202",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node203",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node204",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node205",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node206",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node207",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node208",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node209",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node210",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node211",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node212",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node213",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node214",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node215",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node216",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node217",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node218",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node219",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node220",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node221",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node222",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node223",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node224",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node225",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node226",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node227",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node228",
+          "state": "ALLOCATED"
+        },
+        {
+          "gres": "(null)",
+          "memory_mib": 180673,
+          "node": "node230",
+          "state": "MIXED"
+        }
+      ]
+    },
+    "tests": {
+      "argv": [
+        "/public/home/zqchen/.conda/envs/segmamba/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/tests",
+        "-p",
+        "test*.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "stderr": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:20: DeprecationWarning: Please import `gaussian_filter` from the `scipy.ndimage` namespace; the `scipy.ndimage.filters` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.filters import gaussian_filter, gaussian_gradient_magnitude\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:20: DeprecationWarning: Please import `gaussian_gradient_magnitude` from the `scipy.ndimage` namespace; the `scipy.ndimage.filters` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.filters import gaussian_filter, gaussian_gradient_magnitude\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:21: DeprecationWarning: Please import `grey_dilation` from the `scipy.ndimage` namespace; the `scipy.ndimage.morphology` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.morphology import grey_dilation\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:23: DeprecationWarning: Please import `label` from the `scipy.ndimage` namespace; the `scipy.ndimage.measurements` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.measurements import label as lb\ntest_all_modalities_identity_and_original_geometry (test_dataset.DatasetTests.test_all_modalities_identity_and_original_geometry) ... /public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:20: DeprecationWarning: Please import `gaussian_filter` from the `scipy.ndimage` namespace; the `scipy.ndimage.filters` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.filters import gaussian_filter, gaussian_gradient_magnitude\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:20: DeprecationWarning: Please import `gaussian_gradient_magnitude` from the `scipy.ndimage` namespace; the `scipy.ndimage.filters` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.filters import gaussian_filter, gaussian_gradient_magnitude\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:21: DeprecationWarning: Please import `grey_dilation` from the `scipy.ndimage` namespace; the `scipy.ndimage.morphology` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.morphology import grey_dilation\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/batchgenerators/augmentations/utils.py:23: DeprecationWarning: Please import `label` from the `scipy.ndimage` namespace; the `scipy.ndimage.measurements` namespace is deprecated and will be removed in SciPy 2.0.0.\n  from scipy.ndimage.measurements import label as lb\nok\ntest_cpu_error_collection_writes_failed_without_complete (test_dataset.DatasetTests.test_cpu_error_collection_writes_failed_without_complete) ... ok\ntest_estimate_is_header_only (test_dataset.DatasetTests.test_estimate_is_header_only) ... ok\ntest_forbidden_missing_modality_and_test_rejected_before_io (test_dataset.DatasetTests.test_forbidden_missing_modality_and_test_rejected_before_io) ... ok\ntest_missing_t2w_is_never_opened_in_estimate_process_or_identity (test_dataset.DatasetTests.test_missing_t2w_is_never_opened_in_estimate_process_or_identity) ... ok\ntest_per_modality_crop_counts_are_recomputed (test_dataset.DatasetTests.test_per_modality_crop_counts_are_recomputed) ... ok\ntest_quantization_warning_continues_without_label_patching (test_dataset.DatasetTests.test_quantization_warning_continues_without_label_patching) ... ok\ntest_recorded_affine_legacy_signed_zero_and_drift (test_dataset.DatasetTests.test_recorded_affine_legacy_signed_zero_and_drift) ... ok\ntest_source_output_marker_csv_and_history_drift_fail_closed (test_dataset.DatasetTests.test_source_output_marker_csv_and_history_drift_fail_closed) ... ok\ntest_source_realpath_redirect_detected (test_dataset.DatasetTests.test_source_realpath_redirect_detected) ... ok\ntest_warning_report_drift_even_when_rehashed (test_dataset.DatasetTests.test_warning_report_drift_even_when_rehashed) ... ok\ntest_exact_one_gpu (test_submission.SubmissionTests.test_exact_one_gpu) ... ok\ntest_expanded_dependency (test_submission.SubmissionTests.test_expanded_dependency) ... ok\ntest_job_fields (test_submission.SubmissionTests.test_job_fields) ... ok\ntest_no_dependency (test_submission.SubmissionTests.test_no_dependency) ... ok\ntest_reject_other_type_and_extra_job (test_submission.SubmissionTests.test_reject_other_type_and_extra_job) ... ok\ntest_single_afterok (test_submission.SubmissionTests.test_single_afterok) ... ok\ntest_frozen_package_sha_drift_rejected (test_training_boundary.TrainingBoundaryTests.test_frozen_package_sha_drift_rejected) ... ok\ntest_full_checkpoint_roundtrip_into_fresh_objects (test_training_boundary.TrainingBoundaryTests.test_full_checkpoint_roundtrip_into_fresh_objects) ... ok\ntest_independent_random_states_roundtrip (test_training_boundary.TrainingBoundaryTests.test_independent_random_states_roundtrip) ... ok\ntest_invalid_sampler_inputs_rejected (test_training_boundary.TrainingBoundaryTests.test_invalid_sampler_inputs_rejected) ... ok\ntest_safe_term_after_successful_update_never_marks_complete (test_training_boundary.TrainingBoundaryTests.test_safe_term_after_successful_update_never_marks_complete) ... ok\ntest_sampler_resume_tail_and_epoch_are_independent_of_global_rng (test_training_boundary.TrainingBoundaryTests.test_sampler_resume_tail_and_epoch_are_independent_of_global_rng) ... ok\ntest_sha_identity_and_training_config_drift_rejected_before_loading (test_training_boundary.TrainingBoundaryTests.test_sha_identity_and_training_config_drift_rejected_before_loading) ... ok\ntest_unsafe_or_invalid_saved_boundary_rejected (test_training_boundary.TrainingBoundaryTests.test_unsafe_or_invalid_saved_boundary_rejected) ... ok\ntest_all_37_upstream_files_match_frozen_byte_sha (test_training_boundary.TrainingSourceTests.test_all_37_upstream_files_match_frozen_byte_sha) ... ok\ntest_csv_entry_is_modality_specific_not_shared_or_all_rows (test_training_boundary.TrainingSourceTests.test_csv_entry_is_modality_specific_not_shared_or_all_rows) ... ok\ntest_new_identity_import_replaces_local_vae_identity (test_training_boundary.TrainingSourceTests.test_new_identity_import_replaces_local_vae_identity) ... ok\ntest_r9_boundary_functions_and_successful_update_loop_mechanically_reused (test_training_boundary.TrainingSourceTests.test_r9_boundary_functions_and_successful_update_loop_mechanically_reused) ... ok\n\n----------------------------------------------------------------------\nRan 29 tests in 2.282s\n\nOK\n",
+      "stdout": "{\"ok\": false, \"case\": \"BraTS-MET-00001-000\", \"error\": \"Source SHA drift: /tmp/raw-real-dataset-test-vym6jul7/data/BraTS-MET-00001-000/t1c.nii.gz\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/runtime/prepare.py\\\", line 232, in process_record\\n    return dict(ok=True, result=process(job))\\n                                ^^^^^^^^^^^^\\n  File \\\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/runtime/prepare.py\\\", line 165, in process\\n    verify_source_file(file)\\n  File \\\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/runtime/identity.py\\\", line 72, in verify_source_file\\n    check(sha(target) == file['sha256'], 'Source SHA drift: ' + str(path))\\n  File \\\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r2/runtime/identity.py\\\", line 20, in check\\n    raise ValueError(message)\\nValueError: Source SHA drift: /tmp/raw-real-dataset-test-vym6jul7/data/BraTS-MET-00001-000/t1c.nii.gz\\n\"}\n{\"case\": \"BraTS-MET-00002-000\", \"cases_completed\": 1, \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-00003-000\", \"cases_completed\": 2, \"rows\": 1, \"lost_classes\": []}\n",
+      "utc": "2026-10-20T07:32:13.379032+00:00"
+    },
+    "utc": "2026-10-20T07:32:41.814047+00:00"
+  },
+  "status": "pass",
+  "storage": {
+    "available_bytes": 1288256356352,
+    "capacity_pass": true,
+    "cases": 1165,
+    "checkpoint_reserve_bytes": 12884901888,
+    "compressed_worst_bound_bytes": 227290914523,
+    "data_upper_bytes": 227193712344,
+    "errors": [],
+    "metadata_reserve_bytes": 1073741824,
+    "method": "available-source-headers_full_FOV_zlib_bound_native_target_workspaces",
+    "modality_counts": {
+      "t1c": {
+        "train": 1035,
+        "val": 130
+      },
+      "t1n": {
+        "train": 1035,
+        "val": 130
+      },
+      "t2f": {
+        "train": 1035,
+        "val": 130
+      },
+      "t2w": {
+        "train": 823,
+        "val": 103
+      }
+    },
+    "required_bytes": 334536679131,
+    "source_kind": "original_authentic_native",
+    "temporary_upper_bytes": 88992153600
+  }
+}

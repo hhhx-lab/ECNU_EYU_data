@@ -1,0 +1,160 @@
+{
+  "NONZERO_COMPARISON_GATE": false,
+  "STRICT_ORIGINAL_GATE": false,
+  "account_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1996607193088 202416062464  91% /public\n"
+  },
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 202416062464,
+  "drift": [],
+  "evidence": {
+    "dataset/COMPLETE.ok": {
+      "exists": false
+    },
+    "dataset/FAILED.json": {
+      "exists": false
+    },
+    "dataset/PREPROCESS_REPORT.json": {
+      "exists": false
+    },
+    "dataset/STARTED.json": {
+      "error_cases": 0,
+      "exists": true,
+      "sha256": "a0338fb6eff25bd801dae57fe14d517f8e1d2cfb75981163922ecbeca681bc55",
+      "utc": "2026-10-16T11:35:36.966091+00:00",
+      "warning_cases": 0
+    },
+    "training/t1c/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1c/FAILED.json": {
+      "exists": false
+    },
+    "training/t1c/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1c/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1c/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1c/STARTED.json": {
+      "exists": false
+    },
+    "training/t1n/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1n/FAILED.json": {
+      "exists": false
+    },
+    "training/t1n/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1n/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1n/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1n/STARTED.json": {
+      "exists": false
+    },
+    "training/t2f/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2f/FAILED.json": {
+      "exists": false
+    },
+    "training/t2f/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2f/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2f/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2f/STARTED.json": {
+      "exists": false
+    },
+    "training/t2w/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2w/FAILED.json": {
+      "exists": false
+    },
+    "training/t2w/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2w/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2w/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2w/STARTED.json": {
+      "exists": false
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "independent_full_revalidation": "waived_by_user_not_pass",
+  "jobs": {
+    "prepare": "4128262",
+    "t1c": "4128266",
+    "t1n": "4128267",
+    "t2f": "4128269",
+    "t2w": "4128268"
+  },
+  "local_utc": "2026-10-16T21:33:51.331672+00:00",
+  "logs": {
+    "g1d1m9p1_4128262.err": {
+      "bytes": 0,
+      "critical": [],
+      "exists": true,
+      "tail": ""
+    },
+    "g1d1m9p1_4128262.out": {
+      "bytes": 79718,
+      "critical": [],
+      "exists": true,
+      "tail": " \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01330-000\", \"cases_completed\": 882, \"rows\": 5, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01330-002\", \"cases_completed\": 883, \"rows\": 2, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01331-002\", \"cases_completed\": 884, \"rows\": 3, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01334-000\", \"cases_completed\": 885, \"rows\": 13, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01334-001\", \"cases_completed\": 886, \"rows\": 16, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01335-003\", \"cases_completed\": 887, \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01335-004\", \"cases_completed\": 888, \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01336-000\", \"cases_completed\": 889, \"rows\": 2, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01336-001\", \"cases_completed\": 890, \"rows\": 2, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01337-001\", \"cases_completed\": 891, \"rows\": 8, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01338-002\", \"cases_completed\": 892, \"rows\": 2, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01339-001\", \"cases_completed\": 893, \"rows\": 10, \"lost_classes\": [\"4\"]}\n{\"case\": \"BraTS-MET-01339-002\", \"cases_completed\": 894, \"rows\": 16, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01340-001\", \"cases_completed\": 895, \"rows\": 9, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01340-003\", \"cases_completed\": 896, \"rows\": 2, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01340-004\", \"cases_completed\": 897, \"rows\": 3, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01342-002\", \"cases_completed\": 898, \"rows\": 21, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01343-000\", \"cases_completed\": 899, \"rows\": 3, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01343-001\", \"cases_completed\": 900, \"rows\": 4, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01343-003\", \"cases_completed\": 901, \"rows\": 4, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01344-002\", \"cases_completed\": 902, \"rows\": 2, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01345-001\", \"cases_completed\": 903, \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01345-002\", \"cases_completed\": 904, \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01346-001\", \"cases_completed\": 905, \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01346-002\", \"cases_completed\": 906, \"rows\": 1, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01347-000\", \"cases_completed\": 907, \"rows\": 30, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01348-000\", \"cases_completed\": 908, \"rows\": 6, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01348-002\", \"cases_completed\": 909, \"rows\": 6, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01349-002\", \"cases_completed\": 910, \"rows\": 3, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01349-003\", \"cases_completed\": 911, \"rows\": 3, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01350-001\", \"cases_completed\": 912, \"rows\": 3, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01350-002\", \"cases_completed\": 913, \"rows\": 7, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01350-004\", \"cases_completed\": 914, \"rows\": 11, \"lost_classes\": []}\n{\"case\": \"BraTS-MET-01351-000\", \"cases_completed\": 915, \"rows\": 3, \"lost_classes\": []}\n"
+    }
+  },
+  "operator_approved": false,
+  "package_sha256": "80f432b454ea80cf3d4142cb87d194c7913c0eabd2da473b3821b06d10df63f6",
+  "prepared_case_directories": 919,
+  "public_disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  224T   25T  90% /public\n"
+  },
+  "remote_utc": "2026-10-16T21:22:44.102763+00:00",
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4128262|RUNNING|0:0|09:47:33|1-00:00:00|billing=8,cpu=8,mem=90G,node=1\n4128262.batch|RUNNING|0:0|09:47:33||cpu=8,mem=90G,node=1\n4128266|PENDING|0:0|00:00:00|2-00:00:00|\n4128267|PENDING|0:0|00:00:00|2-00:00:00|\n4128268|PENDING|0:0|00:00:00|2-00:00:00|\n4128269|PENDING|0:0|00:00:00|2-00:00:00|\n"
+  },
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4128269|PENDING|g1d1m9t2f|a100|Dependency|gpu:1,gpu:1|0:00\n4128268|PENDING|g1d1m9t2w|a100|Dependency|gpu:1,gpu:1|0:00\n4128267|PENDING|g1d1m9t1n|a100|Dependency|gpu:1,gpu:1|0:00\n4128266|PENDING|g1d1m9t1c|a100|Dependency|gpu:1,gpu:1|0:00\n4128262|RUNNING|g1d1m9p1|cpu_192G|None|N/A|9:48:22\n"
+  },
+  "training_progress": {
+    "t1c": {
+      "exists": false
+    },
+    "t1n": {
+      "exists": false
+    },
+    "t2f": {
+      "exists": false
+    },
+    "t2w": {
+      "exists": false
+    }
+  }
+}

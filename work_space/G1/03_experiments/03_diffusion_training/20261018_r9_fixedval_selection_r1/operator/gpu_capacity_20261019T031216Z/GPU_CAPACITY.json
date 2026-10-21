@@ -1,0 +1,115 @@
+{
+  "local_utc": "2026-10-19T03:12:36.782554+00:00",
+  "nodes": {
+    "argv": [
+      "scontrol",
+      "show",
+      "node",
+      "gpu9,gpu11,gpu12,gpu13,gpu14,gpu16,gpu17,gpu18,gpu19,gpu22",
+      "-o"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "NodeName=gpu9 Arch=x86_64 CoresPerSocket=24  CPUAlloc=16 CPUTot=48 CPULoad=1.98 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu9 NodeHostName=gpu9 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386002 AllocMem=204800 FreeMem=308783 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:37:39 SlurmdStartTime=2026-07-27T01:01:28 CfgTRES=cpu=48,mem=386002M,billing=48,gres/gpu=2 AllocTRES=cpu=16,mem=200G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu11 Arch=x86_64 CoresPerSocket=24  CPUAlloc=16 CPUTot=48 CPULoad=1.66 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu11 NodeHostName=gpu11 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386005 AllocMem=163840 FreeMem=4473 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:34:25 SlurmdStartTime=2025-02-16T22:25:10 CfgTRES=cpu=48,mem=386005M,billing=48,gres/gpu=2 AllocTRES=cpu=16,mem=160G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu12 Arch=x86_64 CoresPerSocket=24  CPUAlloc=16 CPUTot=48 CPULoad=1.04 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu12 NodeHostName=gpu12 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386005 AllocMem=184320 FreeMem=25632 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:34:29 SlurmdStartTime=2026-05-03T22:38:15 CfgTRES=cpu=48,mem=386005M,billing=48,gres/gpu=2 AllocTRES=cpu=16,mem=180G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu13 Arch=x86_64 CoresPerSocket=24  CPUAlloc=16 CPUTot=48 CPULoad=1.01 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu13 NodeHostName=gpu13 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386092 AllocMem=184320 FreeMem=107548 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:34:25 SlurmdStartTime=2026-04-20T15:56:12 CfgTRES=cpu=48,mem=386092M,billing=48,gres/gpu=2 AllocTRES=cpu=16,mem=180G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu14 Arch=x86_64 CoresPerSocket=24  CPUAlloc=8 CPUTot=48 CPULoad=2.30 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu14 NodeHostName=gpu14 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386000 AllocMem=81920 FreeMem=15210 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:34:51 SlurmdStartTime=2026-05-03T10:59:13 CfgTRES=cpu=48,mem=386000M,billing=48,gres/gpu=2 AllocTRES=cpu=8,mem=80G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu16 Arch=x86_64 CoresPerSocket=24  CPUAlloc=16 CPUTot=48 CPULoad=1.97 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu16 NodeHostName=gpu16 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386000 AllocMem=204800 FreeMem=2307 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:34:29 SlurmdStartTime=2026-05-03T11:02:46 CfgTRES=cpu=48,mem=386000M,billing=48,gres/gpu=2 AllocTRES=cpu=16,mem=200G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu17 Arch=x86_64 CoresPerSocket=24  CPUAlloc=8 CPUTot=48 CPULoad=3.20 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu17 NodeHostName=gpu17 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386002 AllocMem=81920 FreeMem=15456 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:34:28 SlurmdStartTime=2026-05-03T11:04:22 CfgTRES=cpu=48,mem=386002M,billing=48,gres/gpu=2 AllocTRES=cpu=8,mem=80G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu18 Arch=x86_64 CoresPerSocket=24  CPUAlloc=8 CPUTot=48 CPULoad=2.22 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu18 NodeHostName=gpu18 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386005 AllocMem=81920 FreeMem=46158 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-10-10T09:44:57 SlurmdStartTime=2026-05-03T11:06:09 CfgTRES=cpu=48,mem=386005M,billing=48,gres/gpu=2 AllocTRES=cpu=8,mem=80G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu19 Arch=x86_64 CoresPerSocket=24  CPUAlloc=8 CPUTot=48 CPULoad=2.36 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu19 NodeHostName=gpu19 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=386002 AllocMem=81920 FreeMem=210020 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2025-02-15T12:34:31 SlurmdStartTime=2026-05-03T11:07:05 CfgTRES=cpu=48,mem=386002M,billing=48,gres/gpu=2 AllocTRES=cpu=8,mem=80G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=gpu22 Arch=x86_64 CoresPerSocket=24  CPUAlloc=5 CPUTot=48 CPULoad=2.22 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:NVIDIAA100-PCIE-40GB:2 NodeAddr=gpu22 NodeHostName=gpu22 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=515073 AllocMem=87040 FreeMem=465620 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=a100  BootTime=2026-08-19T00:05:48 SlurmdStartTime=2026-09-25T08:38:32 CfgTRES=cpu=48,mem=515073M,billing=48,gres/gpu=2 AllocTRES=cpu=5,mem=85G,gres/gpu=2 CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\n"
+  },
+  "own_jobs": {
+    "4145278": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4145278",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4145278 JobName=g1r9v_smoke_t1c UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Resources Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=02:00:00 TimeMin=N/A SubmitTime=2026-10-18T16:24:54 EligibleTime=2026-10-18T17:53:13 AccrueTime=2026-10-18T17:53:13 StartTime=2026-10-23T09:20:01 EndTime=2026-10-23T11:20:01 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-19T11:00:01 Partition=a100 AllocNode:Sid=10.11.100.253:40065 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) SchedNodeList=gpu11 NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/smoke_t1c.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t1c_4145278.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t1c_4145278.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n"
+    },
+    "4145279": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4145279",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4145279 JobName=g1r9v_smoke_t1n UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Priority Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=02:00:00 TimeMin=N/A SubmitTime=2026-10-18T16:24:54 EligibleTime=2026-10-18T17:53:13 AccrueTime=2026-10-18T17:53:13 StartTime=2026-10-23T11:00:00 EndTime=2026-10-23T13:00:00 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-19T11:00:01 Partition=a100 AllocNode:Sid=10.11.100.253:40065 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) SchedNodeList=gpu11 NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/smoke_t1n.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t1n_4145279.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t1n_4145279.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n"
+    },
+    "4145280": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4145280",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4145280 JobName=g1r9v_smoke_t2w UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Priority Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=02:00:00 TimeMin=N/A SubmitTime=2026-10-18T16:24:55 EligibleTime=2026-10-18T17:53:13 AccrueTime=2026-10-18T17:53:13 StartTime=2026-10-23T13:00:00 EndTime=2026-10-23T15:00:00 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-19T11:00:01 Partition=a100 AllocNode:Sid=10.11.100.253:40065 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) SchedNodeList=gpu11 NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/smoke_t2w.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t2w_4145280.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t2w_4145280.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n"
+    },
+    "4145281": {
+      "argv": [
+        "scontrol",
+        "show",
+        "job",
+        "4145281",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4145281 JobName=g1r9v_smoke_t2f UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Priority Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=02:00:00 TimeMin=N/A SubmitTime=2026-10-18T16:24:55 EligibleTime=2026-10-18T17:53:13 AccrueTime=2026-10-18T17:53:13 StartTime=2026-10-23T15:00:00 EndTime=2026-10-23T17:00:00 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-19T11:00:01 Partition=a100 AllocNode:Sid=10.11.100.253:40065 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) SchedNodeList=gpu11 NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/smoke_t2f.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t2f_4145281.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/smoke_t2f_4145281.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n"
+    }
+  },
+  "partition": {
+    "argv": [
+      "scontrol",
+      "show",
+      "partition",
+      "a100",
+      "-o"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "PartitionName=a100 AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_a100 DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=gpu[9,11-14,16-19,22] PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=480 TotalNodes=10 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n"
+  },
+  "priorities": {
+    "argv": [
+      "sprio",
+      "-j",
+      "4145278,4145279,4145280,4145281"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "          JOBID PARTITION   PRIORITY       SITE  PARTITION        QOS\n        4145278 a100            1200          0       1000        200\n        4145279 a100            1200          0       1000        200\n        4145280 a100            1200          0       1000        200\n        4145281 a100            1200          0       1000        200\n"
+  },
+  "queue": {
+    "argv": [
+      "squeue",
+      "-h",
+      "-j",
+      "4145278,4145279,4145280,4145281",
+      "-o",
+      "%i|%T|%j|%P|%r|%M|%b|%C|%m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4145281|PENDING|g1r9v_smoke_t2f|a100|Priority|0:00|gpu:1,gpu:1|8|64G\n4145280|PENDING|g1r9v_smoke_t2w|a100|Priority|0:00|gpu:1,gpu:1|8|64G\n4145279|PENDING|g1r9v_smoke_t1n|a100|Priority|0:00|gpu:1,gpu:1|8|64G\n4145278|PENDING|g1r9v_smoke_t1c|a100|Resources|0:00|gpu:1,gpu:1|8|64G\n"
+  },
+  "remote_utc": "2026-10-19T03:01:28.046615+00:00",
+  "start_estimate": {
+    "argv": [
+      "squeue",
+      "--start",
+      "-j",
+      "4145278,4145279,4145280,4145281",
+      "-o",
+      "%.18i %.9P %.8j %.8u %.2t %.19S %.6D %20Y %R"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "             JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)\n           4145278      a100 g1r9v_sm   zqchen PD 2026-10-23T09:20:01      1 gpu11                (Resources)\n           4145279      a100 g1r9v_sm   zqchen PD 2026-10-23T11:00:00      1 gpu11                (Priority)\n           4145280      a100 g1r9v_sm   zqchen PD 2026-10-23T13:00:00      1 gpu11                (Priority)\n           4145281      a100 g1r9v_sm   zqchen PD 2026-10-23T15:00:00      1 gpu11                (Priority)\n"
+  },
+  "status": "read_only_gpu_capacity"
+}

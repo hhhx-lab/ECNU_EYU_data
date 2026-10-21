@@ -1,0 +1,83 @@
+{
+  "account_history_counts": {
+    "CANCELLED": 2,
+    "COMPLETED": 53,
+    "FAILED": 18,
+    "RUNNING": 4,
+    "TIMEOUT": 2
+  },
+  "account_history_window": "2026-10-01 onward (includes jobs overlapping start)",
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "limitations": [
+    "log tails only; no full-log or full-progress scan",
+    "no source images or checkpoint byte hashing/loading",
+    "case marker/index/CSV identities not individually reaudited",
+    "selection summaries verified; per-seed and bootstrap evidence not independently reaudited",
+    "no manual quality review, test images, model download, or remote writes"
+  ],
+  "local_received_utc": "2026-10-21T04:22:50.306726+00:00",
+  "operator_approved": false,
+  "raw_preprocess_cases": 1165,
+  "raw_progress": {
+    "t1c": {
+      "checkpoint_step": 60000,
+      "job": "4161286",
+      "percent": 30.8905,
+      "step": 61781,
+      "target": 200000
+    },
+    "t1n": {
+      "checkpoint_step": 75000,
+      "job": "4161287",
+      "percent": 38.601,
+      "step": 77202,
+      "target": 200000
+    },
+    "t2f": {
+      "checkpoint_step": 55000,
+      "job": "4161289",
+      "percent": 27.7485,
+      "step": 55497,
+      "target": 200000
+    },
+    "t2w": {
+      "checkpoint_step": 75000,
+      "job": "4161288",
+      "percent": 39.1135,
+      "step": 78227,
+      "target": 200000
+    }
+  },
+  "raw_warning_count": 7,
+  "remote_utc": "2026-10-21T04:11:32.109871+00:00",
+  "selected": {
+    "t1c": {
+      "authentic_secondary_ssim": 0.1763220244013394,
+      "checkpoint_sha256": "c66c9610634a6e1a06ffdf5df201f627036000c053100a9b8f02299922f892f4",
+      "primary_ssim": 0.4388053354475247,
+      "step": 120000
+    },
+    "t1n": {
+      "authentic_secondary_ssim": 0.43780832635184286,
+      "checkpoint_sha256": "ec418ac7dbdcb72cf6202af30f10d6b2ca79249294842e85e875f7b895a5d6f9",
+      "primary_ssim": 0.5208156814483376,
+      "step": 40000
+    },
+    "t2f": {
+      "authentic_secondary_ssim": 0.4579002465830011,
+      "checkpoint_sha256": "c642ea88fe73e479a2ddf5d663fe220c5bcada31e03cfea9d981ff24d0acc93b",
+      "primary_ssim": 0.5806873985324639,
+      "step": 200000
+    },
+    "t2w": {
+      "authentic_secondary_ssim": 0.38573471785801416,
+      "checkpoint_sha256": "27ea3175e26b7aeaaba28f30a553cd71fa2eab0c7e79989355da46ef39aa28a5",
+      "primary_ssim": 0.4979818168747462,
+      "step": 200000
+    }
+  },
+  "snapshot_sha256": "c4a10e0bcb7c8e57f0a6b677f73cef6fc01805b227001d085057262fc3b0470a",
+  "status": "marker_and_summary_consistency_pass",
+  "utc": "2026-10-21T04:24:14.120357+00:00"
+}

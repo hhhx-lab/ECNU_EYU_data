@@ -1,0 +1,19 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "measurement_environment": "existing local Conda g1_t2w_bbdm; CPU architecture instantiation only",
+  "generator_type": "Unet_NnU",
+  "planner_gpu_gb": 48,
+  "input_channels": 5,
+  "output_channels": 1,
+  "time_ch_count": 8,
+  "noise_embedding_mode": "continuous",
+  "crop_size": 64,
+  "parameters": 4475999,
+  "parameter_bytes": 17903996,
+  "buffer_bytes": 256,
+  "network_plus_two_Adam_moments_bytes": 53712244,
+  "not_verified": ["A100 batch16 AMP peak memory", "actual serialized full checkpoint size", "P1 full dataset capacity"],
+  "warning": "MONAI ignores the last extra stride from the upstream planner; no network change made"
+}

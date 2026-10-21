@@ -1,0 +1,222 @@
+{
+  "account_disk": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1974860775424 224162480128  90% /public\n"
+  },
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 224162480128,
+  "canonical_jobs": {
+    "PREPARE_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": null,
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4069915",
+      "operator_approved": false,
+      "script_sha256": "662be13b858b7d9289d1eaf790d075ef9377ab2fe7e3b4587db54a34ce3b2a62",
+      "status": "held"
+    },
+    "T1C_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4069915",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4069916",
+      "operator_approved": false,
+      "script_sha256": "1cdfb735a69b71ece216638cf91da5e42a28061a30e3a012577f0fcc6cff2b47",
+      "status": "held"
+    },
+    "T1N_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4069915",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4069917",
+      "operator_approved": false,
+      "script_sha256": "cf186f08ca584c970e00a068d6752450fdb10eff18c5ce9b0b830b8471965ab9",
+      "status": "held"
+    },
+    "T2F_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4069915",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4069919",
+      "operator_approved": false,
+      "script_sha256": "083573379a91797c10db36ed322d1b6f19b743af6c19d2361fe072ce33691f73",
+      "status": "held"
+    },
+    "T2W_CANONICAL_JOB.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependency": "afterok:4069915",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4069918",
+      "operator_approved": false,
+      "script_sha256": "0199b77fa51cd5a839178f950cb57c1e6636cba2d628eb3e4aa03cfae2a8ddd6",
+      "status": "held"
+    }
+  },
+  "drift": [],
+  "evidence": {
+    "dataset/COMPLETE.ok": {
+      "exists": false
+    },
+    "dataset/FAILED.json": {
+      "exists": false
+    },
+    "dataset/STARTED.json": {
+      "exists": false
+    },
+    "training/t1c/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1c/FAILED.json": {
+      "exists": false
+    },
+    "training/t1c/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1c/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1c/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1c/STARTED.json": {
+      "exists": false
+    },
+    "training/t1n/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t1n/FAILED.json": {
+      "exists": false
+    },
+    "training/t1n/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t1n/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t1n/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t1n/STARTED.json": {
+      "exists": false
+    },
+    "training/t2f/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2f/FAILED.json": {
+      "exists": false
+    },
+    "training/t2f/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2f/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2f/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2f/STARTED.json": {
+      "exists": false
+    },
+    "training/t2w/COMPLETE.ok": {
+      "exists": false
+    },
+    "training/t2w/FAILED.json": {
+      "exists": false
+    },
+    "training/t2w/LATEST_CHECKPOINT.json": {
+      "exists": false
+    },
+    "training/t2w/RUN_CONTRACT.json": {
+      "exists": false
+    },
+    "training/t2w/SAFE_TERM.json": {
+      "exists": false
+    },
+    "training/t2w/STARTED.json": {
+      "exists": false
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "local_utc": "2026-10-14T08:32:04.346853+00:00",
+  "logs": {},
+  "new_root_exists": true,
+  "operator_approved": false,
+  "package_sha256": "13f188b2609ba57544c1258aa368daeabe0201ecbdb81c3ec86700f6441b6ede",
+  "partitions": {
+    "a100": {
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PartitionName=a100\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=NO QoS=partition_a100\n   DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=gpu[9,11-14,16-19,22]\n   PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=480 TotalNodes=10 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n"
+    },
+    "cpu_96G": {
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PartitionName=cpu_96G\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,test_block1,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,test_block,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,eduhpc2,eduhpc1,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=YES QoS=partition_cpu_96G\n   DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=node[1-3,5-7,17,19-25,27-28,30-32,34,36-37,43,50,153-155,157-158,160-163,167-168,170-186,188,191-200]\n   PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=1764 TotalNodes=63 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n"
+    }
+  },
+  "prepared_case_directories": 0,
+  "public_disk": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  223T   26T  90% /public\n"
+  },
+  "qos": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "partition_a100|||100\nuser_zqchen||1000|\n"
+  },
+  "reconstruction_complete": {
+    "cases": 1030,
+    "checkpoint_sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+    "exists": true,
+    "global_step": null,
+    "images": 4120,
+    "labels": 1030,
+    "rows": null,
+    "sha256": "a0ef2f0c4e9c75773a6564a13dfd1c1ae635903a7db4032793c5cd44a91aa637",
+    "split_counts": {
+      "test": 104,
+      "train": 823,
+      "val": 103
+    },
+    "status": "pass"
+  },
+  "remote_utc": "2026-10-14T08:21:00.326519+00:00",
+  "resources": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "gpu9|mix|gpu:NVIDIAA100-PCIE-40GB:2|386002|48\ngpu11|mix|gpu:NVIDIAA100-PCIE-40GB:2|386005|48\ngpu12|mix|gpu:NVIDIAA100-PCIE-40GB:2|386005|48\ngpu13|mix|gpu:NVIDIAA100-PCIE-40GB:2|386092|48\ngpu14|mix|gpu:NVIDIAA100-PCIE-40GB:2|386000|48\ngpu16|mix|gpu:NVIDIAA100-PCIE-40GB:2|386000|48\ngpu17|mix|gpu:NVIDIAA100-PCIE-40GB:2|386002|48\ngpu18|mix|gpu:NVIDIAA100-PCIE-40GB:2|386005|48\ngpu19|mix|gpu:NVIDIAA100-PCIE-40GB:2|386002|48\ngpu22|mix|gpu:NVIDIAA100-PCIE-40GB:2|515073|48\n"
+  },
+  "sacct": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "3941042|COMPLETED|0:0|19:40:15|2-00:00:00|billing=8,cpu=8,gres/gpu=1,mem=96G,node=1\n3941042.batch|COMPLETED|0:0|19:40:15||cpu=8,gres/gpu=1,mem=96G,node=1\n4069915|PENDING|0:0|00:00:00|1-00:00:00|\n4069916|PENDING|0:0|00:00:00|2-00:00:00|\n4069917|PENDING|0:0|00:00:00|2-00:00:00|\n4069918|PENDING|0:0|00:00:00|2-00:00:00|\n4069919|PENDING|0:0|00:00:00|2-00:00:00|\n"
+  },
+  "source_csv_sha256": "0d1765e12cdad7d8a5df57a5d2c46c79414ed99a2015a4d8fed57cd4c4fc836b",
+  "squeue": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "4069919|PENDING|g1d1m5t2f|a100|Dependency|gpu:1,gpu:1|0:00\n4069918|PENDING|g1d1m5t2w|a100|Dependency|gpu:1,gpu:1|0:00\n4069917|PENDING|g1d1m5t1n|a100|Dependency|gpu:1,gpu:1|0:00\n4069916|PENDING|g1d1m5t1c|a100|Dependency|gpu:1,gpu:1|0:00\n4069915|PENDING|g1d1m5p1|cpu_96G|Priority|N/A|0:00\n"
+  },
+  "training_progress": {
+    "t1c": {
+      "exists": false
+    },
+    "t1n": {
+      "exists": false
+    },
+    "t2f": {
+      "exists": false
+    },
+    "t2w": {
+      "exists": false
+    }
+  },
+  "user_squeue": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "4069919|PENDING|g1d1m5t2f|a100|Dependency|gpu:1,gpu:1\n4069918|PENDING|g1d1m5t2w|a100|Dependency|gpu:1,gpu:1\n4069917|PENDING|g1d1m5t1n|a100|Dependency|gpu:1,gpu:1\n4069916|PENDING|g1d1m5t1c|a100|Dependency|gpu:1,gpu:1\n4069915|PENDING|g1d1m5p1|cpu_96G|Priority|N/A\n"
+  }
+}

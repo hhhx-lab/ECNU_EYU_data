@@ -1,0 +1,941 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "boundary": "selected public definitions and file metadata only; not full checkpoint/data/metrics validation, no job status or modifications",
+  "config_files": [
+    {
+      "bytes": 1377,
+      "name": "exp1_larger_patch.yaml"
+    },
+    {
+      "bytes": 1413,
+      "name": "exp2_adamw_cosine.yaml"
+    },
+    {
+      "bytes": 1376,
+      "name": "exp3_deeper_model.yaml"
+    },
+    {
+      "bytes": 1344,
+      "name": "exp4_no_augmentation.yaml"
+    },
+    {
+      "bytes": 1365,
+      "name": "exp5_high_overlap_infer.yaml"
+    },
+    {
+      "bytes": 1355,
+      "name": "exp_ce_dice.yaml"
+    },
+    {
+      "bytes": 1204,
+      "name": "exp_ce_focal.yaml"
+    },
+    {
+      "bytes": 1242,
+      "name": "exp_dice_focal.yaml"
+    }
+  ],
+  "dataset_directory_counts": {
+    "data/fullres/train": {
+      "direct_entries": 5184,
+      "directories": 0,
+      "files": 5184,
+      "first_names": [
+        "BraTS-MET-00001-000.npy",
+        "BraTS-MET-00001-000.npz",
+        "BraTS-MET-00001-000.pkl",
+        "BraTS-MET-00001-000_seg.npy",
+        "BraTS-MET-00002-000.npy",
+        "BraTS-MET-00002-000.npz"
+      ]
+    },
+    "data/validation": {
+      "direct_entries": 179,
+      "directories": 179,
+      "files": 0,
+      "first_names": [
+        "BraTS-MET-00833-000",
+        "BraTS-MET-00834-000",
+        "BraTS-MET-00835-000",
+        "BraTS-MET-00836-000",
+        "BraTS-MET-00837-000",
+        "BraTS-MET-00838-000"
+      ]
+    },
+    "data/validation_preprocessed": {
+      "direct_entries": 716,
+      "directories": 0,
+      "files": 716,
+      "first_names": [
+        "BraTS-MET-00833-000.npy",
+        "BraTS-MET-00833-000.npz",
+        "BraTS-MET-00833-000.pkl",
+        "BraTS-MET-00833-000_seg.npy",
+        "BraTS-MET-00834-000.npy",
+        "BraTS-MET-00834-000.npz"
+      ]
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "local_utc": "2026-10-13T13:55:36.555371+00:00",
+  "model_files": [
+    {
+      "bytes": 269783024,
+      "mtime_utc": "2026-07-02T03:25:04+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp1_larger_patch/model/best_model_exp1_larger_patch_0.6793.pt"
+    },
+    {
+      "bytes": 269782729,
+      "mtime_utc": "2026-07-02T06:23:04+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp1_larger_patch/model/ckpt_ep99_exp1_larger_patch_0.6285.pt"
+    },
+    {
+      "bytes": 269783319,
+      "mtime_utc": "2026-07-02T13:25:38+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp1_larger_patch/model/final_model_exp1_larger_patch_0.6426.pt"
+    },
+    {
+      "bytes": 293346772,
+      "mtime_utc": "2026-06-28T17:31:31+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp3_deeper_model/model/best_model_exp3_deeper_model_0.3830.pt"
+    },
+    {
+      "bytes": 293347317,
+      "mtime_utc": "2026-06-28T17:47:30+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp3_deeper_model/model/final_model_exp3_deeper_model_0.2947.pt"
+    },
+    {
+      "bytes": 269781254,
+      "mtime_utc": "2026-07-06T10:32:44+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model/best_model_exp_ce_dice_0.6230.pt"
+    },
+    {
+      "bytes": 269781254,
+      "mtime_utc": "2026-06-28T12:54:35+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model/ckpt_ep199_exp_ce_dice_0.5474.pt"
+    },
+    {
+      "bytes": 269780959,
+      "mtime_utc": "2026-06-28T02:19:43+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model/ckpt_ep99_exp_ce_dice_0.3529.pt"
+    },
+    {
+      "bytes": 269780959,
+      "mtime_utc": "2026-07-02T01:32:17+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model/ckpt_ep99_exp_ce_dice_0.4589.pt"
+    },
+    {
+      "bytes": 269780959,
+      "mtime_utc": "2026-07-06T04:15:55+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model/ckpt_ep99_exp_ce_dice_0.5310.pt"
+    },
+    {
+      "bytes": 269780959,
+      "mtime_utc": "2026-07-04T22:38:30+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model/ckpt_ep99_exp_ce_dice_0.5520.pt"
+    },
+    {
+      "bytes": 269781549,
+      "mtime_utc": "2026-07-06T14:03:42+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_dice/model/final_model_exp_ce_dice_0.6096.pt"
+    },
+    {
+      "bytes": 269781549,
+      "mtime_utc": "2026-07-04T11:21:35+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/model/best_model_exp_ce_focal_0.6544.pt"
+    },
+    {
+      "bytes": 269781549,
+      "mtime_utc": "2026-07-04T02:52:53+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/model/ckpt_ep199_exp_ce_focal_0.6340.pt"
+    },
+    {
+      "bytes": 269781254,
+      "mtime_utc": "2026-07-03T14:36:55+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/model/ckpt_ep99_exp_ce_focal_0.5441.pt"
+    },
+    {
+      "bytes": 269781844,
+      "mtime_utc": "2026-07-04T17:53:16+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_ce_focal/model/final_model_exp_ce_focal_0.6067.pt"
+    },
+    {
+      "bytes": 269782139,
+      "mtime_utc": "2026-07-04T06:19:08+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/model/best_model_exp_dice_focal_0.6483.pt"
+    },
+    {
+      "bytes": 269782139,
+      "mtime_utc": "2026-07-03T17:59:54+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/model/ckpt_ep199_exp_dice_focal_0.4881.pt"
+    },
+    {
+      "bytes": 269782139,
+      "mtime_utc": "2026-07-04T06:19:10+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/model/ckpt_ep299_exp_dice_focal_0.6483.pt"
+    },
+    {
+      "bytes": 269781844,
+      "mtime_utc": "2026-07-03T05:24:44+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/model/ckpt_ep99_exp_dice_focal_0.3952.pt"
+    },
+    {
+      "bytes": 269782434,
+      "mtime_utc": "2026-07-04T06:19:09+00:00",
+      "path": "/public/home/zqchen/SegMamba-main/results/exp_dice_focal/model/final_model_exp_dice_focal_0.6483.pt"
+    }
+  ],
+  "operator_approved": false,
+  "remote_utc": "2026-10-13T13:44:34.026003+00:00",
+  "scripts": {
+    "2_preprocessing_mri.py": {
+      "bytes": 1286,
+      "selected_lines": [
+        {
+          "line": 24,
+          "text": "    output_dir = \"./data/fullres/train/\""
+        }
+      ]
+    },
+    "3_train_brats2026.py": {
+      "bytes": 27013,
+      "selected_lines": [
+        {
+          "line": 20,
+          "text": "from loss_functions import get_loss_function, CombinedLoss"
+        },
+        {
+          "line": 27,
+          "text": "    parser = argparse.ArgumentParser(description='SegMamba BraTS 2026 Training')"
+        },
+        {
+          "line": 73,
+          "text": "data_dir = get_config_value(config, 'data_dir', default=\"./data/fullres/train\")"
+        },
+        {
+          "line": 80,
+          "text": "max_epoch = get_config_value(config, 'max_epoch', default=10)"
+        },
+        {
+          "line": 81,
+          "text": "batch_size = get_config_value(config, 'batch_size', default=2)"
+        },
+        {
+          "line": 99,
+          "text": "in_chans = get_config_value(config, 'model', 'in_chans', default=4)"
+        },
+        {
+          "line": 116,
+          "text": "sw_batch_size = get_config_value(config, 'inference', 'sw_batch_size', default=1)"
+        },
+        {
+          "line": 120,
+          "text": "loss_type = get_config_value(config, 'loss_type', default=\"ce_dice\")"
+        },
+        {
+          "line": 121,
+          "text": "loss_config = {"
+        },
+        {
+          "line": 122,
+          "text": "    'loss_type': loss_type,"
+        },
+        {
+          "line": 123,
+          "text": "    'loss': get_config_value(config, 'loss', default={})"
+        },
+        {
+          "line": 136,
+          "text": "class BraTS2026Trainer(Trainer):"
+        },
+        {
+          "line": 138,
+          "text": "    Trainer for BraTS 2026 Brain Metastases Challenge"
+        },
+        {
+          "line": 149,
+          "text": "    def __init__(self, env_type, max_epochs, batch_size, device=\"cpu\","
+        },
+        {
+          "line": 152,
+          "text": "                 training_script=\"train.py\", exp_suffix=\"\"):"
+        },
+        {
+          "line": 154,
+          "text": "        super().__init__(env_type, max_epochs, batch_size, device,"
+        },
+        {
+          "line": 159,
+          "text": "            roi_size=inference_roi_size, sw_batch_size=sw_batch_size, overlap=inference_overlap"
+        },
+        {
+          "line": 162,
+          "text": "        self.exp_suffix = exp_suffix"
+        },
+        {
+          "line": 164,
+          "text": "        from model_segmamba.segmamba import SegMamba"
+        },
+        {
+          "line": 166,
+          "text": "        self.model = SegMamba("
+        },
+        {
+          "line": 167,
+          "text": "            in_chans=in_chans,"
+        },
+        {
+          "line": 173,
+          "text": "        self.patch_size = inference_roi_size"
+        },
+        {
+          "line": 177,
+          "text": "        self.loss_fn, loss_info = get_loss_function(config)"
+        },
+        {
+          "line": 178,
+          "text": "        print(f\"Loss function: {loss_type}\")"
+        },
+        {
+          "line": 179,
+          "text": "        print(f\"  CE weight: {loss_info.get('ce_weight', 0):.1f}\")"
+        },
+        {
+          "line": 180,
+          "text": "        print(f\"  Dice weight: {loss_info.get('dice_weight', 0):.1f}\")"
+        },
+        {
+          "line": 181,
+          "text": "        print(f\"  Focal weight: {loss_info.get('focal_weight', 0):.1f}\")"
+        },
+        {
+          "line": 183,
+          "text": "        self.train_loss_history = []"
+        },
+        {
+          "line": 190,
+          "text": "        self.epoch_history = []"
+        },
+        {
+          "line": 263,
+          "text": "        assert self.patch_size is not None, \"please define the patch_size\""
+        },
+        {
+          "line": 285,
+          "text": "                self.model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(self.model)"
+        },
+        {
+          "line": 297,
+          "text": "        self.max_steps = self.max_epochs * len(self.train_loader)"
+        },
+        {
+          "line": 331,
+          "text": "        for epoch in range(0, self.max_epochs):"
+        },
+        {
+          "line": 332,
+          "text": "            self.epoch = epoch"
+        },
+        {
+          "line": 335,
+          "text": "            self.train_epoch(epoch)"
+        },
+        {
+          "line": 336,
+          "text": "            if (self.epoch + 1) % self.val_every == 0:"
+        },
+        {
+          "line": 339,
+          "text": "                    print(f\"[EarlyStopping] Training stopped at epoch {self.epoch}\")"
+        },
+        {
+          "line": 344,
+          "text": "    def get_input(self, batch):"
+        },
+        {
+          "line": 345,
+          "text": "        image = batch[\"data\"]"
+        },
+        {
+          "line": 346,
+          "text": "        label = batch[\"seg\"]"
+        },
+        {
+          "line": 350,
+          "text": "    def training_step(self, batch):"
+        },
+        {
+          "line": 351,
+          "text": "        image, label = self.get_input(batch)"
+        },
+        {
+          "line": 354,
+          "text": "        loss_output = self.loss_fn(pred, label)"
+        },
+        {
+          "line": 356,
+          "text": "        # CombinedLoss \u8fd4\u56de (total_loss, loss_dict)"
+        },
+        {
+          "line": 357,
+          "text": "        if isinstance(loss_output, tuple):"
+        },
+        {
+          "line": 358,
+          "text": "            total_loss, loss_dict = loss_output"
+        },
+        {
+          "line": 359,
+          "text": "            self.log(\"training_loss\", total_loss, step=self.global_step)"
+        },
+        {
+          "line": 360,
+          "text": "            self.log(\"training_ce_loss\", loss_dict.get('ce', 0), step=self.global_step)"
+        },
+        {
+          "line": 361,
+          "text": "            self.log(\"training_dice_loss\", loss_dict.get('dice', 0), step=self.global_step)"
+        },
+        {
+          "line": 362,
+          "text": "            self.log(\"training_focal_loss\", loss_dict.get('focal', 0), step=self.global_step)"
+        },
+        {
+          "line": 364,
+          "text": "            self.train_loss_history.append(total_loss.item())"
+        },
+        {
+          "line": 365,
+          "text": "            self.train_ce_history.append(loss_dict.get('ce', 0))"
+        },
+        {
+          "line": 366,
+          "text": "            self.train_dice_history.append(loss_dict.get('dice', 0))"
+        },
+        {
+          "line": 367,
+          "text": "            self.train_focal_history.append(loss_dict.get('focal', 0))"
+        },
+        {
+          "line": 369,
+          "text": "            total_loss = loss_output"
+        },
+        {
+          "line": 370,
+          "text": "            self.log(\"training_loss\", total_loss, step=self.global_step)"
+        },
+        {
+          "line": 371,
+          "text": "            self.train_loss_history.append(total_loss.item())"
+        },
+        {
+          "line": 373,
+          "text": "        return total_loss"
+        },
+        {
+          "line": 391,
+          "text": "    def validation_step(self, batch):"
+        },
+        {
+          "line": 392,
+          "text": "        image, label = self.get_input(batch)"
+        },
+        {
+          "line": 429,
+          "text": "        self.log(\"netc_dice\", netc_dice, step=self.epoch)"
+        },
+        {
+          "line": 430,
+          "text": "        self.log(\"snfh_dice\", snfh_dice, step=self.epoch)"
+        },
+        {
+          "line": 431,
+          "text": "        self.log(\"et_dice\",   et_dice,   step=self.epoch)"
+        },
+        {
+          "line": 432,
+          "text": "        self.log(\"rc_dice\",   rc_dice,   step=self.epoch)"
+        },
+        {
+          "line": 433,
+          "text": "        self.log(\"mean_dice\", mean_dice, step=self.epoch)"
+        },
+        {
+          "line": 436,
+          "text": "        self.epoch_history.append(self.epoch)"
+        },
+        {
+          "line": 449,
+          "text": "            suffix = f\"_{self.exp_suffix}\" if self.exp_suffix else \"\""
+        },
+        {
+          "line": 456,
+          "text": "        suffix = f\"_{self.exp_suffix}\" if self.exp_suffix else \"\""
+        },
+        {
+          "line": 463,
+          "text": "        # \u6bcf100epoch\u5b58\u4e00\u4e2acheckpoint"
+        },
+        {
+          "line": 464,
+          "text": "        if (self.epoch + 1) % 100 == 0:"
+        },
+        {
+          "line": 467,
+          "text": "                os.path.join(model_save_path, f\"ckpt_ep{self.epoch}{suffix}_{mean_dice:.4f}.pt\")"
+        },
+        {
+          "line": 483,
+          "text": "                    print(f\"[EarlyStopping] Triggered at epoch {self.epoch}!\")"
+        },
+        {
+          "line": 486,
+          "text": "        \"\"\"Save loss curve and validation metrics visualizations.\"\"\""
+        },
+        {
+          "line": 487,
+          "text": "        epochs = self.epoch_history"
+        },
+        {
+          "line": 488,
+          "text": "        if len(epochs) == 0:"
+        },
+        {
+          "line": 492,
+          "text": "        suffix = f\"_{self.exp_suffix}\" if self.exp_suffix else \"\""
+        },
+        {
+          "line": 499,
+          "text": "        step_interval = max(1, len(self.train_loss_history) // 500)"
+        },
+        {
+          "line": 500,
+          "text": "        display_steps = list(range(0, len(self.train_loss_history), step_interval))"
+        },
+        {
+          "line": 502,
+          "text": "        # 1. Loss Curve"
+        },
+        {
+          "line": 505,
+          "text": "        display_loss = []"
+        },
+        {
+          "line": 507,
+          "text": "            display_loss.append(np.mean(self.train_loss_history[i:i+step_interval]))"
+        },
+        {
+          "line": 509,
+          "text": "        axes[0].plot(display_steps, display_loss, color='#E63946', linewidth=1.5)"
+        },
+        {
+          "line": 511,
+          "text": "        axes[0].set_ylabel('Loss', fontsize=11)"
+        },
+        {
+          "line": 512,
+          "text": "        axes[0].set_title('Training Loss Curve', fontsize=13, fontweight='bold')"
+        },
+        {
+          "line": 520,
+          "text": "            axes[1].plot(epochs, self.val_dice_history[label_name],"
+        },
+        {
+          "line": 524,
+          "text": "        axes[1].set_xlabel('Epoch', fontsize=11)"
+        },
+        {
+          "line": 537,
+          "text": "        # 3. Per-class Dice Bar Chart (latest epoch)"
+        },
+        {
+          "line": 549,
+          "text": "        ax.set_title(f'Validation Dice per Class (Epoch {epochs[-1]})',"
+        },
+        {
+          "line": 559,
+          "text": "        # 4. Loss Components Breakdown (if available)"
+        },
+        {
+          "line": 563,
+          "text": "            # CE Loss"
+        }
+      ]
+    },
+    "config_generator.py": {
+      "bytes": 4445,
+      "selected_lines": [
+        {
+          "line": 7,
+          "text": "    python config_generator.py --config configs/default.yaml --max_epoch 20 --batch_size 4"
+        },
+        {
+          "line": 18,
+          "text": "    parser = argparse.ArgumentParser(description='SegMamba Config Generator')"
+        },
+        {
+          "line": 26,
+          "text": "    parser.add_argument('--data_dir', type=str)"
+        },
+        {
+          "line": 30,
+          "text": "    parser.add_argument('--max_epoch', type=int)"
+        },
+        {
+          "line": 31,
+          "text": "    parser.add_argument('--batch_size', type=int)"
+        },
+        {
+          "line": 41,
+          "text": "    parser.add_argument('--in_chans', type=int)"
+        }
+      ]
+    },
+    "loss_functions.py": {
+      "bytes": 7992,
+      "selected_lines": [
+        {
+          "line": 3,
+          "text": "\u652f\u6301\u591a\u79cd\u635f\u5931\u51fd\u6570\u53ca\u5176\u7ec4\u5408\uff0c\u9488\u5bf9 BraTS 2026 \u533b\u5b66\u5206\u5272\u4efb\u52a1\u4f18\u5316\u3002"
+        },
+        {
+          "line": 17,
+          "text": "class DiceLoss(nn.Module):"
+        },
+        {
+          "line": 19,
+          "text": "    Soft Dice Loss"
+        },
+        {
+          "line": 34,
+          "text": "            loss: scalar"
+        },
+        {
+          "line": 36,
+          "text": "        num_classes = pred.shape[1]"
+        },
+        {
+          "line": 38,
+          "text": "        target = target.clamp(0, num_classes - 1)"
+        },
+        {
+          "line": 44,
+          "text": "        target_onehot = F.one_hot(target.long(), num_classes).permute(0, -1, *range(1, target.dim())).float()"
+        },
+        {
+          "line": 47,
+          "text": "        pred_flat = pred_soft.view(pred.shape[0], num_classes, -1)"
+        },
+        {
+          "line": 48,
+          "text": "        target_flat = target_onehot.view(target_onehot.shape[0], num_classes, -1)"
+        },
+        {
+          "line": 54,
+          "text": "        dice_loss = 1.0 - dice"
+        },
+        {
+          "line": 57,
+          "text": "            return dice_loss.mean()"
+        },
+        {
+          "line": 59,
+          "text": "            return dice_loss.sum()"
+        },
+        {
+          "line": 60,
+          "text": "        return dice_loss"
+        },
+        {
+          "line": 63,
+          "text": "class FocalLoss(nn.Module):"
+        },
+        {
+          "line": 65,
+          "text": "    Focal Loss"
+        },
+        {
+          "line": 70,
+          "text": "    def __init__(self, alpha=1.0, gamma=2.0, reduction='mean', num_classes=5):"
+        },
+        {
+          "line": 75,
+          "text": "        self.num_classes = num_classes"
+        },
+        {
+          "line": 83,
+          "text": "            loss: scalar"
+        },
+        {
+          "line": 85,
+          "text": "        target = target.clamp(0, self.num_classes - 1)"
+        },
+        {
+          "line": 86,
+          "text": "        ce_loss = F.cross_entropy(pred, target, reduction='none')"
+        },
+        {
+          "line": 87,
+          "text": "        pt = torch.exp(-ce_loss)"
+        },
+        {
+          "line": 88,
+          "text": "        focal_loss = self.alpha * (1 - pt) ** self.gamma * ce_loss"
+        },
+        {
+          "line": 91,
+          "text": "            return focal_loss.mean()"
+        },
+        {
+          "line": 93,
+          "text": "            return focal_loss.sum()"
+        },
+        {
+          "line": 94,
+          "text": "        return focal_loss"
+        },
+        {
+          "line": 97,
+          "text": "class WeightedCrossEntropyLoss(nn.Module):"
+        },
+        {
+          "line": 99,
+          "text": "    \u5e26\u6743\u91cd\u7684 Cross Entropy Loss"
+        },
+        {
+          "line": 102,
+          "text": "    def __init__(self, weight=None, reduction='mean', num_classes=5):"
+        },
+        {
+          "line": 109,
+          "text": "        self.num_classes = num_classes"
+        },
+        {
+          "line": 112,
+          "text": "        target = target.clamp(0, self.num_classes - 1)"
+        },
+        {
+          "line": 116,
+          "text": "class CombinedLoss(nn.Module):"
+        },
+        {
+          "line": 124,
+          "text": "        focal_alpha: Focal loss alpha \u53c2\u6570"
+        },
+        {
+          "line": 125,
+          "text": "        focal_gamma: Focal loss gamma \u53c2\u6570"
+        },
+        {
+          "line": 127,
+          "text": "        num_classes: \u7c7b\u522b\u6570 (\u9ed8\u8ba4 5: BG + NETC + SNFH + ET + RC)"
+        },
+        {
+          "line": 138,
+          "text": "        num_classes=5,"
+        },
+        {
+          "line": 145,
+          "text": "        self.num_classes = num_classes"
+        },
+        {
+          "line": 153,
+          "text": "        # CE Loss \u2014 \u6743\u91cd\u5728 __init__ \u65f6\u521b\u5efa\u597d (\u907f\u514d\u6bcf\u4e2a forward \u65b0\u5efa tensor)"
+        },
+        {
+          "line": 155,
+          "text": "            assert len(weights) == num_classes, \\"
+        },
+        {
+          "line": 156,
+          "text": "                f\"ce_class_weights \u957f\u5ea6 ({len(weights)}) != num_classes ({num_classes})\""
+        },
+        {
+          "line": 157,
+          "text": "            self.ce_fn = WeightedCrossEntropyLoss("
+        },
+        {
+          "line": 158,
+          "text": "                weight=weights, reduction='mean', num_classes=num_classes"
+        },
+        {
+          "line": 161,
+          "text": "            self.ce_fn = WeightedCrossEntropyLoss("
+        },
+        {
+          "line": 162,
+          "text": "                weight=None, reduction='mean', num_classes=num_classes"
+        },
+        {
+          "line": 165,
+          "text": "        self.dice_fn = DiceLoss()"
+        },
+        {
+          "line": 166,
+          "text": "        self.focal_fn = FocalLoss(alpha=focal_alpha, gamma=focal_gamma, num_classes=num_classes)"
+        },
+        {
+          "line": 174,
+          "text": "            total_loss: scalar"
+        },
+        {
+          "line": 175,
+          "text": "            loss_dict: dict with individual loss values"
+        },
+        {
+          "line": 178,
+          "text": "        target = target.clamp(0, self.num_classes - 1)"
+        },
+        {
+          "line": 180,
+          "text": "        total_loss = 0.0"
+        },
+        {
+          "line": 181,
+          "text": "        loss_dict = {}"
+        },
+        {
+          "line": 184,
+          "text": "            ce_loss = self.ce_fn(pred, target)"
+        },
+        {
+          "line": 185,
+          "text": "            total_loss += self.ce_weight * ce_loss"
+        },
+        {
+          "line": 186,
+          "text": "            loss_dict['ce'] = ce_loss.item()"
+        },
+        {
+          "line": 189,
+          "text": "            dice_loss = self.dice_fn(pred, target)"
+        },
+        {
+          "line": 190,
+          "text": "            total_loss += self.dice_weight * dice_loss"
+        },
+        {
+          "line": 191,
+          "text": "            loss_dict['dice'] = dice_loss.item()"
+        },
+        {
+          "line": 194,
+          "text": "            focal_loss = self.focal_fn(pred, target)"
+        },
+        {
+          "line": 195,
+          "text": "            total_loss += self.focal_weight * focal_loss"
+        },
+        {
+          "line": 196,
+          "text": "            loss_dict['focal'] = focal_loss.item()"
+        },
+        {
+          "line": 198,
+          "text": "        loss_dict['total'] = total_loss.item()"
+        },
+        {
+          "line": 199,
+          "text": "        return total_loss, loss_dict"
+        },
+        {
+          "line": 202,
+          "text": "def get_loss_function(config):"
+        },
+        {
+          "line": 210,
+          "text": "        loss_fn: CombinedLoss \u5b9e\u4f8b"
+        },
+        {
+          "line": 211,
+          "text": "        loss_info: dict, \u5305\u542b\u635f\u5931\u6743\u91cd\u4fe1\u606f"
+        },
+        {
+          "line": 213,
+          "text": "    loss_type = config.get('loss_type', 'ce_dice')"
+        },
+        {
+          "line": 215,
+          "text": "    loss_cfg = config.get('loss', {})"
+        },
+        {
+          "line": 217,
+          "text": "    ce_weight = loss_cfg.get('ce_weight', 1.0)"
+        },
+        {
+          "line": 218,
+          "text": "    dice_weight = loss_cfg.get('dice_weight', 1.0)"
+        },
+        {
+          "line": 219,
+          "text": "    focal_weight = loss_cfg.get('focal_weight', 0.0)"
+        },
+        {
+          "line": 220,
+          "text": "    num_classes = config.get('out_chans', 5)"
+        },
+        {
+          "line": 222,
+          "text": "    # \u6839\u636e loss_type \u81ea\u52a8\u8bbe\u7f6e\u6743\u91cd"
+        },
+        {
+          "line": 223,
+          "text": "    if loss_type == 'ce_dice':"
+        },
+        {
+          "line": 225,
+          "text": "    elif loss_type == 'ce_focal':"
+        },
+        {
+          "line": 227,
+          "text": "    elif loss_type == 'dice_focal':"
+        },
+        {
+          "line": 229,
+          "text": "    elif loss_type == 'focal':"
+        },
+        {
+          "line": 232,
+          "text": "    elif loss_type == 'ce':"
+        },
+        {
+          "line": 235,
+          "text": "    elif loss_type == 'dice':"
+        },
+        {
+          "line": 239,
+          "text": "    focal_alpha = loss_cfg.get('focal_alpha', 1.0)"
+        },
+        {
+          "line": 240,
+          "text": "    focal_gamma = loss_cfg.get('focal_gamma', 2.0)"
+        },
+        {
+          "line": 241,
+          "text": "    ce_class_weights = loss_cfg.get('ce_class_weights', None)"
+        },
+        {
+          "line": 243,
+          "text": "    loss_fn = CombinedLoss("
+        },
+        {
+          "line": 250,
+          "text": "        num_classes=num_classes,"
+        },
+        {
+          "line": 253,
+          "text": "    loss_info = {"
+        },
+        {
+          "line": 257,
+          "text": "        'loss_type': loss_type,"
+        },
+        {
+          "line": 260,
+          "text": "    return loss_fn, loss_info"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "df": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2010220855296 1288314028032  61% /public\n",
+  "inodes": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 490041517 2231882351   19% /public\n",
+  "local_received_utc": "2026-10-20T07:18:59.844337+00:00",
+  "partitions": {
+    "a100": "PartitionName=a100 AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_a100 DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=gpu[9,11-14,16-19,22] PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=480 TotalNodes=10 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n",
+    "cpu_192G": "PartitionName=cpu_192G AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,tianzhixiong,gtshi,mxbai,yliu,a_test,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,yshen,hysun,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,syzhang,scjiang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,test_block1,qzhang,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_cpu_192G DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=node[201-228,230] PriorityJobFactor=1 PriorityTier=9000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=812 TotalNodes=29 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n"
+  },
+  "qos": "partition_a100|||100\nuser_zqchen||1000|\n",
+  "queue": "4159192|PENDING|g1r9v_eval_t2f|a100|Resources\n4159189|RUNNING|g1r9v_eval_t1c|a100|None\n4159190|RUNNING|g1r9v_eval_t1n|a100|None\n4159191|RUNNING|g1r9v_eval_t2w|a100|None\n4159193|PENDING|g1r9v_select|cpu_192G|Dependency\n",
+  "remote_utc": "2026-10-20T07:07:49.298543+00:00",
+  "roots": {
+    "/public/home/zqchen/data/MICCAI-LH-BraTS2025-MET-Challenge-Training": {
+      "exists": false,
+      "resolved": "/public/home/zqchen/data/MICCAI-LH-BraTS2025-MET-Challenge-Training"
+    },
+    "/public/home/zqchen/data/MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels": {
+      "exists": true,
+      "resolved": "/public/home/zqchen/data/MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels"
+    }
+  },
+  "samples": {
+    "BraTS-MET-00001-000": {
+      "directory": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input/BraTS-MET-00001-000",
+      "exists": true,
+      "files": {
+        "BraTS-MET-00001-000-seg.nii.gz": "/public/home/zqchen/data/BraTS-MET-00001-000/seg.nii.gz",
+        "BraTS-MET-00001-000-t1c.nii.gz": "/public/home/zqchen/data/BraTS-MET-00001-000/t1c.nii.gz",
+        "BraTS-MET-00001-000-t1n.nii.gz": "/public/home/zqchen/data/BraTS-MET-00001-000/t1n.nii.gz",
+        "BraTS-MET-00001-000-t2f.nii.gz": "/public/home/zqchen/data/BraTS-MET-00001-000/t2f.nii.gz",
+        "BraTS-MET-00001-000-t2w.nii.gz": "/public/home/zqchen/data/BraTS-MET-00001-000/t2w.nii.gz"
+      },
+      "resolved": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/input/BraTS-MET-00001-000"
+    },
+    "BraTS-MET-01094-003": {
+      "directory": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input/BraTS-MET-01094-003",
+      "exists": true,
+      "files": {
+        "BraTS-MET-01094-003-seg.nii.gz": "/public/home/zqchen/data/MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels/BraTS-MET-01094-003-seg.nii.gz",
+        "BraTS-MET-01094-003-t1c.nii.gz": "/public/home/zqchen/data/BraTS-MET-01094-003/t1c.nii.gz",
+        "BraTS-MET-01094-003-t1n.nii.gz": "/public/home/zqchen/data/BraTS-MET-01094-003/t1n.nii.gz",
+        "BraTS-MET-01094-003-t2f.nii.gz": "/public/home/zqchen/data/BraTS-MET-01094-003/t2f.nii.gz",
+        "BraTS-MET-01094-003-t2w.nii.gz": "/public/home/zqchen/data/BraTS-MET-01094-003/t2w.nii.gz"
+      },
+      "resolved": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/input/BraTS-MET-01094-003"
+    },
+    "BraTS-MET-01184-002": {
+      "directory": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input/BraTS-MET-01184-002",
+      "exists": true,
+      "files": {
+        "BraTS-MET-01184-002-seg.nii.gz": "/public/home/zqchen/data/MICCAI-LH-BraTS2025-MET-Challenge-corrected-labels/BraTS-MET-01184-002-seg.nii.gz",
+        "BraTS-MET-01184-002-t1c.nii.gz": "/public/home/zqchen/data/BraTS-MET-01184-002/t1c.nii.gz",
+        "BraTS-MET-01184-002-t1n.nii.gz": "/public/home/zqchen/data/BraTS-MET-01184-002/t1n.nii.gz",
+        "BraTS-MET-01184-002-t2f.nii.gz": "/public/home/zqchen/data/BraTS-MET-01184-002/t2f.nii.gz",
+        "BraTS-MET-01184-002-t2w.nii.gz": "/public/home/zqchen/data/BraTS-MET-01184-002/t2w.nii.gz"
+      },
+      "resolved": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/input/BraTS-MET-01184-002"
+    }
+  },
+  "status": "pass"
+}

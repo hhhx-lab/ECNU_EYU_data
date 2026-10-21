@@ -1,0 +1,54 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "case_dirs": 0,
+  "disk": {
+    "code": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  222T   27T  90% /public\n"
+  },
+  "evidence_failed": {
+    "exists": false
+  },
+  "files": {
+    "COMPLETE.ok": {
+      "exists": false
+    },
+    "DATASET_VALIDATION.json": {
+      "exists": false
+    },
+    "FAILED.json": {
+      "exists": false
+    },
+    "RUN_CONTRACT.json": {
+      "exists": false
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "logs": {
+    "g1vae4recon_3940993.err": {
+      "bytes": 164,
+      "critical": [],
+      "exists": true,
+      "tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/opt/gridview/slurm/spool/slurmd/job3940993/slurm_script: line 35: CASES[@]: unbound variable\n"
+    },
+    "g1vae4recon_3940993.out": {
+      "bytes": 0,
+      "critical": [],
+      "exists": true,
+      "tail": ""
+    }
+  },
+  "operator_approved": false,
+  "remote_utc": "2026-10-08T05:36:50.672826+00:00",
+  "sacct": {
+    "code": 0,
+    "stderr": "",
+    "stdout": "3940993|FAILED|1:0|2026-10-08T13:13:11|2026-10-08T13:13:39|00:00:28|billing=8,cpu=8,gres/gpu=1,mem=96G,node=1\n3940993.batch|FAILED|1:0|2026-10-08T13:13:11|2026-10-08T13:13:39|00:00:28|cpu=8,gres/gpu=1,mem=96G,node=1\n"
+  },
+  "squeue": {
+    "code": 1,
+    "stderr": "slurm_load_jobs error: Invalid job id specified\n",
+    "stdout": ""
+  }
+}

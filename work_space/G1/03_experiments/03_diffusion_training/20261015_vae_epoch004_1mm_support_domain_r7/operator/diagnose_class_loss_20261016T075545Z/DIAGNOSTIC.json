@@ -1,0 +1,4422 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 212798013440,
+  "case_id": "BraTS-MET-01110-002",
+  "drift": [],
+  "failed_marker": {
+    "artifact_status": "experimental_unvalidated",
+    "formal_gate_status": "not_run_not_passed",
+    "message": "BraTS-MET-01110-002: whole foreground classes lost during 1mm resampling: ['4']",
+    "operator_approved": false,
+    "traceback": "concurrent.futures.process._RemoteTraceback: \n\"\"\"\nTraceback (most recent call last):\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 261, in _process_worker\n    r = call_item.fn(*call_item.args, **call_item.kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 210, in _process_chunk\n    return [fn(*args) for args in chunk]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 210, in <listcomp>\n    return [fn(*args) for args in chunk]\n            ^^^^^^^^^\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/runtime/prepare.py\", line 155, in process\n    raise ValueError(case + ': whole foreground classes lost during 1mm resampling: ' + str(lost_classes))\nValueError: BraTS-MET-01110-002: whole foreground classes lost during 1mm resampling: ['4']\n\"\"\"\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/runtime/prepare.py\", line 237, in main\n    for result in pool.map(process, jobs, chunksize=1):\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/process.py\", line 620, in _chain_from_iterable_of_lists\n    for element in iterable:\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 619, in result_iterator\n    yield _result_or_cancel(fs.pop())\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 317, in _result_or_cancel\n    return fut.result(timeout)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\nValueError: BraTS-MET-01110-002: whole foreground classes lost during 1mm resampling: ['4']\n",
+    "utc": "2026-10-15T18:38:27.663728+00:00"
+  },
+  "failed_marker_sha256": "ad6368a7a7a4a7a469b0a78003ddd33f914db0a9a70b02c65eba9373e7e91a5d",
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "local_received_utc": "2026-10-16T07:57:41.559500+00:00",
+  "local_start_utc": "2026-10-16T07:55:45.603029+00:00",
+  "operator_approved": false,
+  "package_sha256": "41c47c0516e9818c82319da2a370507ebc3fd773ef121f4baed786159e5a4158",
+  "patient_group": "BraTS-MET-01110",
+  "remote_end_utc": "2026-10-16T07:46:35.479638+00:00",
+  "remote_start_utc": "2026-10-16T07:45:00.825833+00:00",
+  "reuse_inventory": {
+    "all_candidate_content_sha_verified": false,
+    "candidates": [
+      {
+        "case_id": "BraTS-MET-00001-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20288420,
+        "marker_sha256": "246f33c8767c5af288d8804bfc64868aa689a0cd955498d02d6b2968b49c696e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00002-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20642159,
+        "marker_sha256": "2643399e0ae336f1ca0ca433b1f98f5401db8fb6b786597e99fa9103ac5f2a11",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00003-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22055870,
+        "marker_sha256": "8b81a8bebbadf2eeabdb321391685b37f7e0bfc6ebeab27930813ff963425d69",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00004-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23649049,
+        "marker_sha256": "81e5d4ef31880a3a2dec2cf09ea7c40b608642e3c38ea2f2b743f3542fd1cc53",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00005-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20524675,
+        "marker_sha256": "f613679c670bf7ecf0ba02c515a5245f1109b12c156a7ff86546241f2cf24593",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00006-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20564655,
+        "marker_sha256": "5a7628f5daab46611e404eddffbc0daccedc17301c718ca9ba0a4352e21f2652",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00007-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19739458,
+        "marker_sha256": "0d0a346bc02f135c656bb196125d24efab37bc6f0a4d8ca749898202f9f1fdd2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00008-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22563902,
+        "marker_sha256": "be213be89ac58795c8303df339c5ffa81988d3cfd58a0a14c5f6908a8653ac86",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00009-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19374468,
+        "marker_sha256": "64ae24b790c4e0df990e8f2b0ff5fb6638f947011bbaa56be461c03122c8e2ae",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00010-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24792941,
+        "marker_sha256": "0203b6c1cd12a215f7fdfe12000d853844f85818c17a2b868a5ac053afea6566",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00011-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22639984,
+        "marker_sha256": "e950d92c54d6f4fd6259caa30642d9531f64b51b0a17a2ee16b61ec64cd52127",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00012-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24211136,
+        "marker_sha256": "8f5112ebf74e9eff2a84b6f2aa643faf853bd201c6707a4b914d79feed114cb8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00014-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22956704,
+        "marker_sha256": "e25d48f56854a77d958c37cfdf5c5b475fde94e90f3f6f66d1b5b139fecc52e5",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00016-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24147007,
+        "marker_sha256": "d4ad25a6f713cd607accd5b45995cda1d3b0ad15891c48fa6687fc9c2d09e00b",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00017-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22651133,
+        "marker_sha256": "d66c1cfdac556268a685e69f7ffef963ade56aa3d9e55b056dc3fb78d8b17df1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00018-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20573808,
+        "marker_sha256": "11f3d843ca28634aac4cf21a66c9a42e54e3f517aba7f3ce0494527ca469c8df",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00019-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19744014,
+        "marker_sha256": "a15d8c9189ea9c73cba2a466357c230970b75e9ee185d5e4046ea7eb2ad6c33e",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00020-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19352276,
+        "marker_sha256": "a76fa646d4ba3388b8af4339004deb9b37c2a0870a9fb51d2aae39a97dda3014",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00021-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21222325,
+        "marker_sha256": "1bd70016d6c4ecb86c7535c1acde23fd6862b84a4a329893c4d49c7a3fe86430",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00022-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 16606839,
+        "marker_sha256": "5319a066630b63a91068922df75947594139c6269233041263b49010bcd1ce63",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00023-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21328192,
+        "marker_sha256": "829c2f18bbc38cbb4c2655c34040f4d15e321e04663f08de4f0cae9348116714",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00025-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 18275729,
+        "marker_sha256": "9f210f38d4190dfad5ebdf8cee5a311ae72d660ace3a0841f00a1c8b1d9abed7",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00026-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19376303,
+        "marker_sha256": "bb75b1a1d1268290b72e1583b10e55b7644f46cddd34459b8a718e97076f170e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00027-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20545216,
+        "marker_sha256": "a7dc4dea299fc3227264a245bab2c95c33125a1d89e5f338843c38a98fa8e68c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00028-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24170643,
+        "marker_sha256": "6ede64477be2fc7ff376ca1ac21a48ad1c03f6618adc674f95dc3ca683c7801d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00029-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21123016,
+        "marker_sha256": "8ebf01c6ac37620d62509c268cac7949aeee8684a1263e2b8a55d37dc411b669",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00030-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20900492,
+        "marker_sha256": "9ecb9bbfe37fd11866ab42849699897e0922b59642f7fd3649894cae5022047d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00031-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22326446,
+        "marker_sha256": "5361205429fcd1857de56e11b5fbf890ae6f04e70e6fb9a41229f80893be1b25",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00032-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21238684,
+        "marker_sha256": "474c439d3c18ddfe23037cf8866dd149e7889a0d5dabf68878ab5166f0dab65f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00033-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20160613,
+        "marker_sha256": "34ee4d11881151094c13b9f78b0655cb805504eb85010871587fbc23168db1c2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00035-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20943018,
+        "marker_sha256": "f53627d17f46ebbb8768d41537defb6d07c245bb28e611532b9d1a7a81e05f26",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00036-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22414217,
+        "marker_sha256": "d6e95bec5e65326db841f0e203b9a264dd0956f94b60ab9c099fb4ea365e0cf8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00037-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26266636,
+        "marker_sha256": "8345340b8d672a05e088b040b64bed1019da2bf2d8bd3bbc1c10b93d652288d6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00086-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24476046,
+        "marker_sha256": "38a24ada7f6b850de43eb9517fb42f82397877fe8017d002d06a16ca89c7dfed",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00089-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24099641,
+        "marker_sha256": "56a7e8c1f516906359982476303d90065dac1cf35f568a73302e5b8307485626",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00090-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23527465,
+        "marker_sha256": "d11db22d087436d0cd669722476aa0d7603e307557305db297cf48a0f365c1ca",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00096-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23678902,
+        "marker_sha256": "84830461f798971f75103f112285fef2e436ecfa1e81f41948113d0e5735308a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00097-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23670471,
+        "marker_sha256": "eedf3e18db79ac4bb9ca0e1af5c99c99f6fec2441c5ae17c1686b3e8be5f5f36",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00098-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24162411,
+        "marker_sha256": "f10280829bb97aa0afa9a165404e9da1de3f4183032c598c730c270e343684d5",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00100-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24136189,
+        "marker_sha256": "31d0e15066636d8cac04158d31f4a3e39d567b8c67050f9cc03a3d19b1ece150",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00102-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22857735,
+        "marker_sha256": "f2184508d5299e4c3a7113c530f1e201a4ccee8ba98b38db0df49d315adf6e96",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00104-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25103506,
+        "marker_sha256": "033a2f4c567fc6d37c297907e9f24aac052fb8180cb9f46a0c48880d79314480",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00105-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24551779,
+        "marker_sha256": "c3b1d47ca32c718bb78fcba22cc668340051ed12ea2bd98fcc78b5b32ff3c842",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00106-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24653792,
+        "marker_sha256": "9980760b99dbeb749c0660f436aac6dacb49321602f877c6f21a082e385fadf5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00107-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24658949,
+        "marker_sha256": "08ca8641c30cd14411a979ac0ee2a7fb69cc536d6e06be56c69000f280120fcf",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00108-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24357124,
+        "marker_sha256": "388b112358f32168627a8fc583fbf2ecc7a711bc743a62446a73ae634573d860",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00109-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24376052,
+        "marker_sha256": "ff3f66af1f25e6fb14c1bd7a5ae7e6716173c0f856b47ff109460f732e15a668",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00110-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23483473,
+        "marker_sha256": "88bbff3581554c325d8910b884f7bb52a1d2107c960741d658384b786adf3cd2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00112-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24809168,
+        "marker_sha256": "789e3b104fb584997a80f4d61b97066c274aaa8f9777d4320b0cd5e2e1237aa6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00113-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25274515,
+        "marker_sha256": "8a5121001ab283fb6ff7a9f737ebdaaa8b1cd9d597371a5d2d66319355043a09",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00114-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22267465,
+        "marker_sha256": "d939c73be4d2c10e1c905775362a504206e42fe13ca325d8fe46ae1e64874b5f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00115-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24046437,
+        "marker_sha256": "ddc9c809ae78b5c24cafa9c9bf91788b9c319317ac168eba4748360ae6ee5f95",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00116-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26151075,
+        "marker_sha256": "79da313d925dbf37bc0781090e9670c13359470a450cca72056e9c7a63097801",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00117-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23766325,
+        "marker_sha256": "28d3d945f51d585064cfdafd778a0303edcb644d662f9daf325498023b09e4d6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00118-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25490456,
+        "marker_sha256": "2386f65b8c99d432c4476a21cd2217da3ca7bbba4c7e3645d7b79643e5fe8c00",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00119-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26025013,
+        "marker_sha256": "3da69558b861ef1382a58ff4f97a8b5132a86b360415bdf052884b2547dbe8f3",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00120-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23500534,
+        "marker_sha256": "15886c9bd55af5f73e93ec4ad758beb8bd75895ed354416af227ec37f082d95d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00122-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24497573,
+        "marker_sha256": "37df710250ae9e64422694c016c8cd27931aae40fa560e4684fee5f33feba272",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00123-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24916383,
+        "marker_sha256": "aaa3fa1dd426a245b670639826af1f40297a4c82ec23a83a9c56ab9d242376ea",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00124-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24113950,
+        "marker_sha256": "eb5fe20c41a5d98e433342b39ad03cfb3683bfdc9426201ebc943ec78882b4e9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00125-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24548447,
+        "marker_sha256": "b5bdf56577f5102c6fe04bd5236a47157220b921ab2b52373d943831fea80ee8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00126-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23824410,
+        "marker_sha256": "5c0ba282f05a2ec4725de61e75134f81708467cd86676a89b5ff0123b5d91249",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00127-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24753454,
+        "marker_sha256": "91cbdda352a5dbcdee979ca3ec5b239dfb4966bbdf0771f19aca38126381d000",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00129-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24641275,
+        "marker_sha256": "1b8c775a658735a12f594ac87019f37053ace619fb08d422a525ff73c8cccc93",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00130-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25665552,
+        "marker_sha256": "e07887d69a012b515d277839aa034baa6489b353c500a619518540d76cff0711",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00132-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25021579,
+        "marker_sha256": "ef06ea84dce5ed6a2f95d4335093547031afecbf8868ca6e08937217e3c3d12c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00133-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24900674,
+        "marker_sha256": "f901910cad5f370fd0a5cf5a3fa33f518f694e2c7d6f2897eba7daadbb8d012f",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00135-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25251765,
+        "marker_sha256": "97fc2bd5ee304456016dffc19a32eabdad7703c2bd53ccee482205cf40d5e26f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00136-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25956443,
+        "marker_sha256": "ce88aa05fe2d32a74800ac0279266de105e3b28abf4eb64db192e25b5706937e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00137-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23741944,
+        "marker_sha256": "03a3332da968a54a52b281900cac01aeb9884ffd2a4008c4c6fc019f8794cfa7",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00138-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25452022,
+        "marker_sha256": "e46d203c95b5d877222a4f0bddb83ca490457a627e0c173b6af1d34a0c015344",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00139-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25679312,
+        "marker_sha256": "6d63ade80714b3aaa0ca6a15a18bafece6d304838100e9319ee3e47fc1e1ced1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00140-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25365332,
+        "marker_sha256": "94e3150eedadcd574a8cf84e586b4aef34685d9f4c23d38569d315494981d421",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00141-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24615925,
+        "marker_sha256": "6ccdeb876fe85cd0347b3732fcbc7ebe74a647aa9b51afdee6905acae605ae43",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00142-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24352190,
+        "marker_sha256": "44efbdacff2049c56864f646f49146d184cddccc19ef548b70f680b5d2b5fe62",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00143-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26109416,
+        "marker_sha256": "c329537668090f1a7143ae936412e3ccaa9b02fd97e9c68f25065ee9c542b9c7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00144-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24254057,
+        "marker_sha256": "56a419a976075d41827a54a8fa39343d253425368bc95ee262a45324b2d5beb2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00145-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25499206,
+        "marker_sha256": "778576bba97273104979932fbdf68c0566f3dfec6bef639acb74de347a0414b6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00147-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24435264,
+        "marker_sha256": "59ddf7675fce5a4821e09b7bdf656e39095722cbbc568fa47785150ce8249309",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00149-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23818879,
+        "marker_sha256": "5600c49aa99a275f0a56a0f18b10d986e0bbfdaeebd480c9e2272e976e5165df",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00150-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24900979,
+        "marker_sha256": "394aa352fcee4dc9e68031ab56ba1f5bdb31a9c835ed820963c1ecd4edfc9c16",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00151-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24888393,
+        "marker_sha256": "6fb5a683ee42885dd69b4aeda6ccc132812fc368551aa035d3801e35a7f48607",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00152-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24500077,
+        "marker_sha256": "3fb8736c01652a9990c1ae33e8d7be8fefc9a860b75ae6f1ebbb833836945f01",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00154-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25294611,
+        "marker_sha256": "2afa1edf4956cbdebfaa29512ccd60d3581f2859501c970329c2136901ebf482",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00155-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23843592,
+        "marker_sha256": "d2ca6f52ca357eac2947ed969ed5156afe79d7dc5f34c10b9f74e070eb2c7c3b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00156-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22775392,
+        "marker_sha256": "77d4f12c2908820aa6af996b27f7e5dd8aa313835067adb53a05c9873e69e4e3",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00158-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24827453,
+        "marker_sha256": "27dbda3b17f2c37d362a566355c3046434c3a0297f722c68b1d1013211a5069d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00159-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23362718,
+        "marker_sha256": "af03ff28383796265f5634b5be6f6f2001ceb20d4e2fa61037d482b30139c569",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00160-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24204758,
+        "marker_sha256": "c3cf86323e2e6b4370e62bbb56a67f86005eee47a62aa169506c624027a2d694",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00161-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24785024,
+        "marker_sha256": "c0b46d8d631c1d10794e47bd259b91d814208d820b0315da45773aae702a04b0",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00162-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24330255,
+        "marker_sha256": "5e9f8163e1e931ec145c7a94e38c6c17ccd465e652316c5cc8768caef5f4ca57",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00163-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24432431,
+        "marker_sha256": "fc754b7403c86dc55aa2f11a9e25ffd8952a3a0fa1c3af13af15e7a75ff71211",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00164-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23252688,
+        "marker_sha256": "2084204504750e0a889316203ecee92216c8d74044d2b0a4c04253493417fc45",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00165-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25675646,
+        "marker_sha256": "e423dddb084f34196ae97a79067914ce984f1aefeed0e6a33fbf3c8bf0443827",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00166-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24246921,
+        "marker_sha256": "0509c40bcc441c506f049bfcf66aa3bafd9f4403a92010a12806d351bd24c3b6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00167-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25280322,
+        "marker_sha256": "944d25cfc90b3ef8df5d9f0f6a3c7941912058186a53bc23e1e2bf710dfb5014",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00169-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25577306,
+        "marker_sha256": "76f2e6aa889129f3b529d135d502bfbb460b7e8ebedee64378be52dc744614fc",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00170-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24273740,
+        "marker_sha256": "e88d4d11809bc5067ed179825c9fe69653ea9b4effbdd162f81a225bad33ae01",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00171-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23215067,
+        "marker_sha256": "9c494b4b547881b78525fb356a21354cb7646e0c6dfc905514820ae4b170f6d1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00172-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23891677,
+        "marker_sha256": "11d096aa23e46c4563ef9c2e6c5ea4c285aedd8ef14ebe0661752b238184faf9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00173-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24849726,
+        "marker_sha256": "0a0906da4c5e1bb74e62cde35251821aa42ed8289ce868e9a4c9d886a6659c2e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00174-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24262498,
+        "marker_sha256": "111db70ef891599bb3752b2b64f906806ca3ef36229d1d32eae28e4a7b22bb48",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00175-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24286591,
+        "marker_sha256": "7dac97098f014619568ecad8822b2d7560cd527e0f4ef2a5d0e166902d4f0fb6",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00176-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23765466,
+        "marker_sha256": "fd91d20d229197cbc48f2a9bf87316ecd2f8b2ea435e3d9c6f9e750eb6f024c4",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00177-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23545484,
+        "marker_sha256": "d231869f9c148bf1339ce3c61a9e4b0b5c475d7486540bb7d5f0bbcfd0b8ad23",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00179-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24280669,
+        "marker_sha256": "383a665f4b8e9b6df84e7a10e3b29fe9b0552bb5c8ed35076b67db244d35b9e1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00180-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23978040,
+        "marker_sha256": "665ece066a33d2c98f40c22b20f4ab34d3d073c18229312c710533924f35495d",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00182-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25068162,
+        "marker_sha256": "664b9eab28c5e3d9779399863f94f6a2814b44b9621ee6f7db2ec3feef4fd79d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00183-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23237720,
+        "marker_sha256": "f85886a535f3bae07322a06e9f1b9234bf9f9eb0a2e466a9b8f89e7b26e5a685",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00184-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24351800,
+        "marker_sha256": "d2565735edfba3a71ffb3394df081c95130ea726a78ce0fcf4918a52b3050c5c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00185-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24609221,
+        "marker_sha256": "a73ede2fe0ded1443064b6b8a173c3f6a3f9d42399c19d8af8db0e639bfae581",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00187-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24420832,
+        "marker_sha256": "4c4a760895d2bcd0b87b3d2d25f0ec7214427ccd41bc5ac092ba26848721b73a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00188-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24043232,
+        "marker_sha256": "055d53fc8b3399a0ca19b965a9de15c95a51ace703887735caa6edd513b6a0fd",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00189-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24069691,
+        "marker_sha256": "aeaea06bcb2e6dd044f6bf7198b0cb08a105b3fa3cc8fe4ee9449c1bbf7a7ea0",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00190-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23341260,
+        "marker_sha256": "9bbdaa461ecda02ddfb540cd7c2690bfd7c832fe8bc6ccbd2f36a7576e8887da",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00191-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23291592,
+        "marker_sha256": "74f26b07e8238d9c3c2337b18539614f345eaef8e74e47f085e67d9b2ec1cecc",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00192-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24200965,
+        "marker_sha256": "d8e6b5f0b54cb2cbda724d56b0f9564a799fa2dbd0291abdfde68f75a7a755d6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00193-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25131924,
+        "marker_sha256": "6ffc6348cb0f0b34545702325a385b471979ae2d1b2aa12cf4cc392a361e4428",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00194-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24439828,
+        "marker_sha256": "10b9162ee617fb8687099f1be66cda72629c8c5ccab9e603256e0255d2910e61",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00195-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23975096,
+        "marker_sha256": "af9f3afec3aa0641e7b7278a970a4abe12be988088b3deb25e62427db1c546ee",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00196-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23547116,
+        "marker_sha256": "52fd262bee977495d84ef1979694d8d6bcaeeaeb3122d40f8f1385cde304d9ec",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00197-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25213778,
+        "marker_sha256": "2019820050e6b95f8d295cfc36c0fb13dafe2c0b52246ad06ccea40af74d1149",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00199-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24606349,
+        "marker_sha256": "30e6fa76d847f681292aee5938fd0167446f9e3c3ea9e5de2bc7d4e6fb40c7a9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00200-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24758011,
+        "marker_sha256": "0c50a1c3849f095bf687aa48f1a636f862ea7b20ed0365c482a02fb842b0dca3",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00201-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24525184,
+        "marker_sha256": "af02ed3b9128753aad53a92c5a80dc653b7315489fa61ef144ca0495b49cfdad",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00202-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24479808,
+        "marker_sha256": "c28d38e5939f2cacbbd398a89ed189513caae8b91e4005cf0f7b1e94a185cdc9",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00203-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24642251,
+        "marker_sha256": "e7cb72348c86a37d8fd482f500d582b8406259f7edbf70ddcccbbff08dae91ae",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00205-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25710269,
+        "marker_sha256": "88d96b4c3e7be1417aecbf6c45b8f092205f323020a466e924e6b07043874500",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00206-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23694362,
+        "marker_sha256": "22dcff1a3967e746233404937fd29bd1fb66b8e40a9655a5f990d2e3814e5fcc",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00207-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24188562,
+        "marker_sha256": "05ae8dcf613e0f2fa53e1f218e01c601ec20356cb1b0a101cfabf960ea44433f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00208-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24225648,
+        "marker_sha256": "e65a37a6ac47f4d1f747c760714c073bd8ba52ec6068e324c88d646630e3048a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00209-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24820663,
+        "marker_sha256": "226ccc5a5bbd03507cbd22db9ad146f1446a7be4a38757ad814f9bf829bd0d54",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00210-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23604378,
+        "marker_sha256": "477e3df0cbe8cdea62e40868e9432fc509b3dd6ffb3e09b895545a0749234f61",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00211-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23313536,
+        "marker_sha256": "88d3c35102d310d7a0a2d08484af160e45d6e0453edb18b8f4c6015151ca2bbf",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00212-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24358117,
+        "marker_sha256": "2c119bfe0bce6cad7d7de95ce7602c795a66132c5aac0d80e063965ce3871472",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00213-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23770882,
+        "marker_sha256": "eda5a07764c1745d811e1483c9abca7c1b2a085a446d7ec7f2994e60d5745e24",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00214-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24729039,
+        "marker_sha256": "4a3e40c5ca38b91222a272604a6d06696fc3f10868fc7f49fcfa9a8244e4dd2b",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00215-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24089575,
+        "marker_sha256": "082fe8029617f8af0a79543c7121546a4cbb2901dd67c3243169b7cf9180c719",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00216-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23852997,
+        "marker_sha256": "df9112d900fbd7e1fffd946ea4edf6aed2f504c7cdda813cbaccb8352ede3cd1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00217-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24282614,
+        "marker_sha256": "09bb759148c8cbf7fe048d669e4c8411021666ebdeb8dcbcc5ba53941a303a90",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00219-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25228147,
+        "marker_sha256": "3d1858d642fada810164b0a00cb3d10d2afa4d05e0902303d80a20eb6ef83084",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00220-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24580356,
+        "marker_sha256": "86b68abdec0b45e60aa25841aaaf2907c53cec8cdb0b7839a0b71caf2f6478e7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00221-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25362354,
+        "marker_sha256": "5f78f66322163c317ffb060e9cf271bc14bc3ead246650fd766fd3bf0c8a67a7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00222-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24522879,
+        "marker_sha256": "90dd8c4dd6a76fbfe0da72d7b21974ff69882c6befd8ba3a9b2dbc37dfc7f22e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00223-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25566821,
+        "marker_sha256": "79b78df06685a4b0778742d8a2983f602f690740cb3add4e5912a2061131deeb",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00224-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24031732,
+        "marker_sha256": "59b3840973511188a2dc3aa3d695460e8ff4f3ae45cdc38bca6b9432405ef8b9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00225-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24222867,
+        "marker_sha256": "775183b83a7c08cce97b41dabc9b9c0d5831b90da4c3f4ab9521e3ed6e41cd87",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00226-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24481272,
+        "marker_sha256": "9a879fa27fb48f522c197377111f21c59047167faff64db035942b15e44b8e28",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00230-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25120681,
+        "marker_sha256": "c6cfbfbd32f160979e0bbeb8e9737203bcbe7d4adca4561b2ff33492115985e6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00231-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24451793,
+        "marker_sha256": "87d6ff3bc200efd0fd59e7691d54b91325126c2738d23fd6beeb88f4b6d15ef8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00232-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24793285,
+        "marker_sha256": "9518c04e16212f7001df55d65cc042ab320c41c6637c7322a65cbed3433a54e4",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00233-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25362644,
+        "marker_sha256": "083cf8071d06d0bcedccc87e18e764ca307dbb5e7dea27e78616704cd0ffc2ab",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00234-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24227765,
+        "marker_sha256": "ccffa4d68feb77c51443a5a6ec28edbe01c3b2f3d9618562e29c33104db4547e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00235-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24619473,
+        "marker_sha256": "0a634e783c4fdc4cfca5c5d17a6560887311d41d28e59372479b3d55df0bcbf6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00237-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24045748,
+        "marker_sha256": "77cab2b197810c0f59233640a73fbd37f45371e1cc4483cfafc0c42db757ab88",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00238-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23668659,
+        "marker_sha256": "67def4c0984d05572ffd186fe80d11c54665d4b1ead5f75c5ee3e7b76544e4b7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00239-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24081221,
+        "marker_sha256": "9bb4c74b35cd7b9e35038fcba961ee0c67f5364efc074a9f83a123ff29d43313",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00241-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23517534,
+        "marker_sha256": "f6d1787f2ff72a4fc0398c3e0f8da92e52afa0692c0b6bfa903c338a1d1f5e02",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00242-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24549002,
+        "marker_sha256": "cd1c00bab7d3e346959c44d0a54353a1d8fe866e3fa3ff279507e129042005a6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00243-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24401092,
+        "marker_sha256": "7fe9645d8a1daa0bf440b40641075b0ef70bfc068b5388c2099804252337bd2f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00244-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23906070,
+        "marker_sha256": "4bc3149eefdfde8e313827d12c859dbe31df52c05ab9e7ab37e808b51748789b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00245-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23975338,
+        "marker_sha256": "7df400b3729fd7cac1a63bd70ae183a5e4d7ce21ebfdd0fd374cc6e49fb7108d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00247-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24704467,
+        "marker_sha256": "0ae4a6000e9ac593cac8c303effe3edf33f7ee789f9833ba47ef6acc765561c2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00248-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24585438,
+        "marker_sha256": "8f38bf33928c5a19c3c1369558caa1dbf6fcfdfa17075d8ab5a4cfde89e4d640",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00251-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24919679,
+        "marker_sha256": "e4184465b42999f9939ba2c5531564767f68bb8ef15b01adbdf7663c93a54720",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00252-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24214512,
+        "marker_sha256": "20258e5a401a965978c26910622dc3ba191881c11424f5b44f5b7e18a5c503a5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00253-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25303559,
+        "marker_sha256": "99ce7eea0ac135faa94af28e00c944f2ab00fa7f057761fe9396e2975f156f01",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00255-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24515104,
+        "marker_sha256": "3cee42b76c1d43150a7c689f7751e67188008433fafc8bf5e277126b7c2b1403",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00256-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24816965,
+        "marker_sha256": "51beac1108da3f467cd03c371611fb227f1282891c4df2b423798e0a1dfb19a5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00260-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23896291,
+        "marker_sha256": "130a875cc6208c6b2304ab7d6da1fa368c52c24662899985d7759cecf0872511",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00262-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24265993,
+        "marker_sha256": "c1cbf28b3aa282d6bb0c3cef8869c632f21309fb0769db7d95cb12c50ffeb54a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00263-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23806616,
+        "marker_sha256": "eea4b6921fd3546aa297093078279c635a222b5f2adc58cc067cf9ff6b54b1e1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00264-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23878105,
+        "marker_sha256": "97581d42607777550ba0e68d651e0017bd6704d263bc9ac5fb283157362e9ded",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00266-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24353137,
+        "marker_sha256": "eb26ba80129207e216a0d10aeae63924a9f56415032f7205f6a070e5ae20689f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00268-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23905811,
+        "marker_sha256": "d4e4260c262e4d46b9cbe5535ca1b153929352b8e188c69568c933d225cab36d",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00269-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24681857,
+        "marker_sha256": "b5d27e84c5a5ffc6988afe65e4ea3822fa373b09f0c43204f05504f5d0a15282",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00271-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25240664,
+        "marker_sha256": "4b80d6187346026edfcd819774fd2188841134838725e371eb2353b699a5cd6a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00272-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23834495,
+        "marker_sha256": "0560eaab46e10f662efd2463ac1c7bf5e58306cb4818bd6724e2d653b15cb858",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00273-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25745635,
+        "marker_sha256": "264df4b83bf3b7dcdaa234e5a06bcb0da1fd0326cca08a81d70a1bdf0e9b198a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00274-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26720482,
+        "marker_sha256": "a912055f153d7a1046ba5e14f9e1964e5aec6d3e9db80a400edf2743ffb57d55",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00275-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24624990,
+        "marker_sha256": "292c4b6a075dcdf454ffc6980176a8e0e2e2864dae3acbde2a95f67106f85bbd",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00277-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25926198,
+        "marker_sha256": "7e9cf28f5692d6b7efdd8722ca26ed17076d8e1311d672da8aeb7d802a34433b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00278-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23331938,
+        "marker_sha256": "123ff666f9a524938d351237b24042cb0104d0528ba16e6b7cbb54effad942cd",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00280-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24644997,
+        "marker_sha256": "7d3e96329c4d27f1286a7b660ebdd0e710d6d130ef7979fd1b9406f599e5088f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00281-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24540951,
+        "marker_sha256": "22a2d493f86bcc7239188edc5adebfdb76df826f8d0e6cd165a3ebbfd1a9f23a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00282-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24870748,
+        "marker_sha256": "e2d048aea8292e3440258d31767954455a87d3d5ed4a54027c7c721203dfccff",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00283-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23869654,
+        "marker_sha256": "663bf63ef76ef12372e77e2bf6a5bfba24f98db98041fb828e76d222d8595b27",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00284-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24215415,
+        "marker_sha256": "81fbee864048b6ff72537c09cc267ccc2c69673370871759b01c327c6c8b70ef",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00285-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25058401,
+        "marker_sha256": "3816e3f2a9bcf84e46e289b0e5cf0384519c9a895949a207ac2d2c8d27b9316a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00286-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23230145,
+        "marker_sha256": "cdad689c195b52bbba90299b0f181323ee2fc530d8c90a17bd950d868521e1ff",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00288-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24549711,
+        "marker_sha256": "604e258aaf0212f1836ebe2ef4cca52fd7afc6d4c2fc258dbb67a758d8516b0f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00289-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22971263,
+        "marker_sha256": "e3180297dafd73a43744787345b5027c81b3fb4436553815b53e9711f5fe0fa6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00290-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24525906,
+        "marker_sha256": "65397ce4009e2263c34f38b0438bfabeee34c5576f716ca1053ec848729a464f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00291-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25097260,
+        "marker_sha256": "20f2c0c8f49c5c789aca60452ece9c8d38f7e7a84528179eddb2e48404dba9c0",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00292-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24100036,
+        "marker_sha256": "104a58b390eb929e0aa0f4d56bf16a7b1a100844c89f21d0f42c529c2814ebcd",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00293-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25302573,
+        "marker_sha256": "25dafcbd686e99790c3ebfbf31f9a5d4f892a7f44f03f065856f14f821ca74d9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00294-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24140865,
+        "marker_sha256": "b79eb6cedd414e553bd1ee6da39883e129ab786d665e638db244b5dcc01a8e59",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00295-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24998300,
+        "marker_sha256": "999a3712037bb6395dfcf39e2aab2661055e7859d0366e712478ab2ef6d5eaea",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00298-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23340666,
+        "marker_sha256": "bf9699c1765074a8e66e36a4c52ed8d0fe01086faa696ba9517e18b54f096610",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00299-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24362116,
+        "marker_sha256": "cfcc02e2b5f60d86ce147ce2765fe32429915662b4154ae0c7ad6d010eeb0692",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00300-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24785169,
+        "marker_sha256": "39e42352d16e8ce7bbc27e5ef52c31ba288809c081d83c366ce101e71e7ae64d",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00301-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24531295,
+        "marker_sha256": "50fe67b5f43eef6e01fba4ec086272912dd8f7af8f4711a1eb58384245a6c489",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00302-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24366966,
+        "marker_sha256": "e6aa91118a6a663700dfbedb448addb3639a3fb0770b66c008a0112700bf627b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00303-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 27746990,
+        "marker_sha256": "06f2b31f0dbbc67af82c5472d67c01fb044c248cb2223fd757d821bef589eefd",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00304-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23985066,
+        "marker_sha256": "64dc34747dbe1e07f232860ca77145cf307197d599bf6df8e545f4228d3b6f12",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00305-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23977436,
+        "marker_sha256": "e03bfa5f5af634e1e5d8a0c2643a3339ea2ea282fac8f9139f7bd558700fdc98",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00306-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25291508,
+        "marker_sha256": "54418f90e2345acff4c821eecbcd1a9f4f64e528e937767d27e089e6fc3a0b8f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00307-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24682728,
+        "marker_sha256": "da91d97344e1f202ca8086028a79fff712637dc9119ad0d5c2b71b1983f9049d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00309-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24351468,
+        "marker_sha256": "601ef2a7b739b99274b9a20eddfbe83c62189dea78e7da38f211f9e7c47c0b05",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00310-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23562617,
+        "marker_sha256": "3af462783e090c901a0d361d03045029b1cc0856198ee630ee1aaca277667329",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00347-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19783871,
+        "marker_sha256": "635c6c39f3d9a6b58989bf0740993d6a2a7f1f72c0ce5a9c805110a1b93c3b9e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00348-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23346297,
+        "marker_sha256": "e1c3eddcabc663f59bb66e7b44d5982a90de30563f8de8094ec0a5c0f08aab5f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00349-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20493602,
+        "marker_sha256": "01642b91ea0a8140727c202c2b2ad67ccef75b978faf1c9674a3818790f3d9b2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00350-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19557094,
+        "marker_sha256": "296fe2d8805b92517f1e07af857e314864cb8cefe02ee47ee03fcbcfc7aa3eb4",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00375-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24123924,
+        "marker_sha256": "3a5aa0769cc4cddd505d028647f970c9fc4ea63a5864418657ad311faa359d2b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00376-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19786809,
+        "marker_sha256": "6efea710db408d374d5237e86a62b2cf464c03121d2f1b10b1abfb479e695707",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00378-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24689748,
+        "marker_sha256": "b8b7d1a088bfb740d249736a88447de1da9b5d26e9d9de7e1007bbcd20fb6dab",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00379-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23554675,
+        "marker_sha256": "3be62112e95592e4b74e600f69d70cd33c16bf6ff279e15ed39de1be387ad974",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00380-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20369436,
+        "marker_sha256": "5556ed8ce116a357c62fb69e947f7c1e36d9eac3dea5dc30360b4035fd363667",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00381-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23769558,
+        "marker_sha256": "73ce8daf597417f507aeab13af3deeeeabcb62fca35f06627202026b8bdfa5af",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00382-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21254433,
+        "marker_sha256": "b1399cc454b85d5d6621c57b1bda532c3fb2b061a2bdebc07f3fb225c43bd2de",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00404-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26021761,
+        "marker_sha256": "8db1cae7b2b09558fbf6c8d726c561c94c26afaf065903393d3f9b9f73fb6bf1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00405-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23291053,
+        "marker_sha256": "4ee595f2ba6367c1a90c976064b676a676801480f9eb8da18fbd9629a4c054ad",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00407-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21118393,
+        "marker_sha256": "96ee70911aff3a2637a37bec7cd49081f1d26c5d539a8faf5b7c3999e7a0ef2d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00408-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20690578,
+        "marker_sha256": "0e5e7b91b169054e8196f49c6e685088bd9c662106c32823d5f4ec6afa295bee",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00409-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23663645,
+        "marker_sha256": "0c05da9a9adfd4e280c616ca6ba6941df051242560c58aca9ad1fbcb66b66bd3",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00410-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22540577,
+        "marker_sha256": "37c6742d0dd60bdcf07c699ed31eea3532f56bc198a9f2a4ed8ee77559d8603f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00411-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21105269,
+        "marker_sha256": "e7ebea64c8b37b37d8879ef29a1797ae2213714953f9ba4e37e250619a08643d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00413-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23345874,
+        "marker_sha256": "d32a4f93da16b101fed3324ebd85e6e114890fb0f60db99b55fdb4320cb35e4c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00415-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19972730,
+        "marker_sha256": "57aee5283fe91ee3d9c5d387292dc336223d36bf18b80f59e4f25d8fa5cb969f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00416-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 17840187,
+        "marker_sha256": "fdef6c90c2dc68aceae88bd512685ed08229d0e6ba771a095ee026b9ce047457",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00417-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22889198,
+        "marker_sha256": "ef2f9d2ca8f14adabbfad449a4ede954774e39f8d3939902b0c9b71b7dae1362",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00418-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24644626,
+        "marker_sha256": "a649cddf70f169c4576f98c5e1b62db93b4660a52b2deba3ec265c07ed46d0d1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00507-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24644626,
+        "marker_sha256": "1d9a49f28736aa0e1f40697113c72244066166ce8613a949f8f40508090cee69",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00529-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20704241,
+        "marker_sha256": "07686e8db0da3d0b28cafd72b71216407ecd4902054b4727c4d743a3b10d1dbc",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00530-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24399051,
+        "marker_sha256": "1cba9198941e08553e0b8de0af3f76e4d78d7f4d7803585db36bf990488ee517",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00532-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20060635,
+        "marker_sha256": "d201d9433aee43edd01e2f57366cfb048d7d4ea6794f8c24e4767a12e9ffdc79",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00533-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23826499,
+        "marker_sha256": "fb28c36921258432fe95d79b5562e4d0b8992eeac89781e4b28b55a511519c11",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00534-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22807300,
+        "marker_sha256": "784ea617746cf70e69e304a3d0236da11d33277659f20d7043adc9f2c64f72d8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00536-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23273462,
+        "marker_sha256": "3c050ea430eac2581611d07f963da84c0efe9a5de01bf375bfc93deb97984684",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00537-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20971011,
+        "marker_sha256": "917e29c65d4e0b44fe4dc9ada2e84ddb40b1817ccc725fd20ceeef873c0c6a16",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00539-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22716589,
+        "marker_sha256": "c3d6716f048b82144bd09c322ea3dc75728f25fdd4012a7c6bdc527561b3912d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00540-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 18974884,
+        "marker_sha256": "b3d9d8e217d41d393d8df327460fcf8770bf2ff726ea4112ffff9b43f36d3644",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00541-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22533168,
+        "marker_sha256": "1861e3e1cf6b4f82d8fbe8af3c1029ae00409f2930ff17796877d2983dddbdd6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00542-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20438194,
+        "marker_sha256": "4659ade8d0840d4a46b7005ebf27bc0336c33123217384265aae2e906a22ab81",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00543-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24174544,
+        "marker_sha256": "b42af0d56a39757f4a5ab74506202f495669fca381730b19b6934a0c4689ee0d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00544-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23683660,
+        "marker_sha256": "63018c292b370dee5359ca6fb1c4012421ca51b22d789119cabe21b8f3181fad",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00545-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20342281,
+        "marker_sha256": "f752e0d3c8d77b6ce45022b48e803f0763e7baae154ce21036b6dd4b4d3beff7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00546-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23084147,
+        "marker_sha256": "59feee9306325745e5714ded3d7ff16c03f0f15d0f364c7259872e059e39939c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00547-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23903690,
+        "marker_sha256": "03b1ae45bfff71315f3c103d113fd446d28baac07a8734c7dabdfc223aaffee7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00548-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20005532,
+        "marker_sha256": "0e216c71c65fa1bad73b650fffa29be6abd26f647c75010586ebc9d17dd45c2b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00549-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23603599,
+        "marker_sha256": "860b166c50d016c8204f7800c39d349fa2d462dde0ae5010dc2cf41f949ed248",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00550-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26043059,
+        "marker_sha256": "f437e3969dcd1ebc9194f48cb653d36fc590b706eb69577f6e70c10ed135bb56",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00551-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24247553,
+        "marker_sha256": "e3538930e33266273b5a4a777ee1d2495c6a36c2c293db6239069906fdc86fa0",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00552-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23029280,
+        "marker_sha256": "af776de1fe9a847a5c0ec496a29759b35911f4dfbb5c04684793d62ebb874efe",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00553-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24986416,
+        "marker_sha256": "cac180415ea769a4ad18b9f08408abf593e1afb24055cb6a02043a355ebff3a8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00557-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25989263,
+        "marker_sha256": "f906b455f7b8d7df6f123f2cc10595359fe2ed7a7252e16a50bfc91d8159ac8b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00572-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22978692,
+        "marker_sha256": "a83d5a2278b6c165df7741c7e2bbfa2672053c13d4bfc219f51df0920b537ff7",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00577-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24707119,
+        "marker_sha256": "4fc86d2c81bb7cb1e21de0cc7c1b078f715e954dffe68ab7ce2e528813108da2",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00580-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24696185,
+        "marker_sha256": "d5bb579d29ba243ff9ebe8a625b0e92286961573f83f1014dfe25e294edac954",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00581-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 18659907,
+        "marker_sha256": "a24f0c85462329d4c36e9eb794131ae9c42a9c45516df1f3904bb52ae2791bc0",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00588-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21307854,
+        "marker_sha256": "1b162f4f498e02f3c593d98d08bf786897f2a55105b83a3ee6b2d3e95ea4734e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00590-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24995775,
+        "marker_sha256": "89050fce450b987769cd5bdf6d1c2e31df4904435c066cbf3ef2eb04746f60bd",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00595-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 27326822,
+        "marker_sha256": "384d36d0e3b97e4c4a23f16b163baf18681ca5c047b61cd4440eff2e4b73759d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00613-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24650995,
+        "marker_sha256": "5f18f0df419ebc872619a186502b0091c13a7fad193460b49678add3a00cbcbf",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00613-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23863019,
+        "marker_sha256": "e033278f90753ff5338142ed864cf046d1281808eb56bc24f8ba2c227ccf30c3",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00618-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25467457,
+        "marker_sha256": "a24e3f46d4764821a2c05262bc5cc4031dd39f05eb4e0146b25a49d42e1df3e2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00620-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22860800,
+        "marker_sha256": "a8de6685120163e0db4fe7b4d6f1d4b5422bd2b7d6ebcaaee8d9a1e12b6f2f4e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00623-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23077554,
+        "marker_sha256": "9d60231fcd3ed36d5b1a6d6b5bb58b8bf21726302ef22226f09174a0db2aa6ce",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00625-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26975171,
+        "marker_sha256": "5f2599c37e4fce4ef74bbf8a94e0ef8357e5f95d9331e2acb7c3f2af09693ab8",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00628-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19272151,
+        "marker_sha256": "3964384678f4b622dbd5436d92fa4be2c5f825276a95a1eed83349bad4acc200",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00632-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23480259,
+        "marker_sha256": "de9561461686446dcd5aad0739baafbc545fbd3d5037b78d5c73153d05aa8f1c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00638-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21127262,
+        "marker_sha256": "1d751051996484820424ac108852c1615a59859f3edc18e4bc19eb8446c494a1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00640-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21990973,
+        "marker_sha256": "b9693d181ffadc54acad56494f66cf2b5e1a0abfaeb100fc6c5087b3cc37b132",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00641-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24735697,
+        "marker_sha256": "e7093bd8539bc834018519580d37fc99814735dd179b13f0f29965a31aa19acb",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00647-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24885360,
+        "marker_sha256": "0a7f4e649b7726d4d91c834eeb2c1b8d29bccdae520680b21fa8ef157c36e58e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00649-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 18682991,
+        "marker_sha256": "299fcd5b9e3c72062d49c18a05fc9322ab095709ff3aa9ed2f28e008a3740b2f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00651-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24671899,
+        "marker_sha256": "832ae6ba5d566dddfd1e4618a8fba752772c325f36901898fa0b6c5463ec5113",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00652-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22590868,
+        "marker_sha256": "6bff44bb88d965d67c9f796b8d9f4b1fca69f6f44299547c2fc90bf4ae39e20c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00653-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25405352,
+        "marker_sha256": "4fb9afb9ece8c63a2923e777eaac7482bab26e26051b08b43f1fcc1a9620c7de",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00653-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25019410,
+        "marker_sha256": "491e7350ddbdf95cafde6ed3f38aac0218e79eda2cf4b577a07658834a166d2f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00653-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24196602,
+        "marker_sha256": "e016e576d8fdac2ee6aa1b2b557f493f68189d44ddd4a8b2d5c2b3342fb9d361",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00662-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19531680,
+        "marker_sha256": "2d11671e9b521fbbcd2ad21038523d67af1911c457724c381a98bbe7e5138946",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00663-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24513487,
+        "marker_sha256": "b93b906f7618129ddfe5574ddd129bb5257493cb7c3b4b0cf87f13e3f1f805c7",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00667-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26769291,
+        "marker_sha256": "0695854168c08fae70bd28c512fa3c3aa1ab7af654ac9c247155a98bd1f22ce4",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00682-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23974394,
+        "marker_sha256": "cf2f063ff69c0a038458141b1e98595afe81456286556f974eb82d54d04650bd",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00685-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25174335,
+        "marker_sha256": "0791e563ec4e166576a8ff545f4e8d924397f5d28d53365a8abb33d4f6c7c66d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00693-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24324876,
+        "marker_sha256": "011a77e024a4527c3a5a8fbf482507e3b62081f41c1093ef6c4e24202ea386d1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00694-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20928474,
+        "marker_sha256": "058fee13d20fcfbf2a02513ca42f895765a7f11ade43eef5c8288c4d90b2ccc8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00694-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20559401,
+        "marker_sha256": "4d9e07303c9fc83eed77b51a9d20616d7073d8c227a99c34d92485395375aa37",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00695-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 28596307,
+        "marker_sha256": "9ff6c84267ab1e13bc0b7b027822f223aac67c89695ba442002b50e1b186d564",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00699-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23953148,
+        "marker_sha256": "83f6ae1233791a624bf549c28b5360f7d9928f0daf4ad6f4a356c8164da40132",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00702-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23835964,
+        "marker_sha256": "744d9cdc6fe47ea5edfd8a0e0d7cbe62af4d97b3a258e8faaf9274ab63ad49a9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00703-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 13759404,
+        "marker_sha256": "5f095a9adea1f3680225f77b28c2b0c6eab7bc7d7cf207a9cec44c9e52181c07",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00705-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23538753,
+        "marker_sha256": "9477fab260e868a411f45eb87ba2d34e8719d5705ebe5db68c200aba6225fd7d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00706-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23560520,
+        "marker_sha256": "eae906066c5b95fc36ef62d29ad3307be1a1e33c3eba78b9f4938c55cad7cd88",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00715-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22617116,
+        "marker_sha256": "554cb29a32c0abaa0281624509ba3b22a06c2192142323b79850626e52c6fd97",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00718-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24925486,
+        "marker_sha256": "79bd5d0e39119161ae628a5366204ee84f6f730143299e7f33e997b646f6ca3f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00720-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23822138,
+        "marker_sha256": "119096f4bbd1b6231d4ffc79619306c591ecd7bcfbf33de3ee2213283c1cab79",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00735-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20132459,
+        "marker_sha256": "99720946877301a0f2a42b19a15e2497bad5be53805c4ce2a098ce5913356d3e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00736-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26092472,
+        "marker_sha256": "c9b29186917b224dad0f3fe9230d974e1513746f218f913f45b506974b790b3e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00748-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23663441,
+        "marker_sha256": "6d60e075fc35df878b5208b968c97105c598f78a48305135d3175c537c0f0dc8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00749-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19951364,
+        "marker_sha256": "baf5617919c477e5db2f0c861a4784565053e4c866f437392d7fa5a9bbfee5da",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00749-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20031648,
+        "marker_sha256": "aa9243281b0ed1ca316c9ee7afa1e0e6adf7f0407c006bbf99e7eab22297b4a8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00759-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20676609,
+        "marker_sha256": "e6ec43526295a01fb8c25c86882d9c21d778ae6f3d66a7529e78209156ba5feb",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00774-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22823538,
+        "marker_sha256": "2c1fa2b35bcb3d6aeb6b4eed784c0a2b5b720d064a5614601fe2cc732973974c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00776-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21719907,
+        "marker_sha256": "e65e7746f3c689ceeb0061adc6cd963b247ffa2b00d272f3c2c554f70f0fbfc2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00777-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21319877,
+        "marker_sha256": "8fdb8f8642fd13ddd67906c15f5492399d9888965e298511d5d607bdf42bfa28",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00778-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24484201,
+        "marker_sha256": "7f2ca0d9fa32efc57453216a06403b767080eb4086e54bc225c8d2f232b60b6a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00779-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23229487,
+        "marker_sha256": "e4c5bf0397eca8d895cfe8a4c7b4721fa94edd552857ef87809f9adf3b2f133b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00781-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23027968,
+        "marker_sha256": "1990b66ae0456efb4c4258a108a419d464b139bb3aaa1300932669ecf4f5a4f6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00782-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23630500,
+        "marker_sha256": "dd79122eca8b46d02f17332e1e76edcddac5cad9f9feeda90f4379ba02652eb3",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00783-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22505885,
+        "marker_sha256": "24dcb3b47f90d33c37fdff60f0057965a1857c2964160a46039484edb7d97a83",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00784-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19487240,
+        "marker_sha256": "7f042a7fb26945140f8a2f5bb385dc97c932fbbbde2cc758e7ded2d260e8bb88",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00785-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22995493,
+        "marker_sha256": "b46de900a1d76664d93c4e5f8aa12fd4f8e0e4d6bf146e24ad388ce254d91aac",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00786-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24267123,
+        "marker_sha256": "4d3f4e4d92bd7d11911dd64ccd2ed17fedad83c90b82e9ea3e0266c7c0226f31",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00787-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22370759,
+        "marker_sha256": "3228ed456a177d628c240cf1a9e74af6bf3fe134d3155d9c82e6a09e3f01af01",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00788-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22478411,
+        "marker_sha256": "1cc2b41a6da3e2cf872c651388deb6992f83c461bc0a992bb00de82d3f760e6a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00789-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19664763,
+        "marker_sha256": "ef7ceccf97c013dd3f5f3430253afca4004c4e992bb0a5d8cc46a9a19d43eab8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00790-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20903323,
+        "marker_sha256": "6f1e9a5ae36c3514db91c7f4c6fd80fb06abde35222ce7e632eecfca4c9a30e5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00791-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19192990,
+        "marker_sha256": "0cc03c29ef8be8cdf94fa29489adfce9f084ee44b5a5f66bfcfef6907f241a66",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00792-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25232226,
+        "marker_sha256": "60e82a812e802c527c79c6e95ee4c2cee24431c04e321f422f516e9bf455050e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00793-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21357925,
+        "marker_sha256": "97ab760a95bace3ba9c1288ada77307ddcab1c9bbcaa81b41698286722580000",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00794-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 17609378,
+        "marker_sha256": "96f667ab527b2b8c425c36d0e88af1aa56d96b4289dd7e66574112ed80919cc9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00795-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20070469,
+        "marker_sha256": "4d161833bd54971acd5ef1ad46f50df940c54dc70542173faead3ac01056a7e5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00796-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23151933,
+        "marker_sha256": "046d2dd4745bfc6db3eec13bc2df69932afea24c2340147f300b90b73e57081f",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00797-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22004333,
+        "marker_sha256": "e08f9c062bfcd21da2d725c11aa1368018b44e94b4b2804361d6639174b0b016",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00799-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19331183,
+        "marker_sha256": "d77c2f78ca95e2b14543a9619ae07fc8621a0304be1b0d1fa587d9299e10b59b",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00801-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22577454,
+        "marker_sha256": "6c449896b81ceb00d811c56ebc60f8f4e4e57e935cec628715be5691ecc50532",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00802-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21121273,
+        "marker_sha256": "0fbaccc4e7eb309146ade0966188e0c41fac895e6830db8f9a35717926dc36a8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00803-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 15367751,
+        "marker_sha256": "52cee1c50e2cdc6814fe28432e173f4fc708f9dbf8640e20be1abac00e700ba8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00804-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23454940,
+        "marker_sha256": "bbfc6a8988392da00cdc28975a9bd5803cdde1992b6f2f4906cadff660a3205b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00805-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20206831,
+        "marker_sha256": "6ad0b535f2777adaf117907313dec8ebf3372b69226766f7640122bfc0dee009",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00807-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21715785,
+        "marker_sha256": "43a7f1b313c6f61a6fcb9b89ee775d90f66ab008fae58c073e2aff2e85cc681a",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-00808-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20995118,
+        "marker_sha256": "4ee9f4aef60b9a993defed5e731f98d7d60b3c9783a6417e8c528c532fb0b798",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00809-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19653454,
+        "marker_sha256": "743970ed1eadf435a2208fe0de9c5b3114fbc7ea51341741e3a6e7bc8216ba3d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00810-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19336488,
+        "marker_sha256": "27468fd6593493ca18700791497029b62511cc123b8c4f6cfbfebcdbcd69d5f9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00812-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21778810,
+        "marker_sha256": "e4bd1aafb043de87e264011bcb8111d3129dccebc151fbbb4000cc38012dfcd9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00813-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20302636,
+        "marker_sha256": "ce81ab50f2cef8cc7bc675e95d41c8ae9f102dc5a9638fb03cdd7c1d604d427b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00815-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21710980,
+        "marker_sha256": "26c6bafe9dca610b9bf0ad8f71917d771f76548d808c16a543e8a87fb8f36de6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00816-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 17705771,
+        "marker_sha256": "137603edcfe7f8ffaa78dbd9852cf8925af9e7d0f7e12a99023546a486b05c13",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00817-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23068711,
+        "marker_sha256": "8074a789642ad7aa1bbbae316bebeb50b28cfeb48272e47af2ea4507e1f8d726",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00819-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20451890,
+        "marker_sha256": "6303a6a6e06fc68a243bea0e46f3f86787d9f53ff87b6e4e41316d6a409b5ecb",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00820-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25201508,
+        "marker_sha256": "021892e885eb4458e982d96f82135a898d4df87391d9eb683bafbf3e14ff19a2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00821-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23383268,
+        "marker_sha256": "c786dd48136fbe988d5436d38c4847c5696e56d8b1b5a243b51e462edfe39fcf",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-00822-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20613223,
+        "marker_sha256": "3156419c29b16d602126c21c8c76828df3ecec40c54b50af9b2ed91dda089361",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01057-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20627597,
+        "marker_sha256": "14ea123c5e96dcaf590be2b566afa4a5bec99213f446763b954aa9b4f1fe10c3",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01057-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21204323,
+        "marker_sha256": "1c4dce072f367ee04e5caa96bdfef2b13a922db63d4ff0b6ddc3bacac4f4a877",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01057-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20404520,
+        "marker_sha256": "644a3609dceb54c67b80371aec264faa2359ec281d866bd069a18ca55cc5a985",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01058-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20619773,
+        "marker_sha256": "f2f51b6a20ecbc613b946ea8ccc3f97387c313044a1dc4e8c776d69f15498e86",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01059-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22197452,
+        "marker_sha256": "53765433dede4301644e48311c9bb59197d15ca5e53398701aa3007cb916b050",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01059-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23330902,
+        "marker_sha256": "64cb5f554c2f942c76400a8b40b665cb3276230d6dc862e8acda234adb3c8a15",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01060-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21858854,
+        "marker_sha256": "0df9ccc26b8fc326d8a0ca88c2b06766c87413b9e06b36d8dd24bfdcbfb81c8e",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01061-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22667790,
+        "marker_sha256": "88a8f334da75160e1ee7ca37399884fc957ec2145260dbb72d9632eca477c5d1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01063-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23090037,
+        "marker_sha256": "0b2e7b69a9da458eacfa80c1054c4408f85d0c9ef8e1f5ff65dabd526d314ba4",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01063-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22421021,
+        "marker_sha256": "190556fcad8c983b66798be64911b873c4c585bda19a0e2ea12d9f912d2376ba",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01064-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21385676,
+        "marker_sha256": "9be9c2bbfd2c614a3592a92112514585d5f03d76d6fdadc653b495749910b21e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01065-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 17840720,
+        "marker_sha256": "69ddb974f80dd1b20260f8208719bba94e018999d0d7dde5957bcf33f58df66a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01065-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 17656333,
+        "marker_sha256": "98dc31c05a3207fa6d46db8ec58d7beee72ab59103d72a37ec16415827067caf",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01065-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 17686371,
+        "marker_sha256": "4ec6c4b619502d78471a252c4e13645c7fd255b7da193668cd63bb18f1d18494",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01065-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 17983428,
+        "marker_sha256": "48034950a8c13996fc33278a1819343d4fbbcffcb99873eeb7382d84b14a0ef6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01066-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24155096,
+        "marker_sha256": "3a2cc2b9291aecfac31fa5d1420b31e6709f5e6a5efddf64744591b03846aa12",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01068-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22214481,
+        "marker_sha256": "783ce3721b6686758644c01650c65aa15d6ebf27b3f0ae9955acbc3c7777981c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01069-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19871457,
+        "marker_sha256": "b2f1b84368cd85ad253b7a709d1ce7518bd4d1c307b8bc86352d87a51827470e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01069-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19588601,
+        "marker_sha256": "d3cf1d7230f58bb89859f7b2639d8666d9a0a08b1f870e1592d236807fbb22ea",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01070-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25478178,
+        "marker_sha256": "2a65a821f240a0a25d17adcc7a9acab01a447c6f3583713d6a82b756f1ccf710",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01070-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26316663,
+        "marker_sha256": "6167ea1c110433c4ab15b21f3d67a88f7dbb4aa9b3c249e44e8d08bf81440a36",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01071-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24670314,
+        "marker_sha256": "5e0aa7de0a688e69f57e85d8483bc53fe118291fc7370019b7c261231218db8b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01071-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24897913,
+        "marker_sha256": "193dc918b0bf1afe472e6f557cf339ab955692860fcc9e395320f9b5d370f687",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01073-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24516698,
+        "marker_sha256": "ffcb48772d94a235231a77265ac0070e6637840a2f58d01f76d834fff17ce61e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01073-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24146548,
+        "marker_sha256": "fe63cb26136e44c509ee0260716ec113d7e3b61f3ef17942bc1f6424c1dfa7c7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01073-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24885708,
+        "marker_sha256": "e28f0e216c69f218cca6340d856e94065e90d99cd93e7059461f3b3869a6b247",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01074-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 27001183,
+        "marker_sha256": "5da1ba225988436a3a234619940725cb23b8a248c9227487b99c6cc4b10dc157",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01074-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 28012657,
+        "marker_sha256": "4782208b45db9da6ecf18f07551698554601b91cfeab5660fa9ae6bed2a7c293",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01074-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 27768742,
+        "marker_sha256": "bae0561be81f2cb192b1e439db85053efc5fc3251ff566cb248afccc04e80a46",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01075-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24383793,
+        "marker_sha256": "12d9dcda0fea927b74123e5c533a242b6a177e5e486164b41efb09e362f872e1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01075-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23780494,
+        "marker_sha256": "1cad8d6a2799941d8b75f4e6019542c170b68d33866c56689fec69fdf7c3f151",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01075-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24768889,
+        "marker_sha256": "735540cf557975b14e0e4a1ed2e007bbd16858f28dffbc759fef1eec19cfa91d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01076-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20561334,
+        "marker_sha256": "60063ab9599504a1f21b46906c51d25c5ebf808b7b090a62656c98c8ab0b2695",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01076-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20965433,
+        "marker_sha256": "b08767155c57dda34938b39879ac0ebd61c87872d9db35776ffd4de9f8544d12",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01077-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23648961,
+        "marker_sha256": "263a5e9ea7333fb43e17e46ca3a364986d30a3df13e2653ffdda66e88a15ed72",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01077-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22932040,
+        "marker_sha256": "db80df9111b7c0abda7dd72753efaf6e6cd49e8b32b72f23af57366640b97cbf",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01077-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23598710,
+        "marker_sha256": "69cd7445c8f67f6c82642fa933bfad928b9727eb765a614c531cb2dac584f769",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01077-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23835752,
+        "marker_sha256": "86a1649643b9080bc09e6ff0fdb0ca8dc066bad6d154aaa85088820596af9520",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01078-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25469038,
+        "marker_sha256": "c95337fa883d8ce0d1ba00a12c78ec84e083fa6f395d3771b9b72579ef7bd38f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01078-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25519195,
+        "marker_sha256": "e8f93ec3f48fe52d40cb084b18b5c124ac6799a4d7372ac24635dba78a26effa",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01078-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25538938,
+        "marker_sha256": "f41504b53bf8155204392d384ba465f989ce784507523f16ac0374949f641733",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01079-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22231455,
+        "marker_sha256": "b3c5db3f3ded57ec8dd3a010337b3caac6292911a59844f712455facaab8a0f8",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01079-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22314543,
+        "marker_sha256": "c8d31f41296135c31bd2affe2a736b0e047ce6f0a6103781d97773d99c76a2c7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01079-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22085253,
+        "marker_sha256": "43032bbe71835e00b8e9357af20c86e357e58223a7bfca721b1da657c5282614",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01079-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22096423,
+        "marker_sha256": "4db6334667cc881d2bbb5b0362b0438b7563a92906e621c92b4f6104b1014ecb",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01080-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25403962,
+        "marker_sha256": "79aa9e9eb73f25fabcffc7411d4b11ac56c0e6e3f5a0bc16a01c9fcaa25435d7",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01080-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26113946,
+        "marker_sha256": "05535e94338821f5f034eeb131447082dfcb379dd21e1d7292b9f3d4b6717477",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01080-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25654759,
+        "marker_sha256": "2943cc0936ca96796273876417a8cb499a634ef32c643704044dd77078260567",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01082-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 27481789,
+        "marker_sha256": "06c5a56e88337b1f09c128c34c294dc15bef6a28dd9afbdca0ca55cbb9b5fe78",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01082-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 27807157,
+        "marker_sha256": "c40cbc638e84dbcb03c8740150c3183dde221c4f0fc311a03bbf72d3061fe9c4",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01082-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 28195323,
+        "marker_sha256": "a0fa45dd71d1a38929649a4206a24983aa071e32907a48eaf2aeed096e336730",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01083-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21306164,
+        "marker_sha256": "f05e1b94c45ef91c59b322a045b0da2e6278309c1b6c5afc51936f0688a3f129",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01083-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21428875,
+        "marker_sha256": "ecbde56800ddce21ff1eb0414a6dcb0b0d83345b905fa77e8e72ee98c1f4ff4f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01083-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21952075,
+        "marker_sha256": "4a2979186decebec483f5cd70d8b118264605d799157ff81fe54440cd4864972",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01085-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24461316,
+        "marker_sha256": "0d024adc07fc5e192e79f85ec9ff26f7437d5c6490048277a61a24e58c4d9328",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01085-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25859278,
+        "marker_sha256": "9b5e74e14fd2cbb524009ee4edea432a74552f000a49cc3e2f32a40a55c626fb",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01085-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24840457,
+        "marker_sha256": "178d3094bb43f307d28857d735d67b68159e9a8f3c4b7efb0735688676e1f568",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01085-004",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26254273,
+        "marker_sha256": "ff1f27aea46dc0d29c3e7f0e292d5417a7148cc113fc8af43cd17f3eb3876ae9",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01086-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20846566,
+        "marker_sha256": "30d70a191b8c6f14595015006e6cc921a0c5a934f05c17c68fe7f042a8eff11a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01086-004",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21955609,
+        "marker_sha256": "de246dcad9d3dad46e37b821f810c14de9b159750f5290e5f70a128d957f4bd1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01087-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23075778,
+        "marker_sha256": "4dbfbd00cbb080f7ced5dab913c40ad613b1039b0550198374f7b30099aef27d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01087-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24010012,
+        "marker_sha256": "9ada79946d986c8e3061d100ac9330372246691f6abe9cb1c8877aebd1c06278",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01087-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23956149,
+        "marker_sha256": "86fe6d40fd3c665903a2cef36725de64136a41e10c0f93502fc2b6441abc4a70",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01087-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24010464,
+        "marker_sha256": "1c0b5b3e96a471011e74d4669ce24b96dbd93aeb9c66e9a10a7ee48f4e87cb7a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01088-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22778725,
+        "marker_sha256": "78a2a3fabb856d5ed8fc7e75f28eab5e17e196612dce478eadb7d72ae8f9fcb5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01088-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21634367,
+        "marker_sha256": "5b7338eca02a1599011b75bc067486784c38b8f4063b626a0d4af09b9d25d581",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01088-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21441178,
+        "marker_sha256": "a35ce641109a8bf3d379bd0b5049b91be44068f6b86e968853a45960ba06477b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01089-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22612118,
+        "marker_sha256": "e171e768535b8cc7ca36381806eb4a91ac0874cb0f3a4f19af2c96ce2525d62d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01089-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23991482,
+        "marker_sha256": "7c0aa10a63800358558c6c68bd0ad3a1b97858bc69774a126322fe909172387c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01090-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 18589524,
+        "marker_sha256": "40174ce842fffef6b4a2a513a8be5899f5c0049c647872a180a0260ad9fdeee3",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01090-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19728281,
+        "marker_sha256": "eeccbccce041ab35e2a6d99632fe19f034c3937bc33a12a5d54f0d31a40e6d9e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01090-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19030892,
+        "marker_sha256": "44dccfcd4916469228bbc1696f17a2a42d15f659aaef266994a5a50b8b4f541b",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01090-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19686286,
+        "marker_sha256": "f2469a75a89d3ebc13e9a331ef8e38e8f8cccb082e67f931c0f8201796eb179d",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01091-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23775053,
+        "marker_sha256": "18d32e9668fdd5d1d1be7156c5e719b72c0f5f73ff41e36403af79d39ad0b63c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01092-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26794108,
+        "marker_sha256": "f6058f121798955b9c9f578664707de69d86f8dbbe4f53e1e57954ee72e0861f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01092-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26627042,
+        "marker_sha256": "f55934a4293c9ac8d6aeda4b488b9172d5830b215ab90a8aeccb0668ff7dc895",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01092-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26620782,
+        "marker_sha256": "124fb93a54128998ef32211ec5f7e7e5377bbc5c2ab9d60d411f301533d3ceef",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01093-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24671691,
+        "marker_sha256": "15fd32e57b41c9521a4962244a0b7a106f99ba3502ecb8c7f45ef90d05aae36e",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01094-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23583796,
+        "marker_sha256": "8b7e925afbd117562c0af301a11e7afa96e741da25b19b6e81885b23ae9b81d2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01095-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21876142,
+        "marker_sha256": "1f7413ee65840a6e639d0a0f778032498ab48683271096552cb40ad5acb76fbe",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01095-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22786699,
+        "marker_sha256": "5cf137bad466c464777a80ce1893bcba158bb4c36dfea8bde457598fdb2b4d85",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01096-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23828887,
+        "marker_sha256": "49c0a4176116b74ebcc1f7f1eb577d05158608979841e0292b7affa2550d5584",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01096-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23103219,
+        "marker_sha256": "c8baf03aa68220ff31801004933caeddd3200b03eacde62293aea3602f12f621",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01096-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23293920,
+        "marker_sha256": "adc76b3a887d53933e7a6d7c269078cba688b7f2fd00b68aa245399dcd153d18",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01097-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24879496,
+        "marker_sha256": "167aa74347b432c81b9c96cc8a9c1fdf05c5e65a0240eea1ad00795d816cca99",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01098-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23442362,
+        "marker_sha256": "5e1117b61e466721d29c2ac9ba6aee39afa5407ddf5d844a83f0b73b7313c599",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01098-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23222810,
+        "marker_sha256": "af05c40613403b6719220e8416b193a225d8fe9172f1f21ccd6db1485a6d5335",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01098-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23419936,
+        "marker_sha256": "15242eb514eda71dc283ea7eb5711b690d802d496ae281a8f4f8cba8475ae88c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01100-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 27012665,
+        "marker_sha256": "03bd85f127965638a03f15849bf67015d0ead74c71ec60d41baaea06eb699427",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01100-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26723016,
+        "marker_sha256": "6a118c501f4a33942b53306a68b1fbc47188d019bb4d05378b53cb2fa63d2312",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01100-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26970872,
+        "marker_sha256": "38757960f0fa974c42ee39246e2f9e57cb6c3f7884abb45f3762c9df4d4a0d45",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01100-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26202327,
+        "marker_sha256": "71b8282bdb775383e033716efcdf8890cfabf664dc6454e3b7cc2cee1b863fb1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01101-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22300392,
+        "marker_sha256": "152a3c692b5a0eb3b78e9cd8dee65b8112e1a1793d1b80e1602b14dc27a320ee",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01101-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21899490,
+        "marker_sha256": "95e63000f3ac19e0dded7244160d3263aecd680a964ad0488ddf8eff2afcb443",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01102-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23947428,
+        "marker_sha256": "114018ad8c1365997c42d817c7da58ce57aef707b794f8fbb20b57bcd70ae71f",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01102-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25433192,
+        "marker_sha256": "6cd36b8e211dfe1a8a9f8a0375c8f40b4ae1d20abb79dda3063c8f52cd383ebf",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01102-004",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 26033218,
+        "marker_sha256": "deb59964cbb409ecfdcf43d0f25512405a6bf781da6b9f41ac54d7ff8640cf78",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01103-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20857743,
+        "marker_sha256": "7875107b949f56e16adc9204886a251142e3d46a0c9d16ddca18692e54b2f60a",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01103-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21446171,
+        "marker_sha256": "6b6aed7886f8185b9fa4166f45332069cf4463f6a8c1e94b2630a8e168a68948",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01103-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21453577,
+        "marker_sha256": "624ecd8554533789984b4e4cb86ea7f428e648ce99d616779acff54734d46752",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01104-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23106536,
+        "marker_sha256": "355e83c3483c7add9bea8f1191aa99c69e4679f084e7b6b04285de458c2f81e5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01104-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22854100,
+        "marker_sha256": "d432333d7fda6d94bdb9d099b961c2ac90e88c19673a01ea9ea41089cccf2416",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01105-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20012589,
+        "marker_sha256": "cb00a4fd64ee74b39aca7ff65a96a54bc81d25d1b77f559f994e8498aeb06a91",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01105-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19820004,
+        "marker_sha256": "1f5add3070d2d3686e0e43862ac262714cac6d632b42ea032c8928a92c7ff956",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01106-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22379678,
+        "marker_sha256": "fab69bc6b8e6a88a907a1ad96ef85c7c7a773d66a80e2cc9c282075a363b3615",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01106-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22399090,
+        "marker_sha256": "df3023e3c6e30957ad9eab7c70e8a6748c2e656c8cbe3e6e2207a6328b7c4263",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01106-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22030728,
+        "marker_sha256": "a0b518454abe698ca047b07a6d3e5a16fbeab44d108591e70f2727f5f46f6071",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01107-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24171641,
+        "marker_sha256": "24942a109fa53e32201e78d28776bd1425e6fab932241bb4d97068be7fba5fb6",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01107-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24426256,
+        "marker_sha256": "ec1c0c035a4fc832455e3b00a41b8a7cd049911b2502de68ffadbdc556aaffbb",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01108-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 20731462,
+        "marker_sha256": "16ea66741049a78e445bbbba1a934a4b570950224f99423cc6778be1d19704d1",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01108-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21922664,
+        "marker_sha256": "1e6df1a4a27f833b5e6a758c6728da52895a4f5c04185f1aa9f5446a83e7a361",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01108-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21779206,
+        "marker_sha256": "291e2371d5755ffedc9fc131fe861b86cf860056152b670d4244f48ad8ace607",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01109-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22959630,
+        "marker_sha256": "1abf802c1a2f095e90952a49153773ee6b30da789e43c2d875f7cf2e5361ff09",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01109-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 23221428,
+        "marker_sha256": "76ea4ed64f299a3561461cea15618306b77682dedca756005e63b6adf8be7299",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01109-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22877648,
+        "marker_sha256": "9fa4ef11d4e83899f63a48cdc9fbae356814b805df93c307606266728f330027",
+        "metadata_consistent": true,
+        "split": "val"
+      },
+      {
+        "case_id": "BraTS-MET-01110-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22445834,
+        "marker_sha256": "d6c8e61b107aed7f942a234c28befb03fd4c9aaff80e677f3f438e1d824a66ee",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01110-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 21407954,
+        "marker_sha256": "c4b37fc9c73b14acd8ace2562edee914a1da3e8923466e6c682691930fb51346",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01112-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22786422,
+        "marker_sha256": "6551ed3e3144a6dc694d7b909c498d30be5f0dbdb669dc0ce673479c8674a8f2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01112-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 22668155,
+        "marker_sha256": "00f165b9f7f2738a8fd21507ef1e4c608ee33974736879847563674c695fb8a5",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01114-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 24206567,
+        "marker_sha256": "e35d9cc7f7002f3edf46af46c4a9d5657d728ea0d252337a5f6c13b99a77837c",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01114-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25090623,
+        "marker_sha256": "d00ae3b44d66548f9b350af9f1efb8b2cd0d511ced1f3073a5b9cfdd941b1bb2",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01114-003",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 25665478,
+        "marker_sha256": "d8359b96fd345508b57c9758e4adf5b86820f3be8ab76a2f6bb82cbb0a6b0d19",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01115-000",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 18983410,
+        "marker_sha256": "6f10980db9103ca13911d47f27245f75c895268e104541fb4ff144d095f69ef4",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01115-001",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 19416182,
+        "marker_sha256": "792ae6fc52f301ce955b4c53384fc459e6e76e551f392f37a98be293395c06dc",
+        "metadata_consistent": true,
+        "split": "train"
+      },
+      {
+        "case_id": "BraTS-MET-01115-002",
+        "content_sha_all_files_not_checked": true,
+        "logical_output_bytes": 18782909,
+        "marker_sha256": "29c1c8bcb0ef92a06052e990a9e827c3f47510641ed9069f47826bcc58011801",
+        "metadata_consistent": true,
+        "split": "train"
+      }
+    ],
+    "case_directories": 471,
+    "incomplete_case_directories": [],
+    "marker_written_before_crop_index_generation": true,
+    "metadata_consistent_candidates": 471,
+    "metadata_errors": [],
+    "no_cohort_voxel_scan": true,
+    "output_sha_samples": [
+      {
+        "case_id": "BraTS-MET-00001-000",
+        "mismatches": [],
+        "observed_output_sha256": {
+          "BraTS-MET-00001-000-brainmask.nii.gz": "dc69d7afb072c3a5af2623b35231e5a5df4a47a3f8e9d8e9af98b3ffabd21811",
+          "BraTS-MET-00001-000-seg.nii.gz": "99f3629530a0f671751b748ae88b041c9ce6acf379b56fd7f36312c30363a3f7",
+          "BraTS-MET-00001-000-t1c.nii.gz": "611037df1fcbac610749d4af1a4d765ffe21dc24eedcc697c6f7f033acfd4e19",
+          "BraTS-MET-00001-000-t1n.nii.gz": "ac7c6564bde870ec58afa8225a690cf8568875bf546dc81c536e16c25b1121fb",
+          "BraTS-MET-00001-000-t2f.nii.gz": "67fa4c4173ee958fab7e5ebee731fc791fb8b86b8bbf80d56e10ff4c2a88791f",
+          "BraTS-MET-00001-000-t2w.nii.gz": "8c5376ed55efb3db3a2dd564267a066b48a2b973fa811fade405fdfbdf5541b5"
+        }
+      },
+      {
+        "case_id": "BraTS-MET-00530-000",
+        "mismatches": [],
+        "observed_output_sha256": {
+          "BraTS-MET-00530-000-brainmask.nii.gz": "8c820511e083c996dc8476472a935b94aed55fa5382b0ca2ffafc18a7fd4c780",
+          "BraTS-MET-00530-000-seg.nii.gz": "e144eb25fe8dfebeef19a15a76388df8c808de2dd93c0ab2d30a0058c0f351a5",
+          "BraTS-MET-00530-000-t1c.nii.gz": "406140984e43a60747db605ccbff151ae73be04c2b3a555b5b4a336ebc4e405e",
+          "BraTS-MET-00530-000-t1n.nii.gz": "183fc2536061ac67eb8ed8b2e829d0de3c6f1f69cda2c2568a04bf1388826ea5",
+          "BraTS-MET-00530-000-t2f.nii.gz": "8af1b301a7c94013c208958a5049cb8817b8351c569616e06600cb6e7b1e5541",
+          "BraTS-MET-00530-000-t2w.nii.gz": "dd25440ceb157807423e06eeb17d41d5da4e7be9a71121a688c4f30853581eed"
+        }
+      },
+      {
+        "case_id": "BraTS-MET-01115-002",
+        "mismatches": [],
+        "observed_output_sha256": {
+          "BraTS-MET-01115-002-brainmask.nii.gz": "cb2cd5a8d63e89829b8709894cc894b7f1113bedffb595de4abc8e47db3cd5eb",
+          "BraTS-MET-01115-002-seg.nii.gz": "aad344b96d145e4e73d2acf1a60f2094eb41a8cb35935d2853fba74d6290fba0",
+          "BraTS-MET-01115-002-t1c.nii.gz": "4b25f2698edd70adde1b04ace0003b2ec60e669c62ec920e4abaf4b9d30ca0c0",
+          "BraTS-MET-01115-002-t1n.nii.gz": "6447d1650b77f342c2b0d1dfa265523963a0e9ac58976570c0534354ce48b907",
+          "BraTS-MET-01115-002-t2f.nii.gz": "8f18f104ee5ad26e08e3e09da47572a1592be766082630736149f8c447fe1d00",
+          "BraTS-MET-01115-002-t2w.nii.gz": "c6d1ebf02e2bd9744ad5f98652ad393f683d2e28d6f3087555befb9e72a7cbf2"
+        }
+      }
+    ],
+    "per_case_crop_rows_persisted": false,
+    "reuse_authorized_or_performed": false
+  },
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4096309|FAILED|1:0|05:01:38\n4096309.batch|FAILED|1:0|05:01:38\n4096310|CANCELLED|0:0|00:00:00\n4096311|CANCELLED|0:0|00:00:00\n4096312|CANCELLED|0:0|00:00:00\n4096313|CANCELLED|0:0|00:00:00\n"
+  },
+  "scope": "one native label + exact resampling; prior outputs metadata inventory and up to three content-SHA samples; no cohort image scan",
+  "seconds": 94.675,
+  "single_case": {
+    "anisotropic_separate_axis": null,
+    "exact_label_counts": {
+      "0": 12188674,
+      "1": 9,
+      "2": 311,
+      "3": 702,
+      "4": 0
+    },
+    "exact_lost_classes": [
+      "4"
+    ],
+    "native_affine": [
+      [
+        0.5,
+        0.0,
+        -0.0,
+        -123.92170715332031
+      ],
+      [
+        0.0,
+        0.5,
+        -0.0,
+        -131.76699829101562
+      ],
+      [
+        0.0,
+        0.0,
+        0.800000011920929,
+        -68.88967895507812
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "native_class4_bbox_inclusive": [
+      [
+        337,
+        225,
+        164
+      ],
+      [
+        341,
+        308,
+        165
+      ]
+    ],
+    "native_class4_ijk_first64": [
+      [
+        337,
+        307,
+        165
+      ],
+      [
+        337,
+        308,
+        164
+      ],
+      [
+        337,
+        308,
+        165
+      ],
+      [
+        338,
+        307,
+        164
+      ],
+      [
+        338,
+        307,
+        165
+      ],
+      [
+        338,
+        308,
+        164
+      ],
+      [
+        338,
+        308,
+        165
+      ],
+      [
+        339,
+        307,
+        164
+      ],
+      [
+        339,
+        307,
+        165
+      ],
+      [
+        339,
+        308,
+        164
+      ],
+      [
+        339,
+        308,
+        165
+      ],
+      [
+        340,
+        225,
+        164
+      ],
+      [
+        340,
+        226,
+        164
+      ],
+      [
+        340,
+        226,
+        165
+      ],
+      [
+        340,
+        307,
+        165
+      ],
+      [
+        340,
+        308,
+        164
+      ],
+      [
+        340,
+        308,
+        165
+      ],
+      [
+        341,
+        307,
+        165
+      ],
+      [
+        341,
+        308,
+        165
+      ]
+    ],
+    "native_class4_projected_target_ijk_first64": [
+      [
+        168.25,
+        153.25,
+        131.90000197291374
+      ],
+      [
+        168.25,
+        153.75,
+        131.1000019609928
+      ],
+      [
+        168.25,
+        153.75,
+        131.90000197291374
+      ],
+      [
+        168.75,
+        153.25,
+        131.1000019609928
+      ],
+      [
+        168.75,
+        153.25,
+        131.90000197291374
+      ],
+      [
+        168.75,
+        153.75,
+        131.1000019609928
+      ],
+      [
+        168.75,
+        153.75,
+        131.90000197291374
+      ],
+      [
+        169.25,
+        153.25,
+        131.1000019609928
+      ],
+      [
+        169.25,
+        153.25,
+        131.90000197291374
+      ],
+      [
+        169.25,
+        153.75,
+        131.1000019609928
+      ],
+      [
+        169.25,
+        153.75,
+        131.90000197291374
+      ],
+      [
+        169.75,
+        112.25,
+        131.1000019609928
+      ],
+      [
+        169.75,
+        112.75,
+        131.1000019609928
+      ],
+      [
+        169.75,
+        112.75,
+        131.90000197291374
+      ],
+      [
+        169.75,
+        153.25,
+        131.90000197291374
+      ],
+      [
+        169.75,
+        153.75,
+        131.1000019609928
+      ],
+      [
+        169.75,
+        153.75,
+        131.90000197291374
+      ],
+      [
+        170.25,
+        153.25,
+        131.90000197291374
+      ],
+      [
+        170.25,
+        153.75,
+        131.90000197291374
+      ]
+    ],
+    "native_class4_volume_mm3": 3.8000000566244125,
+    "native_class4_world_mm_first64": [
+      [
+        44.57829284667969,
+        21.733001708984375,
+        63.11032301187515
+      ],
+      [
+        44.57829284667969,
+        22.233001708984375,
+        62.310322999954224
+      ],
+      [
+        44.57829284667969,
+        22.233001708984375,
+        63.11032301187515
+      ],
+      [
+        45.07829284667969,
+        21.733001708984375,
+        62.310322999954224
+      ],
+      [
+        45.07829284667969,
+        21.733001708984375,
+        63.11032301187515
+      ],
+      [
+        45.07829284667969,
+        22.233001708984375,
+        62.310322999954224
+      ],
+      [
+        45.07829284667969,
+        22.233001708984375,
+        63.11032301187515
+      ],
+      [
+        45.57829284667969,
+        21.733001708984375,
+        62.310322999954224
+      ],
+      [
+        45.57829284667969,
+        21.733001708984375,
+        63.11032301187515
+      ],
+      [
+        45.57829284667969,
+        22.233001708984375,
+        62.310322999954224
+      ],
+      [
+        45.57829284667969,
+        22.233001708984375,
+        63.11032301187515
+      ],
+      [
+        46.07829284667969,
+        -19.266998291015625,
+        62.310322999954224
+      ],
+      [
+        46.07829284667969,
+        -18.766998291015625,
+        62.310322999954224
+      ],
+      [
+        46.07829284667969,
+        -18.766998291015625,
+        63.11032301187515
+      ],
+      [
+        46.07829284667969,
+        21.733001708984375,
+        63.11032301187515
+      ],
+      [
+        46.07829284667969,
+        22.233001708984375,
+        62.310322999954224
+      ],
+      [
+        46.07829284667969,
+        22.233001708984375,
+        63.11032301187515
+      ],
+      [
+        46.57829284667969,
+        21.733001708984375,
+        63.11032301187515
+      ],
+      [
+        46.57829284667969,
+        22.233001708984375,
+        63.11032301187515
+      ]
+    ],
+    "native_label_counts": {
+      "0": 60812172,
+      "1": 58,
+      "2": 1671,
+      "3": 3488,
+      "4": 19
+    },
+    "native_manifest_sha256": "d37cfb0751736d3b69dd99faa8b8abafb5ad31a508cc5b754fd69ada6e12668d",
+    "native_shape": [
+      512,
+      512,
+      232
+    ],
+    "native_spacing_mm": [
+      0.5,
+      0.5,
+      0.800000011920929
+    ],
+    "nearest_class4_target_ijk_first64": [
+      [
+        168,
+        153,
+        132
+      ],
+      [
+        169,
+        153,
+        131
+      ],
+      [
+        169,
+        153,
+        132
+      ],
+      [
+        170,
+        153,
+        132
+      ]
+    ],
+    "probability": {
+      "class4_threshold_hits": 0,
+      "max_class4_probability": 0.4375012218952179,
+      "nearest4_samples": [
+        {
+          "background_would_overwrite_nearest4": true,
+          "final_label": 0,
+          "probability0": 0.7812494039535522,
+          "probability4": 0.21875061094760895,
+          "sample_native_continuous_ijk": [
+            336.5,
+            306.5,
+            165.1249975319952
+          ],
+          "sample_native_nearest_ijk": [
+            337,
+            307,
+            165
+          ],
+          "target_ijk": [
+            168,
+            153,
+            132
+          ]
+        },
+        {
+          "background_would_overwrite_nearest4": true,
+          "final_label": 0,
+          "probability0": 0.5625012516975403,
+          "probability4": 0.4374987781047821,
+          "sample_native_continuous_ijk": [
+            338.5,
+            306.5,
+            163.87499755062166
+          ],
+          "sample_native_nearest_ijk": [
+            339,
+            307,
+            164
+          ],
+          "target_ijk": [
+            169,
+            153,
+            131
+          ]
+        },
+        {
+          "background_would_overwrite_nearest4": true,
+          "final_label": 0,
+          "probability0": 0.5624987483024597,
+          "probability4": 0.4375012218952179,
+          "sample_native_continuous_ijk": [
+            338.5,
+            306.5,
+            165.1249975319952
+          ],
+          "sample_native_nearest_ijk": [
+            339,
+            307,
+            165
+          ],
+          "target_ijk": [
+            169,
+            153,
+            132
+          ]
+        },
+        {
+          "background_would_overwrite_nearest4": true,
+          "final_label": 0,
+          "probability0": 0.5624987483024597,
+          "probability4": 0.4375012218952179,
+          "sample_native_continuous_ijk": [
+            340.5,
+            306.5,
+            165.1249975319952
+          ],
+          "sample_native_nearest_ijk": [
+            341,
+            307,
+            165
+          ],
+          "target_ijk": [
+            170,
+            153,
+            132
+          ]
+        }
+      ],
+      "roi_origin": [
+        166,
+        110,
+        129
+      ],
+      "roi_shape": [
+        8,
+        47,
+        6
+      ]
+    },
+    "pure_nearest_is_diagnostic_only_not_authorized_runtime": true,
+    "pure_nearest_label_counts": {
+      "0": 12188663,
+      "1": 13,
+      "2": 331,
+      "3": 685,
+      "4": 4
+    },
+    "reconstruction_seg_sha256": "b8a1f728ea26abbbd4e8c892cfd913f8a74a530e699c3bbbb3131f489ba69bb6",
+    "sample_factor": [
+      2.0,
+      2.0,
+      1.2499999813735487
+    ],
+    "sample_offset": [
+      0.5,
+      0.5,
+      0.12499999068677436
+    ],
+    "source_affine": [
+      [
+        0.5,
+        0.0,
+        -0.0,
+        -123.92170715332031
+      ],
+      [
+        0.0,
+        0.5,
+        -0.0,
+        -131.76699829101562
+      ],
+      [
+        0.0,
+        0.0,
+        0.800000011920929,
+        -68.88967895507812
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "source_recon_affine_max_abs": 0.0,
+    "source_seg_sha256": "b8a1f728ea26abbbd4e8c892cfd913f8a74a530e699c3bbbb3131f489ba69bb6",
+    "source_shape": [
+      512,
+      512,
+      232
+    ],
+    "target_affine": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -123.67170715332031
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -131.51699829101562
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -68.78967896103859
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "target_shape": [
+      256,
+      256,
+      186
+    ]
+  },
+  "split": "train",
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+}

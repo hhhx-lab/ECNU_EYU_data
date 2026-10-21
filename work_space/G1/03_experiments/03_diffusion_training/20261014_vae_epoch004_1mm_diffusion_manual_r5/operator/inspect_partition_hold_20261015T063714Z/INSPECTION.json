@@ -1,0 +1,470 @@
+{
+  "evidence": {
+    "AUTHORIZATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "dependent_jobs": [
+        "4069916",
+        "4069917",
+        "4069918",
+        "4069919"
+      ],
+      "formal_gate_status": "not_run_not_passed",
+      "operator_approved": false,
+      "package_sha256": "13f188b2609ba57544c1258aa368daeabe0201ecbdb81c3ec86700f6441b6ede",
+      "prepare_job": "4069915",
+      "remote_utc": "2026-10-15T06:25:06.039205+00:00",
+      "scope": "one existing pending job; hold, update partition only, audit, release; no sbatch or cancellation",
+      "status": "resource_correction_authorized",
+      "user_authorization": "\u6838\u9a8c\u5e76\u6539\u7528 cpu_192G\uff0c\u4fdd\u6301\u539f 8 CPU\u300190G\u300124h\uff0c\u540c\u65f6\u6b63\u786e\u5904\u7406\u56db\u8def\u8bad\u7ec3\u4f9d\u8d56"
+    },
+    "CORRECTION_FAILED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "message": "",
+      "mutation_responses": [
+        {
+          "argv": [
+            "scontrol",
+            "hold",
+            "4069915"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "",
+          "utc": "2026-10-15T06:25:07.343762+00:00"
+        }
+      ],
+      "operator_approved": false,
+      "remote_audit": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/evidence/prepare_cpu192_correction_20261015T063601Z",
+      "remote_utc": "2026-10-15T06:25:07.446966+00:00",
+      "stage": "hold",
+      "status": "stopped",
+      "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 92, in <module>\n  File \"<string>\", line 30, in verify_cpu\nAssertionError\n"
+    },
+    "HOLD_RESPONSE.json": {
+      "argv": [
+        "scontrol",
+        "hold",
+        "4069915"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-15T06:25:07.343762+00:00"
+    },
+    "RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4069915",
+      "new_partition": "cpu_192G",
+      "old_held_audit_sha256": "d7a6e3517a4b4e6cc54f2f209860a1bcc5f6301af695cc89162754d80530d6d0",
+      "old_partition": "cpu_96G",
+      "operator_approved": false,
+      "remote_utc": "2026-10-15T06:25:07.210867+00:00",
+      "static_sha256": "383eddeece50c875cd51bffc36615fb018cebf3b1310c0e1f7125d9155cd256a",
+      "status": "exclusive_pending_job_correction_reserved",
+      "unchanged_script_sha256": "662be13b858b7d9289d1eaf790d075ef9377ab2fe7e3b4587db54a34ce3b2a62"
+    },
+    "STATIC_RESOURCE_PREFLIGHT.json": {
+      "account_disk": {
+        "argv": [
+          "df",
+          "-B1",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1974860775424 224162480128  90% /public\n",
+        "utc": "2026-10-15T06:25:07.006948+00:00"
+      },
+      "artifact_status": "experimental_unvalidated",
+      "available_bytes": 224162480128,
+      "correction": "Partition cpu_96G -> cpu_192G only",
+      "dependents_before": {
+        "4069916": {
+          "argv": [
+            "scontrol",
+            "show",
+            "job",
+            "4069916",
+            "-o"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "JobId=4069916 JobName=g1d1m5t1c UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:42 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:42 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t1c.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1c_4069916.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1c_4069916.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+          "utc": "2026-10-15T06:25:06.287810+00:00"
+        },
+        "4069917": {
+          "argv": [
+            "scontrol",
+            "show",
+            "job",
+            "4069917",
+            "-o"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "JobId=4069917 JobName=g1d1m5t1n UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:42 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:42 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t1n.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1n_4069917.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1n_4069917.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+          "utc": "2026-10-15T06:25:06.337157+00:00"
+        },
+        "4069918": {
+          "argv": [
+            "scontrol",
+            "show",
+            "job",
+            "4069918",
+            "-o"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "JobId=4069918 JobName=g1d1m5t2w UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:43 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:43 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t2w.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2w_4069918.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2w_4069918.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+          "utc": "2026-10-15T06:25:06.382074+00:00"
+        },
+        "4069919": {
+          "argv": [
+            "scontrol",
+            "show",
+            "job",
+            "4069919",
+            "-o"
+          ],
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "JobId=4069919 JobName=g1d1m5t2f UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:43 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:43 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t2f.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2f_4069919.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2f_4069919.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+          "utc": "2026-10-15T06:25:06.453043+00:00"
+        }
+      },
+      "drift": [],
+      "eligible_nodes": [
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node201",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node202",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node203",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node204",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node205",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node206",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node207",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node208",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node209",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node210",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node211",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node212",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node213",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node214",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node215",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node216",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node217",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node218",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node219",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node220",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node221",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node222",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node223",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node224",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node225",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node226",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "MIXED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node227",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node228",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "ALLOCATED"
+        },
+        {
+          "allocatable_mib": 180673,
+          "cpu_total": 28,
+          "node": "node230",
+          "real_memory_mib": 190913,
+          "reserved_mib": 10240,
+          "state": "MIXED"
+        }
+      ],
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "login1",
+      "nodes": {
+        "argv": [
+          "scontrol",
+          "show",
+          "node",
+          "node201,node202,node203,node204,node205,node206,node207,node208,node209,node210,node211,node212,node213,node214,node215,node216,node217,node218,node219,node220,node221,node222,node223,node224,node225,node226,node227,node228,node230",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "NodeName=node201 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=30.45 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node201 NodeHostName=b111 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=180673 FreeMem=107982 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:47 SlurmdStartTime=2026-05-06T21:19:06 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=180673M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node202 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.94 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node202 NodeHostName=b112 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=180673 FreeMem=131591 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:48 SlurmdStartTime=2026-05-06T21:19:11 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=180673M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node203 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=30.25 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node203 NodeHostName=b113 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=526 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:47 SlurmdStartTime=2026-05-06T21:19:12 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node204 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.72 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node204 NodeHostName=b114 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=15577 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:52 SlurmdStartTime=2026-01-14T14:48:21 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node205 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=29.90 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node205 NodeHostName=b115 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=39181 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:39:30 SlurmdStartTime=2026-05-09T18:58:13 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node206 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.58 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node206 NodeHostName=b116 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=33981 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:49 SlurmdStartTime=2026-05-09T18:58:18 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node207 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=1.88 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node207 NodeHostName=b117 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=29871 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:49 SlurmdStartTime=2026-01-14T15:01:47 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node208 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.67 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node208 NodeHostName=b118 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=26136 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:51 SlurmdStartTime=2026-01-14T14:55:50 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node209 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=30.64 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node209 NodeHostName=b121 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=180673 FreeMem=79108 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:42:12 SlurmdStartTime=2026-05-26T16:29:20 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=180673M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node210 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.73 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node210 NodeHostName=b122 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=27489 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:47 SlurmdStartTime=2026-01-14T14:53:34 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node211 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=29.94 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node211 NodeHostName=b123 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=138580 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:46 SlurmdStartTime=2026-01-14T14:52:47 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node212 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=29.03 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node212 NodeHostName=b124 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=117698 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:49 SlurmdStartTime=2025-05-18T12:55:52 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node213 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=12.24 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node213 NodeHostName=b125 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=37596 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:47 SlurmdStartTime=2026-03-02T22:40:30 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node214 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=11.95 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node214 NodeHostName=b126 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=98765 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:48 SlurmdStartTime=2025-05-18T12:55:52 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node215 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.17 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node215 NodeHostName=b127 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=62347 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:46 SlurmdStartTime=2025-05-18T12:55:52 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node216 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.82 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node216 NodeHostName=b128 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=52120 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:45 SlurmdStartTime=2026-05-03T11:37:44 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node217 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=30.16 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node217 NodeHostName=b131 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=31278 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:49 SlurmdStartTime=2026-05-03T11:37:49 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node218 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=1.28 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node218 NodeHostName=b132 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=127222 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:47 SlurmdStartTime=2026-05-03T11:37:49 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node219 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=3.03 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node219 NodeHostName=b133 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=70705 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:46 SlurmdStartTime=2026-05-03T11:37:55 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node220 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.69 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node220 NodeHostName=b134 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=121538 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:48 SlurmdStartTime=2026-05-03T11:37:55 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node221 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.64 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node221 NodeHostName=b135 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=140981 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:46 SlurmdStartTime=2026-05-03T11:38:00 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node222 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.28 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node222 NodeHostName=b136 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=161194 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:47 SlurmdStartTime=2026-05-03T11:38:01 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node223 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.93 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node223 NodeHostName=b137 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=118931 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:46 SlurmdStartTime=2025-05-18T12:55:53 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node224 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=22.89 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node224 NodeHostName=b138 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=166861 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:49 SlurmdStartTime=2025-05-18T12:55:53 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node225 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=22.78 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node225 NodeHostName=b141 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=60644 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:48 SlurmdStartTime=2025-05-18T12:55:53 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node226 Arch=x86_64 CoresPerSocket=14  CPUAlloc=12 CPUTot=28 CPULoad=16.09 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node226 NodeHostName=b142 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=173056 FreeMem=111724 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:50 SlurmdStartTime=2025-05-18T12:55:53 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=12,mem=169G CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node227 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=28.69 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node227 NodeHostName=b143 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=105097 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:46 SlurmdStartTime=2025-05-18T12:55:53 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node228 Arch=x86_64 CoresPerSocket=14  CPUAlloc=28 CPUTot=28 CPULoad=1.94 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node228 NodeHostName=b144 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=83720 FreeMem=145238 Sockets=2 Boards=1 MemSpecLimit=10240 State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:49 SlurmdStartTime=2025-05-18T12:55:52 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=28,mem=83720M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\nNodeName=node230 Arch=x86_64 CoresPerSocket=14  CPUAlloc=13 CPUTot=28 CPULoad=14.07 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=node230 NodeHostName=b146 Version=20.11.8-1.5.1-20221206 OS=Linux 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017  RealMemory=190913 AllocMem=174940 FreeMem=142371 Sockets=2 Boards=1 MemSpecLimit=10240 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=cpu_192G  BootTime=2025-02-18T18:41:48 SlurmdStartTime=2026-05-06T21:19:17 CfgTRES=cpu=28,mem=190913M,billing=28 AllocTRES=cpu=13,mem=174940M CapWatts=n/a CurrentWatts=0 AveWatts=0 ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s Comment=(null)\n",
+        "utc": "2026-10-15T06:25:06.694992+00:00"
+      },
+      "old_job": {
+        "argv": [
+          "scontrol",
+          "show",
+          "job",
+          "4069915",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "JobId=4069915 JobName=g1d1m5p1 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=BadConstraints Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=1-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:41 EligibleTime=2026-10-14T15:41:45 AccrueTime=2026-10-14T15:41:45 StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T18:25:42 Partition=cpu_96G AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=90G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=90G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/prepare.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5p1_4069915.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5p1_4069915.out Power= NtasksPerTRES:0\n",
+        "utc": "2026-10-15T06:25:06.144268+00:00"
+      },
+      "operator_approved": false,
+      "package_sha256": "13f188b2609ba57544c1258aa368daeabe0201ecbdb81c3ec86700f6441b6ede",
+      "partition": {
+        "argv": [
+          "scontrol",
+          "show",
+          "partition",
+          "cpu_192G",
+          "-o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "PartitionName=cpu_192G AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,tianzhixiong,gtshi,mxbai,yliu,a_test,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,yshen,hysun,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,syzhang,scjiang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,test_block1,qzhang,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_cpu_192G DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=node[201-228,230] PriorityJobFactor=1 PriorityTier=9000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=812 TotalNodes=29 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n",
+        "utc": "2026-10-15T06:25:06.499828+00:00"
+      },
+      "qos": {
+        "argv": [
+          "sacctmgr",
+          "-n",
+          "-P",
+          "show",
+          "qos",
+          "where",
+          "name=user_zqchen,partition_cpu_192G",
+          "format=Name,Flags,MaxWall,MaxTRESPerJob,MaxTRESPerNode,MinTRESPerJob,MaxJobsPU,MaxSubmitPU"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "partition_cpu_192g|||||||\nuser_zqchen||||||1000|\n",
+        "utc": "2026-10-15T06:25:07.000070+00:00"
+      },
+      "remote_utc": "2026-10-15T06:25:07.180496+00:00",
+      "sacct": {
+        "argv": [
+          "sacct",
+          "-n",
+          "-P",
+          "-j",
+          "4069915,4069916,4069917,4069918,4069919",
+          "--format=JobID,State,ExitCode,Elapsed"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4069915|PENDING|0:0|00:00:00\n4069916|PENDING|0:0|00:00:00\n4069917|PENDING|0:0|00:00:00\n4069918|PENDING|0:0|00:00:00\n4069919|PENDING|0:0|00:00:00\n",
+        "utc": "2026-10-15T06:25:07.180473+00:00"
+      },
+      "squeue": {
+        "argv": [
+          "squeue",
+          "-h",
+          "-j",
+          "4069915,4069916,4069917,4069918,4069919",
+          "-o",
+          "%i|%T|%r|%P|%M"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4069919|PENDING|Dependency|a100|0:00\n4069918|PENDING|Dependency|a100|0:00\n4069917|PENDING|Dependency|a100|0:00\n4069916|PENDING|Dependency|a100|0:00\n4069915|PENDING|BadConstraints|cpu_96G|0:00\n",
+        "utc": "2026-10-15T06:25:07.078523+00:00"
+      },
+      "status": "pass"
+    }
+  },
+  "jobs": {
+    "4069915": "JobId=4069915 JobName=g1d1m5p1 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldAdmin Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=1-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:41 EligibleTime=2026-10-14T15:41:45 AccrueTime=2026-10-14T15:41:45 StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T18:25:42 Partition=cpu_96G AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=90G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=90G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/prepare.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5p1_4069915.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5p1_4069915.out Power= NtasksPerTRES:0\n",
+    "4069916": "JobId=4069916 JobName=g1d1m5t1c UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:42 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:42 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t1c.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1c_4069916.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1c_4069916.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+    "4069917": "JobId=4069917 JobName=g1d1m5t1n UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:42 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:42 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t1n.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1n_4069917.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t1n_4069917.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+    "4069918": "JobId=4069918 JobName=g1d1m5t2w UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:43 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:43 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t2w.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2w_4069918.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2w_4069918.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+    "4069919": "JobId=4069919 JobName=g1d1m5t2f UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Dependency Dependency=afterok:4069915(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-14T15:41:43 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-14T15:41:43 Partition=a100 AllocNode:Sid=10.11.100.253:24510 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/slurm/t2f.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2f_4069919.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261014_manual_r5/logs/g1d1m5t2f_4069919.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n"
+  }
+}

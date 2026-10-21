@@ -1,0 +1,33 @@
+{
+  "acceptance_status": "waived_by_user_not_pass",
+  "artifact_status": "experimental_unvalidated",
+  "bash_n": "5 pass",
+  "bash_u": "5 pass",
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "network_parameters": 4475999,
+  "operator_approved": false,
+  "package_sha256": "13f188b2609ba57544c1258aa368daeabe0201ecbdb81c3ec86700f6441b6ede",
+  "partitions": {
+    "a100": "PartitionName=a100\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=NO QoS=partition_a100\n   DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=gpu[9,11-14,16-19,22]\n   PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=480 TotalNodes=10 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n",
+    "cpu_96G": "PartitionName=cpu_96G\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,test_block1,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,test_block,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,eduhpc2,eduhpc1,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=YES QoS=partition_cpu_96G\n   DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=node[1-3,5-7,17,19-25,27-28,30-32,34,36-37,43,50,153-155,157-158,160-163,167-168,170-186,188,191-200]\n   PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=1764 TotalNodes=63 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n"
+  },
+  "preprocessing_contract": "926 train/val, authentic common mask, strict 1mm, test104 locked",
+  "py_compile": "pass",
+  "real_import_and_CPU_tests": "7 pass",
+  "status": "pass",
+  "storage_header_upper_bound": {
+    "available_bytes": 224162480128,
+    "cases": 926,
+    "checkpoint_reserve_bytes": 12884901888,
+    "compressed_worst_bound_bytes": 192404457654,
+    "data_upper_bytes": 192322829808,
+    "metadata_reserve_bytes": 1073741824,
+    "method": "full_FOV+zlib_compressBound_default+metadata+temporary+all_checkpoints+4GiB",
+    "required_bytes": 213513415862,
+    "temporary_upper_bytes": 2855347200
+  },
+  "training_contract": "4 independent A100, batch16, eager/nonDDP, each200000 successful updates",
+  "user_queue": "",
+  "utc": "2026-10-14T07:42:29.672491+00:00"
+}

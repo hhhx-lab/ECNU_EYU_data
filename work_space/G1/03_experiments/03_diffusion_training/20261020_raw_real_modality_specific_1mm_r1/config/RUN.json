@@ -1,0 +1,74 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "attempt": "raw_real_modality_specific_1mm_r1",
+  "formal_gate_status": "not_run_not_passed",
+  "independent_full_revalidation": "mandatory_runtime_identity_checks",
+  "label_resampling_algorithm": "original_physical_spacing_v2_labelwise_threshold_no_case_exception",
+  "loss_policy": "uniform_original_quantization_warning_v1",
+  "manual_quality_review": "not_run",
+  "membership_counts": {
+    "t1c": {
+      "train": 1035,
+      "val": 130
+    },
+    "t1n": {
+      "train": 1035,
+      "val": 130
+    },
+    "t2f": {
+      "train": 1035,
+      "val": 130
+    },
+    "t2w": {
+      "train": 823,
+      "val": 103
+    }
+  },
+  "nnunet_equivalence": "not_independently_verified",
+  "operator_approved": false,
+  "preprocess_workers": 4,
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_raw_real_modality_specific_1mm_20261020_r1",
+  "seed": 20261013,
+  "source_kind": "original_authentic_native",
+  "source_records_sha256": "a85942fe95a33b131af8a925949561777ee443af093bf2e19d6e9d229ac02d27",
+  "support_contract": "signal_statistics_vs_full_native_FOV_geometry_v1",
+  "synthesized_t2w": false,
+  "training": {
+    "adam_beta1": 0.9,
+    "batch_size": 16,
+    "cache_rate": 1.0,
+    "crop_size": 64,
+    "dataset": "BRATS_2024",
+    "feature_size": 48,
+    "generator_type": "Unet_NnU",
+    "in_channels": 5,
+    "loader_workers": 0,
+    "n_steps": 1000,
+    "no_roi_cache": false,
+    "noise_embedding_mode": "continuous",
+    "noise_schedule": "edm",
+    "noise_type": "gaussian_tumour",
+    "normalization": "nnunet",
+    "num_steps": 200000,
+    "num_workers": 4,
+    "optim_lr": 0.0002,
+    "out_channels": 1,
+    "p_uncond": 0.0,
+    "patient_balance_mode": "none",
+    "planner_gpu_gb": 48.0,
+    "reg_weight": 1e-05,
+    "rho": 7.0,
+    "sigma_data": 1.0,
+    "sigma_max": 50.0,
+    "sigma_min": 0.002,
+    "small_lesion_clamp": 1.0,
+    "small_lesion_threshold": 27.0,
+    "small_lesion_weight": 3.0,
+    "snr_shift": 0.0,
+    "time_ch_count": 8,
+    "use_all_rows": false,
+    "use_checkpoint": false,
+    "use_compile": false
+  },
+  "vae_reconstruction": false
+}

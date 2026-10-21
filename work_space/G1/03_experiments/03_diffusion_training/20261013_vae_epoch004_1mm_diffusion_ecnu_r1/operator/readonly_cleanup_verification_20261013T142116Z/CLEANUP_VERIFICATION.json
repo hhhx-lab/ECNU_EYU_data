@@ -1,0 +1,268 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "boundary": "only three representative data/seg array pairs; not full1475case equality; no writes/import project/automatic unpack/cleanup; login process maps not cluster-wide dependency proof",
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "loader_source_excerpt": {
+    "light_training/dataloading/dataset.py": {
+      "excerpt": "\n# Copyright 2020 - 2022 MONAI Consortium\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#     http://www.apache.org/licenses/LICENSE-2.0\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\nfrom sklearn.model_selection import KFold  ## K\u6298\u4ea4\u53c9\u9a8c\u8bc1\nimport pickle\nimport os\nimport json\nimport math\nimport numpy as np\nimport torch\nfrom monai import transforms\nimport SimpleITK as sitk\nfrom tqdm import tqdm \nfrom torch.utils.data import Dataset \nimport glob \nfrom light_training.dataloading.utils import unpack_dataset\nimport random \n\nclass MedicalDataset(Dataset):\n    def __init__(self, datalist, test=False) -> None:\n        super().__init__()\n        \n        self.datalist = datalist\n        self.test = test \n\n        self.data_cached = []\n        for p in tqdm(self.datalist, total=len(self.datalist)):\n            info = self.load_pkl(p)\n\n            self.data_cached.append(info)\n\n        ## unpacking\n        print(f\"unpacking data ....\")\n        # for \n        folder = []\n        for p in self.datalist:\n            f = os.path.dirname(p)\n            if f not in folder:\n                folder.append(f)\n        for f in folder:\n            unpack_dataset(f, \n                        unpack_segmentation=True,\n                        overwrite_existing=False,\n                        num_processes=8)\n\n\n        print(f\"data length is {len(self.datalist)}\")\n        \n    def load_pkl(self, data_path):\n        pass \n        properties_path = f\"{data_path[:-4]}.pkl\"\n        df = open(properties_path, \"rb\")\n        info = pickle.load(df)\n\n        return info \n    \n    def post(self, batch_data):\n        return batch_data\n    \n    def read_data(self, data_path):\n        \n        image_path = data_path.replace(\".npz\", \".npy\")\n        seg_path = data_path.replace(\".npz\", \"_seg.npy\")\n        image_data = np.load(image_path, \"r+\")\n      \n        seg_data = None \n        if not self.test:\n            seg_data = np.load(seg_path, \"r+\")\n        return image_data, seg_data\n\n    def __getitem__(self, i):\n        \n        image, seg = self.read_data(self.datalist[i])\n\n        properties = self.data_cached[i]\n\n        if seg is None:\n            return {\n                \"data\": image,\n                \"properties\": properties\n            }\n        else :",
+      "total_lines": 319
+    },
+    "light_training/dataloading/utils.py": {
+      "excerpt": "import numpy as np \nimport os \nfrom batchgenerators.utilities.file_and_folder_operations import isfile, subfiles\nimport multiprocessing\n\ndef _convert_to_npy(npz_file: str, unpack_segmentation: bool = True, overwrite_existing: bool = False) -> None:\n    # try:\n    a = np.load(npz_file)  # inexpensive, no compression is done here. This just reads metadata\n    if overwrite_existing or not isfile(npz_file[:-3] + \"npy\"):\n        np.save(npz_file[:-3] + \"npy\", a['data'])\n        \n    if unpack_segmentation and (overwrite_existing or not isfile(npz_file[:-4] + \"_seg.npy\")):\n        np.save(npz_file[:-4] + \"_seg.npy\", a['seg'])\n\ndef unpack_dataset(folder: str, unpack_segmentation: bool = True, overwrite_existing: bool = False,\n                   num_processes: int = 8):\n    \"\"\"\n    all npz files in this folder belong to the dataset, unpack them all\n    \"\"\"\n    with multiprocessing.get_context(\"spawn\").Pool(num_processes) as p:\n        npz_files = subfiles(folder, True, None, \".npz\", True)\n        p.starmap(_convert_to_npy, zip(npz_files,\n                                       [unpack_segmentation] * len(npz_files),\n                                       [overwrite_existing] * len(npz_files))\n                  )",
+      "total_lines": 25
+    }
+  },
+  "local_process_build_mappings": [],
+  "local_utc": "2026-10-13T14:21:34.983312+00:00",
+  "operator_approved": false,
+  "remote_utc": "2026-10-13T14:10:32.438947+00:00",
+  "sample_array_comparison": {
+    "exit_code": 0,
+    "samples": [
+      {
+        "case_id": "BraTS-MET-00001-000",
+        "checks": {
+          "data": {
+            "array_equal": true,
+            "compressed_dtype": "float32",
+            "compressed_shape": [
+              4,
+              129,
+              160,
+              138
+            ],
+            "finite": true,
+            "present": true,
+            "unpacked_dtype": "float32",
+            "unpacked_shape": [
+              4,
+              129,
+              160,
+              138
+            ]
+          },
+          "seg": {
+            "array_equal": true,
+            "compressed_dtype": "int8",
+            "compressed_shape": [
+              1,
+              129,
+              160,
+              138
+            ],
+            "finite": true,
+            "present": true,
+            "unpacked_dtype": "int8",
+            "unpacked_shape": [
+              1,
+              129,
+              160,
+              138
+            ]
+          }
+        },
+        "directory": "/public/home/zqchen/SegMamba-main/data/fullres/train",
+        "npz_keys": [
+          "data",
+          "seg"
+        ]
+      },
+      {
+        "case_id": "BraTS-MET-00002-000",
+        "checks": {
+          "data": {
+            "array_equal": true,
+            "compressed_dtype": "float32",
+            "compressed_shape": [
+              4,
+              132,
+              167,
+              124
+            ],
+            "finite": true,
+            "present": true,
+            "unpacked_dtype": "float32",
+            "unpacked_shape": [
+              4,
+              132,
+              167,
+              124
+            ]
+          },
+          "seg": {
+            "array_equal": true,
+            "compressed_dtype": "int8",
+            "compressed_shape": [
+              1,
+              132,
+              167,
+              124
+            ],
+            "finite": true,
+            "present": true,
+            "unpacked_dtype": "int8",
+            "unpacked_shape": [
+              1,
+              132,
+              167,
+              124
+            ]
+          }
+        },
+        "directory": "/public/home/zqchen/SegMamba-main/data/fullres/train",
+        "npz_keys": [
+          "data",
+          "seg"
+        ]
+      },
+      {
+        "case_id": "BraTS-MET-00833-000",
+        "checks": {
+          "data": {
+            "array_equal": true,
+            "compressed_dtype": "float32",
+            "compressed_shape": [
+              4,
+              138,
+              179,
+              132
+            ],
+            "finite": true,
+            "present": true,
+            "unpacked_dtype": "float32",
+            "unpacked_shape": [
+              4,
+              138,
+              179,
+              132
+            ]
+          },
+          "seg": {
+            "array_equal": true,
+            "compressed_dtype": "int8",
+            "compressed_shape": [
+              1,
+              138,
+              179,
+              132
+            ],
+            "finite": true,
+            "present": true,
+            "unpacked_dtype": "int8",
+            "unpacked_shape": [
+              1,
+              138,
+              179,
+              132
+            ]
+          }
+        },
+        "directory": "/public/home/zqchen/SegMamba-main/data/validation_preprocessed",
+        "npz_keys": [
+          "data",
+          "seg"
+        ]
+      }
+    ],
+    "stderr": ""
+  },
+  "selected_environment_module_paths": [
+    {
+      "environment": "segmamba",
+      "exists": true,
+      "module": "mamba_ssm",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/mamba_ssm",
+      "symlink": false
+    },
+    {
+      "environment": "segmamba",
+      "exists": true,
+      "module": "causal_conv1d",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/causal_conv1d",
+      "symlink": false
+    },
+    {
+      "environment": "segmamba",
+      "exists": true,
+      "module": "mamba_ssm",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/mamba_ssm",
+      "symlink": false
+    },
+    {
+      "environment": "segmamba",
+      "exists": true,
+      "module": "causal_conv1d",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/causal_conv1d",
+      "symlink": false
+    },
+    {
+      "environment": "diffusion",
+      "exists": false,
+      "module": "mamba_ssm",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/diffusion/lib/python3.11/site-packages/mamba_ssm",
+      "symlink": false
+    },
+    {
+      "environment": "diffusion",
+      "exists": false,
+      "module": "causal_conv1d",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/diffusion/lib/python3.11/site-packages/causal_conv1d",
+      "symlink": false
+    },
+    {
+      "environment": "diffusion",
+      "exists": false,
+      "module": "mamba_ssm",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/diffusion/lib/python3.11/site-packages/mamba_ssm",
+      "symlink": false
+    },
+    {
+      "environment": "diffusion",
+      "exists": false,
+      "module": "causal_conv1d",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/diffusion/lib/python3.11/site-packages/causal_conv1d",
+      "symlink": false
+    },
+    {
+      "environment": "brats_g1_v2",
+      "exists": true,
+      "module": "mamba_ssm",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/brats_g1_v2/lib/python3.11/site-packages/mamba_ssm",
+      "symlink": false
+    },
+    {
+      "environment": "brats_g1_v2",
+      "exists": false,
+      "module": "causal_conv1d",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/brats_g1_v2/lib/python3.11/site-packages/causal_conv1d",
+      "symlink": false
+    },
+    {
+      "environment": "brats_swin",
+      "exists": false,
+      "module": "mamba_ssm",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/brats_swin/lib/python3.9/site-packages/mamba_ssm",
+      "symlink": false
+    },
+    {
+      "environment": "brats_swin",
+      "exists": false,
+      "module": "causal_conv1d",
+      "references_source_build": false,
+      "resolved": "/public/home/zqchen/.conda/envs/brats_swin/lib/python3.9/site-packages/causal_conv1d",
+      "symlink": false
+    }
+  ]
+}

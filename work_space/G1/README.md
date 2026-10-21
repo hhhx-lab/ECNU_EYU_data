@@ -1,36 +1,17 @@
-# G1 工作区
+# G1：生成模型、缺失模态补全与图像评估
 
-## 整体任务
+整理于2026-09-19。这里是实体文件分类，不是快捷方式视图。
 
-详见 [task_assignment.md](task_assignment.md)。
+| 目录 | 内容 |
+|---|---|
+| [01_code](01_code) | 活动代码、测试和必要的包内README/许可证 |
+| [02_datasets](02_datasets) | 本模块的数据集、样本、潜变量或可复用增强数据 |
+| [03_experiments](03_experiments) | 按研究路线分组的独立实验及其原始结果 |
+| [04_models](04_models) | 从代码或混合目录中分离的模型权重 |
+| [05_documents](05_documents) | 方法、计划、报告、环境和历史说明文档 |
 
-## 当前进度
+当前分类内原文件 5719 份，24,666,013,800 字节。每个数据集、模型或结果批次内均有 `00_说明_20260919.md`。
 
-G1 当前保留两条正式产线：
+VAE/缺失T2W补全与Diffusion增强分开；训练checkpoint保存的扫描影像已放入02_datasets，不再混在模型权重目录。图像质量、offline补全后分割、online增强后分割是三层问题。
 
-| 产线 | 正式代码 | 状态 |
-|---|---|---|
-| 缺失 T2W 填补 V3 | `code/brats2025-latent-ensemble-synthesis-main-v3` | 服务器阶段任务运行中 |
-| Diffusion augmentation V3 | `code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN` | Slurm/手册已改为 NYU Greene 入口（`*_v3_nyu.slurm`） |
-
-两条线不可互换。缺失 T2W 线修复原病例；Diffusion augmentation 线生成新增 synthetic 病例，并由 G2 composer/QC 接收。
-
-## 本周计划
-
-1. 在 NYU Greene 完成 Diffusion augmentation 四模态训练与固定 val 评估。
-2. 锁定四个 checkpoint、采样参数和生成 metadata。
-3. 批量生成后交给 G2 composer 与 full-generation QC。
-
-操作入口：
-
-- [Diffusion 服务器手册（NYU）](docs/G1_diffusion_augmentation服务器训练手册.md)
-- [G1-G2 总运行手册](docs/G1_G2_服务器训练推理QC运行手册.md)
-- [slurm/README.md](code/BraTS_2023_2024_solutions-main%203/Segmentation_Tasks/GliGAN/slurm/README.md)
-- [历史 ECNU 部署记录](docs/G1_Diffusion_V3_ECNU部署记录_2026-07-15.md)
-
-## 提交记录
-
-| 日期 | 内容 | 备注 |
-| --- | --- | --- |
-| 2026-07-15 | Diffusion V3 Slurm/手册切换为 NYU Greene（对齐 main2 `*_v2_nyu.slurm` 风格） | 入口：`slurm/*_v3_nyu.slurm` |
-| 2026-07-15 | Diffusion augmentation V3 真实 GPU 回归、数据契约修复（ECNU 历史验证） | 详见历史 ECNU 部署记录 |
+历史文档、冻结实验runtime及manifest不改写。活动路径配置见项目根.env和tools/project_paths.py；7份路径适配代码的原件另存99_archive。重新训练或提交前须另做实验预检，不能直接复用旧Slurm绝对路径。

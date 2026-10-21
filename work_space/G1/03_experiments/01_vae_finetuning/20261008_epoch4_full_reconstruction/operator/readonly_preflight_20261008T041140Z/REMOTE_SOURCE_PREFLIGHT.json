@@ -1,0 +1,82 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "checkpoint": {
+    "exists": true,
+    "sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+    "size": 251518356
+  },
+  "code_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3",
+  "csv": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/data_csv.csv",
+  "disk": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  222T   27T  90% /public\n",
+  "file_counts": {
+    "seg": 1030,
+    "t1c": 1030,
+    "t1n": 1030,
+    "t2f": 1030,
+    "t2w": 1030
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "inputs_total_bytes": 30395884643,
+  "missing": [],
+  "operator_approved": false,
+  "python": "/public/home/zqchen/.conda/envs/segmamba/bin/python",
+  "rows": 1030,
+  "size_bytes": {
+    "seg": 137641268,
+    "t1c": 7754240182,
+    "t1n": 7234064740,
+    "t2f": 7293791421,
+    "t2w": 7976147032
+  },
+  "source_code": {
+    "configs.py": {
+      "exists": true,
+      "sha256": "105da207a98a3195fa131679ba7ba3e960e5fb03d2441f878e57a40f58917863"
+    },
+    "synthesis/pipeline.py": {
+      "exists": true,
+      "sha256": "0097c284d5d636dfc93f1dfd8461f5d02d54b666aa337a8f635a1c5b4853d396"
+    },
+    "synthesis/spatial.py": {
+      "exists": true,
+      "sha256": "b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb"
+    },
+    "synthesis/utils.py": {
+      "exists": true,
+      "sha256": "5d5dd28de7dfed96fe6c3988da52563f37940e89850fc2b84accafd8bd55d3ab"
+    },
+    "validate_vae_recon.py": {
+      "exists": true,
+      "sha256": "9be80f1b580f3cf211ece4b593f4d8735aaabfed1d9fcae0980e9d682e899c66"
+    }
+  },
+  "source_root_samples": [
+    [
+      "/public/home/zqchen/data",
+      1030
+    ],
+    [
+      "/public/home/zqchen/data",
+      1030
+    ],
+    [
+      "/public/home/zqchen/data",
+      1030
+    ],
+    [
+      "/public/home/zqchen/data",
+      1030
+    ],
+    [
+      "/public/home/zqchen/data",
+      1030
+    ]
+  ],
+  "split_counts": {
+    "test": 104,
+    "train": 823,
+    "val": 103
+  },
+  "utc": "2026-10-08T04:00:52.418501+00:00"
+}

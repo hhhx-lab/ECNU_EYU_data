@@ -1,0 +1,131 @@
+===== G1 VAE extended fine-tuning =====
+Job ID: 3577166
+Node: gpu16
+UTC: 2026-09-02T02:23:29Z
+GPU: NVIDIA A100-PCIE-40GB
+Output: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training
+Contract: epoch 1-20; extend to 30 only when epoch 20 remains selected
+Train subjects: 823
+Val subjects:   103 (quick fixed subset: 20)
+Train samples per epoch (subjects x 4 modalities): 3292
+Training patch: (128, 128, 96); tumor/brain target probability: 80%/20%
+Segmentation mode: binary_union
+Device: cuda:0
+AMP dtype: bfloat16; GradScaler: disabled
+
+Loading VAE from: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt
+VAE loaded (20.9M params)
+Per-block gradient checkpointing: disabled
+Optimizer: Encoder LR=2e-06, Decoder LR=1e-06
+Epoch plan: 1-20, conditional extension to 30; scheduler T_max=30; batch size=2
+
+Computing frozen-VAE quick-validation baseline ...
+Baseline T2W: whole_ssim=0.208720  tumor_ssim=0.664155  tumor_mse=0.002911
+
+Epoch 1 summary — total=0.021365  whole=0.000267  tumor=0.000564  healthy=0.000619  kl=0.591736  lr=1.99e-06  patches(tumor/brain)=648/175  seconds=23639.4
+Val T2W — whole_ssim=0.224766 (delta=+0.016046)  tumor_ssim=0.712535 (delta=+0.048381)  tumor_mse=0.001089 (delta=-0.001822)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_001.pt (cf84a38d29232a69ac839485e65e4d1b57651c74de819f458307e178358ebdbe)
+  Selected epoch so far: 1
+
+Epoch 2 summary — total=0.020286  whole=0.000260  tumor=0.000525  healthy=0.000601  kl=0.588703  lr=1.98e-06  patches(tumor/brain)=626/197  seconds=24528.8
+Val T2W — whole_ssim=0.211218 (delta=+0.002498)  tumor_ssim=0.709276 (delta=+0.045122)  tumor_mse=0.000863 (delta=-0.002048)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_002.pt (0c526cc5f10d1a7bb82d62581adac554a625e323c331dbee0ae14268246c3ba3)
+  Selected epoch so far: 1
+
+Epoch 3 summary — total=0.019748  whole=0.000253  tumor=0.000509  healthy=0.000588  kl=0.576289  lr=1.95e-06  patches(tumor/brain)=649/174  seconds=24392.8
+Val T2W — whole_ssim=0.209583 (delta=+0.000863)  tumor_ssim=0.707516 (delta=+0.043361)  tumor_mse=0.000856 (delta=-0.002055)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_003.pt (290e16eb123e3e551f868c6466e23177e56bb5ef82dcec0dfec64a101e5f031c)
+  Selected epoch so far: 1
+
+Epoch 4 summary — total=0.019833  whole=0.000258  tumor=0.000512  healthy=0.000594  kl=0.581552  lr=1.92e-06  patches(tumor/brain)=655/168  seconds=24303.7
+Val T2W — whole_ssim=0.210159 (delta=+0.001438)  tumor_ssim=0.710737 (delta=+0.046583)  tumor_mse=0.000753 (delta=-0.002158)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_004.pt (5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b)
+  Selected epoch so far: 4
+
+Epoch 5 summary — total=0.019255  whole=0.000256  tumor=0.000498  healthy=0.000587  kl=0.570865  lr=1.87e-06  patches(tumor/brain)=669/154  seconds=24442.4
+Val T2W — whole_ssim=0.207257 (delta=-0.001464)  tumor_ssim=0.712376 (delta=+0.048221)  tumor_mse=0.000848 (delta=-0.002063)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_005.pt (c2ae1ab923190c06345339c11e479f27ed0b95e3e5016f67f95481ee51e5d652)
+  Selected epoch so far: 4
+
+Epoch 6 summary — total=0.018929  whole=0.000260  tumor=0.000485  healthy=0.000587  kl=0.558710  lr=1.82e-06  patches(tumor/brain)=649/174  seconds=23779.2
+Val T2W — whole_ssim=0.198182 (delta=-0.010538)  tumor_ssim=0.705906 (delta=+0.041751)  tumor_mse=0.000968 (delta=-0.001943)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_006.pt (0ad003469b535513a056c7183eb3515fb0f5ae2ddab681ef9a77cc880252fda2)
+  Selected epoch so far: 4
+
+Epoch 7 summary — total=0.018452  whole=0.000256  tumor=0.000473  healthy=0.000591  kl=0.550566  lr=1.76e-06  patches(tumor/brain)=648/175  seconds=23730.1
+Val T2W — whole_ssim=0.202545 (delta=-0.006175)  tumor_ssim=0.706218 (delta=+0.042064)  tumor_mse=0.000713 (delta=-0.002199)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_007.pt (175e377a9efe5cc0f48c149a0a457721b4a47848e1da6b72a0ab8ac0145399fd)
+  Selected epoch so far: 4
+
+Epoch 8 summary — total=0.018773  whole=0.000259  tumor=0.000479  healthy=0.000590  kl=0.557350  lr=1.69e-06  patches(tumor/brain)=647/176  seconds=24053.5
+Val T2W — whole_ssim=0.204682 (delta=-0.004038)  tumor_ssim=0.707663 (delta=+0.043508)  tumor_mse=0.000837 (delta=-0.002074)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_008.pt (83198c2ac66db39c2918af20b4abcdab9ccf5f2fb07bb2155e462487fcac3f45)
+  Selected epoch so far: 4
+
+Epoch 9 summary — total=0.018375  whole=0.000254  tumor=0.000468  healthy=0.000586  kl=0.553011  lr=1.61e-06  patches(tumor/brain)=647/176  seconds=23601.9
+Val T2W — whole_ssim=0.205980 (delta=-0.002740)  tumor_ssim=0.709809 (delta=+0.045655)  tumor_mse=0.000769 (delta=-0.002142)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_009.pt (ade5d970749b22dacc91ac162bec7ed8288af35dfd4f5d67472044a26d7fe3ca)
+  Selected epoch so far: 4
+
+Epoch 10 summary — total=0.018353  whole=0.000254  tumor=0.000470  healthy=0.000584  kl=0.550186  lr=1.53e-06  patches(tumor/brain)=649/174  seconds=23926.6
+Val T2W — whole_ssim=0.205060 (delta=-0.003660)  tumor_ssim=0.709365 (delta=+0.045210)  tumor_mse=0.000685 (delta=-0.002226)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_010.pt (ecfab9e329958fa0b810e2e716f46513610abd9fd2922198b62a512383fc0839)
+  Selected epoch so far: 4
+
+Epoch 11 summary — total=0.018284  whole=0.000257  tumor=0.000467  healthy=0.000586  kl=0.548923  lr=1.44e-06  patches(tumor/brain)=651/172  seconds=24531.0
+Val T2W — whole_ssim=0.200558 (delta=-0.008162)  tumor_ssim=0.708859 (delta=+0.044704)  tumor_mse=0.000793 (delta=-0.002118)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_011.pt (2b7d353a076285e85ecebc75e6c80d9c06766ba3c5e80baca2363118f810375e)
+  Selected epoch so far: 4
+
+Epoch 12 summary — total=0.018329  whole=0.000254  tumor=0.000470  healthy=0.000581  kl=0.548566  lr=1.34e-06  patches(tumor/brain)=676/147  seconds=24938.4
+Val T2W — whole_ssim=0.197419 (delta=-0.011301)  tumor_ssim=0.705616 (delta=+0.041461)  tumor_mse=0.000990 (delta=-0.001921)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_012.pt (0a549b1f4e6b5ef4ea24cd91f36bfb15036e66756738b3964f1cd74e905f6d29)
+  Selected epoch so far: 4
+
+Epoch 13 summary — total=0.017637  whole=0.000258  tumor=0.000446  healthy=0.000582  kl=0.545542  lr=1.25e-06  patches(tumor/brain)=636/187  seconds=24057.9
+Val T2W — whole_ssim=0.199937 (delta=-0.008784)  tumor_ssim=0.706764 (delta=+0.042609)  tumor_mse=0.000685 (delta=-0.002226)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_013.pt (a7601335699e9f871c8ee5940f3976df0ba6e62f9dc90e4820dcff0504f1b6b6)
+  Selected epoch so far: 4
+
+Epoch 14 summary — total=0.017764  whole=0.000257  tumor=0.000453  healthy=0.000587  kl=0.532517  lr=1.15e-06  patches(tumor/brain)=639/184  seconds=23654.3
+Val T2W — whole_ssim=0.199281 (delta=-0.009439)  tumor_ssim=0.707328 (delta=+0.043174)  tumor_mse=0.000790 (delta=-0.002122)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_014.pt (b47330ba79a6fad063d07ca0a3dd2a84b50e95846c3618c978332ca2911e72d8)
+  Selected epoch so far: 4
+
+Epoch 15 summary — total=0.017598  whole=0.000251  tumor=0.000446  healthy=0.000577  kl=0.532475  lr=1.05e-06  patches(tumor/brain)=644/179  seconds=25065.7
+Val T2W — whole_ssim=0.197213 (delta=-0.011508)  tumor_ssim=0.705283 (delta=+0.041128)  tumor_mse=0.000675 (delta=-0.002236)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_015.pt (98046c834c54173b74660b65614c49a2e43dfd2debdc40f1ec27c498221ff51b)
+  Selected epoch so far: 4
+
+Epoch 16 summary — total=0.017527  whole=0.000253  tumor=0.000441  healthy=0.000577  kl=0.539248  lr=9.51e-07  patches(tumor/brain)=633/190  seconds=24815.9
+Val T2W — whole_ssim=0.197359 (delta=-0.011361)  tumor_ssim=0.705227 (delta=+0.041073)  tumor_mse=0.000784 (delta=-0.002128)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_016.pt (749486c097e79cc086370449e86bce8ff82d6f4a60347b0b90c3d0898f93f8ef)
+  Selected epoch so far: 4
+
+Epoch 17 summary — total=0.017360  whole=0.000257  tumor=0.000439  healthy=0.000578  kl=0.535224  lr=8.52e-07  patches(tumor/brain)=667/156  seconds=23659.2
+Val T2W — whole_ssim=0.195516 (delta=-0.013204)  tumor_ssim=0.704107 (delta=+0.039953)  tumor_mse=0.000688 (delta=-0.002223)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_017.pt (0401d9db7b8975124f40d293d20cb78bea0260a14335c04209d8504772389f6c)
+  Selected epoch so far: 4
+
+Epoch 18 summary — total=0.017643  whole=0.000256  tumor=0.000451  healthy=0.000583  kl=0.528358  lr=7.56e-07  patches(tumor/brain)=637/186  seconds=23655.2
+Val T2W — whole_ssim=0.195027 (delta=-0.013694)  tumor_ssim=0.702917 (delta=+0.038763)  tumor_mse=0.000685 (delta=-0.002227)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_018.pt (65f392ab654c65b836378e67031dcff26e08f842917110647436321f3ae5d8ae)
+  Selected epoch so far: 4
+
+Epoch 19 summary — total=0.017563  whole=0.000252  tumor=0.000446  healthy=0.000580  kl=0.527570  lr=6.64e-07  patches(tumor/brain)=625/198  seconds=23844.0
+Val T2W — whole_ssim=0.193490 (delta=-0.015230)  tumor_ssim=0.701896 (delta=+0.037741)  tumor_mse=0.000804 (delta=-0.002107)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_019.pt (f65b711f7552c7db290e488b58cbbbea3b30fc6d69e3217726e0e0f3eab635cd)
+  Selected epoch so far: 4
+
+Epoch 20 summary — total=0.017257  whole=0.000259  tumor=0.000433  healthy=0.000582  kl=0.534225  lr=5.75e-07  patches(tumor/brain)=650/173  seconds=23577.6
+Val T2W — whole_ssim=0.195175 (delta=-0.013546)  tumor_ssim=0.703479 (delta=+0.039325)  tumor_mse=0.000713 (delta=-0.002198)
+  Checkpoint saved: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_020.pt (7e5da077590b2874bf28a880bdb142fd937982a8917cc5e098eef127b78b7adf)
+  Selected epoch so far: 4
+
+Finished. Selected epoch: 4; stop reason: best_epoch_before_20
+Optimizer steps: 8240
+Training seconds (including quick val): 501428.7
+Peak CUDA memory: allocated=25.45 GiB, reserved=27.02 GiB
+Sampled patches: tumor=12945, brain=3515
+Outputs in: /public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training
+Training stage completed at 2026-09-07T21:58:07Z

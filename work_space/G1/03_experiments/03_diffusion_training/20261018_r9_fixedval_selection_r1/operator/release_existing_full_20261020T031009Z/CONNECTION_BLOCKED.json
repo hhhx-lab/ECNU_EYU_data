@@ -1,0 +1,21 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "connection_blocked_before_ssh",
+  "local_completed_utc": "2026-10-20T03:10:52.047947+00:00",
+  "new_remote_utc": null,
+  "remote_release_attempted": false,
+  "new_sbatch_attempted": false,
+  "remote_recovery_reservation_created": false,
+  "local_release_reservation_retained": true,
+  "error": "split VPN startup failed; private output suppressed",
+  "vpn_status_followup": {"returncode": 0, "status": "logout", "tunnel_status": "tunnelUnavailable", "managed_state": "logged_out"},
+  "receipt_caveat": "The shared Access wrapper infers ownership from an absent compatibility string even when start fails. Its vpn_owned flag alone does not prove a successful session; finally stop returned zero and a separate read-only status confirmed logout.",
+  "latest_remote_evidence": "../held_dependency_diagnosis_20261020T030725Z/HELD_DEPENDENCY_DIAGNOSIS.json",
+  "latest_remote_state": "4159189-4159193 all PENDING JobHeldUser with zero runtime; select depends on the exact four evaluation jobs via afterok",
+  "local_before_network_error": "First invocation encountered a string/Path mismatch before local reservation or network access; fixed locally using Path without modifying the frozen package.",
+  "dependency_parser_checks": {"count": 10, "status": "pass", "scope": "Local dependency syntax only, not a completed remote release audit"},
+  "monitor": "PAUSED; user chose manual queries only",
+  "automatic_retry": false
+}

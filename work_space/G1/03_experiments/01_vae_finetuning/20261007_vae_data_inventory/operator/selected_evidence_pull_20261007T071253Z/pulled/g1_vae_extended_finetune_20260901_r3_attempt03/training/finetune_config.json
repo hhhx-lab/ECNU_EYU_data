@@ -1,0 +1,122 @@
+{
+  "amp_dtype": "bfloat16",
+  "artifact_status": "experimental_unvalidated",
+  "baseline_metrics": {
+    "by_modality": {
+      "t1c": {
+        "healthy_mse": 0.019625413934887127,
+        "kl": 0.21764006465673447,
+        "tumor_mse": 0.018691803656213098,
+        "tumor_ssim": 0.33383936882019044,
+        "whole_mse": 0.004229851288255304,
+        "whole_ssim": 0.13674838244915008
+      },
+      "t1n": {
+        "healthy_mse": 0.002069962377193461,
+        "kl": 0.22128020152449607,
+        "tumor_mse": 0.0024031314580459733,
+        "tumor_ssim": 0.6937597095966339,
+        "whole_mse": 0.0020010740321595223,
+        "whole_ssim": 0.21311821937561035
+      },
+      "t2f": {
+        "healthy_mse": 0.0027679557803715303,
+        "kl": 0.23225706517696382,
+        "tumor_mse": 0.0020848050164611527,
+        "tumor_ssim": 0.6756220102310181,
+        "whole_mse": 0.002077305456623435,
+        "whole_ssim": 0.20643136501312256
+      },
+      "t2w": {
+        "healthy_mse": 0.004703540537809584,
+        "kl": 0.23468309566378592,
+        "tumor_mse": 0.0029113007987211165,
+        "tumor_ssim": 0.6641545772552491,
+        "whole_mse": 0.0023410905734635888,
+        "whole_ssim": 0.2087203800678253
+      }
+    },
+    "overall": {
+      "healthy_mse": 0.007291718157565424,
+      "kl": 0.22646510675549508,
+      "tumor_mse": 0.0065227602323603365,
+      "tumor_ssim": 0.5918439164757728,
+      "whole_mse": 0.0026623303376254624,
+      "whole_ssim": 0.1912545867264271
+    },
+    "row_count": 80
+  },
+  "batch_size": 2,
+  "completed_epochs": 20,
+  "condition_max_relative_tumor_mse_increase": 0.05,
+  "condition_min_delta_tumor_ssim": -0.01,
+  "condition_min_delta_whole_ssim": -0.005,
+  "data_csv": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/data_csv.csv",
+  "data_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input",
+  "device": "cuda:0",
+  "dry_run": false,
+  "extension_epoch_limit": 30,
+  "formal_gate_status": "not_run_not_passed",
+  "grad_clip": 1.0,
+  "gradient_checkpointing": false,
+  "initial_epoch_limit": 20,
+  "kl_weight": 0.01,
+  "lambda_tumor_max": 30.0,
+  "lambda_tumor_min": 3.0,
+  "lr_decoder": 1e-06,
+  "lr_encoder": 2e-06,
+  "max_train_subjects": null,
+  "max_val_subjects": null,
+  "operator_approved": false,
+  "optimizer_steps": 8240,
+  "output_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training",
+  "patch_size": [
+    128,
+    128,
+    96
+  ],
+  "peak_cuda_memory_gib": 25.450698375701904,
+  "peak_cuda_reserved_gib": 27.021484375,
+  "quick_val_subject_ids": [
+    "BraTS-MET-01149-000",
+    "BraTS-MET-00380-000",
+    "BraTS-MET-00613-001",
+    "BraTS-MET-01109-001",
+    "BraTS-MET-00796-000",
+    "BraTS-MET-01217-000",
+    "BraTS-MET-01287-001",
+    "BraTS-MET-01276-001",
+    "BraTS-MET-01250-003",
+    "BraTS-MET-01191-001",
+    "BraTS-MET-01217-003",
+    "BraTS-MET-00292-000",
+    "BraTS-MET-01109-003",
+    "BraTS-MET-01172-004",
+    "BraTS-MET-00532-000",
+    "BraTS-MET-01117-003",
+    "BraTS-MET-01310-002",
+    "BraTS-MET-00625-000",
+    "BraTS-MET-01250-001",
+    "BraTS-MET-01284-000"
+  ],
+  "quick_val_subjects": 20,
+  "save_interval": 1,
+  "scheduler_t_max": 30,
+  "schema_version": 1,
+  "seed": 42,
+  "segmentation_mode": "binary_union",
+  "selected_epoch": 4,
+  "status": "complete",
+  "stop_reason": "best_epoch_before_20",
+  "t2w_min_delta_whole_ssim": -0.005,
+  "t2w_ssim_tie_tolerance": 0.002,
+  "timestamp_utc": "2026-09-07T21:56:36.787262+00:00",
+  "total_patch_counts": {
+    "brain": 3515,
+    "tumor": 12945
+  },
+  "training_seconds": 501428.73017851263,
+  "tumor_patch_probability": 0.8,
+  "vae_weights": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt",
+  "val_interval": 1
+}

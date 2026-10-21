@@ -1,0 +1,277 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 1288342339584,
+  "evidence": {
+    "ALL_HELD_AUDITS.json": {
+      "artifact_status": "experimental_unvalidated",
+      "audits": {
+        "eval_t1c": {
+          "job": {
+            "argv": [
+              "scontrol",
+              "show",
+              "job",
+              "4159189",
+              "-o"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "JobId=4159189 JobName=g1r9v_eval_t1c UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T10:54:09 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T10:54:09 Partition=a100 AllocNode:Sid=10.11.100.253:69350 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/eval_t1c.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t1c_4159189.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t1c_4159189.out Power= TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+            "utc": "2026-10-20T03:34:56.534636+00:00"
+          },
+          "parsed_dependency_ids": [],
+          "script_sha256": "280ac91c462b79196e7d090ee9c5a0109756fb3f9ef78e00c569243db2d476bc"
+        },
+        "eval_t1n": {
+          "job": {
+            "argv": [
+              "scontrol",
+              "show",
+              "job",
+              "4159190",
+              "-o"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "JobId=4159190 JobName=g1r9v_eval_t1n UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T10:54:09 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T10:54:09 Partition=a100 AllocNode:Sid=10.11.100.253:69350 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/eval_t1n.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t1n_4159190.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t1n_4159190.out Power= TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+            "utc": "2026-10-20T03:34:56.609695+00:00"
+          },
+          "parsed_dependency_ids": [],
+          "script_sha256": "a0f2e35b1f3d0f7b7fa1b6e2b1b8bb40cf47d40c638e810f5a9f4e306f104a55"
+        },
+        "eval_t2f": {
+          "job": {
+            "argv": [
+              "scontrol",
+              "show",
+              "job",
+              "4159192",
+              "-o"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "JobId=4159192 JobName=g1r9v_eval_t2f UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T10:54:09 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T10:54:09 Partition=a100 AllocNode:Sid=10.11.100.253:69350 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/eval_t2f.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t2f_4159192.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t2f_4159192.out Power= TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+            "utc": "2026-10-20T03:34:56.760463+00:00"
+          },
+          "parsed_dependency_ids": [],
+          "script_sha256": "34ac2a1563bb56ba4b28fc4568965f6cebb2265e1de333cd701bfe333899252c"
+        },
+        "eval_t2w": {
+          "job": {
+            "argv": [
+              "scontrol",
+              "show",
+              "job",
+              "4159191",
+              "-o"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "JobId=4159191 JobName=g1r9v_eval_t2w UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A SubmitTime=2026-10-20T10:54:09 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T10:54:09 Partition=a100 AllocNode:Sid=10.11.100.253:69350 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/eval_t2w.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t2w_4159191.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/eval_t2w_4159191.out Power= TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0\n",
+            "utc": "2026-10-20T03:34:56.688153+00:00"
+          },
+          "parsed_dependency_ids": [],
+          "script_sha256": "1b2ec25993c0b6f8975858a144b957dcbcf5c071f5aed4e947236803f60885a7"
+        },
+        "select": {
+          "job": {
+            "argv": [
+              "scontrol",
+              "show",
+              "job",
+              "4159193",
+              "-o"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "JobId=4159193 JobName=g1r9v_select UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterok:4159189(unfulfilled),afterok:4159190(unfulfilled),afterok:4159191(unfulfilled),afterok:4159192(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A SubmitTime=2026-10-20T10:54:10 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T10:54:10 Partition=cpu_192G AllocNode:Sid=10.11.100.253:69350 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=32G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=32G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/slurm/select.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/select_4159193.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1/logs/select_4159193.out Power= KillOInInvalidDependent=Yes NtasksPerTRES:0\n",
+            "utc": "2026-10-20T03:34:56.817201+00:00"
+          },
+          "parsed_dependency_ids": [
+            "4159189",
+            "4159190",
+            "4159191",
+            "4159192"
+          ],
+          "script_sha256": "cef411f99b3390abf240c54490f38c6f791876ef058372bc5af4f7cfb9d3f86e"
+        }
+      },
+      "available_bytes": 1288342339584,
+      "formal_gate_status": "not_run_not_passed",
+      "jobs": {
+        "eval_t1c": "4159189",
+        "eval_t1n": "4159190",
+        "eval_t2f": "4159192",
+        "eval_t2w": "4159191",
+        "select": "4159193"
+      },
+      "operator_approved": false,
+      "original_failure_sha256": "789ff21ec284b9d1bd4491661fbf2fefc7e57fbd60368da1da63442bd509e839",
+      "package_sha256": "3486d52cfa995aff8cd439932384d8393224b90630cb878793aba01f7b41d2d4",
+      "prerequisite_accounting": {
+        "argv": [
+          "sacct",
+          "-n",
+          "-P",
+          "-j",
+          "4145277,4145278,4145279,4145280,4145281",
+          "--format=JobID,State,ExitCode"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4145277|COMPLETED|0:0\n4145277.batch|COMPLETED|0:0\n4145278|COMPLETED|0:0\n4145278.batch|COMPLETED|0:0\n4145279|COMPLETED|0:0\n4145279.batch|COMPLETED|0:0\n4145280|COMPLETED|0:0\n4145280.batch|COMPLETED|0:0\n4145281|COMPLETED|0:0\n4145281.batch|COMPLETED|0:0\n",
+        "utc": "2026-10-20T03:34:56.211667+00:00"
+      },
+      "queue": {
+        "argv": [
+          "squeue",
+          "-h",
+          "-n",
+          "g1r9v_eval_t1c,g1r9v_eval_t1n,g1r9v_eval_t2w,g1r9v_eval_t2f,g1r9v_select",
+          "-o",
+          "%i|%T|%j"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4159192|PENDING|g1r9v_eval_t2f\n4159191|PENDING|g1r9v_eval_t2w\n4159190|PENDING|g1r9v_eval_t1n\n4159189|PENDING|g1r9v_eval_t1c\n4159193|PENDING|g1r9v_select\n",
+        "utc": "2026-10-20T03:34:56.457100+00:00"
+      },
+      "status": "pass",
+      "utc": "2026-10-20T03:34:56.819732+00:00"
+    },
+    "RESERVATION.json": {
+      "artifact_status": "experimental_unvalidated",
+      "authorization": "2026-10-20 user: audit and release original five held jobs; no new sbatch",
+      "formal_gate_status": "not_run_not_passed",
+      "jobs": {
+        "eval_t1c": "4159189",
+        "eval_t1n": "4159190",
+        "eval_t2f": "4159192",
+        "eval_t2w": "4159191",
+        "select": "4159193"
+      },
+      "no_retry": true,
+      "operator_approved": false,
+      "recovery_operator_sha256": "bfbf2d78c29927757d52a5a727cdee14e58b928040bef1f968a337def72b139f",
+      "utc": "2026-10-20T03:34:55.954862+00:00"
+    },
+    "SUBMISSION_RECEIPT.json": {
+      "artifact_status": "experimental_unvalidated",
+      "available_bytes": 1288342339584,
+      "formal_gate_status": "not_run_not_passed",
+      "jobs": {
+        "eval_t1c": "4159189",
+        "eval_t1n": "4159190",
+        "eval_t2f": "4159192",
+        "eval_t2w": "4159191",
+        "select": "4159193"
+      },
+      "note": "Original stopped launch preserved; exact existing held jobs audited and released; no sbatch",
+      "operator_approved": false,
+      "original_failure_sha256": "789ff21ec284b9d1bd4491661fbf2fefc7e57fbd60368da1da63442bd509e839",
+      "package_sha256": "3486d52cfa995aff8cd439932384d8393224b90630cb878793aba01f7b41d2d4",
+      "queue": {
+        "argv": [
+          "squeue",
+          "-h",
+          "-j",
+          "4159189,4159190,4159191,4159192,4159193",
+          "-o",
+          "%i|%T|%j|%P|%r|%M"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4159192|PENDING|g1r9v_eval_t2f|a100|None|0:00\n4159191|PENDING|g1r9v_eval_t2w|a100|None|0:00\n4159190|PENDING|g1r9v_eval_t1n|a100|None|0:00\n4159189|PENDING|g1r9v_eval_t1c|a100|None|0:00\n4159193|PENDING|g1r9v_select|cpu_192G|None|0:00\n",
+        "utc": "2026-10-20T03:34:57.149571+00:00"
+      },
+      "recovery_evidence": "evidence/full_release_existing_20261020",
+      "remote_utc": "2026-10-20T03:34:57.111127+00:00",
+      "status": "released"
+    },
+    "eval_t1c_RELEASE.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4159189"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T03:34:57.096044+00:00"
+    },
+    "eval_t1n_RELEASE.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4159190"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T03:34:57.051117+00:00"
+    },
+    "eval_t2f_RELEASE.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4159192"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T03:34:56.951386+00:00"
+    },
+    "eval_t2w_RELEASE.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4159191"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T03:34:56.996133+00:00"
+    },
+    "select_RELEASE.json": {
+      "argv": [
+        "scontrol",
+        "release",
+        "4159193"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "utc": "2026-10-20T03:34:56.899073+00:00"
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "jobs": {
+    "eval_t1c": "4159189",
+    "eval_t1n": "4159190",
+    "eval_t2f": "4159192",
+    "eval_t2w": "4159191",
+    "select": "4159193"
+  },
+  "local_utc": "2026-10-20T03:46:06.579750+00:00",
+  "note": "Original stopped launch preserved; exact existing held jobs audited and released; no sbatch",
+  "operator_approved": false,
+  "original_failure_sha256": "789ff21ec284b9d1bd4491661fbf2fefc7e57fbd60368da1da63442bd509e839",
+  "package_sha256": "3486d52cfa995aff8cd439932384d8393224b90630cb878793aba01f7b41d2d4",
+  "queue": {
+    "argv": [
+      "squeue",
+      "-h",
+      "-j",
+      "4159189,4159190,4159191,4159192,4159193",
+      "-o",
+      "%i|%T|%j|%P|%r|%M"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4159192|PENDING|g1r9v_eval_t2f|a100|None|0:00\n4159191|PENDING|g1r9v_eval_t2w|a100|None|0:00\n4159190|PENDING|g1r9v_eval_t1n|a100|None|0:00\n4159189|PENDING|g1r9v_eval_t1c|a100|None|0:00\n4159193|PENDING|g1r9v_select|cpu_192G|None|0:00\n",
+    "utc": "2026-10-20T03:34:57.149571+00:00"
+  },
+  "recovery_evidence": "evidence/full_release_existing_20261020",
+  "remote_utc": "2026-10-20T03:34:57.111127+00:00",
+  "status": "released"
+}

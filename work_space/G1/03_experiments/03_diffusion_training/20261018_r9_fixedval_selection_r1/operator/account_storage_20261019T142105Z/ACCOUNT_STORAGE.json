@@ -1,0 +1,251 @@
+{
+  "account": {
+    "argv": [
+      "id",
+      "-un"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "zqchen\n"
+  },
+  "hostname": "login1",
+  "local_utc": "2026-10-19T14:21:29.759316+00:00",
+  "paths": {
+    "/public": {
+      "available_bytes": 28143650865152,
+      "device": 42,
+      "df": {
+        "argv": [
+          "df",
+          "-B1",
+          "/public"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem               1B-blocks            Used      Available Use% Mounted on\n12.12.15.3:/public 272678883688448 244535232823296 28143650865152  90% /public\n"
+      },
+      "exists": true,
+      "free_bytes": 28143650865152,
+      "inode_df": {
+        "argv": [
+          "df",
+          "-i",
+          "/public"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 489747921 2232175947   18% /public\n"
+      },
+      "inodes": 2721923868,
+      "inodes_free": 2232175947,
+      "mount": {
+        "argv": [
+          "findmnt",
+          "-T",
+          "/public",
+          "-n",
+          "-o",
+          "SOURCE,TARGET,FSTYPE,OPTIONS"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "12.12.15.3:/public /public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n"
+      },
+      "owner_uid": 0,
+      "resolved_path": "/public",
+      "total_bytes": 272678883688448
+    },
+    "/public/home": {
+      "available_bytes": 28143650865152,
+      "device": 42,
+      "df": {
+        "argv": [
+          "df",
+          "-B1",
+          "/public/home"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem               1B-blocks            Used      Available Use% Mounted on\n12.12.15.3:/public 272678883688448 244535232823296 28143650865152  90% /public\n"
+      },
+      "exists": true,
+      "free_bytes": 28143650865152,
+      "inode_df": {
+        "argv": [
+          "df",
+          "-i",
+          "/public/home"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 489747921 2232175947   18% /public\n"
+      },
+      "inodes": 2721923868,
+      "inodes_free": 2232175947,
+      "mount": {
+        "argv": [
+          "findmnt",
+          "-T",
+          "/public/home",
+          "-n",
+          "-o",
+          "SOURCE,TARGET,FSTYPE,OPTIONS"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "12.12.15.3:/public /public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n"
+      },
+      "owner_uid": 0,
+      "resolved_path": "/public/home",
+      "total_bytes": 272678883688448
+    },
+    "/public/home/zqchen": {
+      "available_bytes": 1288342339584,
+      "device": 42,
+      "df": {
+        "argv": [
+          "df",
+          "-B1",
+          "/public/home/zqchen"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2010192543744 1288342339584  61% /public\n"
+      },
+      "exists": true,
+      "free_bytes": 1288342339584,
+      "inode_df": {
+        "argv": [
+          "df",
+          "-i",
+          "/public/home/zqchen"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 489747921 2232175947   18% /public\n"
+      },
+      "inodes": 2721923868,
+      "inodes_free": 2232175947,
+      "mount": {
+        "argv": [
+          "findmnt",
+          "-T",
+          "/public/home/zqchen",
+          "-n",
+          "-o",
+          "SOURCE,TARGET,FSTYPE,OPTIONS"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "12.12.15.3:/public /public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n"
+      },
+      "owner_uid": 2159,
+      "resolved_path": "/public/home/zqchen",
+      "total_bytes": 3298534883328
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data": {
+      "available_bytes": 1288342339584,
+      "device": 42,
+      "df": {
+        "argv": [
+          "df",
+          "-B1",
+          "/public/home/zqchen/projects/ECNU_EYU_data"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2010192543744 1288342339584  61% /public\n"
+      },
+      "exists": true,
+      "free_bytes": 1288342339584,
+      "inode_df": {
+        "argv": [
+          "df",
+          "-i",
+          "/public/home/zqchen/projects/ECNU_EYU_data"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 489747921 2232175947   18% /public\n"
+      },
+      "inodes": 2721923868,
+      "inodes_free": 2232175947,
+      "mount": {
+        "argv": [
+          "findmnt",
+          "-T",
+          "/public/home/zqchen/projects/ECNU_EYU_data",
+          "-n",
+          "-o",
+          "SOURCE,TARGET,FSTYPE,OPTIONS"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "12.12.15.3:/public /public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n"
+      },
+      "owner_uid": 2159,
+      "resolved_path": "/public/home/zqchen/projects/ECNU_EYU_data",
+      "total_bytes": 3298534883328
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1": {
+      "available_bytes": 1288342339584,
+      "device": 42,
+      "df": {
+        "argv": [
+          "df",
+          "-B1",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2010192543744 1288342339584  61% /public\n"
+      },
+      "exists": true,
+      "free_bytes": 1288342339584,
+      "inode_df": {
+        "argv": [
+          "df",
+          "-i",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 489747921 2232175947   18% /public\n"
+      },
+      "inodes": 2721923868,
+      "inodes_free": 2232175947,
+      "mount": {
+        "argv": [
+          "findmnt",
+          "-T",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1",
+          "-n",
+          "-o",
+          "SOURCE,TARGET,FSTYPE,OPTIONS"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "12.12.15.3:/public /public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n"
+      },
+      "owner_uid": 2159,
+      "resolved_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_r9_fixedval_selection_20261018_r1",
+      "total_bytes": 3298534883328
+    }
+  },
+  "quota": {
+    "argv": [
+      "quota",
+      "-v",
+      "-u",
+      "zqchen"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote_utc": "2026-10-19T14:10:20.685571+00:00",
+  "scope": "df/statvfs/inodes/mount/quota only; no writes, du, dataset/model reads or jobs",
+  "status": "read_only_account_storage",
+  "uid": 2159,
+  "user_report": "account storage expansion requested"
+}

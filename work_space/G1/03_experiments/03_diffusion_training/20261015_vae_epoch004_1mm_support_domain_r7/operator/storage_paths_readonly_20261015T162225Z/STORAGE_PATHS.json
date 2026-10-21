@@ -1,0 +1,338 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "candidates": [
+    {
+      "exists": false,
+      "path": "/hpc_stor/home/zqchen",
+      "symlink": false
+    },
+    {
+      "exists": false,
+      "path": "/hpc_stor/users/zqchen",
+      "symlink": false
+    },
+    {
+      "exists": false,
+      "path": "/hpc_stor/zqchen",
+      "symlink": false
+    },
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /public/home/zqchen\n# owner: zqchen\n# group: users\nuser::rwx\ngroup::---\nother::---\n\n"
+      },
+      "available_bytes": 216084250624,
+      "device": 42,
+      "exists": true,
+      "gid": 100,
+      "group": "users",
+      "mode": "0o700",
+      "owner": "zqchen",
+      "path": "/public/home/zqchen",
+      "resolved": "/public/home/zqchen",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 2199023255552,
+      "uid": 2159,
+      "write_access": true
+    },
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /public/home/zqchen/projects/ECNU_EYU_data\n# owner: zqchen\n# group: users\nuser::rwx\ngroup::r-x\nother::r-x\n\n"
+      },
+      "available_bytes": 216084250624,
+      "device": 42,
+      "exists": true,
+      "gid": 100,
+      "group": "users",
+      "mode": "0o755",
+      "owner": "zqchen",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data",
+      "resolved": "/public/home/zqchen/projects/ECNU_EYU_data",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 2199023255552,
+      "uid": 2159,
+      "write_access": true
+    },
+    {
+      "exists": false,
+      "path": "/public/zqchen",
+      "symlink": false
+    }
+  ],
+  "commands": {
+    "id": {
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "uid=2159(zqchen) gid=100(users) groups=100(users) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023\n"
+    },
+    "mounts": {
+      "exit_code": 1,
+      "stderr": " use key=\"value\" output format\n -r, --raw              use raw output format\n -t, --types <list>     limit the set of filesystems by FS types\n -v, --nofsroot         don't print [/dir] for bind or btrfs mounts\n -R, --submounts        print all submounts for the matching filesystems\n -S, --source <string>  the device to mount (by name, maj:min, \n                          LABEL=, UUID=, PARTUUID=, PARTLABEL=)\n -T, --target <string>  the mountpoint to use\n\n -h, --help     display this help and exit\n -V, --version  output version information and exit\n\nAvailable columns:\n      SOURCE  source device\n      TARGET  mountpoint\n      FSTYPE  filesystem type\n     OPTIONS  all mount options\n VFS-OPTIONS  VFS specific mount options\n  FS-OPTIONS  FS specific mount options\n       LABEL  filesystem label\n        UUID  filesystem UUID\n   PARTLABEL  partition label\n    PARTUUID  partition UUID\n     MAJ:MIN  major:minor device number\n      ACTION  action detected by --poll\n  OLD-TARGET  old mountpoint saved by --poll\n OLD-OPTIONS  old mount options saved by --poll\n        SIZE  filesystem size\n       AVAIL  filesystem size available\n        USED  filesystem size used\n        USE%  filesystem use percentage\n      FSROOT  filesystem root\n         TID  task ID\n          ID  mount ID\n  OPT-FIELDS  optional mount fields\n PROPAGATION  VFS propagation flags\n        FREQ  dump(8) frequency in days [fstab only]\n      PASSNO  pass number on parallel fsck(8) [fstab only]\n\nFor more details see findmnt(8).\n",
+      "stdout": ""
+    },
+    "quota": {
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "groups": [
+    100
+  ],
+  "hostname": "login1",
+  "local_received_utc": "2026-10-15T16:22:43.594548+00:00",
+  "local_start_utc": "2026-10-15T16:22:25.959099+00:00",
+  "method": "one read-only mount/ACL/statvfs snapshot and shallow root listing; no write test or recursive scan",
+  "operator_approved": false,
+  "remote_end_utc": "2026-10-15T16:11:38.828027+00:00",
+  "remote_start_utc": "2026-10-15T16:11:28.922395+00:00",
+  "roots": [
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /public\n# owner: root\n# group: root\nuser::rwx\ngroup::r-x\nother::r-x\n\n"
+      },
+      "available_bytes": 28019307577344,
+      "device": 42,
+      "direct_directories": [
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": ".gridview",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "0305",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "0325_slurm",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "block",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "block-old",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "gv",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "home",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o777",
+          "name": "share",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "software",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "sourcecode",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "src",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "stor_check",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "test",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "test1",
+          "symlink": false,
+          "uid": 0
+        }
+      ],
+      "direct_entry_count": 14,
+      "exists": true,
+      "gid": 0,
+      "group": "root",
+      "listing_truncated": false,
+      "mode": "0o755",
+      "owner": "root",
+      "path": "/public",
+      "resolved": "/public",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 272678883688448,
+      "uid": 0,
+      "write_access": false
+    },
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /hpc_stor\n# owner: root\n# group: root\nuser::rwx\ngroup::r-x\nother::r-x\n\n"
+      },
+      "available_bytes": 2475720071708672,
+      "device": 43,
+      "direct_directories": [
+        {
+          "gid": 0,
+          "mode": "0o700",
+          "name": "MRI_BAK",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o700",
+          "name": "bakup",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 1000,
+          "mode": "0o755",
+          "name": "cloud",
+          "symlink": false,
+          "uid": 1001
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "data",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "home",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o755",
+          "name": "stor_check",
+          "symlink": false,
+          "uid": 0
+        },
+        {
+          "gid": 0,
+          "mode": "0o700",
+          "name": "test",
+          "symlink": false,
+          "uid": 0
+        }
+      ],
+      "direct_entry_count": 7,
+      "exists": true,
+      "gid": 0,
+      "group": "root",
+      "listing_truncated": false,
+      "mode": "0o755",
+      "owner": "root",
+      "path": "/hpc_stor",
+      "resolved": "/hpc_stor",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 2814749767106560,
+      "uid": 0,
+      "write_access": false
+    },
+    {
+      "direct_directories": [],
+      "exists": false,
+      "path": "/scratch",
+      "symlink": false
+    },
+    {
+      "direct_directories": [],
+      "exists": false,
+      "path": "/work",
+      "symlink": false
+    },
+    {
+      "direct_directories": [],
+      "exists": false,
+      "path": "/storage",
+      "symlink": false
+    },
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /mnt\n# owner: root\n# group: root\nuser::rwx\ngroup::r-x\nother::r-x\n\n"
+      },
+      "available_bytes": 414886715392,
+      "device": 2051,
+      "direct_directories": [],
+      "direct_entry_count": 0,
+      "exists": true,
+      "gid": 0,
+      "group": "root",
+      "listing_truncated": false,
+      "mode": "0o755",
+      "owner": "root",
+      "path": "/mnt",
+      "resolved": "/mnt",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 453412970496,
+      "uid": 0,
+      "write_access": false
+    }
+  ],
+  "uid": 2159,
+  "write_permission_is_storage_authorization": false
+}

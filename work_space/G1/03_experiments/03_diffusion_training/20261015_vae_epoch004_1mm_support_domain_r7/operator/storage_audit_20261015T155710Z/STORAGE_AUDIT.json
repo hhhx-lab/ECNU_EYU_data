@@ -1,0 +1,269 @@
+{
+  "account_path": "/public/home/zqchen",
+  "artifact_status": "experimental_unvalidated",
+  "commands": {
+    "df_home": {
+      "complete": true,
+      "returncode": 0,
+      "seconds": 0.021,
+      "stderr": "",
+      "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1981966974976 217056280576  91% /public\n"
+    },
+    "df_public": {
+      "complete": true,
+      "returncode": 0,
+      "seconds": 0.007,
+      "stderr": "",
+      "stdout": "Filesystem               1B-blocks            Used      Available Use% Mounted on\n12.12.15.3:/public 272678883688448 244657138171904 28021745516544  90% /public\n"
+    },
+    "quota": {
+      "complete": true,
+      "returncode": 0,
+      "seconds": 0.016,
+      "stderr": "",
+      "stdout": ""
+    },
+    "quota_v": {
+      "complete": true,
+      "returncode": 0,
+      "seconds": 0.006,
+      "stderr": "",
+      "stdout": ""
+    },
+    "sacct_g1": {
+      "complete": true,
+      "returncode": 0,
+      "seconds": 0.178,
+      "stderr": "",
+      "stdout": "4096309|RUNNING|0:0|02:11:00|1-00:00:00|billing=8,cpu=8,mem=90G,node=1\n4096309.batch|RUNNING|0:0|02:11:00||cpu=8,mem=90G,node=1\n4096310|PENDING|0:0|00:00:00|2-00:00:00|\n4096311|PENDING|0:0|00:00:00|2-00:00:00|\n4096312|PENDING|0:0|00:00:00|2-00:00:00|\n4096313|PENDING|0:0|00:00:00|2-00:00:00|\n"
+    },
+    "squeue_g1": {
+      "complete": true,
+      "returncode": 0,
+      "seconds": 0.063,
+      "stderr": "",
+      "stdout": "4096313|PENDING|g1d1m7t2f|a100|Dependency|gpu:1,gpu:1|0:00\n4096312|PENDING|g1d1m7t2w|a100|Dependency|gpu:1,gpu:1|0:00\n4096311|PENDING|g1d1m7t1n|a100|Dependency|gpu:1,gpu:1|0:00\n4096310|PENDING|g1d1m7t1c|a100|Dependency|gpu:1,gpu:1|0:00\n4096309|RUNNING|g1d1m7p1|cpu_192G|None|N/A|2:11:48\n"
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "local_utc": "2026-10-15T15:59:57.541627+00:00",
+  "method": "bounded targeted du/statvfs/metadata walk; no content hashing and no image/probability transfer",
+  "operator_approved": false,
+  "r7_dataset_du": {
+    "complete": true,
+    "returncode": 0,
+    "seconds": 0.558,
+    "stderr": "",
+    "stdout": "6765775872\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases\n6765779968\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset\n"
+  },
+  "r7_dataset_stats": {
+    "allocated_bytes": 6764579840,
+    "checkpoint_files": 0,
+    "checkpoint_logical_bytes": 0,
+    "completed_case_dirs": 287,
+    "dirs": 288,
+    "errors": [],
+    "exists": true,
+    "files": 2284,
+    "logical_bytes": 6765138071,
+    "nifti_allocated_bytes": 6762536448,
+    "nifti_files": 1712,
+    "nifti_logical_bytes": 6762969415,
+    "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset",
+    "preprocess_complete_markers": 285
+  },
+  "r7_markers": {
+    "dataset": {
+      "complete": true,
+      "returncode": 0,
+      "seconds": 0.073,
+      "stderr": "",
+      "stdout": "dataset/cases/BraTS-MET-00546-000/spatial_mapping.json\t2797\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00546-000/BraTS-MET-00546-000-brainmask.nii.gz\t156704\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00546-000/preprocess_complete.json\t4713\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/BraTS-MET-00547-000-t1c.nii.gz\t5904889\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/BraTS-MET-00547-000-t1n.nii.gz\t5920900\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/BraTS-MET-00547-000-t2w.nii.gz\t5923173\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/BraTS-MET-00547-000-t2f.nii.gz\t5956598\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/BraTS-MET-00547-000-seg.nii.gz\t44036\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/spatial_mapping.json\t2828\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/BraTS-MET-00547-000-brainmask.nii.gz\t154094\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00547-000/preprocess_complete.json\t4744\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/BraTS-MET-00577-001-t1c.nii.gz\t6130901\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/BraTS-MET-00577-001-t1n.nii.gz\t6119944\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/BraTS-MET-00577-001-t2w.nii.gz\t6130407\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/BraTS-MET-00577-001-t2f.nii.gz\t6117279\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/BraTS-MET-00577-001-seg.nii.gz\t54804\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/spatial_mapping.json\t2958\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/BraTS-MET-00577-001-brainmask.nii.gz\t153784\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00577-001/preprocess_complete.json\t4872\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/BraTS-MET-00613-001-t1c.nii.gz\t5909985\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/BraTS-MET-00613-001-t1n.nii.gz\t5881123\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/BraTS-MET-00613-001-t2w.nii.gz\t5901330\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/BraTS-MET-00613-001-t2f.nii.gz\t5948404\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/BraTS-MET-00613-001-seg.nii.gz\t82336\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/spatial_mapping.json\t2988\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/BraTS-MET-00613-001-brainmask.nii.gz\t139841\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00613-001/preprocess_complete.json\t4902\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/BraTS-MET-00620-000-t1c.nii.gz\t5105365\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/BraTS-MET-00620-000-t1n.nii.gz\t5828295\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/BraTS-MET-00620-000-t2w.nii.gz\t5842811\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/BraTS-MET-00620-000-t2f.nii.gz\t5849229\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/BraTS-MET-00620-000-seg.nii.gz\t63200\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/spatial_mapping.json\t2969\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/BraTS-MET-00620-000-brainmask.nii.gz\t171900\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00620-000/preprocess_complete.json\t4885\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/BraTS-MET-00623-000-t1c.nii.gz\t5698814\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/BraTS-MET-00623-000-t1n.nii.gz\t5677849\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/BraTS-MET-00623-000-t2w.nii.gz\t5737257\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/BraTS-MET-00623-000-t2f.nii.gz\t5712319\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/BraTS-MET-00623-000-seg.nii.gz\t81142\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/spatial_mapping.json\t2987\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/BraTS-MET-00623-000-brainmask.nii.gz\t170173\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00623-000/preprocess_complete.json\t4903\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/BraTS-MET-00625-000-t1c.nii.gz\t6537721\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/BraTS-MET-00625-000-t1n.nii.gz\t6753124\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/BraTS-MET-00625-000-t2w.nii.gz\t6755539\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/BraTS-MET-00625-000-t2f.nii.gz\t6705225\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/BraTS-MET-00625-000-seg.nii.gz\t60290\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/spatial_mapping.json\t3067\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/BraTS-MET-00625-000-brainmask.nii.gz\t163272\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00625-000/preprocess_complete.json\t4981\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/BraTS-MET-00638-002-t1c.nii.gz\t5259432\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/BraTS-MET-00638-002-t1n.nii.gz\t5293122\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/BraTS-MET-00638-002-t2w.nii.gz\t5328404\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/BraTS-MET-00638-002-t2f.nii.gz\t5053890\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/BraTS-MET-00638-002-seg.nii.gz\t49362\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/spatial_mapping.json\t2966\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/BraTS-MET-00638-002-brainmask.nii.gz\t143052\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00638-002/preprocess_complete.json\t4882\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/BraTS-MET-00652-000-t1c.nii.gz\t5355157\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/BraTS-MET-00652-000-t1n.nii.gz\t5691492\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/BraTS-MET-00652-000-t2w.nii.gz\t5713449\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/BraTS-MET-00652-000-t2f.nii.gz\t5627494\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/BraTS-MET-00652-000-seg.nii.gz\t46658\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/spatial_mapping.json\t2974\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/BraTS-MET-00652-000-brainmask.nii.gz\t156618\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00652-000/preprocess_complete.json\t4890\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/BraTS-MET-00651-000-t1c.nii.gz\t6070744\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/BraTS-MET-00651-000-t1n.nii.gz\t6045827\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/BraTS-MET-00651-000-t2w.nii.gz\t6180555\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/BraTS-MET-00651-000-t2f.nii.gz\t6116087\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/BraTS-MET-00651-000-seg.nii.gz\t75840\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/spatial_mapping.json\t2962\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/BraTS-MET-00651-000-brainmask.nii.gz\t182846\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00651-000/preprocess_complete.json\t4878\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/BraTS-MET-00653-000-t1c.nii.gz\t6296185\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/BraTS-MET-00653-000-t1n.nii.gz\t6244226\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/BraTS-MET-00653-000-t2w.nii.gz\t6329361\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/BraTS-MET-00653-000-t2f.nii.gz\t6283198\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/BraTS-MET-00653-000-seg.nii.gz\t72173\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/spatial_mapping.json\t2910\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/BraTS-MET-00653-000-brainmask.nii.gz\t180209\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00653-000/preprocess_complete.json\t4826\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/BraTS-MET-00667-001-t1c.nii.gz\t6477837\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/BraTS-MET-00667-001-t1n.nii.gz\t6640255\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/BraTS-MET-00667-001-t2w.nii.gz\t6766616\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/BraTS-MET-00667-001-t2f.nii.gz\t6681810\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/BraTS-MET-00667-001-seg.nii.gz\t41051\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/spatial_mapping.json\t2957\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/BraTS-MET-00667-001-brainmask.nii.gz\t161722\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/cases/BraTS-MET-00667-001/preprocess_complete.json\t4873\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/STARTED.json\t284\n/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset/STORAGE_ESTIMATE.json\t510\n"
+    },
+    "training": {
+      "complete": false,
+      "returncode": 1,
+      "seconds": 0.004,
+      "stderr": "find: '/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/training': No such file or directory\n",
+      "stdout": ""
+    }
+  },
+  "r7_root_du": {
+    "complete": true,
+    "returncode": 0,
+    "seconds": 0.364,
+    "stderr": "",
+    "stdout": "1320960\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/evidence\n23040\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/logs\n6144\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/config\n307712\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/plan\n680448\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/runtime\n9216\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/slurm\n12288\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/tests\n6765779968\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/dataset\n6768145408\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7\n"
+  },
+  "r7_training_du": {
+    "complete": false,
+    "returncode": 1,
+    "seconds": 0.005,
+    "stderr": "du: cannot access '/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/training': No such file or directory\n",
+    "stdout": ""
+  },
+  "r7_training_stats": {
+    "allocated_bytes": 0,
+    "checkpoint_files": 0,
+    "checkpoint_logical_bytes": 0,
+    "completed_case_dirs": 0,
+    "dirs": 0,
+    "errors": [],
+    "exists": false,
+    "files": 0,
+    "logical_bytes": 0,
+    "nifti_allocated_bytes": 0,
+    "nifti_files": 0,
+    "nifti_logical_bytes": 0,
+    "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261015_support_domain_r7/training",
+    "preprocess_complete_markers": 0
+  },
+  "remote_utc": "2026-10-15T15:48:51.612006+00:00",
+  "selected_capacity": {
+    "/dev/shm": {
+      "du_depth1": {
+        "complete": true,
+        "returncode": 0,
+        "seconds": 0.007,
+        "stderr": "",
+        "stdout": "0\t/dev/shm/mihomo-tmp-xwei\n450560\t/dev/shm\n"
+      },
+      "statvfs": {
+        "available_bytes": 100620795904,
+        "free_bytes": 100620795904,
+        "path": "/dev/shm",
+        "total_bytes": 100621250560,
+        "used_bytes": 454656
+      }
+    },
+    "/public/home/zqchen": {
+      "du_depth1": {
+        "complete": false,
+        "returncode": 124,
+        "seconds": 45.018,
+        "stderr": "",
+        "stdout": "12288\t/public/home/zqchen/.mozilla\n4096\t/public/home/zqchen/perl5\n6144\t/public/home/zqchen/.ssh\n219648\t/public/home/zqchen/job_example\n290304\t/public/home/zqchen/.local\n10529461760\t/public/home/zqchen/.cache\n22528\t/public/home/zqchen/.config\n108630016\t/public/home/zqchen/Code\n",
+        "timeout": true
+      },
+      "statvfs": {
+        "available_bytes": 217151700992,
+        "free_bytes": 217151700992,
+        "path": "/public/home/zqchen",
+        "total_bytes": 2199023255552,
+        "used_bytes": 1981871554560
+      }
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data": {
+      "du_depth1": {
+        "complete": false,
+        "returncode": 124,
+        "seconds": 45.047,
+        "stderr": "",
+        "stdout": "",
+        "timeout": true
+      },
+      "statvfs": {
+        "available_bytes": 217115000832,
+        "free_bytes": 217115000832,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data",
+        "total_bytes": 2199023255552,
+        "used_bytes": 1981908254720
+      }
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space": {
+      "du_depth1": {
+        "complete": false,
+        "returncode": 124,
+        "seconds": 45.042,
+        "stderr": "",
+        "stdout": "615272951296\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1\n23486540800\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S3\n63200256\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2\n206336\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S4\n",
+        "timeout": true
+      },
+      "statvfs": {
+        "available_bytes": 217084592128,
+        "free_bytes": 217084592128,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space",
+        "total_bytes": 2199023255552,
+        "used_bytes": 1981938663424
+      }
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1": {
+      "du_depth1": {
+        "complete": true,
+        "returncode": 0,
+        "seconds": 3.691,
+        "stderr": "",
+        "stdout": "208802582016\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code\n30208\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/docs\n174080\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/data\n406486413824\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results\n615289204224\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1\n"
+      },
+      "statvfs": {
+        "available_bytes": 217067814912,
+        "free_bytes": 217067814912,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1",
+        "total_bytes": 2199023255552,
+        "used_bytes": 1981955440640
+      }
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2": {
+      "du_depth1": {
+        "complete": true,
+        "returncode": 0,
+        "seconds": 0.034,
+        "stderr": "",
+        "stdout": "13312\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/slurm\n102912\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/logs\n287232\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/code\n62699520\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results\n54272\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/tests\n35840\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/docs\n63200256\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2\n"
+      },
+      "statvfs": {
+        "available_bytes": 217067814912,
+        "free_bytes": 217067814912,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2",
+        "total_bytes": 2199023255552,
+        "used_bytes": 1981955440640
+      }
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S1": {
+      "du_depth1": {
+        "complete": false,
+        "returncode": 1,
+        "seconds": 0.006,
+        "stderr": "du: cannot access '/public/home/zqchen/projects/ECNU_EYU_data/work_space/S1': No such file or directory\n",
+        "stdout": ""
+      },
+      "statvfs": {
+        "error": "[Errno 2] No such file or directory: '/public/home/zqchen/projects/ECNU_EYU_data/work_space/S1'",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S1"
+      }
+    },
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2": {
+      "du_depth1": {
+        "complete": true,
+        "returncode": 0,
+        "seconds": 16.913,
+        "stderr": "",
+        "stdout": "3704500224\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results\n525824\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0\n73140956160\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data\n36864\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/slurm\n496640\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/logs\n4096\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/.transfer\n19456\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/cloud\n27136\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/transfer_staging\n13312\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/docs\n87161268224\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated\n363520\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/runtime\n164008217600\t/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2\n"
+      },
+      "statvfs": {
+        "available_bytes": 217067814912,
+        "free_bytes": 217067814912,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2",
+        "total_bytes": 2199023255552,
+        "used_bytes": 1981955440640
+      }
+    },
+    "/tmp": {
+      "du_depth1": {
+        "complete": false,
+        "returncode": 1,
+        "seconds": 0.629,
+        "stderr": "tch-xM9wsL': Permission denied\ndu: cannot read directory '/tmp/pip-ephem-wheel-cache-vk3idrbs': Permission denied\ndu: cannot read directory '/tmp/pip-install-7c7ohqoe': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-ckmr7lg_': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-bqzvvq6r': Permission denied\ndu: cannot read directory '/tmp/crystalflow_mp_ingan__x5ab14m': Permission denied\ndu: cannot read directory '/tmp/pip-ephem-wheel-cache-73qas7ya': Permission denied\ndu: cannot read directory '/tmp/.esd-2058': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-5s1yrjci': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-oha5a8kz': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-ktsc8zd4': Permission denied\ndu: cannot read directory '/tmp/pip-build-tracker-8mrg1yhl': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-mm_1hezw': Permission denied\ndu: cannot read directory '/tmp/pytest-of-xiaohe': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-kkptdu1a': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-sk32iaz_': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-myf3t210': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-om351tq4': Permission denied\ndu: cannot read directory '/tmp/pip-build-env-gmssg9qz': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-gracm7jy': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-vvw_1app': Permission denied\ndu: cannot read directory '/tmp/pip-ephem-wheel-cache-aid439ac': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-mw9694dz': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-3fiov1wi': Permission denied\ndu: cannot read directory '/tmp/pip-modern-metadata-ldl1xzd4': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-gutwa4ap': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-8lbss8m2': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-l0fgrgku': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-1h4sqwzf': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-4swzr0rq': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-shkx07ty': Permission denied\ndu: cannot read directory '/tmp/systemd-private-a9631ae467e64f34a3cacb14a073e7e1-bolt.service-hbuQg9': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-b5v5q5wj': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-qzubwdfk': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-5zs7mq5h': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-w1175yvv': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-6rzjgero': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-5_mlkl14': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-twgva7v6': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-s27tdz0d': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-va7a3y9f': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-a4ts5js8': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-l4up7l1s': Permission denied\ndu: cannot read directory '/tmp/pyright-1582-1K9693BXdaOM': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-98z59mcs': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-ybr1f84_': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-ovuidxm6': Permission denied\ndu: cannot read directory '/tmp/pip-build-tracker-__lt0s6e': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-_a35muig': Permission denied\ndu: cannot read directory '/tmp/pip-unpack-h9ad_1_q': Permission denied\ndu: cannot read directory '/tmp/pip-build-tracker-vwjtemuv': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-zbff99qg': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-m4qrgj91': Permission denied\ndu: cannot read directory '/tmp/pip-metadata-udzbny9j': Permission denied\n",
+        "stdout": "4096\t/tmp/tmux-2058\n56197120\t/tmp/tf_probe\n57344\t/tmp/crystalflow-supervisor-20260923\n4096\t/tmp/pip-metadata-0naym9p7\n4096\t/tmp/pip-unpack-msa294bg\n376832\t/tmp/crystalflow-repair-20260925\n4096\t/tmp/hsperfdata_xkzhang\n21217280\t/tmp/tf_dl\n75722752\t/tmp/cmems_code_test\n4096\t/tmp/pip-metadata-ouivjgc2\n4096\t/tmp/pip-metadata-e1xqjnrd\n4096\t/tmp/pip-metadata-20kw72gr\n4096\t/tmp/rhea5_sidecar_validation_20260903\n4096\t/tmp/pip-metadata-23vz3rpr\n12288\t/tmp/claude-2058\n4096\t/tmp/pip-unpack-i5q4_5y5\n4096\t/tmp/pip-install-r10odsgo\n4096\t/tmp/cmems_day\n4096\t/tmp/crystalflow-wheel-fixed-20260908\n4096\t/tmp/pip-unpack-uji4dxqa\n4096\t/tmp/crystalflow-wheel-accepted-20260908\n4096\t/tmp/pip-unpack-nyq44fg0\n16384\t/tmp/remote-file-71752ccfe2464e99\n4096\t/tmp/pyright-1582-W1bgiDlgH6eQ\n4096\t/tmp/pip-unpack-9b8t_30t\n8192\t/tmp/crystalflow-conversation-20260906\n4096\t/tmp/hn4cast_push\n4096\t/tmp/mlip_profile_effective_config_validation\n4096\t/tmp/pip-unpack-5gv3brer\n4096\t/tmp/pip-unpack-8b0l68dr\n4096\t/tmp/pip-unpack-tr477yd_\n77123584\t/tmp/hycom_probe\n4096\t/tmp/bubaak.7ga__myb\n4096\t/tmp/pip-modern-metadata-2uo9ixlx\n4096\t/tmp/opencode-pristine\n4096\t/tmp/pip-metadata-os08rxym\n4096\t/tmp/pip-build-tracker-7u5xgqzb\n4096\t/tmp/pip-install-uyxnik2a\n4096\t/tmp/pip-unpack-pgjqikzy\n57344\t/tmp/crystalflow-supervisor-regression-20260923\n4096\t/tmp/pip-ephem-wheel-cache-tbr47kuh\n4096\t/tmp/pip-metadata-w24ttp07\n4096\t/tmp/hsperfdata_zqchen\n4096\t/tmp/pip-build-tracker-8b8jb56r\n4096\t/tmp/pip-metadata-zazoc33k\n4096\t/tmp/pip-metadata-3me748x3\n32768\t/tmp/crystalflow-research-dag-release-20260924-v8\n4096\t/tmp/tmptnvww13g\n4096\t/tmp/VSLiveshareLogs\n4096\t/tmp/pip-unpack-5omegew5\n4096\t/tmp/pip-modern-metadata-io5t48_c\n45056\t/tmp/crystalflow-postrepair-review-20260907\n49152\t/tmp/crystalflow-selected-step-20260923\n4096\t/tmp/pip-install-h5cgel92\n81920\t/tmp/mpl-alScN\n4096\t/tmp/pyright-29112-cbMSylwD1FJJ\n32768\t/tmp/crystalflow-research-dag-release-20260924-v7\n8192\t/tmp/uscreens\n4096\t/tmp/pip-install-lonun_68\n4096\t/tmp/pip-metadata-gt8noir0\n8192\t/tmp/mlp_agent_backend_default_backup_1790065945\n4096\t/tmp/hsperfdata_jwli\n4096\t/tmp/crystalflow-wheel-deployed-20260908\n4096\t/tmp/pip-unpack-z2ensn3l\n12288\t/tmp/crystalflow-architecture-checks-20260906\n4096\t/tmp/cf_five_agent_audit\n8192\t/tmp/.opencode-ld\n286720\t/tmp/mp_alscn_snapshot_20261012\n28672\t/tmp/crystalflow-architecture-review-20260922\n4096\t/tmp/pip-metadata-tf4v5wyh\n4096\t/tmp/froleyks-certifaiger\n4096\t/tmp/mlp_agent_stage10_selection_check\n4096\t/tmp/.X11-unix\n4096\t/tmp/pip-unpack-ux2m6v45\n4096\t/tmp/pip-unpack-j0a0j8me\n557056\t/tmp/crystalflow-test-cleanup-20260925\n4096\t/tmp/pip-metadata-3xrbecs8\n32768\t/tmp/crystalflow-research-dag-release-20260924-v6\n4096\t/tmp/pip-unpack-khlftilf\n4096\t/tmp/pip-install-ohao8_tg\n4096\t/tmp/pip-unpack-zcqwhlv1\n28672\t/tmp/mlp_agent_pytest\n4096\t/tmp/pip-unpack-h32w1664\n4096\t/tmp/pip-ephem-wheel-cache-mraxelg6\n4096\t/tmp/pip-unpack-a_0dbcau\n4096\t/tmp/vscode-typescript2139\n4096\t/tmp/crystalflow_mp_albn_fn446zqa\n4096\t/tmp/pip-unpack-_o8r59qr\n4096\t/tmp/pip-unpack-kd6f38_k\n712704\t/tmp/crystalflow-architecture-refactor-20260925\n4096\t/tmp/vscode-typescript2136\n12288\t/tmp/test-cleanup-staging-evidence\n4096\t/tmp/pip-metadata-0z7rqo_b\n4096\t/tmp/pip-metadata-bohu4bch\n766697472\t/tmp/torch_dl\n4096\t/tmp/pip-metadata-rjpcga6r\n7692288\t/tmp/esbmc-headers-aa4a-1fa9-de53\n36864\t/tmp/crystalflow-dag-core-20260924\n4096\t/tmp/pip-ephem-wheel-cache-jj52zj06\n4096\t/tmp/pip-unpack-jmkip_2p\n4096\t/tmp/codex-bwrap-synthetic-mount-targets-2058\n4096\t/tmp/pip-unpack-dkmqjx6c\n4096\t/tmp/crystalflow-wheel-release-20260908\n4096\t/tmp/pip-metadata-q4ju64d_\n4096\t/tmp/mlp_agent_stage10_selection_check_2\n4096\t/tmp/ssh-PdJDosxI3SV0\n4096\t/tmp/pip-unpack-tvjtvxm8\n4096\t/tmp/crystalflow_bridge_smoke\n4096\t/tmp/pip-unpack-_hnpnn44\n4096\t/tmp/tmpphufufze\n4096\t/tmp/pip-metadata-wutnd83m\n4096\t/tmp/systemd-private-a9631ae467e64f34a3cacb14a073e7e1-colord.service-fECUqT\n4096\t/tmp/systemd-private-a9631ae467e64f34a3cacb14a073e7e1-rtkit-daemon.service-pqKNXW\n45056\t/tmp/crystalflow-dag-core-20260924-v4\n4096\t/tmp/pip-metadata-andmldmq\n4096\t/tmp/pip-unpack-sk_f7fod\n4096\t/tmp/pip-metadata-o_g_v1z6\n4096\t/tmp/pip-metadata-ikzvqmec\n4096\t/tmp/pip-metadata-10eg9fj4\n4096\t/tmp/pip-unpack-a8gmtwo9\n4096\t/tmp/crystalflow-upet-batch-xM9wsL\n4096\t/tmp/pip-ephem-wheel-cache-vk3idrbs\n4096\t/tmp/.Test-unix\n4096\t/tmp/crystalflow-autonomy-20260906\n4096\t/tmp/pip-install-7c7ohqoe\n4096\t/tmp/pip-metadata-ckmr7lg_\n4096\t/tmp/pip-unpack-bqzvvq6r\n4096\t/tmp/crystalflow_mp_ingan__x5ab14m\n4096\t/tmp/pip-ephem-wheel-cache-73qas7ya\n4096\t/tmp/.ICE-unix\n4096\t/tmp/.esd-2058\n4096\t/tmp/pip-unpack-5s1yrjci\n4096\t/tmp/pip-metadata-oha5a8kz\n8192\t/tmp/crystalflow-web-review-20260906\n4096\t/tmp/rhea5_two_stage_20260903\n8192\t/tmp/crystalflow-repair-20260906\n24576\t/tmp/crystalflow_scope_backup_20260926\n4096\t/tmp/pip-unpack-ktsc8zd4\n4096\t/tmp/pip-build-tracker-8mrg1yhl\n8192\t/tmp/etc\n445923328\t/tmp/cmems_win\n4096\t/tmp/pip-metadata-mm_1hezw\n4096\t/tmp/pytest-of-xiaohe\n4096\t/tmp/hsperfdata_glwang\n4096\t/tmp/pip-metadata-kkptdu1a\n28672\t/tmp/crystalflow_review_20260923\n4096\t/tmp/pip-unpack-sk32iaz_\n442368\t/tmp/crystalflow_stage_review_test_20260925\n4096\t/tmp/pip-unpack-myf3t210\n4096\t/tmp/.font-unix\n12288\t/tmp/python-languageserver-cancellation\n4096\t/tmp/pip-unpack-om351tq4\n49152\t/tmp/crystalflow-architecture-fix-20260922\n4096\t/tmp/.XIM-unix\n4096\t/tmp/pip-build-env-gmssg9qz\n4096\t/tmp/pip-metadata-gracm7jy\n4096\t/tmp/pip-unpack-vvw_1app\n4096\t/tmp/pip-ephem-wheel-cache-aid439ac\n4096\t/tmp/crystalflow-wheel-install-20260907\n4096\t/tmp/pip-metadata-mw9694dz\n4096\t/tmp/pip-metadata-3fiov1wi\n4096\t/tmp/hsperfdata_xiaohe2\n4096\t/tmp/pip-modern-metadata-ldl1xzd4\n4096\t/tmp/rhea5_dft_sampling_validation_c823480c4fe0449a9089c4b060a8f943\n4096\t/tmp/pip-metadata-gutwa4ap\n4096\t/tmp/pip-unpack-8lbss8m2\n4096\t/tmp/pip-unpack-l0fgrgku\n4096\t/tmp/pip-unpack-1h4sqwzf\n4096\t/tmp/pip-unpack-4swzr0rq\n4096\t/tmp/crystalflow-wheel-final-20260908\n4096\t/tmp/pip-metadata-shkx07ty\n4096\t/tmp/systemd-private-a9631ae467e64f34a3cacb14a073e7e1-bolt.service-hbuQg9\n20480\t/tmp/rIC3\n4096\t/tmp/pip-unpack-b5v5q5wj\n4096\t/tmp/pip-unpack-qzubwdfk\n4096\t/tmp/pip-metadata-5zs7mq5h\n4096\t/tmp/pip-unpack-w1175yvv\n65536\t/tmp/nlohmann_json_src\n4096\t/tmp/pip-unpack-6rzjgero\n4096\t/tmp/pip-metadata-5_mlkl14\n204800\t/tmp/esbmc.4ac6-ea43-d2e0\n4096\t/tmp/pip-unpack-twgva7v6\n4096\t/tmp/pip-unpack-s27tdz0d\n4096\t/tmp/pip-metadata-va7a3y9f\n57344\t/tmp/crystalflow-dag-core-20260924-v5\n4096\t/tmp/pip-unpack-a4ts5js8\n4096\t/tmp/crystalflow-full-fix-20260908\n4096\t/tmp/pip-metadata-l4up7l1s\n4096\t/tmp/pyright-1582-1K9693BXdaOM\n4096\t/tmp/pip-unpack-98z59mcs\n4096\t/tmp/pip-unpack-ybr1f84_\n8192\t/tmp/tmplay23ktf\n8192\t/tmp/mlip_agent_kb_profile_acceptance\n4096\t/tmp/pip-unpack-ovuidxm6\n4096\t/tmp/pip-build-tracker-__lt0s6e\n1541427200\t/tmp/opencode\n4096\t/tmp/pip-metadata-_a35muig\n4096\t/tmp/pip-unpack-h9ad_1_q\n4096\t/tmp/pip-build-tracker-vwjtemuv\n4096\t/tmp/pip-metadata-zbff99qg\n4096\t/tmp/pip-metadata-m4qrgj91\n4096\t/tmp/pip-metadata-udzbny9j\n24576\t/tmp/v64_red_owner_r1_20260927\n4096\t/tmp/cf_upet_audit\n4243193856\t/tmp\n"
+      },
+      "statvfs": {
+        "available_bytes": 414885855232,
+        "free_bytes": 437941682176,
+        "path": "/tmp",
+        "total_bytes": 453412970496,
+        "used_bytes": 15471288320
+      }
+    }
+  }
+}

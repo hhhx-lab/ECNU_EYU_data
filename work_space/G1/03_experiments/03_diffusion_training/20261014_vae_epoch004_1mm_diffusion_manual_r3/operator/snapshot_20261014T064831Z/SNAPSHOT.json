@@ -1,0 +1,74 @@
+{
+  "account_disk": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used    Available Use% Mounted on\n12.12.15.3:/public 2199023255552 1974853435392 224169820160  90% /public\n"
+  },
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 224169820160,
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "local_utc": "2026-10-14T06:48:42.622974+00:00",
+  "new_root_exists": false,
+  "operator_approved": false,
+  "partitions": {
+    "a100": {
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PartitionName=a100\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=NO QoS=partition_a100\n   DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=gpu[9,11-14,16-19,22]\n   PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=480 TotalNodes=10 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n"
+    },
+    "cpu_96G": {
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PartitionName=cpu_96G\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,yshen,ybyao,jhjiang,sugon,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,test_block1,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,qzhuhe,jwu,yycheng,czyypj,demo_user,test_block,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,eduhpc2,eduhpc1,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=YES QoS=partition_cpu_96G\n   DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=node[1-3,5-7,17,19-25,27-28,30-32,34,36-37,43,50,153-155,157-158,160-163,167-168,170-186,188,191-200]\n   PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=1764 TotalNodes=63 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n"
+    }
+  },
+  "public_disk": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  223T   26T  90% /public\n"
+  },
+  "qos": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "partition_a100|||100\nuser_zqchen||1000|\n"
+  },
+  "reconstruction_complete": {
+    "cases": 1030,
+    "checkpoint_sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+    "exists": true,
+    "global_step": null,
+    "images": 4120,
+    "labels": 1030,
+    "rows": null,
+    "sha256": "a0ef2f0c4e9c75773a6564a13dfd1c1ae635903a7db4032793c5cd44a91aa637",
+    "split_counts": {
+      "test": 104,
+      "train": 823,
+      "val": 103
+    },
+    "status": "pass"
+  },
+  "remote_utc": "2026-10-14T06:37:38.568456+00:00",
+  "resources": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "gpu9|mix|gpu:NVIDIAA100-PCIE-40GB:2|386002|48\ngpu11|mix|gpu:NVIDIAA100-PCIE-40GB:2|386005|48\ngpu12|mix|gpu:NVIDIAA100-PCIE-40GB:2|386005|48\ngpu13|mix|gpu:NVIDIAA100-PCIE-40GB:2|386092|48\ngpu14|mix|gpu:NVIDIAA100-PCIE-40GB:2|386000|48\ngpu16|mix|gpu:NVIDIAA100-PCIE-40GB:2|386000|48\ngpu17|mix|gpu:NVIDIAA100-PCIE-40GB:2|386002|48\ngpu18|mix|gpu:NVIDIAA100-PCIE-40GB:2|386005|48\ngpu19|mix|gpu:NVIDIAA100-PCIE-40GB:2|386002|48\ngpu22|mix|gpu:NVIDIAA100-PCIE-40GB:2|515073|48\n"
+  },
+  "sacct": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "3941042|COMPLETED|0:0|19:40:15|2-00:00:00|billing=8,cpu=8,gres/gpu=1,mem=96G,node=1\n3941042.batch|COMPLETED|0:0|19:40:15||cpu=8,gres/gpu=1,mem=96G,node=1\n4058680|TIMEOUT|0:0|04:00:19|04:00:00|billing=8,cpu=8,mem=32G,node=1\n4058680.batch|CANCELLED|0:15|04:00:20||cpu=8,mem=32G,node=1\n"
+  },
+  "source_csv_sha256": "0d1765e12cdad7d8a5df57a5d2c46c79414ed99a2015a4d8fed57cd4c4fc836b",
+  "squeue": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "user_squeue": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+}

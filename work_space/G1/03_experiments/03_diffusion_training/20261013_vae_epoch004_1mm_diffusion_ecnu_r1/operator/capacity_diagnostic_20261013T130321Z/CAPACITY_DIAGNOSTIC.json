@@ -1,0 +1,41 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 78265712640,
+  "canonical_job_exists": false,
+  "df_bytes": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used   Available Use% Mounted on\n12.12.15.3:/public 2199023255552 2120757542912 78265712640  97% /public\n"
+  },
+  "df_inodes": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem             Inodes     IUsed      IFree IUse% Mounted on\n12.12.15.3:/public 2721923868 486364915 2235558953   18% /public\n"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "operation_failure": {
+    "artifact_status": "experimental_unvalidated",
+    "exception": "AssertionError",
+    "formal_gate_status": "not_run_not_passed",
+    "message": "public disk capacity",
+    "operator_approved": false,
+    "status": "failed",
+    "timestamp_utc": "2026-10-13T12:51:07.435759+00:00"
+  },
+  "operator_approved": false,
+  "remote_utc": "2026-10-13T12:52:25.994283+00:00",
+  "static_preflight_exists": false,
+  "statvfs": {
+    "f_bavail": 74640,
+    "f_bfree": 74640,
+    "f_blocks": 2097152,
+    "f_bsize": 1048576,
+    "f_favail": 2235558953,
+    "f_ffree": 2235558953,
+    "f_files": 2721923868,
+    "f_frsize": 1048576
+  },
+  "submission_response_exists": false,
+  "total_free_bytes": 78265712640
+}

@@ -1,0 +1,304 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "recorded_at": "2026-10-13T03:02:54.934885Z",
+  "archive_origin": "/Users/hwaigc/Downloads/TumourDiffusion_1mm(3).zip",
+  "archive_sha256": "739bdb10813a7a2a62e49eb654f51124b3c0272c00ffaa2a105ca6f9a1103236",
+  "active_root": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/01_code/tumour_diffusion_1mm",
+  "preserved_previous_root": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_revision3_readiness/previous_source_20261009",
+  "previous_matches_20261009_baseline": true,
+  "previous_preservation_verified": true,
+  "archive_to_active_sha_verified": true,
+  "source_edits": false,
+  "source_file_count": 31,
+  "previous_file_count": 30,
+  "previous": {
+    "README.md": {
+      "sha256": "2d691930b79e35312d6e05827f0dd8c8dde4d74169ed93099947253c03faed65",
+      "bytes": 44879
+    },
+    "README_DIFFUSION.md": {
+      "sha256": "6a25f3e20c016fffe29a27ef213b726bda9f493112596492ce1443de80e245bc",
+      "bytes": 68156
+    },
+    "docs/diffusion_model_for_brain_tumor_generation.md": {
+      "sha256": "2c606a73f876c9316d8a6e13ffd488d59cb19518d24af13076b16976c8ecb631",
+      "bytes": 21467
+    },
+    "docs/扩散模型加速方法.md": {
+      "sha256": "e7169fff455aa45b4f6124b12ac55f0624cd5fde8c556c7cd39de4e508e00025",
+      "bytes": 8816
+    },
+    "lists/t2w_invalid_cases.txt": {
+      "sha256": "5826d0ca1c4bdbefbbd49cedb81953b81c84d0f15f510886cd0e1bc2a913cab7",
+      "bytes": 5953
+    },
+    "model.py": {
+      "sha256": "be2616cf2d2388dd8f341274b73db5080bf5705e4bdeb78c733f6fe926ef8354",
+      "bytes": 34537
+    },
+    "requirements.txt": {
+      "sha256": "815f6d8f924506aa536ef7f37af7061c6af505d4aeaff66672d8bffc949d53eb",
+      "bytes": 571
+    },
+    "scripts/eval_checkpoints.py": {
+      "sha256": "ff79566d63ac6ac94a59d25f04be60181a7fd7b5a95e55e57d91ac5c3826c9b7",
+      "bytes": 6401
+    },
+    "scripts/make_case_lists.py": {
+      "sha256": "91cebc3f3ac1dee50263cbc32e13f00ca2cb18c9a4f85213df484d67e014fc96",
+      "bytes": 2390
+    },
+    "scripts/preprocess_dataset.py": {
+      "sha256": "1a36de4f50277170325f0103ad3c06ba2d9306317bcaa3819b2f15274eea01c3",
+      "bytes": 8090
+    },
+    "scripts/train_4gpu.sh": {
+      "sha256": "769b990f4662ce3031bd9bcd945082c35aa58ae348545962c8a6bc156df4c5aa",
+      "bytes": 1789
+    },
+    "scripts/watch_loss.py": {
+      "sha256": "9b2f1ce399cd16d0c2763a56ca4f41929e434d1efaef80192edf8ffc878d3d3f",
+      "bytes": 4900
+    },
+    "src/infer/diffusion_inference_utils.py": {
+      "sha256": "d5b4ff94a3103aef1ca45c73c60fdbb6768a47601fefd72ca74e779fec50e58a",
+      "bytes": 32633
+    },
+    "src/infer/evaluate_generation.py": {
+      "sha256": "45e9cb84a5242bfa8202c1475822dc8834342ad66d2de2d0df17593a54f62099",
+      "bytes": 39345
+    },
+    "src/infer/generate_from_label.py": {
+      "sha256": "0b580c87dc79a74139319a8ecd0aee8b0e6edcfa452eed06b8ba829bf529a22f",
+      "bytes": 30729
+    },
+    "src/infer/on_the_fly_augmentation.py": {
+      "sha256": "594ffd1d583fb4bee14b4dee6f4712dd228d51806b0c565c8bacb6196ab37947",
+      "bytes": 33055
+    },
+    "src/networks/DiffusionNetwork.py": {
+      "sha256": "182ec3fca9c63b100401c04e63ed1c931c123f8c50ffbf9dfcea6bde53741346",
+      "bytes": 23419
+    },
+    "src/networks/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "src/preprocess/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "src/preprocess/nnunet_like.py": {
+      "sha256": "6a26c941a667a4e2fcae8ee7c9d65847daf0314497d02a13632f9b5671a04f74",
+      "bytes": 11344
+    },
+    "src/train/csv_creator.py": {
+      "sha256": "0818bc0ec6af1a571c5a563e370dde8408aacd98e14e75cbd7bc7b0607cb4f04",
+      "bytes": 17778
+    },
+    "src/train/label_main_diffusion.py": {
+      "sha256": "ca3328a9e0e6faa67629a347b4b02793a82ee15d6e11b7da00788309796374ec",
+      "bytes": 13753
+    },
+    "src/train/tumour_main_diffusion.py": {
+      "sha256": "7af4aff805c3b67c6f8afcb026a1763313ca13c56876180f3f4a5a9df56a1c84",
+      "bytes": 21494
+    },
+    "src/utils/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "src/utils/convert_to_multi_channel_based_on_brats_classes.py": {
+      "sha256": "100ff13430ebc3ea0f33c5a0f610b5320f93cd0b3a3104712029737e545d4d01",
+      "bytes": 6912
+    },
+    "src/utils/crop_label.py": {
+      "sha256": "dad83a917770beb6b7fa213bf9ac859ee2a2a37637202bac6d2e746db47e7ca4",
+      "bytes": 2721
+    },
+    "src/utils/data_utils.py": {
+      "sha256": "be52e3069e827a8a752175a570a9d7afd1906f5081bb2e5db2792cdfe024c487",
+      "bytes": 10578
+    },
+    "src/utils/gaussian_noise_tumour.py": {
+      "sha256": "52b2061ac3b0ec8793551cfe6f733bab6ba0e6b3092f4eb84f046c45bb6ba1bf",
+      "bytes": 17981
+    },
+    "src/utils/gaussian_noise_tumour_extended.py": {
+      "sha256": "21959aa5c6abfcb9a097cfaca0f06074e604533d5b6694004d9627d53071b74b",
+      "bytes": 14705
+    },
+    "src/utils/label_modifier.py": {
+      "sha256": "bd75587ab47d8aee61a7f105d505a651a7bf32304d01d827b7fd6693b17d8b10",
+      "bytes": 7495
+    }
+  },
+  "revision": {
+    "model.py": {
+      "sha256": "be2616cf2d2388dd8f341274b73db5080bf5705e4bdeb78c733f6fe926ef8354",
+      "bytes": 34537
+    },
+    "README.md": {
+      "sha256": "5a3b053485e13ea129a953754164a08c34b1a131957191f363e83bc2927ea24f",
+      "bytes": 65795
+    },
+    "README_DIFFUSION.md": {
+      "sha256": "6a25f3e20c016fffe29a27ef213b726bda9f493112596492ce1443de80e245bc",
+      "bytes": 68156
+    },
+    "requirements.txt": {
+      "sha256": "815f6d8f924506aa536ef7f37af7061c6af505d4aeaff66672d8bffc949d53eb",
+      "bytes": 571
+    },
+    "docs/diffusion_model_for_brain_tumor_generation.md": {
+      "sha256": "2c606a73f876c9316d8a6e13ffd488d59cb19518d24af13076b16976c8ecb631",
+      "bytes": 21467
+    },
+    "docs/扩散模型加速方法.md": {
+      "sha256": "e7169fff455aa45b4f6124b12ac55f0624cd5fde8c556c7cd39de4e508e00025",
+      "bytes": 8816
+    },
+    "lists/t2w_invalid_cases.txt": {
+      "sha256": "5826d0ca1c4bdbefbbd49cedb81953b81c84d0f15f510886cd0e1bc2a913cab7",
+      "bytes": 5953
+    },
+    "scripts/eval_checkpoints.py": {
+      "sha256": "ff79566d63ac6ac94a59d25f04be60181a7fd7b5a95e55e57d91ac5c3826c9b7",
+      "bytes": 6401
+    },
+    "scripts/make_case_lists.py": {
+      "sha256": "91cebc3f3ac1dee50263cbc32e13f00ca2cb18c9a4f85213df484d67e014fc96",
+      "bytes": 2390
+    },
+    "scripts/preprocess_dataset.py": {
+      "sha256": "ab1dd4ff4b3380b756d81930bf8dfe8009f6d1f4c4dd884065d7ee16b50b4b87",
+      "bytes": 11935
+    },
+    "scripts/smoke_test.sh": {
+      "sha256": "7541cc26554b7737ee50c1e370ac9dd2ee8b3d0e6edca76da79d7a1cc015c932",
+      "bytes": 6709
+    },
+    "scripts/train_4gpu.sh": {
+      "sha256": "769b990f4662ce3031bd9bcd945082c35aa58ae348545962c8a6bc156df4c5aa",
+      "bytes": 1789
+    },
+    "scripts/watch_loss.py": {
+      "sha256": "9b2f1ce399cd16d0c2763a56ca4f41929e434d1efaef80192edf8ffc878d3d3f",
+      "bytes": 4900
+    },
+    "src/infer/diffusion_inference_utils.py": {
+      "sha256": "d5b4ff94a3103aef1ca45c73c60fdbb6768a47601fefd72ca74e779fec50e58a",
+      "bytes": 32633
+    },
+    "src/infer/evaluate_generation.py": {
+      "sha256": "f16a0fb65984c27e185dd65ddbd3df3dd51a6d6a40693372ca07247278b27ccf",
+      "bytes": 40322
+    },
+    "src/infer/generate_from_label.py": {
+      "sha256": "0b580c87dc79a74139319a8ecd0aee8b0e6edcfa452eed06b8ba829bf529a22f",
+      "bytes": 30729
+    },
+    "src/infer/on_the_fly_augmentation.py": {
+      "sha256": "594ffd1d583fb4bee14b4dee6f4712dd228d51806b0c565c8bacb6196ab37947",
+      "bytes": 33055
+    },
+    "src/networks/DiffusionNetwork.py": {
+      "sha256": "182ec3fca9c63b100401c04e63ed1c931c123f8c50ffbf9dfcea6bde53741346",
+      "bytes": 23419
+    },
+    "src/networks/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "src/preprocess/nnunet_like.py": {
+      "sha256": "6a26c941a667a4e2fcae8ee7c9d65847daf0314497d02a13632f9b5671a04f74",
+      "bytes": 11344
+    },
+    "src/preprocess/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "src/train/csv_creator.py": {
+      "sha256": "266ffff8346d1148f33d48593006fe0b0da9c82b00188137e8a2b1f3836b3199",
+      "bytes": 20579
+    },
+    "src/train/label_main_diffusion.py": {
+      "sha256": "ca3328a9e0e6faa67629a347b4b02793a82ee15d6e11b7da00788309796374ec",
+      "bytes": 13753
+    },
+    "src/train/tumour_main_diffusion.py": {
+      "sha256": "982cdbedc6cbe5c46e0639180e87616377a3c4615b03491795dd6443d259040f",
+      "bytes": 24851
+    },
+    "src/utils/convert_to_multi_channel_based_on_brats_classes.py": {
+      "sha256": "100ff13430ebc3ea0f33c5a0f610b5320f93cd0b3a3104712029737e545d4d01",
+      "bytes": 6912
+    },
+    "src/utils/crop_label.py": {
+      "sha256": "dad83a917770beb6b7fa213bf9ac859ee2a2a37637202bac6d2e746db47e7ca4",
+      "bytes": 2721
+    },
+    "src/utils/data_utils.py": {
+      "sha256": "07d2ffe53e894d73b7555480ae61ad1df1fc2931ef4c8677327d40922596c060",
+      "bytes": 11047
+    },
+    "src/utils/gaussian_noise_tumour.py": {
+      "sha256": "81e23aa403966e90b75723c5f4de93c26bdeeb915a6467d1fd53d1ec3a793b85",
+      "bytes": 18819
+    },
+    "src/utils/gaussian_noise_tumour_extended.py": {
+      "sha256": "21959aa5c6abfcb9a097cfaca0f06074e604533d5b6694004d9627d53071b74b",
+      "bytes": 14705
+    },
+    "src/utils/label_modifier.py": {
+      "sha256": "bd75587ab47d8aee61a7f105d505a651a7bf32304d01d827b7fd6693b17d8b10",
+      "bytes": 7495
+    },
+    "src/utils/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "comparison": {
+    "added": [
+      "scripts/smoke_test.sh"
+    ],
+    "removed_from_active_but_preserved": [],
+    "changed": [
+      "README.md",
+      "scripts/preprocess_dataset.py",
+      "src/infer/evaluate_generation.py",
+      "src/train/csv_creator.py",
+      "src/train/tumour_main_diffusion.py",
+      "src/utils/data_utils.py",
+      "src/utils/gaussian_noise_tumour.py"
+    ],
+    "unchanged": [
+      "README_DIFFUSION.md",
+      "docs/diffusion_model_for_brain_tumor_generation.md",
+      "docs/扩散模型加速方法.md",
+      "lists/t2w_invalid_cases.txt",
+      "model.py",
+      "requirements.txt",
+      "scripts/eval_checkpoints.py",
+      "scripts/make_case_lists.py",
+      "scripts/train_4gpu.sh",
+      "scripts/watch_loss.py",
+      "src/infer/diffusion_inference_utils.py",
+      "src/infer/generate_from_label.py",
+      "src/infer/on_the_fly_augmentation.py",
+      "src/networks/DiffusionNetwork.py",
+      "src/networks/__init__.py",
+      "src/preprocess/__init__.py",
+      "src/preprocess/nnunet_like.py",
+      "src/train/label_main_diffusion.py",
+      "src/utils/__init__.py",
+      "src/utils/convert_to_multi_channel_based_on_brats_classes.py",
+      "src/utils/crop_label.py",
+      "src/utils/gaussian_noise_tumour_extended.py",
+      "src/utils/label_modifier.py"
+    ]
+  }
+}

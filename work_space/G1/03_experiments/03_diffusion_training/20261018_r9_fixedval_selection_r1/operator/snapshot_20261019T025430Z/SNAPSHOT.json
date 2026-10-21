@@ -1,0 +1,111 @@
+{
+  "disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2010192543744 1288342339584  61% /public\n"
+  },
+  "jobs": {
+    "prepare": "4145277",
+    "smoke_t1c": "4145278",
+    "smoke_t1n": "4145279",
+    "smoke_t2f": "4145281",
+    "smoke_t2w": "4145280"
+  },
+  "local_utc": "2026-10-19T02:54:37.195078+00:00",
+  "logs": {
+    "prepare_4145277.err": {
+      "bytes": 870,
+      "tail": "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/monai/networks/nets/unet.py:130: UserWarning: `len(strides) > len(channels) - 1`, the last 1 values of strides will not be used.\n  warnings.warn(f\"`len(strides) > len(channels) - 1`, the last {delta} values of strides will not be used.\")\n"
+    },
+    "prepare_4145277.out": {
+      "bytes": 13009,
+      "tail": "ditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=48.0GB | channels=(48, 96, 192, 384) strides=(2, 2, 2, 1) | suggested_batch=24\nBraTS-MET-00006-000 reference pass\nBraTS-MET-00009-000 reference pass\nBraTS-MET-00014-000 reference pass\nBraTS-MET-00016-000 reference pass\nBraTS-MET-00019-000 reference pass\nBraTS-MET-00022-000 reference pass\nBraTS-MET-00025-000 reference pass\nBraTS-MET-00098-000 reference pass\nBraTS-MET-00129-000 reference pass\nBraTS-MET-00133-000 reference pass\nBraTS-MET-00137-000 reference pass\nBraTS-MET-00147-000 reference pass\nBraTS-MET-00161-000 reference pass\nBraTS-MET-00162-000 reference pass\nBraTS-MET-00167-000 reference pass\nBraTS-MET-00175-000 reference pass\nBraTS-MET-00180-000 reference pass\nBraTS-MET-00194-000 reference pass\nBraTS-MET-00195-000 reference pass\nBraTS-MET-00200-000 reference pass\nBraTS-MET-00202-000 reference pass\nBraTS-MET-00214-000 reference pass\nBraTS-MET-00260-000 reference pass\nBraTS-MET-00264-000 reference pass\nBraTS-MET-00268-000 reference pass\nBraTS-MET-00292-000 reference pass\nBraTS-MET-00299-000 reference pass\nBraTS-MET-00300-000 reference pass\nBraTS-MET-00380-000 reference pass\nBraTS-MET-00532-000 reference pass\nBraTS-MET-00552-000 reference pass\nBraTS-MET-00572-000 reference pass\nBraTS-MET-00577-001 reference pass\nBraTS-MET-00613-000 reference pass\nBraTS-MET-00613-001 reference pass\nBraTS-MET-00625-000 reference pass\nBraTS-MET-00663-000 reference pass\nBraTS-MET-00682-000 reference pass\nBraTS-MET-00699-000 reference pass\nBraTS-MET-00787-000 reference pass\nBraTS-MET-00791-000 reference pass\nBraTS-MET-00796-000 reference pass\nBraTS-MET-00799-000 reference pass\nBraTS-MET-00807-000 reference pass\nBraTS-MET-01058-001 reference pass\nBraTS-MET-01060-001 reference pass\nBraTS-MET-01096-000 reference pass\nBraTS-MET-01096-001 reference pass\nBraTS-MET-01096-002 reference pass\nBraTS-MET-01105-001 reference pass\nBraTS-MET-01105-002 reference pass\nBraTS-MET-01109-001 reference pass\nBraTS-MET-01109-002 reference pass\nBraTS-MET-01109-003 reference pass\nBraTS-MET-01117-001 reference pass\nBraTS-MET-01117-002 reference pass\nBraTS-MET-01117-003 reference pass\nBraTS-MET-01119-000 reference pass\nBraTS-MET-01119-001 reference pass\nBraTS-MET-01119-003 reference pass\nBraTS-MET-01134-000 reference pass\nBraTS-MET-01134-003 reference pass\nBraTS-MET-01149-000 reference pass\nBraTS-MET-01149-001 reference pass\nBraTS-MET-01172-001 reference pass\nBraTS-MET-01172-002 reference pass\nBraTS-MET-01172-004 reference pass\nBraTS-MET-01180-000 reference pass\nBraTS-MET-01180-003 reference pass\nBraTS-MET-01181-001 reference pass\nBraTS-MET-01181-002 reference pass\nBraTS-MET-01187-000 reference pass\nBraTS-MET-01187-001 reference pass\nBraTS-MET-01187-003 reference pass\nBraTS-MET-01191-001 reference pass\nBraTS-MET-01191-002 reference pass\nBraTS-MET-01191-003 reference pass\nBraTS-MET-01191-004 reference pass\nBraTS-MET-01217-000 reference pass\nBraTS-MET-01217-002 reference pass\nBraTS-MET-01217-003 reference pass\nBraTS-MET-01250-001 reference pass\nBraTS-MET-01250-003 reference pass\nBraTS-MET-01268-002 reference pass\nBraTS-MET-01270-001 reference pass\nBraTS-MET-01270-002 reference pass\nBraTS-MET-01270-003 reference pass\nBraTS-MET-01276-001 reference pass\nBraTS-MET-01284-000 reference pass\nBraTS-MET-01284-002 reference pass\nBraTS-MET-01287-001 reference pass\nBraTS-MET-01287-002 reference pass\nBraTS-MET-01301-000 reference pass\nBraTS-MET-01301-001 reference pass\nBraTS-MET-01301-002 reference pass\nBraTS-MET-01310-001 reference pass\nBraTS-MET-01310-002 reference pass\nBraTS-MET-01314-002 reference pass\nBraTS-MET-01314-003 reference pass\nBraTS-MET-01331-002 reference pass\nBraTS-MET-01351-000 reference pass\nBraTS-MET-01351-002 reference pass\nBraTS-MET-01351-003 reference pass\n"
+    }
+  },
+  "markers": {
+    "evaluation/t1c": {},
+    "evaluation/t1n": {},
+    "evaluation/t2f": {},
+    "evaluation/t2w": {},
+    "reference": {
+      "COMPLETE.ok": {
+        "bytes": 280,
+        "sha256": "0c452419255a32842b0995fafa6d92e3037865301a9f01a5654d16dd48da972e",
+        "summary": {
+          "status": "pass",
+          "utc": "2026-10-18T09:52:46.941188+00:00"
+        }
+      },
+      "REPORT.json": {
+        "bytes": 10188520,
+        "sha256": "13e57c28d597e7801e503219da15350eda68a044550ed0d436edee84c1c70d3c",
+        "summary": {
+          "cases": 103,
+          "errors": [],
+          "negative_cases": 9,
+          "positive_cases": 94,
+          "utc": "2026-10-18T09:52:46.539364+00:00"
+        }
+      },
+      "STARTED.json": {
+        "bytes": 196,
+        "sha256": "5de06a6c24b7851ed13471fa4abfe918d41462c526c71a8828d8cca070a41825",
+        "summary": {
+          "utc": "2026-10-18T08:25:53.601156+00:00"
+        }
+      }
+    },
+    "selection": {},
+    "smoke/t1c": {},
+    "smoke/t1n": {},
+    "smoke/t2f": {},
+    "smoke/t2w": {}
+  },
+  "package_drift": [],
+  "package_sha256": "3486d52cfa995aff8cd439932384d8393224b90630cb878793aba01f7b41d2d4",
+  "receipts": {
+    "smoke": {
+      "artifact_status": "experimental_unvalidated",
+      "available_bytes": 193082687488,
+      "formal_gate_status": "not_run_not_passed",
+      "jobs": {
+        "prepare": "4145277",
+        "smoke_t1c": "4145278",
+        "smoke_t1n": "4145279",
+        "smoke_t2f": "4145281",
+        "smoke_t2w": "4145280"
+      },
+      "operator_approved": false,
+      "package_sha256": "3486d52cfa995aff8cd439932384d8393224b90630cb878793aba01f7b41d2d4",
+      "queue": {
+        "argv": [
+          "squeue",
+          "-h",
+          "-j",
+          "4145277,4145278,4145279,4145280,4145281",
+          "-o",
+          "%i|%T|%j|%P|%r|%M"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4145281|PENDING|g1r9v_smoke_t2f|a100|None|0:00\n4145280|PENDING|g1r9v_smoke_t2w|a100|None|0:00\n4145279|PENDING|g1r9v_smoke_t1n|a100|None|0:00\n4145278|PENDING|g1r9v_smoke_t1c|a100|None|0:00\n4145277|PENDING|g1r9v_prepare|cpu_192G|None|0:00\n",
+        "utc": "2026-10-18T08:25:45.193016+00:00"
+      },
+      "remote_utc": "2026-10-18T08:25:45.122097+00:00",
+      "status": "released"
+    }
+  },
+  "remote_utc": "2026-10-19T02:43:27.415275+00:00",
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4145277|COMPLETED|0:0|01:27:37|2026-10-18T16:25:31|2026-10-18T17:53:08\n4145277.batch|COMPLETED|0:0|01:27:37|2026-10-18T16:25:31|2026-10-18T17:53:08\n4145278|PENDING|0:0|00:00:00|Unknown|Unknown\n4145279|PENDING|0:0|00:00:00|Unknown|Unknown\n4145280|PENDING|0:0|00:00:00|Unknown|Unknown\n4145281|PENDING|0:0|00:00:00|Unknown|Unknown\n"
+  },
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4145281|PENDING|g1r9v_smoke_t2f|a100|Priority|0:00\n4145280|PENDING|g1r9v_smoke_t2w|a100|Priority|0:00\n4145279|PENDING|g1r9v_smoke_t1n|a100|Priority|0:00\n4145278|PENDING|g1r9v_smoke_t1c|a100|Resources|0:00\n"
+  },
+  "stage_failures": {},
+  "status": "snapshot"
+}

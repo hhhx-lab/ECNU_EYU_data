@@ -1,0 +1,373 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "reviewed_at": "2026-10-13T12:29:32.082468+00:00",
+  "source_root": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/incoming_source",
+  "source_unchanged": false,
+  "source_sha256": {
+    "requirements.txt": "579d2866a2db364ff8953b840eed5d7b17e4d4e00e62a50ac7e9e7bad20554ae",
+    "model.py": "be2616cf2d2388dd8f341274b73db5080bf5705e4bdeb78c733f6fe926ef8354",
+    "README.md": "b61c3bda8d1dd8e69253ed12c3430a0bfecbf76001a15651e5247635eefb8f2c",
+    "README_DIFFUSION.md": "6a25f3e20c016fffe29a27ef213b726bda9f493112596492ce1443de80e245bc",
+    "lists/t2w_invalid_cases.txt": "5826d0ca1c4bdbefbbd49cedb81953b81c84d0f15f510886cd0e1bc2a913cab7",
+    "tests/test_train_launcher.py": "ebcabe77ae36b945596cc7c50f1be623c9467c370498b23e570b74c389e07ab0",
+    "tests/test_regressions.py": "59dded606d0837e456d0c2eafbdb3fa24541a4b52926e09aa3029381c13a29f3",
+    "docs/FIXES_20261013.md": "6c77032db119761f3142e655543cf765e7b7aad189676ad303fbc8fe3ec2bee9",
+    "docs/diffusion_model_for_brain_tumor_generation.md": "2c606a73f876c9316d8a6e13ffd488d59cb19518d24af13076b16976c8ecb631",
+    "docs/扩散模型加速方法.md": "e7169fff455aa45b4f6124b12ac55f0624cd5fde8c556c7cd39de4e508e00025",
+    "scripts/train_4gpu.sh": "1f39808ab72a5e5433a2969b53ded979c97870f073c6ccf59a15e0fa2d5fd804",
+    "scripts/make_case_lists.py": "0d871cb5a0e26441d26c6d28ae098af3b4457ed86f43a34ad2a58e35d489294c",
+    "scripts/preprocess_dataset.py": "ee3d06c91107bc727e5f019b359d5a740bf5f139cdd06a3ba6e24345bf905f1b",
+    "scripts/watch_loss.py": "9b2f1ce399cd16d0c2763a56ca4f41929e434d1efaef80192edf8ffc878d3d3f",
+    "scripts/smoke_test.sh": "2e49ecab5b2f47e64df1ae7b9e8e1f735f7d555cc2a20f80a771b71922deefdd",
+    "scripts/eval_checkpoints.py": "1ed4cb98cc95817ad0644a08e3635441882823a79417db36a9ac9c1775b9ccc5",
+    "src/preprocess/nnunet_like.py": "8b4a814d837c24af3961805c4fb129b181d546c5fd21647a15e73d5d70772228",
+    "src/preprocess/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/utils/gaussian_noise_tumour_extended.py": "21959aa5c6abfcb9a097cfaca0f06074e604533d5b6694004d9627d53071b74b",
+    "src/utils/label_modifier.py": "bd75587ab47d8aee61a7f105d505a651a7bf32304d01d827b7fd6693b17d8b10",
+    "src/utils/convert_to_multi_channel_based_on_brats_classes.py": "100ff13430ebc3ea0f33c5a0f610b5320f93cd0b3a3104712029737e545d4d01",
+    "src/utils/crop_label.py": "dad83a917770beb6b7fa213bf9ac859ee2a2a37637202bac6d2e746db47e7ca4",
+    "src/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/utils/gaussian_noise_tumour.py": "81e23aa403966e90b75723c5f4de93c26bdeeb915a6467d1fd53d1ec3a793b85",
+    "src/utils/checkpoints.py": "643664cf92699f7fabaacfcb1ed40e29c6e366e6c6ed61edc7e3b7a45d6b8314",
+    "src/utils/data_utils.py": "14e3f8c455d31e34351504f634b9f9599f52d12c02468ab5a2d21aa1cbcc8794",
+    "src/utils/volume_validation.py": "6bb6e7adc2de46df447cad5433e5a07243f2c59fa96fc986db03737d84a68313",
+    "src/utils/splits.py": "d23e27afd851f21178cdd7e2bef21d017757b94b40f27dbe110ec88e55cc3cb0",
+    "src/networks/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/networks/DiffusionNetwork.py": "182ec3fca9c63b100401c04e63ed1c931c123f8c50ffbf9dfcea6bde53741346",
+    "src/train/tumour_main_diffusion.py": "1880879cd0c2b69c26d5de25b6ba5d05508d0aeb064572f9223c2c75d3334ce8",
+    "src/train/label_main_diffusion.py": "9ecf1ce8c145a961efbc54cafae3e86d386f6d3ec043b16a20a78fe630e0b42f",
+    "src/train/csv_creator.py": "0c47a214be33a72f51249280d9f2d504df051a6b21bca5e0b4c4c960ccd035bf",
+    "src/infer/on_the_fly_augmentation.py": "594ffd1d583fb4bee14b4dee6f4712dd228d51806b0c565c8bacb6196ab37947",
+    "src/infer/diffusion_inference_utils.py": "d5b4ff94a3103aef1ca45c73c60fdbb6768a47601fefd72ca74e779fec50e58a",
+    "src/infer/generate_from_label.py": "f1cb2d24b3248f166db6336b6890f181fda7861ffbf3d4ae963577e6a47d234e",
+    "src/infer/evaluate_generation.py": "2d2373f9027d11d5970229b349023e358cb08d3c89c1d8403457e7f29b07ff2d"
+  },
+  "status": "not_ready_for_full_training",
+  "checks": [
+    {
+      "name": "syntax_and_real_import",
+      "status": "pass",
+      "python_files": 28,
+      "shell_exit_codes": {
+        "scripts/train_4gpu.sh": 0,
+        "scripts/smoke_test.sh": 0
+      },
+      "real_imports": [
+        "scripts.preprocess_dataset",
+        "src.train.csv_creator",
+        "src.train.tumour_main_diffusion",
+        "src.train.label_main_diffusion",
+        "src.utils.data_utils",
+        "src.utils.splits",
+        "src.utils.volume_validation",
+        "src.infer.evaluate_generation",
+        "src.infer.generate_from_label",
+        "src.infer.on_the_fly_augmentation"
+      ]
+    },
+    {
+      "name": "upstream_isolated_regressions",
+      "status": "fail",
+      "tests_run": 42,
+      "passed": 37,
+      "skipped": 4,
+      "failures": 1,
+      "errors": 0,
+      "records": [
+        {
+          "test": "test_regressions.CacheRegressionTests.test_eval_cache_requires_matching_inputs_and_intact_metrics",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.CacheRegressionTests.test_identity_changes_when_preprocessed_data_is_rebuilt",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_adam_beta1_default_and_resume_enforcement",
+          "status": "skipped",
+          "reason": "CUDA unavailable"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_csv_failure_preserves_previous_file",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_csv_groups_visits_and_actual_tile_counts",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_evaluation_cli_self_test_and_missing_scan",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_evaluation_samples_with_the_checkpoint_schedule",
+          "status": "skipped",
+          "reason": "CUDA unavailable"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_invalid_volumes_rejected",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_preprocess_cli_fails_for_rejected_missing_and_empty",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_real_csv_loader_preserves_rc_and_small_batch",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_reuse_validates_outputs_and_provenance",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_smoke_refuses_existing_work_directory",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.DataRegressionTests.test_training_cli_two_steps_then_resume_one",
+          "status": "skipped",
+          "reason": "CUDA unavailable"
+        },
+        {
+          "test": "test_regressions.EvaluationScheduleTests.test_checkpoint_schedule_replaces_command_line_values",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.EvaluationScheduleTests.test_checkpoint_without_schedule_keeps_command_line",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.EvaluationScheduleTests.test_modalities_with_different_schedules_are_refused",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.EvaluationScheduleTests.test_sampler_must_match_trained_schedule",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.GeometryRegressionTests.test_anisotropic_grid_keeps_legal_labels",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.GeometryRegressionTests.test_sampling_coordinates_match_affine_not_rounded_shape",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.SplitRegressionTests.test_list_export_does_not_partially_write_on_leakage",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.SplitRegressionTests.test_missing_split_fails_closed",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.SplitRegressionTests.test_visits_cannot_cross_splits",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.TrainingRegressionTests.test_amp_skipped_attempt_does_not_count_as_update",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.TrainingRegressionTests.test_compiled_and_eager_checkpoint_roundtrip",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.TrainingRegressionTests.test_cuda_amp_update_and_scaler_restore",
+          "status": "skipped",
+          "reason": "CUDA unavailable"
+        },
+        {
+          "test": "test_regressions.TrainingRegressionTests.test_exact_updates_and_resume_boundary_for_all_schedules",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.TrainingRegressionTests.test_failed_atomic_save_preserves_checkpoint",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.TrainingRegressionTests.test_label_preview_background_is_zero",
+          "status": "pass"
+        },
+        {
+          "test": "test_regressions.TrainingRegressionTests.test_network_cpu_forward_backward",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_all_failures_are_reported",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_all_four_succeed",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_invalid_gpu_count_fails_before_starting_jobs",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_launcher_has_unix_line_endings",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_one_failure_is_propagated_and_other_jobs_checked",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_serial_failure_does_not_stop_the_rest_of_the_queue",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_serial_queue_survives_closed_output",
+          "status": "fail",
+          "traceback": "Traceback (most recent call last):\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/incoming_source/tests/test_train_launcher.py\", line 160, in test_serial_queue_survives_closed_output\n    self.assertEqual([self.status(mod) for mod in MODS], [\"0\", \"0\", \"0\", \"0\"])\nAssertionError: Lists differ: ['0', 't1c ended on GPU 0 (exit 0)\\nstarted t1n [222 chars]\\n0'] != ['0', '0', '0', '0']\n\nFirst differing element 1:\n't1c ended on GPU 0 (exit 0)\\nstarted t1n [41 chars]g\\n0'\n'0'\n\n+ ['0', '0', '0', '0']\n- ['0',\n-  't1c ended on GPU 0 (exit 0)\\n'\n-  'started t1n on GPU 0 (pid 76308) -> logs/train_t1n.log\\n'\n-  '0',\n-  't1n ended on GPU 0 (exit 0)\\n'\n-  'started t2w on GPU 0 (pid 76311) -> logs/train_t2w.log\\n'\n-  '0',\n-  't2w ended on GPU 0 (exit 0)\\n'\n-  'started t2f on GPU 0 (pid 76314) -> logs/train_t2f.log\\n'\n-  '0']\n"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_serial_queue_survives_hangup_of_its_process_group",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_single_gpu_trains_all_four_in_series",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_slots_on_different_gpus_run_concurrently",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_stale_status_from_a_previous_run_is_not_reported",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_two_gpus_split_round_robin_and_serialize_per_gpu",
+          "status": "pass"
+        },
+        {
+          "test": "test_train_launcher.TrainLauncherTests.test_two_slots_may_share_one_gpu",
+          "status": "pass"
+        }
+      ],
+      "scope": "local_CPU_only_GPU_tests_skipped"
+    },
+    {
+      "name": "independent_oblique_physical_grid",
+      "status": "probe_error",
+      "error": "resample_physical() missing 3 required positional arguments: 'offset', 'spacing', and 'target_spacing'",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/audit_dated_revision.py\", line 48, in probe\n    checks.append(dict(name=name, **function()))\n  File \"/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261013_tumour_diffusion_1mm_dated_revision_readiness/audit_dated_revision.py\", line 114, in independent_grid\n    out = grid.resample_physical(data, spacing, (1., 1., 1.))\nTypeError: resample_physical() missing 3 required positional arguments: 'offset', 'spacing', and 'target_spacing'\n"
+    },
+    {
+      "name": "independent_fail_closed_patient_split",
+      "status": "pass",
+      "rejected": {
+        "missing_column": true,
+        "train_only": true,
+        "crossing": true
+      },
+      "isolated_validation_rows": 1,
+      "braTS_patient_group": "00001"
+    },
+    {
+      "name": "independent_saved_resume_exact_updates",
+      "status": "pass",
+      "first_completed_updates": 2,
+      "resumed_completed_updates": 3,
+      "resumed_new_updates": 1,
+      "restored_optimizer_update_count": 3,
+      "scope": "real_checkpoint_roundtrip_then_actual_CPU_train_loop"
+    },
+    {
+      "name": "referenced_image_content_vs_marker_fingerprint",
+      "status": "partial",
+      "in_place_image_mutation_detected": false,
+      "changed_completion_marker_detected": true,
+      "scope": "actual_csv_identity_fingerprint_requires_external_revalidation_of_marker_output_SHAs"
+    },
+    {
+      "name": "remaining_scientific_and_long_run_contracts",
+      "status": "partial",
+      "checkpoint_keys": [
+        "global_step",
+        "epoch",
+        "state_dict",
+        "step_semantics",
+        "optimizer",
+        "n_steps",
+        "noise_schedule",
+        "noise_embedding_mode",
+        "time_ch_count",
+        "schedule_config",
+        "p_uncond",
+        "planner_gpu_gb",
+        "normalization",
+        "modality",
+        "crop_size",
+        "generator_type",
+        "in_channels",
+        "out_channels",
+        "feature_size",
+        "adam_beta1",
+        "scaler",
+        "data_identity"
+      ],
+      "rng_or_sampler_state_saved": false,
+      "term_handler_present": false,
+      "eval_csv_mismatch_still_warning": true,
+      "smoke_no_recursive_delete": true,
+      "smoke_trained_modalities": [
+        "t1c",
+        "t2w"
+      ],
+      "invalid_t2w_count": 266,
+      "train_launcher_still_overwrites_logs_and_status": false,
+      "server_slurm_contract_test": "not_run",
+      "full_A100_64cube_batch16_amp_compile": "not_run",
+      "raw_data_and_patient_manifest_compatibility": "not_run",
+      "S2_native_space_roundtrip": "not_run",
+      "adam_beta1_default": 0.9,
+      "previous_beta1": 0.5
+    },
+    {
+      "name": "reference_network_64cube_forward_16cube_backward",
+      "status": "pass",
+      "parameters": 4475999,
+      "forward_shape": [
+        1,
+        1,
+        64,
+        64,
+        64
+      ],
+      "backward_shape": [
+        1,
+        1,
+        16,
+        16,
+        16
+      ],
+      "scope": "CPU_reference_architecture_not_full_size_GPU_backprop"
+    }
+  ],
+  "environment": {
+    "executable": "/Users/hwaigc/miniforge3/envs/g1_t2w_bbdm/bin/python",
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:47) [Clang 19.1.7 ]",
+    "cuda_available": false,
+    "packages": {
+      "torch": "2.7.1",
+      "monai": "1.5.2",
+      "numpy": "1.26.4",
+      "nibabel": "5.4.2",
+      "nnunetv2": "2.8.0"
+    }
+  },
+  "boundaries": {
+    "source_edits": false,
+    "server_access": false,
+    "dependency_install": false,
+    "real_data_download": false,
+    "training_submitted": false,
+    "upstream_gpu_smoke_run": false
+  }
+}

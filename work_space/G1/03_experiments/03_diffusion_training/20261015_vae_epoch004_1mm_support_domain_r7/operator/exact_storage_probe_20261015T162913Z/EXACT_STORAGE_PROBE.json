@@ -1,0 +1,116 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "local_received_utc": "2026-10-15T16:29:34.811085+00:00",
+  "local_start_utc": "2026-10-15T16:29:13.624971+00:00",
+  "no_large_data_moved": true,
+  "no_old_file_deleted_or_overwritten": true,
+  "operator_approved": false,
+  "paths": [
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /public/home/zqchen\n# owner: zqchen\n# group: users\nuser::rwx\ngroup::---\nother::---\n\n"
+      },
+      "available_bytes": 215748706304,
+      "device": 42,
+      "exists": true,
+      "gid": 100,
+      "is_directory": true,
+      "mode": "0o700",
+      "mount": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "/public 12.12.15.3:/public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n"
+      },
+      "path": "/public/home/zqchen",
+      "resolved": "/public/home/zqchen",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 2199023255552,
+      "uid": 2159,
+      "write_access": true
+    },
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /hpc_stor/data\n# owner: root\n# group: root\nuser::rwx\ngroup::r-x\nother::r-x\n\n"
+      },
+      "available_bytes": 2475686190120960,
+      "device": 43,
+      "exists": true,
+      "gid": 0,
+      "is_directory": true,
+      "mode": "0o755",
+      "mount": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "/hpc_stor 12.12.15.4:/hpc_stor nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.4,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.4\n"
+      },
+      "path": "/hpc_stor/data",
+      "resolved": "/hpc_stor/data",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 2814749767106560,
+      "uid": 0,
+      "write_access": false
+    },
+    {
+      "exists": false,
+      "path": "/hpc_stor/data/zqchen",
+      "symlink": false
+    },
+    {
+      "acl": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "# file: /public/share\n# owner: root\n# group: root\nuser::rwx\ngroup::rwx\nother::rwx\n\n"
+      },
+      "available_bytes": 28018383781888,
+      "device": 42,
+      "exists": true,
+      "gid": 0,
+      "is_directory": true,
+      "mode": "0o777",
+      "mount": {
+        "exit_code": 0,
+        "stderr": "",
+        "stdout": "/public 12.12.15.3:/public nfs    rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=12.12.15.3,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=12.12.15.3\n"
+      },
+      "path": "/public/share",
+      "resolved": "/public/share",
+      "search_access": true,
+      "symlink": false,
+      "total_bytes": 272678883688448,
+      "uid": 0,
+      "write_access": true
+    },
+    {
+      "exists": false,
+      "path": "/public/share/zqchen",
+      "symlink": false
+    }
+  ],
+  "policy_files": [],
+  "quota": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote_end_utc": "2026-10-15T16:18:30.034149+00:00",
+  "remote_start_utc": "2026-10-15T16:18:26.828440+00:00",
+  "shared_root_write_test": false,
+  "test_results": [
+    {
+      "directory": "/hpc_stor/data/zqchen",
+      "status": "not_tested_no_confirmed_private_owner_directory"
+    },
+    {
+      "directory": "/public/share/zqchen",
+      "status": "not_tested_no_confirmed_private_owner_directory"
+    }
+  ]
+}

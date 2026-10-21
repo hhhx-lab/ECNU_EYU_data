@@ -1,0 +1,52 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes": 224186597376,
+  "drift": [],
+  "file_rows_written": 0,
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "job_id": "4058680",
+  "local_utc": "2026-10-13T15:58:56.687495+00:00",
+  "logs": {
+    "err": {
+      "exists": false
+    },
+    "out": {
+      "exists": false
+    }
+  },
+  "markers": {
+    "COMPLETE.ok": {
+      "exists": false
+    },
+    "FAILED.json": {
+      "exists": false
+    },
+    "STARTED.json": {
+      "exists": false
+    },
+    "VALIDATION.json": {
+      "exists": false
+    }
+  },
+  "operation_failed_exists": false,
+  "operator_approved": false,
+  "package_manifest_sha256": "41b67221c4993b04fdc74f8506d741d898691aec761e16c84e275b6947a37c77",
+  "public_disk": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem               1B-blocks            Used      Available Use% Mounted on\n12.12.15.3:/public 272678883688448 244338800984064 28340082704384  90% /public\n12.12.15.3:/public   2199023255552   1974836658176   224186597376  90% /public\n"
+  },
+  "remote_utc": "2026-10-13T15:47:53.858149+00:00",
+  "sacct": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "4058680|PENDING|0:0|00:00:00|Unknown|Unknown|\n"
+  },
+  "squeue": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "4058680|PENDING|g1d1mmp0r2|cpu_96G|Priority|\n"
+  },
+  "submission_receipt_sha256": "db9dc0c1830adef81d05918c1f529261ebceec1fe8177c72668e9b2f5fb4e149"
+}

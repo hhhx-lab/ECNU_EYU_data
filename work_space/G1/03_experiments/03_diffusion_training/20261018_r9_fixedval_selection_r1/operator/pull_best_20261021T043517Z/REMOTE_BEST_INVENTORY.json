@@ -1,0 +1,59 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "evaluation_package_sha256": "3486d52cfa995aff8cd439932384d8393224b90630cb878793aba01f7b41d2d4",
+  "formal_gate_status": "not_run_not_passed",
+  "lightweight_bytes": 24267993,
+  "local_received_utc": "2026-10-21T04:35:49.637313+00:00",
+  "models": {
+    "t1c": {
+      "authentic_secondary_ssim": 0.1763220244013394,
+      "bytes": 55806207,
+      "mtime_ns": 1792234098000000000,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t1c/weights/diffusion_120000.pt",
+      "primary_ssim": 0.4388053354475247,
+      "selected_step": 120000,
+      "sha256": "c66c9610634a6e1a06ffdf5df201f627036000c053100a9b8f02299922f892f4"
+    },
+    "t1n": {
+      "authentic_secondary_ssim": 0.43780832635184286,
+      "bytes": 55806143,
+      "mtime_ns": 1792205950000000000,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t1n/weights/diffusion_40000.pt",
+      "primary_ssim": 0.5208156814483376,
+      "selected_step": 40000,
+      "sha256": "ec418ac7dbdcb72cf6202af30f10d6b2ca79249294842e85e875f7b895a5d6f9"
+    },
+    "t2f": {
+      "authentic_secondary_ssim": 0.4579002465830011,
+      "bytes": 55806207,
+      "mtime_ns": 1792256940000000000,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t2f/weights/diffusion_200000.pt",
+      "primary_ssim": 0.5806873985324639,
+      "selected_step": 200000,
+      "sha256": "c642ea88fe73e479a2ddf5d663fe220c5bcada31e03cfea9d981ff24d0acc93b"
+    },
+    "t2w": {
+      "authentic_secondary_ssim": 0.38573471785801416,
+      "bytes": 55806207,
+      "mtime_ns": 1792253372000000000,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_diffusion_1mm_vae_epoch004_20261016_resume_uniform_r9/training/t2w/weights/diffusion_200000.pt",
+      "primary_ssim": 0.4979818168747462,
+      "selected_step": 200000,
+      "sha256": "27ea3175e26b7aeaaba28f30a553cd71fa2eab0c7e79989355da46ef39aa28a5"
+    }
+  },
+  "operator_approved": false,
+  "remote_started_utc": "2026-10-21T04:24:27.281866+00:00",
+  "remote_utc": "2026-10-21T04:24:31.978733+00:00",
+  "remote_writes": false,
+  "sacct": "4159189|COMPLETED|0:0|09:58:51|2026-10-20T11:34:36|2026-10-20T21:33:27\n4159189.batch|COMPLETED|0:0|09:58:51|2026-10-20T11:34:36|2026-10-20T21:33:27\n4159190|COMPLETED|0:0|09:58:51|2026-10-20T11:34:36|2026-10-20T21:33:27\n4159190.batch|COMPLETED|0:0|09:58:51|2026-10-20T11:34:36|2026-10-20T21:33:27\n4159191|COMPLETED|0:0|10:40:55|2026-10-20T11:34:36|2026-10-20T22:15:31\n4159191.batch|COMPLETED|0:0|10:40:55|2026-10-20T11:34:36|2026-10-20T22:15:31\n4159192|COMPLETED|0:0|09:55:19|2026-10-20T21:33:42|2026-10-21T07:29:01\n4159192.batch|COMPLETED|0:0|09:55:19|2026-10-20T21:33:42|2026-10-21T07:29:01\n4159193|COMPLETED|0:0|00:05:30|2026-10-21T07:29:15|2026-10-21T07:34:45\n4159193.batch|COMPLETED|0:0|00:05:30|2026-10-21T07:29:15|2026-10-21T07:34:45\n",
+  "selection_sha256": "541d0fd245ba66841f35574aed3ad227efa9363c580211a1c8733f528d808902",
+  "squeue": "",
+  "status": "pass",
+  "storage": {
+    "available_bytes": 1261224067072,
+    "df": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2037310816256 1261224067072  62% /public\n",
+    "total_bytes": 3298534883328
+  },
+  "training_package_sha256": "80f432b454ea80cf3d4142cb87d194c7913c0eabd2da473b3821b06d10df63f6"
+}

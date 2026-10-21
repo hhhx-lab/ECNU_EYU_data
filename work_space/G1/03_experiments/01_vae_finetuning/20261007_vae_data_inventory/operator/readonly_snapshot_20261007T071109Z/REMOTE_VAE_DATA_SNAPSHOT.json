@@ -1,0 +1,844 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "data_roots": [
+    {
+      "counts": {
+        "attention_masks:*/*.npy": {
+          "bytes": 0,
+          "files": 0
+        },
+        "latents:*/*_latent.npy": {
+          "bytes": 0,
+          "files": 0
+        },
+        "latents:*/spatial_transform.json": {
+          "bytes": 0,
+          "files": 0
+        },
+        "lesion_weights:*/*.npy": {
+          "bytes": 0,
+          "files": 0
+        }
+      },
+      "listing": [
+        "data_csv.csv",
+        "g1_split_membership.csv",
+        "g1_split_summary.json",
+        "g1_v2_data_placement_manifest.csv",
+        "g1_v2_dataset_validation.json",
+        "g1_v2_label_filter_report.csv",
+        "g1_v2_label_filter_summary.json",
+        "g1_v2_preparation_validation.json",
+        "input",
+        "input_inference",
+        "output"
+      ],
+      "metadata": [
+        {
+          "columns": [
+            "id",
+            "seg",
+            "t1n",
+            "t1c",
+            "t2w",
+            "t2f",
+            "split"
+          ],
+          "count": 1030,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/data_csv.csv",
+          "sample": [
+            {
+              "id": "BraTS-MET-00001-000",
+              "seg": "BraTS-MET-00001-000-seg.nii.gz",
+              "split": "train",
+              "t1c": "BraTS-MET-00001-000-t1c.nii.gz",
+              "t1n": "BraTS-MET-00001-000-t1n.nii.gz",
+              "t2f": "BraTS-MET-00001-000-t2f.nii.gz",
+              "t2w": "BraTS-MET-00001-000-t2w.nii.gz"
+            }
+          ],
+          "split_counts": {
+            "test": 104,
+            "train": 823,
+            "val": 103
+          }
+        },
+        {
+          "columns": [
+            "id",
+            "patient_group",
+            "split"
+          ],
+          "count": 1030,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/g1_split_membership.csv",
+          "sample": [
+            {
+              "id": "BraTS-MET-00001-000",
+              "patient_group": "BraTS-MET-00001",
+              "split": "train"
+            }
+          ],
+          "split_counts": {
+            "test": 104,
+            "train": 823,
+            "val": 103
+          }
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/g1_split_summary.json",
+          "text": "{\n  \"seed\": 42,\n  \"grouping_rule\": \"remove final numeric case suffix\",\n  \"val_fraction_requested\": 0.1,\n  \"test_fraction_requested\": 0.1,\n  \"total_cases\": 1030,\n  \"total_patient_groups\": 641,\n  \"case_counts\": {\n    \"test\": 104,\n    \"train\": 823,\n    \"val\": 103\n  },\n  \"patient_group_counts\": {\n    \"test\": 61,\n    \"train\": 511,\n    \"val\": 69\n  },\n  \"actual_case_fractions\": {\n    \"train\": 0.7990291262135922,\n    \"val\": 0.1,\n    \"test\": 0.10097087378640776\n  },\n  \"data_csv\": \"data/data_csv.csv\",\n  \"membership_csv\": \"data/g1_split_membership.csv\"\n}\n"
+        },
+        {
+          "columns": [
+            "case_id",
+            "source_dir",
+            "target",
+            "status",
+            "reason",
+            "label_source",
+            "gzip_original_t2w_filename",
+            "t2w_is_fake_by_gzip_header",
+            "t1n",
+            "t1c",
+            "t2w",
+            "t2f",
+            "seg"
+          ],
+          "count": 1296,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/g1_v2_data_placement_manifest.csv",
+          "sample": [
+            {
+              "case_id": "BraTS-MET-00001-000",
+              "gzip_original_t2w_filename": "",
+              "label_source": "raw",
+              "reason": "",
+              "seg": "/public/home/zqchen/data/BraTS-MET-00001-000/seg.nii.gz",
+              "source_dir": "/public/home/zqchen/data/BraTS-MET-00001-000",
+              "status": "placed",
+              "t1c": "/public/home/zqchen/data/BraTS-MET-00001-000/t1c.nii.gz",
+              "t1n": "/public/home/zqchen/data/BraTS-MET-00001-000/t1n.nii.gz",
+              "t2f": "/public/home/zqchen/data/BraTS-MET-00001-000/t2f.nii.gz",
+              "t2w": "/public/home/zqchen/data/BraTS-MET-00001-000/t2w.nii.gz",
+              "t2w_is_fake_by_gzip_header": "False",
+              "target": "input"
+            }
+          ],
+          "split_counts": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/g1_v2_dataset_validation.json",
+          "text": "{\n  \"status\": \"passed\",\n  \"data_csv\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/data_csv.csv\",\n  \"data_dir\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/input\",\n  \"total_rows\": 1030,\n  \"checked_cases\": 1030,\n  \"split_counts\": {\n    \"test\": 104,\n    \"train\": 823,\n    \"val\": 103\n  },\n  \"label_values_checked\": false,\n  \"error_count\": 0,\n  \"errors\": []\n}\n"
+        },
+        {
+          "columns": [
+            "case_id",
+            "status",
+            "reason",
+            "label_source",
+            "seg_path",
+            "resolved_seg_path"
+          ],
+          "count": 1031,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/g1_v2_label_filter_report.csv",
+          "sample": [
+            {
+              "case_id": "BraTS-MET-00001-000",
+              "label_source": "raw",
+              "reason": "",
+              "resolved_seg_path": "/public/home/zqchen/data/BraTS-MET-00001-000/seg.nii.gz",
+              "seg_path": "data/input/BraTS-MET-00001-000/BraTS-MET-00001-000-seg.nii.gz",
+              "status": "accepted"
+            }
+          ],
+          "split_counts": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/g1_v2_label_filter_summary.json",
+          "text": "{\n  \"allowed_labels\": [\n    0,\n    1,\n    2,\n    3,\n    4\n  ],\n  \"input_cases\": 1031,\n  \"accepted_cases\": 1030,\n  \"excluded_cases\": 1,\n  \"excluded_fraction\": 0.0009699321047526673,\n  \"excluded_case_ids\": [\n    \"BraTS-MET-01094-002\"\n  ],\n  \"report_csv\": \"data/g1_v2_label_filter_report.csv\"\n}\n"
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/g1_v2_preparation_validation.json",
+          "text": "{\n  \"status\": \"passed\",\n  \"training_candidates_before_label_filter\": 1031,\n  \"fake_t2w_inference_cases\": 265,\n  \"effective_csv_cases\": 1030,\n  \"split_counts\": {\n    \"train\": 823,\n    \"val\": 103,\n    \"test\": 104\n  },\n  \"excluded_label_cases\": [\n    \"BraTS-MET-01094-002\"\n  ],\n  \"corrected_label_case\": \"BraTS-MET-01184-002\",\n  \"error_count\": 0,\n  \"errors\": []\n}\n"
+        }
+      ],
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data"
+    },
+    {
+      "counts": {
+        "attention_masks:*/*.npy": {
+          "bytes": 43876615680,
+          "files": 2060
+        },
+        "latents:*/*_latent.npy": {
+          "bytes": 10800860160,
+          "files": 4120
+        },
+        "latents:*/spatial_transform.json": {
+          "bytes": 0,
+          "files": 0
+        },
+        "lesion_weights:*/*.npy": {
+          "bytes": 43876615680,
+          "files": 2060
+        }
+      },
+      "listing": [
+        "attention_masks",
+        "channel_weights.csv",
+        "channel_weights.json",
+        "data_csv.csv",
+        "eval_metrics_val.csv",
+        "evaluation",
+        "g1_split_membership.csv",
+        "g1_split_summary.json",
+        "g1_v3_data_adoption.json",
+        "g1_v3_data_placement_manifest.csv",
+        "g1_v3_dataset_validation.json",
+        "g1_v3_label_filter_report.csv",
+        "g1_v3_label_filter_summary.json",
+        "g1_v3_preparation_validation.json",
+        "input",
+        "input_inference",
+        "latents",
+        "lesion_weights",
+        "output",
+        "selected_vae.json"
+      ],
+      "metadata": [
+        {
+          "columns": [
+            "channel",
+            "rms",
+            "channel_importance_weight"
+          ],
+          "count": 4,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/channel_weights.csv",
+          "sample": [
+            {
+              "channel": "0",
+              "channel_importance_weight": "0.2439509928226471",
+              "rms": "0.9754542112350464"
+            }
+          ],
+          "split_counts": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/channel_weights.json",
+          "text": "{\n  \"missing_modality\": \"t2w\",\n  \"num_training_subjects\": 823,\n  \"rms\": [\n    0.9754542112350464,\n    1.0350288152694702,\n    0.9780573844909668,\n    1.0100209712982178\n  ],\n  \"channel_importance_weights\": [\n    0.2439509928226471,\n    0.25885000824928284,\n    0.2446019947528839,\n    0.252595990896225\n  ]\n}"
+        },
+        {
+          "columns": [
+            "id",
+            "seg",
+            "t1n",
+            "t1c",
+            "t2w",
+            "t2f",
+            "split"
+          ],
+          "count": 1030,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/data_csv.csv",
+          "sample": [
+            {
+              "id": "BraTS-MET-00001-000",
+              "seg": "BraTS-MET-00001-000-seg.nii.gz",
+              "split": "train",
+              "t1c": "BraTS-MET-00001-000-t1c.nii.gz",
+              "t1n": "BraTS-MET-00001-000-t1n.nii.gz",
+              "t2f": "BraTS-MET-00001-000-t2f.nii.gz",
+              "t2w": "BraTS-MET-00001-000-t2w.nii.gz"
+            }
+          ],
+          "split_counts": {
+            "test": 104,
+            "train": 823,
+            "val": 103
+          }
+        },
+        {
+          "columns": [
+            "subject",
+            "whole_SSIM",
+            "whole_PSNR",
+            "whole_MSE",
+            "whole_MAE",
+            "brain_SSIM",
+            "brain_PSNR",
+            "brain_MSE",
+            "brain_MAE"
+          ],
+          "count": 103,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/eval_metrics_val.csv",
+          "sample": [
+            {
+              "brain_MAE": "0.0638609379529953",
+              "brain_MSE": "0.009753859601914883",
+              "brain_PSNR": "20.367285059678952",
+              "brain_SSIM": "0.8035873174667358",
+              "subject": "BraTS-MET-00006-000",
+              "whole_MAE": "0.009669285267591476",
+              "whole_MSE": "0.0012785118306055665",
+              "whole_PSNR": "29.192002548980742",
+              "whole_SSIM": "0.9195627570152283"
+            }
+          ],
+          "split_counts": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        {
+          "columns": [
+            "id",
+            "patient_group",
+            "split"
+          ],
+          "count": 1030,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_split_membership.csv",
+          "sample": [
+            {
+              "id": "BraTS-MET-00001-000",
+              "patient_group": "BraTS-MET-00001",
+              "split": "train"
+            }
+          ],
+          "split_counts": {
+            "test": 104,
+            "train": 823,
+            "val": 103
+          }
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_split_summary.json",
+          "text": "{\n  \"seed\": 42,\n  \"grouping_rule\": \"remove final numeric case suffix\",\n  \"val_fraction_requested\": 0.1,\n  \"test_fraction_requested\": 0.1,\n  \"total_cases\": 1030,\n  \"total_patient_groups\": 641,\n  \"case_counts\": {\n    \"test\": 104,\n    \"train\": 823,\n    \"val\": 103\n  },\n  \"patient_group_counts\": {\n    \"test\": 61,\n    \"train\": 511,\n    \"val\": 69\n  },\n  \"actual_case_fractions\": {\n    \"train\": 0.7990291262135922,\n    \"val\": 0.1,\n    \"test\": 0.10097087378640776\n  },\n  \"data_csv\": \"data/data_csv.csv\",\n  \"membership_csv\": \"data/g1_split_membership.csv\"\n}\n"
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_v3_data_adoption.json",
+          "text": "{\n  \"created_at\": \"2026-07-11T07:00:50.412924+00:00\",\n  \"source_data_dir\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data\",\n  \"target_data_dir\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data\",\n  \"input_cases\": 1031,\n  \"inference_cases\": 265,\n  \"input_link\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/input\",\n  \"input_inference_link\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/input_inference\",\n  \"copied_files\": {\n    \"data_csv.csv\": \"data_csv.csv\",\n    \"g1_v2_data_placement_manifest.csv\": \"g1_v3_data_placement_manifest.csv\",\n    \"g1_v2_label_filter_report.csv\": \"g1_v3_label_filter_report.csv\",\n    \"g1_v2_label_filter_summary.json\": \"g1_v3_label_filter_summary.json\",\n    \"g1_split_summary.json\": \"g1_split_summary.json\",\n    \"g1_split_membership.csv\": \"g1_split_membership.csv\"\n  }\n}\n"
+        },
+        {
+          "columns": [
+            "case_id",
+            "source_dir",
+            "target",
+            "status",
+            "reason",
+            "label_source",
+            "gzip_original_t2w_filename",
+            "t2w_is_fake_by_gzip_header",
+            "t1n",
+            "t1c",
+            "t2w",
+            "t2f",
+            "seg"
+          ],
+          "count": 1296,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_v3_data_placement_manifest.csv",
+          "sample": [
+            {
+              "case_id": "BraTS-MET-00001-000",
+              "gzip_original_t2w_filename": "",
+              "label_source": "raw",
+              "reason": "",
+              "seg": "/public/home/zqchen/data/BraTS-MET-00001-000/seg.nii.gz",
+              "source_dir": "/public/home/zqchen/data/BraTS-MET-00001-000",
+              "status": "placed",
+              "t1c": "/public/home/zqchen/data/BraTS-MET-00001-000/t1c.nii.gz",
+              "t1n": "/public/home/zqchen/data/BraTS-MET-00001-000/t1n.nii.gz",
+              "t2f": "/public/home/zqchen/data/BraTS-MET-00001-000/t2f.nii.gz",
+              "t2w": "/public/home/zqchen/data/BraTS-MET-00001-000/t2w.nii.gz",
+              "t2w_is_fake_by_gzip_header": "False",
+              "target": "input"
+            }
+          ],
+          "split_counts": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_v3_dataset_validation.json",
+          "text": "{\n  \"status\": \"passed\",\n  \"data_csv\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/data_csv.csv\",\n  \"data_dir\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/data/input\",\n  \"total_rows\": 1030,\n  \"checked_cases\": 1030,\n  \"split_counts\": {\n    \"test\": 104,\n    \"train\": 823,\n    \"val\": 103\n  },\n  \"label_values_checked\": false,\n  \"error_count\": 0,\n  \"errors\": []\n}\n"
+        },
+        {
+          "columns": [
+            "case_id",
+            "status",
+            "reason",
+            "label_source",
+            "seg_path",
+            "resolved_seg_path"
+          ],
+          "count": 1031,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_v3_label_filter_report.csv",
+          "sample": [
+            {
+              "case_id": "BraTS-MET-00001-000",
+              "label_source": "raw",
+              "reason": "",
+              "resolved_seg_path": "/public/home/zqchen/data/BraTS-MET-00001-000/seg.nii.gz",
+              "seg_path": "data/input/BraTS-MET-00001-000/BraTS-MET-00001-000-seg.nii.gz",
+              "status": "accepted"
+            }
+          ],
+          "split_counts": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_v3_label_filter_summary.json",
+          "text": "{\n  \"allowed_labels\": [\n    0,\n    1,\n    2,\n    3,\n    4\n  ],\n  \"input_cases\": 1031,\n  \"accepted_cases\": 1030,\n  \"excluded_cases\": 1,\n  \"excluded_fraction\": 0.0009699321047526673,\n  \"excluded_case_ids\": [\n    \"BraTS-MET-01094-002\"\n  ],\n  \"report_csv\": \"data/g1_v2_label_filter_report.csv\"\n}\n"
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/g1_v3_preparation_validation.json",
+          "text": "{\n  \"status\": \"passed\",\n  \"training_candidates_before_label_filter\": 1031,\n  \"fake_t2w_inference_cases\": 265,\n  \"effective_csv_cases\": 1030,\n  \"split_counts\": {\n    \"train\": 823,\n    \"val\": 103,\n    \"test\": 104\n  },\n  \"excluded_label_cases\": [\n    \"BraTS-MET-01094-002\"\n  ],\n  \"corrected_label_case\": \"BraTS-MET-01184-002\",\n  \"error_count\": 0,\n  \"errors\": []\n}\n"
+        },
+        {
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/selected_vae.json",
+          "text": "{\n  \"accepted\": true,\n  \"decision\": \"use_finetuned\",\n  \"selected_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt\",\n  \"pretrained_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt\",\n  \"finetuned_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt\",\n  \"validation_subjects\": 103,\n  \"validation_rows\": 412,\n  \"criteria\": {\n    \"min_mean_delta_tumor_ssim\": 0.03,\n    \"min_mean_delta_whole_ssim\": -0.005\n  },\n  \"observed\": {\n    \"mean_delta_tumor_ssim\": 0.035373889994852754,\n    \"mean_delta_whole_ssim\": -0.0032872818048717907,\n    \"mean_delta_tumor_mse\": -0.0024747432136120674\n  }\n}"
+        }
+      ],
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data"
+    }
+  ],
+  "disk_public": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  222T   27T  90% /public\n",
+  "files": [
+    {
+      "mtime_utc": "2026-06-13T15:40:11+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae/autoencoder_epoch273.pt",
+      "size": 83831868
+    },
+    {
+      "mtime_utc": "2026-07-10T18:11:42+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/best_model.pt",
+      "size": 83830528
+    },
+    {
+      "mtime_utc": "2026-07-10T18:11:42+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/checkpoint_epoch1.pt",
+      "size": 83832810
+    },
+    {
+      "mtime_utc": "2026-07-10T18:11:42+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/finetune_config.json",
+      "size": 703,
+      "text": "{\n  \"data_csv\": \"data/data_csv.csv\",\n  \"data_dir\": \"data/input\",\n  \"vae_weights\": \"weights/vae/autoencoder_epoch273.pt\",\n  \"output_dir\": \"training/vae_finetuned/run_3031309\",\n  \"batch_size\": 1,\n  \"epochs\": 1,\n  \"lr_encoder\": 2e-06,\n  \"lr_decoder\": 1e-06,\n  \"val_interval\": 1,\n  \"save_interval\": 1,\n  \"lambda_tumor_min\": 3.0,\n  \"lambda_tumor_max\": 30.0,\n  \"kl_weight\": 0.01,\n  \"grad_clip\": 1.0,\n  \"device\": \"cuda:0\",\n  \"seed\": 42,\n  \"gradient_checkpointing\": true,\n  \"skip_initial_validation\": true,\n  \"max_train_subjects\": 1,\n  \"max_val_subjects\": 1,\n  \"dry_run\": false,\n  \"best_epoch\": 1,\n  \"baseline_metrics\": {},\n  \"best_tumor_mse\": 0.004101937239221525,\n  \"timestamp\": \"2026-07-11T02:11:42.184167\"\n}"
+    },
+    {
+      "mtime_utc": "2026-07-10T18:11:42+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/training_history.csv",
+      "size": 354,
+      "text": "epoch,train_total,train_whole_mse,train_tumor_mse,train_healthy_mse,train_kl,lr_encoder,lr_decoder,val_whole_mse,val_tumor_mse,val_healthy_mse,val_kl\n1,0.009607052663341165,0.00018493423704057932,0.000956380223215092,0.0012826371093979105,0.2099691778421402,1e-07,1e-07,0.002207079262007028,0.004101937239221525,0.004871489240656781,0.2114490568637848\n"
+    },
+    {
+      "mtime_utc": "2026-07-10T18:12:47+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/vae_selection.json",
+      "size": 846,
+      "text": "{\n  \"accepted\": false,\n  \"decision\": \"keep_pretrained\",\n  \"selected_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae/autoencoder_epoch273.pt\",\n  \"pretrained_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae/autoencoder_epoch273.pt\",\n  \"finetuned_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/best_model.pt\",\n  \"validation_subjects\": 1,\n  \"validation_rows\": 4,\n  \"criteria\": {\n    \"min_mean_delta_tumor_ssim\": 0.03,\n    \"min_mean_delta_whole_ssim\": -0.005\n  },\n  \"observed\": {\n    \"mean_delta_tumor_ssim\": 0.0,\n    \"mean_delta_whole_ssim\": 0.0,\n    \"mean_delta_tumor_mse\": 0.0\n  }\n}"
+    },
+    {
+      "mtime_utc": "2026-07-10T18:20:43+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/best_model.pt",
+      "size": 83830528
+    },
+    {
+      "mtime_utc": "2026-07-10T18:20:43+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/checkpoint_epoch1.pt",
+      "size": 251505242
+    },
+    {
+      "mtime_utc": "2026-07-10T18:20:43+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/finetune_config.json",
+      "size": 755,
+      "text": "{\n  \"data_csv\": \"data/data_csv.csv\",\n  \"data_dir\": \"data/input\",\n  \"vae_weights\": \"weights/vae/autoencoder_epoch273.pt\",\n  \"output_dir\": \"training/vae_finetuned/run_3032620\",\n  \"batch_size\": 1,\n  \"epochs\": 1,\n  \"lr_encoder\": 2e-06,\n  \"lr_decoder\": 1e-06,\n  \"val_interval\": 1,\n  \"save_interval\": 1,\n  \"lambda_tumor_min\": 3.0,\n  \"lambda_tumor_max\": 30.0,\n  \"kl_weight\": 0.01,\n  \"grad_clip\": 1.0,\n  \"device\": \"cuda:0\",\n  \"amp_dtype\": \"bfloat16\",\n  \"seed\": 42,\n  \"gradient_checkpointing\": true,\n  \"skip_initial_validation\": true,\n  \"max_train_subjects\": 1,\n  \"max_val_subjects\": 1,\n  \"dry_run\": false,\n  \"best_epoch\": 1,\n  \"optimizer_steps\": 1,\n  \"baseline_metrics\": {},\n  \"best_tumor_mse\": 0.0027686854256351425,\n  \"timestamp\": \"2026-07-11T02:20:43.908357\"\n}"
+    },
+    {
+      "mtime_utc": "2026-07-10T18:20:43+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/training_history.csv",
+      "size": 357,
+      "text": "epoch,train_total,train_whole_mse,train_tumor_mse,train_healthy_mse,train_kl,lr_encoder,lr_decoder,val_whole_mse,val_tumor_mse,val_healthy_mse,val_kl\n1,0.011272825300693512,0.00020127484094700776,0.0011739398541976698,0.0014069891476538032,0.21001438423991203,1e-07,1e-07,0.0020492892363108695,0.0027686854256351425,0.003562759929381198,0.210889995098114\n"
+    },
+    {
+      "mtime_utc": "2026-07-10T18:21:49+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/vae_selection.json",
+      "size": 900,
+      "text": "{\n  \"accepted\": false,\n  \"decision\": \"keep_pretrained\",\n  \"selected_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae/autoencoder_epoch273.pt\",\n  \"pretrained_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae/autoencoder_epoch273.pt\",\n  \"finetuned_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/best_model.pt\",\n  \"validation_subjects\": 1,\n  \"validation_rows\": 4,\n  \"criteria\": {\n    \"min_mean_delta_tumor_ssim\": 0.03,\n    \"min_mean_delta_whole_ssim\": -0.005\n  },\n  \"observed\": {\n    \"mean_delta_tumor_ssim\": 0.010215327143669128,\n    \"mean_delta_whole_ssim\": 0.0025284290313720703,\n    \"mean_delta_tumor_mse\": -0.0013332515518413857\n  }\n}"
+    },
+    {
+      "mtime_utc": "2026-07-11T05:22:29+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/best_model.pt",
+      "size": 83830528
+    },
+    {
+      "mtime_utc": "2026-07-11T05:22:29+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/checkpoint_epoch1.pt",
+      "size": 251505242
+    },
+    {
+      "mtime_utc": "2026-07-11T05:22:29+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/finetune_config.json",
+      "size": 1129,
+      "text": "{\n  \"data_csv\": \"data/data_csv.csv\",\n  \"data_dir\": \"data/input\",\n  \"vae_weights\": \"weights/vae/autoencoder_epoch273.pt\",\n  \"output_dir\": \"training/vae_finetuned/benchmark_patch_zqchen_20260711_131149\",\n  \"batch_size\": 2,\n  \"epochs\": 1,\n  \"lr_encoder\": 2e-06,\n  \"lr_decoder\": 1e-06,\n  \"val_interval\": 1,\n  \"save_interval\": 1,\n  \"patch_size\": [\n    128,\n    128,\n    96\n  ],\n  \"tumor_patch_probability\": 0.8,\n  \"quick_val_subjects\": 2,\n  \"early_stopping_patience\": 2,\n  \"lambda_tumor_min\": 3.0,\n  \"lambda_tumor_max\": 30.0,\n  \"kl_weight\": 0.01,\n  \"grad_clip\": 1.0,\n  \"device\": \"cuda:0\",\n  \"amp_dtype\": \"bfloat16\",\n  \"seed\": 42,\n  \"gradient_checkpointing\": false,\n  \"skip_initial_validation\": true,\n  \"max_train_subjects\": 20,\n  \"max_val_subjects\": 2,\n  \"dry_run\": false,\n  \"best_epoch\": 1,\n  \"completed_epochs\": 1,\n  \"optimizer_steps\": 10,\n  \"quick_val_subject_ids\": [\n    \"BraTS-MET-00006-000\",\n    \"BraTS-MET-00009-000\"\n  ],\n  \"total_patch_counts\": {\n    \"tumor\": 15,\n    \"brain\": 5\n  },\n  \"early_stop_reason\": null,\n  \"baseline_metrics\": {},\n  \"best_tumor_mse\": 0.003715263479514175,\n  \"timestamp\": \"2026-07-11T13:22:29.917818\"\n}"
+    },
+    {
+      "mtime_utc": "2026-07-11T05:17:10+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/quick_val_subjects.json",
+      "size": 110,
+      "text": "{\n  \"seed\": 10042,\n  \"count\": 2,\n  \"subject_ids\": [\n    \"BraTS-MET-00006-000\",\n    \"BraTS-MET-00009-000\"\n  ]\n}"
+    },
+    {
+      "mtime_utc": "2026-07-11T05:22:29+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/training_history.csv",
+      "size": 389,
+      "text": "epoch,train_total,train_whole_mse,train_tumor_mse,train_healthy_mse,train_kl,lr_encoder,lr_decoder,val_whole_mse,val_tumor_mse,val_healthy_mse,val_kl,tumor_patches,brain_patches\n1,0.019221588596701623,0.00045332205299928317,0.0006283365272793162,0.0009464618189667818,0.5590299062430859,1e-07,1e-07,0.002508440549718216,0.003715263479514175,0.006436621837482794,0.20113364234566689,15,5\n"
+    },
+    {
+      "mtime_utc": "2026-07-11T05:24:36+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/vae_selection.json",
+      "size": 929,
+      "text": "{\n  \"accepted\": false,\n  \"decision\": \"keep_pretrained\",\n  \"selected_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae/autoencoder_epoch273.pt\",\n  \"pretrained_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae/autoencoder_epoch273.pt\",\n  \"finetuned_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/best_model.pt\",\n  \"validation_subjects\": 2,\n  \"validation_rows\": 8,\n  \"criteria\": {\n    \"min_mean_delta_tumor_ssim\": 0.03,\n    \"min_mean_delta_whole_ssim\": -0.005\n  },\n  \"observed\": {\n    \"mean_delta_tumor_ssim\": -0.007816612720489502,\n    \"mean_delta_whole_ssim\": -0.0038745850324630737,\n    \"mean_delta_tumor_mse\": -0.0005746856695623137\n  }\n}"
+    },
+    {
+      "mtime_utc": "2026-06-13T15:40:11+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt",
+      "size": 83831868
+    },
+    {
+      "mtime_utc": "2026-07-11T22:45:01+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/latest_run.txt",
+      "size": 141,
+      "text": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060\n"
+    },
+    {
+      "mtime_utc": "2026-07-11T20:46:48+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+      "size": 83830528
+    },
+    {
+      "mtime_utc": "2026-07-11T12:24:19+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/checkpoint_epoch1.pt",
+      "size": 251505242
+    },
+    {
+      "mtime_utc": "2026-07-11T16:36:54+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/checkpoint_epoch2.pt",
+      "size": 251505242
+    },
+    {
+      "mtime_utc": "2026-07-11T20:46:49+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/checkpoint_epoch3.pt",
+      "size": 251505242
+    },
+    {
+      "mtime_utc": "2026-07-11T20:46:49+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/finetune_config.json",
+      "size": 1729,
+      "text": "{\n  \"data_csv\": \"data/data_csv.csv\",\n  \"data_dir\": \"data/input\",\n  \"vae_weights\": \"weights/vae/autoencoder_epoch273.pt\",\n  \"output_dir\": \"training/vae_finetuned/run_3034060\",\n  \"batch_size\": 2,\n  \"epochs\": 3,\n  \"lr_encoder\": 2e-06,\n  \"lr_decoder\": 1e-06,\n  \"val_interval\": 1,\n  \"save_interval\": 1,\n  \"patch_size\": [\n    128,\n    128,\n    96\n  ],\n  \"tumor_patch_probability\": 0.8,\n  \"quick_val_subjects\": 20,\n  \"early_stopping_patience\": 2,\n  \"lambda_tumor_min\": 3.0,\n  \"lambda_tumor_max\": 30.0,\n  \"kl_weight\": 0.01,\n  \"grad_clip\": 1.0,\n  \"device\": \"cuda:0\",\n  \"amp_dtype\": \"bfloat16\",\n  \"seed\": 42,\n  \"gradient_checkpointing\": false,\n  \"skip_initial_validation\": true,\n  \"max_train_subjects\": null,\n  \"max_val_subjects\": null,\n  \"dry_run\": false,\n  \"best_epoch\": 3,\n  \"completed_epochs\": 3,\n  \"optimizer_steps\": 1236,\n  \"training_seconds\": 45427.95370602608,\n  \"peak_cuda_memory_gib\": 25.450698375701904,\n  \"peak_cuda_reserved_gib\": 27.021484375,\n  \"quick_val_subject_ids\": [\n    \"BraTS-MET-01149-000\",\n    \"BraTS-MET-00380-000\",\n    \"BraTS-MET-00613-001\",\n    \"BraTS-MET-01109-001\",\n    \"BraTS-MET-00796-000\",\n    \"BraTS-MET-01217-000\",\n    \"BraTS-MET-01287-001\",\n    \"BraTS-MET-01276-001\",\n    \"BraTS-MET-01250-003\",\n    \"BraTS-MET-01191-001\",\n    \"BraTS-MET-01217-003\",\n    \"BraTS-MET-00292-000\",\n    \"BraTS-MET-01109-003\",\n    \"BraTS-MET-01172-004\",\n    \"BraTS-MET-00532-000\",\n    \"BraTS-MET-01117-003\",\n    \"BraTS-MET-01310-002\",\n    \"BraTS-MET-00625-000\",\n    \"BraTS-MET-01250-001\",\n    \"BraTS-MET-01284-000\"\n  ],\n  \"total_patch_counts\": {\n    \"tumor\": 1903,\n    \"brain\": 566\n  },\n  \"early_stop_reason\": null,\n  \"baseline_metrics\": {},\n  \"best_tumor_mse\": 0.001901576919206932,\n  \"timestamp\": \"2026-07-12T04:46:49.369590\"\n}"
+    },
+    {
+      "mtime_utc": "2026-07-11T08:09:38+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/quick_val_subjects.json",
+      "size": 597,
+      "text": "{\n  \"seed\": 10042,\n  \"count\": 20,\n  \"subject_ids\": [\n    \"BraTS-MET-01149-000\",\n    \"BraTS-MET-00380-000\",\n    \"BraTS-MET-00613-001\",\n    \"BraTS-MET-01109-001\",\n    \"BraTS-MET-00796-000\",\n    \"BraTS-MET-01217-000\",\n    \"BraTS-MET-01287-001\",\n    \"BraTS-MET-01276-001\",\n    \"BraTS-MET-01250-003\",\n    \"BraTS-MET-01191-001\",\n    \"BraTS-MET-01217-003\",\n    \"BraTS-MET-00292-000\",\n    \"BraTS-MET-01109-003\",\n    \"BraTS-MET-01172-004\",\n    \"BraTS-MET-00532-000\",\n    \"BraTS-MET-01117-003\",\n    \"BraTS-MET-01310-002\",\n    \"BraTS-MET-00625-000\",\n    \"BraTS-MET-01250-001\",\n    \"BraTS-MET-01284-000\"\n  ]\n}"
+    },
+    {
+      "mtime_utc": "2026-07-11T20:46:48+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/training_history.csv",
+      "size": 937,
+      "text": "epoch,train_total,train_whole_mse,train_tumor_mse,train_healthy_mse,train_kl,lr_encoder,lr_decoder,val_whole_mse,val_tumor_mse,val_healthy_mse,val_kl,tumor_patches,brain_patches,epoch_seconds\n1,0.02021591936324113,0.0002831075778555437,0.0005236552719260713,0.0005790431568486808,0.6047560312487592,1.5249999999999998e-06,7.75e-07,0.0018619603044498945,0.002417294212696865,0.0029840222625338777,0.4437008433043957,640,183,14523.078810691833\n2,0.0182295646070772,0.0002729739144281822,0.0004678152886559056,0.0005611302980997427,0.5672944107139314,5.750000000000002e-07,3.2500000000000006e-07,0.0017502378177596256,0.0021409275000671547,0.002637663580784789,0.4329822899773717,616,207,14458.991219855845\n3,0.017812893634199765,0.0002704456313395018,0.00045530016682952183,0.0005471188289463508,0.56092228424053,1e-07,1e-07,0.0019073793631832815,0.001901576919206932,0.0022523757344374245,0.4372710887342691,647,176,14253.09736815095\n"
+    },
+    {
+      "mtime_utc": "2026-07-11T22:43:12+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/vae_selection.json",
+      "size": 915,
+      "text": "{\n  \"accepted\": true,\n  \"decision\": \"use_finetuned\",\n  \"selected_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt\",\n  \"pretrained_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt\",\n  \"finetuned_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt\",\n  \"validation_subjects\": 103,\n  \"validation_rows\": 412,\n  \"criteria\": {\n    \"min_mean_delta_tumor_ssim\": 0.03,\n    \"min_mean_delta_whole_ssim\": -0.005\n  },\n  \"observed\": {\n    \"mean_delta_tumor_ssim\": 0.035373889994852754,\n    \"mean_delta_whole_ssim\": -0.0032872818048717907,\n    \"mean_delta_tumor_mse\": -0.0024747432136120674\n  }\n}"
+    },
+    {
+      "mtime_utc": "2026-08-28T03:17:05+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/config/G1_VAE_EXTENDED_FINETUNE_EXECUTION_PLAN_20260828_R1.json",
+      "size": 4255,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"created_date\": \"2026-08-28\",\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"operator_approved\": false,\n  \"plan_id\": \"G1_VAE_EXTENDED_FINETUNE_20260828_R1\",\n  \"schema_version\": 1,\n  \"status\": \"ready_for_submission\",\n  \"baseline\": {\n    \"historical_run\": \"run_3034060\",\n    \"selected_checkpoint\": \"run_3034060/best_model.pt\",\n    \"selected_checkpoint_sha256\": \"004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294\",\n    \"pretrained_initialization\": \"weights/vae/autoencoder_epoch273.pt\",\n    \"pretrained_initialization_sha256\": \"1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3\"\n  },\n  \"cohorts\": {\n    \"development_validation\": 103,\n    \"fit_train\": 823,\n    \"fixed_quick_validation\": 20,\n    \"locked_test\": 104,\n    \"missing_t2w_inference\": 265\n  },\n  \"training\": {\n    \"amp_dtype\": \"bfloat16\",\n    \"batch_semantics\": \"two_subject_gradient_accumulation_each_with_four_modalities\",\n    \"decoder_lr\": 0.000001,\n    \"early_stopping_patience\": 0,\n    \"encoder_lr\": 0.000002,\n    \"extension_epoch\": 30,\n    \"extension_rule\": \"extend_to_30_only_if_provisional_best_epoch_equals_20\",\n    \"gradient_clip\": 1.0,\n    \"initial_epoch_limit\": 20,\n    \"kl_weight\": 0.01,\n    \"optimizer\": \"AdamW\",\n    \"patch_size\": [128, 128, 96],\n    \"random_seed\": 42,\n    \"resume_must_restore\": [\n      \"model_state\",\n      \"optimizer_state\",\n      \"scheduler_state\",\n      \"selection_state\",\n      \"rng_state\"\n    ],\n    \"scheduler\": \"CosineAnnealingLR\",\n    \"scheduler_min_lr\": 1e-7,\n    \"scheduler_t_max\": 30,\n    \"stop_after_epoch_20_is_a_planned_phase_boundary\": true,\n    \"tumor_patch_probability\": 0.8,\n    \"weight_decay\": 0.0\n  },\n  \"execution\": {\n    \"code_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3\",\n    \"experiment_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1\",\n    \"python\": \"/public/home/zqchen/.conda/envs/segmamba/bin/python\",\n    \"partition\": \"a100\",\n    \"gpu_count\": 1,\n    \"gpu_contract\": \"single_non_ddp_A100\",\n    \"cpus_per_task\": 8,\n    \"memory_gib\": 96,\n    \"walltime\": \"6-00:00:00\",\n    \"historical_epoch_seconds_range\": [14253.1, 14523.1],\n    \"estimated_hours_to_epoch_20\": 81,\n    \"estimated_hours_to_epoch_30\": 121,\n    \"maximum_checkpoint_storage_gib_approx\": 7.5,\n    \"trainer_sha256\": \"432d8e534b6c9adcaa8058c2806fd5fb46b24a3989644fd3ca8309bd6ac1df58\"\n  },\n  \"epoch_selection\": {\n    \"checkpoint_every_epoch\": true,\n    \"co_primary\": [\n      \"maximize_delta_t2w_tumor_ssim\",\n      \"minimize_delta_t2w_tumor_mse\"\n    ],\n    \"condition_modality_constraints\": {\n      \"modalities\": [\"t1n\", \"t1c\", \"t2f\"],\n      \"minimum_delta_tumor_ssim\": -0.01,\n      \"minimum_delta_whole_ssim\": -0.005,\n      \"maximum_relative_tumor_mse_increase\": 0.05\n    },\n    \"tie_break\": [\n      \"higher_delta_t2w_tumor_ssim\",\n      \"if_ssim_difference_le_0.002_lower_delta_t2w_tumor_mse\",\n      \"earlier_epoch\"\n    ],\n    \"t2w_safety\": {\n      \"minimum_delta_whole_ssim\": -0.005\n    }\n  },\n  \"full_validation\": {\n    \"bootstrap_replicates\": 20000,\n    \"bootstrap_seed\": 20260828,\n    \"candidate_policy\": \"provisional_best_plus_neighbors_plus_phase_boundary_plus_historical_plus_pretrained\",\n    \"deterministic_latent\": \"mu\",\n    \"rows_per_checkpoint\": 412,\n    \"subjects\": 103\n  },\n  \"downstream_contract\": {\n    \"direct_old_generator_reuse_allowed\": false,\n    \"must_reencode_all_complete_cases\": true,\n    \"must_retrain_bbdm\": true,\n    \"must_retrain_encdec\": true,\n    \"native_space_synthesis_required\": true,\n    \"paired_segmentation_required\": true,\n    \"segmentation_safety\": {\n      \"maximum_dsc_nsd_f1_mean_decrease\": 0.01,\n      \"maximum_hd95_mean_increase_mm\": 5.0\n    }\n  },\n  \"automatic_stop\": {\n    \"after_epoch_30\": true,\n    \"if_best_epoch_equals_30\": \"stop_and_record_boundary_hit_at_30_no_automatic_extension\"\n  },\n  \"interpretation_boundaries\": [\n    \"model_space_vae_reconstruction_is_not_native_space_synthesis_quality\",\n    \"image_quality_improvement_is_not_downstream_segmentation_benefit\",\n    \"development_validation_is_not_an_unseen_test_set\",\n    \"absence_of_significant_harm_is_not_formal_equivalence\"\n  ]\n}\n"
+    },
+    {
+      "mtime_utc": "2026-08-28T06:55:41+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/config/G1_VAE_EXTENDED_FINETUNE_EXECUTION_PLAN_20260828_R2.json",
+      "size": 4906,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"created_date\": \"2026-08-28\",\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"operator_approved\": false,\n  \"plan_id\": \"G1_VAE_EXTENDED_FINETUNE_20260828_R2\",\n  \"schema_version\": 1,\n  \"status\": \"ready_for_submission\",\n  \"remediation\": {\n    \"supersedes_failed_execution_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1\",\n    \"failed_job_id\": \"3541736\",\n    \"failed_before_training\": true,\n    \"failure_reason\": \"bundled_trainer_code_root_missing_from_python_module_search_path\",\n    \"fix\": \"export_code_root_as_pythonpath_before_any_trainer_import\",\n    \"required_remote_smoke\": \"execute_bundled_trainer_help_with_frozen_pythonpath_contract\"\n  },\n  \"baseline\": {\n    \"historical_run\": \"run_3034060\",\n    \"selected_checkpoint\": \"run_3034060/best_model.pt\",\n    \"selected_checkpoint_sha256\": \"004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294\",\n    \"pretrained_initialization\": \"weights/vae/autoencoder_epoch273.pt\",\n    \"pretrained_initialization_sha256\": \"1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3\"\n  },\n  \"cohorts\": {\n    \"development_validation\": 103,\n    \"fit_train\": 823,\n    \"fixed_quick_validation\": 20,\n    \"locked_test\": 104,\n    \"missing_t2w_inference\": 265\n  },\n  \"training\": {\n    \"amp_dtype\": \"bfloat16\",\n    \"batch_semantics\": \"two_subject_gradient_accumulation_each_with_four_modalities\",\n    \"decoder_lr\": 0.000001,\n    \"early_stopping_patience\": 0,\n    \"encoder_lr\": 0.000002,\n    \"extension_epoch\": 30,\n    \"extension_rule\": \"extend_to_30_only_if_provisional_best_epoch_equals_20\",\n    \"gradient_clip\": 1.0,\n    \"initial_epoch_limit\": 20,\n    \"kl_weight\": 0.01,\n    \"optimizer\": \"AdamW\",\n    \"patch_size\": [128, 128, 96],\n    \"random_seed\": 42,\n    \"resume_must_restore\": [\n      \"model_state\",\n      \"optimizer_state\",\n      \"scheduler_state\",\n      \"selection_state\",\n      \"rng_state\"\n    ],\n    \"scheduler\": \"CosineAnnealingLR\",\n    \"scheduler_min_lr\": 1e-7,\n    \"scheduler_t_max\": 30,\n    \"stop_after_epoch_20_is_a_planned_phase_boundary\": true,\n    \"tumor_patch_probability\": 0.8,\n    \"weight_decay\": 0.0\n  },\n  \"execution\": {\n    \"code_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3\",\n    \"experiment_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2\",\n    \"python\": \"/public/home/zqchen/.conda/envs/segmamba/bin/python\",\n    \"partition\": \"a100\",\n    \"gpu_count\": 1,\n    \"gpu_contract\": \"single_non_ddp_A100\",\n    \"cpus_per_task\": 8,\n    \"memory_gib\": 96,\n    \"walltime\": \"6-00:00:00\",\n    \"historical_epoch_seconds_range\": [14253.1, 14523.1],\n    \"estimated_hours_to_epoch_20\": 81,\n    \"estimated_hours_to_epoch_30\": 121,\n    \"maximum_checkpoint_storage_gib_approx\": 7.5,\n    \"trainer_sha256\": \"432d8e534b6c9adcaa8058c2806fd5fb46b24a3989644fd3ca8309bd6ac1df58\",\n    \"pythonpath_contract\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3\"\n  },\n  \"epoch_selection\": {\n    \"checkpoint_every_epoch\": true,\n    \"co_primary\": [\n      \"maximize_delta_t2w_tumor_ssim\",\n      \"minimize_delta_t2w_tumor_mse\"\n    ],\n    \"condition_modality_constraints\": {\n      \"modalities\": [\"t1n\", \"t1c\", \"t2f\"],\n      \"minimum_delta_tumor_ssim\": -0.01,\n      \"minimum_delta_whole_ssim\": -0.005,\n      \"maximum_relative_tumor_mse_increase\": 0.05\n    },\n    \"tie_break\": [\n      \"higher_delta_t2w_tumor_ssim\",\n      \"if_ssim_difference_le_0.002_lower_delta_t2w_tumor_mse\",\n      \"earlier_epoch\"\n    ],\n    \"t2w_safety\": {\n      \"minimum_delta_whole_ssim\": -0.005\n    }\n  },\n  \"full_validation\": {\n    \"bootstrap_replicates\": 20000,\n    \"bootstrap_seed\": 20260828,\n    \"candidate_policy\": \"provisional_best_plus_neighbors_plus_phase_boundary_plus_historical_plus_pretrained\",\n    \"deterministic_latent\": \"mu\",\n    \"rows_per_checkpoint\": 412,\n    \"subjects\": 103\n  },\n  \"downstream_contract\": {\n    \"direct_old_generator_reuse_allowed\": false,\n    \"must_reencode_all_complete_cases\": true,\n    \"must_retrain_bbdm\": true,\n    \"must_retrain_encdec\": true,\n    \"native_space_synthesis_required\": true,\n    \"paired_segmentation_required\": true,\n    \"segmentation_safety\": {\n      \"maximum_dsc_nsd_f1_mean_decrease\": 0.01,\n      \"maximum_hd95_mean_increase_mm\": 5.0\n    }\n  },\n  \"automatic_stop\": {\n    \"after_epoch_30\": true,\n    \"if_best_epoch_equals_30\": \"stop_and_record_boundary_hit_at_30_no_automatic_extension\"\n  },\n  \"interpretation_boundaries\": [\n    \"model_space_vae_reconstruction_is_not_native_space_synthesis_quality\",\n    \"image_quality_improvement_is_not_downstream_segmentation_benefit\",\n    \"development_validation_is_not_an_unseen_test_set\",\n    \"absence_of_significant_harm_is_not_formal_equivalence\"\n  ]\n}\n"
+    },
+    {
+      "mtime_utc": "2026-08-31T07:02:44+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/training/BASELINE_QUICK_VALIDATION.json",
+      "size": 1869,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"generated_at_utc\": \"2026-08-31T07:02:44.550405+00:00\",\n  \"metrics\": {\n    \"by_modality\": {\n      \"t1c\": {\n        \"healthy_mse\": 0.019625413934887127,\n        \"kl\": 0.21764006465673447,\n        \"tumor_mse\": 0.018691803656213098,\n        \"tumor_ssim\": 0.33383936882019044,\n        \"whole_mse\": 0.004229851288255304,\n        \"whole_ssim\": 0.13674838244915008\n      },\n      \"t1n\": {\n        \"healthy_mse\": 0.002069962377193461,\n        \"kl\": 0.22128020152449607,\n        \"tumor_mse\": 0.0024031314580459733,\n        \"tumor_ssim\": 0.6937597095966339,\n        \"whole_mse\": 0.0020010740321595223,\n        \"whole_ssim\": 0.21311821937561035\n      },\n      \"t2f\": {\n        \"healthy_mse\": 0.0027679557803715303,\n        \"kl\": 0.23225706517696382,\n        \"tumor_mse\": 0.0020848050164611527,\n        \"tumor_ssim\": 0.6756220102310181,\n        \"whole_mse\": 0.002077305456623435,\n        \"whole_ssim\": 0.20643136501312256\n      },\n      \"t2w\": {\n        \"healthy_mse\": 0.004703540537809584,\n        \"kl\": 0.23468309566378592,\n        \"tumor_mse\": 0.0029113007987211165,\n        \"tumor_ssim\": 0.6641545772552491,\n        \"whole_mse\": 0.0023410905734635888,\n        \"whole_ssim\": 0.2087203800678253\n      }\n    },\n    \"overall\": {\n      \"healthy_mse\": 0.007291718157565424,\n      \"kl\": 0.22646510675549508,\n      \"tumor_mse\": 0.0065227602323603365,\n      \"tumor_ssim\": 0.5918439164757728,\n      \"whole_mse\": 0.0026623303376254624,\n      \"whole_ssim\": 0.1912545867264271\n    },\n    \"row_count\": 80\n  },\n  \"operator_approved\": false,\n  \"schema_version\": 1,\n  \"status\": \"pass\",\n  \"vae_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt\",\n  \"vae_weights_sha256\": \"1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3\"\n}\n"
+    },
+    {
+      "mtime_utc": "2026-08-31T06:47:03+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/training/quick_val_subjects.json",
+      "size": 597,
+      "text": "{\n  \"seed\": 10042,\n  \"count\": 20,\n  \"subject_ids\": [\n    \"BraTS-MET-01149-000\",\n    \"BraTS-MET-00380-000\",\n    \"BraTS-MET-00613-001\",\n    \"BraTS-MET-01109-001\",\n    \"BraTS-MET-00796-000\",\n    \"BraTS-MET-01217-000\",\n    \"BraTS-MET-01287-001\",\n    \"BraTS-MET-01276-001\",\n    \"BraTS-MET-01250-003\",\n    \"BraTS-MET-01191-001\",\n    \"BraTS-MET-01217-003\",\n    \"BraTS-MET-00292-000\",\n    \"BraTS-MET-01109-003\",\n    \"BraTS-MET-01172-004\",\n    \"BraTS-MET-00532-000\",\n    \"BraTS-MET-01117-003\",\n    \"BraTS-MET-01310-002\",\n    \"BraTS-MET-00625-000\",\n    \"BraTS-MET-01250-001\",\n    \"BraTS-MET-01284-000\"\n  ]\n}"
+    },
+    {
+      "mtime_utc": "2026-08-31T07:35:53+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/config/G1_VAE_EXTENDED_FINETUNE_EXECUTION_PLAN_20260831_R3.json",
+      "size": 5531,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"created_date\": \"2026-08-31\",\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"operator_approved\": false,\n  \"plan_id\": \"G1_VAE_EXTENDED_FINETUNE_20260831_R3\",\n  \"schema_version\": 1,\n  \"status\": \"preflight_scan_required\",\n  \"remediation\": {\n    \"supersedes_failed_execution_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2\",\n    \"failed_job_id\": \"3554368\",\n    \"failed_before_training\": false,\n    \"failed_epoch\": 1,\n    \"failure_subject\": \"BraTS-MET-01257-002\",\n    \"failure_reason\": \"multiclass_label_collision_after_model_space_projection_removed_label_1\",\n    \"fix\": \"vae_private_binary_union_segmentation_before_spatial_resampling\",\n    \"shared_spatial_runtime_modified\": false,\n    \"required_remote_scan\": \"all_823_training_subjects_under_exact_r3_binary_union_contract\"\n  },\n  \"baseline\": {\n    \"historical_run\": \"run_3034060\",\n    \"selected_checkpoint\": \"run_3034060/best_model.pt\",\n    \"selected_checkpoint_sha256\": \"004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294\",\n    \"pretrained_initialization\": \"weights/vae/autoencoder_epoch273.pt\",\n    \"pretrained_initialization_sha256\": \"1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3\"\n  },\n  \"cohorts\": {\n    \"development_validation\": 103,\n    \"fit_train\": 823,\n    \"fixed_quick_validation\": 20,\n    \"locked_test\": 104,\n    \"missing_t2w_inference\": 265\n  },\n  \"training\": {\n    \"amp_dtype\": \"bfloat16\",\n    \"batch_semantics\": \"two_subject_gradient_accumulation_each_with_four_modalities\",\n    \"decoder_lr\": 0.000001,\n    \"early_stopping_patience\": 0,\n    \"encoder_lr\": 0.000002,\n    \"extension_epoch\": 30,\n    \"extension_rule\": \"extend_to_30_only_if_provisional_best_epoch_equals_20\",\n    \"gradient_clip\": 1.0,\n    \"initial_epoch_limit\": 20,\n    \"kl_weight\": 0.01,\n    \"optimizer\": \"AdamW\",\n    \"patch_size\": [128, 128, 96],\n    \"random_seed\": 42,\n    \"resume_must_restore\": [\n      \"model_state\",\n      \"optimizer_state\",\n      \"scheduler_state\",\n      \"selection_state\",\n      \"rng_state\"\n    ],\n    \"scheduler\": \"CosineAnnealingLR\",\n    \"scheduler_min_lr\": 1e-7,\n    \"scheduler_t_max\": 30,\n    \"stop_after_epoch_20_is_a_planned_phase_boundary\": true,\n    \"tumor_patch_probability\": 0.8,\n    \"weight_decay\": 0.0\n  },\n  \"execution\": {\n    \"code_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3\",\n    \"experiment_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3\",\n    \"python\": \"/public/home/zqchen/.conda/envs/segmamba/bin/python\",\n    \"partition\": \"a100\",\n    \"gpu_count\": 1,\n    \"gpu_contract\": \"single_non_ddp_A100\",\n    \"cpus_per_task\": 8,\n    \"memory_gib\": 96,\n    \"walltime\": \"6-00:00:00\",\n    \"historical_epoch_seconds_range\": [14253.1, 14523.1],\n    \"estimated_hours_to_epoch_20\": 81,\n    \"estimated_hours_to_epoch_30\": 121,\n    \"maximum_checkpoint_storage_gib_approx\": 7.5,\n    \"trainer_sha256\": \"175e4a67780c0ca23e0261bd932210fb1e5b263366a74e343ea71b59bb1ed0f1\",\n    \"pythonpath_contract\": \"R3_RUNTIME/r3_synthesis:SHARED_CODE_ROOT\"\n  },\n  \"vae_segmentation_contract\": {\n    \"mode\": \"binary_union\",\n    \"purpose\": \"tumor_and_healthy_mask_construction_only\",\n    \"source_multiclass_labels_audited\": true,\n    \"source_segmentation_changed_on_disk\": false,\n    \"shared_synthesis_package_changed\": false,\n    \"bundled_utils_sha256\": \"cba314ba110ca07ff9f440081108f773eb2d2c09ff4ca3ab5bf44aa4fbbca1b6\",\n    \"bundled_spatial_sha256\": \"b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb\",\n    \"full_training_split_scan_count\": 823,\n    \"training_submission_requires_scan_pass\": true\n  },\n  \"epoch_selection\": {\n    \"checkpoint_every_epoch\": true,\n    \"co_primary\": [\n      \"maximize_delta_t2w_tumor_ssim\",\n      \"minimize_delta_t2w_tumor_mse\"\n    ],\n    \"condition_modality_constraints\": {\n      \"modalities\": [\"t1n\", \"t1c\", \"t2f\"],\n      \"minimum_delta_tumor_ssim\": -0.01,\n      \"minimum_delta_whole_ssim\": -0.005,\n      \"maximum_relative_tumor_mse_increase\": 0.05\n    },\n    \"tie_break\": [\n      \"higher_delta_t2w_tumor_ssim\",\n      \"if_ssim_difference_le_0.002_lower_delta_t2w_tumor_mse\",\n      \"earlier_epoch\"\n    ],\n    \"t2w_safety\": {\n      \"minimum_delta_whole_ssim\": -0.005\n    }\n  },\n  \"full_validation\": {\n    \"bootstrap_replicates\": 20000,\n    \"bootstrap_seed\": 20260828,\n    \"candidate_policy\": \"provisional_best_plus_neighbors_plus_phase_boundary_plus_historical_plus_pretrained\",\n    \"deterministic_latent\": \"mu\",\n    \"rows_per_checkpoint\": 412,\n    \"subjects\": 103\n  },\n  \"downstream_contract\": {\n    \"direct_old_generator_reuse_allowed\": false,\n    \"must_reencode_all_complete_cases\": true,\n    \"must_retrain_bbdm\": true,\n    \"must_retrain_encdec\": true,\n    \"native_space_synthesis_required\": true,\n    \"paired_segmentation_required\": true,\n    \"segmentation_safety\": {\n      \"maximum_dsc_nsd_f1_mean_decrease\": 0.01,\n      \"maximum_hd95_mean_increase_mm\": 5.0\n    }\n  },\n  \"automatic_stop\": {\n    \"after_epoch_30\": true,\n    \"if_best_epoch_equals_30\": \"stop_and_record_boundary_hit_at_30_no_automatic_extension\"\n  },\n  \"interpretation_boundaries\": [\n    \"model_space_vae_reconstruction_is_not_native_space_synthesis_quality\",\n    \"image_quality_improvement_is_not_downstream_segmentation_benefit\",\n    \"development_validation_is_not_an_unseen_test_set\",\n    \"absence_of_significant_harm_is_not_formal_equivalence\"\n  ]\n}\n"
+    },
+    {
+      "mtime_utc": "2026-08-31T07:52:43+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/config/G1_VAE_EXTENDED_FINETUNE_EXECUTION_PLAN_20260831_R3_ATTEMPT02.json",
+      "size": 5577,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"created_date\": \"2026-08-31\",\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"operator_approved\": false,\n  \"plan_id\": \"G1_VAE_EXTENDED_FINETUNE_20260831_R3_ATTEMPT02\",\n  \"execution_attempt\": 2,\n  \"schema_version\": 1,\n  \"status\": \"preflight_scan_required\",\n  \"remediation\": {\n    \"supersedes_failed_execution_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2\",\n    \"failed_job_id\": \"3554368\",\n    \"failed_before_training\": false,\n    \"failed_epoch\": 1,\n    \"failure_subject\": \"BraTS-MET-01257-002\",\n    \"failure_reason\": \"multiclass_label_collision_after_model_space_projection_removed_label_1\",\n    \"fix\": \"vae_private_binary_union_segmentation_before_spatial_resampling\",\n    \"shared_spatial_runtime_modified\": false,\n    \"required_remote_scan\": \"all_823_training_subjects_under_exact_r3_binary_union_contract\"\n  },\n  \"baseline\": {\n    \"historical_run\": \"run_3034060\",\n    \"selected_checkpoint\": \"run_3034060/best_model.pt\",\n    \"selected_checkpoint_sha256\": \"004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294\",\n    \"pretrained_initialization\": \"weights/vae/autoencoder_epoch273.pt\",\n    \"pretrained_initialization_sha256\": \"1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3\"\n  },\n  \"cohorts\": {\n    \"development_validation\": 103,\n    \"fit_train\": 823,\n    \"fixed_quick_validation\": 20,\n    \"locked_test\": 104,\n    \"missing_t2w_inference\": 265\n  },\n  \"training\": {\n    \"amp_dtype\": \"bfloat16\",\n    \"batch_semantics\": \"two_subject_gradient_accumulation_each_with_four_modalities\",\n    \"decoder_lr\": 0.000001,\n    \"early_stopping_patience\": 0,\n    \"encoder_lr\": 0.000002,\n    \"extension_epoch\": 30,\n    \"extension_rule\": \"extend_to_30_only_if_provisional_best_epoch_equals_20\",\n    \"gradient_clip\": 1.0,\n    \"initial_epoch_limit\": 20,\n    \"kl_weight\": 0.01,\n    \"optimizer\": \"AdamW\",\n    \"patch_size\": [128, 128, 96],\n    \"random_seed\": 42,\n    \"resume_must_restore\": [\n      \"model_state\",\n      \"optimizer_state\",\n      \"scheduler_state\",\n      \"selection_state\",\n      \"rng_state\"\n    ],\n    \"scheduler\": \"CosineAnnealingLR\",\n    \"scheduler_min_lr\": 1e-7,\n    \"scheduler_t_max\": 30,\n    \"stop_after_epoch_20_is_a_planned_phase_boundary\": true,\n    \"tumor_patch_probability\": 0.8,\n    \"weight_decay\": 0.0\n  },\n  \"execution\": {\n    \"code_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3\",\n    \"experiment_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02\",\n    \"python\": \"/public/home/zqchen/.conda/envs/segmamba/bin/python\",\n    \"partition\": \"a100\",\n    \"gpu_count\": 1,\n    \"gpu_contract\": \"single_non_ddp_A100\",\n    \"cpus_per_task\": 8,\n    \"memory_gib\": 96,\n    \"walltime\": \"6-00:00:00\",\n    \"historical_epoch_seconds_range\": [14253.1, 14523.1],\n    \"estimated_hours_to_epoch_20\": 81,\n    \"estimated_hours_to_epoch_30\": 121,\n    \"maximum_checkpoint_storage_gib_approx\": 7.5,\n    \"trainer_sha256\": \"175e4a67780c0ca23e0261bd932210fb1e5b263366a74e343ea71b59bb1ed0f1\",\n    \"pythonpath_contract\": \"R3_RUNTIME/r3_synthesis:SHARED_CODE_ROOT\"\n  },\n  \"vae_segmentation_contract\": {\n    \"mode\": \"binary_union\",\n    \"purpose\": \"tumor_and_healthy_mask_construction_only\",\n    \"source_multiclass_labels_audited\": true,\n    \"source_segmentation_changed_on_disk\": false,\n    \"shared_synthesis_package_changed\": false,\n    \"bundled_utils_sha256\": \"cba314ba110ca07ff9f440081108f773eb2d2c09ff4ca3ab5bf44aa4fbbca1b6\",\n    \"bundled_spatial_sha256\": \"b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb\",\n    \"full_training_split_scan_count\": 823,\n    \"training_submission_requires_scan_pass\": true\n  },\n  \"epoch_selection\": {\n    \"checkpoint_every_epoch\": true,\n    \"co_primary\": [\n      \"maximize_delta_t2w_tumor_ssim\",\n      \"minimize_delta_t2w_tumor_mse\"\n    ],\n    \"condition_modality_constraints\": {\n      \"modalities\": [\"t1n\", \"t1c\", \"t2f\"],\n      \"minimum_delta_tumor_ssim\": -0.01,\n      \"minimum_delta_whole_ssim\": -0.005,\n      \"maximum_relative_tumor_mse_increase\": 0.05\n    },\n    \"tie_break\": [\n      \"higher_delta_t2w_tumor_ssim\",\n      \"if_ssim_difference_le_0.002_lower_delta_t2w_tumor_mse\",\n      \"earlier_epoch\"\n    ],\n    \"t2w_safety\": {\n      \"minimum_delta_whole_ssim\": -0.005\n    }\n  },\n  \"full_validation\": {\n    \"bootstrap_replicates\": 20000,\n    \"bootstrap_seed\": 20260828,\n    \"candidate_policy\": \"provisional_best_plus_neighbors_plus_phase_boundary_plus_historical_plus_pretrained\",\n    \"deterministic_latent\": \"mu\",\n    \"rows_per_checkpoint\": 412,\n    \"subjects\": 103\n  },\n  \"downstream_contract\": {\n    \"direct_old_generator_reuse_allowed\": false,\n    \"must_reencode_all_complete_cases\": true,\n    \"must_retrain_bbdm\": true,\n    \"must_retrain_encdec\": true,\n    \"native_space_synthesis_required\": true,\n    \"paired_segmentation_required\": true,\n    \"segmentation_safety\": {\n      \"maximum_dsc_nsd_f1_mean_decrease\": 0.01,\n      \"maximum_hd95_mean_increase_mm\": 5.0\n    }\n  },\n  \"automatic_stop\": {\n    \"after_epoch_30\": true,\n    \"if_best_epoch_equals_30\": \"stop_and_record_boundary_hit_at_30_no_automatic_extension\"\n  },\n  \"interpretation_boundaries\": [\n    \"model_space_vae_reconstruction_is_not_native_space_synthesis_quality\",\n    \"image_quality_improvement_is_not_downstream_segmentation_benefit\",\n    \"development_validation_is_not_an_unseen_test_set\",\n    \"absence_of_significant_harm_is_not_formal_equivalence\"\n  ]\n}\n"
+    },
+    {
+      "mtime_utc": "2026-09-01T07:44:53+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/config/G1_VAE_EXTENDED_FINETUNE_EXECUTION_PLAN_20260901_R3_ATTEMPT03.json",
+      "size": 6057,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"created_date\": \"2026-09-01\",\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"operator_approved\": false,\n  \"plan_id\": \"G1_VAE_EXTENDED_FINETUNE_20260901_R3_ATTEMPT03\",\n  \"execution_attempt\": 3,\n  \"schema_version\": 1,\n  \"status\": \"preflight_scan_required\",\n  \"remediation\": {\n    \"supersedes_failed_execution_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2\",\n    \"failed_job_id\": \"3554368\",\n    \"failed_before_training\": false,\n    \"failed_epoch\": 1,\n    \"failure_subject\": \"BraTS-MET-01257-002\",\n    \"failure_reason\": \"multiclass_label_collision_after_model_space_projection_removed_label_1\",\n    \"fix\": \"vae_private_binary_union_segmentation_before_spatial_resampling\",\n    \"shared_spatial_runtime_modified\": false,\n    \"required_remote_scan\": \"all_823_training_subjects_under_exact_r3_binary_union_contract\"\n  },\n  \"attempt03_remediation\": {\n    \"predecessor_scan_job_id\": \"3554513\",\n    \"predecessor_scan_status\": \"failed\",\n    \"predecessor_scan_exit_code\": \"2:0\",\n    \"predecessor_scanned_count\": 807,\n    \"predecessor_empty_source_count\": 16,\n    \"failure_reason\": \"scanner_dereferenced_absent_lesion_support_audit_for_valid_empty_source_segmentation\",\n    \"fix\": \"explicit_empty_source_audit_with_zero_source_and_model_lesion_contract\",\n    \"training_submitted_in_predecessor\": false\n  },\n  \"baseline\": {\n    \"historical_run\": \"run_3034060\",\n    \"selected_checkpoint\": \"run_3034060/best_model.pt\",\n    \"selected_checkpoint_sha256\": \"004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294\",\n    \"pretrained_initialization\": \"weights/vae/autoencoder_epoch273.pt\",\n    \"pretrained_initialization_sha256\": \"1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3\"\n  },\n  \"cohorts\": {\n    \"development_validation\": 103,\n    \"fit_train\": 823,\n    \"fixed_quick_validation\": 20,\n    \"locked_test\": 104,\n    \"missing_t2w_inference\": 265\n  },\n  \"training\": {\n    \"amp_dtype\": \"bfloat16\",\n    \"batch_semantics\": \"two_subject_gradient_accumulation_each_with_four_modalities\",\n    \"decoder_lr\": 0.000001,\n    \"early_stopping_patience\": 0,\n    \"encoder_lr\": 0.000002,\n    \"extension_epoch\": 30,\n    \"extension_rule\": \"extend_to_30_only_if_provisional_best_epoch_equals_20\",\n    \"gradient_clip\": 1.0,\n    \"initial_epoch_limit\": 20,\n    \"kl_weight\": 0.01,\n    \"optimizer\": \"AdamW\",\n    \"patch_size\": [128, 128, 96],\n    \"random_seed\": 42,\n    \"resume_must_restore\": [\n      \"model_state\",\n      \"optimizer_state\",\n      \"scheduler_state\",\n      \"selection_state\",\n      \"rng_state\"\n    ],\n    \"scheduler\": \"CosineAnnealingLR\",\n    \"scheduler_min_lr\": 1e-7,\n    \"scheduler_t_max\": 30,\n    \"stop_after_epoch_20_is_a_planned_phase_boundary\": true,\n    \"tumor_patch_probability\": 0.8,\n    \"weight_decay\": 0.0\n  },\n  \"execution\": {\n    \"code_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3\",\n    \"experiment_root\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03\",\n    \"python\": \"/public/home/zqchen/.conda/envs/segmamba/bin/python\",\n    \"partition\": \"a100\",\n    \"gpu_count\": 1,\n    \"gpu_contract\": \"single_non_ddp_A100\",\n    \"cpus_per_task\": 8,\n    \"memory_gib\": 96,\n    \"walltime\": \"6-00:00:00\",\n    \"historical_epoch_seconds_range\": [14253.1, 14523.1],\n    \"estimated_hours_to_epoch_20\": 81,\n    \"estimated_hours_to_epoch_30\": 121,\n    \"maximum_checkpoint_storage_gib_approx\": 7.5,\n    \"trainer_sha256\": \"175e4a67780c0ca23e0261bd932210fb1e5b263366a74e343ea71b59bb1ed0f1\",\n    \"pythonpath_contract\": \"R3_RUNTIME/r3_synthesis:SHARED_CODE_ROOT\"\n  },\n  \"vae_segmentation_contract\": {\n    \"mode\": \"binary_union\",\n    \"purpose\": \"tumor_and_healthy_mask_construction_only\",\n    \"source_multiclass_labels_audited\": true,\n    \"source_segmentation_changed_on_disk\": false,\n    \"shared_synthesis_package_changed\": false,\n    \"bundled_utils_sha256\": \"cba314ba110ca07ff9f440081108f773eb2d2c09ff4ca3ab5bf44aa4fbbca1b6\",\n    \"bundled_spatial_sha256\": \"b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb\",\n    \"full_training_split_scan_count\": 823,\n    \"training_submission_requires_scan_pass\": true\n  },\n  \"epoch_selection\": {\n    \"checkpoint_every_epoch\": true,\n    \"co_primary\": [\n      \"maximize_delta_t2w_tumor_ssim\",\n      \"minimize_delta_t2w_tumor_mse\"\n    ],\n    \"condition_modality_constraints\": {\n      \"modalities\": [\"t1n\", \"t1c\", \"t2f\"],\n      \"minimum_delta_tumor_ssim\": -0.01,\n      \"minimum_delta_whole_ssim\": -0.005,\n      \"maximum_relative_tumor_mse_increase\": 0.05\n    },\n    \"tie_break\": [\n      \"higher_delta_t2w_tumor_ssim\",\n      \"if_ssim_difference_le_0.002_lower_delta_t2w_tumor_mse\",\n      \"earlier_epoch\"\n    ],\n    \"t2w_safety\": {\n      \"minimum_delta_whole_ssim\": -0.005\n    }\n  },\n  \"full_validation\": {\n    \"bootstrap_replicates\": 20000,\n    \"bootstrap_seed\": 20260828,\n    \"candidate_policy\": \"provisional_best_plus_neighbors_plus_phase_boundary_plus_historical_plus_pretrained\",\n    \"deterministic_latent\": \"mu\",\n    \"rows_per_checkpoint\": 412,\n    \"subjects\": 103\n  },\n  \"downstream_contract\": {\n    \"direct_old_generator_reuse_allowed\": false,\n    \"must_reencode_all_complete_cases\": true,\n    \"must_retrain_bbdm\": true,\n    \"must_retrain_encdec\": true,\n    \"native_space_synthesis_required\": true,\n    \"paired_segmentation_required\": true,\n    \"segmentation_safety\": {\n      \"maximum_dsc_nsd_f1_mean_decrease\": 0.01,\n      \"maximum_hd95_mean_increase_mm\": 5.0\n    }\n  },\n  \"automatic_stop\": {\n    \"after_epoch_30\": true,\n    \"if_best_epoch_equals_30\": \"stop_and_record_boundary_hit_at_30_no_automatic_extension\"\n  },\n  \"interpretation_boundaries\": [\n    \"model_space_vae_reconstruction_is_not_native_space_synthesis_quality\",\n    \"image_quality_improvement_is_not_downstream_segmentation_benefit\",\n    \"development_validation_is_not_an_unseen_test_set\",\n    \"absence_of_significant_harm_is_not_formal_equivalence\"\n  ]\n}\n"
+    },
+    {
+      "mtime_utc": "2026-09-07T21:58:07+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/evidence/TRAINING_JOB_VALIDATION.json",
+      "size": 822,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"completed_epochs\": 20,\n  \"downstream_segmentation_status\": \"not_run_not_passed\",\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"full_103_validation_status\": \"not_run_not_passed\",\n  \"generated_at_utc\": \"2026-09-07T21:58:07.823146+00:00\",\n  \"job_id\": \"3577166\",\n  \"native_space_validation_status\": \"not_run_not_passed\",\n  \"operator_approved\": false,\n  \"schema_version\": 1,\n  \"selected_checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_004.pt\",\n  \"selected_checkpoint_sha256\": \"5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b\",\n  \"selected_epoch\": 4,\n  \"status\": \"pass\",\n  \"stop_reason\": \"best_epoch_before_20\"\n}\n"
+    },
+    {
+      "mtime_utc": "2026-09-02T02:39:23+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/BASELINE_QUICK_VALIDATION.json",
+      "size": 1869,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"generated_at_utc\": \"2026-09-02T02:39:23.673668+00:00\",\n  \"metrics\": {\n    \"by_modality\": {\n      \"t1c\": {\n        \"healthy_mse\": 0.019625413934887127,\n        \"kl\": 0.21764006465673447,\n        \"tumor_mse\": 0.018691803656213098,\n        \"tumor_ssim\": 0.33383936882019044,\n        \"whole_mse\": 0.004229851288255304,\n        \"whole_ssim\": 0.13674838244915008\n      },\n      \"t1n\": {\n        \"healthy_mse\": 0.002069962377193461,\n        \"kl\": 0.22128020152449607,\n        \"tumor_mse\": 0.0024031314580459733,\n        \"tumor_ssim\": 0.6937597095966339,\n        \"whole_mse\": 0.0020010740321595223,\n        \"whole_ssim\": 0.21311821937561035\n      },\n      \"t2f\": {\n        \"healthy_mse\": 0.0027679557803715303,\n        \"kl\": 0.23225706517696382,\n        \"tumor_mse\": 0.0020848050164611527,\n        \"tumor_ssim\": 0.6756220102310181,\n        \"whole_mse\": 0.002077305456623435,\n        \"whole_ssim\": 0.20643136501312256\n      },\n      \"t2w\": {\n        \"healthy_mse\": 0.004703540537809584,\n        \"kl\": 0.23468309566378592,\n        \"tumor_mse\": 0.0029113007987211165,\n        \"tumor_ssim\": 0.6641545772552491,\n        \"whole_mse\": 0.0023410905734635888,\n        \"whole_ssim\": 0.2087203800678253\n      }\n    },\n    \"overall\": {\n      \"healthy_mse\": 0.007291718157565424,\n      \"kl\": 0.22646510675549508,\n      \"tumor_mse\": 0.0065227602323603365,\n      \"tumor_ssim\": 0.5918439164757728,\n      \"whole_mse\": 0.0026623303376254624,\n      \"whole_ssim\": 0.1912545867264271\n    },\n    \"row_count\": 80\n  },\n  \"operator_approved\": false,\n  \"schema_version\": 1,\n  \"status\": \"pass\",\n  \"vae_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt\",\n  \"vae_weights_sha256\": \"1f8a7a056d0ebc00486edc43c26768bf1c12eaa6df9dd172e34598003be95eb3\"\n}\n"
+    },
+    {
+      "mtime_utc": "2026-09-07T21:56:36+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/EPOCH_SELECTION_AUDIT.json",
+      "size": 19055,
+      "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"completed_epochs\": 20,\n  \"extension_triggered\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"generated_at_utc\": \"2026-09-07T21:56:32.700163+00:00\",\n  \"operator_approved\": false,\n  \"schema_version\": 1,\n  \"selected_checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_004.pt\",\n  \"selected_checkpoint_sha256\": \"5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b\",\n  \"selected_epoch\": 4,\n  \"selection\": {\n    \"evaluated\": [\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.004599768571791087,\n            \"tumor_ssim\": 0.05194464325904846,\n            \"whole_ssim\": 0.022039094567298884\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0007433045896400791,\n            \"tumor_ssim\": 0.03229286074638371,\n            \"whole_ssim\": 0.012691700458526606\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0004406605947155835,\n            \"tumor_ssim\": 0.031809017062187195,\n            \"whole_ssim\": 0.014789780974388128\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.0018222824528380229,\n            \"tumor_ssim\": 0.04838080108165732,\n            \"whole_ssim\": 0.01604586243629455\n          }\n        },\n        \"eligible\": true,\n        \"epoch\": 1,\n        \"violations\": []\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.006993794674710797,\n            \"tumor_ssim\": 0.0815373599529266,\n            \"whole_ssim\": 0.014634567499160783\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0011767844093682098,\n            \"tumor_ssim\": 0.028737881779670738,\n            \"whole_ssim\": -0.0006537318229675182\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0005828673842807801,\n            \"tumor_ssim\": 0.023765322566032365,\n            \"whole_ssim\": 0.0010744929313659668\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002048446925138249,\n            \"tumor_ssim\": 0.045121750235557534,\n            \"whole_ssim\": 0.0024980813264846857\n          }\n        },\n        \"eligible\": true,\n        \"epoch\": 2,\n        \"violations\": []\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.005596773799901105,\n            \"tumor_ssim\": 0.048016712069511414,\n            \"whole_ssim\": 0.0061481803655624445\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0008872195428065541,\n            \"tumor_ssim\": 0.024712345004081704,\n            \"whole_ssim\": -0.0021397382020950373\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0009393695176060897,\n            \"tumor_ssim\": 0.024433967471122697,\n            \"whole_ssim\": -0.0009820133447647206\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002055347075684953,\n            \"tumor_ssim\": 0.043361437320709184,\n            \"whole_ssim\": 0.0008630931377411055\n          }\n        },\n        \"eligible\": true,\n        \"epoch\": 3,\n        \"violations\": []\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.0072167078328644624,\n            \"tumor_ssim\": 0.07858893573284148,\n            \"whole_ssim\": 0.012708055973052995\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.001256167908734067,\n            \"tumor_ssim\": 0.028220686316490218,\n            \"whole_ssim\": -0.0017071604728698675\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0009978521013311646,\n            \"tumor_ssim\": 0.0234359413385391,\n            \"whole_ssim\": -0.00028626024723052423\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002158097949209046,\n            \"tumor_ssim\": 0.04658267498016355,\n            \"whole_ssim\": 0.0014384090900421143\n          }\n        },\n        \"eligible\": true,\n        \"epoch\": 4,\n        \"violations\": []\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.007452364774599313,\n            \"tumor_ssim\": 0.08150931000709533,\n            \"whole_ssim\": 0.008797165751457225\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0011933332996720398,\n            \"tumor_ssim\": 0.03095336854457853,\n            \"whole_ssim\": -0.0032530486583709772\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0007372326819514395,\n            \"tumor_ssim\": 0.02558415830135341,\n            \"whole_ssim\": -0.0028166264295577947\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.0020634278285687063,\n            \"tumor_ssim\": 0.048221027851104714,\n            \"whole_ssim\": -0.001463633775711043\n          }\n        },\n        \"eligible\": true,\n        \"epoch\": 5,\n        \"violations\": []\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.00855211312842753,\n            \"tumor_ssim\": 0.10012996494770049,\n            \"whole_ssim\": 0.005208259820938116\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.001317674819328703,\n            \"tumor_ssim\": 0.027084821462631248,\n            \"whole_ssim\": -0.011584270000457753\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.00029745946922204655,\n            \"tumor_ssim\": 0.01762399673461912,\n            \"whole_ssim\": -0.012101563811302202\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.001942902031626942,\n            \"tumor_ssim\": 0.041751161217689514,\n            \"whole_ssim\": -0.010538342595100392\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 6,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.008045236852079567,\n            \"tumor_ssim\": 0.08990075290203092,\n            \"whole_ssim\": 0.00729831457138061\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0013382128458351772,\n            \"tumor_ssim\": 0.022867172956466675,\n            \"whole_ssim\": -0.0077957153320312444\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.001023288553816671,\n            \"tumor_ssim\": 0.017295208573341325,\n            \"whole_ssim\": -0.008071416616439814\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.00219851016480621,\n            \"tumor_ssim\": 0.04206382334232328,\n            \"whole_ssim\": -0.006175106763839727\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 7,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.01010347533940872,\n            \"tumor_ssim\": 0.1341398388147354,\n            \"whole_ssim\": 0.01650178730487825\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0014922859317276708,\n            \"tumor_ssim\": 0.027838999032974265,\n            \"whole_ssim\": -0.005949702858924849\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0007558946744864628,\n            \"tumor_ssim\": 0.018271514773368858,\n            \"whole_ssim\": -0.006203779578208918\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.0020741786400650516,\n            \"tumor_ssim\": 0.04350837171077726,\n            \"whole_ssim\": -0.004038435220718367\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 8,\n        \"violations\": [\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.009940444111869711,\n            \"tumor_ssim\": 0.12743525207042694,\n            \"whole_ssim\": 0.015204694867134105\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0014403277391531594,\n            \"tumor_ssim\": 0.02696166634559627,\n            \"whole_ssim\": -0.005639722943305975\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0008967468999016113,\n            \"tumor_ssim\": 0.019826155900955156,\n            \"whole_ssim\": -0.005419495701789873\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.0021423934563782818,\n            \"tumor_ssim\": 0.045654776692390375,\n            \"whole_ssim\": -0.0027402997016906794\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 9,\n        \"violations\": [\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.00978342564349402,\n            \"tumor_ssim\": 0.12425263822078703,\n            \"whole_ssim\": 0.015024453401565552\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0016068176258594823,\n            \"tumor_ssim\": 0.028547370433807395,\n            \"whole_ssim\": -0.005833920836448653\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0011418544386038454,\n            \"tumor_ssim\": 0.02057408988475795,\n            \"whole_ssim\": -0.005728659033775341\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002226120026583214,\n            \"tumor_ssim\": 0.04521007835865021,\n            \"whole_ssim\": -0.003660067915916443\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 10,\n        \"violations\": [\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.010735432427345365,\n            \"tumor_ssim\": 0.1429915517568588,\n            \"whole_ssim\": 0.014381653070449835\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0015414680947383238,\n            \"tumor_ssim\": 0.027957418560981773,\n            \"whole_ssim\": -0.010087901353836054\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0008764819165488142,\n            \"tumor_ssim\": 0.01963702738285067,\n            \"whole_ssim\": -0.010163947939872742\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002118166397114948,\n            \"tumor_ssim\": 0.04470409750938409,\n            \"whole_ssim\": -0.008162209391593928\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 11,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.012123876184115133,\n            \"tumor_ssim\": 0.1746770232915878,\n            \"whole_ssim\": 0.017096123099327093\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.001476110432888569,\n            \"tumor_ssim\": 0.026452451944351196,\n            \"whole_ssim\": -0.012352281808853144\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0003239014006209387,\n            \"tumor_ssim\": 0.014296638965606623,\n            \"whole_ssim\": -0.013099327683448792\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.001921352348011419,\n            \"tumor_ssim\": 0.04146116673946376,\n            \"whole_ssim\": -0.011301171779632552\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 12,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.012364311082690833,\n            \"tumor_ssim\": 0.17431918680667874,\n            \"whole_ssim\": 0.01969389319419862\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0017435223963627373,\n            \"tumor_ssim\": 0.02790987491607666,\n            \"whole_ssim\": -0.01019013226032256\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0010778148959434495,\n            \"tumor_ssim\": 0.016469347476959162,\n            \"whole_ssim\": -0.010605239868164057\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002226126048928234,\n            \"tumor_ssim\": 0.04260922372341147,\n            \"whole_ssim\": -0.008783581852912892\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 13,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.012445378110654402,\n            \"tumor_ssim\": 0.17831012606620783,\n            \"whole_ssim\": 0.01903293132781983\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0016351944848215848,\n            \"tumor_ssim\": 0.02874473929405208,\n            \"whole_ssim\": -0.009808555245399475\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0008106717289759354,\n            \"tumor_ssim\": 0.01775561571121209,\n            \"whole_ssim\": -0.01069717705249787\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.0021216087554931334,\n            \"tumor_ssim\": 0.04317383170127864,\n            \"whole_ssim\": -0.0094391018152237\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 14,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.013650560272468184,\n            \"tumor_ssim\": 0.20195488631725306,\n            \"whole_ssim\": 0.02137176096439361\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0018025371790694376,\n            \"tumor_ssim\": 0.02776406705379486,\n            \"whole_ssim\": -0.013102984428405767\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0011179084003039947,\n            \"tumor_ssim\": 0.015058031678199746,\n            \"whole_ssim\": -0.013616064190864557\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.0022363164051318217,\n            \"tumor_ssim\": 0.04112808704376214,\n            \"whole_ssim\": -0.011507651209831243\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 15,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.013081140964042469,\n            \"tumor_ssim\": 0.18935757577419282,\n            \"whole_ssim\": 0.01894498467445374\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0016291987755639446,\n            \"tumor_ssim\": 0.02784915268421173,\n            \"whole_ssim\": -0.012003582715988143\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0008682603692908503,\n            \"tumor_ssim\": 0.015752241015434265,\n            \"whole_ssim\": -0.012930694222450273\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.0021276169538765673,\n            \"tumor_ssim\": 0.04107256233692169,\n            \"whole_ssim\": -0.011361289024353016\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 16,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.01302537984386195,\n            \"tumor_ssim\": 0.18327244222164157,\n            \"whole_ssim\": 0.016417771577835083\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.001763000341064284,\n            \"tumor_ssim\": 0.025722944736480735,\n            \"whole_ssim\": -0.014816084504127497\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0011346910182213291,\n            \"tumor_ssim\": 0.014515787363052368,\n            \"whole_ssim\": -0.015420898795127869\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002223312461035705,\n            \"tumor_ssim\": 0.03995250165462494,\n            \"whole_ssim\": -0.013204494118690485\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 17,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.014511691851602693,\n            \"tumor_ssim\": 0.22143760919570926,\n            \"whole_ssim\": 0.022406613826751715\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0018105027381205947,\n            \"tumor_ssim\": 0.0251083165407181,\n            \"whole_ssim\": -0.015673577785491943\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.001106041564198309,\n            \"tumor_ssim\": 0.0122795909643173,\n            \"whole_ssim\": -0.01615033745765687\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.00222650357619759,\n            \"tumor_ssim\": 0.03876289129257193,\n            \"whole_ssim\": -0.013693627715110762\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 18,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.013653949197157475,\n            \"tumor_ssim\": 0.1991472631692886,\n            \"whole_ssim\": 0.016984778642654436\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.0016884006099200856,\n            \"tumor_ssim\": 0.023432728648185686,\n            \"whole_ssim\": -0.016774877905845642\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.0008175068307197991,\n            \"tumor_ssim\": 0.011286845803260781,\n            \"whole_ssim\": -0.017576229572296154\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002106993795905014,\n            \"tumor_ssim\": 0.03774120211601251,\n            \"whole_ssim\": -0.015230056643486006\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 19,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      },\n      {\n        \"deltas\": {\n          \"t1c\": {\n            \"tumor_mse\": -0.01455609274341457,\n            \"tumor_ssim\": 0.2216804951429367,\n            \"whole_ssim\": 0.022414371371269226\n          },\n          \"t1n\": {\n            \"tumor_mse\": -0.001794772193448888,\n            \"tumor_ssim\": 0.025657185912132285,\n            \"whole_ssim\": -0.015316349267959578\n          },\n          \"t2f\": {\n            \"tumor_mse\": -0.001053292264752373,\n            \"tumor_ssim\": 0.013104322552680903,\n            \"whole_ssim\": -0.01592156589031221\n          },\n          \"t2w\": {\n            \"tumor_mse\": -0.002198327555340316,\n            \"tumor_ssim\": 0.03932453691959381,\n            \"whole_ssim\": -0.013545730710029596\n          }\n        },\n        \"eligible\": false,\n        \"epoch\": 20,\n        \"violations\": [\n          \"t2w_whole_ssim_safety_failed\",\n          \"t1n_whole_ssim_safety_failed\",\n          \"t2f_whole_ssim_safety_failed\"\n        ]\n      }\n    ],\n    \"selected_epoch\": 4,\n    \"status\": \"pass\"\n  },\n  \"status\": \"pass\",\n  \"stop_reason\": \"best_epoch_before_20\"\n}\n"
+    },
+    {
+      "mtime_utc": "2026-09-07T21:56:36+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/finetune_config.json",
+      "size": 3989,
+      "text": "{\n  \"amp_dtype\": \"bfloat16\",\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"baseline_metrics\": {\n    \"by_modality\": {\n      \"t1c\": {\n        \"healthy_mse\": 0.019625413934887127,\n        \"kl\": 0.21764006465673447,\n        \"tumor_mse\": 0.018691803656213098,\n        \"tumor_ssim\": 0.33383936882019044,\n        \"whole_mse\": 0.004229851288255304,\n        \"whole_ssim\": 0.13674838244915008\n      },\n      \"t1n\": {\n        \"healthy_mse\": 0.002069962377193461,\n        \"kl\": 0.22128020152449607,\n        \"tumor_mse\": 0.0024031314580459733,\n        \"tumor_ssim\": 0.6937597095966339,\n        \"whole_mse\": 0.0020010740321595223,\n        \"whole_ssim\": 0.21311821937561035\n      },\n      \"t2f\": {\n        \"healthy_mse\": 0.0027679557803715303,\n        \"kl\": 0.23225706517696382,\n        \"tumor_mse\": 0.0020848050164611527,\n        \"tumor_ssim\": 0.6756220102310181,\n        \"whole_mse\": 0.002077305456623435,\n        \"whole_ssim\": 0.20643136501312256\n      },\n      \"t2w\": {\n        \"healthy_mse\": 0.004703540537809584,\n        \"kl\": 0.23468309566378592,\n        \"tumor_mse\": 0.0029113007987211165,\n        \"tumor_ssim\": 0.6641545772552491,\n        \"whole_mse\": 0.0023410905734635888,\n        \"whole_ssim\": 0.2087203800678253\n      }\n    },\n    \"overall\": {\n      \"healthy_mse\": 0.007291718157565424,\n      \"kl\": 0.22646510675549508,\n      \"tumor_mse\": 0.0065227602323603365,\n      \"tumor_ssim\": 0.5918439164757728,\n      \"whole_mse\": 0.0026623303376254624,\n      \"whole_ssim\": 0.1912545867264271\n    },\n    \"row_count\": 80\n  },\n  \"batch_size\": 2,\n  \"completed_epochs\": 20,\n  \"condition_max_relative_tumor_mse_increase\": 0.05,\n  \"condition_min_delta_tumor_ssim\": -0.01,\n  \"condition_min_delta_whole_ssim\": -0.005,\n  \"data_csv\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/data_csv.csv\",\n  \"data_dir\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/input\",\n  \"device\": \"cuda:0\",\n  \"dry_run\": false,\n  \"extension_epoch_limit\": 30,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"grad_clip\": 1.0,\n  \"gradient_checkpointing\": false,\n  \"initial_epoch_limit\": 20,\n  \"kl_weight\": 0.01,\n  \"lambda_tumor_max\": 30.0,\n  \"lambda_tumor_min\": 3.0,\n  \"lr_decoder\": 1e-06,\n  \"lr_encoder\": 2e-06,\n  \"max_train_subjects\": null,\n  \"max_val_subjects\": null,\n  \"operator_approved\": false,\n  \"optimizer_steps\": 8240,\n  \"output_dir\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training\",\n  \"patch_size\": [\n    128,\n    128,\n    96\n  ],\n  \"peak_cuda_memory_gib\": 25.450698375701904,\n  \"peak_cuda_reserved_gib\": 27.021484375,\n  \"quick_val_subject_ids\": [\n    \"BraTS-MET-01149-000\",\n    \"BraTS-MET-00380-000\",\n    \"BraTS-MET-00613-001\",\n    \"BraTS-MET-01109-001\",\n    \"BraTS-MET-00796-000\",\n    \"BraTS-MET-01217-000\",\n    \"BraTS-MET-01287-001\",\n    \"BraTS-MET-01276-001\",\n    \"BraTS-MET-01250-003\",\n    \"BraTS-MET-01191-001\",\n    \"BraTS-MET-01217-003\",\n    \"BraTS-MET-00292-000\",\n    \"BraTS-MET-01109-003\",\n    \"BraTS-MET-01172-004\",\n    \"BraTS-MET-00532-000\",\n    \"BraTS-MET-01117-003\",\n    \"BraTS-MET-01310-002\",\n    \"BraTS-MET-00625-000\",\n    \"BraTS-MET-01250-001\",\n    \"BraTS-MET-01284-000\"\n  ],\n  \"quick_val_subjects\": 20,\n  \"save_interval\": 1,\n  \"scheduler_t_max\": 30,\n  \"schema_version\": 1,\n  \"seed\": 42,\n  \"segmentation_mode\": \"binary_union\",\n  \"selected_epoch\": 4,\n  \"status\": \"complete\",\n  \"stop_reason\": \"best_epoch_before_20\",\n  \"t2w_min_delta_whole_ssim\": -0.005,\n  \"t2w_ssim_tie_tolerance\": 0.002,\n  \"timestamp_utc\": \"2026-09-07T21:56:36.787262+00:00\",\n  \"total_patch_counts\": {\n    \"brain\": 3515,\n    \"tumor\": 12945\n  },\n  \"training_seconds\": 501428.73017851263,\n  \"tumor_patch_probability\": 0.8,\n  \"vae_weights\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae/autoencoder_epoch273.pt\",\n  \"val_interval\": 1\n}\n"
+    },
+    {
+      "mtime_utc": "2026-09-02T02:23:34+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/quick_val_subjects.json",
+      "size": 597,
+      "text": "{\n  \"seed\": 10042,\n  \"count\": 20,\n  \"subject_ids\": [\n    \"BraTS-MET-01149-000\",\n    \"BraTS-MET-00380-000\",\n    \"BraTS-MET-00613-001\",\n    \"BraTS-MET-01109-001\",\n    \"BraTS-MET-00796-000\",\n    \"BraTS-MET-01217-000\",\n    \"BraTS-MET-01287-001\",\n    \"BraTS-MET-01276-001\",\n    \"BraTS-MET-01250-003\",\n    \"BraTS-MET-01191-001\",\n    \"BraTS-MET-01217-003\",\n    \"BraTS-MET-00292-000\",\n    \"BraTS-MET-01109-003\",\n    \"BraTS-MET-01172-004\",\n    \"BraTS-MET-00532-000\",\n    \"BraTS-MET-01117-003\",\n    \"BraTS-MET-01310-002\",\n    \"BraTS-MET-00625-000\",\n    \"BraTS-MET-01250-001\",\n    \"BraTS-MET-01284-000\"\n  ]\n}"
+    },
+    {
+      "mtime_utc": "2026-09-07T21:56:29+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/training_history.csv",
+      "size": 3783,
+      "text": "epoch,train_total,train_whole_mse,train_tumor_mse,train_healthy_mse,train_kl,lr_encoder,lr_decoder,tumor_patches,brain_patches,epoch_seconds,selected_epoch_so_far\n1,0.021364993450145846,0.00026686337524604013,0.0005635871538871975,0.0006186530643043142,0.5917357406505402,1.99479580059986e-06,9.97534852915723e-07,648,175,23639.400888234377,1\n2,0.0202864639027206,0.00025960378505985395,0.0005250416284134068,0.000600866770086609,0.5887029338741215,1.9792402206971156e-06,9.901664203302126e-07,626,197,24528.755906902254,1\n3,0.01974793247194488,0.000252860149357553,0.0005089856401720022,0.0005881477098964056,0.5762889727877673,1.953503690480396e-06,9.779754323328192e-07,649,174,24392.755257450044,1\n4,0.019833421095711193,0.0002582124322244196,0.0005117517211807908,0.000593784597991347,0.5815516238984622,1.917868184760471e-06,9.610954559391704e-07,655,168,24303.69960640371,4\n5,0.01925488294945025,0.00025626419441332216,0.0004978723733386367,0.0005868298640903596,0.5708651015147983,1.8727241335952173e-06,9.397114317029976e-07,669,154,24442.41693291813,4\n6,0.018928910420094598,0.00025950460989525916,0.00048505664211947097,0.0005870024360907163,0.5587102602510956,1.8185661446562005e-06,9.140576474687265e-07,649,174,23779.20893790573,4\n7,0.01845157196478497,0.0002561142125910037,0.000472624194481494,0.0005906047179380253,0.5505661087637973,1.7559875842035251e-06,8.844151714648275e-07,648,175,23730.063062675297,4\n8,0.018773468421915837,0.00025939160903424674,0.00047881595166399896,0.0005899510198720956,0.5573495300724324,1.6856740760409161e-06,8.511087728614862e-07,647,176,24053.530061125755,4\n9,0.018375244921238532,0.0002542869864221802,0.00046796256698015113,0.00058604176646709,0.5530112928813855,1.6083959896778503e-06,8.145033635316129e-07,647,176,23601.922244653106,4\n10,0.01835272286234668,0.00025392860277337657,0.0004697610262202063,0.0005842338408068935,0.5501856442500146,1.525000000000001e-06,7.75e-07,649,174,23926.63888821751,4\n11,0.018283931114246903,0.0002571526184706333,0.0004671925757516644,0.0005860184215283524,0.5489227789050174,1.4363998109220113e-06,7.330314893841102e-07,651,172,24530.96578297019,4\n12,0.0183285684638118,0.0002536630540502034,0.000470046815993299,0.0005813782022939592,0.5485661291264966,1.3435661446562012e-06,6.890576474687263e-07,676,147,24938.439396217465,4\n13,0.01763657715748984,0.00025775786725650593,0.00044623420462773966,0.0005824928381671237,0.5455421374189607,1.2475161062768723e-06,6.435602608679916e-07,636,187,24057.9019042328,4\n14,0.01776437031010812,0.00025684271307973607,0.00045336413329845083,0.0005869080261468072,0.5325170608524817,1.1493020401042718e-06,5.970378084704441e-07,639,184,23654.29091451317,4\n15,0.017597548458793112,0.00025096558816554515,0.00044637915156889,0.0005774424791607012,0.5324746105335607,1.0500000000000012e-06,5.5e-07,644,179,25065.702027209103,4\n16,0.017526615368748902,0.0002530784177107768,0.0004414306766017766,0.0005771323918973859,0.5392483996627977,9.506979598957302e-07,5.02962191529556e-07,633,190,24815.872165083885,4\n17,0.017359814879751537,0.0002567692290800133,0.0004388234646537089,0.0005783046273320344,0.535224220727911,8.524838937231293e-07,4.564397391320082e-07,667,156,23659.170034319162,4\n18,0.017642622165588994,0.00025566445463190776,0.00045108610467146655,0.0005826323532862658,0.5283584396376355,7.564338553438007e-07,4.1094235253127363e-07,637,186,23655.178152062,4\n19,0.017562594558365525,0.0002521918895670029,0.00044641536274870946,0.0005804165862764476,0.527570124643143,6.636001890779905e-07,3.6696851061588994e-07,625,198,23844.006090424955,4\n20,0.017257391757055672,0.0002588820722405906,0.000433096878184232,0.0005820607718415242,0.5342247641757403,5.750000000000006e-07,3.2500000000000006e-07,650,173,23577.552376635373,4\n"
+    },
+    {
+      "mtime_utc": "2026-09-02T09:29:16+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_001.pt",
+      "size": 251517652
+    },
+    {
+      "mtime_utc": "2026-09-02T16:34:24+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_002.pt",
+      "size": 251517908
+    },
+    {
+      "mtime_utc": "2026-09-02T23:37:01+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_003.pt",
+      "size": 251518228
+    },
+    {
+      "mtime_utc": "2026-09-03T06:37:51+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_004.pt",
+      "size": 251518356
+    },
+    {
+      "mtime_utc": "2026-09-03T13:41:28+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_005.pt",
+      "size": 251518676
+    },
+    {
+      "mtime_utc": "2026-09-03T20:33:31+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_006.pt",
+      "size": 251519124
+    },
+    {
+      "mtime_utc": "2026-09-04T03:24:46+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_007.pt",
+      "size": 251519444
+    },
+    {
+      "mtime_utc": "2026-09-04T10:21:27+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_008.pt",
+      "size": 251519700
+    },
+    {
+      "mtime_utc": "2026-09-04T17:10:48+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_009.pt",
+      "size": 251520148
+    },
+    {
+      "mtime_utc": "2026-09-05T00:05:35+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_010.pt",
+      "size": 251520404
+    },
+    {
+      "mtime_utc": "2026-09-05T07:10:26+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_011.pt",
+      "size": 251520788
+    },
+    {
+      "mtime_utc": "2026-09-05T14:24:07+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_012.pt",
+      "size": 251521108
+    },
+    {
+      "mtime_utc": "2026-09-05T21:20:58+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_013.pt",
+      "size": 251521556
+    },
+    {
+      "mtime_utc": "2026-09-06T04:11:00+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_014.pt",
+      "size": 251521812
+    },
+    {
+      "mtime_utc": "2026-09-06T11:25:19+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_015.pt",
+      "size": 251522196
+    },
+    {
+      "mtime_utc": "2026-09-06T18:34:40+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_016.pt",
+      "size": 251522516
+    },
+    {
+      "mtime_utc": "2026-09-07T01:24:39+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_017.pt",
+      "size": 251522836
+    },
+    {
+      "mtime_utc": "2026-09-07T08:14:50+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_018.pt",
+      "size": 251523220
+    },
+    {
+      "mtime_utc": "2026-09-07T15:07:57+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_019.pt",
+      "size": 251523604
+    },
+    {
+      "mtime_utc": "2026-09-07T21:56:32+00:00",
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints/checkpoint_epoch_020.pt",
+      "size": 251523924
+    }
+  ],
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "operator_approved": false,
+  "remote_utc": "2026-10-07T07:00:37.322890+00:00",
+  "root_listing": [
+    "code",
+    "data",
+    "docs",
+    "results"
+  ],
+  "vae_directories": [
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/weights/vae",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031199",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031258",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031258/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031282",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031282/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031306",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031306/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3031309/comparison_samples",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032620/comparison_samples",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032621",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032702",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3032811",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_zqchen_20260711_125008",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/benchmark_patch_zqchen_20260711_131149/comparison_samples",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v2/training/vae_finetuned/run_3033951",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/weights/vae",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/comparison_samples",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/evidence",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/config",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/slurm",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/runtime",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/tests",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/docs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r1/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/evidence",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/config",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/slurm",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/runtime",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/tests",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/docs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/training",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260828_r2/training/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/config",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/docs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/evidence",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/runtime",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/runtime/r3_synthesis",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/runtime/r3_synthesis/synthesis",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3/slurm",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/config",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/docs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/evidence",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/runtime",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/runtime/r3_synthesis",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/runtime/r3_synthesis/synthesis",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260831_r3_attempt02/slurm",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/config",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/docs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/evidence",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/runtime",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/runtime/r3_synthesis",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/runtime/r3_synthesis/synthesis",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/slurm",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/logs",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/epoch_metrics",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoints",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_extended_finetune_20260901_r3_attempt03/training/checkpoint_audits",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_threeway_fixed103_validation_20260910_r1",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_threeway_fixed103_validation_20260911_attempt02",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/results/experimental_unvalidated/g1_vae_threeway_fixed103_validation_20260914_attempt03"
+  ]
+}

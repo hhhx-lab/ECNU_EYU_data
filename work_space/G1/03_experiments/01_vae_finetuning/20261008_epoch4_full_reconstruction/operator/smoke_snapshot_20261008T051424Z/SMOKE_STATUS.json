@@ -1,0 +1,126 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "case_validation": {
+    "BraTS-MET-00001-000": {
+      "files": [
+        "seg",
+        "t1c",
+        "t1n",
+        "t2f",
+        "t2w"
+      ],
+      "label_values": [
+        0,
+        2,
+        3
+      ],
+      "split": "train",
+      "status": "pass"
+    },
+    "BraTS-MET-01117-003": {
+      "files": [
+        "seg",
+        "t1c",
+        "t1n",
+        "t2f",
+        "t2w"
+      ],
+      "label_values": [
+        0
+      ],
+      "split": "val",
+      "status": "pass"
+    }
+  },
+  "disk": {
+    "code": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  222T   27T  90% /public\n"
+  },
+  "files": {
+    "COMPLETE.ok": {
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 2,
+        "checkpoint_sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+        "finished_at_utc": "2026-10-08T04:26:34.713712+00:00",
+        "formal_gate_status": "not_run_not_passed",
+        "images": 8,
+        "labels": 2,
+        "manifest_sha256": {
+          "BraTS-MET-00001-000": "08726b83683966966c5670748f13b8152eb809ce8b05f591af3e11df6bdebb3e",
+          "BraTS-MET-01117-003": "20b30f20116afe582b9f1d89f9c0a06c7dbab002c576fbed38ba8b9ae9a535ae"
+        },
+        "operator_approved": false,
+        "split_counts": {
+          "train": 1,
+          "val": 1
+        },
+        "status": "pass"
+      },
+      "exists": true
+    },
+    "DATASET_VALIDATION.json": {
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 2,
+        "checkpoint_sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+        "finished_at_utc": "2026-10-08T04:26:34.713712+00:00",
+        "formal_gate_status": "not_run_not_passed",
+        "images": 8,
+        "labels": 2,
+        "manifest_sha256": {
+          "BraTS-MET-00001-000": "08726b83683966966c5670748f13b8152eb809ce8b05f591af3e11df6bdebb3e",
+          "BraTS-MET-01117-003": "20b30f20116afe582b9f1d89f9c0a06c7dbab002c576fbed38ba8b9ae9a535ae"
+        },
+        "operator_approved": false,
+        "split_counts": {
+          "train": 1,
+          "val": 1
+        },
+        "status": "pass"
+      },
+      "exists": true
+    },
+    "RUN_CONTRACT.json": {
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "cases_expected": 2,
+        "checkpoint_sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "smoke": true,
+        "source_csv_sha256": "0d1765e12cdad7d8a5df57a5d2c46c79414ed99a2015a4d8fed57cd4c4fc836b",
+        "started_at_utc": "2026-10-08T04:23:31.179170+00:00",
+        "status": "started"
+      },
+      "exists": true
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "logs": {
+    "g1vae4recon_3940942.err": {
+      "bytes": 632,
+      "error_lines": [],
+      "tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n"
+    },
+    "g1vae4recon_3940942.out": {
+      "bytes": 188,
+      "error_lines": [],
+      "tail": "{\"case\": \"BraTS-MET-00001-000\", \"split\": \"train\", \"status\": \"pass\", \"files\": 5}\n{\"case\": \"BraTS-MET-01117-003\", \"split\": \"val\", \"status\": \"pass\", \"files\": 5}\nRECONSTRUCTION_SMOKE_COMPLETE\n"
+    }
+  },
+  "operator_approved": false,
+  "remote_utc": "2026-10-08T05:03:36.470091+00:00",
+  "sacct": {
+    "code": 0,
+    "stderr": "",
+    "stdout": "3940942|COMPLETED|0:0|2026-10-08T12:21:48|2026-10-08T12:26:59|00:05:11|billing=8,cpu=8,gres/gpu=1,mem=96G,node=1\n3940942.batch|COMPLETED|0:0|2026-10-08T12:21:48|2026-10-08T12:26:59|00:05:11|cpu=8,gres/gpu=1,mem=96G,node=1\n"
+  },
+  "squeue": {
+    "code": 1,
+    "stderr": "slurm_load_jobs error: Invalid job id specified\n",
+    "stdout": ""
+  }
+}

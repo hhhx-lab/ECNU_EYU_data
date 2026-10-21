@@ -1,0 +1,8 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false,
+  "output": "CSV_PATH: /var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/tmpew92_gd_/lesions.csv\nScan Modality: scan_t1c\nNormalization: nnunet\nUsing dataset: BRATS_2024\nUsing Gaussian noise only in the tumour zone (ROI cache, per-iteration random offset)\nCSV rows: 1 total -> 1 used for training (1 patients)\nNumber of training images: 1\nDataset training: number of batches: 1\nLeaving the data loader. Good luck!\n/Users/hwaigc/\u6bd4\u8d5b+\u8bfe\u9898/ECNU_EYU_data/work_space/G1/03_experiments/03_diffusion_training/20261014_vae_epoch004_1mm_diffusion_manual_r3/runtime/upstream_source/src/utils/data_utils.py:160: UserWarning: CacheDataset cache_rate=1.0. Reduce --cache_rate if the process runs out of memory.\n  warnings.warn(f\"CacheDataset cache_rate={cache_rate}. Reduce --cache_rate if the process runs out of memory.\")\n\nLoading dataset:   0%|          | 0/1 [00:00<?, ?it/s]\nLoading dataset: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 149.47it/s]\n.......\n----------------------------------------------------------------------\nRan 7 tests in 0.119s\n\nOK\n",
+  "scope": "seven synthetic CPU tests and five bash dry-runs; not GPU or manual quality acceptance",
+  "status": "pass"
+}

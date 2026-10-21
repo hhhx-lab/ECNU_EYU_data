@@ -1,0 +1,20 @@
+{
+  "plan_id": "G1_VAE_EPOCH004_FULL_RECONSTRUCTION_20261008_R1",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "checkpoint_epoch": 4,
+  "checkpoint_sha256": "5d86a0b3cbc5df34d64d5a0ff376eae453634a609bd24dec1a1191fde800b13b",
+  "source_cases": 1030,
+  "split_counts": {"train": 823, "val": 103, "test": 104},
+  "modalities": ["t1n", "t1c", "t2w", "t2f"],
+  "output_format": "native_space_float32_nifti_gzip",
+  "latent_sampling": "deterministic_posterior_mean",
+  "intensity_contract": "G1_V3_robust_normalize_then_deployed_modality_postprocess",
+  "reference_segmentation": "byte_identical_copy_of_source",
+  "smoke_case_ids": ["BraTS-MET-00001-000", "BraTS-MET-01117-003"],
+  "smoke_gate": "2_cases_8_images_and_2_labels_all_finite_native_geometry_source_sha_and_output_sha_pass",
+  "full_gate": "1030_cases_4120_images_1030_reference_labels_manifest_and_sha_pass",
+  "drive_folder_id": "1JICH__ZmoCrF856Lvh65QLgSMV9_da8s",
+  "interpretation": "new_image_space_diffusion_input_experiment_not_a_validated_improvement"
+}
