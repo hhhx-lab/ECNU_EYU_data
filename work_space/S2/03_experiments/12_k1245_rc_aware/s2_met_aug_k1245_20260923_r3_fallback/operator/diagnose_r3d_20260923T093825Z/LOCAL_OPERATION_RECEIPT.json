@@ -1,0 +1,13 @@
+{
+  "action": "diagnose_r3d",
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "local_completed_utc": "2026-09-23T09:38:35.197913+00:00",
+  "local_started_utc": "2026-09-23T09:38:25.425787+00:00",
+  "operator_approved": false,
+  "preexisting_vpn_left_unchanged": false,
+  "result": {
+    "diagnostic": "\nzqchen@59.78.189.132's password: \nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n{\"config_plan_hash_ok\": true, \"config_sha_ok\": false, \"gate_ok\": true, \"hash_mismatch_or_missing\": {\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260923_r3_fallback/attempts/k1_rc_smoke_r3d/sources/K1245_F_FALLBACK_EXECUTION_PLAN_20260923_R3.json\": {\"actual\": null, \"expected\": \"b064244600893378f2693c57e9143c0edcd5584e8a338fa3e979a549b90b239b\"}, \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260923_r3_fallback/attempts/k1_rc_smoke_r3d/sources/K1_FALLBACK_CONFIG_PLAN_20260923_R3A.json\": {\"actual\": null, \"expected\": \"0a674b1e1d9bb6cf9f7355005f137f0a919f86588687bd6d2a99dd1ec979ece6\"}, \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260923_r3_fallback/attempts/k1_rc_smoke_r3d/sources/prepare_k1_fallback_config_r3a.py\": {\"actual\": null, \"expected\": \"d0e7fb1664444bb3e716c4fab0393d63639c3ec09d2a366dea9f6bd489805664\"}}, \"k5_authorization\": false, \"plan_config_sha256\": \"9d96ee03058d49fe7598169f1f80edb4db1d70945914405e36250f3dd7ecd188\", \"pool_sha_ok\": true, \"queue\": \"\", \"remote_config_sha256\": \"9d96ee03058d49fe7598169f1f80edb4db1d70945914405e36250f3dd7ecd188\", \"runner_sha_ok\": true, \"training_authorization\": false}\n"
+  },
+  "vpn_closed": true
+}

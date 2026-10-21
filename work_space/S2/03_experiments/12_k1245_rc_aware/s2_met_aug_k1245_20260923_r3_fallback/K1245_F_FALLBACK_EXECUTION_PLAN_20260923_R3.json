@@ -1,0 +1,67 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "created_at_local": "2026-09-23T15:23:07+08:00",
+  "created_at_utc": "2026-09-23T07:23:07Z",
+  "experiment_id": "s2_met_aug_k1245_20260923_r3_fallback",
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false,
+  "schema_version": 1,
+  "strict_gate": {
+    "name": "F_STRICT_PREREG_GATE",
+    "result": false,
+    "source_plan_sha256": "5e337319fe63e5c261162d5850c0c4310c1cc729c984a74c0373ea01b4975333",
+    "source_evidence_receipt_sha256": "de1f231c46bc61de4c91ecd12983690aac3f6bb9765f4e1ea4d0df83cfe47785",
+    "reason": "At least three adjacent burden-bin 95% bootstrap confidence intervals overlap; the original preregistered non-overlap requirement failed."
+  },
+  "fallback_gate": {
+    "name": "F_FALLBACK_ENGINEERING_ELIGIBILITY_GATE",
+    "is_scientific_gate": false,
+    "is_significance_test": false,
+    "source_plan_sha256": "815494ccba511570afa4c53c23034807ce8f351d06446f25d1c2c4fc4e364018",
+    "source_snapshot_receipt_sha256": "9f7240cbfb4f63910b1b86608625d94a6d90303ee5f36adf3741a721f55fc021",
+    "source_remote_static_preflight_sha256": "1848ffe601f0749122d144938595d42fe9c78bf0f6bf71114ba7e096dd45a350",
+    "source_pool_complete_marker_sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+    "source_rc27_manifest_identity_sha256": "4bef77f255a1a5fa2ba65fa22b58c84191634859b4040eacf99e13f99059c35c",
+    "source_small8_manifest_identity_sha256": "d27ac72359449f157a0afc91f80bc062a03eb4a3c19453f7c842f5498583a2fd",
+    "criteria": {
+      "case_count": 1035,
+      "burden_bins_in_order": ["1", "2_3", "4_8", "9_16", "17_24", "gt24"],
+      "burden_bin_case_counts": {"1": 265, "2_3": 259, "4_8": 269, "9_16": 148, "17_24": 41, "gt24": 53},
+      "small_lesion_definition_mm3": "strictly_less_than_27.0",
+      "fraction_definition": "per-case count(small eligible lesions) / max(1, total eligible lesions)",
+      "fraction_order_tolerance": 1e-12,
+      "probability_order_tolerance": 1e-12,
+      "target_case_probability_mean": 0.2,
+      "probability_mean_absolute_tolerance": 0.0001,
+      "probability_max": 0.6,
+      "probability_min": 0.0,
+      "ci_role": "descriptive_only_not_a_gate",
+      "statistical_test": "none"
+    },
+    "route_effect": "May enable preparation of a K1 exploratory configuration only. K1 still requires RC smoke automatic pass and 24/24 manual review before training.",
+    "k5_effect": "none; K5 requires K1 and K2 preregistered scientific gates to pass independently."
+  },
+  "parent_contract": {
+    "r2_experiment_plan_sha256": "815494ccba511570afa4c53c23034807ce8f351d06446f25d1c2c4fc4e364018",
+    "r2_rc27_manifest_sha256": "4bef77f255a1a5fa2ba65fa22b58c84191634859b4040eacf99e13f99059c35c",
+    "r2_small8_manifest_sha256": "d27ac72359449f157a0afc91f80bc062a03eb4a3c19453f7c842f5498583a2fd",
+    "fix_v3_calibration_file_sha256": "68a5d8a6c501804b7a47d626e43a58ff71b781154c0cc955a9c5a5d5b786d37f",
+    "original_e_checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "fixed_train_count": 1035,
+    "fixed_validation_count": 103
+  },
+  "route_graph": {
+    "K1": {
+      "features": ["B1", "B2", "E1", "F1", "X1"],
+      "fallback_gate_can_enable_config": true,
+      "pre_training_requirements": ["fallback_gate_pass", "rc_smoke_automatic_24_pass", "rc_smoke_manual_24_pass"]
+    },
+    "K5": {
+      "features": ["B1", "B2", "D1", "D2", "E1", "F1", "X1"],
+      "fallback_gate_can_enable_config": false,
+      "pre_training_requirements": ["K1_preregistered_scientific_gate_pass", "K2_preregistered_scientific_gate_pass"]
+    }
+  },
+  "interpretation": "Independent fallback eligibility definition, not a retrospective pass of the original strict gate. Any downstream comparison reuses development cases and is exploratory.",
+  "prohibited_actions": ["rewrite r1 or r2 evidence", "call fallback a scientific/significance pass", "submit K5 before K1 and K2 scientific gates", "reuse or overwrite old launch audits"]
+}

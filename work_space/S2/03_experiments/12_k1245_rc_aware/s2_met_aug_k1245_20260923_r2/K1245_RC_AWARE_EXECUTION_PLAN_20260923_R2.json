@@ -1,0 +1,70 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "checkpoint_selection": {
+    "candidate_epochs": [25, 50, 75, 100, 125],
+    "primary_score": "fixed103 development-validation ema_fg_dice",
+    "tie_break": "earliest_epoch"
+  },
+  "created_at_local": "2026-09-23T00:00:00+08:00",
+  "created_at_utc": "2026-09-22T16:00:00Z",
+  "experiment_id": "s2_met_aug_k1245_20260923_r2",
+  "formal_gate_status": "not_run_not_passed",
+  "g1_contract": {
+    "checkpoint_selection_file_sha256": "85574c51c4f77ea14e18507aab93f6fea86cf4b8ab0a0c407b0e3ec97e18b209",
+    "crop_size": 64,
+    "g2_qc_gate_file_sha256": "3103a3057132b9166a398ff2f10aefee77c957e142563c3b7f93e3898718f408",
+    "label_channels": ["TC", "WT", "ET", "RC"],
+    "sampling": "edm_heun18"
+  },
+  "interpretation": "exploratory development comparison; fixed103 is reused for checkpoint selection and reporting",
+  "operator_approved": false,
+  "parent_contract": {
+    "fix_v3_calibration_file_sha256": "68a5d8a6c501804b7a47d626e43a58ff71b781154c0cc955a9c5a5d5b786d37f",
+    "fix_v3_route_config_file_sha256": "c35750fb7b388d1337ed6586a2d5af9ede5e046359ef48b9de40c55838401817",
+    "legacy_component_manifest_identity_sha256": "16b9381f6392282462a4f10c9733280ffba0b2270eb2ef04db439e0a6689db80",
+    "legacy_component_manifest_file_sha256": "88b1ce12d2fa914a2ef5d47740e10480361f7f5ce5c5d162dbf04d04832cb204",
+    "original_e_checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267"
+  },
+  "pool_contracts": {
+    "rc27": {
+      "anchor_labels": [1, 3, 4],
+      "include_rc": true,
+      "max_bbox_mm": 56.0,
+      "min_anchor_volume_mm3": 27.0
+    },
+    "small8": {
+      "anchor_labels": [1, 3],
+      "exclude_any_source_case_with_rc": true,
+      "include_rc": false,
+      "max_bbox_mm": 56.0,
+      "min_anchor_volume_mm3": 8.0
+    }
+  },
+  "proposal_sha256": "bef2fb4cbf13a15cd75036e9e64d1ac50c88e717a4f54b75bb8feaffba9c5f24",
+  "route_graph": {
+    "K1": {"features": ["B1", "B2", "E1", "F1", "X1"], "requires": ["rc_smoke_24_pass", "f_train_only_gate_pass"]},
+    "K2": {"features": ["B1", "B2", "D1", "D2", "E1", "X1", "X2"], "requires": ["rc_smoke_24_pass", "d_empirical_contract_pass"]},
+    "K4": {"features": ["E1", "X3"], "requires": ["small8_smoke_24_pass"]},
+    "K5": {"features": ["B1", "B2", "D1", "D2", "E1", "F1", "X1"], "requires": ["K1_scientific_gate_pass", "K2_scientific_gate_pass"]}
+  },
+  "schema_version": 1,
+  "smoke_contract": {
+    "manual_acceptance_required": true,
+    "rc_cases": 24,
+    "rc_qc_status": "guardrails_not_formally_calibrated",
+    "small8_cases": 24,
+    "small8_strata": {"8_12": 8, "13_19": 8, "20_26": 8}
+  },
+  "training_contract": {
+    "augmentation_workers": 0,
+    "epochs": 125,
+    "fixed_train_count": 1035,
+    "fixed_validation_count": 103,
+    "initial_lr": 0.001,
+    "pretrained_original_e_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "save_every": 25,
+    "seed": 20260724,
+    "single_gpu_non_ddp": true,
+    "torch_compile": false
+  }
+}

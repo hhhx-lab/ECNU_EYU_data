@@ -1,0 +1,50 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "augmentation_workers": 0,
+  "checkpoint_epochs": [
+    25,
+    50,
+    75,
+    100,
+    125,
+    150,
+    175
+  ],
+  "ddp": false,
+  "device": "one A100 GPU",
+  "epochs": 175,
+  "experiment_id": "s2_met_aug_k1245_20260929_k1_175_r3",
+  "exploratory_only": true,
+  "export_workers": 0,
+  "fallback_gate": "F_FALLBACK_ENGINEERING_ELIGIBILITY_GATE",
+  "formal_gate_status": "not_run_not_passed",
+  "k5_authorization": false,
+  "mkl_threading_layer": "GNU",
+  "notes": [
+    "This independent K1 175 epoch training attempt does not rewrite K1 R3J smoke evidence or any older failed attempt.",
+    "The user's manual review is recorded as engineering execution authorization; it is not a formal scientific gate or superiority claim.",
+    "The original 125 epoch and equal budget Screen125 experiments remain separate."
+  ],
+  "operator_approved": false,
+  "parent_plan": "K1245_RC_AWARE_EXECUTION_PLAN_20260921_R1.md",
+  "preprocess_workers": 0,
+  "pretrained_checkpoint": "original_e",
+  "pretrained_checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+  "prior_failed_job_id": "3827458",
+  "prior_submission_attempt": "s2_met_aug_k1245_20260929_k1_175_r2",
+  "rc27_manifest_identity_sha256": "a9b74b410838f8fcba50d66d52c7751bef2b07ddc94f2f774eabaed8c98701ac",
+  "revision_reason": "Prior accepted job failed before STARTED: MKL_THREADING_LAYER=INTEL conflicted with libgomp; fresh attempt explicitly sets GNU",
+  "route": "E-SNFH* + F* + X1 + B1 + B2",
+  "route_id": "K1",
+  "seed": 20260724,
+  "selection": {
+    "fixed103_for_selection_and_report": true,
+    "metric": "fixed103 development validation ema_fg_dice",
+    "tie_break": "earliest epoch"
+  },
+  "strict_f_prereg_gate": false,
+  "submission_attempt": "r3_mkl_gnu_recovery",
+  "torch_compile": false,
+  "train_cases": 1035,
+  "validation_cases": 103
+}

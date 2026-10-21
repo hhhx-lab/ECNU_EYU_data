@@ -1,0 +1,90 @@
+{
+  "disk": {
+    "rc": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  220T   29T  89% /public"
+  },
+  "hostname": "login1",
+  "jobs": {
+    "K1": {
+      "audit": [
+        "K1_175_LAUNCH.json",
+        "K1_175_RELEASED.json"
+      ],
+      "complete": false,
+      "failed": true,
+      "job_id": "3827458",
+      "logs": [
+        "s2k1train175r2_3827458.err",
+        "s2k1train175r2_3827458.out"
+      ],
+      "root_exists": true,
+      "sacct": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827458|s2k1train175r2|FAILED|1:0"
+      },
+      "squeue": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "started": false,
+      "validation": false
+    },
+    "K2": {
+      "audit": [
+        "K2_175_LAUNCH.json",
+        "K2_175_RELEASED.json"
+      ],
+      "complete": false,
+      "failed": true,
+      "job_id": "3827469",
+      "logs": [
+        "s2k2train175r1_3827469.err",
+        "s2k2train175r1_3827469.out"
+      ],
+      "root_exists": true,
+      "sacct": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827469|s2k2train175r1|FAILED|1:0"
+      },
+      "squeue": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "started": false,
+      "validation": false
+    },
+    "K4": {
+      "audit": [
+        "K4_175_LAUNCH.json",
+        "K4_175_RELEASED.json"
+      ],
+      "complete": false,
+      "failed": true,
+      "job_id": "3827503",
+      "logs": [
+        "s2k4train175r5_3827503.err",
+        "s2k4train175r5_3827503.out"
+      ],
+      "root_exists": true,
+      "sacct": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827503|s2k4train175r5|FAILED|1:0"
+      },
+      "squeue": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "started": false,
+      "validation": false
+    }
+  },
+  "local_utc": "2026-09-29T02:49:08.286923+00:00",
+  "remote_utc": "2026-09-29T02:38:28.516215+00:00"
+}

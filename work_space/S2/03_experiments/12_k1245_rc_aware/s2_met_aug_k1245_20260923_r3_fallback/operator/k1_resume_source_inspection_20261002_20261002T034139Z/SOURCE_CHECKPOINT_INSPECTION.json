@@ -1,0 +1,553 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "checkpoint": {
+    "amp_finite": true,
+    "amp_state": {
+      "_growth_tracker": 335,
+      "backoff_factor": 0.5,
+      "growth_factor": 2.0,
+      "growth_interval": 2000,
+      "scale": 32768.0
+    },
+    "current_epoch": 50,
+    "ema_at_checkpoint": 0.7447391431512708,
+    "init_args_keys": [
+      "plans",
+      "configuration",
+      "fold",
+      "dataset_json",
+      "device"
+    ],
+    "last_saved_lr": 0.0007440450757678328,
+    "logging_finite": true,
+    "logging_lengths": {
+      "dice_per_class_or_region": 50,
+      "ema_fg_dice": 50,
+      "epoch_end_timestamps": 50,
+      "epoch_start_timestamps": 50,
+      "lrs": 50,
+      "mean_fg_dice": 50,
+      "train_losses": 50,
+      "val_losses": 50
+    },
+    "model_contract": {
+      "dataset_json": {
+        "channel_names": {
+          "0": "t1n",
+          "1": "t1c",
+          "2": "t2w",
+          "3": "t2f"
+        },
+        "file_ending": ".nii.gz",
+        "g2_channel_order": "g2_official",
+        "g2_completion_paths_overridden": 212,
+        "g2_completion_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/output/run_3104668",
+        "g2_dataset_profile": "completion",
+        "g2_master_split": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/splits/splits_master_train_val_test.json",
+        "g2_materialization_stats": {
+          "completion_replacements": 212,
+          "included_cases": 1242,
+          "real_cases": 1242,
+          "skipped_missing_completion": 53
+        },
+        "g2_real_data_root": "/public/home/zqchen/data",
+        "g2_real_mapping": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/manifests/nnunet_case_mapping_master.csv",
+        "g2_real_paths_overridden": 1295,
+        "g2_synthetic_manifests": [
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/manifests/synthetic_accepted_manifest_run_3104668.csv"
+        ],
+        "labels": {
+          "ET": 3,
+          "NETC": 1,
+          "RC": 4,
+          "SNFH": 2,
+          "background": 0
+        },
+        "numTest": 104,
+        "numTraining": 1138
+      },
+      "plans": {
+        "configurations": {
+          "2d": {
+            "architecture": {
+              "_kw_requires_import": [
+                "conv_op",
+                "norm_op",
+                "dropout_op",
+                "nonlin"
+              ],
+              "arch_kwargs": {
+                "conv_bias": true,
+                "conv_op": "torch.nn.modules.conv.Conv2d",
+                "dropout_op": null,
+                "dropout_op_kwargs": null,
+                "features_per_stage": [
+                  32,
+                  64,
+                  128,
+                  256,
+                  512,
+                  512
+                ],
+                "kernel_sizes": [
+                  [
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3
+                  ]
+                ],
+                "n_conv_per_stage": [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ],
+                "n_conv_per_stage_decoder": [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ],
+                "n_stages": 6,
+                "nonlin": "torch.nn.LeakyReLU",
+                "nonlin_kwargs": {
+                  "inplace": true
+                },
+                "norm_op": "torch.nn.modules.instancenorm.InstanceNorm2d",
+                "norm_op_kwargs": {
+                  "affine": true,
+                  "eps": 1e-05
+                },
+                "strides": [
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2
+                  ]
+                ]
+              },
+              "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+            },
+            "batch_dice": true,
+            "batch_size": 105,
+            "data_identifier": "nnUNetPlans_2d",
+            "median_image_size_in_voxels": [
+              172.0,
+              138.0
+            ],
+            "normalization_schemes": [
+              "ZScoreNormalization",
+              "ZScoreNormalization",
+              "ZScoreNormalization",
+              "ZScoreNormalization"
+            ],
+            "patch_size": [
+              192,
+              160
+            ],
+            "preprocessor_name": "DefaultPreprocessor",
+            "resampling_fn_data": "resample_data_or_seg_to_shape",
+            "resampling_fn_data_kwargs": {
+              "force_separate_z": null,
+              "is_seg": false,
+              "order": 3,
+              "order_z": 0
+            },
+            "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+            "resampling_fn_probabilities_kwargs": {
+              "force_separate_z": null,
+              "is_seg": false,
+              "order": 1,
+              "order_z": 0
+            },
+            "resampling_fn_seg": "resample_data_or_seg_to_shape",
+            "resampling_fn_seg_kwargs": {
+              "force_separate_z": null,
+              "is_seg": true,
+              "order": 1,
+              "order_z": 0
+            },
+            "spacing": [
+              1.0,
+              1.0
+            ],
+            "use_mask_for_norm": [
+              true,
+              true,
+              true,
+              true
+            ]
+          },
+          "3d_fullres": {
+            "architecture": {
+              "_kw_requires_import": [
+                "conv_op",
+                "norm_op",
+                "dropout_op",
+                "nonlin"
+              ],
+              "arch_kwargs": {
+                "conv_bias": true,
+                "conv_op": "torch.nn.modules.conv.Conv3d",
+                "dropout_op": null,
+                "dropout_op_kwargs": null,
+                "features_per_stage": [
+                  32,
+                  64,
+                  128,
+                  256,
+                  320,
+                  320
+                ],
+                "kernel_sizes": [
+                  [
+                    3,
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    3,
+                    3
+                  ]
+                ],
+                "n_conv_per_stage": [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ],
+                "n_conv_per_stage_decoder": [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ],
+                "n_stages": 6,
+                "nonlin": "torch.nn.LeakyReLU",
+                "nonlin_kwargs": {
+                  "inplace": true
+                },
+                "norm_op": "torch.nn.modules.instancenorm.InstanceNorm3d",
+                "norm_op_kwargs": {
+                  "affine": true,
+                  "eps": 1e-05
+                },
+                "strides": [
+                  [
+                    1,
+                    1,
+                    1
+                  ],
+                  [
+                    2,
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    2
+                  ]
+                ]
+              },
+              "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+            },
+            "batch_dice": false,
+            "batch_size": 2,
+            "data_identifier": "nnUNetPlans_3d_fullres",
+            "median_image_size_in_voxels": [
+              142.0,
+              172.0,
+              138.0
+            ],
+            "normalization_schemes": [
+              "ZScoreNormalization",
+              "ZScoreNormalization",
+              "ZScoreNormalization",
+              "ZScoreNormalization"
+            ],
+            "patch_size": [
+              128,
+              128,
+              128
+            ],
+            "preprocessor_name": "DefaultPreprocessor",
+            "resampling_fn_data": "resample_data_or_seg_to_shape",
+            "resampling_fn_data_kwargs": {
+              "force_separate_z": null,
+              "is_seg": false,
+              "order": 3,
+              "order_z": 0
+            },
+            "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+            "resampling_fn_probabilities_kwargs": {
+              "force_separate_z": null,
+              "is_seg": false,
+              "order": 1,
+              "order_z": 0
+            },
+            "resampling_fn_seg": "resample_data_or_seg_to_shape",
+            "resampling_fn_seg_kwargs": {
+              "force_separate_z": null,
+              "is_seg": true,
+              "order": 1,
+              "order_z": 0
+            },
+            "spacing": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "use_mask_for_norm": [
+              true,
+              true,
+              true,
+              true
+            ]
+          }
+        },
+        "dataset_name": "Dataset264_BraTS2026_MET_Completion",
+        "experiment_planner_used": "ExperimentPlanner",
+        "foreground_intensity_properties_per_channel": {
+          "0": {
+            "max": 928143.5625,
+            "mean": 3039.8280702146203,
+            "median": 560.0,
+            "min": 0.0,
+            "percentile_00_5": 0.0,
+            "percentile_99_5": 279089.125,
+            "std": 30277.599333243168
+          },
+          "1": {
+            "max": 3275090.5,
+            "mean": 8953.127035010677,
+            "median": 1313.0,
+            "min": 0.0,
+            "percentile_00_5": 91.37364540100097,
+            "percentile_99_5": 519260.375,
+            "std": 64807.28179898762
+          },
+          "2": {
+            "max": 61955.71484375,
+            "mean": 1090.6741356434293,
+            "median": 806.0,
+            "min": 0.0,
+            "percentile_00_5": 0.0,
+            "percentile_99_5": 4947.0,
+            "std": 1535.1662643475227
+          },
+          "3": {
+            "max": 134197.65625,
+            "mean": 1187.6043663859352,
+            "median": 693.0,
+            "min": 0.0,
+            "percentile_00_5": 0.0,
+            "percentile_99_5": 7288.0,
+            "std": 3628.1990882570967
+          }
+        },
+        "image_reader_writer": "SimpleITKIO",
+        "label_manager": "LabelManager",
+        "original_median_shape_after_transp": [
+          146,
+          180,
+          144
+        ],
+        "original_median_spacing_after_transp": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "plans_name": "nnUNetPlans",
+        "transpose_backward": [
+          0,
+          1,
+          2
+        ],
+        "transpose_forward": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    "network_finite": true,
+    "network_tensor_count": 292,
+    "next_epoch_lr": 0.0007387283529495573,
+    "optimizer_finite": true,
+    "optimizer_state_count": 106,
+    "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k1_175_r3/results/K1/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_latest.pth",
+    "saved_mirroring_axes": [
+      0,
+      1,
+      2
+    ],
+    "sha256": "bbff9a65cf72d3451e6a693e09fbc81b42857803968ef822f6d3412fb5ce846c",
+    "stat": {
+      "bytes": 249747530,
+      "inode": 534600333571,
+      "mtime_ns": 1790844587000000000
+    },
+    "status": "pass",
+    "trainer_name": "nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175"
+  },
+  "checkpoint_names": [
+    "checkpoint_best.pth",
+    "checkpoint_epoch_0025.pth",
+    "checkpoint_epoch_0050.pth",
+    "checkpoint_latest.pth"
+  ],
+  "critical_errors": [],
+  "disk": {
+    "err": "",
+    "out": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  221T   28T  90% /public",
+    "rc": 0
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "latest_log_epoch": 69,
+  "local_utc": "2026-10-02T03:42:24.024407+00:00",
+  "logs": {
+    "s2k1train175r3_3827543.err": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n",
+    "s2k1train175r3_3827543.out": "26-10-01 15:53:01.367592: Epoch time: 3296.11 s\n2026-10-01 15:53:01.368223: Yayy! New best EMA pseudo Dice: 0.7434\n2026-10-01 15:53:07.481619: \n2026-10-01 15:53:07.482713: Epoch 49\n2026-10-01 15:53:07.483021: Current learning rate: 0.00074\n2026-10-01 16:49:46.041255: train_loss -0.6703\n2026-10-01 16:49:46.154304: val_loss -0.6374\n2026-10-01 16:49:46.154720: Pseudo dice [0.6923, 0.8722, 0.8415, 0.6226]\n2026-10-01 16:49:46.157780: Epoch time: 3398.6 s\n2026-10-01 16:49:47.429810: Yayy! New best EMA pseudo Dice: 0.7447\n2026-10-01 16:49:55.331060: \n2026-10-01 16:49:55.336153: Epoch 50\n2026-10-01 16:49:55.343255: Current learning rate: 0.00074\n2026-10-01 17:45:45.898400: train_loss -0.6654\n2026-10-01 17:45:45.970453: val_loss -0.6246\n2026-10-01 17:45:45.970812: Pseudo dice [0.6965, 0.9146, 0.839, 0.6037]\n2026-10-01 17:45:45.973791: Epoch time: 3350.61 s\n2026-10-01 17:45:45.974913: Yayy! New best EMA pseudo Dice: 0.7466\n2026-10-01 17:45:52.874541: \n2026-10-01 17:45:52.876192: Epoch 51\n2026-10-01 17:45:52.876495: Current learning rate: 0.00073\n2026-10-01 18:45:20.567098: train_loss -0.6586\n2026-10-01 18:45:20.657618: val_loss -0.6292\n2026-10-01 18:45:20.657986: Pseudo dice [0.6764, 0.9007, 0.7765, 0.4496]\n2026-10-01 18:45:20.661569: Epoch time: 3567.77 s\n2026-10-01 18:45:25.110162: \n2026-10-01 18:45:25.110558: Epoch 52\n2026-10-01 18:45:25.110827: Current learning rate: 0.00073\n2026-10-01 19:36:39.386967: train_loss -0.6849\n2026-10-01 19:36:39.434417: val_loss -0.6191\n2026-10-01 19:36:39.434772: Pseudo dice [0.6392, 0.8976, 0.8066, 0.511]\n2026-10-01 19:36:39.437595: Epoch time: 3074.75 s\n2026-10-01 19:36:43.650980: \n2026-10-01 19:36:43.651386: Epoch 53\n2026-10-01 19:36:43.651700: Current learning rate: 0.00072\n2026-10-01 20:33:15.883968: train_loss -0.6738\n2026-10-01 20:33:15.944732: val_loss -0.6195\n2026-10-01 20:33:15.945096: Pseudo dice [0.5875, 0.887, 0.8026, 0.527]\n2026-10-01 20:33:15.947108: Epoch time: 3392.25 s\n2026-10-01 20:33:20.501627: \n2026-10-01 20:33:20.502025:"
+  },
+  "markers": {
+    "COMPLETE": false,
+    "FAILED": false,
+    "STARTED": true,
+    "VALIDATION": false
+  },
+  "operator_approved": false,
+  "remote_utc": "2026-10-02T03:31:00.707453+00:00",
+  "sacct": {
+    "err": "",
+    "out": "3827543|s2k1train175r3|RUNNING|0:0|3-00:49:27|5-00:00:00|Unknown",
+    "rc": 0
+  },
+  "source_contract_sha256": {
+    "K1245_K1_175_EXECUTION_PLAN_20260929_R3.json": "94b5f324c6b268d384700e3a809fe78d8a259b0feb6d2508ca990381ea8bf3bc",
+    "config/K1245_ROUTE_K1.json": "73c7af6dc3a8e8248bcedca39150ad8ca41056ae9b02447622fdac846f484275",
+    "evidence/K1_175_TRAINING_AUTHORIZATION.json": "d0001b370a5ae7e1201f73b9fee2418bc688992b9d73925e00b8cbc48819ed23",
+    "pools/rc27/component_manifest.json": "4bef77f255a1a5fa2ba65fa22b58c84191634859b4040eacf99e13f99059c35c",
+    "runtime/repository/custom_nnunet/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/repository/custom_nnunet/met_aug_core.py": "c45bcda5897a1e7ab9cdfdf05707a333ac6c7bb99e3ceec060596f7b417626c8",
+    "runtime/repository/custom_nnunet/met_aug_data_loader.py": "06ac95495d42ddade88bbaee08221e604b1d3c404b9d2239c8f55a5af6c502fc",
+    "runtime/repository/custom_nnunet/met_aug_diffusion.py": "27b166f17879532abb152e4979d7ce33002d5bce43e91d84be5dc5be006777b9",
+    "runtime/repository/custom_nnunet/met_aug_fix_v2.py": "74d7e86996419c66a701c0e78b25401a81d82e8f3c7bde90150bcadd162e1c3b",
+    "runtime/repository/custom_nnunet/met_aug_fix_v2_calibration.py": "c3f694d93e57556e911b5b7354178bfd6e7f479348c97d820cddab6a870d5143",
+    "runtime/repository/custom_nnunet/met_aug_fix_v2_selection.py": "dac3876c7b687e3635128fcfe1713c0233e064537462121c1a726071cc5d2d25",
+    "runtime/repository/custom_nnunet/met_aug_fix_v3.py": "8e24c0290c5e09bb2dc69b7e599b87a7e77ea2f3d10d2f99801285b71bd440b3",
+    "runtime/repository/custom_nnunet/met_aug_fix_v3_emergency.py": "4cf25ba476308a4643a98e75f84d3add32b23424c1ea0de1ec17681342900161",
+    "runtime/repository/custom_nnunet/met_aug_gate.py": "fa124504ed552e2206b41027121606728004dd0ba7de30d178842708939224c5",
+    "runtime/repository/custom_nnunet/met_aug_gate1.py": "ebac10e13a5ba6aac1c0cb86ed34e6e741ba2b44f01411645f7d7ba16f3b4662",
+    "runtime/repository/custom_nnunet/met_aug_gate2.py": "31124785a6c844910aa1b38c734d743a88acd18ed599f430a3f0a74d67f68578",
+    "runtime/repository/custom_nnunet/met_aug_k1245.py": "07de1e25a458aae69708bb7a95b053cd399946b6dac430eabcb419fbc1315975",
+    "runtime/repository/custom_nnunet/met_aug_paired_training.py": "ff8eff9b6948f941fa79c6fe746d46a4123e9ee7b4412277886a94c13d24e476",
+    "runtime/repository/custom_nnunet/met_aug_screening.py": "5a06f374e05d3c08dea7f406a2909c59b94ef1576fb21ae5533368f9225bf7f9",
+    "runtime/repository/custom_nnunet/met_aug_transform.py": "66adb0b162bf78204fb8085064aa75ce1a80fc52a163f8c56d12923fd4b6fdee",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RC.py": "1d84ce2e30daa3400b3132a62bbf1e467648a6022180879ffda33621f3c4346d",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCA1CompletionFineTune.py": "2a24eb461ca25c199d96061b13db8aa6cf984f0a0a815e522e4a105085f217af",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCA1FocalCompletionFineTune.py": "3e1dbb6e889e062bd990c87de6e836341ead85e42c912323537d42ab5e69f909",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCCompletionFineTune.py": "21dc03d3f4b3dd23014cacbc92a25d262f7de9826d3b8aabee5c6ed7d1db8c58",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCFocalCompletionFineTune.py": "25096e52a3512d80f47083806f9a411fcf51da31eb729cbd5ed76922610cc697",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune.py": "16a61a5725f04c3a8e8f7b5beedda7014e37b3600f73aad5618dd5375fabdcff",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune.py": "8f6a4704617079883bb28032b4d12b99920be112406fd06909ee4986951d3753",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune.py": "7cdd1eda853f0f7044dec1501b3f14aeda0801da6e0e72eda98465ccd94b886b",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune.py": "a469decad4b3f997e3840dd9139394c0a795db300476142fbfae19f643e6d338",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175.py": "f563750db5346800ae5e481920916d171a720a0c55716eee58d52ef9fa0effb4",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCMetAugScreen125FocalCompletionFineTune.py": "10a7c4869ae77079f28e9715a50b639af47e3517657a563bb5416cd9d0f77679",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCOnlineDiffusion.py": "a169a995b4a8aa62ddfe6792505a31f9be802d0effb1dc492cd3a6f185c50ea0",
+    "runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py": "c7c464c9ec283d75ab7d2f353d50025dc52e8b59dcc0d1f0256abdff7b78df13",
+    "runtime/repository/custom_nnunet/online_diffusion_contract.py": "3a86afd0685364874fe1fc03a6bbc6e1bcef668b20c5875139b805ecef954528",
+    "runtime/repository/custom_nnunet/online_diffusion_transform.py": "5daa2008b5d179861babcdc66284b744fb2ce8375a5f7f9d0c2817f499b8709e",
+    "runtime/repository/custom_nnunet/small_lesion_trainer_mixins.py": "151c7eab05e13cbe27d867fd8e805b922b5f4d2c75714de47aedb1c5cd2e56b7",
+    "runtime/repository/custom_nnunet/small_lesion_variants.py": "c25d14c8cf24ffc4bb06ce36aa1fdffbc4460164e0c3d6eed3895d0515723fd0"
+  },
+  "squeue": {
+    "err": "",
+    "out": "3827543|s2k1train175r3|RUNNING|3-00:50:12|5-00:00:00|gpu18|gpu18",
+    "rc": 0
+  },
+  "status": "pass",
+  "training_tail": ": Pseudo dice [0.6583, 0.8825, 0.7503, 0.6183] \n2026-10-02 03:24:51.547560: Epoch time: 3437.55 s \n2026-10-02 03:24:56.705239:  \n2026-10-02 03:24:56.705653: Epoch 61 \n2026-10-02 03:24:56.705969: Current learning rate: 0.00068 \n2026-10-02 04:22:38.434713: train_loss -0.6621 \n2026-10-02 04:22:38.525787: val_loss -0.5965 \n2026-10-02 04:22:38.526165: Pseudo dice [0.5186, 0.8749, 0.6908, 0.4907] \n2026-10-02 04:22:38.529123: Epoch time: 3461.83 s \n2026-10-02 04:22:43.535640:  \n2026-10-02 04:22:43.536017: Epoch 62 \n2026-10-02 04:22:43.536345: Current learning rate: 0.00067 \n2026-10-02 05:17:50.732302: train_loss -0.6491 \n2026-10-02 05:17:50.839598: val_loss -0.6238 \n2026-10-02 05:17:50.839975: Pseudo dice [0.6222, 0.8819, 0.8248, 0.498] \n2026-10-02 05:17:50.842511: Epoch time: 3307.23 s \n2026-10-02 05:17:55.789081:  \n2026-10-02 05:17:55.789469: Epoch 63 \n2026-10-02 05:17:55.789768: Current learning rate: 0.00067 \n2026-10-02 06:12:41.925240: train_loss -0.6666 \n2026-10-02 06:12:42.069457: val_loss -0.6055 \n2026-10-02 06:12:42.069872: Pseudo dice [0.5994, 0.8706, 0.7978, 0.3292] \n2026-10-02 06:12:42.072648: Epoch time: 3286.19 s \n2026-10-02 06:12:47.105511:  \n2026-10-02 06:12:47.105880: Epoch 64 \n2026-10-02 06:12:47.106178: Current learning rate: 0.00066 \n2026-10-02 07:09:46.938301: train_loss -0.6738 \n2026-10-02 07:09:47.064785: val_loss -0.6164 \n2026-10-02 07:09:47.065200: Pseudo dice [0.6581, 0.8881, 0.8233, 0.5615] \n2026-10-02 07:09:47.067404: Epoch time: 3419.87 s \n2026-10-02 07:09:52.012255:  \n2026-10-02 07:09:52.012633: Epoch 65 \n2026-10-02 07:09:52.012922: Current learning rate: 0.00066 \n2026-10-02 08:06:58.029568: train_loss -0.6662 \n2026-10-02 08:06:58.131104: val_loss -0.6108 \n2026-10-02 08:06:58.131499: Pseudo dice [0.6421, 0.9054, 0.8645, 0.4291] \n2026-10-02 08:06:58.133659: Epoch time: 3426.04 s \n2026-10-02 08:07:03.050435:  \n2026-10-02 08:07:03.050794: Epoch 66 \n2026-10-02 08:07:03.051088: Current learning rate: 0.00065 \n2026-10-02 09:07:12.973465: train_loss -0.6698 \n2026-10-02 09:07:13.104437: val_loss -0.6372 \n2026-10-02 09:07:13.104889: Pseudo dice [0.6833, 0.901, 0.8262, 0.6919] \n2026-10-02 09:07:13.105805: Epoch time: 3609.95 s \n2026-10-02 09:07:18.067277:  \n2026-10-02 09:07:18.067645: Epoch 67 \n2026-10-02 09:07:18.067950: Current learning rate: 0.00065 \n2026-10-02 09:58:40.044834: train_loss -0.6961 \n2026-10-02 09:58:40.176494: val_loss -0.621 \n2026-10-02 09:58:40.176889: Pseudo dice [0.6796, 0.8978, 0.8457, 0.5277] \n2026-10-02 09:58:40.184439: Epoch time: 3082.03 s \n2026-10-02 09:58:45.092408:  \n2026-10-02 09:58:45.092756: Epoch 68 \n2026-10-02 09:58:45.093059: Current learning rate: 0.00064 \n2026-10-02 10:49:29.121311: train_loss -0.6886 \n2026-10-02 10:49:29.216651: val_loss -0.6522 \n2026-10-02 10:49:29.217059: Pseudo dice [0.6936, 0.8906, 0.8094, 0.5525] \n2026-10-02 10:49:29.219712: Epoch time: 3044.08 s \n2026-10-02 10:49:34.426289:  \n2026-10-02 10:49:34.426664: Epoch 69 \n2026-10-02 10:49:34.426971: Current learning rate: 0.00064 \n"
+}

@@ -1,0 +1,8 @@
+{
+  "action": "snapshot",
+  "artifact_status": "experimental_unvalidated",
+  "diagnostic_tail": "bad option \"decode\": must be format or scan\n    while executing\n\"binary decode base64 $item\"\n    (\"foreach\" body line 2)\n    invoked from within\n\"foreach item [split $env(REMOTE_ARGV_B64) \" \"] {\n  lappend argv [encoding convertfrom utf-8 [binary decode base64 $item]]\n}\"\n",
+  "exit_code": 1,
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false
+}

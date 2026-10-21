@@ -1,0 +1,40 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "remote_utc": "2026-10-15T15:07:16.056515+00:00",
+  "status": "pass",
+  "plan_sha256": "bfa5b07b2cdb2f8e0f6e75e477570c2305e2fc0bbca17b999a420dbe7a1e7dd4",
+  "real_r2_boundary_tests": true,
+  "all_source_native_tests": {
+    "status": "pass",
+    "empty": true,
+    "label4": true,
+    "physical_boundary_27": true,
+    "crop": true,
+    "actual_small_large_merge": {
+      "spacing": 0.6,
+      "large_start": 4,
+      "gap": 1,
+      "source_count": 2,
+      "small_sources": 1,
+      "source_degree": 2,
+      "source_volumes_mm3": [
+        74.088,
+        1.728
+      ],
+      "provenance": "constructed_synthetic_input_through_actual_installed_nnunet_pipeline"
+    },
+    "search_attempts": 3,
+    "production_function": "full_wt_transport.trace_volume"
+  },
+  "actual_transport_subset": {
+    "case_count": 1,
+    "reference_count": 11,
+    "missed_count": 0,
+    "categories": {
+      "survived_roundtrip_match_passed": 11
+    }
+  },
+  "scope": "technical_preflight_not_completed_full_train_or_transport"
+}

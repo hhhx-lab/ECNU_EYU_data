@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "generated_at_local_utc": "2026-10-08T06:42:56.206926+00:00",
+  "case_count": 103,
+  "metric_count": 72,
+  "method_count": 9,
+  "pair_count": 36,
+  "paired_metric_record_count": 2592,
+  "input_identities": [
+    {
+      "method": "K1",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/cohort/fixed103/models/K1/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/evidence/K1_VALIDATION.json"
+    },
+    {
+      "method": "K2",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "6f82992015854e5b4a85bd5ccfe4891260d990bbb69003a27729cdeec8973f91",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/cohort/fixed103/models/K2/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "d5da516962109fe921a4c69baff6b0671d669de03e1d3dd7918087e70260c4ba",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/evidence/K2_VALIDATION.json"
+    },
+    {
+      "method": "K4",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "8bfb5bfdfc6a8b578e2ba1489bfa958655f960e9f8d6a9dfaede29af4b340be8",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/cohort/fixed103/models/K4/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "226876a75a4057e3d0a95303198c83c6ef47d7b267f684a13c540946ab030e30",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/evidence/K4_VALIDATION.json"
+    },
+    {
+      "method": "B175",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/B/epoch175/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "4a806aee8fd879e1abaac2bd925638b9d9822aca1fcf91f358ab0c23237d0e68",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/evidence/B_CPU_VALIDATION.json"
+    },
+    {
+      "method": "C40",
+      "selected_epoch": 50,
+      "checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/cohort/fixed103/models/C40/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/evidence/C40_RECOVERY_VALIDATION.json"
+    },
+    {
+      "method": "D50",
+      "selected_epoch": 50,
+      "checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/cohort/fixed103/models/D/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/evidence/D_RECOVERY_VALIDATION.json"
+    },
+    {
+      "method": "E_SNFH175",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/E_SNFH/epoch175/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "1bb2dcc5a063105c15fc75f0cf8b635ac0d9f953775adbfe2d933dec2873dd61",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/evidence/E_SNFH_CPU_VALIDATION.json"
+    },
+    {
+      "method": "F175",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/F/epoch175/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "55bd220495c19bc6881e9679733832410d6f5989ab837354563001452e9781b1",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/evidence/F_CPU_VALIDATION.json"
+    },
+    {
+      "method": "original_E",
+      "selected_epoch": 200,
+      "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+      "metrics_csv": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_inference_20260727_r1/selection_evidence/E/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167",
+      "validation": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_inference_20260727_r1/selection_evidence/EVALUATION_VALIDATION_AUDIT.json"
+    }
+  ],
+  "frozen_comparator_sha256": "9ff245240c438beb998652ee59f130fc8c012be29ac3b689c862d04135df6e12",
+  "cross_check_prior_k_pair_records": 216,
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 20260831,
+    "policy": "paired_complete_case_per_metric",
+    "p_values": "two_sided_uncorrected"
+  },
+  "scope": "Same fixed103 authentic-T2W development cases used for checkpoint selection and reporting; exploratory only. Different training budgets and recipe combinations are displayed together, not an equal-budget causal comparison."
+}

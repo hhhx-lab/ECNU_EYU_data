@@ -1,0 +1,30 @@
+{
+  "F_STRICT_PREREG_GATE": false,
+  "artifact_status": "experimental_unvalidated",
+  "authorization_type": "user_explicit_engineering_authorization",
+  "carry_forward_to": "s2_met_aug_k1245_20260929_k4_175_r6",
+  "checkpoint_epochs": [
+    25,
+    50,
+    75,
+    100,
+    125,
+    150,
+    175
+  ],
+  "config_sha256": "8a009a14dd31abc3ba6c6473f587434062136358e80a967e4e08b2bb09e2ccce",
+  "epochs": 175,
+  "formal_gate_status": "not_run_not_passed",
+  "k5_authorization": false,
+  "manifest_sha256": "956e6384d47216e41b79905ad9c3c776dbc47422f445dadd9bd8e9c3b7a03244",
+  "manual_review_status": "user_authorized_after_prior_visual_review; not_a_formal_scientific_gate",
+  "note": "Carried forward only as the user's engineering authorization for independent K4 175 recovery. It does not assert completed independent manual review, formal calibration, scientific gate passage, or superiority. User again explicitly authorized K4 on 2026-09-29. R4 static failure retained; R2 complete small8 pool has the same frozen manifest identity. Prior job failed in MKL import before STARTED; user authorization is carried only as engineering execution approval.",
+  "operator_approved": false,
+  "plan_sha256": "e92258ef3318a49037e6fbced9f173afa5198a53da7e98d3b4357d20489b9e7f",
+  "prior_failed_job_id": "3741523",
+  "recovery_reason": "missing S2_MET_AUG_FIX_V3_CALIBRATION in prior Slurm environment",
+  "route_id": "K4",
+  "smoke_automatic_status": "pass_24_of_24",
+  "status": "pass",
+  "training_authorization": true
+}

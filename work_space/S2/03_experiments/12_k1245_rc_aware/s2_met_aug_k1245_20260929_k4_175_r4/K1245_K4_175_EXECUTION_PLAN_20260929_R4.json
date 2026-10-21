@@ -1,0 +1,48 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "calibration_relative_to_parent": "calibration_rebuild_20260819_r10/FIX_V2_CALIBRATION_ECNU_FROZEN.json",
+  "calibration_sha256": "68a5d8a6c501804b7a47d626e43a58ff71b781154c0cc955a9c5a5d5b786d37f",
+  "checkpoint_epochs": [
+    25,
+    50,
+    75,
+    100,
+    125,
+    150,
+    175
+  ],
+  "ddp": false,
+  "device": "one A100 GPU",
+  "epochs": 175,
+  "experiment_id": "s2_met_aug_k1245_20260929_k4_175_r4",
+  "exploratory_only": true,
+  "failed_prior_job_id": "3741523",
+  "formal_gate_status": "not_run_not_passed",
+  "notes": [
+    "The original 125-epoch plan and all earlier evidence remain immutable.",
+    "K5 remains gated on K1 and K2 scientific gates and is not authorized by this file.",
+    "175-epoch results must not be mixed with equal-budget Screen125 results."
+  ],
+  "operator_approved": false,
+  "parent_plan": "K1245_RC_AWARE_EXECUTION_PLAN_20260921_R1.md",
+  "pretrained_checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+  "prior_submission_attempt": "s2_met_aug_k1245_20260925_r3_175",
+  "route_id": "K4",
+  "revision_reason": "R3 held sbatch was rejected by QOS; a new isolated attempt retains the calibration fix",
+  "routes": {
+    "K1": "E-SNFH* + F* + X1 + B1 + B2",
+    "K2": "E-SNFH* + D* + X1 + X2 + B1 + B2",
+    "K4": "E-SNFH* + X3",
+    "K5": "K1 + D*"
+  },
+  "seed": 20260724,
+  "selection": {
+    "fixed103_for_selection_and_report": true,
+    "metric": "fixed103 development validation ema_fg_dice",
+    "tie_break": "earliest epoch"
+  },
+  "strict_f_prereg_gate": false,
+  "submission_attempt": "r4_after_r3_qos_rejection",
+  "train_cases": 1035,
+  "validation_cases": 103
+}

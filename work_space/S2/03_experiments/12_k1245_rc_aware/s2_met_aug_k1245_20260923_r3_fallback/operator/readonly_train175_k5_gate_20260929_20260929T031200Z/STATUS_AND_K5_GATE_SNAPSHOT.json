@@ -1,0 +1,89 @@
+{
+  "disk": {
+    "err": "",
+    "out": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  220T   29T  89% /public",
+    "rc": 0
+  },
+  "hostname": "login1",
+  "jobs": {
+    "K1": {
+      "complete": false,
+      "epoch_line_count": 0,
+      "failed": false,
+      "initialized": false,
+      "job_id": "3827543",
+      "latest_epoch": null,
+      "runtime_pass": false,
+      "sacct": {
+        "err": "",
+        "out": "3827543|s2k1train175r3|RUNNING|0:0|00:19:50",
+        "rc": 0
+      },
+      "scientific_gate_files": [],
+      "squeue": {
+        "err": "",
+        "out": "3827543|s2k1train175r3|RUNNING|gpu18",
+        "rc": 0
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n",
+      "stdout_tail": "ht shape torch.Size([256, 128, 2, 2, 2])\ndecoder.transpconvs.2.bias shape torch.Size([128])\ndecoder.transpconvs.3.weight shape torch.Size([128, 64, 2, 2, 2])\ndecoder.transpconvs.3.bias shape torch.Size([64])\ndecoder.transpconvs.4.weight shape torch.Size([64, 32, 2, 2, 2])\ndecoder.transpconvs.4.bias shape torch.Size([32])\n################### Done ###################\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)",
+      "training_validation": false
+    },
+    "K2": {
+      "complete": false,
+      "epoch_line_count": 0,
+      "failed": false,
+      "initialized": false,
+      "job_id": "3827555",
+      "latest_epoch": null,
+      "runtime_pass": false,
+      "sacct": {
+        "err": "",
+        "out": "3827555|s2k2train175r2|RUNNING|0:0|00:18:39",
+        "rc": 0
+      },
+      "scientific_gate_files": [],
+      "squeue": {
+        "err": "",
+        "out": "3827555|s2k2train175r2|RUNNING|gpu19",
+        "rc": 0
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n",
+      "stdout_tail": "ht shape torch.Size([256, 128, 2, 2, 2])\ndecoder.transpconvs.2.bias shape torch.Size([128])\ndecoder.transpconvs.3.weight shape torch.Size([128, 64, 2, 2, 2])\ndecoder.transpconvs.3.bias shape torch.Size([64])\ndecoder.transpconvs.4.weight shape torch.Size([64, 32, 2, 2, 2])\ndecoder.transpconvs.4.bias shape torch.Size([32])\n################### Done ###################\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)",
+      "training_validation": false
+    },
+    "K4": {
+      "complete": false,
+      "epoch_line_count": 0,
+      "failed": false,
+      "initialized": false,
+      "job_id": "3827580",
+      "latest_epoch": null,
+      "runtime_pass": false,
+      "sacct": {
+        "err": "",
+        "out": "3827580|s2k4train175r6|RUNNING|0:0|00:17:25",
+        "rc": 0
+      },
+      "scientific_gate_files": [],
+      "squeue": {
+        "err": "",
+        "out": "3827580|s2k4train175r6|RUNNING|gpu19",
+        "rc": 0
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n",
+      "stdout_tail": "ht shape torch.Size([256, 128, 2, 2, 2])\ndecoder.transpconvs.2.bias shape torch.Size([128])\ndecoder.transpconvs.3.weight shape torch.Size([128, 64, 2, 2, 2])\ndecoder.transpconvs.3.bias shape torch.Size([64])\ndecoder.transpconvs.4.weight shape torch.Size([64, 32, 2, 2, 2])\ndecoder.transpconvs.4.bias shape torch.Size([32])\n################### Done ###################\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)",
+      "training_validation": false
+    }
+  },
+  "k5_existing_queue": {
+    "err": "",
+    "out": "",
+    "rc": 0
+  },
+  "local_utc": "2026-09-29T03:12:00.790605+00:00",
+  "remote_utc": "2026-09-29T03:01:23.448370+00:00"
+}

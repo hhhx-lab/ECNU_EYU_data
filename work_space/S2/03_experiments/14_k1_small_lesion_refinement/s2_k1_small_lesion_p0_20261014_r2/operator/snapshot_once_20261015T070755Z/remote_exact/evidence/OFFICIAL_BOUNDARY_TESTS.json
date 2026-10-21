@@ -1,0 +1,168 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "remote_utc": "2026-10-14T04:09:15.318556+00:00",
+  "status": "pass",
+  "actual_official_import": true,
+  "unittest_count": 11,
+  "synthetic_checks": [
+    {
+      "name": "26_connectivity",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 1,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "both_empty",
+      "reference_count": 0,
+      "fp": 0,
+      "small_tp": 0,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "dsc_boundary_pred8",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 1,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "dsc_boundary_pred9",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 1,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "dsc_boundary_pred10",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 0,
+      "small_fn": 1,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "disjoint_fp_fn",
+      "reference_count": 1,
+      "fp": 1,
+      "small_tp": 0,
+      "small_fn": 1,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "empty_prediction_two_fn",
+      "reference_count": 2,
+      "fp": 0,
+      "small_tp": 0,
+      "small_fn": 2,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "empty_reference_two_fp",
+      "reference_count": 0,
+      "fp": 2,
+      "small_tp": 0,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "equal_volume_distinct_id",
+      "reference_count": 2,
+      "fp": 0,
+      "small_tp": 2,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "label4_two_normal_crop",
+      "reference_count": 2,
+      "fp": 0,
+      "small_tp": 2,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "physical_volume(26, (1.0, 1.0, 1.0))",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 1,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "physical_volume(27, (1.0, 1.0, 1.0))",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 0,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "physical_volume(27, (0.5, 0.5, 0.5))",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 1,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    },
+    {
+      "name": "physical_volume(2, (0.5, 0.5, 0.5))",
+      "reference_count": 1,
+      "fp": 0,
+      "small_tp": 1,
+      "small_fn": 0,
+      "official_fingerprint_equal": true
+    }
+  ],
+  "real_fixed103_checks": [
+    {
+      "subject_id": "BraTS-MET-00006-000",
+      "method": "K1",
+      "region": "rc",
+      "reference_count": 0,
+      "fp": 0,
+      "reference_sha256": "19b526813995998de60de984faad8825d3496aa9f2a0e985cd0e7beca964ec3a",
+      "prediction_sha256": "ca02573118e3df333b335bcff2c52971fb56a476a2c54cd8297c246a906182e1",
+      "original_official_fingerprint_equal": true
+    },
+    {
+      "subject_id": "BraTS-MET-00006-000",
+      "method": "K4",
+      "region": "rc",
+      "reference_count": 0,
+      "fp": 0,
+      "reference_sha256": "19b526813995998de60de984faad8825d3496aa9f2a0e985cd0e7beca964ec3a",
+      "prediction_sha256": "3f1a56526db996db3e4d1671abcf5074c799f44a58efe0774abecde5b2f5709a",
+      "original_official_fingerprint_equal": true
+    },
+    {
+      "subject_id": "BraTS-MET-01105-001",
+      "method": "K1",
+      "region": "rc",
+      "reference_count": 1,
+      "fp": 0,
+      "reference_sha256": "0bff41acdd9cb7bb978b3e5253d889406e479d8a1d3261aaae940caf5b6915e5",
+      "prediction_sha256": "ddbe57703ade03b99f6e5e1bd4f45c65891c8c6398bb697af9a569c66c9b7acf",
+      "original_official_fingerprint_equal": true
+    },
+    {
+      "subject_id": "BraTS-MET-01105-001",
+      "method": "K4",
+      "region": "rc",
+      "reference_count": 1,
+      "fp": 0,
+      "reference_sha256": "0bff41acdd9cb7bb978b3e5253d889406e479d8a1d3261aaae940caf5b6915e5",
+      "prediction_sha256": "e64282f3b4f45d62d9fac87dc47a2c204bab5402f375cdb729b7e7572a9d4ce7",
+      "original_official_fingerprint_equal": true
+    }
+  ],
+  "zero_region_policy": "official component counts, no matcher on zero instances",
+  "no_old_evaluation_modified": true,
+  "scope": "small real subset plus synthetic boundaries; not full103"
+}

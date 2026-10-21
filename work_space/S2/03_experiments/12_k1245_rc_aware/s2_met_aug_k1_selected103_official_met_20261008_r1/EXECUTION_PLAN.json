@@ -1,0 +1,49 @@
+{
+  "F_STRICT_PREREG_GATE": false,
+  "artifact_status": "experimental_unvalidated",
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 20260831
+  },
+  "case_contract": {
+    "audit_sha256": {
+      "input_audit.csv": "7335aee3869fdc10fe776b62465a09600eb0f510f71f397102bbe45d6a63446e",
+      "input_audit.json": "4c3e998a84e04a2d050bd5421c0c1069954b85ce0d39ee5f86ad0c018cac59ba"
+    },
+    "count": 103,
+    "input_route": "authentic_real_T2W",
+    "locked_test_used": false,
+    "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "same_inputs_labels_and_split_as125": true,
+    "source_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2/cohort/fixed103"
+  },
+  "exclusive_node": false,
+  "experiment_id": "s2_met_aug_k1_selected103_official_met_20261008_r1",
+  "exploratory_only": true,
+  "export_workers": 0,
+  "fixed103_for_selection_and_report": true,
+  "formal_gate_status": "not_run_not_passed",
+  "inference_scope": "selected checkpoint official MET; no online augmentation during inference",
+  "job_names": {
+    "K1": "s2k1met103r1"
+  },
+  "multiprocessing_queue_used": false,
+  "operator_approved": false,
+  "paired_status": "await K1 official MET, then paired K1/K2/K4 and scientific gate audit",
+  "preprocess_workers": 0,
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k1_selected103_official_met_20261008_r1",
+  "routes": {
+    "K1": {
+      "checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1_175_resume_20261002_r1/results/K1/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+      "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+      "selected_epoch": 175,
+      "selection_ema_fg_dice": 0.7558480482075024,
+      "training_job_id": "3919543",
+      "training_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1_175_resume_20261002_r1",
+      "training_validation_sha256": "8a44c9ef32489b5f2aa581761e521e598331783d7c02bdeafbc262decdcc6bb1"
+    }
+  },
+  "source_k24_plan_sha256": "9d84282fec75fe37822764cd8d746e67aec721aa1769e352c6b5cc2f9decff32",
+  "training_budget": 175,
+  "training_split_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/inputs/splits"
+}

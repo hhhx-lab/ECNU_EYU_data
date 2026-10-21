@@ -1,0 +1,73 @@
+{
+  "hostname": "login1",
+  "jobs": {
+    "K1": {
+      "audit": [
+        "K1_175_LAUNCH.json",
+        "K1_175_RELEASED.json"
+      ],
+      "complete": false,
+      "failed": false,
+      "job_id": "3827543",
+      "sacct": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827543|s2k1train175r3|RUNNING|0:0"
+      },
+      "squeue": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827543|s2k1train175r3|RUNNING|gpu18"
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n",
+      "validation": false
+    },
+    "K2": {
+      "audit": [
+        "K2_175_LAUNCH.json",
+        "K2_175_RELEASED.json"
+      ],
+      "complete": false,
+      "failed": false,
+      "job_id": "3827555",
+      "sacct": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827555|s2k2train175r2|RUNNING|0:0"
+      },
+      "squeue": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827555|s2k2train175r2|RUNNING|gpu19"
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n",
+      "validation": false
+    },
+    "K4": {
+      "audit": [
+        "K4_175_LAUNCH.json",
+        "K4_175_RELEASED.json"
+      ],
+      "complete": false,
+      "failed": false,
+      "job_id": "3827580",
+      "sacct": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827580|s2k4train175r6|RUNNING|0:0"
+      },
+      "squeue": {
+        "rc": 0,
+        "stderr": "",
+        "stdout": "3827580|s2k4train175r6|RUNNING|gpu19"
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n",
+      "validation": false
+    }
+  },
+  "local_utc": "2026-09-29T02:55:01.502496+00:00",
+  "remote_utc": "2026-09-29T02:44:22.410008+00:00"
+}

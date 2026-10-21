@@ -1,0 +1,112 @@
+{
+  "accepted_for_pull": false,
+  "hostname": "login1",
+  "local_utc": "2026-10-08T05:29:40.661582+00:00",
+  "logs": {
+    "K1_inference_3940964.log": {
+      "error_hits": [],
+      "sha256": "d67d5484e66ec0786a85c5bdf59ab76a78b6bd9e57a8c079a1b7414f73257636",
+      "size": 63712,
+      "tail": [
+        " 88%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 7/8 [00:01<00:00,  5.20it/s]",
+        "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8/8 [00:01<00:00,  5.19it/s]",
+        "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8/8 [00:01<00:00,  5.24it/s]",
+        "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k1_selected103_official_met_20261008_r1/model_snapshots/K1/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204\", \"completed_at_utc\": \"2026-10-08T05:12:49.540990+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"execution_mode\": \"sequential_in_process\", \"export_workers\": 0, \"formal_gate_status\": \"not_run_not_passed\", \"model_name\": \"K1\", \"multiprocessing_queue_used\": false, \"network_builder_shim\": \"nnUNetTrainerBraTS2026RC\", \"operator_approved\": false, \"prediction_count\": 103, \"preprocess_workers\": 0, \"save_probabilities\": false, \"schema_version\": 1, \"started_at_utc\": \"2026-10-08T04:49:34.971529+00:00\", \"status\": \"pass\", \"tile_step_size\": 0.5, \"trainer_name_from_checkpoint\": \"nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175\", \"use_gaussian\": true, \"use_mirroring\": true}"
+      ]
+    },
+    "K1_official_met_3940964.log": {
+      "error_hits": [],
+      "sha256": "4770b6683e1deaf81e5de20cc42fbef3855b90bef126c622dbfb051485714271",
+      "size": 1669,
+      "tail": [
+        "/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/metrics/normalized_surface_dice.py:41: UserWarning: The threshold is set to 0.5, which is the default value, which may not be appropriate for your data.",
+        "  warnings.warn(",
+        "/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/utils/input_check_and_conversion/sanity_checker.py:182: UserWarning: The input arrays are not of integer type. This may lead to unexpected behavior in the segmentation maps.",
+        "  warn("
+      ]
+    },
+    "s2k1met103r1_3940964.err": {
+      "error_hits": [],
+      "sha256": "949f3a5561f0120221468e025c0993aa070921bcdc9194ebbc53c9b53402a0cd",
+      "size": 70,
+      "tail": [
+        "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+      ]
+    },
+    "s2k1met103r1_3940964.out": {
+      "error_hits": [],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "tail": []
+    }
+  },
+  "markers": {
+    "K1_LAUNCH.json": {
+      "case_count": null,
+      "checkpoint_sha256": null,
+      "prediction_count": null,
+      "sha256": "9041d79c621b4f880def95fbdfe6a62ab02d68c7e78b5b77db17df11447054ed",
+      "size": 280,
+      "status": "submitted_held"
+    },
+    "K1_MODEL_SNAPSHOT.json": {
+      "case_count": null,
+      "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+      "prediction_count": null,
+      "sha256": "619f045f9f47f579b9f9767a7453c3f1a4a8afcbf55270a7a04ea17d52a76627",
+      "size": 393,
+      "status": "pass"
+    },
+    "K1_RELEASED.json": {
+      "case_count": null,
+      "checkpoint_sha256": null,
+      "prediction_count": null,
+      "sha256": "5d4854f38b313da3c5cf6d846817c1fec1a827eddaa0db19b15930d6310a13a0",
+      "size": 244,
+      "status": "released"
+    },
+    "K1_RESERVATION.json": {
+      "case_count": null,
+      "checkpoint_sha256": null,
+      "prediction_count": null,
+      "sha256": "f71d670457b4beba695850a74d7a0b7feb6a20807ef9b1c14886137f94da9c6f",
+      "size": 319,
+      "status": "reserved"
+    },
+    "K1_STARTED.json": {
+      "case_count": 103,
+      "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+      "prediction_count": null,
+      "sha256": "cc038bdfc2b0e4c824a3c33cbb9490c9a6b353c4ece4649c7568eae5b1bc5a7c",
+      "size": 583,
+      "status": "started"
+    },
+    "REMOTE_STATIC_PREFLIGHT.json": {
+      "case_count": 103,
+      "checkpoint_sha256": null,
+      "prediction_count": null,
+      "sha256": "061fa86f654c0fe6d24dc0203f42628b3d1c4e3f6b640d7559ae5163ccec3ea2",
+      "size": 830,
+      "status": "pass"
+    },
+    "TRAINING_ACCEPTANCE_SOURCE.json": {
+      "case_count": null,
+      "checkpoint_sha256": null,
+      "prediction_count": null,
+      "sha256": "8a44c9ef32489b5f2aa581761e521e598331783d7c02bdeafbc262decdcc6bb1",
+      "size": 6151,
+      "status": "pass"
+    }
+  },
+  "remote_utc": "2026-10-08T05:18:43.563685+00:00",
+  "sacct": {
+    "err": "",
+    "out": "3940964|s2k1met103r1|RUNNING|0:0|00:29:48|billing=4,cpu=4,gres/gpu=1,mem=64G,node=1\n3940964.batch|batch|RUNNING|0:0|00:29:48|cpu=4,gres/gpu=1,mem=64G,node=1\n",
+    "rc": 0
+  },
+  "squeue": {
+    "err": "",
+    "out": "3940964|s2k1met103r1|RUNNING|30:34|5:29:26|gpu11|gpu11\n",
+    "rc": 0
+  }
+}

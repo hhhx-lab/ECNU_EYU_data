@@ -1,0 +1,106 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "pass",
+  "phase": "P0-A",
+  "local_utc": "2026-10-13T12:41:30.138298+00:00",
+  "case_count": 103,
+  "small_wt_case_count": 46,
+  "small_wt_reference_count": 286,
+  "routes": [
+    {
+      "route": "K1",
+      "small_tp": 46,
+      "small_fn": 240,
+      "fp_in_small_cases": 46,
+      "small_cases": 46,
+      "micro_recall": 0.16083916083916083,
+      "fp_per_small_case": 1.0
+    },
+    {
+      "route": "K4",
+      "small_tp": 52,
+      "small_fn": 234,
+      "fp_in_small_cases": 53,
+      "small_cases": 46,
+      "micro_recall": 0.18181818181818182,
+      "fp_per_small_case": 1.1521739130434783
+    },
+    {
+      "route": "original_E",
+      "small_tp": 52,
+      "small_fn": 234,
+      "fp_in_small_cases": 34,
+      "small_cases": 46,
+      "micro_recall": 0.18181818181818182,
+      "fp_per_small_case": 0.7391304347826086
+    },
+    {
+      "route": "B175",
+      "small_tp": 53,
+      "small_fn": 233,
+      "fp_in_small_cases": 54,
+      "small_cases": 46,
+      "micro_recall": 0.1853146853146853,
+      "fp_per_small_case": 1.173913043478261
+    },
+    {
+      "route": "D50",
+      "small_tp": 58,
+      "small_fn": 228,
+      "fp_in_small_cases": 83,
+      "small_cases": 46,
+      "micro_recall": 0.20279720279720279,
+      "fp_per_small_case": 1.8043478260869565
+    }
+  ],
+  "inputs": [
+    {
+      "route": "K1",
+      "summary_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/cohort/fixed103/models/K1/evaluation/panoptica_evaluation_summary.json",
+      "summary_sha256": "59c71bdc3730a19eda80d518fd2c37f6efa6b890e1e8c93aab40eda07891f033",
+      "csv_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/cohort/fixed103/models/K1/evaluation/leaderboard_metrics.csv",
+      "csv_sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8",
+      "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204"
+    },
+    {
+      "route": "K4",
+      "summary_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/cohort/fixed103/models/K4/evaluation/panoptica_evaluation_summary.json",
+      "summary_sha256": "77b4f4908059f2c2da993ec01cdf430de40cebf0850c0c07e4ee688793d907a3",
+      "csv_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/cohort/fixed103/models/K4/evaluation/leaderboard_metrics.csv",
+      "csv_sha256": "226876a75a4057e3d0a95303198c83c6ef47d7b267f684a13c540946ab030e30",
+      "checkpoint_sha256": "8bfb5bfdfc6a8b578e2ba1489bfa958655f960e9f8d6a9dfaede29af4b340be8"
+    },
+    {
+      "route": "original_E",
+      "summary_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_inference_20260727_r1/selection_evidence/E/panoptica_evaluation_summary.json",
+      "summary_sha256": "84386da89e89d24003579bfbdfe36728ed4e49856b16a84c4f9edf1d65569fc1",
+      "csv_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_inference_20260727_r1/selection_evidence/E/leaderboard_metrics.csv",
+      "csv_sha256": "294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167",
+      "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267"
+    },
+    {
+      "route": "B175",
+      "summary_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/B/epoch175/evaluation/panoptica_evaluation_summary.json",
+      "summary_sha256": "f85941978d19e3cb70e73f5ee98a4f353d9e5a9d1729ab0af334f20512c069d0",
+      "csv_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/B/epoch175/leaderboard_metrics.csv",
+      "csv_sha256": "4a806aee8fd879e1abaac2bd925638b9d9822aca1fcf91f358ab0c23237d0e68",
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86"
+    },
+    {
+      "route": "D50",
+      "summary_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/cohort/fixed103/models/D/evaluation/panoptica_evaluation_summary.json",
+      "summary_sha256": "b288045148ca993ec0ae5cafd917320bcc15bf9a9fcc54fdad18df9b91ccca73",
+      "csv_path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/cohort/fixed103/models/D/evaluation/leaderboard_metrics.csv",
+      "csv_sha256": "7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2",
+      "checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209"
+    }
+  ],
+  "record_count": 11270,
+  "reference_volume_multisets_consistent": true,
+  "cross_route_reference_identity": "unresolved",
+  "common_missed_intersection": null,
+  "new_lost_reference_instances": null,
+  "scope": "Independent counts only; equal volumes/order do not establish identity."
+}

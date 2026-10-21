@@ -1,0 +1,93 @@
+{
+  "disk": {
+    "err": "",
+    "out": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  220T   29T  89% /public",
+    "rc": 0
+  },
+  "hostname": "login1",
+  "jobs": {
+    "K1": {
+      "complete": false,
+      "failed": false,
+      "initialized": true,
+      "job_id": "3827543",
+      "latest_epoch": "Epoch 2",
+      "runtime_pass": true,
+      "sacct": {
+        "err": "",
+        "out": "3827543|s2k1train175r3|RUNNING|0:0|02:40:16",
+        "rc": 0
+      },
+      "squeue": {
+        "err": "",
+        "out": "3827543|s2k1train175r3|RUNNING|gpu18",
+        "rc": 0
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n",
+      "stdout_mtime_utc": "2026-09-29T02:44:33+00:00",
+      "stdout_size": 24655,
+      "stdout_tail": "ize([64, 32, 2, 2, 2])\ndecoder.transpconvs.4.bias shape torch.Size([32])\n################### Done ###################\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)",
+      "training_log": "results/K1/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/training_log_2026_9_29_10_43_22.txt",
+      "training_log_size": 4674,
+      "training_tail": "ayer' \n2026-09-29 10:44:35.972328:  \n2026-09-29 10:44:35.973253: Epoch 0 \n2026-09-29 10:44:35.973570: Current learning rate: 0.001 \n2026-09-29 11:44:23.985549: train_loss 0.1397 \n2026-09-29 11:44:24.003356: val_loss -0.1549 \n2026-09-29 11:44:24.004257: Pseudo dice [0.6622, 0.8241, 0.0012, 0.0] \n2026-09-29 11:44:24.006568: Epoch time: 3588.02 s \n2026-09-29 11:44:24.007190: Yayy! New best EMA pseudo Dice: 0.3719 \n2026-09-29 11:44:32.314015:  \n2026-09-29 11:44:32.317249: Epoch 1 \n2026-09-29 11:44:32.317644: Current learning rate: 0.00099 \n2026-09-29 12:44:32.410842: train_loss -0.2522 \n2026-09-29 12:44:32.560199: val_loss -0.364 \n2026-09-29 12:44:32.560606: Pseudo dice [0.614, 0.8831, 0.3633, 0.0] \n2026-09-29 12:44:32.563297: Epoch time: 3600.1 s \n2026-09-29 12:44:32.563948: Yayy! New best EMA pseudo Dice: 0.3812 \n2026-09-29 12:44:39.315538:  \n2026-09-29 12:44:39.315863: Epoch 2 \n2026-09-29 12:44:39.316146: Current learning rate: 0.00099 \n",
+      "training_validation": false
+    },
+    "K2": {
+      "complete": false,
+      "failed": false,
+      "initialized": true,
+      "job_id": "3827555",
+      "latest_epoch": "Epoch 8",
+      "runtime_pass": true,
+      "sacct": {
+        "err": "",
+        "out": "3827555|s2k2train175r2|RUNNING|0:0|02:39:06",
+        "rc": 0
+      },
+      "squeue": {
+        "err": "",
+        "out": "3827555|s2k2train175r2|RUNNING|gpu19",
+        "rc": 0
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n",
+      "stdout_mtime_utc": "2026-09-29T02:45:16+00:00",
+      "stdout_size": 24655,
+      "stdout_tail": "ize([64, 32, 2, 2, 2])\ndecoder.transpconvs.4.bias shape torch.Size([32])\n################### Done ###################\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)",
+      "training_log": "results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/training_log_2026_9_29_10_44_39.txt",
+      "training_log_size": 7163,
+      "training_tail": "6-09-29 12:38:43.083445:  \n2026-09-29 12:38:43.083612: Epoch 6 \n2026-09-29 12:38:43.083749: Current learning rate: 0.00097 \n2026-09-29 12:58:14.129701: train_loss -0.4132 \n2026-09-29 12:58:14.264282: val_loss -0.3629 \n2026-09-29 12:58:14.264661: Pseudo dice [0.6323, 0.8928, 0.8268, 0.5704] \n2026-09-29 12:58:14.267481: Epoch time: 1171.06 s \n2026-09-29 12:58:14.267768: Yayy! New best EMA pseudo Dice: 0.6445 \n2026-09-29 12:58:18.311387:  \n2026-09-29 12:58:18.312077: Epoch 7 \n2026-09-29 12:58:18.312184: Current learning rate: 0.00096 \n2026-09-29 13:16:51.432677: train_loss -0.4184 \n2026-09-29 13:16:51.603099: val_loss -0.3679 \n2026-09-29 13:16:51.603509: Pseudo dice [0.8145, 0.9066, 0.8765, 0.5988] \n2026-09-29 13:16:51.606974: Epoch time: 1113.12 s \n2026-09-29 13:16:51.607279: Yayy! New best EMA pseudo Dice: 0.66 \n2026-09-29 13:16:55.358108:  \n2026-09-29 13:16:55.359696: Epoch 8 \n2026-09-29 13:16:55.359939: Current learning rate: 0.00096 \n",
+      "training_validation": false
+    },
+    "K4": {
+      "complete": false,
+      "failed": false,
+      "initialized": true,
+      "job_id": "3827580",
+      "latest_epoch": "Epoch 8",
+      "runtime_pass": true,
+      "sacct": {
+        "err": "",
+        "out": "3827580|s2k4train175r6|RUNNING|0:0|02:37:52",
+        "rc": 0
+      },
+      "squeue": {
+        "err": "",
+        "out": "3827580|s2k4train175r6|RUNNING|gpu19",
+        "rc": 0
+      },
+      "started": true,
+      "stderr_tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.\n  _torch_pytree._register_pytree_node(\n",
+      "stdout_mtime_utc": "2026-09-29T02:45:16+00:00",
+      "stdout_size": 24655,
+      "stdout_tail": "ize([64, 32, 2, 2, 2])\ndecoder.transpconvs.4.bias shape torch.Size([32])\n################### Done ###################\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)\n[Unet_NnU] GPU=39.4GB | channels=(48, 96, 192, 384) strides=(2, 2, 2) | suggested_batch=19\n[Unet_NnU] Using ContinuousNoiseEmbedding (EDM / logsnr mode)\n  time_ch_count=8\nUsing TimeConditionedUNet_NnU (Diffusion + nnU-Net planner)",
+      "training_log": "results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/training_log_2026_9_29_10_44_39.txt",
+      "training_log_size": 7066,
+      "training_tail": "\n2026-09-29 12:38:43.083184:  \n2026-09-29 12:38:43.083328: Epoch 6 \n2026-09-29 12:38:43.083437: Current learning rate: 0.00097 \n2026-09-29 12:58:14.129753: train_loss -0.5544 \n2026-09-29 12:58:14.264254: val_loss -0.5091 \n2026-09-29 12:58:14.264619: Pseudo dice [0.6448, 0.8762, 0.8179, 0.0] \n2026-09-29 12:58:14.267468: Epoch time: 1171.06 s \n2026-09-29 12:58:14.267744: Yayy! New best EMA pseudo Dice: 0.4436 \n2026-09-29 12:58:18.311382:  \n2026-09-29 12:58:18.312081: Epoch 7 \n2026-09-29 12:58:18.312186: Current learning rate: 0.00096 \n2026-09-29 13:16:51.432711: train_loss -0.5559 \n2026-09-29 13:16:51.603148: val_loss -0.5327 \n2026-09-29 13:16:51.603550: Pseudo dice [0.7958, 0.8975, 0.8673, 0.0] \n2026-09-29 13:16:51.606970: Epoch time: 1113.13 s \n2026-09-29 13:16:51.607279: Yayy! New best EMA pseudo Dice: 0.4633 \n2026-09-29 13:16:57.163528:  \n2026-09-29 13:16:57.163680: Epoch 8 \n2026-09-29 13:16:57.163784: Current learning rate: 0.00096 \n",
+      "training_validation": false
+    }
+  },
+  "local_utc": "2026-09-29T05:32:00.375280+00:00",
+  "remote_utc": "2026-09-29T05:21:50.338037+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "action": "account_job_snapshot",
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "local_completed_utc": "2026-09-25T06:01:31.433774+00:00",
+  "local_started_utc": "2026-09-25T06:01:22.744102+00:00",
+  "operator_approved": false,
+  "preexisting_vpn_left_unchanged": false,
+  "result": {
+    "snapshot": "\nzqchen@59.78.189.132's password: \nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\nREMOTE_UTC=2026-09-25T05:50:46Z\nHOSTNAME=login1\nPUBLIC_DISK=\nFilesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  221T   28T  89% /public\nSQUEUE_ALL=\n3758330|cg-ln-audit|PENDING|0:00|12:00:00|(Dependency)\n3758329_116|cg-ln-gpu|RUNNING|1:46|3-00:00:00|gpu8\n3758329_117|cg-ln-gpu|RUNNING|1:46|3-00:00:00|gpu8\n3758329_[118-203%2]|cg-ln-gpu|PENDING|0:00|3-00:00:00|(JobArrayTaskLimit)\nSACCT_RELEVANT=\n3708834       s2kpoolr1  COMPLETED      0:0 2026-09-21T16:08:53 2026-09-21T16:08:54 2026-09-21T17:16:28 \n3723815      s2k1245sm+     FAILED      1:0 2026-09-22T23:07:34 2026-09-22T23:10:50 2026-09-22T23:16:34 \n3732265       s2kpoolr2  COMPLETED      0:0 2026-09-23T10:54:53 2026-09-23T10:54:53 2026-09-23T12:10:20 \n3736556      s2k1rcsmk+     FAILED      1:0 2026-09-23T17:54:31 2026-09-23T19:28:49 2026-09-23T19:29:01 \n3737611      s2k4small+     FAILED      1:0 2026-09-23T20:37:03 2026-09-23T21:05:03 2026-09-23T21:09:53 \n3738418      s2k1rcsmk+     FAILED      1:0 2026-09-23T22:26:28 2026-09-23T22:30:03 2026-09-23T22:31:11 \n3739966      s2k1rcsmk+     FAILED      1:0 2026-09-24T06:54:49 2026-09-24T06:54:50 2026-09-24T06:57:27 \n3739969      s2k4small+  COMPLETED      0:0 2026-09-24T06:58:32 2026-09-24T06:58:33 2026-09-24T07:00:59 \n3740743      s2k1rcsmk+  COMPLETED      0:0 2026-09-24T10:01:51 2026-09-24T19:58:08 2026-09-24T20:06:01 \n3741523      s2k4train+     FAILED      1:0 2026-09-24T14:39:38 2026-09-24T19:58:32 2026-09-24T20:00:51 \n"
+  },
+  "vpn_closed": true
+}

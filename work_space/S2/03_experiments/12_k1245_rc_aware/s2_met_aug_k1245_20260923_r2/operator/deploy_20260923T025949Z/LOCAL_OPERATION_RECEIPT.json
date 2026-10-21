@@ -1,0 +1,15 @@
+{
+  "action": "deploy",
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "local_completed_utc": "2026-09-23T03:00:30.691632+00:00",
+  "local_started_utc": "2026-09-23T02:59:49.856192+00:00",
+  "operator_approved": false,
+  "preexisting_vpn_left_unchanged": false,
+  "result": {
+    "plan_sha256": "815494ccba511570afa4c53c23034807ce8f351d06446f25d1c2c4fc4e364018",
+    "remote_output": "\nzqchen@59.78.189.132's password: \nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n{\"sha256\": {\"K1245_RC_AWARE_EXECUTION_PLAN_20260923_R2.json\": \"815494ccba511570afa4c53c23034807ce8f351d06446f25d1c2c4fc4e364018\", \"runtime/repository/custom_nnunet/met_aug_diffusion.py\": \"27b166f17879532abb152e4979d7ce33002d5bce43e91d84be5dc5be006777b9\", \"runtime/repository/custom_nnunet/met_aug_k1245.py\": \"07de1e25a458aae69708bb7a95b053cd399946b6dac430eabcb419fbc1315975\", \"runtime/repository/custom_nnunet/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune.py\": \"a469decad4b3f997e3840dd9139394c0a795db300476142fbfae19f643e6d338\", \"runtime/run_remote_static_preflight.py\": \"9cc9a4afb830a38441307b078904182ba6ed0bb4887a6da3dc5baf3202a5e724\"}, \"status\": \"deployed\"}\n",
+    "status": "deployed"
+  },
+  "vpn_closed": true
+}

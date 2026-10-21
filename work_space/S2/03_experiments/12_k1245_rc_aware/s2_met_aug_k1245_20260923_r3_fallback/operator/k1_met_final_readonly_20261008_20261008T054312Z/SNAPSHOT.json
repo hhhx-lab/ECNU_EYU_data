@@ -1,0 +1,43 @@
+{
+  "accepted": true,
+  "local_utc": "2026-10-08T05:43:22.493148+00:00",
+  "markers": {
+    "K1_COMPLETE": true,
+    "K1_FAILED": false,
+    "K1_STARTED": true,
+    "K1_VALIDATION": {
+      "allowed_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "artifact_status": "experimental_unvalidated",
+      "case_count": 103,
+      "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+      "formal_gate_status": "not_run_not_passed",
+      "hostname": "gpu11",
+      "job_id": "3940964",
+      "metric_count": 72,
+      "metrics_csv_sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8",
+      "operator_approved": false,
+      "prediction_count": 103,
+      "remote_utc": "2026-10-08T05:26:31.762762+00:00",
+      "route": "K1",
+      "selected_epoch": 175,
+      "status": "pass"
+    }
+  },
+  "remote_utc": "2026-10-08T05:32:24.940059+00:00",
+  "sacct": {
+    "err": "",
+    "out": "3940964|s2k1met103r1|COMPLETED|0:0|00:38:24|billing=4,cpu=4,gres/gpu=1,mem=64G,node=1\n3940964.batch|batch|COMPLETED|0:0|00:38:24|cpu=4,gres/gpu=1,mem=64G,node=1\n",
+    "rc": 0
+  },
+  "squeue": {
+    "err": "slurm_load_jobs error: Invalid job id specified\n",
+    "out": "",
+    "rc": 1
+  }
+}

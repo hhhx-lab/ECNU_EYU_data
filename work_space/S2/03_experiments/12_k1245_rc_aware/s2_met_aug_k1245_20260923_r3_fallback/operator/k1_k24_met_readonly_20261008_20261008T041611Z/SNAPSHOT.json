@@ -1,0 +1,472 @@
+{
+  "hostname": "login1",
+  "jobs": {
+    "3853018": {
+      "sacct": {
+        "err": "",
+        "out": "3853018|s2k2met103r1|COMPLETED|0:0|00:33:38|billing=4,cpu=4,gres/gpu=1,mem=64G,node=1\n3853018.batch|batch|COMPLETED|0:0|00:33:38|cpu=4,gres/gpu=1,mem=64G,node=1\n",
+        "rc": 0
+      },
+      "squeue": {
+        "err": "slurm_load_jobs error: Invalid job id specified\n",
+        "out": "",
+        "rc": 1
+      }
+    },
+    "3853019": {
+      "sacct": {
+        "err": "",
+        "out": "3853019|s2k4met103r1|COMPLETED|0:0|00:32:59|billing=4,cpu=4,gres/gpu=1,mem=64G,node=1\n3853019.batch|batch|COMPLETED|0:0|00:32:59|cpu=4,gres/gpu=1,mem=64G,node=1\n",
+        "rc": 0
+      },
+      "squeue": {
+        "err": "slurm_load_jobs error: Invalid job id specified\n",
+        "out": "",
+        "rc": 1
+      }
+    },
+    "3919543": {
+      "sacct": {
+        "err": "",
+        "out": "3919543|s2k1res175r1|COMPLETED|0:0|1-06:33:09|billing=8,cpu=8,gres/gpu=1,mem=64G,node=1\n3919543.batch|batch|COMPLETED|0:0|1-06:33:09|cpu=8,gres/gpu=1,mem=64G,node=1\n",
+        "rc": 0
+      },
+      "squeue": {
+        "err": "slurm_load_jobs error: Invalid job id specified\n",
+        "out": "",
+        "rc": 1
+      }
+    }
+  },
+  "local_utc": "2026-10-08T04:16:21.176326+00:00",
+  "remote_utc": "2026-10-08T04:05:22.580660+00:00",
+  "roots": {
+    "K1": {
+      "checkpoints": {
+        "checkpoint_best.pth": {
+          "size": 249795606
+        },
+        "checkpoint_epoch_0025.pth": {
+          "size": 249734642
+        },
+        "checkpoint_epoch_0050.pth": {
+          "size": 249748402
+        },
+        "checkpoint_epoch_0075.pth": {
+          "size": 249762162
+        },
+        "checkpoint_epoch_0100.pth": {
+          "size": 249775986
+        },
+        "checkpoint_epoch_0125.pth": {
+          "size": 249789746
+        },
+        "checkpoint_epoch_0150.pth": {
+          "size": 249803506
+        },
+        "checkpoint_epoch_0175.pth": {
+          "size": 249817266
+        },
+        "checkpoint_final.pth": {
+          "size": 249816176
+        }
+      },
+      "evidence": {
+        "FINAL_SOURCE_ACCEPTANCE.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "c0627c467c08bcbdd0d51bd2dbe5db152e5f071ed941dcda5a5cf1a9807906d9",
+          "size": 20058,
+          "status": "pass"
+        },
+        "LAUNCH_AUDIT.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "1c1b25b92b87d3bacbb976293145f0fe260f45cf21d4cf40c7d18a04a5efcb7c",
+          "size": 1217,
+          "status": "held"
+        },
+        "LAUNCH_RESERVATION.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "be76b39a86f5401bd1b6c9067303ba44e518ea7b25715dd4eb45b8f8624e9466",
+          "size": 409,
+          "status": "reserved"
+        },
+        "RELEASE_AUDIT.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "21b821d413cb397d0c3d9d3bf1a5fad53dec4b991128e45d677fea730c90f5d7",
+          "size": 303,
+          "status": "released"
+        },
+        "REMOTE_FINAL_PREFLIGHT.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "40e788a9aa47c8ae06bb8c823a22877be500ba4e260650d48d51f73934778188",
+          "size": 17518,
+          "status": "pass"
+        },
+        "REMOTE_STAGE_VALIDATION.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "6dca7f61bfab15d8af4f9393969114dd749509ab329a6b40f6dc264fbba985f0",
+          "size": 17450,
+          "status": "pass"
+        },
+        "RESUME_COMPLETE.ok": {
+          "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+          "size": 9
+        },
+        "RESUME_STARTED.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "a5aad42903f12ad0b41a8abf08f791a05b51bef398e5849170467590031c2168",
+          "size": 1199,
+          "status": "pass"
+        },
+        "SCHEDULER_TERMINAL_READ_ACCEPTANCE_20261007.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "d56a14fd20d83d9ac89a161e4744474311de41790e851ffc9c6c084f68d2b2ea",
+          "size": 13476,
+          "status": "pass"
+        },
+        "SUBMISSION_ACCEPTANCE_20261007.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "43e60a1c5630634ef763af5feefa751834735a4e91e45475a738c2548100648f",
+          "size": 1239,
+          "status": "submitted_once"
+        },
+        "TRAINING_VALIDATION.json": {
+          "best_epoch": 175,
+          "case_count": null,
+          "completed_epochs": 175,
+          "prediction_count": null,
+          "sha256": "8a44c9ef32489b5f2aa581761e521e598331783d7c02bdeafbc262decdcc6bb1",
+          "size": 6151,
+          "status": "pass"
+        }
+      },
+      "exists": true,
+      "logs": {
+        "s2k1res175r1_3919543.err": {
+          "error_hits": [],
+          "size": 632,
+          "tail": [
+            "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)",
+            "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.",
+            "  _torch_pytree._register_pytree_node(",
+            "/public/home/zqchen/.conda/envs/segmamba/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.",
+            "  _torch_pytree._register_pytree_node("
+          ]
+        },
+        "s2k1res175r1_3919543.out": {
+          "error_hits": [
+            "2026-10-07 00:40:54.705640: MET_AUG_K1245_175_RUNTIME_PASS epochs=175 save_every=25",
+            "2026-10-08 07:09:59.119108: Validation complete"
+          ],
+          "size": 48686,
+          "tail": [
+            "2026-10-08 07:08:59.263361: BraTSMET_001285, shape torch.Size([4, 130, 168, 134]), rank 0",
+            "2026-10-08 07:09:00.846617: predicting BraTSMET_001286",
+            "2026-10-08 07:09:01.432590: BraTSMET_001286, shape torch.Size([4, 132, 169, 135]), rank 0",
+            "2026-10-08 07:09:59.119108: Validation complete",
+            "2026-10-08 07:09:59.119223: Mean Validation Dice:  0.551110498438361"
+          ]
+        }
+      }
+    },
+    "K24_MET": {
+      "evidence": {
+        "K2_COMPLETE.ok": {
+          "sha256": "31cc0695acc31ef0df824efbe8e2b24ab9fabc196e828ea63bdcef8deb67b31b",
+          "size": 171
+        },
+        "K2_LAUNCH.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "598b6291c26d22e1ecee5d267c69f44f21629ac3d1b5f14753c9e70904b16e25",
+          "size": 280,
+          "status": "submitted_held"
+        },
+        "K2_MODEL_SNAPSHOT.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "6f6451addced8333cd8b9a40f56f667972bc5ef55fbf740232e93f5512116ce7",
+          "size": 393,
+          "status": "pass"
+        },
+        "K2_RELEASED.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "cc70e4a87971daf4f5e1a4c3f53e20d99f04a72988dc91d6d11ef06da7badccb",
+          "size": 244,
+          "status": "released"
+        },
+        "K2_RESERVATION.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "abbd561e0b1ff4f5fd781f3eb746dfcb8a1d66ce33548c1b887132e0ad941dc3",
+          "size": 336,
+          "status": "reserved"
+        },
+        "K2_STARTED.json": {
+          "best_epoch": null,
+          "case_count": 103,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "f72330aea7416c50b2c263fae866ff864848fb7f210bb7aba90bf64e677e9f82",
+          "size": 583,
+          "status": "started"
+        },
+        "K2_VALIDATION.json": {
+          "best_epoch": null,
+          "case_count": 103,
+          "completed_epochs": null,
+          "prediction_count": 103,
+          "sha256": "6cebc1b60207c4ba4253417c34d959fbe5622e7e4e22ba0fa97ceb66f5b264d7",
+          "size": 602,
+          "status": "pass"
+        },
+        "K4_COMPLETE.ok": {
+          "sha256": "0b20efe38ec571d35c884dd58f8d9c7b00a59a2fe83765c5c27224051a92e2d4",
+          "size": 171
+        },
+        "K4_LAUNCH.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "84f47fc7ba13e3abe8e97b97a33ef532e613a0f0f5fb70d31cc90e3df8105d0c",
+          "size": 280,
+          "status": "submitted_held"
+        },
+        "K4_MODEL_SNAPSHOT.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "b707533563d6a7c5bd39d9b9535eb16985497421703c1ccb7cbf16fac53d3ef1",
+          "size": 393,
+          "status": "pass"
+        },
+        "K4_RELEASED.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "e0c02fca5ad5185cc84ae543e7e515fa5e69161ce18da28d5668ccc9d70dbe4e",
+          "size": 244,
+          "status": "released"
+        },
+        "K4_RESERVATION.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "4d28d6f52abef8fef7df1461d59a04ecb8119834acf54f2568b560ab3cb77f2e",
+          "size": 336,
+          "status": "reserved"
+        },
+        "K4_STARTED.json": {
+          "best_epoch": null,
+          "case_count": 103,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "b17f0a45c3af0cef6ac73252e4f7d0c247ef744ec0aaeed23ad30cdae1c33919",
+          "size": 583,
+          "status": "started"
+        },
+        "K4_VALIDATION.json": {
+          "best_epoch": null,
+          "case_count": 103,
+          "completed_epochs": null,
+          "prediction_count": 103,
+          "sha256": "9734e8cf63c2776f719118b1d954af074d420cb31b57ffed48793a8cdd569d81",
+          "size": 602,
+          "status": "pass"
+        },
+        "LAUNCH_SUMMARY.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "c37ca37a93655dd26c84cb55fcf59a5a45c7cca85899656ebfcda18874ee7448",
+          "size": 262,
+          "status": "released"
+        },
+        "REMOTE_STATIC_PREFLIGHT.json": {
+          "best_epoch": null,
+          "case_count": 103,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "71001e2bce9fc9797511e5bdf9faaf8a014592843049a630b34b494aad0d5d8a",
+          "size": 1011,
+          "status": "pass"
+        },
+        "TRAINING_ACCEPTANCE_SOURCE.json": {
+          "best_epoch": null,
+          "case_count": null,
+          "completed_epochs": null,
+          "prediction_count": null,
+          "sha256": "0508e5ad929a9e117aa27df84dd55994602e587ab8b29e5eecedb7803f3ea5ee",
+          "size": 41133,
+          "status": "pass"
+        }
+      },
+      "exists": true,
+      "logs": {
+        "K2_inference_3853018.log": {
+          "error_hits": [
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k24_selected103_official_met_20261002_r1/model_snapshots/K2/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"6f829"
+          ],
+          "size": 63713,
+          "tail": [
+            " 75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 6/8 [00:01<00:00,  5.23it/s]",
+            " 88%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 7/8 [00:01<00:00,  5.22it/s]",
+            "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8/8 [00:01<00:00,  5.20it/s]",
+            "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8/8 [00:01<00:00,  5.33it/s]",
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k24_selected103_official_met_20261002_r1/model_snapshots/K2/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"6f82992015854e5b4a85bd5ccfe4891260d990bbb69003a27729cdeec8973f91\", \"completed_at_utc\": \"2026-10-02T03:52:06.542722+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"execution_mode\": \"sequential_in_process\", \"export_workers\": 0, \"formal_gate_status\": \"not_run_not_passed\", \"model_name\": \"K2\", \"multiprocessing_queue_used\": false, \"network_builder_shim\": \"nnUNetTrainerBraTS2026RC\", \"operator_approved\": false, \"prediction_count\": 103, \"preprocess_workers\": 0, \"save_probabilities\": false, \"schema_version\": 1, \"started_at_utc\": \"2026-10-02T03:31:01.505863+00:00\", \"status\": \"pass\", \"tile_step_size\": 0.5, \"trainer_name_from_checkpoint\": \"nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175\", \"use_gaussian\": true, \"use_mirroring\": true}"
+          ]
+        },
+        "K2_official_met_3853018.log": {
+          "error_hits": [
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-10-02T04:03:12.485078+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"d5da51696"
+          ],
+          "size": 8176,
+          "tail": [
+            "104                         std  ...              0.315321",
+            "105                      median  ...              0.000000",
+            "",
+            "[5 rows x 73 columns]",
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-10-02T04:03:12.485078+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"d5da516962109fe921a4c69baff6b0671d669de03e1d3dd7918087e70260c4ba\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"42d1f691001d1f28df972dee15ef449d629a41ef0c230c0478ef9d4dafc8d9ca\"}"
+          ]
+        },
+        "K4_inference_3853019.log": {
+          "error_hits": [
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k24_selected103_official_met_20261002_r1/model_snapshots/K4/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"8bfb5"
+          ],
+          "size": 63713,
+          "tail": [
+            " 75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 6/8 [00:01<00:00,  5.08it/s]",
+            " 88%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 7/8 [00:01<00:00,  5.10it/s]",
+            "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8/8 [00:01<00:00,  5.12it/s]",
+            "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8/8 [00:01<00:00,  5.02it/s]",
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k24_selected103_official_met_20261002_r1/model_snapshots/K4/fold_0/checkpoint_final.pth\", \"checkpoint_sha256\": \"8bfb5bfdfc6a8b578e2ba1489bfa958655f960e9f8d6a9dfaede29af4b340be8\", \"completed_at_utc\": \"2026-10-02T04:25:48.856623+00:00\", \"device_name\": \"NVIDIA A100-PCIE-40GB\", \"execution_mode\": \"sequential_in_process\", \"export_workers\": 0, \"formal_gate_status\": \"not_run_not_passed\", \"model_name\": \"K4\", \"multiprocessing_queue_used\": false, \"network_builder_shim\": \"nnUNetTrainerBraTS2026RC\", \"operator_approved\": false, \"prediction_count\": 103, \"preprocess_workers\": 0, \"save_probabilities\": false, \"schema_version\": 1, \"started_at_utc\": \"2026-10-02T04:04:47.629542+00:00\", \"status\": \"pass\", \"tile_step_size\": 0.5, \"trainer_name_from_checkpoint\": \"nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175\", \"use_gaussian\": true, \"use_mirroring\": true}"
+          ]
+        },
+        "K4_official_met_3853019.log": {
+          "error_hits": [
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-10-02T04:36:34.650667+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"226876a75"
+          ],
+          "size": 8176,
+          "tail": [
+            "104                         std  ...              0.329481",
+            "105                      median  ...              0.043478",
+            "",
+            "[5 rows x 73 columns]",
+            "{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-10-02T04:36:34.650667+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"226876a75a4057e3d0a95303198c83c6ef47d7b267f684a13c540946ab030e30\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"77b4f4908059f2c2da993ec01cdf430de40cebf0850c0c07e4ee688793d907a3\"}"
+          ]
+        },
+        "s2k2met103r1_3853018.err": {
+          "error_hits": [],
+          "size": 70,
+          "tail": [
+            "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+          ]
+        },
+        "s2k2met103r1_3853018.out": {
+          "error_hits": [],
+          "size": 0,
+          "tail": []
+        },
+        "s2k4met103r1_3853019.err": {
+          "error_hits": [],
+          "size": 70,
+          "tail": [
+            "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)"
+          ]
+        },
+        "s2k4met103r1_3853019.out": {
+          "error_hits": [],
+          "size": 0,
+          "tail": []
+        }
+      },
+      "models": {
+        "K2": {
+          "PREDICTION_SHA256.json": {
+            "exists": true,
+            "sha256": "9d2a5ce5ef3fc482571bd3e70257219a68565ee576485f701bc7fe71f51f7fe9",
+            "size": 10732
+          },
+          "evaluation/EVALUATION_VALIDATION.json": {
+            "exists": true,
+            "sha256": "8332d4b81716411a6f0b53080125f97612e70c958ec79f0204940fca86a97c31",
+            "size": 558
+          },
+          "evaluation/leaderboard_metrics.csv": {
+            "exists": true,
+            "sha256": "d5da516962109fe921a4c69baff6b0671d669de03e1d3dd7918087e70260c4ba",
+            "size": 53352
+          },
+          "inference_audit.json": {
+            "exists": true,
+            "sha256": "473a26a355c82871e222438efec39d2d0812e00c884f2bc612d126de72dd73ba",
+            "size": 1088
+          }
+        },
+        "K4": {
+          "PREDICTION_SHA256.json": {
+            "exists": true,
+            "sha256": "cce64dd2ad7b8fae86d4f3cd29610534b786ea9bfac250734107a721afae93d3",
+            "size": 10732
+          },
+          "evaluation/EVALUATION_VALIDATION.json": {
+            "exists": true,
+            "sha256": "c3fc6560f1a28968a2a8664382eb87aa9fdb6b40f05d200a7b55be9e14e1b280",
+            "size": 558
+          },
+          "evaluation/leaderboard_metrics.csv": {
+            "exists": true,
+            "sha256": "226876a75a4057e3d0a95303198c83c6ef47d7b267f684a13c540946ab030e30",
+            "size": 54179
+          },
+          "inference_audit.json": {
+            "exists": true,
+            "sha256": "52c3539125783354c5eee857a221d1d9923ed558dd83e406e76181cb8b0e50d4",
+            "size": 1088
+          }
+        }
+      }
+    }
+  }
+}

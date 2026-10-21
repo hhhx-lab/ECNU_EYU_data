@@ -1,0 +1,31 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "route_id": "K4",
+  "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260924_r2_175",
+  "job_id": "3741523",
+  "job_name": "s2k4train175r1",
+  "status": "submitted_and_queued",
+  "local_utc": "2026-09-24T06:49:22Z",
+  "remote_utc": "2026-09-24T06:49:22.653533Z",
+  "hostname": "login1",
+  "squeue": "3741523|PENDING|0:00|(Priority)|s2k4train175r1",
+  "sacct": "3741523 s2k4train+ PENDING 0:0 2026-09-24T14:39:38 Unknown Unknown",
+  "public_free_bytes": 30487976345600,
+  "evidence": [
+    "K4_175_TRAINING_AUTHORIZATION.json",
+    "K4_175_TRAINING_AUTHORIZATION_20260924.md",
+    "K4_175_TRAINING_LAUNCH.json",
+    "K4_175_TRAINING_RELEASED.json",
+    "K4_175_TRAINING_STATIC_PREFLIGHT.json",
+    "POOL_BUILD_COMPLETE.ok",
+    "REMOTE_STATIC_PREFLIGHT.json"
+  ],
+  "stdout_stderr": "not_yet_created",
+  "vpn_closed": true,
+  "notes": [
+    "The earlier r1 permission failure is retained and was not reused.",
+    "This is an exploratory 175-epoch K4 training submission; no formal or scientific gate is asserted."
+  ]
+}

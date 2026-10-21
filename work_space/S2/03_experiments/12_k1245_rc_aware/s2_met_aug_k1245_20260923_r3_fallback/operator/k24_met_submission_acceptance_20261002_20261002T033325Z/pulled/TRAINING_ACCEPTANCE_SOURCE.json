@@ -1,0 +1,1100 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "disk": {
+    "err": "",
+    "out": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  221T   28T  90% /public",
+    "rc": 0
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "k1_after": {
+    "err": "",
+    "out": "JobId=3827543 JobName=s2k1train175r3 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=RUNNING Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=3-00:32:04 TimeLimit=5-00:00:00 TimeMin=N/A SubmitTime=2026-09-29T10:40:45 EligibleTime=2026-09-29T10:40:48 AccrueTime=Unknown StartTime=2026-09-29T10:40:48 EndTime=2026-10-04T10:40:49 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-29T10:40:48 Partition=a100 AllocNode:Sid=10.11.100.253:21942 ReqNodeList=(null) ExcNodeList=(null) NodeList=gpu18 BatchHost=gpu18 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k1_175_r3/slurm/01_train_k1_175_r3.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k1_175_r3/logs/s2k1train175r3_3827543.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k1_175_r3/logs/s2k1train175r3_3827543.out Power= TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0",
+    "rc": 0
+  },
+  "k1_before": {
+    "err": "",
+    "out": "JobId=3827543 JobName=s2k1train175r3 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=RUNNING Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=3-00:32:04 TimeLimit=5-00:00:00 TimeMin=N/A SubmitTime=2026-09-29T10:40:45 EligibleTime=2026-09-29T10:40:48 AccrueTime=Unknown StartTime=2026-09-29T10:40:48 EndTime=2026-10-04T10:40:49 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-29T10:40:48 Partition=a100 AllocNode:Sid=10.11.100.253:21942 ReqNodeList=(null) ExcNodeList=(null) NodeList=gpu18 BatchHost=gpu18 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k1_175_r3/slurm/01_train_k1_175_r3.slurm WorkDir=/public/home/zqchen StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k1_175_r3/logs/s2k1train175r3_3827543.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k1_175_r3/logs/s2k1train175r3_3827543.out Power= TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0",
+    "rc": 0
+  },
+  "k1_extension_command": {
+    "err": "Access/permission denied for job 3827543",
+    "out": "",
+    "rc": 1
+  },
+  "k1_extension_confirmed": false,
+  "local_utc": "2026-10-02T03:25:09.389150+00:00",
+  "operator_approved": false,
+  "remote_utc": "2026-10-02T03:12:52.439997+00:00",
+  "routes": {
+    "K2": {
+      "allowed_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "artifact_status": "experimental_unvalidated",
+      "candidates": [
+        {
+          "amp_finite": true,
+          "current_epoch": 25,
+          "ema_fg_dice": 0.729280620173689,
+          "epoch": 25,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0025.pth",
+          "sha256": "1625aeb15a6782357479d267724fb42e7483e5f4a869cbb372c9e302b2b28468"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 50,
+          "ema_fg_dice": 0.7452259621698389,
+          "epoch": 50,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0050.pth",
+          "sha256": "e58b5dce29bd786e258b864bfca725968a3fce47a9dc78614a040a0d8b4917a0"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 75,
+          "ema_fg_dice": 0.723970760298937,
+          "epoch": 75,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0075.pth",
+          "sha256": "249fcacdaa48449b0eb4c5266daf1057af00859cac1100670ea02754f94241a1"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 100,
+          "ema_fg_dice": 0.746882081448008,
+          "epoch": 100,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0100.pth",
+          "sha256": "ec43f89659be01b543248b9194404fb61e9bf66db11bd214fb0f5cb91c33087b"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 125,
+          "ema_fg_dice": 0.755078618166312,
+          "epoch": 125,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+          "sha256": "6c91623326d7bc726f85004c64032a47c2b856291c8ed8fb40a3d1f38d52a38e"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 150,
+          "ema_fg_dice": 0.7630726009814313,
+          "epoch": 150,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+          "sha256": "ae0ca20a7f26f0bf26ba2551e7a0d14ce01f22a3c7429be1cd9424260d21f228"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 175,
+          "ema_fg_dice": 0.7684384509242412,
+          "epoch": 175,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+          "sha256": "6f82992015854e5b4a85bd5ccfe4891260d990bbb69003a27729cdeec8973f91"
+        }
+      ],
+      "completed_epochs": 175,
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "3827555",
+      "model_contract": {
+        "dataset_json": {
+          "channel_names": {
+            "0": "t1n",
+            "1": "t1c",
+            "2": "t2w",
+            "3": "t2f"
+          },
+          "file_ending": ".nii.gz",
+          "g2_channel_order": "g2_official",
+          "g2_completion_paths_overridden": 212,
+          "g2_completion_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/output/run_3104668",
+          "g2_dataset_profile": "completion",
+          "g2_master_split": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/splits/splits_master_train_val_test.json",
+          "g2_materialization_stats": {
+            "completion_replacements": 212,
+            "included_cases": 1242,
+            "real_cases": 1242,
+            "skipped_missing_completion": 53
+          },
+          "g2_real_data_root": "/public/home/zqchen/data",
+          "g2_real_mapping": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/manifests/nnunet_case_mapping_master.csv",
+          "g2_real_paths_overridden": 1295,
+          "g2_synthetic_manifests": [
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/manifests/synthetic_accepted_manifest_run_3104668.csv"
+          ],
+          "labels": {
+            "ET": 3,
+            "NETC": 1,
+            "RC": 4,
+            "SNFH": 2,
+            "background": 0
+          },
+          "numTest": 104,
+          "numTraining": 1138
+        },
+        "plans": {
+          "configurations": {
+            "2d": {
+              "architecture": {
+                "_kw_requires_import": [
+                  "conv_op",
+                  "norm_op",
+                  "dropout_op",
+                  "nonlin"
+                ],
+                "arch_kwargs": {
+                  "conv_bias": true,
+                  "conv_op": "torch.nn.modules.conv.Conv2d",
+                  "dropout_op": null,
+                  "dropout_op_kwargs": null,
+                  "features_per_stage": [
+                    32,
+                    64,
+                    128,
+                    256,
+                    512,
+                    512
+                  ],
+                  "kernel_sizes": [
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ]
+                  ],
+                  "n_conv_per_stage": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_conv_per_stage_decoder": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_stages": 6,
+                  "nonlin": "torch.nn.LeakyReLU",
+                  "nonlin_kwargs": {
+                    "inplace": true
+                  },
+                  "norm_op": "torch.nn.modules.instancenorm.InstanceNorm2d",
+                  "norm_op_kwargs": {
+                    "affine": true,
+                    "eps": 1e-05
+                  },
+                  "strides": [
+                    [
+                      1,
+                      1
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ]
+                  ]
+                },
+                "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+              },
+              "batch_dice": true,
+              "batch_size": 105,
+              "data_identifier": "nnUNetPlans_2d",
+              "median_image_size_in_voxels": [
+                172.0,
+                138.0
+              ],
+              "normalization_schemes": [
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization"
+              ],
+              "patch_size": [
+                192,
+                160
+              ],
+              "preprocessor_name": "DefaultPreprocessor",
+              "resampling_fn_data": "resample_data_or_seg_to_shape",
+              "resampling_fn_data_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 3,
+                "order_z": 0
+              },
+              "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+              "resampling_fn_probabilities_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 1,
+                "order_z": 0
+              },
+              "resampling_fn_seg": "resample_data_or_seg_to_shape",
+              "resampling_fn_seg_kwargs": {
+                "force_separate_z": null,
+                "is_seg": true,
+                "order": 1,
+                "order_z": 0
+              },
+              "spacing": [
+                1.0,
+                1.0
+              ],
+              "use_mask_for_norm": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            "3d_fullres": {
+              "architecture": {
+                "_kw_requires_import": [
+                  "conv_op",
+                  "norm_op",
+                  "dropout_op",
+                  "nonlin"
+                ],
+                "arch_kwargs": {
+                  "conv_bias": true,
+                  "conv_op": "torch.nn.modules.conv.Conv3d",
+                  "dropout_op": null,
+                  "dropout_op_kwargs": null,
+                  "features_per_stage": [
+                    32,
+                    64,
+                    128,
+                    256,
+                    320,
+                    320
+                  ],
+                  "kernel_sizes": [
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ]
+                  ],
+                  "n_conv_per_stage": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_conv_per_stage_decoder": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_stages": 6,
+                  "nonlin": "torch.nn.LeakyReLU",
+                  "nonlin_kwargs": {
+                    "inplace": true
+                  },
+                  "norm_op": "torch.nn.modules.instancenorm.InstanceNorm3d",
+                  "norm_op_kwargs": {
+                    "affine": true,
+                    "eps": 1e-05
+                  },
+                  "strides": [
+                    [
+                      1,
+                      1,
+                      1
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ]
+                  ]
+                },
+                "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+              },
+              "batch_dice": false,
+              "batch_size": 2,
+              "data_identifier": "nnUNetPlans_3d_fullres",
+              "median_image_size_in_voxels": [
+                142.0,
+                172.0,
+                138.0
+              ],
+              "normalization_schemes": [
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization"
+              ],
+              "patch_size": [
+                128,
+                128,
+                128
+              ],
+              "preprocessor_name": "DefaultPreprocessor",
+              "resampling_fn_data": "resample_data_or_seg_to_shape",
+              "resampling_fn_data_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 3,
+                "order_z": 0
+              },
+              "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+              "resampling_fn_probabilities_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 1,
+                "order_z": 0
+              },
+              "resampling_fn_seg": "resample_data_or_seg_to_shape",
+              "resampling_fn_seg_kwargs": {
+                "force_separate_z": null,
+                "is_seg": true,
+                "order": 1,
+                "order_z": 0
+              },
+              "spacing": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "use_mask_for_norm": [
+                true,
+                true,
+                true,
+                true
+              ]
+            }
+          },
+          "dataset_name": "Dataset264_BraTS2026_MET_Completion",
+          "experiment_planner_used": "ExperimentPlanner",
+          "foreground_intensity_properties_per_channel": {
+            "0": {
+              "max": 928143.5625,
+              "mean": 3039.8280702146203,
+              "median": 560.0,
+              "min": 0.0,
+              "percentile_00_5": 0.0,
+              "percentile_99_5": 279089.125,
+              "std": 30277.599333243168
+            },
+            "1": {
+              "max": 3275090.5,
+              "mean": 8953.127035010677,
+              "median": 1313.0,
+              "min": 0.0,
+              "percentile_00_5": 91.37364540100097,
+              "percentile_99_5": 519260.375,
+              "std": 64807.28179898762
+            },
+            "2": {
+              "max": 61955.71484375,
+              "mean": 1090.6741356434293,
+              "median": 806.0,
+              "min": 0.0,
+              "percentile_00_5": 0.0,
+              "percentile_99_5": 4947.0,
+              "std": 1535.1662643475227
+            },
+            "3": {
+              "max": 134197.65625,
+              "mean": 1187.6043663859352,
+              "median": 693.0,
+              "min": 0.0,
+              "percentile_00_5": 0.0,
+              "percentile_99_5": 7288.0,
+              "std": 3628.1990882570967
+            }
+          },
+          "image_reader_writer": "SimpleITKIO",
+          "label_manager": "LabelManager",
+          "original_median_shape_after_transp": [
+            146,
+            180,
+            144
+          ],
+          "original_median_spacing_after_transp": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "plans_name": "nnUNetPlans",
+          "transpose_backward": [
+            0,
+            1,
+            2
+          ],
+          "transpose_forward": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "nnunet_validation_mean_dice": 0.5527734486339669,
+      "operator_approved": false,
+      "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2",
+      "scheduler": {
+        "err": "",
+        "out": "3827555|COMPLETED|0:0|2-03:07:57|2026-09-29T10:41:59|2026-10-01T13:49:56",
+        "rc": 0
+      },
+      "selected": {
+        "amp_finite": true,
+        "current_epoch": 175,
+        "ema_fg_dice": 0.7684384509242412,
+        "epoch": 175,
+        "logging_finite": true,
+        "network_finite": true,
+        "optimizer_finite": true,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k2_175_r2/results/K2/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+        "sha256": "6f82992015854e5b4a85bd5ccfe4891260d990bbb69003a27729cdeec8973f91"
+      },
+      "status": "pass",
+      "training_validation_sha256": "7d81f27494d87893573c3602321db3ccf240fba7b9981ef12680ad694f9975fc"
+    },
+    "K4": {
+      "allowed_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "artifact_status": "experimental_unvalidated",
+      "candidates": [
+        {
+          "amp_finite": true,
+          "current_epoch": 25,
+          "ema_fg_dice": 0.621914784808453,
+          "epoch": 25,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0025.pth",
+          "sha256": "25d3ed542c71b9194e09899da4198a7d64907f5a29636a0b95e9a6c71c678e1d"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 50,
+          "ema_fg_dice": 0.7446243388672316,
+          "epoch": 50,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0050.pth",
+          "sha256": "9bab6bc4119da53018079be0561ecb1b40326b04774bab27dcc091622f87004d"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 75,
+          "ema_fg_dice": 0.7384272791584481,
+          "epoch": 75,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0075.pth",
+          "sha256": "4bbac11c9e92cf43c4d5d83da4e8ea0289a4f4bed83825489a2187a8ac51ebc0"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 100,
+          "ema_fg_dice": 0.7515602318361563,
+          "epoch": 100,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0100.pth",
+          "sha256": "69a52664d9d67e897c6bc937207f0caea4ed3c29d0bba8d33b4052fdaf2cc776"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 125,
+          "ema_fg_dice": 0.7497786716614413,
+          "epoch": 125,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0125.pth",
+          "sha256": "3ad4d27fb75f596f2728c5db4a7420c153c66ad58febe107c96c215f50b7e696"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 150,
+          "ema_fg_dice": 0.7509218863986549,
+          "epoch": 150,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0150.pth",
+          "sha256": "d7d1c473625dcfc4bb42cc1e90a2664b0e3a87ef729c8ff069d92694c2100296"
+        },
+        {
+          "amp_finite": true,
+          "current_epoch": 175,
+          "ema_fg_dice": 0.7549883990554312,
+          "epoch": 175,
+          "logging_finite": true,
+          "network_finite": true,
+          "optimizer_finite": true,
+          "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+          "sha256": "8bfb5bfdfc6a8b578e2ba1489bfa958655f960e9f8d6a9dfaede29af4b340be8"
+        }
+      ],
+      "completed_epochs": 175,
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "3827580",
+      "model_contract": {
+        "dataset_json": {
+          "channel_names": {
+            "0": "t1n",
+            "1": "t1c",
+            "2": "t2w",
+            "3": "t2f"
+          },
+          "file_ending": ".nii.gz",
+          "g2_channel_order": "g2_official",
+          "g2_completion_paths_overridden": 212,
+          "g2_completion_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/data/output/run_3104668",
+          "g2_dataset_profile": "completion",
+          "g2_master_split": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/splits/splits_master_train_val_test.json",
+          "g2_materialization_stats": {
+            "completion_replacements": 212,
+            "included_cases": 1242,
+            "real_cases": 1242,
+            "skipped_missing_completion": 53
+          },
+          "g2_real_data_root": "/public/home/zqchen/data",
+          "g2_real_mapping": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/manifests/nnunet_case_mapping_master.csv",
+          "g2_real_paths_overridden": 1295,
+          "g2_synthetic_manifests": [
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G2/results/manifests/synthetic_accepted_manifest_run_3104668.csv"
+          ],
+          "labels": {
+            "ET": 3,
+            "NETC": 1,
+            "RC": 4,
+            "SNFH": 2,
+            "background": 0
+          },
+          "numTest": 104,
+          "numTraining": 1138
+        },
+        "plans": {
+          "configurations": {
+            "2d": {
+              "architecture": {
+                "_kw_requires_import": [
+                  "conv_op",
+                  "norm_op",
+                  "dropout_op",
+                  "nonlin"
+                ],
+                "arch_kwargs": {
+                  "conv_bias": true,
+                  "conv_op": "torch.nn.modules.conv.Conv2d",
+                  "dropout_op": null,
+                  "dropout_op_kwargs": null,
+                  "features_per_stage": [
+                    32,
+                    64,
+                    128,
+                    256,
+                    512,
+                    512
+                  ],
+                  "kernel_sizes": [
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3
+                    ]
+                  ],
+                  "n_conv_per_stage": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_conv_per_stage_decoder": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_stages": 6,
+                  "nonlin": "torch.nn.LeakyReLU",
+                  "nonlin_kwargs": {
+                    "inplace": true
+                  },
+                  "norm_op": "torch.nn.modules.instancenorm.InstanceNorm2d",
+                  "norm_op_kwargs": {
+                    "affine": true,
+                    "eps": 1e-05
+                  },
+                  "strides": [
+                    [
+                      1,
+                      1
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2
+                    ]
+                  ]
+                },
+                "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+              },
+              "batch_dice": true,
+              "batch_size": 105,
+              "data_identifier": "nnUNetPlans_2d",
+              "median_image_size_in_voxels": [
+                172.0,
+                138.0
+              ],
+              "normalization_schemes": [
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization"
+              ],
+              "patch_size": [
+                192,
+                160
+              ],
+              "preprocessor_name": "DefaultPreprocessor",
+              "resampling_fn_data": "resample_data_or_seg_to_shape",
+              "resampling_fn_data_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 3,
+                "order_z": 0
+              },
+              "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+              "resampling_fn_probabilities_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 1,
+                "order_z": 0
+              },
+              "resampling_fn_seg": "resample_data_or_seg_to_shape",
+              "resampling_fn_seg_kwargs": {
+                "force_separate_z": null,
+                "is_seg": true,
+                "order": 1,
+                "order_z": 0
+              },
+              "spacing": [
+                1.0,
+                1.0
+              ],
+              "use_mask_for_norm": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            "3d_fullres": {
+              "architecture": {
+                "_kw_requires_import": [
+                  "conv_op",
+                  "norm_op",
+                  "dropout_op",
+                  "nonlin"
+                ],
+                "arch_kwargs": {
+                  "conv_bias": true,
+                  "conv_op": "torch.nn.modules.conv.Conv3d",
+                  "dropout_op": null,
+                  "dropout_op_kwargs": null,
+                  "features_per_stage": [
+                    32,
+                    64,
+                    128,
+                    256,
+                    320,
+                    320
+                  ],
+                  "kernel_sizes": [
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ],
+                    [
+                      3,
+                      3,
+                      3
+                    ]
+                  ],
+                  "n_conv_per_stage": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_conv_per_stage_decoder": [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "n_stages": 6,
+                  "nonlin": "torch.nn.LeakyReLU",
+                  "nonlin_kwargs": {
+                    "inplace": true
+                  },
+                  "norm_op": "torch.nn.modules.instancenorm.InstanceNorm3d",
+                  "norm_op_kwargs": {
+                    "affine": true,
+                    "eps": 1e-05
+                  },
+                  "strides": [
+                    [
+                      1,
+                      1,
+                      1
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ],
+                    [
+                      2,
+                      2,
+                      2
+                    ]
+                  ]
+                },
+                "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet"
+              },
+              "batch_dice": false,
+              "batch_size": 2,
+              "data_identifier": "nnUNetPlans_3d_fullres",
+              "median_image_size_in_voxels": [
+                142.0,
+                172.0,
+                138.0
+              ],
+              "normalization_schemes": [
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization",
+                "ZScoreNormalization"
+              ],
+              "patch_size": [
+                128,
+                128,
+                128
+              ],
+              "preprocessor_name": "DefaultPreprocessor",
+              "resampling_fn_data": "resample_data_or_seg_to_shape",
+              "resampling_fn_data_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 3,
+                "order_z": 0
+              },
+              "resampling_fn_probabilities": "resample_data_or_seg_to_shape",
+              "resampling_fn_probabilities_kwargs": {
+                "force_separate_z": null,
+                "is_seg": false,
+                "order": 1,
+                "order_z": 0
+              },
+              "resampling_fn_seg": "resample_data_or_seg_to_shape",
+              "resampling_fn_seg_kwargs": {
+                "force_separate_z": null,
+                "is_seg": true,
+                "order": 1,
+                "order_z": 0
+              },
+              "spacing": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "use_mask_for_norm": [
+                true,
+                true,
+                true,
+                true
+              ]
+            }
+          },
+          "dataset_name": "Dataset264_BraTS2026_MET_Completion",
+          "experiment_planner_used": "ExperimentPlanner",
+          "foreground_intensity_properties_per_channel": {
+            "0": {
+              "max": 928143.5625,
+              "mean": 3039.8280702146203,
+              "median": 560.0,
+              "min": 0.0,
+              "percentile_00_5": 0.0,
+              "percentile_99_5": 279089.125,
+              "std": 30277.599333243168
+            },
+            "1": {
+              "max": 3275090.5,
+              "mean": 8953.127035010677,
+              "median": 1313.0,
+              "min": 0.0,
+              "percentile_00_5": 91.37364540100097,
+              "percentile_99_5": 519260.375,
+              "std": 64807.28179898762
+            },
+            "2": {
+              "max": 61955.71484375,
+              "mean": 1090.6741356434293,
+              "median": 806.0,
+              "min": 0.0,
+              "percentile_00_5": 0.0,
+              "percentile_99_5": 4947.0,
+              "std": 1535.1662643475227
+            },
+            "3": {
+              "max": 134197.65625,
+              "mean": 1187.6043663859352,
+              "median": 693.0,
+              "min": 0.0,
+              "percentile_00_5": 0.0,
+              "percentile_99_5": 7288.0,
+              "std": 3628.1990882570967
+            }
+          },
+          "image_reader_writer": "SimpleITKIO",
+          "label_manager": "LabelManager",
+          "original_median_shape_after_transp": [
+            146,
+            180,
+            144
+          ],
+          "original_median_spacing_after_transp": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "plans_name": "nnUNetPlans",
+          "transpose_backward": [
+            0,
+            1,
+            2
+          ],
+          "transpose_forward": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "nnunet_validation_mean_dice": 0.5566582739002952,
+      "operator_approved": false,
+      "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6",
+      "scheduler": {
+        "err": "",
+        "out": "3827580|COMPLETED|0:0|2-11:25:09|2026-09-29T10:43:13|2026-10-01T22:08:22",
+        "rc": 0
+      },
+      "selected": {
+        "amp_finite": true,
+        "current_epoch": 175,
+        "ema_fg_dice": 0.7549883990554312,
+        "epoch": 175,
+        "logging_finite": true,
+        "network_finite": true,
+        "optimizer_finite": true,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_k1245_20260929_k4_175_r6/results/K4/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175__nnUNetPlans__3d_fullres/fold_0/checkpoint_epoch_0175.pth",
+        "sha256": "8bfb5bfdfc6a8b578e2ba1489bfa958655f960e9f8d6a9dfaede29af4b340be8"
+      },
+      "status": "pass",
+      "training_validation_sha256": "030676a4c0420bca38a3df457290e50e1fc19fb10f1707bbbbc46fc562210b63"
+    }
+  },
+  "status": "pass"
+}

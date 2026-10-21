@@ -1,0 +1,249 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "critical_errors": [],
+  "csv_rows": {
+    "results/cpu_identity/CASE_COUNTS.csv": 1236,
+    "results/cpu_identity/REFERENCE_DETECTION_MATRIX.csv": 6762,
+    "results/cpu_identity/leaderboard_metrics.csv": 106
+  },
+  "disk": {
+    "rc": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  248T  223T   26T  90% /public\n"
+  },
+  "evidence": {
+    "CPU_LAUNCH.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T04:09:30.528132+00:00\",\n  \"status\": \"submitted_held\",\n  \"job_id\": \"4068477\",\n  \"canonical_job_id\": \"4068477\",\n  \"job_name\": \"s2k1p0cpu2\",\n  \"plan_sha256\": \"e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb\"\n}",
+      "sha256": "0d2bfe36beaf8bdaaffe47e6473faabf348302941ead2925fdcde2b07abf4358"
+    },
+    "CPU_RELEASED.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T04:09:30.619577+00:00\",\n  \"status\": \"released\",\n  \"job_id\": \"4068477\"\n}",
+      "sha256": "ad9c9774be5cb7980aadd63ea5009c97a1f7bbb0b90408cc2e92967fac1e7244"
+    },
+    "CPU_RESERVATION.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T04:09:30.372394+00:00\",\n  \"status\": \"reserved\",\n  \"job_name\": \"s2k1p0cpu2\",\n  \"plan_sha256\": \"e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb\"\n}",
+      "sha256": "06838c85838a2dc0653ab11f4f3e3ec5e88b77afd449d2f108680ff54850b99c"
+    },
+    "CPU_STATIC_PREFLIGHT.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T04:09:15.598783+00:00\",\n  \"status\": \"pass\",\n  \"plan_sha256\": \"e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb\",\n  \"actual_imports\": true,\n  \"empty_label_roundtrip_pass\": true,\n  \"nonzero_crop_roundtrip_pass\": true,\n  \"official_boundary_report_sha256\": \"b54202d6e9127eb2b5b62faed1b0d3cf760757e519801769a0aeb8bd33f496cb\"\n}\n",
+      "sha256": "58b6180dde9d8e532c9fa31c18671caa490882b893d870923dcff6e2ea3b15bc"
+    },
+    "DEPLOY_RESERVATION.json": {
+      "content": "{\"plan_sha256\": \"e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb\", \"status\": \"reserved_new_root\"}",
+      "sha256": "95d26df14accc138958f963fa255b4ed6acf00237b1461ce039e5328b1ed30e8"
+    },
+    "ENGINEERING_EXECUTION_AUTHORIZATION.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T04:09:30.357639+00:00\",\n  \"status\": \"authorized_cpu_only\",\n  \"plan_sha256\": \"e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb\",\n  \"source\": \"direct_user_20261014_fix_empty_regions_real_tests_independent_attempt\",\n  \"boundary_report_sha256\": \"b54202d6e9127eb2b5b62faed1b0d3cf760757e519801769a0aeb8bd33f496cb\",\n  \"training_authorized\": false\n}",
+      "sha256": "fddb112360df0b82652a722150ba356e75b081d8a26fc1c47a206f6ad0cc6a59"
+    },
+    "LIGHTWEIGHT_SHA256.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T06:03:05.916203+00:00\",\n  \"status\": \"pass\",\n  \"files\": {\n    \"results/cpu_identity/REFERENCE_DETECTION_MATRIX.csv\": \"3b00458afc0d07e75eea32215e0c5831e6390f370d787d95832cb013b48a7167\",\n    \"results/cpu_identity/CASE_COUNTS.csv\": \"f8c94bbe93abd5c1cc0389e2dfce0f72dd02267f9723099ae9b61c0077b77880\",\n    \"results/cpu_identity/panoptica_evaluation_summary.json\": \"76163c714f2df44d647908d9dec4caddd3770d7b5b763db7746bc2d5aca2c93c\",\n    \"results/cpu_identity/leaderboard_metrics.csv\": \"2b8a9606b65cd2372224babfdf3c84f5d34c61e98890f7a772985dc3c83dffa5\",\n    \"evidence/DEPLOY_RESERVATION.json\": \"95d26df14accc138958f963fa255b4ed6acf00237b1461ce039e5328b1ed30e8\",\n    \"evidence/OFFICIAL_BOUNDARY_TESTS.json\": \"b54202d6e9127eb2b5b62faed1b0d3cf760757e519801769a0aeb8bd33f496cb\",\n    \"evidence/CPU_STATIC_PREFLIGHT.json\": \"58b6180dde9d8e532c9fa31c18671caa490882b893d870923dcff6e2ea3b15bc\",\n    \"evidence/ENGINEERING_EXECUTION_AUTHORIZATION.json\": \"fddb112360df0b82652a722150ba356e75b081d8a26fc1c47a206f6ad0cc6a59\",\n    \"evidence/CPU_RESERVATION.json\": \"06838c85838a2dc0653ab11f4f3e3ec5e88b77afd449d2f108680ff54850b99c\",\n    \"evidence/CPU_LAUNCH.json\": \"0d2bfe36beaf8bdaaffe47e6473faabf348302941ead2925fdcde2b07abf4358\",\n    \"evidence/CPU_RELEASED.json\": \"ad9c9774be5cb7980aadd63ea5009c97a1f7bbb0b90408cc2e92967fac1e7244\",\n    \"evidence/P0_CPU_STARTED.json\": \"3c7346f5a0e575a159e819e4f4ba624f0238f461c83b69c7dc43117a4ef8c376\",\n    \"evidence/OFFICIAL_IDENTITY_VALIDATION.json\": \"f73a7721fed92be4c034e32016e5e136de43f18d5ec6dddc039ebf4ec943cd70\",\n    \"evidence/P0_CPU_VALIDATION.json\": \"01eb7e14934cf87ff11f8d2a97381d83f767ec06d4a12b5ce3358249676c004f\",\n    \"evidence/P0_CPU_COMPLETE.ok\": \"72f1be186ce4cc98ac2bf48fcfd761656b07dde20023f1b42e58120d5504bd2f\"\n  }\n}\n",
+      "sha256": "00eac2109538ffa933b3c183c3ebc2a6fffbe3685166864bb2812f490acb7729"
+    },
+    "OFFICIAL_BOUNDARY_TESTS.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T04:09:15.318556+00:00\",\n  \"status\": \"pass\",\n  \"actual_official_import\": true,\n  \"unittest_count\": 11,\n  \"synthetic_checks\": [\n    {\n      \"name\": \"26_connectivity\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 1,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"both_empty\",\n      \"reference_count\": 0,\n      \"fp\": 0,\n      \"small_tp\": 0,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"dsc_boundary_pred8\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 1,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"dsc_boundary_pred9\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 1,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"dsc_boundary_pred10\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 0,\n      \"small_fn\": 1,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"disjoint_fp_fn\",\n      \"reference_count\": 1,\n      \"fp\": 1,\n      \"small_tp\": 0,\n      \"small_fn\": 1,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"empty_prediction_two_fn\",\n      \"reference_count\": 2,\n      \"fp\": 0,\n      \"small_tp\": 0,\n      \"small_fn\": 2,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"empty_reference_two_fp\",\n      \"reference_count\": 0,\n      \"fp\": 2,\n      \"small_tp\": 0,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"equal_volume_distinct_id\",\n      \"reference_count\": 2,\n      \"fp\": 0,\n      \"small_tp\": 2,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"label4_two_normal_crop\",\n      \"reference_count\": 2,\n      \"fp\": 0,\n      \"small_tp\": 2,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"physical_volume(26, (1.0, 1.0, 1.0))\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 1,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"physical_volume(27, (1.0, 1.0, 1.0))\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 0,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"physical_volume(27, (0.5, 0.5, 0.5))\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 1,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    },\n    {\n      \"name\": \"physical_volume(2, (0.5, 0.5, 0.5))\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"small_tp\": 1,\n      \"small_fn\": 0,\n      \"official_fingerprint_equal\": true\n    }\n  ],\n  \"real_fixed103_checks\": [\n    {\n      \"subject_id\": \"BraTS-MET-00006-000\",\n      \"method\": \"K1\",\n      \"region\": \"rc\",\n      \"reference_count\": 0,\n      \"fp\": 0,\n      \"reference_sha256\": \"19b526813995998de60de984faad8825d3496aa9f2a0e985cd0e7beca964ec3a\",\n      \"prediction_sha256\": \"ca02573118e3df333b335bcff2c52971fb56a476a2c54cd8297c246a906182e1\",\n      \"original_official_fingerprint_equal\": true\n    },\n    {\n      \"subject_id\": \"BraTS-MET-00006-000\",\n      \"method\": \"K4\",\n      \"region\": \"rc\",\n      \"reference_count\": 0,\n      \"fp\": 0,\n      \"reference_sha256\": \"19b526813995998de60de984faad8825d3496aa9f2a0e985cd0e7beca964ec3a\",\n      \"prediction_sha256\": \"3f1a56526db996db3e4d1671abcf5074c799f44a58efe0774abecde5b2f5709a\",\n      \"original_official_fingerprint_equal\": true\n    },\n    {\n      \"subject_id\": \"BraTS-MET-01105-001\",\n      \"method\": \"K1\",\n      \"region\": \"rc\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"reference_sha256\": \"0bff41acdd9cb7bb978b3e5253d889406e479d8a1d3261aaae940caf5b6915e5\",\n      \"prediction_sha256\": \"ddbe57703ade03b99f6e5e1bd4f45c65891c8c6398bb697af9a569c66c9b7acf\",\n      \"original_official_fingerprint_equal\": true\n    },\n    {\n      \"subject_id\": \"BraTS-MET-01105-001\",\n      \"method\": \"K4\",\n      \"region\": \"rc\",\n      \"reference_count\": 1,\n      \"fp\": 0,\n      \"reference_sha256\": \"0bff41acdd9cb7bb978b3e5253d889406e479d8a1d3261aaae940caf5b6915e5\",\n      \"prediction_sha256\": \"e64282f3b4f45d62d9fac87dc47a2c204bab5402f375cdb729b7e7572a9d4ce7\",\n      \"original_official_fingerprint_equal\": true\n    }\n  ],\n  \"zero_region_policy\": \"official component counts, no matcher on zero instances\",\n  \"no_old_evaluation_modified\": true,\n  \"scope\": \"small real subset plus synthetic boundaries; not full103\"\n}\n",
+      "sha256": "b54202d6e9127eb2b5b62faed1b0d3cf760757e519801769a0aeb8bd33f496cb"
+    },
+    "OFFICIAL_IDENTITY_VALIDATION.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T06:03:03.946670+00:00\",\n  \"status\": \"pass\",\n  \"case_count\": 103,\n  \"detection_record_count\": 6762,\n  \"wt_small_reference_count\": 286,\n  \"statistics\": {\n    \"k1_tp\": 46,\n    \"k4_tp\": 52,\n    \"common_missed_k1_k4\": 233,\n    \"new_k4_vs_k1\": 7,\n    \"lost_k4_vs_k1\": 1,\n    \"roundtrip_tp\": 258\n  },\n  \"scientific_scope\": \"two-route intersection only; label roundtrip is not a theoretical upper bound\"\n}\n",
+      "sha256": "f73a7721fed92be4c034e32016e5e136de43f18d5ec6dddc039ebf4ec943cd70"
+    },
+    "P0_CPU_COMPLETE.ok": {
+      "content": "status=pass\nartifact_status=experimental_unvalidated\noperator_approved=false\nformal_gate_status=not_run_not_passed\n",
+      "sha256": "72f1be186ce4cc98ac2bf48fcfd761656b07dde20023f1b42e58120d5504bd2f"
+    },
+    "P0_CPU_STARTED.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T04:12:20.083068+00:00\",\n  \"status\": \"started\",\n  \"job_id\": \"4068477\",\n  \"hostname\": \"b136\",\n  \"plan_sha256\": \"e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb\"\n}\n",
+      "sha256": "3c7346f5a0e575a159e819e4f4ba624f0238f461c83b69c7dc43117a4ef8c376"
+    },
+    "P0_CPU_VALIDATION.json": {
+      "content": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"operator_approved\": false,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"remote_utc\": \"2026-10-14T06:03:05.803561+00:00\",\n  \"status\": \"pass\",\n  \"case_count\": 103,\n  \"plan_sha256\": \"e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb\",\n  \"instance_transport_classification\": \"not_yet_evaluated\",\n  \"scope\": \"fixed103 full-volume identity, K1/K4 official matching, fixed label roundtrip; not all P0\"\n}\n",
+      "sha256": "01eb7e14934cf87ff11f8d2a97381d83f767ec06d4a12b5ce3358249676c004f"
+    }
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "identity_last": [
+    "P0_IDENTITY_CASE BraTS-MET-01351-003"
+  ],
+  "identity_logged_count": 103,
+  "lightweight_files": {
+    "CPU_EXECUTION_PLAN.json": {
+      "sha256": "e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb",
+      "size": 183918
+    },
+    "evidence/CPU_LAUNCH.json": {
+      "sha256": "0d2bfe36beaf8bdaaffe47e6473faabf348302941ead2925fdcde2b07abf4358",
+      "size": 378
+    },
+    "evidence/CPU_RELEASED.json": {
+      "sha256": "ad9c9774be5cb7980aadd63ea5009c97a1f7bbb0b90408cc2e92967fac1e7244",
+      "size": 226
+    },
+    "evidence/CPU_RESERVATION.json": {
+      "sha256": "06838c85838a2dc0653ab11f4f3e3ec5e88b77afd449d2f108680ff54850b99c",
+      "size": 316
+    },
+    "evidence/CPU_STATIC_PREFLIGHT.json": {
+      "sha256": "58b6180dde9d8e532c9fa31c18671caa490882b893d870923dcff6e2ea3b15bc",
+      "size": 493
+    },
+    "evidence/DEPLOY_RESERVATION.json": {
+      "sha256": "95d26df14accc138958f963fa255b4ed6acf00237b1461ce039e5328b1ed30e8",
+      "size": 114
+    },
+    "evidence/ENGINEERING_EXECUTION_AUTHORIZATION.json": {
+      "sha256": "fddb112360df0b82652a722150ba356e75b081d8a26fc1c47a206f6ad0cc6a59",
+      "size": 512
+    },
+    "evidence/LIGHTWEIGHT_SHA256.json": {
+      "sha256": "00eac2109538ffa933b3c183c3ebc2a6fffbe3685166864bb2812f490acb7729",
+      "size": 1901
+    },
+    "evidence/OFFICIAL_BOUNDARY_TESTS.json": {
+      "sha256": "b54202d6e9127eb2b5b62faed1b0d3cf760757e519801769a0aeb8bd33f496cb",
+      "size": 4564
+    },
+    "evidence/OFFICIAL_IDENTITY_VALIDATION.json": {
+      "sha256": "f73a7721fed92be4c034e32016e5e136de43f18d5ec6dddc039ebf4ec943cd70",
+      "size": 553
+    },
+    "evidence/P0_CPU_COMPLETE.ok": {
+      "sha256": "72f1be186ce4cc98ac2bf48fcfd761656b07dde20023f1b42e58120d5504bd2f",
+      "size": 115
+    },
+    "evidence/P0_CPU_STARTED.json": {
+      "sha256": "3c7346f5a0e575a159e819e4f4ba624f0238f461c83b69c7dc43117a4ef8c376",
+      "size": 333
+    },
+    "evidence/P0_CPU_VALIDATION.json": {
+      "sha256": "01eb7e14934cf87ff11f8d2a97381d83f767ec06d4a12b5ce3358249676c004f",
+      "size": 470
+    },
+    "logs/s2k1p0cpu2_4068477.err": {
+      "sha256": "10369ece0c4c554b0b166e53ced998b46e8da0c096e0d5d3d01d30f1832954c7",
+      "size": 3572
+    },
+    "logs/s2k1p0cpu2_4068477.out": {
+      "sha256": "2935461aa90535de35ee33693ff8c31e988973e74ebad1236a5b570690ace212",
+      "size": 11001
+    },
+    "manifests/FIXED103_REAL_T2W_CASES.csv": {
+      "sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+      "size": 56139
+    },
+    "manifests/INPUT_REFERENCE_SHA256.json": {
+      "sha256": "5f52bfdc3a957d848063850460226a7c3d9c25f0926e827f728f21e525fbd9df",
+      "size": 140304
+    },
+    "results/cpu_identity/CASE_COUNTS.csv": {
+      "sha256": "f8c94bbe93abd5c1cc0389e2dfce0f72dd02267f9723099ae9b61c0077b77880",
+      "size": 46270
+    },
+    "results/cpu_identity/REFERENCE_DETECTION_MATRIX.csv": {
+      "sha256": "3b00458afc0d07e75eea32215e0c5831e6390f370d787d95832cb013b48a7167",
+      "size": 2895402
+    },
+    "results/cpu_identity/leaderboard_metrics.csv": {
+      "sha256": "2b8a9606b65cd2372224babfdf3c84f5d34c61e98890f7a772985dc3c83dffa5",
+      "size": 39607
+    },
+    "results/cpu_identity/panoptica_evaluation_summary.json": {
+      "sha256": "76163c714f2df44d647908d9dec4caddd3770d7b5b763db7746bc2d5aca2c93c",
+      "size": 480507
+    },
+    "roundtrip/GEOMETRY.json": {
+      "sha256": "39821215b8da4ccc03d25c89e666a7db1fc86a1a00c5e84b912b46ad9d158ea4",
+      "size": 115824
+    },
+    "slurm/cpu_diagnosis.slurm": {
+      "sha256": "bc8f4622652ddd4a6cbb5c5fa941ccaac997b68801797d288e93a8b1c7067fd0",
+      "size": 871
+    },
+    "sources/INVENTORY_VALIDATION.json": {
+      "sha256": "fcdfa4c7ad2f519f32e0e5880e3be1073b002aedcb130000094df5ce5a325d63",
+      "size": 862
+    },
+    "sources/K1/PREDICTION_SHA256.json": {
+      "sha256": "933d513156f5f1193d9c5eadbc2ffdf33be2ca97c138ce4f47f7726869082701",
+      "size": 10732
+    },
+    "sources/K1/leaderboard_metrics.csv": {
+      "sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8",
+      "size": 53693
+    },
+    "sources/K1/panoptica_evaluation_summary.json": {
+      "sha256": "59c71bdc3730a19eda80d518fd2c37f6efa6b890e1e8c93aab40eda07891f033",
+      "size": 968594
+    },
+    "sources/K4/PREDICTION_SHA256.json": {
+      "sha256": "cce64dd2ad7b8fae86d4f3cd29610534b786ea9bfac250734107a721afae93d3",
+      "size": 10732
+    },
+    "sources/K4/leaderboard_metrics.csv": {
+      "sha256": "226876a75a4057e3d0a95303198c83c6ef47d7b267f684a13c540946ab030e30",
+      "size": 54179
+    },
+    "sources/K4/panoptica_evaluation_summary.json": {
+      "sha256": "77b4f4908059f2c2da993ec01cdf430de40cebf0850c0c07e4ee688793d907a3",
+      "size": 971535
+    },
+    "sources/P0_CPU_CONTRACT_20261013.md": {
+      "sha256": "cd2b8a00857a5f1619f36d6864c301b011b988310d9e9563084e6ac9b159ae00",
+      "size": 4424
+    },
+    "sources/P0_CPU_EMPTY_REGION_RECOVERY_R2.md": {
+      "sha256": "20d49c6f681c29708e2e14dc02cba6440cb7c3bca5eb669ea3246391ef8d1aee",
+      "size": 3116
+    },
+    "sources/r1_preserved/CPU_EXECUTION_PLAN.json": {
+      "sha256": "d9d353513e5ce6e95e905c843f6174db17c3e651f8a060fff07876b2edbcf387",
+      "size": 182925
+    },
+    "sources/r1_preserved/LOCAL_OPERATION_RECEIPT.json": {
+      "sha256": "1429f87bee93c25ec374f70af0d5724124a48bc08deae559e2d259dd15a2c393",
+      "size": 321
+    },
+    "sources/r1_preserved/STOP_RECEIPT.json": {
+      "sha256": "ef7b469b992363b40686a690dc5cf3b9c02c95c7df3388929008de842b39a190",
+      "size": 493
+    }
+  },
+  "local_start_utc": "2026-10-15T07:07:55.356365+00:00",
+  "logs": {
+    "logs/s2k1p0cpu2_4068477.err": {
+      "sha256": "10369ece0c4c554b0b166e53ced998b46e8da0c096e0d5d3d01d30f1832954c7",
+      "size": 3572,
+      "tail": "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/metrics/normalized_surface_dice.py:41: UserWarning: The threshold is set to 0.5, which is the default value, which may not be appropriate for your data.\n  warnings.warn(\ntest_26_connectivity (boundary_tests.run_suite.<locals>.Boundaries) ... /public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/metrics/normalized_surface_dice.py:41: UserWarning: The threshold is set to 0.5, which is the default value, which may not be appropriate for your data.\n  warnings.warn(\nok\ntest_both_empty (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_detection_threshold (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_disjoint (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_empty_prediction_two_fn (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_empty_reference_two_fp (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_equal_volume_identity (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_invalid_inputs_fail_closed (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_label4_two_normal_and_crop (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_physical_small_threshold (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_real_fixed103_empty_and_nonempty_rc (boundary_tests.run_suite.<locals>.Boundaries) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 21.443s\n\nOK\n/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/metrics/normalized_surface_dice.py:41: UserWarning: The threshold is set to 0.5, which is the default value, which may not be appropriate for your data.\n  warnings.warn(\ntest_26_connectivity (boundary_tests.run_suite.<locals>.Boundaries) ... /public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/metrics/normalized_surface_dice.py:41: UserWarning: The threshold is set to 0.5, which is the default value, which may not be appropriate for your data.\n  warnings.warn(\nok\ntest_both_empty (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_detection_threshold (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_disjoint (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_empty_prediction_two_fn (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_empty_reference_two_fp (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_equal_volume_identity (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_invalid_inputs_fail_closed (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_label4_two_normal_and_crop (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_physical_small_threshold (boundary_tests.run_suite.<locals>.Boundaries) ... ok\ntest_real_fixed103_empty_and_nonempty_rc (boundary_tests.run_suite.<locals>.Boundaries) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 21.828s\n\nOK\n/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/metrics/normalized_surface_dice.py:41: UserWarning: The threshold is set to 0.5, which is the default value, which may not be appropriate for your data.\n  warnings.warn(\n/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/utils/input_check_and_conversion/sanity_checker.py:182: UserWarning: The input arrays are not of integer type. This may lead to unexpected behavior in the segmentation maps.\n  warn(\n"
+    },
+    "logs/s2k1p0cpu2_4068477.out": {
+      "sha256": "2935461aa90535de35ee33693ff8c31e988973e74ebad1236a5b570690ace212",
+      "size": 11001,
+      "tail": "se support our development by citing                    \n        https://github.com/BrainLesion/panoptica#citation -- Thank you!         \n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nOFFICIAL_IDENTITY_PREFLIGHT_PASS\nP0_ROUNDTRIP_CASE 1/103 BraTS-MET-00006-000\nP0_ROUNDTRIP_CASE 2/103 BraTS-MET-00009-000\nP0_ROUNDTRIP_CASE 3/103 BraTS-MET-00014-000\nP0_ROUNDTRIP_CASE 4/103 BraTS-MET-00016-000\nP0_ROUNDTRIP_CASE 5/103 BraTS-MET-00019-000\nP0_ROUNDTRIP_CASE 6/103 BraTS-MET-00022-000\nP0_ROUNDTRIP_CASE 7/103 BraTS-MET-00025-000\nP0_ROUNDTRIP_CASE 8/103 BraTS-MET-00098-000\nP0_ROUNDTRIP_CASE 9/103 BraTS-MET-00129-000\nP0_ROUNDTRIP_CASE 10/103 BraTS-MET-00133-000\nP0_ROUNDTRIP_CASE 11/103 BraTS-MET-00137-000\nP0_ROUNDTRIP_CASE 12/103 BraTS-MET-00147-000\nP0_ROUNDTRIP_CASE 13/103 BraTS-MET-00161-000\nP0_ROUNDTRIP_CASE 14/103 BraTS-MET-00162-000\nP0_ROUNDTRIP_CASE 15/103 BraTS-MET-00167-000\nP0_ROUNDTRIP_CASE 16/103 BraTS-MET-00175-000\nP0_ROUNDTRIP_CASE 17/103 BraTS-MET-00180-000\nP0_ROUNDTRIP_CASE 18/103 BraTS-MET-00194-000\nP0_ROUNDTRIP_CASE 19/103 BraTS-MET-00195-000\nP0_ROUNDTRIP_CASE 20/103 BraTS-MET-00200-000\nP0_ROUNDTRIP_CASE 21/103 BraTS-MET-00202-000\nP0_ROUNDTRIP_CASE 22/103 BraTS-MET-00214-000\nP0_ROUNDTRIP_CASE 23/103 BraTS-MET-00260-000\nP0_ROUNDTRIP_CASE 24/103 BraTS-MET-00264-000\nP0_ROUNDTRIP_CASE 25/103 BraTS-MET-00268-000\nP0_ROUNDTRIP_CASE 26/103 BraTS-MET-00292-000\nP0_ROUNDTRIP_CASE 27/103 BraTS-MET-00299-000\nP0_ROUNDTRIP_CASE 28/103 BraTS-MET-00300-000\nP0_ROUNDTRIP_CASE 29/103 BraTS-MET-00380-000\nP0_ROUNDTRIP_CASE 30/103 BraTS-MET-00532-000\nP0_ROUNDTRIP_CASE 31/103 BraTS-MET-00552-000\nP0_ROUNDTRIP_CASE 32/103 BraTS-MET-00572-000\nP0_ROUNDTRIP_CASE 33/103 BraTS-MET-00577-001\nP0_ROUNDTRIP_CASE 34/103 BraTS-MET-00613-000\nP0_ROUNDTRIP_CASE 35/103 BraTS-MET-00613-001\nP0_ROUNDTRIP_CASE 36/103 BraTS-MET-00625-000\nP0_ROUNDTRIP_CASE 37/103 BraTS-MET-00663-000\nP0_ROUNDTRIP_CASE 38/103 BraTS-MET-00682-000\nP0_ROUNDTRIP_CASE 39/103 BraTS-MET-00699-000\nP0_ROUNDTRIP_CASE 40/103 BraTS-MET-00787-000\nP0_ROUNDTRIP_CASE 41/103 BraTS-MET-00791-000\nP0_ROUNDTRIP_CASE 42/103 BraTS-MET-00796-000\nP0_ROUNDTRIP_CASE 43/103 BraTS-MET-00799-000\nP0_ROUNDTRIP_CASE 44/103 BraTS-MET-00807-000\nP0_ROUNDTRIP_CASE 45/103 BraTS-MET-01058-001\nP0_ROUNDTRIP_CASE 46/103 BraTS-MET-01060-001\nP0_ROUNDTRIP_CASE 47/103 BraTS-MET-01096-000\nP0_ROUNDTRIP_CASE 48/103 BraTS-MET-01096-001\nP0_ROUNDTRIP_CASE 49/103 BraTS-MET-01096-002\nP0_ROUNDTRIP_CASE 50/103 BraTS-MET-01105-001\nP0_ROUNDTRIP_CASE 51/103 BraTS-MET-01105-002\nP0_ROUNDTRIP_CASE 52/103 BraTS-MET-01109-001\nP0_ROUNDTRIP_CASE 53/103 BraTS-MET-01109-002\nP0_ROUNDTRIP_CASE 54/103 BraTS-MET-01109-003\nP0_ROUNDTRIP_CASE 55/103 BraTS-MET-01117-001\nP0_ROUNDTRIP_CASE 56/103 BraTS-MET-01117-002\nP0_ROUNDTRIP_CASE 57/103 BraTS-MET-01117-003\nP0_ROUNDTRIP_CASE 58/103 BraTS-MET-01119-000\nP0_ROUNDTRIP_CASE 59/103 BraTS-MET-01119-001\nP0_ROUNDTRIP_CASE 60/103 BraTS-MET-01119-003\nP0_ROUNDTRIP_CASE 61/103 BraTS-MET-01134-000\nP0_ROUNDTRIP_CASE 62/103 BraTS-MET-01134-003\nP0_ROUNDTRIP_CASE 63/103 BraTS-MET-01149-000\nP0_ROUNDTRIP_CASE 64/103 BraTS-MET-01149-001\nP0_ROUNDTRIP_CASE 65/103 BraTS-MET-01172-001\nP0_ROUNDTRIP_CASE 66/103 BraTS-MET-01172-002\nP0_ROUNDTRIP_CASE 67/103 BraTS-MET-01172-004\nP0_ROUNDTRIP_CASE 68/103 BraTS-MET-01180-000\nP0_ROUNDTRIP_CASE 69/103 BraTS-MET-01180-003\nP0_ROUNDTRIP_CASE 70/103 BraTS-MET-01181-001\nP0_ROUNDTRIP_CASE 71/103 BraTS-MET-01181-002\nP0_ROUNDTRIP_CASE 72/103 BraTS-MET-01187-000\nP0_ROUNDTRIP_CASE 73/103 BraTS-MET-01187-001\nP0_ROUNDTRIP_CASE 74/103 BraTS-MET-01187-003\nP0_ROUNDTRIP_CASE 75/103 BraTS-MET-01191-001\nP0_ROUNDTRIP_CASE 76/103 BraTS-MET-01191-002\nP0_ROUNDTRIP_CASE 77/103 BraTS-MET-01191-003\nP0_ROUNDTRIP_CASE 78/103 BraTS-MET-01191-004\nP0_ROUNDTRIP_CASE 79/103 BraTS-MET-01217-000\nP0_ROUNDTRIP_CASE 80/103 BraTS-MET-01217-002\nP0_ROUNDTRIP_CASE 81/103 BraTS-MET-01217-003\nP0_ROUNDTRIP_CASE 82/103 BraTS-MET-01250-001\nP0_ROUNDTRIP_CASE 83/103 BraTS-MET-01250-003\nP0_ROUNDTRIP_CASE 84/103 BraTS-MET-01268-002\nP0_ROUNDTRIP_CASE 85/103 BraTS-MET-01270-001\nP0_ROUNDTRIP_CASE 86/103 BraTS-MET-01270-002\nP0_ROUNDTRIP_CASE 87/103 BraTS-MET-01270-003\nP0_ROUNDTRIP_CASE 88/103 BraTS-MET-01276-001\nP0_ROUNDTRIP_CASE 89/103 BraTS-MET-01284-000\nP0_ROUNDTRIP_CASE 90/103 BraTS-MET-01284-002\nP0_ROUNDTRIP_CASE 91/103 BraTS-MET-01287-001\nP0_ROUNDTRIP_CASE 92/103 BraTS-MET-01287-002\nP0_ROUNDTRIP_CASE 93/103 BraTS-MET-01301-000\nP0_ROUNDTRIP_CASE 94/103 BraTS-MET-01301-001\nP0_ROUNDTRIP_CASE 95/103 BraTS-MET-01301-002\nP0_ROUNDTRIP_CASE 96/103 BraTS-MET-01310-001\nP0_ROUNDTRIP_CASE 97/103 BraTS-MET-01310-002\nP0_ROUNDTRIP_CASE 98/103 BraTS-MET-01314-002\nP0_ROUNDTRIP_CASE 99/103 BraTS-MET-01314-003\nP0_ROUNDTRIP_CASE 100/103 BraTS-MET-01331-002\nP0_ROUNDTRIP_CASE 101/103 BraTS-MET-01351-000\nP0_ROUNDTRIP_CASE 102/103 BraTS-MET-01351-002\nP0_ROUNDTRIP_CASE 103/103 BraTS-MET-01351-003\nThe same labels [1, 3] were assigned to two different labelgroups, got SegmentationClassGroups = \n - et : LabelGroup [3], single_instance=False\n - rc : LabelGroup [4], single_instance=False\n - tc : LabelMergeGroup [1, 3] -> ONE, single_instance=False\n - wt : LabelMergeGroup [1, 2, 3] -> ONE, single_instance=False\nIntended? This will evaluate the duplicate labels in both groups\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Thank you for using panoptica \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n                    Please support our development by citing                    \n        https://github.com/BrainLesion/panoptica#citation -- Thank you!         \n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nP0_IDENTITY_CASE BraTS-MET-00006-000\nP0_IDENTITY_CASE BraTS-MET-00009-000\nP0_IDENTITY_CASE BraTS-MET-00014-000\nP0_IDENTITY_CASE BraTS-MET-00016-000\nP0_IDENTITY_CASE BraTS-MET-00019-000\nP0_IDENTITY_CASE BraTS-MET-00022-000\nP0_IDENTITY_CASE BraTS-MET-00025-000\nP0_IDENTITY_CASE BraTS-MET-00098-000\nP0_IDENTITY_CASE BraTS-MET-00129-000\nP0_IDENTITY_CASE BraTS-MET-00133-000\nP0_IDENTITY_CASE BraTS-MET-00137-000\nP0_IDENTITY_CASE BraTS-MET-00147-000\nP0_IDENTITY_CASE BraTS-MET-00161-000\nP0_IDENTITY_CASE BraTS-MET-00162-000\nP0_IDENTITY_CASE BraTS-MET-00167-000\nP0_IDENTITY_CASE BraTS-MET-00175-000\nP0_IDENTITY_CASE BraTS-MET-00180-000\nP0_IDENTITY_CASE BraTS-MET-00194-000\nP0_IDENTITY_CASE BraTS-MET-00195-000\nP0_IDENTITY_CASE BraTS-MET-00200-000\nP0_IDENTITY_CASE BraTS-MET-00202-000\nP0_IDENTITY_CASE BraTS-MET-00214-000\nP0_IDENTITY_CASE BraTS-MET-00260-000\nP0_IDENTITY_CASE BraTS-MET-00264-000\nP0_IDENTITY_CASE BraTS-MET-00268-000\nP0_IDENTITY_CASE BraTS-MET-00292-000\nP0_IDENTITY_CASE BraTS-MET-00299-000\nP0_IDENTITY_CASE BraTS-MET-00300-000\nP0_IDENTITY_CASE BraTS-MET-00380-000\nP0_IDENTITY_CASE BraTS-MET-00532-000\nP0_IDENTITY_CASE BraTS-MET-00552-000\nP0_IDENTITY_CASE BraTS-MET-00572-000\nP0_IDENTITY_CASE BraTS-MET-00577-001\nP0_IDENTITY_CASE BraTS-MET-00613-000\nP0_IDENTITY_CASE BraTS-MET-00613-001\nP0_IDENTITY_CASE BraTS-MET-00625-000\nP0_IDENTITY_CASE BraTS-MET-00663-000\nP0_IDENTITY_CASE BraTS-MET-00682-000\nP0_IDENTITY_CASE BraTS-MET-00699-000\nP0_IDENTITY_CASE BraTS-MET-00787-000\nP0_IDENTITY_CASE BraTS-MET-00791-000\nP0_IDENTITY_CASE BraTS-MET-00796-000\nP0_IDENTITY_CASE BraTS-MET-00799-000\nP0_IDENTITY_CASE BraTS-MET-00807-000\nP0_IDENTITY_CASE BraTS-MET-01058-001\nP0_IDENTITY_CASE BraTS-MET-01060-001\nP0_IDENTITY_CASE BraTS-MET-01096-000\nP0_IDENTITY_CASE BraTS-MET-01096-001\nP0_IDENTITY_CASE BraTS-MET-01096-002\nP0_IDENTITY_CASE BraTS-MET-01105-001\nP0_IDENTITY_CASE BraTS-MET-01105-002\nP0_IDENTITY_CASE BraTS-MET-01109-001\nP0_IDENTITY_CASE BraTS-MET-01109-002\nP0_IDENTITY_CASE BraTS-MET-01109-003\nP0_IDENTITY_CASE BraTS-MET-01117-001\nP0_IDENTITY_CASE BraTS-MET-01117-002\nP0_IDENTITY_CASE BraTS-MET-01117-003\nP0_IDENTITY_CASE BraTS-MET-01119-000\nP0_IDENTITY_CASE BraTS-MET-01119-001\nP0_IDENTITY_CASE BraTS-MET-01119-003\nP0_IDENTITY_CASE BraTS-MET-01134-000\nP0_IDENTITY_CASE BraTS-MET-01134-003\nP0_IDENTITY_CASE BraTS-MET-01149-000\nP0_IDENTITY_CASE BraTS-MET-01149-001\nP0_IDENTITY_CASE BraTS-MET-01172-001\nP0_IDENTITY_CASE BraTS-MET-01172-002\nP0_IDENTITY_CASE BraTS-MET-01172-004\nP0_IDENTITY_CASE BraTS-MET-01180-000\nP0_IDENTITY_CASE BraTS-MET-01180-003\nP0_IDENTITY_CASE BraTS-MET-01181-001\nP0_IDENTITY_CASE BraTS-MET-01181-002\nP0_IDENTITY_CASE BraTS-MET-01187-000\nP0_IDENTITY_CASE BraTS-MET-01187-001\nP0_IDENTITY_CASE BraTS-MET-01187-003\nP0_IDENTITY_CASE BraTS-MET-01191-001\nP0_IDENTITY_CASE BraTS-MET-01191-002\nP0_IDENTITY_CASE BraTS-MET-01191-003\nP0_IDENTITY_CASE BraTS-MET-01191-004\nP0_IDENTITY_CASE BraTS-MET-01217-000\nP0_IDENTITY_CASE BraTS-MET-01217-002\nP0_IDENTITY_CASE BraTS-MET-01217-003\nP0_IDENTITY_CASE BraTS-MET-01250-001\nP0_IDENTITY_CASE BraTS-MET-01250-003\nP0_IDENTITY_CASE BraTS-MET-01268-002\nP0_IDENTITY_CASE BraTS-MET-01270-001\nP0_IDENTITY_CASE BraTS-MET-01270-002\nP0_IDENTITY_CASE BraTS-MET-01270-003\nP0_IDENTITY_CASE BraTS-MET-01276-001\nP0_IDENTITY_CASE BraTS-MET-01284-000\nP0_IDENTITY_CASE BraTS-MET-01284-002\nP0_IDENTITY_CASE BraTS-MET-01287-001\nP0_IDENTITY_CASE BraTS-MET-01287-002\nP0_IDENTITY_CASE BraTS-MET-01301-000\nP0_IDENTITY_CASE BraTS-MET-01301-001\nP0_IDENTITY_CASE BraTS-MET-01301-002\nP0_IDENTITY_CASE BraTS-MET-01310-001\nP0_IDENTITY_CASE BraTS-MET-01310-002\nP0_IDENTITY_CASE BraTS-MET-01314-002\nP0_IDENTITY_CASE BraTS-MET-01314-003\nP0_IDENTITY_CASE BraTS-MET-01331-002\nP0_IDENTITY_CASE BraTS-MET-01351-000\nP0_IDENTITY_CASE BraTS-MET-01351-002\nP0_IDENTITY_CASE BraTS-MET-01351-003\nJSON file loaded successfully.\nDataFrame saved successfully to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_k1_small_lesion_p0_20261014_r2/results/cpu_identity/leaderboard_metrics.csv\n                     subject_id  ...  small_instance_f1_wt\n101  BraTS-MET-01351-002.nii.gz  ...              0.938967\n102  BraTS-MET-01351-003.nii.gz  ...              0.628571\n103                        mean  ...              0.955302\n104                         std  ...              0.162340\n105                      median  ...              1.000000\n\n[5 rows x 73 columns]\n"
+    }
+  },
+  "operator_approved": false,
+  "path_disk": {
+    "rc": 0,
+    "stderr": "",
+    "stdout": "Filesystem          Size  Used Avail Use% Mounted on\n12.12.15.3:/public  2.0T  1.8T  209G  90% /public\n"
+  },
+  "plan_sha256": "e3169bf735a39d05c066ca34c5568285b48ba060c79007331a850c903c936beb",
+  "remote_utc": "2026-10-15T06:57:00.473706+00:00",
+  "roundtrip_last": [
+    "P0_ROUNDTRIP_CASE 103/103 BraTS-MET-01351-003"
+  ],
+  "roundtrip_logged_count": 103,
+  "roundtrip_nifti_count": 103,
+  "sacct": {
+    "rc": 0,
+    "stderr": "",
+    "stdout": "4068477|s2k1p0cpu2|COMPLETED|0:0|01:53:40|2026-10-14T12:09:43|2026-10-14T14:03:23|node222\n"
+  },
+  "squeue": {
+    "rc": 1,
+    "stderr": "slurm_load_jobs error: Invalid job id specified\n",
+    "stdout": ""
+  },
+  "static_sha_drift": []
+}

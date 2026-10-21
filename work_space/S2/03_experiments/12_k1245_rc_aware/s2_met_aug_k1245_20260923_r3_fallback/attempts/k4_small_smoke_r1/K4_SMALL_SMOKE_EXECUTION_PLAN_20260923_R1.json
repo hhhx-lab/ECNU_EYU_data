@@ -1,0 +1,44 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "experiment_id": "s2_met_aug_k1245_20260923_k4_small_smoke_r1",
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false,
+  "schema_version": 1,
+  "parent_plan_sha256": "815494ccba511570afa4c53c23034807ce8f351d06446f25d1c2c4fc4e364018",
+  "fallback_context": {
+    "F_STRICT_PREREG_GATE": false,
+    "is_scientific_gate": false,
+    "does_not_authorize_k1_or_k5": true
+  },
+  "route_id": "K4",
+  "job_name": "s2k4smallsmkr1",
+  "checkpoint": {
+    "name": "original_e",
+    "sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267"
+  },
+  "config_sha256": "a0d98585e51a05b07da6f92323b668a191e65882097040ef98206d0deea5eb19",
+  "pool": {
+    "name": "small8",
+    "manifest_file_sha256": "d27ac72359449f157a0afc91f80bc062a03eb4a3c19453f7c842f5498583a2fd",
+    "manifest_identity_sha256": "956e6384d47216e41b79905ad9c3c776dbc47422f445dadd9bd8e9c3b7a03244",
+    "case_count": 24,
+    "strata": {"8_12": 8, "13_19": 8, "20_26": 8},
+    "include_rc": false,
+    "exclude_any_source_case_with_rc": true,
+    "min_anchor_volume_mm3": 8.0,
+    "max_bbox_mm": 56.0
+  },
+  "smoke_runtime_sha256": "6b85580375c1f2a56b8fbfdb097f291a0863c01907343662813798842fba6b42",
+  "smoke": {
+    "device": "one A100 GPU",
+    "partition": "a100",
+    "exclusive": false,
+    "preprocess_workers": 0,
+    "export_workers": 0,
+    "automatic_checks": ["finite four-modality output", "support consistency", "outside-support voxel invariance", "allowed labels", "cross-modality guardrail", "candidate commit audit"],
+    "manual_review_required": 24,
+    "manual_review_template_is_not_acceptance": true
+  },
+  "training_authorization": false,
+  "k5_authorization": false
+}
