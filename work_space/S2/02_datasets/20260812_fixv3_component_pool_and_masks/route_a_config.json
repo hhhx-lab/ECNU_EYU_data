@@ -1,0 +1,138 @@
+{
+  "boundary_clearance_mm": 3.0,
+  "clearance_mm": 5.0,
+  "component_manifest_sha256": "16b9381f6392282462a4f10c9733280ffba0b2270eb2ef04db439e0a6689db80",
+  "crop_size": 64,
+  "max_bbox_mm": 56.0,
+  "max_tumours": 1,
+  "min_core_volume_mm3": 27.0,
+  "p_select": 0.2,
+  "preserve_classes": true,
+  "route_id": "MET-AUG-A",
+  "scale_max": 1.0,
+  "scale_min": 1.0,
+  "schema_version": 2,
+  "second_tumour_probability": 0.0,
+  "seed": 20260725,
+  "strata": [
+    {
+      "classes_present": [
+        1
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 3.0
+    },
+    {
+      "classes_present": [
+        1
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 1.5
+    },
+    {
+      "classes_present": [
+        1,
+        2
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 1.5
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 21.0
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 138.0
+    },
+    {
+      "classes_present": [
+        1,
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 259.0
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 21.0
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 64.5
+    },
+    {
+      "classes_present": [
+        1,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 90.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 222.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 405.0
+    },
+    {
+      "classes_present": [
+        2,
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 185.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "27_49",
+      "weight": 313.5
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "50_275",
+      "weight": 315.0
+    },
+    {
+      "classes_present": [
+        3
+      ],
+      "core_volume_bin": "gt_275",
+      "weight": 102.0
+    }
+  ],
+  "target_groups_sha256": "ef24e6737716d1a5ef1c85ee7da9c07b01c77d435f636843968a7aab5b2d43b4"
+}
