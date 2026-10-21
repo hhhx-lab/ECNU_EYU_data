@@ -1,0 +1,69 @@
+{
+  "artifact_integrity": {
+    "leaderboard_metrics_sha256": "e62b6a093f7ed9b2f6ece31af805bee2656158ceeb2ea4fa8064ab15e757e728",
+    "mean_metrics_txt_sha256": "00a92599b578a533c14ee29ad837e507a74857ad1fc6c2d1a66ffe0b3dafcf88",
+    "panoptica_summary_sha256": "22c02234863f699196ea01ba380ea352cbb885b37be701951add5e950430c810",
+    "remote_manifest_entry_count": 48,
+    "remote_sha256_check": "pass",
+    "remote_sha256_manifest_sha256": "d82c860b7f11650dffacaf9a5cd8c160bcbcdc2739450b3024e6a7e3ca406230"
+  },
+  "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+  "claim_boundary": "Internal 27-case synthesized-T2W validation only; not an independent holdout or Synapse result.",
+  "input_contract": {
+    "case_count": 27,
+    "input_t2w": "synthesized_completion",
+    "locked_test_used": false,
+    "source_split": "val"
+  },
+  "local_result_root": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/27。result",
+  "metric_contract": {
+    "aggregate_rows": [
+      "mean",
+      "std",
+      "median"
+    ],
+    "case_rows": 27,
+    "empty_mean_fields": [
+      "lesionwise_dsc_mean_rc",
+      "lesionwise_dsc_std_rc",
+      "lesionwise_hd95_mean_rc",
+      "lesionwise_hd95_std_rc",
+      "lesionwise_nsd_mean_rc",
+      "lesionwise_nsd_std_rc",
+      "small_instance_tp_rc",
+      "small_instance_fn_rc",
+      "small_instance_fp_rc",
+      "small_instance_f1_rc"
+    ],
+    "empty_mean_fields_reason": "The 27-case reference set has no evaluable resection-cavity lesions for these aggregate fields; values are preserved as undefined rather than fabricated.",
+    "official_met_evaluation_complete": true,
+    "panoptica_metrics": 27,
+    "panoptica_missings": 0
+  },
+  "operator_approved": false,
+  "portable_checkout": {
+    "prediction_manifest": "PREDICTION_MANIFEST.csv",
+    "prediction_shard_0_count": 14,
+    "prediction_shard_1_count": 13,
+    "prediction_total_count": 27,
+    "remote_absolute_symlinks_in_git": false,
+    "source_provenance": "evidence/VAL27_CASE_MANIFEST.csv"
+  },
+  "prediction_contract": {
+    "coverage_missing": 0,
+    "coverage_unexpected": 0,
+    "geometry_mismatch_count": 0,
+    "invalid_label_count": 0
+  },
+  "remote_result_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/e_missing_t2w_val27_20260814_r2",
+  "schema_version": 1,
+  "slurm": {
+    "elapsed": "00:04:35",
+    "exit_code": "0:0",
+    "job_id": "3396633",
+    "node": "gpu9",
+    "state": "COMPLETED"
+  },
+  "status": "experimental_unvalidated_pass",
+  "validated_at_utc": "2026-08-13T19:14:46Z"
+}

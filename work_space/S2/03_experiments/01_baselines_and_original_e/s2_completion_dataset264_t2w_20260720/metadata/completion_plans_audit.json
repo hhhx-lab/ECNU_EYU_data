@@ -1,0 +1,135 @@
+{
+  "plans_source_kind": "checkpoint_init_args",
+  "plans_source": "/cloud/cloud-ssd1/brats2026/s2/baseline/checkpoint_final.pth",
+  "plans_source_sha256": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1",
+  "source_dataset_name": "Dataset263_BraTS2026_MET_RealOnly_Current",
+  "target_dataset_name": "Dataset264_BraTS2026_MET_Completion",
+  "target_plans": "/cloud/cloud-ssd1/brats2026/s2/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/nnUNetPlans.json",
+  "target_sha256": "c20ac311f0b3db0f0710e98b0b56e65e8bb38c13b95094b6d6f9966ac529ffa5",
+  "source_dataset_json": "/cloud/cloud-ssd1/brats2026/s2/nnUNet_raw/Dataset264_BraTS2026_MET_Completion/dataset.json",
+  "source_dataset_json_sha256": "e6e77a97ed8f43c44b3ae647e4cbd51606cf75393bb1241cb9f862e9579a43e8",
+  "target_dataset_json": "/cloud/cloud-ssd1/brats2026/s2/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/dataset.json",
+  "target_dataset_json_sha256": "e6e77a97ed8f43c44b3ae647e4cbd51606cf75393bb1241cb9f862e9579a43e8",
+  "expected_num_training": 1138,
+  "configuration": "3d_fullres",
+  "batch_size": 2,
+  "patch_size": [
+    128,
+    128,
+    128
+  ],
+  "architecture": {
+    "network_class_name": "dynamic_network_architectures.architectures.unet.PlainConvUNet",
+    "arch_kwargs": {
+      "n_stages": 6,
+      "features_per_stage": [
+        32,
+        64,
+        128,
+        256,
+        320,
+        320
+      ],
+      "conv_op": "torch.nn.modules.conv.Conv3d",
+      "kernel_sizes": [
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          3
+        ]
+      ],
+      "strides": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2
+        ]
+      ],
+      "n_conv_per_stage": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_conv_per_stage_decoder": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "conv_bias": true,
+      "norm_op": "torch.nn.modules.instancenorm.InstanceNorm3d",
+      "norm_op_kwargs": {
+        "eps": 1e-05,
+        "affine": true
+      },
+      "dropout_op": null,
+      "dropout_op_kwargs": null,
+      "nonlin": "torch.nn.LeakyReLU",
+      "nonlin_kwargs": {
+        "inplace": true
+      }
+    },
+    "_kw_requires_import": [
+      "conv_op",
+      "norm_op",
+      "dropout_op",
+      "nonlin"
+    ]
+  },
+  "baseline_checkpoint": "/cloud/cloud-ssd1/brats2026/s2/baseline/checkpoint_final.pth",
+  "baseline_checkpoint_sha256": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1"
+}
