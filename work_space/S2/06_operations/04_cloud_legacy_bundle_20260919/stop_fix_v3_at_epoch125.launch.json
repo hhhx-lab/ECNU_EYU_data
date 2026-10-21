@@ -1,0 +1,27 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "controller": {
+    "log": "/root/brats2026/runs/s2_met_aug_fix_v3_20260729_r1/logs/early_stop_epoch125_controller.log",
+    "pid": 7634,
+    "pid_file": "/root/brats2026/runs/s2_met_aug_fix_v3_20260729_r1/early_stop_epoch125_controller.pid",
+    "script_sha256": "ee6d55a85ccf70ebccd33c2faaa3dc09a1f88e864a1d78e6a1c11f02ea21af8e"
+  },
+  "created_at_utc": "2026-07-30T05:58:45Z",
+  "event_model": "linux_inotify_close_write_one_shot_no_sleep_no_polling",
+  "failure_report_exists": false,
+  "launch_mode": "nohup_setsid",
+  "plan_sha256": "fcbd20b0ece74c10ddd10b6c42515d2b28eab875df0e12d075fbff19bb86f013",
+  "preflight": {
+    "checkpoint_current_epoch": 100,
+    "expected_boot_id": "ea8de68b-4b5c-4571-ae71-ba5d58c5dfc1",
+    "status": "pass",
+    "target_epoch": 125,
+    "trainer_pid": 508,
+    "wrapper_pid": 494
+  },
+  "status": "pass_armed",
+  "systemd_launch": {
+    "reason": "systemd_is_not_pid_1",
+    "status": "not_used"
+  }
+}
