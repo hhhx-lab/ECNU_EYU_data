@@ -1,0 +1,573 @@
+{
+  "status": "experimental_unvalidated",
+  "operator_approved": false,
+  "dataset_role": "fixed_internal_validation_103",
+  "selection_rules": {
+    "segmentation": "Two illustrative fixed-103 validation cases were selected for clear tumor visibility, three visible annotation labels, strong original-E whole-volume overlap, and distinct lesion morphologies. They are not claimed to be random or statistically representative.",
+    "segmentation_high_agreement": "The two fixed-103 cases with the highest original-E whole-volume macro label Dice were selected as best-case, high-agreement examples. This deterministic selection is not representative of cohort-level performance and does not establish statistical significance.",
+    "t2w_reconstruction": "Two illustrative fixed-103 validation cases were selected for clear tumor visibility and distinct lesion morphologies; one case is near the upper quartile of G1 r4 Ensemble brain SSIM. They are not claimed to be random or statistically representative."
+  },
+  "figure_case_ids": {
+    "segmentation": [
+      "BraTS-MET-00025-000",
+      "BraTS-MET-01060-001"
+    ],
+    "segmentation_high_agreement": [
+      "BraTS-MET-00532-000",
+      "BraTS-MET-00552-000"
+    ],
+    "segmentation_options": {
+      "A": [
+        "BraTS-MET-00532-000",
+        "BraTS-MET-00552-000"
+      ],
+      "B": [
+        "BraTS-MET-00025-000",
+        "BraTS-MET-01060-001"
+      ],
+      "C": [
+        "BraTS-MET-00532-000",
+        "BraTS-MET-00025-000"
+      ],
+      "D": [
+        "BraTS-MET-00552-000",
+        "BraTS-MET-01060-001"
+      ]
+    },
+    "t2w_reconstruction": [
+      "BraTS-MET-00009-000",
+      "BraTS-MET-00807-000"
+    ]
+  },
+  "segmentation_model": {
+    "name": "original E",
+    "architecture": "nnU-Net",
+    "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "selection_evidence": "S2/results/s2_official_validation_inference_20260727_r1/selection_evidence/MODEL_SELECTION.json"
+  },
+  "t2w_model": {
+    "name": "G1 r4 Ensemble (EncDec + BBDM)",
+    "synthesis_type_as_recorded": "ensamble",
+    "result_contract": "G1/results/experimental_unvalidated_single_model_eval_20260812_r4/ensemble_r4/metrics.csv",
+    "interpretation_boundary": "Qualitative and reconstruction-metric evidence only; this figure does not establish downstream nnU-Net segmentation benefit."
+  },
+  "display_contract": {
+    "orientation": "nibabel closest-canonical, axial slice rotated 90 degrees for display",
+    "slice_rule": "argmax GT non-background voxel count over axial slices, except the documented BraTS-MET-00552-000 override to slice 115 so both SNFH and ET are visible",
+    "segmentation_background": "real T1C; shared window/crop for GT and prediction",
+    "t2w_window": "1st-99.5th positive-voxel percentiles from real T2W, shared with reconstruction",
+    "no_independent_panel_normalization": true
+  },
+  "output_files": {
+    "segmentation_gt_vs_prediction.png": {
+      "bytes": 1446225,
+      "sha256": "f8af372ef646efef0957f55f432dd9c018a1ef4b0be9b6c3a81950aa20602065"
+    },
+    "segmentation_gt_vs_prediction.pdf": {
+      "bytes": 179921,
+      "sha256": "16ed1437a8e37b1d39dcc5824e587dc9b25cc54cb850819f867bf6071b571b0f"
+    },
+    "segmentation_gt_vs_prediction.svg": {
+      "bytes": 558618,
+      "sha256": "100d41eab1fbb64d51b5ae6bd62f1c2ff858e1474687d991b0ffbe26f2f95aae"
+    },
+    "segmentation_high_agreement_gt_vs_prediction.png": {
+      "bytes": 1620431,
+      "sha256": "883e37c189f8ff5a093e577acc74814e3948d69c01975127254c49f3f8d111fd"
+    },
+    "segmentation_high_agreement_gt_vs_prediction.pdf": {
+      "bytes": 185326,
+      "sha256": "32fe6c8cfbe7dd937a9e619cc3fc765b81bfe1bc8e6c364c8daa600435da7a4d"
+    },
+    "segmentation_high_agreement_gt_vs_prediction.svg": {
+      "bytes": 584391,
+      "sha256": "c2a25b4caa4df0be4fbfa55d6c430cf2ae33815d68a43f3f1da4607adab887a7"
+    },
+    "segmentation_option_A.png": {
+      "bytes": 1620431,
+      "sha256": "883e37c189f8ff5a093e577acc74814e3948d69c01975127254c49f3f8d111fd"
+    },
+    "segmentation_option_A.pdf": {
+      "bytes": 185326,
+      "sha256": "204c8085dcc2943328ba90b8898222b19b0f9631c74dea03a4ea5beba83f40b2"
+    },
+    "segmentation_option_A.svg": {
+      "bytes": 584391,
+      "sha256": "9a4e415cbef17c62ac72b7c4bdf830a884f01532456771c9886570ba9963cd8d"
+    },
+    "segmentation_option_B.png": {
+      "bytes": 1446225,
+      "sha256": "f8af372ef646efef0957f55f432dd9c018a1ef4b0be9b6c3a81950aa20602065"
+    },
+    "segmentation_option_B.pdf": {
+      "bytes": 179921,
+      "sha256": "37527bf7d77a1b0d065a516c3e8bb5cc2d01640e0e06d4b0e7f1264dde1d1ed7"
+    },
+    "segmentation_option_B.svg": {
+      "bytes": 558618,
+      "sha256": "72fc5526d10e38cf063a712c01a8192203df252ea9d89d4a56eefc9e55f8c590"
+    },
+    "segmentation_option_C.png": {
+      "bytes": 1438945,
+      "sha256": "3bddacb8f4628ffa17255c619214a19215b22fffef3b0e126f976273a5c06f2f"
+    },
+    "segmentation_option_C.pdf": {
+      "bytes": 175686,
+      "sha256": "784c1e805fe7979d670d9a3a531eb9b550f4486d0baf1d507f1e5919dd80a4e3"
+    },
+    "segmentation_option_C.svg": {
+      "bytes": 533005,
+      "sha256": "5f08d9aecbfa2accd574945ad5a9aab38ffe2bebe92a181e700e87476a78f8c0"
+    },
+    "segmentation_option_D.png": {
+      "bytes": 1625484,
+      "sha256": "975dfe223b34d47b8e3e1fc991a7d7fdb4a476cc31420b4369353d07e12de1f4"
+    },
+    "segmentation_option_D.pdf": {
+      "bytes": 189537,
+      "sha256": "3a0fe5866a10d89bd2594c7626e5325a562a2e4e412f5a8079bfd9247258b003"
+    },
+    "segmentation_option_D.svg": {
+      "bytes": 610066,
+      "sha256": "b60f412f0e624e4236962b93060b681fb838ed7c853176092b34e03b62c1e848"
+    },
+    "t2w_real_vs_ensemble.png": {
+      "bytes": 2368742,
+      "sha256": "b9bd4feee122156c19a9cea912cb578da502129a68bc10fb83a4def9440f9740"
+    },
+    "t2w_real_vs_ensemble.pdf": {
+      "bytes": 181694,
+      "sha256": "ffacabde5566924c5cb4e2168b1ceaf336f0c2349549e1c7151a8d7b2b3e195f"
+    },
+    "t2w_real_vs_ensemble.svg": {
+      "bytes": 536390,
+      "sha256": "efb15da6766feb34de682cff42aaac70ead2a0f54b7f67e82d1f50cdc437ca85"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "BraTS-MET-00025-000",
+      "figure_roles": [
+        "segmentation"
+      ],
+      "paths": {
+        "seg_gt": {
+          "path": "inputs/BraTS-MET-00025-000/BraTS-MET-00025-000-seg.nii.gz",
+          "sha256": "80c3ec9682e82c5f5cd8430e896ed5fa0636cdc2e999a0fa9e69c37f34a00864"
+        },
+        "t1c": {
+          "path": "inputs/BraTS-MET-00025-000/BraTS-MET-00025-000-t1c.nii.gz",
+          "sha256": "c2cc8d819484c3f664b27d9f828b58588afd8d5de13517b09dd84b3c4f9a03d8"
+        },
+        "seg_prediction": {
+          "path": "inputs/BraTS-MET-00025-000/BraTS-MET-00025-000-seg-pred-original-E.nii.gz",
+          "sha256": "09ade9d137750470f126cce243381a20d785eb465973dc9be7c29e87e4b14a3b"
+        }
+      },
+      "z_index_canonical": 59,
+      "lesion_voxels_on_slice": 1906,
+      "shape": [
+        240,
+        240,
+        155
+      ],
+      "affine": [
+        [
+          1.0,
+          0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          1.0,
+          -0.0,
+          239.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "lesion_bounds": [
+        90,
+        227,
+        15,
+        152
+      ],
+      "t1c_window": [
+        0.10242170125246047,
+        0.5715474164485934
+      ],
+      "dice_by_label": {
+        "1": 0.9195729537366548,
+        "2": 0.9464332251415575,
+        "3": 0.916906002044492
+      },
+      "macro_label_dice": 0.9276373936409015
+    },
+    {
+      "case_id": "BraTS-MET-01060-001",
+      "figure_roles": [
+        "segmentation"
+      ],
+      "paths": {
+        "seg_gt": {
+          "path": "inputs/BraTS-MET-01060-001/BraTS-MET-01060-001-seg.nii.gz",
+          "sha256": "7d722e06e61028347c0d0209ea245fab6754c7d0eca1dc64ccda7ce458ef73c1"
+        },
+        "t1c": {
+          "path": "inputs/BraTS-MET-01060-001/BraTS-MET-01060-001-t1c.nii.gz",
+          "sha256": "e964c76850e51cd5903f99892a95057a370f1c38551fefee4b41b1b280d843b0"
+        },
+        "seg_prediction": {
+          "path": "inputs/BraTS-MET-01060-001/BraTS-MET-01060-001-seg-pred-original-E.nii.gz",
+          "sha256": "e3f9d8c4c7fcd3f5ef48fdb2a4abddfbd9289f050f14675baa7ebdfde2cdc73d"
+        }
+      },
+      "z_index_canonical": 115,
+      "lesion_voxels_on_slice": 1333,
+      "shape": [
+        256,
+        256,
+        376
+      ],
+      "affine": [
+        [
+          1.0,
+          0.0,
+          -0.0,
+          -126.0184326171875
+        ],
+        [
+          0.0,
+          1.0,
+          -0.0,
+          -98.13790893554688
+        ],
+        [
+          0.0,
+          0.0,
+          0.6000019907951355,
+          -107.83172607421875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "lesion_bounds": [
+        128,
+        228,
+        104,
+        204
+      ],
+      "t1c_window": [
+        0.0038738239090889692,
+        0.5818539050221443
+      ],
+      "dice_by_label": {
+        "1": 0.9475869226777374,
+        "2": 0.9003345798071246,
+        "3": 0.8638751466313052
+      },
+      "macro_label_dice": 0.9039322163720557
+    },
+    {
+      "case_id": "BraTS-MET-00532-000",
+      "figure_roles": [
+        "segmentation_high_agreement"
+      ],
+      "paths": {
+        "seg_gt": {
+          "path": "inputs/BraTS-MET-00532-000/BraTS-MET-00532-000-seg.nii.gz",
+          "sha256": "0e583157d1a5dcab63d31b7862993b7150fe54a31c7fabe53db5fd4adfadae0d"
+        },
+        "t1c": {
+          "path": "inputs/BraTS-MET-00532-000/BraTS-MET-00532-000-t1c.nii.gz",
+          "sha256": "a300dceefd7c3695416b098d4d16f9202c8b9422b0bae0ef4f487152621478b3"
+        },
+        "seg_prediction": {
+          "path": "inputs/BraTS-MET-00532-000/BraTS-MET-00532-000-seg-pred-original-E.nii.gz",
+          "sha256": "b0891dca4afbb74b8829033b18f77f7cf8ade575b1f3c649bcc1fdec7b4816ce"
+        }
+      },
+      "z_index_canonical": 86,
+      "lesion_voxels_on_slice": 536,
+      "shape": [
+        240,
+        240,
+        155
+      ],
+      "affine": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          239.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "lesion_bounds": [
+        40,
+        131,
+        108,
+        199
+      ],
+      "t1c_window": [
+        0.0742390912026167,
+        0.3897853074967861
+      ],
+      "dice_by_label": {
+        "2": 0.969475236171026,
+        "3": 0.9730496453900709
+      },
+      "macro_label_dice": 0.9712624407805485
+    },
+    {
+      "case_id": "BraTS-MET-00552-000",
+      "figure_roles": [
+        "segmentation_high_agreement"
+      ],
+      "paths": {
+        "seg_gt": {
+          "path": "inputs/BraTS-MET-00552-000/BraTS-MET-00552-000-seg.nii.gz",
+          "sha256": "c0a6e9fe09f9967e9bfe2cfac6b2da14f2ac60987137c74fdaed0b8d3f6403f7"
+        },
+        "t1c": {
+          "path": "inputs/BraTS-MET-00552-000/BraTS-MET-00552-000-t1c.nii.gz",
+          "sha256": "15cb2a63538a79ad6f6180a92045cab284169376bcfa6eaade7676c22eaa7f68"
+        },
+        "seg_prediction": {
+          "path": "inputs/BraTS-MET-00552-000/BraTS-MET-00552-000-seg-pred-original-E.nii.gz",
+          "sha256": "5bc824017fcc28071132ef81efd041f293bcc2db78483d9b0ccc9d1882f19626"
+        }
+      },
+      "z_index_canonical": 115,
+      "lesion_voxels_on_slice": 1172,
+      "shape": [
+        240,
+        240,
+        155
+      ],
+      "affine": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          239.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "lesion_bounds": [
+        54,
+        184,
+        27,
+        157
+      ],
+      "t1c_window": [
+        0.0569999173283577,
+        0.456759895086287
+      ],
+      "dice_by_label": {
+        "2": 0.9631526288044239,
+        "3": 0.9384787472035794
+      },
+      "macro_label_dice": 0.9508156880040016
+    },
+    {
+      "case_id": "BraTS-MET-00009-000",
+      "figure_roles": [
+        "t2w_reconstruction"
+      ],
+      "paths": {
+        "seg_gt": {
+          "path": "inputs/BraTS-MET-00009-000/BraTS-MET-00009-000-seg.nii.gz",
+          "sha256": "53dd4292d48fddabf25154ec2e1d832e0bcd7608f1e4d0dc0d10950e13380167"
+        },
+        "t2w_real": {
+          "path": "inputs/BraTS-MET-00009-000/BraTS-MET-00009-000-t2w.nii.gz",
+          "sha256": "df328c84d3c535a2cc619bfc4d83352ddf4da6a918d85f527552d5cb1d6a49d4"
+        },
+        "t2w_ensemble": {
+          "path": "inputs/BraTS-MET-00009-000/BraTS-MET-00009-000-t2w-ensemble-r4.nii.gz",
+          "sha256": "b6a909a1b32d9a2ef028949516edb8b7e3a5ccea0afb914535dca1cdfe10f799"
+        }
+      },
+      "z_index_canonical": 76,
+      "lesion_voxels_on_slice": 2682,
+      "shape": [
+        240,
+        240,
+        155
+      ],
+      "affine": [
+        [
+          1.0,
+          0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          0.0,
+          1.0,
+          -0.0,
+          239.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "brain_bounds": [
+        42,
+        222,
+        32,
+        212
+      ],
+      "t2w_window_from_real": [
+        0.11646172560751439,
+        0.8041152486205111
+      ],
+      "g1_metrics": {
+        "whole_SSIM": 0.9203361868858337,
+        "whole_PSNR": 28.033629903119113,
+        "whole_MSE": 0.0015726678539067507,
+        "whole_MAE": 0.012571031227707863,
+        "brain_SSIM": 0.7982777953147888,
+        "brain_PSNR": 18.922741767978483,
+        "brain_MSE": 0.012815212830901146,
+        "brain_MAE": 0.09100840240716934
+      },
+      "brain_ssim_rank_ascending": 62,
+      "cohort_size": 103
+    },
+    {
+      "case_id": "BraTS-MET-00807-000",
+      "figure_roles": [
+        "t2w_reconstruction"
+      ],
+      "paths": {
+        "seg_gt": {
+          "path": "inputs/BraTS-MET-00807-000/BraTS-MET-00807-000-seg.nii.gz",
+          "sha256": "da96a89e519976de807a7a41061fe3a008e20a59ef1ecf2998d4893c567399e8"
+        },
+        "t2w_real": {
+          "path": "inputs/BraTS-MET-00807-000/BraTS-MET-00807-000-t2w.nii.gz",
+          "sha256": "21ee955ba814ecb65cde553d131fbaccc61aa054d55a57f97744446807a8ec8e"
+        },
+        "t2w_ensemble": {
+          "path": "inputs/BraTS-MET-00807-000/BraTS-MET-00807-000-t2w-ensemble-r4.nii.gz",
+          "sha256": "5266334e94aa7c2cf9ebe071037d299996b904852ae7f8b5eab4f78bb765c13d"
+        }
+      },
+      "z_index_canonical": 83,
+      "lesion_voxels_on_slice": 701,
+      "shape": [
+        240,
+        240,
+        155
+      ],
+      "affine": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -239.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "brain_bounds": [
+        38,
+        218,
+        32,
+        212
+      ],
+      "t2w_window_from_real": [
+        0.18702931091189384,
+        0.8524335235357284
+      ],
+      "g1_metrics": {
+        "whole_SSIM": 0.9147495031356812,
+        "whole_PSNR": 28.615091936527275,
+        "whole_MSE": 0.0013755956897512078,
+        "whole_MAE": 0.011031807400286198,
+        "brain_SSIM": 0.8082629442214966,
+        "brain_PSNR": 20.288333832078177,
+        "brain_MSE": 0.009357646107673645,
+        "brain_MAE": 0.06699947267770767
+      },
+      "brain_ssim_rank_ascending": 77,
+      "cohort_size": 103
+    }
+  ]
+}

@@ -1,91 +1,50 @@
-# ECNU_EYU
+# ECNU 比赛项目
 
-本仓库用于整理 ECNU_EYU 参赛资料、任务分工、成员工作区、阶段进度和参考代码。当前结构围绕 2026 BraTS Task 1 建立，公共资料放在 `data_space`，个人工作内容放在 `work_space`，阶段计划放在 `time_pipeline`。
+**先看[项目总纲](总纲/README.md)**：目录解释、G1/G2/S1/S2历程、模型/数据/结果定位及证据边界。每个文件的用途与完整文件树见[当前全量索引](总纲/当前索引.md)，后续每次项目变动须按总纲维护约定同步。
 
-## 文件结构
+2026-09-19已按实际用途重新搬迁归类。不是索引镜像，主工作树没有旧目录快捷链接。所有原文件、重复件和失败记录保留。
 
 ```text
-.
-├── README.md
-├── PROJECT_RULES.md
-├── data_space/
-│   ├── README.md
-│   ├── task1_2026/
-│   │   ├── BraTS2026_Task1_中文.md
-│   │   ├── BraTS2026_Task1_English.md
-│   │   ├── datasets/
-│   │   │   ├── README.md
-│   │   │   ├── 数据集现状.md
-│   │   │   ├── 数据契约.md
-│   │   │   └── Sage Bionetworks 登录.pdf
-│   │   └── reference_code/
-│   │       └── nnunet_custom/
-│   ├── past_articles/
-│   │   ├── 2023/
-│   │   └── 2025/
-│   ├── past_code/
-│   │   ├── 2023/
-│   │   ├── 2025/
-│   │   ├── 代码解析.md
-│   │   └── 往年冠军代码_逐文件作用详解.md
-│   ├── bios_course_pdfs/
-│   │   ├── C1.pdf ... C11.pdf
-│   │   └── c6_diffusion_outputs/
-│   └── task_assignments/
-│       └── ECNU-NYU2026分工架构(2).docx
-├── work_space/
-│   ├── README.md
-│   ├── G1/
-│   ├── G2/
-│   ├── S1/
-│   ├── S2/
-│   ├── S3/
-│   ├── S4/
-│   └── S5/
-└── time_pipeline/
-    └── README.md
+ECNU_EYU_data/
+|-- work_space/
+|   |-- G1/  代码、补全数据、Diffusion样本、评估、模型、文档
+|   |-- G2/  QC代码、数据发布包、质量报告、运行资料
+|   |-- S1/  多任务分割代码、文档、运行资料
+|   |-- S2/  代码、增强数据、分路线实验、模型、文档、比赛提交
+|   |-- S3/  分割代码与文档
+|   |-- S4/  SAM2-UNet代码与文档
+|   `-- S5/  SegMamba代码、第三方依赖与文档
+|-- data_space/              共享数据契约、参考样例、参考权重
+|-- 01_project_documents/    比赛要求、分工、总计划、跨模块总结
+|-- 02_reference_materials/  论文、讲义、外部材料
+|-- 03_reference_code/       按来源区分的上游代码
+|-- 04_paper_figures/        图表、绘图源码、图注
+|-- tools/                  当前路径配置与旧路径定位工具
+`-- 99_archive/             旧索引、缓存、原目录、原代码及搬迁审计
 ```
 
-## 资料区
+## 模块内部
 
-`data_space` 存放公共参考材料和项目资料：
+`01_code` 放代码，`02_datasets` 放数据，`03_experiments` 按研究路线放结果，`04_models` 放独立权重，`05_documents` 放方法/计划/报告，`06_operations` 放运行资料，`07_submissions` 放比赛提交。没有本地内容的类别不创建空目录。
 
-- `task1_2026/`：BraTS 2026 Task 1 中英文说明、数据说明、数据契约、Sage 登录资料和 nnU-Net 自定义参考代码。
-- `task1_2026/datasets/`：只保存数据说明和访问资料，不保存大型医学影像原始数据。
-- `past_articles/`：往年冠军论文和参考文章。
-- `past_code/`：往年代码、示例工程、依赖文件和代码解析资料。
-- `bios_course_pdfs/`：BIOS AI 课程 PDF 及 C6 扩散模型整理材料。
-- `task_assignments/`：成员分工、任务安排和会议/职责资料。
+G2的数据发布包放在 `02_dataset_release`，保持manifest、split、QC之间的配套合同。每个数据集、模型和结果批次旁均有 `00_说明_20260919.md`，说明来源、内容、本地计数、相关实验和使用限制。
 
-大型训练集、验证集、`.nii/.nii.gz` 医学影像和数据压缩包不进入仓库，具体保留位置见 `data_space/task1_2026/datasets/README.md`。
+[G1](work_space/G1/README.md) · [G2](work_space/G2/README.md) · [S1](work_space/S1/README.md) · [S2](work_space/S2/README.md) · [S3](work_space/S3/README.md) · [S4](work_space/S4/README.md) · [S5](work_space/S5/README.md)
 
-## 工作区
+## 路径与运行
 
-`work_space` 按成员或小组划分：
+本地路径由根目录 `.env` 配置，`.env.example`写明每项用途与来源。活动G1配置及G2入口已做必要路径适配，原版代码另存历史区。S1/S2的repository根位置保持不变，内部脚本已按用途分组，并调整活动代码和测试中的调用路径。
 
-- 生成模型小组：`G1`、`G2`
-- 分割模型小组：`S1`、`S2`、`S3`、`S4`、`S5`
+S1旧Trainer和备份、S2空模板已归档。S2固定划分及病灶表归入数据目录；服务器资料按ECNU/H20/NYU/Cloud历史包分开。`custom_nnunet`的模块结构和文件内容保留，以保持模型加载身份；冻结实验runtime及历史服务器脚本不改写。
 
-每个工作区包含：
+只读定位旧文件：`conda run --no-capture-output -n base python -B tools/project_paths.py "旧路径"`。远端路径不会被替换为本机路径。
 
-- `README.md`：记录整体任务、当前进度、本周计划和提交记录。
-- `task_assignment.md`：从原始分工文档拆出的个人任务。
-- `code/`：个人代码、脚本、notebook 或实验工程。
-- `data/`：个人处理后的数据说明或小规模派生数据。
-- `docs/`：个人任务文档、分析记录和方法说明。
-- `results/`：图表、实验结果和阶段产出。
+旧实验runtime、Slurm脚本、manifest和SHA清单保留原内容，不把旧命令自动改造成新提交。完整MRI原始数据不在本地，运行涉及原始影像的任务前须明确配置数据根，并对新计划做预检。本次未训练、未推理、未安装依赖、未联网、未提交Git。
 
-每个人仅在自己的工作区内修改和上传内容；需要共享的资料应放入 `data_space`。
+## 保留与验收
 
-## 时间进度线
+[历史保留区说明](99_archive/README.md)包含旧索引和原代码位置。搬迁记录位于 `99_archive/reorganization_20260919_r2`，文件原始内容按SHA全量核验。
 
-`time_pipeline/README.md` 用于记录比赛时间节点、阶段性任务、成员进度和下一步计划。每次阶段性提交后，应同步更新自己的任务状态。
+后续S1/S2细分记录位于 `99_archive/s1_s2_reorganization_20260919_r3`；本轮原件位于 [S1/S2历史保留区](99_archive/s1_s2_legacy_20260919/README.md)。旧路径定位工具会衔接两轮搬迁记录。
 
-## 提交规则
-
-1. Git commit message 使用简体中文，简要描述改动内容。
-2. 代码需要具有可读性，必要时补充注释或文档说明。
-3. 提交文档必须可读，不出现乱码；正式文档中的公式不要保留为 LaTeX 源码。
-4. 不要改动其他同学工作区的内容。
-5. 不要提交缓存、临时测试文件、调试产物、本地代理配置或大型原始数据。
-6. 提交频率建议一周两次左右，不低于两次。
+本次新说明及审计为 `experimental_unvalidated`、`operator_approved=false`、`formal_gate_status=not_run_not_passed`，不改变历史模型/实验的正式状态。
