@@ -1,0 +1,1 @@
+../../../../../G2/30_results/qc/G2_synthetic_data_QC报告模板_v2.md

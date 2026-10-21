@@ -1,0 +1,1 @@
+../../../../../G2/30_results/qc/G2_official_metrics_alignment_QC_strategy_2026-06-15.md

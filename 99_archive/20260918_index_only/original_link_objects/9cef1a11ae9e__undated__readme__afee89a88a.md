@@ -1,0 +1,1 @@
+../../../../../G1/10_code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/mednext/nnunet_mednext/experiment_planning/alternative_experiment_planning/readme.md

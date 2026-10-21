@@ -1,0 +1,7 @@
+# 历史空目录保留说明
+
+整理批次：20260918T153706Z。原目录：`S2/results/experimental_unvalidated/s2_met_aug_bef_extend175_20260903_r3/evidence`。
+
+本地整理前目录为空。原目录保留，本说明仅消除空目录并解释来源；不代表远端没有数据，也不代表实验成功或失败。
+
+artifact_status=experimental_unvalidated；operator_approved=false；formal_gate_status=not_run_not_passed。

@@ -1,0 +1,1 @@
+../../../../../G2/40_documents/G1_G2_diffusion_output_contract.md
