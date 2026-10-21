@@ -9,7 +9,7 @@ import nibabel as nib
 import numpy as np
 
 
-CODE_DIR = Path(__file__).resolve().parents[1] / "code"
+CODE_DIR = Path(__file__).resolve().parents[1]
 SCRIPT_PATH = CODE_DIR / "train_sam2unet_post.py"
 
 
