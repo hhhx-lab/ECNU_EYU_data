@@ -1,0 +1,137 @@
+Initializing Panoptica Evaluator...
+The same labels [1, 3] were assigned to two different labelgroups, got SegmentationClassGroups = 
+ - et : LabelGroup [3], single_instance=False
+ - rc : LabelGroup [4], single_instance=False
+ - tc : LabelMergeGroup [1, 3] -> ONE, single_instance=False
+ - wt : LabelMergeGroup [1, 2, 3] -> ONE, single_instance=False
+Intended? This will evaluate the duplicate labels in both groups
+Starting evaluation for 104 subjects...
+Warning: No matching prediction file found for BraTSMET_000013.nii.gz (expected ending with 00001.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000015.nii.gz (expected ending with 00001.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000024.nii.gz (expected ending with 00002.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000034.nii.gz (expected ending with 00003.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000053.nii.gz (expected ending with 00005.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000063.nii.gz (expected ending with 00006.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000070.nii.gz (expected ending with 00007.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000073.nii.gz (expected ending with 00007.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000088.nii.gz (expected ending with 00008.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000093.nii.gz (expected ending with 00009.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000097.nii.gz (expected ending with 00009.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000117.nii.gz (expected ending with 00011.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000120.nii.gz (expected ending with 00012.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000141.nii.gz (expected ending with 00014.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000163.nii.gz (expected ending with 00016.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000173.nii.gz (expected ending with 00017.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000181.nii.gz (expected ending with 00018.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000187.nii.gz (expected ending with 00018.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000193.nii.gz (expected ending with 00019.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000196.nii.gz (expected ending with 00019.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000202.nii.gz (expected ending with 00020.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000220.nii.gz (expected ending with 00022.nii.gz). Skipping.
+[23/104] Evaluating BraTSMET_000246.nii.gz...
+──────────────────────── Thank you for using panoptica ─────────────────────────
+                    Please support our development by citing                    
+        https://github.com/BrainLesion/panoptica#citation -- Thank you!         
+────────────────────────────────────────────────────────────────────────────────
+
+/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/utils/input_check_and_conversion/sanity_checker.py:182: UserWarning: The input arrays are not of integer type. This may lead to unexpected behavior in the segmentation maps.
+  warn(
+/public/home/zqchen/.conda/envs/brats_eval/lib/python3.10/site-packages/panoptica/metrics/normalized_surface_dice.py:41: UserWarning: The threshold is set to 0.5, which is the default value, which may not be appropriate for your data.
+  warnings.warn(
+Warning: No matching prediction file found for BraTSMET_000252.nii.gz (expected ending with 00025.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000254.nii.gz (expected ending with 00025.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000262.nii.gz (expected ending with 00026.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000266.nii.gz (expected ending with 00026.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000269.nii.gz (expected ending with 00026.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000292.nii.gz (expected ending with 00029.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000514.nii.gz (expected ending with 00051.nii.gz). Skipping.
+[31/104] Evaluating BraTSMET_000532.nii.gz...
+Error evaluating subject BraTSMET_000532.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (336, 336, 112). Please check the input files.
+[32/104] Evaluating BraTSMET_000537.nii.gz...
+Error evaluating subject BraTSMET_000537.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (320, 320, 104). Please check the input files.
+Warning: No matching prediction file found for BraTSMET_000542.nii.gz (expected ending with 00054.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000545.nii.gz (expected ending with 00054.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000610.nii.gz (expected ending with 00061.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000629.nii.gz (expected ending with 00062.nii.gz). Skipping.
+[37/104] Evaluating BraTSMET_000639.nii.gz...
+Warning: No matching prediction file found for BraTSMET_000642.nii.gz (expected ending with 00064.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000646.nii.gz (expected ending with 00064.nii.gz). Skipping.
+[40/104] Evaluating BraTSMET_000705.nii.gz...
+Error evaluating subject BraTSMET_000705.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (512, 512, 196). Please check the input files.
+[41/104] Evaluating BraTSMET_000706.nii.gz...
+Error evaluating subject BraTSMET_000706.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (512, 512, 196). Please check the input files.
+[42/104] Evaluating BraTSMET_000707.nii.gz...
+Error evaluating subject BraTSMET_000707.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (512, 512, 196). Please check the input files.
+[43/104] Evaluating BraTSMET_000708.nii.gz...
+Error evaluating subject BraTSMET_000708.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (512, 512, 196). Please check the input files.
+Warning: No matching prediction file found for BraTSMET_000743.nii.gz (expected ending with 00074.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000744.nii.gz (expected ending with 00074.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000745.nii.gz (expected ending with 00074.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000776.nii.gz (expected ending with 00077.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000777.nii.gz (expected ending with 00077.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000778.nii.gz (expected ending with 00077.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000808.nii.gz (expected ending with 00080.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000809.nii.gz (expected ending with 00080.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000810.nii.gz (expected ending with 00081.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000841.nii.gz (expected ending with 00084.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000842.nii.gz (expected ending with 00084.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000843.nii.gz (expected ending with 00084.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000844.nii.gz (expected ending with 00084.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000845.nii.gz (expected ending with 00084.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000846.nii.gz (expected ending with 00084.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000865.nii.gz (expected ending with 00086.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000866.nii.gz (expected ending with 00086.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000875.nii.gz (expected ending with 00087.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000876.nii.gz (expected ending with 00087.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000877.nii.gz (expected ending with 00087.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000878.nii.gz (expected ending with 00087.nii.gz). Skipping.
+[65/104] Evaluating BraTSMET_000884.nii.gz...
+Error evaluating subject BraTSMET_000884.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 376). Please check the input files.
+[66/104] Evaluating BraTSMET_000885.nii.gz...
+Error evaluating subject BraTSMET_000885.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 376). Please check the input files.
+[67/104] Evaluating BraTSMET_000886.nii.gz...
+Error evaluating subject BraTSMET_000886.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 376). Please check the input files.
+[68/104] Evaluating BraTSMET_000887.nii.gz...
+Error evaluating subject BraTSMET_000887.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 376). Please check the input files.
+Warning: No matching prediction file found for BraTSMET_000906.nii.gz (expected ending with 00090.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000907.nii.gz (expected ending with 00090.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000908.nii.gz (expected ending with 00090.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000918.nii.gz (expected ending with 00091.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000919.nii.gz (expected ending with 00091.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000962.nii.gz (expected ending with 00096.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000963.nii.gz (expected ending with 00096.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000994.nii.gz (expected ending with 00099.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_000995.nii.gz (expected ending with 00099.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001039.nii.gz (expected ending with 00103.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001040.nii.gz (expected ending with 00104.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001064.nii.gz (expected ending with 00106.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001065.nii.gz (expected ending with 00106.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001089.nii.gz (expected ending with 00108.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001090.nii.gz (expected ending with 00109.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001091.nii.gz (expected ending with 00109.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001116.nii.gz (expected ending with 00111.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001117.nii.gz (expected ending with 00111.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001118.nii.gz (expected ending with 00111.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001122.nii.gz (expected ending with 00112.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001123.nii.gz (expected ending with 00112.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001124.nii.gz (expected ending with 00112.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001166.nii.gz (expected ending with 00116.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001167.nii.gz (expected ending with 00116.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001168.nii.gz (expected ending with 00116.nii.gz). Skipping.
+[94/104] Evaluating BraTSMET_001206.nii.gz...
+Error evaluating subject BraTSMET_001206.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 212). Please check the input files.
+[95/104] Evaluating BraTSMET_001207.nii.gz...
+Error evaluating subject BraTSMET_001207.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 212). Please check the input files.
+[96/104] Evaluating BraTSMET_001208.nii.gz...
+Error evaluating subject BraTSMET_001208.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 212). Please check the input files.
+[97/104] Evaluating BraTSMET_001209.nii.gz...
+Error evaluating subject BraTSMET_001209.nii.gz. Details: Sanity check failed for SITK: Size Mismatch: (240, 240, 155) vs (256, 256, 212). Please check the input files.
+Warning: No matching prediction file found for BraTSMET_001247.nii.gz (expected ending with 00124.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001248.nii.gz (expected ending with 00124.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001249.nii.gz (expected ending with 00124.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001250.nii.gz (expected ending with 00125.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001264.nii.gz (expected ending with 00126.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001265.nii.gz (expected ending with 00126.nii.gz). Skipping.
+Warning: No matching prediction file found for BraTSMET_001266.nii.gz (expected ending with 00126.nii.gz). Skipping.
+
+Evaluation complete. Results saved to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r2_v100/official_reproduction/panoptica_evaluation_summary.json

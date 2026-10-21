@@ -1,0 +1,94 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "case_count": 104,
+  "checkpoint": {
+    "role": "paper_table7_completion_plus_focal_locked_test_model",
+    "sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune"
+  },
+  "created_at_utc": "2026-08-28T07:07:31Z",
+  "dataset": {
+    "id": 264,
+    "input_channels": [
+      "0000",
+      "0001",
+      "0002",
+      "0003"
+    ],
+    "role": "internal_locked_test",
+    "split": "test_fixed_104"
+  },
+  "execution": {
+    "gpu_count": 1,
+    "gpu_model_required": "Tesla V100-PCIE-32GB",
+    "inference": "fresh frozen-checkpoint inference; no training and no resume",
+    "job_name": "s2t7mf1v2",
+    "partition": "v100"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "metric_contract": {
+    "aggregation": "pool TP FP FN over all 104 cases before computing F1",
+    "connected_components": "3D 26-connectivity",
+    "f1": "2TP/(2TP+FP+FN)",
+    "matching": "single maximum-cardinality one-to-one assignment over component pairs with DSC >= 0.2; maximum total DSC breaks cardinality ties",
+    "overlap_threshold_dsc": 0.2,
+    "regions": {
+      "et": [3],
+      "rc": [4],
+      "tc": [1, 3],
+      "wt": [1, 2, 3]
+    },
+    "size_assignment": {
+      "fn": "reference component volume",
+      "fp": "prediction component volume",
+      "tp": "reference component volume"
+    },
+    "size_rule": "small < T; large >= T",
+    "thresholds_voxels": [
+      27,
+      50
+    ]
+  },
+  "official_reproduction": {
+    "BraTS-evaluation": "0.0.8",
+    "config": "mets",
+    "config_mets_source_sha256": "e91d1c88412c95a336642973d11046f4a6c08089fc9fa38f7cfa9e9f239d9842",
+    "metrics_parser_source_sha256": "53fdbad784402dc6cb9bc448da5dd6e49fe22db9a3b8cc78a5ef23d1ce86e62c",
+    "panoptica": "2.1.0",
+    "published_table7_rounded": {
+      "et": {
+        "all": 0.810,
+        "large": 0.760,
+        "small": 0.381
+      },
+      "rc": {
+        "all": 0.493,
+        "large": 0.073,
+        "small": 0.000
+      },
+      "tc": {
+        "all": 0.821,
+        "large": 0.766,
+        "small": 0.387
+      },
+      "wt": {
+        "all": 0.801,
+        "large": 0.757,
+        "small": 0.299
+      }
+    },
+    "thresholds_voxels": [
+      27,
+      50
+    ]
+  },
+  "operator_approved": false,
+  "migration": {
+    "r1_job_id": "3542265",
+    "r1_state_at_decision": "PENDING_PRIORITY",
+    "reason": "all accessible A100 GPUs allocated; V100 test-only scheduling reported immediate capacity",
+    "policy": "hold r1 before r2 submission; cancel r1 only after r2 has started successfully"
+  },
+  "schema_version": 1,
+  "status": "ready_for_remote_static_preflight"
+}

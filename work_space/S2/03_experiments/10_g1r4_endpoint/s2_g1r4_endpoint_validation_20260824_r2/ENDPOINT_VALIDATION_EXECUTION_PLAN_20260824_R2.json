@@ -1,0 +1,185 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "channel_contract": {
+    "0000": "t1n",
+    "0001": "t1c",
+    "0002": "t2w",
+    "0003": "t2f"
+  },
+  "checkpoints": {
+    "B": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/model_snapshots/B",
+      "role": "completion_standard_loss",
+      "sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5"
+    },
+    "E": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCFocalCompletionFineTune__nnUNetPlans__3d_fullres",
+      "role": "completion_focal_loss",
+      "sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267"
+    },
+    "FixV3": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/data/nnUNet_results_attempt11/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune__nnUNetPlans__3d_fullres",
+      "role": "online_diffusion_augmented_focal_full200",
+      "sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e"
+    },
+    "R": {
+      "remote_model_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/model_snapshots/R",
+      "role": "real_only_reference",
+      "sha256": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1"
+    }
+  },
+  "cohorts": {
+    "fixed103": {
+      "count": 103,
+      "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/manifests/FIXED103_REAL_SYNTHETIC_CASES.csv",
+      "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+      "role": "authentic_vs_synthesized_t2w_paired_validation",
+      "same_cases_as_fix_v3_training_validation": true
+    },
+    "test26": {
+      "count": 26,
+      "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/manifests/TEST26_LOCKED_MISSING_T2W_CASES.csv",
+      "manifest_sha256": "a5cdb71b2c5a4ead5a4ca9399b277b1ed1c201e7f1b6a3c1075fc58b8b9b4861",
+      "role": "locked_missing_t2w_endpoint_test",
+      "unlocked_only_after_val27_and_fixed103_pass": true
+    },
+    "val27": {
+      "authentic_t2w_counterfactual_available": false,
+      "count": 27,
+      "manifest": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/manifests/VAL27_MISSING_T2W_CASES.csv",
+      "manifest_sha256": "c9f8157070e78be77c13f839bf2e2e4401c0af223e59be367ed2db3d294b9f36",
+      "role": "internal_missing_t2w_endpoint_validation"
+    }
+  },
+  "created_at_utc": "2026-08-24T08:42:56.071528+00:00",
+  "evaluation": {
+    "configuration": "mets",
+    "numpy": "1.26.4",
+    "overlap_threshold": 0.2,
+    "package": "BraTS-evaluation==0.0.8",
+    "paired_bootstrap_replicates": 20000,
+    "paired_bootstrap_seed": 20260824,
+    "panoptica": "2.1.0",
+    "volume_threshold_voxels": 27
+  },
+  "experiment": "g1_r4_to_s2_endpoint_validation_20260824_r2",
+  "formal_gate_status": "not_run_not_passed",
+  "freeze_rules": [
+    "no_retraining",
+    "no_post_result_tuning",
+    "no_checkpoint_selection_from_val27_or_fixed103",
+    "test26_locked_until_prior_gates_pass",
+    "no_old_synthesized_t2w_for_val27_or_test26",
+    "same_fixv3_checkpoint_for_fixed103_real_and_synthetic"
+  ],
+  "g1_r4_checkpoints": {
+    "bbdm": {
+      "remote_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+      "sha256": "969eef82241a9500d843bb38b4fcf3230eb0b55ecfb1876aa83c65b59ec05541"
+    },
+    "bbdm_s": 0.01,
+    "encdec": {
+      "remote_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+      "sha256": "aed9bc96d6cb285b60d092fd48f572c60f76dba2d654dba4e60754ad55c0c558"
+    },
+    "ensemble": "voxelwise_mean_encdec_bbdm",
+    "vae": {
+      "remote_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+      "sha256": "004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294"
+    }
+  },
+  "g1_runtime_code_sha256": {
+    "configs.py": "105da207a98a3195fa131679ba7ba3e960e5fb03d2441f878e57a40f58917863",
+    "models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/bbdm/bb_scheduler.py": "2b701c696b4bf19628caf5635cd806075b640239519b710ad43b0b59449cf13b",
+    "models/bbdm/condition_tokens.py": "729f2a1759fa0b8fbe63ec8837528e080ce68391b7f1e0ee1c8cb6c1f670282b",
+    "models/bbdm/unet.py": "caca4abbfba78fe51dde364747786659c1593ce8a93ffff475c879ec3964135d",
+    "models/encdec/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/encdec/unet.py": "2de249accbab3ef7897527b662c5f64fe89ed3ee41a85ce2d1578bffbdcd3187",
+    "synthesis/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "synthesis/pipeline.py": "0097c284d5d636dfc93f1dfd8461f5d02d54b666aa337a8f635a1c5b4853d396",
+    "synthesis/segment_brain_mask.py": "79d42739db131778ba4d39c99b91cff0fdddcb77741e28cb25137d192c90a866",
+    "synthesis/spatial.py": "b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb",
+    "synthesis/utils.py": "5d5dd28de7dfed96fe6c3988da52563f37940e89850fc2b84accafd8bd55d3ab"
+  },
+  "g1_runtime_provenance": {
+    "bundled_remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/runtime/g1_r4_frozen",
+    "latest_original_mtime": "2026-07-17T10:58:15+08:00",
+    "mode": "bundled_historical_r4_runtime_snapshot",
+    "r1_remote_preflight_failure_sha256": "dabd787ced86ad2ab2131a76bc31f0dc8b42cfc680f394409d76f6153456d0cb",
+    "r4_job_date_utc": "2026-08-13",
+    "r4_job_id": "3391396",
+    "remote_original_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3",
+    "shared_runtime_used_directly": false
+  },
+  "interpretation_boundaries": [
+    "g1_image_quality_is_not_segmentation_benefit",
+    "val27_has_no_authentic_t2w_counterfactual",
+    "fixed103_answers_t2w_replacement_effect_only",
+    "online_diffusion_augmentation_and_offline_completion_are_reported_separately",
+    "no_nnunet_superiority_claim_from_g1_reconstruction_metrics"
+  ],
+  "operator_approved": false,
+  "remote_result_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2",
+  "runtime_sha256": {
+    "runtime/advance_pipeline.py": "b91b035189cf2f3a865f1d2288c736e372031a765bce0eda898624c1bc99b122",
+    "runtime/assemble_model_snapshot.py": "02563792c2bb109123bae973c6bf05491f77754f01bd413f594a5a6eedaf46f4",
+    "runtime/build_static_bundle.py": "450ec8b01f867776a440140df64f415068b45ab57952a1db00c98f0918d366dd",
+    "runtime/compare_paired_met.py": "8939473e808d6e4b2452b2ca2f08006eb050932603c4c8bdb9e660c8e13a9c05",
+    "runtime/custom_nnunet/__init__.py": "2077a49749928f5588167558a0576d17c5aa820a2ae1ad3f87c9839b40f251ca",
+    "runtime/custom_nnunet/nnUNetTrainerBraTS2026RC_inference.py": "c7c464c9ec283d75ab7d2f353d50025dc52e8b59dcc0d1f0256abdff7b78df13",
+    "runtime/frozen_s2_inference.py": "60853b74c53cb05fb655ea785732eceefcf9480a09ea931b51ddcbd5b5825a1a",
+    "runtime/g1_r4_frozen/configs.py": "105da207a98a3195fa131679ba7ba3e960e5fb03d2441f878e57a40f58917863",
+    "runtime/g1_r4_frozen/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/g1_r4_frozen/models/bbdm/bb_scheduler.py": "2b701c696b4bf19628caf5635cd806075b640239519b710ad43b0b59449cf13b",
+    "runtime/g1_r4_frozen/models/bbdm/condition_tokens.py": "729f2a1759fa0b8fbe63ec8837528e080ce68391b7f1e0ee1c8cb6c1f670282b",
+    "runtime/g1_r4_frozen/models/bbdm/unet.py": "caca4abbfba78fe51dde364747786659c1593ce8a93ffff475c879ec3964135d",
+    "runtime/g1_r4_frozen/models/encdec/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/g1_r4_frozen/models/encdec/unet.py": "2de249accbab3ef7897527b662c5f64fe89ed3ee41a85ce2d1578bffbdcd3187",
+    "runtime/g1_r4_frozen/synthesis/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/g1_r4_frozen/synthesis/pipeline.py": "0097c284d5d636dfc93f1dfd8461f5d02d54b666aa337a8f635a1c5b4853d396",
+    "runtime/g1_r4_frozen/synthesis/segment_brain_mask.py": "79d42739db131778ba4d39c99b91cff0fdddcb77741e28cb25137d192c90a866",
+    "runtime/g1_r4_frozen/synthesis/spatial.py": "b16b80697fd0a9394eca81833356c79b2ba81a1cfe92669d1b414ce3b6569afb",
+    "runtime/g1_r4_frozen/synthesis/utils.py": "5d5dd28de7dfed96fe6c3988da52563f37940e89850fc2b84accafd8bd55d3ab",
+    "runtime/materialize_s2_inputs.py": "bca1eda9236f6e053f43075bff34d0dcf3505099a98be94c6f548fa6778e9028",
+    "runtime/run_official_met_eval.sh": "3401ef6a0513a5c08cf9ee65674d5e4b1cd4f96112ece426f565e4d23d493bb5",
+    "runtime/synthesize_missing_t2w_r4.py": "89ea51006e9b90bdde61d95c12652dcdf91341873dee56344b1b97b9e065340c",
+    "runtime/validate_remote_static.py": "67a55ea01b13cf0fd2e83708e70f18a691485e67463a6922b6f1625f340e24fe",
+    "slurm/01_val27_synthesize_r4.slurm": "a6733120ecd692cd2a7d454532fc6fce2a75dd68ff4b9ed1604f217efe81a993",
+    "slurm/02_val27_four_model_eval.slurm": "0213eaa4d6b6d46674477347f37139cbf3e98d2ce4f096f66c2b026bef46a0c1",
+    "slurm/03_fixed103_real_vs_synthetic.slurm": "c726b5aaa5308649b1334f37324daf206ba31c4a2b86bbf4a1fcfaf58dd7289d",
+    "slurm/04_test26_locked_endpoint.slurm": "64af4638b872fdd96e0be4e6acffe0acfb9919d817227aa4c07acfd7531b503b"
+  },
+  "schema_version": 1,
+  "source_artifact_sha256": {
+    "B": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5",
+    "E": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "FixV3": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e",
+    "R": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1",
+    "master_mapping": "b1ff36ea927a3d5c8d4aa976ce5533d320e16c7801a9a30db22e8ecbb6d64672",
+    "master_split": "5b77bf4ae92e08df2495a17ace104d5e4160c77ed718bba1a7f2cdde87adfcc6",
+    "missing_eval_manifest": "24c84e1b90cb4ebfd1f034e311130dfd2ea714c288f09728c8da46c7aeadbc37",
+    "r4_case_list": "53080017b900e0bf2b09fcb129d58d0e2383b7b1090f50eb6328f1247848f2c6",
+    "r4_plan": "26dc9ca8d730d13d021756db0e45ac5aaf65dfc5d6cc742e6b136e2c8bf93516"
+  },
+  "spatial_contract": {
+    "base_spacing_mm": 1.0,
+    "margin_mm": 5.0,
+    "name": "foreground_centered_isotropic_resample_v1",
+    "native_geometry_restored": true,
+    "reference_segmentation_is_model_input": false,
+    "reference_segmentation_used_for_offline_support_audit": true,
+    "target_shape": [
+      256,
+      256,
+      160
+    ]
+  },
+  "stages": [
+    "val27_r4_synthesis",
+    "val27_four_models",
+    "fixed103_real_vs_synthetic",
+    "test26_locked_endpoint"
+  ],
+  "training_required": false
+}

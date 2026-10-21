@@ -1,0 +1,29 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "failed_at_local_utc": "2026-08-24T08:31:47Z",
+  "formal_gate_status": "not_run_not_passed",
+  "g1_runtime_file_count": 8,
+  "g1_runtime_matching_file_count": 5,
+  "g1_runtime_mismatches": {
+    "models/bbdm/condition_tokens.py": {
+      "expected_sha256": "86b054fe73d1a6d07b11ae46a698ea61d84dff4346dc2b9aaebc8c37ffe0cc70",
+      "observed_remote_sha256": "729f2a1759fa0b8fbe63ec8837528e080ce68391b7f1e0ee1c8cb6c1f670282b"
+    },
+    "models/bbdm/unet.py": {
+      "expected_sha256": "2bf3d56a237963808cd6ad486d56290d2dcc2c483c373db3103456f98a74cf1c",
+      "observed_remote_sha256": "caca4abbfba78fe51dde364747786659c1593ce8a93ffff475c879ec3964135d"
+    },
+    "models/encdec/unet.py": {
+      "expected_sha256": "f5be714aa0228316753e891f17d311fe9ba874adcfa949546d2d91b22f7614a0",
+      "observed_remote_sha256": "2de249accbab3ef7897527b662c5f64fe89ed3ee41a85ce2d1578bffbdcd3187"
+    }
+  },
+  "next_action": "create_independent_r2_with_frozen_historical_r4_runtime_snapshot",
+  "operator_approved": false,
+  "reason": "remote_shared_g1_runtime_does_not_match_the_r1_static_bundle",
+  "remote_preflight_created": false,
+  "scheduler_jobs_submitted": 0,
+  "schema_version": 1,
+  "stage": "remote_static_preflight",
+  "status": "failed"
+}

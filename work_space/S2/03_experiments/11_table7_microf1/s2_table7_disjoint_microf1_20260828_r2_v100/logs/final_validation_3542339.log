@@ -1,0 +1,13 @@
+VALIDATION_ERROR: RuntimeError: official evaluator reported missing cases
+Traceback (most recent call last):
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r2_v100/runtime/validate_run.py", line 309, in <module>
+    main()
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r2_v100/runtime/validate_run.py", line 304, in main
+    final(root, args.job_id)
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r2_v100/runtime/validate_run.py", line 272, in final
+    official = validate_official(root)
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r2_v100/runtime/validate_run.py", line 152, in validate_official
+    require(summary.get("missings") == [], "official evaluator reported missing cases")
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r2_v100/runtime/validate_run.py", line 40, in require
+    raise RuntimeError(message)
+RuntimeError: official evaluator reported missing cases

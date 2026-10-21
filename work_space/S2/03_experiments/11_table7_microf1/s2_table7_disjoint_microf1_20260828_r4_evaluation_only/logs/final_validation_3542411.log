@@ -1,0 +1,13 @@
+VALIDATION_ERROR: RuntimeError: Table 7 reproduction mismatch: et/all=0.6528981684141983
+Traceback (most recent call last):
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r4_evaluation_only/runtime/validate_run.py", line 455, in <module>
+    main()
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r4_evaluation_only/runtime/validate_run.py", line 450, in main
+    final(root, args.job_id)
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r4_evaluation_only/runtime/validate_run.py", line 416, in final
+    official = validate_official(root)
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r4_evaluation_only/runtime/validate_run.py", line 237, in validate_official
+    require(abs(value - PUBLISHED[region][group]) <= 0.0005000001, f"Table 7 reproduction mismatch: {region}/{group}={value}")
+  File "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r4_evaluation_only/runtime/validate_run.py", line 45, in require
+    raise RuntimeError(message)
+RuntimeError: Table 7 reproduction mismatch: et/all=0.6528981684141983

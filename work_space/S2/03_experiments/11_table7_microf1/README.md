@@ -1,0 +1,10 @@
+# S2 / 11_table7_microf1
+
+按研究路线分组的独立实验及其原始结果
+
+- [s2_table7_disjoint_microf1_20260828_r1](s2_table7_disjoint_microf1_20260828_r1)
+- [s2_table7_disjoint_microf1_20260828_r2_v100](s2_table7_disjoint_microf1_20260828_r2_v100)
+- [s2_table7_disjoint_microf1_20260828_r3_evaluation_only](s2_table7_disjoint_microf1_20260828_r3_evaluation_only)
+- [s2_table7_disjoint_microf1_20260828_r4_evaluation_only](s2_table7_disjoint_microf1_20260828_r4_evaluation_only)
+
+整理说明仅帮助定位，不改变任何原实验的批准或失败状态。新说明为experimental_unvalidated。

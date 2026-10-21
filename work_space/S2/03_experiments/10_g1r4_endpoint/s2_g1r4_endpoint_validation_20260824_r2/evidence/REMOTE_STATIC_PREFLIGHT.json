@@ -1,0 +1,75 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "available_bytes_public": 28157326393344,
+  "checkpoints": {
+    "B": {
+      "checkpoint_sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5",
+      "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/model_snapshots/B"
+    },
+    "E": {
+      "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+      "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCFocalCompletionFineTune__nnUNetPlans__3d_fullres"
+    },
+    "FixV3": {
+      "checkpoint_sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e",
+      "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1/data/nnUNet_results_attempt11/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune__nnUNetPlans__3d_fullres"
+    },
+    "R": {
+      "checkpoint_sha256": "bec0beead1b6ab6beda5e10c9c92e192af833fa82f794277d50f81d277a922a1",
+      "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/model_snapshots/R"
+    }
+  },
+  "cohort_counts": {
+    "fixed103": 103,
+    "test26": 26,
+    "val27": 27
+  },
+  "cohorts_pairwise_disjoint": true,
+  "evaluation_versions": {
+    "BraTS-evaluation": "0.0.8",
+    "numpy": "1.26.4",
+    "panoptica": "2.1.0"
+  },
+  "execution_plan_sha256": "aed5a2e35dd10afba498ceed898b54dc76fc8f975931eedcadb5ab1227509f06",
+  "formal_gate_status": "not_run_not_passed",
+  "g1_checkpoints": {
+    "bbdm": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+      "sha256": "969eef82241a9500d843bb38b4fcf3230eb0b55ecfb1876aa83c65b59ec05541"
+    },
+    "encdec": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+      "sha256": "aed9bc96d6cb285b60d092fd48f572c60f76dba2d654dba4e60754ad55c0c558"
+    },
+    "vae": {
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt",
+      "sha256": "004dbaa00669685b1f24fbaf6044d5f592f4a7ae6156a482be34235724175294"
+    }
+  },
+  "g1_import_binding": {
+    "bbdm": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/bbdm/bbdm_3056245/check_points/model_111105.pt",
+    "bbdm_s": 0.01,
+    "configs": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/runtime/g1_r4_frozen/configs.py",
+    "encdec": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/endec/endec_3056244/check_points/model_37035.pt",
+    "pipeline": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2/runtime/g1_r4_frozen/synthesis/pipeline.py",
+    "vae": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main-v3/training/vae_finetuned/run_3034060/best_model.pt"
+  },
+  "g1_runtime_code_file_count": 12,
+  "g1_runtime_mode": "bundled_historical_r4_runtime_snapshot",
+  "hostname": "login1",
+  "old_synthesized_t2w_reuse_allowed": false,
+  "operator_approved": false,
+  "r4_fixed103_nifti_count": 103,
+  "r4_geometry_mismatch_count": 0,
+  "r4_geometry_repaired_count": 0,
+  "schema_version": 1,
+  "shared_g1_runtime_used_directly": false,
+  "source_file_counts": {
+    "fixed103": 515,
+    "test26": 104,
+    "val27": 108
+  },
+  "static_sha256sum_check": "pass",
+  "status": "pass",
+  "validated_at_utc": "2026-08-24T08:38:16.164176+00:00"
+}

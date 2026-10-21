@@ -1,0 +1,269 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "artifacts": {
+    "case_level_disjoint_counts.csv": "8b7e4459de550c4bb5fc69012f8e11eedff536655d073e276a41ae2f0332a490",
+    "component_events.csv": "fe53a60f09ac528668a693b96d3d83664aa7773a20e7e174285ca12c9ab6ae80",
+    "disjoint_microf1_summary.csv": "c4dc431cc864ed8e78be2efb7b32b45300de6184d68f9b59899596aa6922f387"
+  },
+  "case_count": 104,
+  "case_ids_sha256": "23ccf9ba1fb9e86c526a0212944bd19992dfc1b8ca1d5a29c436c5fec84c6c3c",
+  "contract": {
+    "aggregation": "global micro pooling across all cases",
+    "connected_components": "3D 26-connectivity",
+    "f1_formula": "2TP/(2TP+FP+FN)",
+    "fn_size_source": "reference",
+    "fp_size_source": "prediction",
+    "matching": "maximum-cardinality one-to-one among DSC>=0.2; maximum-total-DSC tie-break",
+    "overlap_threshold_dsc": 0.2,
+    "regions": {
+      "et": [
+        3
+      ],
+      "rc": [
+        4
+      ],
+      "tc": [
+        1,
+        3
+      ],
+      "wt": [
+        1,
+        2,
+        3
+      ]
+    },
+    "size_rule": "small < T; large >= T",
+    "thresholds_voxels": [
+      27,
+      50
+    ],
+    "tp_size_source": "reference"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "generated_at_utc": "2026-08-28T08:11:04.903425+00:00",
+  "operator_approved": false,
+  "regions": {
+    "et": {
+      "matching_totals": {
+        "accepted_matches": 294,
+        "prediction_components": 437,
+        "reference_components": 829
+      },
+      "thresholds": {
+        "27": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 535,
+              "fp": 143,
+              "micro_f1": 0.46445497630331756,
+              "tp": 294
+            },
+            "large": {
+              "fn": 246,
+              "fp": 47,
+              "micro_f1": 0.6516052318668252,
+              "tp": 274
+            },
+            "small": {
+              "fn": 289,
+              "fp": 96,
+              "micro_f1": 0.09411764705882353,
+              "tp": 20
+            }
+          }
+        },
+        "50": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 535,
+              "fp": 143,
+              "micro_f1": 0.46445497630331756,
+              "tp": 294
+            },
+            "large": {
+              "fn": 173,
+              "fp": 35,
+              "micro_f1": 0.7111111111111111,
+              "tp": 256
+            },
+            "small": {
+              "fn": 362,
+              "fp": 108,
+              "micro_f1": 0.1391941391941392,
+              "tp": 38
+            }
+          }
+        }
+      }
+    },
+    "rc": {
+      "matching_totals": {
+        "accepted_matches": 16,
+        "prediction_components": 20,
+        "reference_components": 29
+      },
+      "thresholds": {
+        "27": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 13,
+              "fp": 4,
+              "micro_f1": 0.6530612244897959,
+              "tp": 16
+            },
+            "large": {
+              "fn": 10,
+              "fp": 4,
+              "micro_f1": 0.6956521739130435,
+              "tp": 16
+            },
+            "small": {
+              "fn": 3,
+              "fp": 0,
+              "micro_f1": 0.0,
+              "tp": 0
+            }
+          }
+        },
+        "50": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 13,
+              "fp": 4,
+              "micro_f1": 0.6530612244897959,
+              "tp": 16
+            },
+            "large": {
+              "fn": 10,
+              "fp": 4,
+              "micro_f1": 0.6956521739130435,
+              "tp": 16
+            },
+            "small": {
+              "fn": 3,
+              "fp": 0,
+              "micro_f1": 0.0,
+              "tp": 0
+            }
+          }
+        }
+      }
+    },
+    "tc": {
+      "matching_totals": {
+        "accepted_matches": 294,
+        "prediction_components": 424,
+        "reference_components": 817
+      },
+      "thresholds": {
+        "27": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 523,
+              "fp": 130,
+              "micro_f1": 0.47381144238517325,
+              "tp": 294
+            },
+            "large": {
+              "fn": 248,
+              "fp": 47,
+              "micro_f1": 0.650887573964497,
+              "tp": 275
+            },
+            "small": {
+              "fn": 275,
+              "fp": 83,
+              "micro_f1": 0.09595959595959595,
+              "tp": 19
+            }
+          }
+        },
+        "50": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 523,
+              "fp": 130,
+              "micro_f1": 0.47381144238517325,
+              "tp": 294
+            },
+            "large": {
+              "fn": 177,
+              "fp": 34,
+              "micro_f1": 0.7097661623108665,
+              "tp": 258
+            },
+            "small": {
+              "fn": 346,
+              "fp": 96,
+              "micro_f1": 0.14007782101167315,
+              "tp": 36
+            }
+          }
+        }
+      }
+    },
+    "wt": {
+      "matching_totals": {
+        "accepted_matches": 263,
+        "prediction_components": 387,
+        "reference_components": 708
+      },
+      "thresholds": {
+        "27": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 445,
+              "fp": 124,
+              "micro_f1": 0.480365296803653,
+              "tp": 263
+            },
+            "large": {
+              "fn": 210,
+              "fp": 63,
+              "micro_f1": 0.6504481434058899,
+              "tp": 254
+            },
+            "small": {
+              "fn": 235,
+              "fp": 61,
+              "micro_f1": 0.05732484076433121,
+              "tp": 9
+            }
+          }
+        },
+        "50": {
+          "additivity_pass": true,
+          "groups": {
+            "all": {
+              "fn": 445,
+              "fp": 124,
+              "micro_f1": 0.480365296803653,
+              "tp": 263
+            },
+            "large": {
+              "fn": 155,
+              "fp": 45,
+              "micro_f1": 0.7058823529411765,
+              "tp": 240
+            },
+            "small": {
+              "fn": 290,
+              "fp": 79,
+              "micro_f1": 0.1108433734939759,
+              "tp": 23
+            }
+          }
+        }
+      }
+    }
+  },
+  "schema_version": 1,
+  "status": "pass"
+}
