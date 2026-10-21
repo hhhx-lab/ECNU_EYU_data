@@ -1,0 +1,41 @@
+{
+  "status": "experimental_unvalidated",
+  "generated_at": "2026-08-13T17:03:04.712Z",
+  "purpose": "Fixed-103 aggregation of real-only, completion/plain-loss, and completion/focal-loss segmentation evaluations",
+  "evaluation_contract": {
+    "case_count": 103,
+    "case_ids_identical": true,
+    "evaluator": "BraTS-evaluation==0.0.8",
+    "panoptica": "2.1.0",
+    "config": "mets",
+    "volume_threshold_voxels": 27,
+    "overlap_threshold": 0.2
+  },
+  "warning": "The historical four-candidate final comparison labeled s2_eval_results as B while checkpoint_selection.json labeled B as completion/plain-loss. This aggregate resolves the ambiguity by treating s2_eval_results as real-only and the Dataset264 official_style_eval CSV as completion/plain-loss.",
+  "sources": [
+    {
+      "id": "realonly",
+      "label": "Real-only (no completion augmentation)",
+      "path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_eval_results/leaderboard_metrics.csv",
+      "trainer": "nnUNetTrainerBraTS2026RC",
+      "dataset": "Dataset263_BraTS2026_MET_RealOnly_Current",
+      "sha256": "a1c7e735da723974a600d959bbd775fa4daa510e933308cf7dc54bd73e74ea53"
+    },
+    {
+      "id": "completion_plain",
+      "label": "Completion augmentation + Dice/weighted CE",
+      "path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_completion_dataset264_t2w_20260720/official_style_eval/leaderboard_metrics.csv",
+      "trainer": "nnUNetTrainerBraTS2026RCCompletionFineTune",
+      "dataset": "Dataset264_BraTS2026_MET_Completion",
+      "sha256": "73f5b9e08aaee848ecb77d59e51698e66d6b050bec7b8073c25418904cce24cc"
+    },
+    {
+      "id": "completion_focal",
+      "label": "Completion augmentation + Dice/Focal CE",
+      "path": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126/focal/leaderboard_metrics.csv",
+      "trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune",
+      "dataset": "Dataset264_BraTS2026_MET_Completion",
+      "sha256": "74a3722c055c8e60260a4e1baa108a4743f418430f2a95e1325fe6809718ed1b"
+    }
+  ]
+}

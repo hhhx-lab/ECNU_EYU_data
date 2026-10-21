@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "transfer_timestamp_utc": "2026-08-24T04:06:30Z",
+  "transfer_timestamp_local": "2026-08-24T12:06:30+08:00",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "remote": {
+    "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_met_aug_fix_v3_full200_20260810_r1",
+    "job_id": "3472424",
+    "job_name": "s2f3f2011",
+    "job_state": "COMPLETED",
+    "exit_code": "0:0",
+    "checkpoint_current_epoch": 200
+  },
+  "local_result_root": "work_space/S2/results/experimental_unvalidated/s2_met_aug_fix_v3_full200_attempt11_20260823_r1",
+  "transfer_scope": {
+    "accepted_sha256_file_count": 124,
+    "remote_sha256_manifest": "provenance/REMOTE_SHA256SUMS.txt",
+    "local_sha256_manifest": "LOCAL_SHA256SUMS.txt",
+    "sha256_exact_match": true,
+    "preprocessing_cache_1138_cases_transferred": false,
+    "frozen_g1_weights_transferred": false
+  },
+  "training_contract": {
+    "mode": "fresh_second_stage_0_to_200",
+    "resume": false,
+    "epochs": 200,
+    "seed": 20260724,
+    "initial_lr": 0.001,
+    "save_every": 25,
+    "p_select": 0.2,
+    "single_gpu": true,
+    "device_name": "NVIDIA A100-PCIE-40GB",
+    "fixed_train_count": 1035,
+    "train_authentic_t2w_count": 823,
+    "train_completion_required_count": 212,
+    "fixed_validation_count": 103,
+    "validation_authentic_t2w_count": 103,
+    "synthetic_t2w_validation_27_included": false,
+    "validation_train_overlap": 0
+  },
+  "outputs": {
+    "trainer_root_files": 3,
+    "fold_files": 111,
+    "validation_nifti_count": 103,
+    "validation_directory_file_count": 104,
+    "checkpoint_final_bytes": 249829936,
+    "checkpoint_best_bytes": 249794966,
+    "checkpoint_final_sha256": "b8b2d13a6268231f73d43c37cb097d1be3daeec654b9bba6ddd24f410cf7b27e",
+    "validation_summary_sha256": "16e595aff071fcbf95cacea09e352694ff86d81121315e4494d3a330257ce5fb",
+    "validation_evidence_sha256": "e1b9c23de6f3f51def9d6dfa5e38430f7f01b0db222d698b445782f4169a897a",
+    "current_epoch": 200,
+    "fixed_validation_prediction_count": 103,
+    "foreground_mean_dice": 0.546763109603013,
+    "class_mean_dice": {
+      "1": 0.4711364229033399,
+      "2": 0.7359882901680868,
+      "3": 0.6842557880989798,
+      "4": 0.2956719372416456
+    }
+  },
+  "checks": {
+    "remote_job_completed_exit_zero": true,
+    "complete_marker_present": true,
+    "training_validation_status_pass": true,
+    "checkpoint_epoch_200": true,
+    "checkpoint_readable_in_conda": true,
+    "fixed_validation_predictions_103": true,
+    "sha256_all_transferred_files_match": true,
+    "logs_no_critical_error_match": true,
+    "formal_gate_passed": false
+  },
+  "interpretation_boundary": [
+    "This is a local transfer and artifact acceptance record, not formal scientific approval.",
+    "The fixed validation result is for 103 authentic-T2W cases.",
+    "The 27 synthesized-T2W cases were kept as a separate end-to-end endpoint and were not used in this split.",
+    "No official MET paired comparison or 27-case endpoint validation is claimed by this record.",
+    "The result does not establish nnU-Net segmentation superiority beyond this experimental contract."
+  ]
+}
