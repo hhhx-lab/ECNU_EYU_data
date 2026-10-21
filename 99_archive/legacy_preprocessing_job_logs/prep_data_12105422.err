@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/scratch/bf2260/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main/test_vae.py", line 9, in <module>
+    chk = torch.load(configs.PATH_NAME_WEIGHTS_VAE, weights_only=True, map_location=device)
+  File "/scratch/bf2260/conda/envs/brats2025/lib/python3.10/site-packages/torch/serialization.py", line 1319, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/scratch/bf2260/conda/envs/brats2025/lib/python3.10/site-packages/torch/serialization.py", line 659, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/scratch/bf2260/conda/envs/brats2025/lib/python3.10/site-packages/torch/serialization.py", line 640, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/bf2260/ECNU_EYU_data/work_space/G1/code/brats2025-latent-ensemble-synthesis-main/weights/vae/autoencoder_epoch273.pt'
