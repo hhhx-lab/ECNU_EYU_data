@@ -10,7 +10,7 @@ import nibabel as nib
 import numpy as np
 
 
-S3_CODE = Path(__file__).resolve().parents[1] / "code"
+S3_CODE = Path(__file__).resolve().parents[1]
 
 
 def load_module(name: str, relative_path: str):
