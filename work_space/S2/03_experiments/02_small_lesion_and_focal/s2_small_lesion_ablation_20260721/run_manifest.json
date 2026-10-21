@@ -1,0 +1,145 @@
+{
+  "created_at": "2026-07-21T12:20:15+0800",
+  "updated_at": "2026-07-24T13:24:49+0800",
+  "git_branch": "main",
+  "git_head_before_local_changes": "efa15fa83f16f4436a15ad4af0a5184b33caed5e",
+  "dataset": "Dataset264_BraTS2026_MET_Completion",
+  "fixed_split": {
+    "train": 1035,
+    "validation": 103,
+    "locked_test": 104
+  },
+  "training_contract": {
+    "epochs": 200,
+    "initial_lr": 0.001,
+    "checkpoint_every_epochs": 25,
+    "focal_gamma": 2.0,
+    "rc_class_weight": 3.0,
+    "fold": 0
+  },
+  "remote_storage_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/data/ecnu_completion_emergency",
+  "slurm_jobs": {
+    "failed_shared_preprocessing": 3124166,
+    "cache_revalidation": 3124186,
+    "failed_r2_before_training": {
+      "a1_v100": 3124192,
+      "focal_a100": 3124193,
+      "a1_focal_a100": 3124194
+    },
+    "failed_r3_before_shell": {
+      "a1_v100": 3125426,
+      "focal_a100": 3125427,
+      "a1_focal_a100": 3125428
+    },
+    "active_r4": {
+      "a1_v100": 3128521,
+      "focal_a100": 3128522,
+      "a1_focal_a100": 3128523
+    },
+    "guarded_continuations": {
+      "focal_a100": {
+        "job_id": 3141629,
+        "dependency": "afterany:3128522",
+        "continue_mode": "auto",
+        "submitted_at": "2026-07-23T10:19:41+0800",
+        "state_after_root_timeout": "PENDING (Priority)",
+        "scheduler_estimate_at_20260723T143502": "2026-07-23T20:12:42"
+      },
+      "a1_focal_a100": {
+        "job_id": 3141630,
+        "dependency": "afterany:3128523",
+        "continue_mode": "auto",
+        "submitted_at": "2026-07-23T10:19:41+0800",
+        "state_after_root_timeout": "PENDING (Priority)",
+        "scheduler_estimate_at_20260723T143502": "2026-07-28T13:54:52"
+      }
+    },
+    "test_only_forecasts_not_submitted": {
+      "focal_a100": 3141627,
+      "a1_focal_a100": 3141628
+    }
+  },
+  "recovery": {
+    "failed_preprocessing_reason": "remote 09_clone_baseline_plans.py was stale and rejected --baseline-checkpoint after data materialization completed",
+    "cancelled_without_training": [3124168, 3124169, 3124170],
+    "cache_revalidation_result": "passed: plans checkpoint contract, 1138 b2nd cache IDs, 1242 included cases, 212 completion replacements, and 1035/103/104 split",
+    "failed_r2_reason": "all three jobs acquired valid GPUs and passed cache validation, then exited before epoch 0 because the segmamba environment lacked nnU-Net runtime dependencies; no checkpoint or prediction is eligible for comparison",
+    "runtime_repair": "installed and validated nnunetv2 2.8.0 runtime contract: batchgeneratorsv2 0.3.3, blosc2 3.3.2, graphviz 0.21, imagecodecs 2025.3.30, seaborn 0.13.2, yacs 0.1.8, timm 1.0.22, ninja 1.13.0; pip check and all three custom trainer imports passed before r3 submission",
+    "failed_r3_reason": "r3 was submitted from /public/home/zqchen, where the relative #SBATCH output path work_space/S2/logs did not exist; A-1 exited before the shell started, and the two pending A100 jobs were cancelled before execution. No checkpoint, prediction, or metric is eligible for comparison.",
+    "r4_submission_fix": "all r4 jobs were submitted with --chdir=/public/home/zqchen/projects/ECNU_EYU_data so the relative Slurm stdout/stderr paths resolve under the project.",
+    "early_continuation_submission": "Focal 3141629 and A-1+Focal 3141630 were submitted early with afterany dependencies on 3128522 and 3128523. They remained blocked until both roots reached final TIMEOUT, preventing concurrent writes to the same result folders.",
+    "r4_timeout_checkpoint_audit": {
+      "focal_a100": {
+        "root_job_id": 3128522,
+        "root_state": "TIMEOUT 0:0",
+        "final_log_epoch": 182,
+        "checkpoint_epoch": 175,
+        "checkpoint_sha256": "a0a914597cf4b3f26f5d0df5af29824eed34e3a0cec213b2a9715bb02ab59167",
+        "trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune",
+        "nonfinite_network_tensors": 0
+      },
+      "a1_focal_a100": {
+        "root_job_id": 3128523,
+        "root_state": "TIMEOUT 0:0",
+        "final_log_epoch": 182,
+        "checkpoint_epoch": 175,
+        "checkpoint_sha256": "6949929de71c3162c7501176733efb3ecc778e998f69d19a594c3f74ddc62cb0",
+        "trainer": "nnUNetTrainerBraTS2026RCA1FocalCompletionFineTune",
+        "nonfinite_network_tensors": 0
+      }
+    }
+  },
+  "candidates": {
+    "baseline_b": "nnUNetTrainerBraTS2026RCCompletionFineTune",
+    "a1": "nnUNetTrainerBraTS2026RCA1CompletionFineTune",
+    "focal": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune",
+    "a1_focal": "nnUNetTrainerBraTS2026RCA1FocalCompletionFineTune"
+  },
+  "source_sha256": {
+    "small_lesion_variants.py": "c25d14c8cf24ffc4bb06ce36aa1fdffbc4460164e0c3d6eed3895d0515723fd0",
+    "small_lesion_trainer_mixins.py": "151c7eab05e13cbe27d867fd8e805b922b5f4d2c75714de47aedb1c5cd2e56b7",
+    "requirements.txt": "e33e7207c30418d68b7abeeec1df1826f080172ccdaa1ab01e42109f88366b24",
+    "03_train_small_lesion_ablation_a100_ecnu.slurm": "a797094ea658b1694274a43481c84e9a59fee72174afae1fd7ea3aacc2f07f3e",
+    "04_validate_existing_completion_cache_ecnu.slurm": "a841d81f5ddf4f239811df21150b8084fd19ac47d7b3ac0d49e1fdae044d6d1c"
+  },
+  "evaluation": {
+    "cohort": "same fixed 103 validation cases as baseline B",
+    "protocol": "BraTS_evaluation mets official-compatible",
+    "status": "complete",
+    "environment": {
+      "BraTS-evaluation": "0.0.8",
+      "panoptica": "2.1.0",
+      "numpy": "1.26.4",
+      "environment_scope": "independent user Conda brats_eval"
+    },
+    "volume_threshold_voxels": 27,
+    "overlap_threshold": 0.2,
+    "candidate_evaluation_jobs": {
+      "a1": 3154513,
+      "focal": 3154514,
+      "a1_focal": 3154517
+    },
+    "local_retry_root": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126",
+    "selection_artifact": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/checkpoint_selection.json",
+    "report_artifact": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/final_comparison_20260724.md"
+  },
+  "selection": {
+    "status": "frozen",
+    "small_lesion_followup_base": "E",
+    "small_lesion_followup_trainer": "nnUNetTrainerBraTS2026RCFocalCompletionFineTune",
+    "small_lesion_followup_checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+    "overall_conservative_baseline": "B",
+    "rejected_candidates": ["a1", "a1_focal"],
+    "deep_supervision_d": "designed_not_started",
+    "route_a_f_base_candidate": "E",
+    "official_179_inference_authorized": false,
+    "online_diffusion_authorized": false,
+    "submission_authorized": false,
+    "artifact": "/Users/hwaigc/比赛+课题/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/checkpoint_selection.json"
+  },
+  "prohibited_stages": [
+    "online_diffusion",
+    "official_179_inference",
+    "official_submission"
+  ]
+}

@@ -1,0 +1,403 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+ 
+2026-07-24 00:20:07.491167: do_dummy_2d_data_aug: False 
+2026-07-24 00:20:07.493495: Using BraTS2026 fixed split: 1035 train / 103 val 
+
+This is the configuration used by this training:
+Configuration name: 3d_fullres
+ {'data_identifier': 'nnUNetPlans_3d_fullres', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 2, 'patch_size': [128, 128, 128], 'median_image_size_in_voxels': [142.0, 172.0, 138.0], 'spacing': [1.0, 1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization'], 'use_mask_for_norm': [True, True, True, True], 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'architecture': {'network_class_name': 'dynamic_network_architectures.architectures.unet.PlainConvUNet', 'arch_kwargs': {'n_stages': 6, 'features_per_stage': [32, 64, 128, 256, 320, 320], 'conv_op': 'torch.nn.modules.conv.Conv3d', 'kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]], 'strides': [[1, 1, 1], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]], 'n_conv_per_stage': [2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2], 'conv_bias': True, 'norm_op': 'torch.nn.modules.instancenorm.InstanceNorm3d', 'norm_op_kwargs': {'eps': 1e-05, 'affine': True}, 'dropout_op': None, 'dropout_op_kwargs': None, 'nonlin': 'torch.nn.LeakyReLU', 'nonlin_kwargs': {'inplace': True}}, '_kw_requires_import': ['conv_op', 'norm_op', 'dropout_op', 'nonlin']}, 'batch_dice': False} 
+ 
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset264_BraTS2026_MET_Completion', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [146, 180, 144], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 928143.5625, 'mean': 3039.8280702146203, 'median': 560.0, 'min': 0.0, 'percentile_00_5': 0.0, 'percentile_99_5': 279089.125, 'std': 30277.599333243168}, '1': {'max': 3275090.5, 'mean': 8953.127035010677, 'median': 1313.0, 'min': 0.0, 'percentile_00_5': 91.37364540100097, 'percentile_99_5': 519260.375, 'std': 64807.28179898762}, '2': {'max': 61955.71484375, 'mean': 1090.6741356434293, 'median': 806.0, 'min': 0.0, 'percentile_00_5': 0.0, 'percentile_99_5': 4947.0, 'std': 1535.1662643475227}, '3': {'max': 134197.65625, 'mean': 1187.6043663859352, 'median': 693.0, 'min': 0.0, 'percentile_00_5': 0.0, 'percentile_99_5': 7288.0, 'std': 3628.1990882570967}}} 
+ 
+2026-07-24 00:20:19.075197: Unable to plot network architecture: 
+2026-07-24 00:20:19.075596: No module named 'hiddenlayer' 
+2026-07-24 00:20:19.932059:  
+2026-07-24 00:20:19.932965: Epoch 175 
+2026-07-24 00:20:19.933459: Current learning rate: 0.00015 
+2026-07-24 00:26:27.764122: train_loss -0.4329 
+2026-07-24 00:26:27.876372: val_loss -0.3953 
+2026-07-24 00:26:27.894510: Pseudo dice [0.8135, 0.9018, 0.8523, 0.4508] 
+2026-07-24 00:26:27.943503: Epoch time: 367.82 s 
+2026-07-24 00:26:34.031237:  
+2026-07-24 00:26:34.031405: Epoch 176 
+2026-07-24 00:26:34.031526: Current learning rate: 0.00015 
+2026-07-24 00:32:09.747971: train_loss -0.4211 
+2026-07-24 00:32:09.854850: val_loss -0.3932 
+2026-07-24 00:32:09.856402: Pseudo dice [0.7904, 0.9065, 0.8835, 0.4854] 
+2026-07-24 00:32:09.859328: Epoch time: 335.69 s 
+2026-07-24 00:32:14.792284:  
+2026-07-24 00:32:14.792920: Epoch 177 
+2026-07-24 00:32:14.793903: Current learning rate: 0.00014 
+2026-07-24 00:37:35.483310: train_loss -0.4116 
+2026-07-24 00:37:35.621612: val_loss -0.3745 
+2026-07-24 00:37:35.622860: Pseudo dice [0.8156, 0.8927, 0.8771, 0.6246] 
+2026-07-24 00:37:35.625788: Epoch time: 320.66 s 
+2026-07-24 00:37:41.877487:  
+2026-07-24 00:37:41.878471: Epoch 178 
+2026-07-24 00:37:41.878656: Current learning rate: 0.00014 
+2026-07-24 00:43:10.589025: train_loss -0.4248 
+2026-07-24 00:43:10.835133: val_loss -0.3243 
+2026-07-24 00:43:10.860833: Pseudo dice [0.5333, 0.8921, 0.7214, 0.2397] 
+2026-07-24 00:43:10.901007: Epoch time: 328.7 s 
+2026-07-24 00:43:15.177503:  
+2026-07-24 00:43:15.177750: Epoch 179 
+2026-07-24 00:43:15.177860: Current learning rate: 0.00013 
+2026-07-24 00:48:42.009757: train_loss -0.4232 
+2026-07-24 00:48:42.364700: val_loss -0.3839 
+2026-07-24 00:48:42.365361: Pseudo dice [0.7245, 0.8953, 0.8068, 0.4973] 
+2026-07-24 00:48:42.406061: Epoch time: 326.81 s 
+2026-07-24 00:48:45.790438:  
+2026-07-24 00:48:45.790605: Epoch 180 
+2026-07-24 00:48:45.790724: Current learning rate: 0.00013 
+2026-07-24 00:54:22.189616: train_loss -0.4253 
+2026-07-24 00:54:22.327384: val_loss -0.3551 
+2026-07-24 00:54:22.332028: Pseudo dice [0.6697, 0.8856, 0.8407, 0.6408] 
+2026-07-24 00:54:22.434098: Epoch time: 336.39 s 
+2026-07-24 00:54:27.095542:  
+2026-07-24 00:54:27.095704: Epoch 181 
+2026-07-24 00:54:27.095824: Current learning rate: 0.00012 
+2026-07-24 00:59:40.301291: train_loss -0.4264 
+2026-07-24 00:59:40.462792: val_loss -0.3627 
+2026-07-24 00:59:40.468023: Pseudo dice [0.6673, 0.8934, 0.7781, 0.2513] 
+2026-07-24 00:59:40.475544: Epoch time: 313.2 s 
+2026-07-24 00:59:45.418612:  
+2026-07-24 00:59:45.419389: Epoch 182 
+2026-07-24 00:59:45.420059: Current learning rate: 0.00011 
+2026-07-24 01:05:08.722029: train_loss -0.4223 
+2026-07-24 01:05:09.266825: val_loss -0.3444 
+2026-07-24 01:05:09.268235: Pseudo dice [0.6319, 0.8727, 0.7562, 0.2651] 
+2026-07-24 01:05:09.333877: Epoch time: 323.3 s 
+2026-07-24 01:05:13.161664:  
+2026-07-24 01:05:13.162098: Epoch 183 
+2026-07-24 01:05:13.162405: Current learning rate: 0.00011 
+2026-07-24 01:10:42.309161: train_loss -0.423 
+2026-07-24 01:10:42.399295: val_loss -0.372 
+2026-07-24 01:10:42.400223: Pseudo dice [0.7129, 0.9028, 0.7944, 0.5678] 
+2026-07-24 01:10:42.427722: Epoch time: 329.14 s 
+2026-07-24 01:10:46.355481:  
+2026-07-24 01:10:46.355947: Epoch 184 
+2026-07-24 01:10:46.356709: Current learning rate: 0.0001 
+2026-07-24 01:16:02.536247: train_loss -0.4351 
+2026-07-24 01:16:02.627466: val_loss -0.3832 
+2026-07-24 01:16:02.628965: Pseudo dice [0.7206, 0.8927, 0.6984, 0.1905] 
+2026-07-24 01:16:02.651214: Epoch time: 316.17 s 
+2026-07-24 01:16:06.960788:  
+2026-07-24 01:16:06.961327: Epoch 185 
+2026-07-24 01:16:06.961698: Current learning rate: 0.0001 
+2026-07-24 01:21:21.167744: train_loss -0.408 
+2026-07-24 01:21:21.721750: val_loss -0.3607 
+2026-07-24 01:21:21.723123: Pseudo dice [0.5953, 0.9033, 0.8134, 0.6201] 
+2026-07-24 01:21:21.726508: Epoch time: 314.21 s 
+2026-07-24 01:21:27.913444:  
+2026-07-24 01:21:27.913733: Epoch 186 
+2026-07-24 01:21:27.914567: Current learning rate: 9e-05 
+2026-07-24 01:27:30.689482: train_loss -0.426 
+2026-07-24 01:27:30.924756: val_loss -0.3097 
+2026-07-24 01:27:30.934932: Pseudo dice [0.657, 0.8845, 0.6984, 0.1832] 
+2026-07-24 01:27:30.961210: Epoch time: 362.74 s 
+2026-07-24 01:27:35.080608:  
+2026-07-24 01:27:35.080940: Epoch 187 
+2026-07-24 01:27:35.081138: Current learning rate: 9e-05 
+2026-07-24 01:34:02.036488: train_loss -0.4312 
+2026-07-24 01:34:02.253716: val_loss -0.3995 
+2026-07-24 01:34:02.260504: Pseudo dice [0.6715, 0.8863, 0.845, 0.659] 
+2026-07-24 01:34:02.264280: Epoch time: 386.96 s 
+2026-07-24 01:34:07.260522:  
+2026-07-24 01:34:07.260823: Epoch 188 
+2026-07-24 01:34:07.261596: Current learning rate: 8e-05 
+2026-07-24 01:40:42.807382: train_loss -0.4181 
+2026-07-24 01:40:43.004599: val_loss -0.3606 
+2026-07-24 01:40:43.006928: Pseudo dice [0.6918, 0.9025, 0.8033, 0.3904] 
+2026-07-24 01:40:43.510914: Epoch time: 395.54 s 
+2026-07-24 01:40:47.611209:  
+2026-07-24 01:40:47.611397: Epoch 189 
+2026-07-24 01:40:47.611494: Current learning rate: 7e-05 
+2026-07-24 01:47:03.537506: train_loss -0.4135 
+2026-07-24 01:47:03.738585: val_loss -0.3327 
+2026-07-24 01:47:03.739995: Pseudo dice [0.6823, 0.8875, 0.8398, 0.3509] 
+2026-07-24 01:47:03.753037: Epoch time: 375.91 s 
+2026-07-24 01:47:08.697754:  
+2026-07-24 01:47:08.697922: Epoch 190 
+2026-07-24 01:47:08.698147: Current learning rate: 7e-05 
+2026-07-24 01:53:20.842114: train_loss -0.4208 
+2026-07-24 01:53:20.914948: val_loss -0.3586 
+2026-07-24 01:53:20.916006: Pseudo dice [0.7694, 0.8879, 0.8161, 0.5606] 
+2026-07-24 01:53:20.923241: Epoch time: 372.13 s 
+2026-07-24 01:53:25.712570:  
+2026-07-24 01:53:25.714100: Epoch 191 
+2026-07-24 01:53:25.714276: Current learning rate: 6e-05 
+2026-07-24 01:59:30.079370: train_loss -0.423 
+2026-07-24 01:59:30.189489: val_loss -0.3325 
+2026-07-24 01:59:30.190018: Pseudo dice [0.6494, 0.885, 0.7648, 0.4103] 
+2026-07-24 01:59:30.192824: Epoch time: 364.34 s 
+2026-07-24 01:59:34.615941:  
+2026-07-24 01:59:34.617007: Epoch 192 
+2026-07-24 01:59:34.617124: Current learning rate: 6e-05 
+2026-07-24 02:05:53.834048: train_loss -0.418 
+2026-07-24 02:05:54.208860: val_loss -0.3757 
+2026-07-24 02:05:54.209458: Pseudo dice [0.6299, 0.8957, 0.7764, 0.4608] 
+2026-07-24 02:05:54.350691: Epoch time: 379.18 s 
+2026-07-24 02:06:03.232998:  
+2026-07-24 02:06:03.234741: Epoch 193 
+2026-07-24 02:06:03.237059: Current learning rate: 5e-05 
+2026-07-24 02:12:12.070298: train_loss -0.4149 
+2026-07-24 02:12:12.466734: val_loss -0.3714 
+2026-07-24 02:12:12.473063: Pseudo dice [0.7524, 0.897, 0.8413, 0.6131] 
+2026-07-24 02:12:12.488259: Epoch time: 368.82 s 
+2026-07-24 02:12:20.963570:  
+2026-07-24 02:12:20.965296: Epoch 194 
+2026-07-24 02:12:20.970320: Current learning rate: 4e-05 
+2026-07-24 02:18:28.728392: train_loss -0.4156 
+2026-07-24 02:18:28.868515: val_loss -0.358 
+2026-07-24 02:18:28.869835: Pseudo dice [0.5848, 0.8864, 0.7203, 0.3588] 
+2026-07-24 02:18:28.885288: Epoch time: 367.76 s 
+2026-07-24 02:18:33.171506:  
+2026-07-24 02:18:33.172837: Epoch 195 
+2026-07-24 02:18:33.173162: Current learning rate: 4e-05 
+2026-07-24 02:24:42.709336: train_loss -0.4074 
+2026-07-24 02:24:42.804701: val_loss -0.377 
+2026-07-24 02:24:42.805985: Pseudo dice [0.759, 0.8898, 0.8533, 0.6338] 
+2026-07-24 02:24:42.808650: Epoch time: 369.53 s 
+2026-07-24 02:24:46.876818:  
+2026-07-24 02:24:46.877131: Epoch 196 
+2026-07-24 02:24:46.877536: Current learning rate: 3e-05 
+2026-07-24 02:30:58.059432: train_loss -0.4423 
+2026-07-24 02:30:58.161398: val_loss -0.3759 
+2026-07-24 02:30:58.162855: Pseudo dice [0.7354, 0.8969, 0.8026, 0.5251] 
+2026-07-24 02:30:58.165855: Epoch time: 371.18 s 
+2026-07-24 02:31:02.639857:  
+2026-07-24 02:31:02.640871: Epoch 197 
+2026-07-24 02:31:02.641109: Current learning rate: 2e-05 
+2026-07-24 02:36:55.438238: train_loss -0.4191 
+2026-07-24 02:36:55.632096: val_loss -0.3786 
+2026-07-24 02:36:55.633628: Pseudo dice [0.7647, 0.8933, 0.8407, 0.5564] 
+2026-07-24 02:36:55.636724: Epoch time: 352.8 s 
+2026-07-24 02:37:02.588035:  
+2026-07-24 02:37:02.589988: Epoch 198 
+2026-07-24 02:37:02.593465: Current learning rate: 2e-05 
+2026-07-24 02:43:08.121751: train_loss -0.4192 
+2026-07-24 02:43:08.387858: val_loss -0.3836 
+2026-07-24 02:43:08.389303: Pseudo dice [0.5648, 0.8887, 0.7895, 0.5819] 
+2026-07-24 02:43:08.392978: Epoch time: 365.53 s 
+2026-07-24 02:43:13.733282:  
+2026-07-24 02:43:13.797858: Epoch 199 
+2026-07-24 02:43:13.798339: Current learning rate: 1e-05 
+2026-07-24 02:49:14.334491: train_loss -0.4308 
+2026-07-24 02:49:14.488492: val_loss -0.3931 
+2026-07-24 02:49:14.489826: Pseudo dice [0.679, 0.9015, 0.8392, 0.7704] 
+2026-07-24 02:49:14.492192: Epoch time: 360.6 s 
+2026-07-24 02:49:27.833205: Training done. 
+2026-07-24 02:49:28.263303: Using BraTS2026 fixed split: 1035 train / 103 val 
+2026-07-24 02:49:28.283742: predicting BraTSMET_000006 
+2026-07-24 02:49:29.696615: BraTSMET_000006, shape torch.Size([4, 138, 195, 144]), rank 0 
+2026-07-24 02:49:42.071103: predicting BraTSMET_000009 
+2026-07-24 02:49:43.222536: BraTSMET_000009, shape torch.Size([4, 133, 186, 143]), rank 0 
+2026-07-24 02:49:46.618753: predicting BraTSMET_000014 
+2026-07-24 02:49:47.714002: BraTSMET_000014, shape torch.Size([4, 134, 204, 151]), rank 0 
+2026-07-24 02:49:51.889417: predicting BraTSMET_000016 
+2026-07-24 02:49:53.701411: BraTSMET_000016, shape torch.Size([4, 137, 199, 161]), rank 0 
+2026-07-24 02:49:58.008706: predicting BraTSMET_000019 
+2026-07-24 02:49:58.087501: BraTSMET_000019, shape torch.Size([4, 135, 186, 147]), rank 0 
+2026-07-24 02:50:00.869241: predicting BraTSMET_000022 
+2026-07-24 02:50:01.909183: BraTSMET_000022, shape torch.Size([4, 127, 178, 141]), rank 0 
+2026-07-24 02:50:03.706580: predicting BraTSMET_000025 
+2026-07-24 02:50:04.507619: BraTSMET_000025, shape torch.Size([4, 134, 189, 141]), rank 0 
+2026-07-24 02:50:07.315847: predicting BraTSMET_000043 
+2026-07-24 02:50:07.644500: BraTSMET_000043, shape torch.Size([4, 144, 202, 158]), rank 0 
+2026-07-24 02:50:11.835256: predicting BraTSMET_000071 
+2026-07-24 02:50:13.011281: BraTSMET_000071, shape torch.Size([4, 139, 207, 159]), rank 0 
+2026-07-24 02:50:17.183007: predicting BraTSMET_000075 
+2026-07-24 02:50:18.705556: BraTSMET_000075, shape torch.Size([4, 144, 205, 159]), rank 0 
+2026-07-24 02:53:50.031209: predicting BraTSMET_000078 
+2026-07-24 02:53:51.184435: BraTSMET_000078, shape torch.Size([4, 143, 208, 162]), rank 0 
+2026-07-24 02:53:56.469552: predicting BraTSMET_000087 
+2026-07-24 02:53:57.675337: BraTSMET_000087, shape torch.Size([4, 143, 207, 165]), rank 0 
+2026-07-24 02:54:01.844657: predicting BraTSMET_000101 
+2026-07-24 02:54:03.050058: BraTSMET_000101, shape torch.Size([4, 140, 206, 164]), rank 0 
+2026-07-24 02:54:07.439192: predicting BraTSMET_000102 
+2026-07-24 02:54:08.838850: BraTSMET_000102, shape torch.Size([4, 143, 209, 161]), rank 0 
+2026-07-24 02:54:13.252036: predicting BraTSMET_000107 
+2026-07-24 02:54:13.391486: BraTSMET_000107, shape torch.Size([4, 144, 205, 159]), rank 0 
+2026-07-24 02:54:17.584749: predicting BraTSMET_000114 
+2026-07-24 02:54:18.912238: BraTSMET_000114, shape torch.Size([4, 143, 208, 162]), rank 0 
+2026-07-24 02:54:23.232745: predicting BraTSMET_000119 
+2026-07-24 02:54:25.333224: BraTSMET_000119, shape torch.Size([4, 144, 207, 164]), rank 0 
+2026-07-24 02:54:29.726408: predicting BraTSMET_000132 
+2026-07-24 02:54:30.903688: BraTSMET_000132, shape torch.Size([4, 147, 206, 165]), rank 0 
+2026-07-24 02:54:35.392967: predicting BraTSMET_000133 
+2026-07-24 02:54:37.070281: BraTSMET_000133, shape torch.Size([4, 138, 201, 159]), rank 0 
+2026-07-24 02:54:41.276930: predicting BraTSMET_000137 
+2026-07-24 02:54:42.134953: BraTSMET_000137, shape torch.Size([4, 145, 205, 162]), rank 0 
+2026-07-24 02:54:46.349356: predicting BraTSMET_000139 
+2026-07-24 02:54:47.643810: BraTSMET_000139, shape torch.Size([4, 145, 205, 164]), rank 0 
+2026-07-24 02:54:51.865830: predicting BraTSMET_000151 
+2026-07-24 02:54:53.150098: BraTSMET_000151, shape torch.Size([4, 141, 202, 161]), rank 0 
+2026-07-24 02:54:57.349025: predicting BraTSMET_000188 
+2026-07-24 02:54:58.397248: BraTSMET_000188, shape torch.Size([4, 141, 206, 159]), rank 0 
+2026-07-24 02:55:02.602396: predicting BraTSMET_000191 
+2026-07-24 02:55:03.386432: BraTSMET_000191, shape torch.Size([4, 140, 211, 163]), rank 0 
+2026-07-24 02:55:07.674681: predicting BraTSMET_000194 
+2026-07-24 02:55:08.629638: BraTSMET_000194, shape torch.Size([4, 138, 205, 162]), rank 0 
+2026-07-24 02:55:13.264087: predicting BraTSMET_000216 
+2026-07-24 02:55:14.618093: BraTSMET_000216, shape torch.Size([4, 145, 207, 168]), rank 0 
+2026-07-24 02:55:18.808669: predicting BraTSMET_000222 
+2026-07-24 02:55:19.874695: BraTSMET_000222, shape torch.Size([4, 143, 204, 161]), rank 0 
+2026-07-24 02:55:24.066444: predicting BraTSMET_000223 
+2026-07-24 02:55:24.733952: BraTSMET_000223, shape torch.Size([4, 141, 208, 163]), rank 0 
+2026-07-24 02:55:29.227161: predicting BraTSMET_000241 
+2026-07-24 02:55:30.818691: BraTSMET_000241, shape torch.Size([4, 134, 198, 151]), rank 0 
+2026-07-24 02:55:36.023809: predicting BraTSMET_000263 
+2026-07-24 02:55:36.942296: BraTSMET_000263, shape torch.Size([4, 142, 195, 147]), rank 0 
+2026-07-24 02:55:41.279212: predicting BraTSMET_000283 
+2026-07-24 02:55:42.628598: BraTSMET_000283, shape torch.Size([4, 135, 200, 156]), rank 0 
+2026-07-24 02:55:47.686831: predicting BraTSMET_000311 
+2026-07-24 02:55:50.032995: BraTSMET_000311, shape torch.Size([4, 168, 256, 256]), rank 0 
+2026-07-24 02:55:57.269454: predicting BraTSMET_000317 
+2026-07-24 02:55:59.025965: BraTSMET_000317, shape torch.Size([4, 163, 224, 234]), rank 0 
+2026-07-24 02:56:05.391255: predicting BraTSMET_000369 
+2026-07-24 02:56:08.361706: BraTSMET_000369, shape torch.Size([4, 192, 349, 349]), rank 0 
+2026-07-24 02:56:26.007596: predicting BraTSMET_000370 
+2026-07-24 02:56:28.258836: BraTSMET_000370, shape torch.Size([4, 163, 241, 230]), rank 0 
+2026-07-24 02:56:34.770856: predicting BraTSMET_000383 
+2026-07-24 02:56:36.350716: BraTSMET_000383, shape torch.Size([4, 148, 229, 164]), rank 0 
+2026-07-24 02:56:40.650638: predicting BraTSMET_000448 
+2026-07-24 02:56:43.493353: BraTSMET_000448, shape torch.Size([4, 192, 349, 349]), rank 0 
+2026-07-24 02:57:01.632866: predicting BraTSMET_000473 
+2026-07-24 02:57:05.387020: BraTSMET_000473, shape torch.Size([4, 192, 349, 349]), rank 0 
+2026-07-24 02:57:23.488600: predicting BraTSMET_000498 
+2026-07-24 02:57:26.401061: BraTSMET_000498, shape torch.Size([4, 192, 349, 349]), rank 0 
+2026-07-24 02:57:43.984021: predicting BraTSMET_000617 
+2026-07-24 02:57:45.517706: BraTSMET_000617, shape torch.Size([4, 137, 200, 156]), rank 0 
+2026-07-24 02:57:50.000638: predicting BraTSMET_000621 
+2026-07-24 02:57:51.031252: BraTSMET_000621, shape torch.Size([4, 129, 193, 151]), rank 0 
+2026-07-24 02:57:55.263621: predicting BraTSMET_000626 
+2026-07-24 02:57:55.948777: BraTSMET_000626, shape torch.Size([4, 135, 190, 163]), rank 0 
+2026-07-24 02:57:58.786544: predicting BraTSMET_000628 
+2026-07-24 02:57:59.419653: BraTSMET_000628, shape torch.Size([4, 134, 189, 149]), rank 0 
+2026-07-24 02:58:02.212906: predicting BraTSMET_000635 
+2026-07-24 02:58:03.853443: BraTSMET_000635, shape torch.Size([4, 135, 191, 163]), rank 0 
+2026-07-24 02:58:06.736118: predicting BraTSMET_000654 
+2026-07-24 02:58:07.566951: BraTSMET_000654, shape torch.Size([4, 135, 179, 153]), rank 0 
+2026-07-24 02:58:10.405351: predicting BraTSMET_000657 
+2026-07-24 02:58:11.457931: BraTSMET_000657, shape torch.Size([4, 138, 194, 159]), rank 0 
+2026-07-24 02:58:16.643846: predicting BraTSMET_000736 
+2026-07-24 02:58:17.864795: BraTSMET_000736, shape torch.Size([4, 136, 201, 163]), rank 0 
+2026-07-24 02:58:22.034171: predicting BraTSMET_000737 
+2026-07-24 02:58:23.085106: BraTSMET_000737, shape torch.Size([4, 136, 200, 157]), rank 0 
+2026-07-24 02:58:27.457982: predicting BraTSMET_000738 
+2026-07-24 02:58:28.206950: BraTSMET_000738, shape torch.Size([4, 137, 201, 157]), rank 0 
+2026-07-24 02:58:32.568470: predicting BraTSMET_000760 
+2026-07-24 02:58:33.556854: BraTSMET_000760, shape torch.Size([4, 140, 183, 153]), rank 0 
+2026-07-24 02:58:36.390725: predicting BraTSMET_000761 
+2026-07-24 02:58:37.684425: BraTSMET_000761, shape torch.Size([4, 140, 182, 152]), rank 0 
+2026-07-24 02:58:40.557760: predicting BraTSMET_000770 
+2026-07-24 02:58:41.577231: BraTSMET_000770, shape torch.Size([4, 142, 189, 162]), rank 0 
+2026-07-24 02:58:44.511571: predicting BraTSMET_000771 
+2026-07-24 02:58:45.715039: BraTSMET_000771, shape torch.Size([4, 146, 188, 162]), rank 0 
+2026-07-24 02:58:48.961581: predicting BraTSMET_000772 
+2026-07-24 02:58:50.144025: BraTSMET_000772, shape torch.Size([4, 139, 188, 162]), rank 0 
+2026-07-24 02:58:53.147687: predicting BraTSMET_000791 
+2026-07-24 02:58:53.912334: BraTSMET_000791, shape torch.Size([4, 143, 201, 161]), rank 0 
+2026-07-24 02:58:58.083334: predicting BraTSMET_000792 
+2026-07-24 02:58:59.281571: BraTSMET_000792, shape torch.Size([4, 146, 198, 160]), rank 0 
+2026-07-24 02:59:03.491760: predicting BraTSMET_000793 
+2026-07-24 02:59:04.241789: BraTSMET_000793, shape torch.Size([4, 145, 199, 160]), rank 0 
+2026-07-24 02:59:08.424136: predicting BraTSMET_000796 
+2026-07-24 02:59:09.386128: BraTSMET_000796, shape torch.Size([4, 138, 201, 161]), rank 0 
+2026-07-24 02:59:13.893642: predicting BraTSMET_000797 
+2026-07-24 02:59:14.476957: BraTSMET_000797, shape torch.Size([4, 139, 201, 160]), rank 0 
+2026-07-24 02:59:18.712225: predicting BraTSMET_000798 
+2026-07-24 02:59:20.467402: BraTSMET_000798, shape torch.Size([4, 138, 200, 159]), rank 0 
+2026-07-24 02:59:25.118079: predicting BraTSMET_000827 
+2026-07-24 02:59:25.760800: BraTSMET_000827, shape torch.Size([4, 150, 210, 160]), rank 0 
+2026-07-24 02:59:29.928619: predicting BraTSMET_000828 
+2026-07-24 02:59:30.939544: BraTSMET_000828, shape torch.Size([4, 146, 209, 161]), rank 0 
+2026-07-24 02:59:35.483545: predicting BraTSMET_000858 
+2026-07-24 02:59:36.866074: BraTSMET_000858, shape torch.Size([4, 127, 183, 158]), rank 0 
+2026-07-24 02:59:39.146763: predicting BraTSMET_000859 
+2026-07-24 02:59:40.274567: BraTSMET_000859, shape torch.Size([4, 125, 186, 158]), rank 0 
+2026-07-24 02:59:42.146789: predicting BraTSMET_000913 
+2026-07-24 02:59:43.006341: BraTSMET_000913, shape torch.Size([4, 153, 207, 155]), rank 0 
+2026-07-24 02:59:48.204412: predicting BraTSMET_000914 
+2026-07-24 02:59:49.384090: BraTSMET_000914, shape torch.Size([4, 153, 209, 157]), rank 0 
+2026-07-24 02:59:54.651345: predicting BraTSMET_000915 
+2026-07-24 02:59:56.232526: BraTSMET_000915, shape torch.Size([4, 150, 208, 157]), rank 0 
+2026-07-24 03:00:00.543321: predicting BraTSMET_000927 
+2026-07-24 03:00:01.520440: BraTSMET_000927, shape torch.Size([4, 149, 202, 168]), rank 0 
+2026-07-24 03:00:05.793029: predicting BraTSMET_000928 
+2026-07-24 03:00:07.134814: BraTSMET_000928, shape torch.Size([4, 149, 201, 168]), rank 0 
+2026-07-24 03:00:11.444958: predicting BraTSMET_000929 
+2026-07-24 03:00:12.624071: BraTSMET_000929, shape torch.Size([4, 136, 199, 161]), rank 0 
+2026-07-24 03:00:17.218695: predicting BraTSMET_000930 
+2026-07-24 03:00:17.963808: BraTSMET_000930, shape torch.Size([4, 134, 200, 162]), rank 0 
+2026-07-24 03:00:22.207393: predicting BraTSMET_000935 
+2026-07-24 03:00:23.515578: BraTSMET_000935, shape torch.Size([4, 142, 181, 173]), rank 0 
+2026-07-24 03:00:26.316444: predicting BraTSMET_000936 
+2026-07-24 03:00:27.086191: BraTSMET_000936, shape torch.Size([4, 150, 182, 173]), rank 0 
+2026-07-24 03:00:29.915599: predicting BraTSMET_000937 
+2026-07-24 03:00:31.261230: BraTSMET_000937, shape torch.Size([4, 143, 178, 173]), rank 0 
+2026-07-24 03:00:34.062482: predicting BraTSMET_000945 
+2026-07-24 03:00:34.947056: BraTSMET_000945, shape torch.Size([4, 142, 178, 150]), rank 0 
+2026-07-24 03:00:37.734251: predicting BraTSMET_000946 
+2026-07-24 03:00:38.606786: BraTSMET_000946, shape torch.Size([4, 144, 178, 150]), rank 0 
+2026-07-24 03:00:42.483764: predicting BraTSMET_000947 
+2026-07-24 03:00:43.501576: BraTSMET_000947, shape torch.Size([4, 142, 179, 150]), rank 0 
+2026-07-24 03:00:46.379715: predicting BraTSMET_000948 
+2026-07-24 03:00:47.480208: BraTSMET_000948, shape torch.Size([4, 140, 177, 150]), rank 0 
+2026-07-24 03:00:50.281036: predicting BraTSMET_001006 
+2026-07-24 03:00:51.077351: BraTSMET_001006, shape torch.Size([4, 147, 207, 151]), rank 0 
+2026-07-24 03:00:55.250180: predicting BraTSMET_001007 
+2026-07-24 03:00:56.538187: BraTSMET_001007, shape torch.Size([4, 146, 209, 150]), rank 0 
+2026-07-24 03:01:01.261670: predicting BraTSMET_001008 
+2026-07-24 03:01:02.365989: BraTSMET_001008, shape torch.Size([4, 145, 208, 150]), rank 0 
+2026-07-24 03:01:06.535779: predicting BraTSMET_001087 
+2026-07-24 03:01:08.031795: BraTSMET_001087, shape torch.Size([4, 139, 186, 168]), rank 0 
+2026-07-24 03:01:11.114851: predicting BraTSMET_001088 
+2026-07-24 03:01:12.288802: BraTSMET_001088, shape torch.Size([4, 140, 187, 168]), rank 0 
+2026-07-24 03:01:15.270332: predicting BraTSMET_001126 
+2026-07-24 03:01:16.110583: BraTSMET_001126, shape torch.Size([4, 130, 203, 159]), rank 0 
+2026-07-24 03:01:20.285290: predicting BraTSMET_001131 
+2026-07-24 03:01:21.033066: BraTSMET_001131, shape torch.Size([4, 150, 191, 168]), rank 0 
+2026-07-24 03:01:23.882973: predicting BraTSMET_001132 
+2026-07-24 03:01:24.881713: BraTSMET_001132, shape torch.Size([4, 151, 189, 168]), rank 0 
+2026-07-24 03:01:27.818571: predicting BraTSMET_001133 
+2026-07-24 03:01:29.103240: BraTSMET_001133, shape torch.Size([4, 152, 190, 168]), rank 0 
+2026-07-24 03:01:32.059745: predicting BraTSMET_001144 
+2026-07-24 03:01:33.064379: BraTSMET_001144, shape torch.Size([4, 133, 200, 150]), rank 0 
+2026-07-24 03:01:38.191846: predicting BraTSMET_001160 
+2026-07-24 03:01:38.973293: BraTSMET_001160, shape torch.Size([4, 134, 182, 168]), rank 0 
+2026-07-24 03:01:41.763936: predicting BraTSMET_001161 
+2026-07-24 03:01:43.026686: BraTSMET_001161, shape torch.Size([4, 132, 185, 168]), rank 0 
+2026-07-24 03:01:46.035219: predicting BraTSMET_001164 
+2026-07-24 03:01:47.209101: BraTSMET_001164, shape torch.Size([4, 140, 197, 178]), rank 0 
+2026-07-24 03:01:51.547299: predicting BraTSMET_001165 
+2026-07-24 03:01:52.709086: BraTSMET_001165, shape torch.Size([4, 143, 197, 182]), rank 0 
+2026-07-24 03:01:56.902975: predicting BraTSMET_001185 
+2026-07-24 03:01:58.210724: BraTSMET_001185, shape torch.Size([4, 146, 209, 169]), rank 0 
+2026-07-24 03:02:02.655379: predicting BraTSMET_001186 
+2026-07-24 03:02:03.813882: BraTSMET_001186, shape torch.Size([4, 145, 205, 168]), rank 0 
+2026-07-24 03:02:08.782564: predicting BraTSMET_001187 
+2026-07-24 03:02:09.989079: BraTSMET_001187, shape torch.Size([4, 140, 205, 171]), rank 0 
+2026-07-24 03:02:14.253156: predicting BraTSMET_001195 
+2026-07-24 03:02:15.101362: BraTSMET_001195, shape torch.Size([4, 146, 187, 161]), rank 0 
+2026-07-24 03:02:17.903312: predicting BraTSMET_001196 
+2026-07-24 03:02:18.472362: BraTSMET_001196, shape torch.Size([4, 147, 186, 160]), rank 0 
+2026-07-24 03:02:21.300711: predicting BraTSMET_001204 
+2026-07-24 03:02:22.043478: BraTSMET_001204, shape torch.Size([4, 141, 196, 149]), rank 0 
+2026-07-24 03:02:26.298565: predicting BraTSMET_001205 
+2026-07-24 03:02:27.163724: BraTSMET_001205, shape torch.Size([4, 140, 195, 148]), rank 0 
+2026-07-24 03:02:31.379366: predicting BraTSMET_001246 
+2026-07-24 03:02:32.290124: BraTSMET_001246, shape torch.Size([4, 134, 204, 163]), rank 0 
+2026-07-24 03:02:36.505959: predicting BraTSMET_001284 
+2026-07-24 03:02:37.331274: BraTSMET_001284, shape torch.Size([4, 130, 195, 156]), rank 0 
+2026-07-24 03:02:42.162691: predicting BraTSMET_001285 
+2026-07-24 03:02:43.072531: BraTSMET_001285, shape torch.Size([4, 130, 195, 157]), rank 0 
+2026-07-24 03:02:47.323697: predicting BraTSMET_001286 
+2026-07-24 03:02:48.129872: BraTSMET_001286, shape torch.Size([4, 132, 197, 157]), rank 0 
+2026-07-24 03:06:35.010092: Validation complete 
+2026-07-24 03:06:35.010354: Mean Validation Dice:  0.488493185813601 

@@ -1,0 +1,8 @@
+# S2 / 02_small_lesion_and_focal
+
+按研究路线分组的独立实验及其原始结果
+
+- [s2_small_lesion_ablation_20260721](s2_small_lesion_ablation_20260721)
+- [s2_small_lesion_ablation_20260724_official_eval_retry_numpy126](s2_small_lesion_ablation_20260724_official_eval_retry_numpy126)
+
+整理说明仅帮助定位，不改变任何原实验的批准或失败状态。新说明为experimental_unvalidated。
