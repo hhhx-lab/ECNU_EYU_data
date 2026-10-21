@@ -1,0 +1,165 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "workbook": "BraTS2026_Task1_Valid_Leaderboard_Top75_By_Metric_20260806.xlsx",
+  "expected_sheet_count": 25,
+  "actual_sheet_count": 25,
+  "sheet_names": [
+    "索引",
+    "Lesionwise_dsc_mean_et",
+    "Lesionwise_dsc_mean_rc",
+    "Lesionwise_dsc_mean_tc",
+    "Lesionwise_dsc_mean_wt",
+    "Lesionwise_nsd_mean_et",
+    "Lesionwise_nsd_mean_rc",
+    "Lesionwise_nsd_mean_tc",
+    "Lesionwise_nsd_mean_wt",
+    "Small_instance_tp_et",
+    "Small_instance_tp_rc",
+    "Small_instance_tp_tc",
+    "Small_instance_tp_wt",
+    "Small_instance_fn_et",
+    "Small_instance_fn_rc",
+    "Small_instance_fn_tc",
+    "Small_instance_fn_wt",
+    "Small_instance_fp_et",
+    "Small_instance_fp_rc",
+    "Small_instance_fp_tc",
+    "Small_instance_fp_wt",
+    "Small_instance_f1_et",
+    "Small_instance_f1_rc",
+    "Small_instance_f1_tc",
+    "Small_instance_f1_wt"
+  ],
+  "index_inspect_ndjson": "{\"kind\":\"table\",\"sheet\":\"索引\",\"address\":\"A1:J15\",\"rows\":15,\"cols\":10,\"values\":[[\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\",\"BraTS 2026 Task 1 Validation Leaderboard - Top 75 by Metric\"],[\"状态\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\"],[\"来源\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\"],[\"范围\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\",\"每指标最佳 75 条有限值记录；并列值保留 Synapse 捕获顺序\"],[null,null,null,null,null,null,null,null,null,null],[\"指标 ID\",\"中文说明\",\"区域\",\"统计量\",\"最优方向\",\"最佳值\",\"第 75 名\",\"记录数\",\"来源页\",\"工作表\"],[\"Lesionwise_dsc_mean_et\",\"病灶级 DSC 均值（ET）\",\"ET\",\"DSC\",\"越大越优\",0.753,0.738,75,\"38, 39, 40, 41\",\"Lesionwise_dsc_mean_et\"],[\"Lesionwise_dsc_mean_rc\",\"病灶级 DSC 均值（RC）\",\"RC\",\"DSC\",\"越大越优\",0.671,0.603,75,\"38, 39, 40, 41\",\"Lesionwise_dsc_mean_rc\"],[\"Lesionwise_dsc_mean_tc\",\"病灶级 DSC 均值（TC）\",\"TC\",\"DSC\",\"越大越优\",0.775,0.764,75,\"38, 39, 40, 41\",\"Lesionwise_dsc_mean_tc\"],[\"Lesionwise_dsc_mean_wt\",\"病灶级 DSC 均值（WT）\",\"WT\",\"DSC\",\"越大越优\",0.734,0.72,75,\"38, 39, 40, 41\",\"Lesionwise_dsc_mean_wt\"],[\"Lesionwise_nsd_mean_et\",\"病灶级 NSD 均值（ET）\",\"ET\",\"NSD\",\"越大越优\",0.818,0.802,75,\"38, 39, 40, 41\",\"Lesionwise_nsd_mean_et\"],[\"Lesionwise_nsd_mean_rc\",\"病灶级 NSD 均值（RC）\",\"RC\",\"NSD\",\"越大越优\",0.556,0.504,75,\"38, 39, 40, 41\",\"Lesionwise_nsd_mean_rc\"],[\"Lesionwise_nsd_mean_tc\",\"病灶级 NSD 均值（TC）\",\"TC\",\"NSD\",\"越大越优\",0.829,0.811,75,\"38, 39, 40, 41\",\"Lesionwise_nsd_mean_tc\"],[\"Lesionwise_nsd_mean_wt\",\"病灶级 NSD 均值（WT）\",\"WT\",\"NSD\",\"越大越优\",0.77,0.738,75,\"38, 39, 40, 41\",\"Lesionwise_nsd_mean_wt\"],[\"Small_instance_tp_et\",\"小实例 TP（ET）\",\"ET\",\"TP\",\"越大越优\",3.773,2.693,75,\"38, 39, 40, 41\",\"Small_instance_tp_et\"]]}",
+  "representative_high_metric_inspect_ndjson": "{\"kind\":\"table\",\"sheet\":\"Lesionwise_dsc_mean_et\",\"address\":\"A1:H12\",\"rows\":12,\"cols\":8,\"values\":[[\"病灶级 DSC 均值（ET） - 最佳 75 条\",\"病灶级 DSC 均值（ET） - 最佳 75 条\",\"病灶级 DSC 均值（ET） - 最佳 75 条\",\"病灶级 DSC 均值（ET） - 最佳 75 条\",\"病灶级 DSC 均值（ET） - 最佳 75 条\",\"病灶级 DSC 均值（ET） - 最佳 75 条\",\"病灶级 DSC 均值（ET） - 最佳 75 条\",\"病灶级 DSC 均值（ET） - 最佳 75 条\"],[\"状态\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\"],[\"来源\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\"],[\"排序\",\"指标值降序，越大越优；并列保留页面顺序\",\"指标值降序，越大越优；并列保留页面顺序\",\"指标值降序，越大越优；并列保留页面顺序\",\"指标值降序，越大越优；并列保留页面顺序\",\"指标值降序，越大越优；并列保留页面顺序\",\"指标值降序，越大越优；并列保留页面顺序\",\"指标值降序，越大越优；并列保留页面顺序\"],[null,null,null,null,null,null,null,null],[\"排名\",\"Submission ID\",\"提交时间\",\"队伍\",\"指标值\",\"来源页\",\"页内行\",\"队伍 URL\"],[1,\"9773694\",\"7/27/2026 2:50 PM\",\"MicroBT\",0.753,41,4,\"https://www.synapse.org/Team:3588221\"],[2,\"9773804\",\"7/28/2026 2:00 AM\",\"Leon_193\",0.753,41,3,\"https://www.synapse.org/Team:3604134\"],[3,\"9773805\",\"7/28/2026 2:00 AM\",\"Leon_193\",0.753,41,2,\"https://www.synapse.org/Team:3604134\"],[4,\"9774168\",\"7/30/2026 10:01 AM\",\"MicroBT\",0.753,41,1,\"https://www.synapse.org/Team:3588221\"],[5,\"9773628\",\"7/27/2026 1:43 AM\",\"MicroBT\",0.753,40,25,\"https://www.synapse.org/Team:3588221\"],[6,\"9773630\",\"7/27/2026 1:45 AM\",\"MicroBT-sub\",0.753,40,24,\"https://www.synapse.org/Team:3601728\"]]}",
+  "representative_low_metric_inspect_ndjson": "{\"kind\":\"table\",\"sheet\":\"Small_instance_fp_rc\",\"address\":\"A1:H12\",\"rows\":12,\"cols\":8,\"values\":[[\"小实例 FP（RC） - 最佳 75 条\",\"小实例 FP（RC） - 最佳 75 条\",\"小实例 FP（RC） - 最佳 75 条\",\"小实例 FP（RC） - 最佳 75 条\",\"小实例 FP（RC） - 最佳 75 条\",\"小实例 FP（RC） - 最佳 75 条\",\"小实例 FP（RC） - 最佳 75 条\",\"小实例 FP（RC） - 最佳 75 条\"],[\"状态\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\",\"experimental_unvalidated\"],[\"来源\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\",\"https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097\"],[\"排序\",\"指标值升序，越小越优；跳过非数值项；并列保留页面顺序\",\"指标值升序，越小越优；跳过非数值项；并列保留页面顺序\",\"指标值升序，越小越优；跳过非数值项；并列保留页面顺序\",\"指标值升序，越小越优；跳过非数值项；并列保留页面顺序\",\"指标值升序，越小越优；跳过非数值项；并列保留页面顺序\",\"指标值升序，越小越优；跳过非数值项；并列保留页面顺序\",\"指标值升序，越小越优；跳过非数值项；并列保留页面顺序\"],[null,null,null,null,null,null,null,null],[\"排名\",\"Submission ID\",\"提交时间\",\"队伍\",\"指标值\",\"来源页\",\"页内行\",\"队伍 URL\"],[1,\"9774343\",\"7/31/2026 6:49 AM\",\"Brainz\",0,1,16,\"https://www.synapse.org/Team:3588114\"],[2,\"9774332\",\"7/31/2026 5:16 AM\",\"Brainz\",0,1,17,\"https://www.synapse.org/Team:3588114\"],[3,\"9774325\",\"7/31/2026 4:54 AM\",\"Tumor Terminators\",0,1,18,\"https://www.synapse.org/Team:3590796\"],[4,\"9774293\",\"7/31/2026 1:40 AM\",\"ECNU_NYU_team\",0,1,19,\"https://www.synapse.org/Team:3602574\"],[5,\"9774292\",\"7/31/2026 1:40 AM\",\"ECNU_NYU_team\",0,1,20,\"https://www.synapse.org/Team:3602574\"],[6,\"9774200\",\"7/30/2026 2:22 PM\",\"Brain.exe\",0,1,21,\"https://www.synapse.org/Team:3597019\"]]}",
+  "formula_error_scan_ndjson": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "rendered_sheet_count": 25,
+  "render_results": [
+    {
+      "sheet": "索引",
+      "range": "A1:J30",
+      "preview_bytes": 270426
+    },
+    {
+      "sheet": "Lesionwise_dsc_mean_et",
+      "range": "A1:H18",
+      "preview_bytes": 131269
+    },
+    {
+      "sheet": "Lesionwise_dsc_mean_rc",
+      "range": "A1:H18",
+      "preview_bytes": 137369
+    },
+    {
+      "sheet": "Lesionwise_dsc_mean_tc",
+      "range": "A1:H18",
+      "preview_bytes": 129839
+    },
+    {
+      "sheet": "Lesionwise_dsc_mean_wt",
+      "range": "A1:H18",
+      "preview_bytes": 130042
+    },
+    {
+      "sheet": "Lesionwise_nsd_mean_et",
+      "range": "A1:H18",
+      "preview_bytes": 133118
+    },
+    {
+      "sheet": "Lesionwise_nsd_mean_rc",
+      "range": "A1:H18",
+      "preview_bytes": 136731
+    },
+    {
+      "sheet": "Lesionwise_nsd_mean_tc",
+      "range": "A1:H18",
+      "preview_bytes": 132121
+    },
+    {
+      "sheet": "Lesionwise_nsd_mean_wt",
+      "range": "A1:H18",
+      "preview_bytes": 130584
+    },
+    {
+      "sheet": "Small_instance_tp_et",
+      "range": "A1:H18",
+      "preview_bytes": 126932
+    },
+    {
+      "sheet": "Small_instance_tp_rc",
+      "range": "A1:H18",
+      "preview_bytes": 131589
+    },
+    {
+      "sheet": "Small_instance_tp_tc",
+      "range": "A1:H18",
+      "preview_bytes": 127360
+    },
+    {
+      "sheet": "Small_instance_tp_wt",
+      "range": "A1:H18",
+      "preview_bytes": 128553
+    },
+    {
+      "sheet": "Small_instance_fn_et",
+      "range": "A1:H18",
+      "preview_bytes": 129577
+    },
+    {
+      "sheet": "Small_instance_fn_rc",
+      "range": "A1:H18",
+      "preview_bytes": 133599
+    },
+    {
+      "sheet": "Small_instance_fn_tc",
+      "range": "A1:H18",
+      "preview_bytes": 130288
+    },
+    {
+      "sheet": "Small_instance_fn_wt",
+      "range": "A1:H18",
+      "preview_bytes": 130243
+    },
+    {
+      "sheet": "Small_instance_fp_et",
+      "range": "A1:H18",
+      "preview_bytes": 129632
+    },
+    {
+      "sheet": "Small_instance_fp_rc",
+      "range": "A1:H18",
+      "preview_bytes": 128900
+    },
+    {
+      "sheet": "Small_instance_fp_tc",
+      "range": "A1:H18",
+      "preview_bytes": 130311
+    },
+    {
+      "sheet": "Small_instance_fp_wt",
+      "range": "A1:H18",
+      "preview_bytes": 131459
+    },
+    {
+      "sheet": "Small_instance_f1_et",
+      "range": "A1:H18",
+      "preview_bytes": 129328
+    },
+    {
+      "sheet": "Small_instance_f1_rc",
+      "range": "A1:H18",
+      "preview_bytes": 132375
+    },
+    {
+      "sheet": "Small_instance_f1_tc",
+      "range": "A1:H18",
+      "preview_bytes": 129589
+    },
+    {
+      "sheet": "Small_instance_f1_wt",
+      "range": "A1:H18",
+      "preview_bytes": 130951
+    }
+  ]
+}

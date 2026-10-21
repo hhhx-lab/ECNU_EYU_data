@@ -1,0 +1,17 @@
+- dialog [ref=e4221]:
+  - heading [level=2] [ref=e4222]:
+    - generic [ref=e4223]:
+      - text: Select Evaluation Queue
+      - button "close" [ref=e4224] [cursor=pointer]
+  - generic [ref=e4229]:
+    - heading "Evaluation Queues" [level=6] [ref=e4231]
+    - grid [ref=e4233]:
+      - generic: No rows
+      - rowgroup
+    - generic [ref=e4236]:
+      - paragraph [ref=e4237]: Submission Name (optional)
+      - generic [ref=e4239]:
+        - textbox [ref=e4240]
+        - group [aria-hidden]
+  - generic [ref=e4243]:
+    - button "Submit" [disabled]

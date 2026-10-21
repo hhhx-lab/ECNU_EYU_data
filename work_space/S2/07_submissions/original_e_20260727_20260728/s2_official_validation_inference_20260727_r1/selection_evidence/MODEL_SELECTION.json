@@ -1,0 +1,93 @@
+{
+  "comparator_only": "B",
+  "decision_policy": {
+    "candidate_pass": false,
+    "candidate_pass_conditions": [
+      "No negative common-defined mean delta in ET/TC/WT lesionwise DSC, lesionwise NSD, or all-instance F1.",
+      "No increase in total ET/TC/WT all-instance false positives.",
+      "At least one ET/TC/WT primary metric has a paired-bootstrap 95% CI strictly above zero."
+    ],
+    "comparator_only": "B",
+    "decision": "E",
+    "eligible_models": [
+      "E",
+      "E_continue_final"
+    ],
+    "name": "conservative_fallback_v1",
+    "observed_false_positive_increases": [
+      {
+        "fp_delta": 15.0,
+        "region": "ET"
+      },
+      {
+        "fp_delta": 4.0,
+        "region": "TC"
+      },
+      {
+        "fp_delta": 7.0,
+        "region": "WT"
+      }
+    ],
+    "observed_regressions": [
+      {
+        "mean_delta": -0.017428323415790974,
+        "metric": "all_instance_f1",
+        "region": "ET"
+      },
+      {
+        "mean_delta": -0.0016242892732465685,
+        "metric": "lesionwise_dsc_mean",
+        "region": "TC"
+      },
+      {
+        "mean_delta": -0.004024233685128042,
+        "metric": "lesionwise_nsd_mean",
+        "region": "TC"
+      },
+      {
+        "mean_delta": -0.020150725007893285,
+        "metric": "all_instance_f1",
+        "region": "TC"
+      },
+      {
+        "mean_delta": -0.005249477999054552,
+        "metric": "lesionwise_dsc_mean",
+        "region": "WT"
+      },
+      {
+        "mean_delta": -0.005334538027883677,
+        "metric": "lesionwise_nsd_mean",
+        "region": "WT"
+      },
+      {
+        "mean_delta": -0.021418690149839645,
+        "metric": "all_instance_f1",
+        "region": "WT"
+      }
+    ],
+    "observed_robust_improvements": []
+  },
+  "eligible_models": [
+    "E",
+    "E_continue_final"
+  ],
+  "generated_at_utc": "2026-07-27T14:09:25.055100+00:00",
+  "immutable_boundaries": {
+    "met_aug_status": "permanently_stopped_for_current_submission",
+    "route_a_training_allowed": false,
+    "synapse_upload_allowed": false,
+    "zip_creation_allowed": false
+  },
+  "interpretation": "Retain original E. E-continue has a sparse RC gain but no broad robust improvement; it increases ET/TC/WT false positives and regresses TC/WT primary metrics.",
+  "schema_version": 1,
+  "selected_checkpoint_path": "/root/brats2026/ECNU_EYU_data/work_space/S2/results/s2_small_lesion_ablation_20260721/remote_snapshot_complete_20260724T0343/focal/fold_0/checkpoint_final.pth",
+  "selected_checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+  "selected_model": "E",
+  "status": "pass",
+  "supporting_artifacts_sha256": {
+    "EVALUATION_VALIDATION_AUDIT.json": "befce9f0acdc3bd0660bc37f354e98bab7e9f34ce7afc7891d1e62db46efe80f",
+    "E_VS_E_CONTINUE_PAIRED_ANALYSIS.json": "0973e45df9e30d4a9860bfeb1466feecadaa1b7925ff7a33b53c39399675230e",
+    "MISSING_VALUE_SEMANTICS.json": "67867a3d2142fb1c2b3929381e93e7777911316bbf388d433b7d945663aa564f",
+    "OFFICIAL_METRICS_AGGREGATE.csv": "c29019ec10d0d966b4c82234a87911581ac1a563558a7f7d0fec5fb4221bd59e"
+  }
+}

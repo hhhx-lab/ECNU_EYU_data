@@ -1,0 +1,9 @@
+# S2 / original_e_20260727_20260728
+
+比赛推理、传输、提交包、排行榜及容器保留资料
+
+- [s2_official_validation_inference_20260727_r1](s2_official_validation_inference_20260727_r1)
+- [s2_official_validation_submission_20260728_r1](s2_official_validation_submission_20260728_r1)
+- [s2_official_validation_transfer_20260727_r1](s2_official_validation_transfer_20260727_r1)
+
+整理说明仅帮助定位，不改变任何原实验的批准或失败状态。新说明为experimental_unvalidated。

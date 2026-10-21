@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "dataset_role": "fixed_internal_validation",
+  "generated_at_utc": "2026-07-27T09:53:36.172024+00:00",
+  "case_count": 103,
+  "prediction_count": 103,
+  "reference_count": 103,
+  "mapping_count": 103,
+  "materialization_mode": "hardlink",
+  "prediction_source_root": "/root/brats2026/runs/s2_b_baseline_true1mm_eval_20260727_r1/nnUNet_results/Dataset264_BraTS2026_MET_Completion/nnUNetTrainerBraTS2026RCCompletionFineTune__nnUNetPlans__3d_fullres/fold_0/validation",
+  "reference_source_root": "/root/brats2026/data/s2_dataset264_true1mm_20260726_r1/nnUNet_preprocessed/Dataset264_BraTS2026_MET_Completion/gt_segmentations",
+  "fixed_val_list": "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/data/splits/completion_warmstart/val_fixed.txt",
+  "mapping_source": "/root/brats2026/runs/s2_e_continue_selection_20260727_r1/tools/mapping_fixed.tsv",
+  "checkpoint_path": "/root/brats2026/ECNU_EYU_data/work_space/S2/results/s2_completion_dataset264_t2w_20260720/fold_0/checkpoint_final.pth",
+  "checkpoint_bytes": 249830543,
+  "checkpoint_sha256": "78eccc59f9217a529cafdd522733de9a1578f0e96d8765ee7c48731027824db5",
+  "evaluation_config": "mets",
+  "vol_threshold": 27,
+  "overlap_threshold": 0.2
+}

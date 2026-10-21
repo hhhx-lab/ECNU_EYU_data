@@ -1,0 +1,402 @@
+{
+  "field_coverage": {
+    "ET": {
+      "all_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.051026269870590106,
+          0.011245994274192199
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 10149836388283965269,
+        "common_defined_cases": 94,
+        "e_continue_defined_cases": 94,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 96,
+        "e_only_subjects": [
+          "BraTS-MET-01187-001.nii.gz",
+          "BraTS-MET-01187-003.nii.gz"
+        ],
+        "losses": 22,
+        "mean_delta_e_continue_minus_e": -0.017428323415790974,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 54,
+        "wins": 18
+      },
+      "large_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.018620297103904462,
+          0.02893364364386682
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 1838300295676092080,
+        "common_defined_cases": 103,
+        "e_continue_defined_cases": 103,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 103,
+        "e_only_subjects": [],
+        "losses": 12,
+        "mean_delta_e_continue_minus_e": 0.005064053534435341,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 73,
+        "wins": 18
+      },
+      "lesionwise_dsc_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.021383886576607822,
+          0.026888541044362852
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 223683614103616157,
+        "common_defined_cases": 85,
+        "e_continue_defined_cases": 85,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 85,
+        "e_only_subjects": [],
+        "losses": 36,
+        "mean_delta_e_continue_minus_e": 0.0022488140236440694,
+        "median_delta_e_continue_minus_e": 0.0012050018621648784,
+        "ties": 1,
+        "wins": 48
+      },
+      "lesionwise_nsd_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.024206665096485273,
+          0.02814941703064232
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 14446999960024057255,
+        "common_defined_cases": 85,
+        "e_continue_defined_cases": 85,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 85,
+        "e_only_subjects": [],
+        "losses": 38,
+        "mean_delta_e_continue_minus_e": 0.001510630788201114,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 7,
+        "wins": 40
+      },
+      "small_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.0682525103218956,
+          0.06647441504866945
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 4823202613466244940,
+        "common_defined_cases": 53,
+        "e_continue_defined_cases": 53,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 53,
+        "e_only_subjects": [],
+        "losses": 9,
+        "mean_delta_e_continue_minus_e": 0.0006897511766653537,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 36,
+        "wins": 8
+      }
+    },
+    "RC": {
+      "all_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          0.0,
+          0.05263157894736842
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 11019254153782177131,
+        "common_defined_cases": 19,
+        "e_continue_defined_cases": 19,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 19,
+        "e_only_subjects": [],
+        "losses": 0,
+        "mean_delta_e_continue_minus_e": 0.01754385964912281,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 18,
+        "wins": 1
+      },
+      "large_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          0.0,
+          0.009708737864077669
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 8793296236160959318,
+        "common_defined_cases": 103,
+        "e_continue_defined_cases": 103,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 103,
+        "e_only_subjects": [],
+        "losses": 0,
+        "mean_delta_e_continue_minus_e": 0.003236245954692557,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 102,
+        "wins": 1
+      },
+      "lesionwise_dsc_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.02731327638077005,
+          0.08499775444082441
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 14400349843682305592,
+        "common_defined_cases": 15,
+        "e_continue_defined_cases": 15,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 15,
+        "e_only_subjects": [],
+        "losses": 3,
+        "mean_delta_e_continue_minus_e": 0.019215794332283844,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 7,
+        "wins": 5
+      },
+      "lesionwise_nsd_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.014910555318642736,
+          0.07322143931676871
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 6270587208398772077,
+        "common_defined_cases": 15,
+        "e_continue_defined_cases": 15,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 15,
+        "e_only_subjects": [],
+        "losses": 3,
+        "mean_delta_e_continue_minus_e": 0.020635557237764623,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 7,
+        "wins": 5
+      },
+      "small_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 15963202237901191654,
+        "common_defined_cases": 3,
+        "e_continue_defined_cases": 3,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 3,
+        "e_only_subjects": [],
+        "losses": 0,
+        "mean_delta_e_continue_minus_e": 0.0,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 3,
+        "wins": 0
+      }
+    },
+    "TC": {
+      "all_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.0546539201441335,
+          0.009310372852811378
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 3237738754069165687,
+        "common_defined_cases": 94,
+        "e_continue_defined_cases": 94,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 96,
+        "e_only_subjects": [
+          "BraTS-MET-01187-001.nii.gz",
+          "BraTS-MET-01187-003.nii.gz"
+        ],
+        "losses": 19,
+        "mean_delta_e_continue_minus_e": -0.020150725007893285,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 59,
+        "wins": 16
+      },
+      "large_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.024832262801540134,
+          0.02685558322184033
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 10566312799583477605,
+        "common_defined_cases": 103,
+        "e_continue_defined_cases": 103,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 103,
+        "e_only_subjects": [],
+        "losses": 10,
+        "mean_delta_e_continue_minus_e": 0.0013871322422383046,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 76,
+        "wins": 17
+      },
+      "lesionwise_dsc_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.029747706711009705,
+          0.0256335822437879
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 14632798596825398348,
+        "common_defined_cases": 86,
+        "e_continue_defined_cases": 86,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 86,
+        "e_only_subjects": [],
+        "losses": 38,
+        "mean_delta_e_continue_minus_e": -0.0016242892732465685,
+        "median_delta_e_continue_minus_e": 0.0008337410737040418,
+        "ties": 2,
+        "wins": 46
+      },
+      "lesionwise_nsd_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.034295162455844665,
+          0.02501656858482597
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 6576671618652922370,
+        "common_defined_cases": 86,
+        "e_continue_defined_cases": 86,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 86,
+        "e_only_subjects": [],
+        "losses": 32,
+        "mean_delta_e_continue_minus_e": -0.004024233685128042,
+        "median_delta_e_continue_minus_e": 0.000993891778095779,
+        "ties": 8,
+        "wins": 46
+      },
+      "small_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.06537522312374189,
+          0.07078658303148098
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 12898910732840047467,
+        "common_defined_cases": 49,
+        "e_continue_defined_cases": 49,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 49,
+        "e_only_subjects": [],
+        "losses": 7,
+        "mean_delta_e_continue_minus_e": 0.0052650078324864335,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 34,
+        "wins": 8
+      }
+    },
+    "WT": {
+      "all_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.055956106286445886,
+          0.008816815767590299
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 16730118599154051415,
+        "common_defined_cases": 94,
+        "e_continue_defined_cases": 94,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 96,
+        "e_only_subjects": [
+          "BraTS-MET-01187-001.nii.gz",
+          "BraTS-MET-01187-003.nii.gz"
+        ],
+        "losses": 20,
+        "mean_delta_e_continue_minus_e": -0.021418690149839645,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 56,
+        "wins": 18
+      },
+      "large_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.038095554544943004,
+          0.01690528163867365
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 7288172374324468084,
+        "common_defined_cases": 103,
+        "e_continue_defined_cases": 103,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 103,
+        "e_only_subjects": [],
+        "losses": 12,
+        "mean_delta_e_continue_minus_e": -0.00923121866641004,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 70,
+        "wins": 21
+      },
+      "lesionwise_dsc_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.035572264628201136,
+          0.024084745668678898
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 18019259694498937051,
+        "common_defined_cases": 87,
+        "e_continue_defined_cases": 87,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 87,
+        "e_only_subjects": [],
+        "losses": 40,
+        "mean_delta_e_continue_minus_e": -0.005249477999054552,
+        "median_delta_e_continue_minus_e": 0.0006169798377752,
+        "ties": 2,
+        "wins": 45
+      },
+      "lesionwise_nsd_mean": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.036053528224172474,
+          0.0245707072043219
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 16368835830901005285,
+        "common_defined_cases": 87,
+        "e_continue_defined_cases": 87,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 87,
+        "e_only_subjects": [],
+        "losses": 38,
+        "mean_delta_e_continue_minus_e": -0.005334538027883677,
+        "median_delta_e_continue_minus_e": 0.0020642927084109086,
+        "ties": 1,
+        "wins": 48
+      },
+      "small_instance_f1": {
+        "bootstrap_95_ci_mean_delta": [
+          -0.06333052771305618,
+          0.06659003001267914
+        ],
+        "bootstrap_resamples": 50000,
+        "bootstrap_seed": 1751562090982806110,
+        "common_defined_cases": 46,
+        "e_continue_defined_cases": 46,
+        "e_continue_only_subjects": [],
+        "e_defined_cases": 46,
+        "e_only_subjects": [],
+        "losses": 7,
+        "mean_delta_e_continue_minus_e": 0.00519576894923094,
+        "median_delta_e_continue_minus_e": 0.0,
+        "ties": 31,
+        "wins": 8
+      }
+    }
+  },
+  "generated_at_utc": "2026-07-27T14:09:25.055082+00:00",
+  "known_noninterchangeable_empty_cases": {
+    "ET": [
+      "BraTS-MET-01187-001.nii.gz",
+      "BraTS-MET-01187-003.nii.gz"
+    ],
+    "RC": [],
+    "TC": [
+      "BraTS-MET-01187-001.nii.gz",
+      "BraTS-MET-01187-003.nii.gz"
+    ],
+    "WT": [
+      "BraTS-MET-01187-001.nii.gz",
+      "BraTS-MET-01187-003.nii.gz"
+    ]
+  },
+  "paired_analysis_rule": "Only subjects defined for both E and E-continue enter a paired metric.",
+  "rule": "Empty official metric cells are undefined and are never imputed as zero.",
+  "schema_version": 1,
+  "status": "pass",
+  "tiny_metrics": "unavailable because the locked official evaluator emits only all/small/large strata"
+}

@@ -1,0 +1,15 @@
+services:
+  model:
+    image: ${IMAGE:-s2-original-e-reserve:experimental_unvalidated}
+    platform: linux/amd64
+    network_mode: none
+    gpus: all
+    init: true
+    mem_limit: 48g
+    shm_size: 16g
+    environment:
+      S2_PREPROCESS_WORKERS: ${S2_PREPROCESS_WORKERS:-4}
+      S2_EXPORT_WORKERS: ${S2_EXPORT_WORKERS:-4}
+    volumes:
+      - ${INPUT_DIR:?set INPUT_DIR to an absolute validation-data path}:/input:ro
+      - ${OUTPUT_DIR:?set OUTPUT_DIR to an absolute empty output path}:/output:rw

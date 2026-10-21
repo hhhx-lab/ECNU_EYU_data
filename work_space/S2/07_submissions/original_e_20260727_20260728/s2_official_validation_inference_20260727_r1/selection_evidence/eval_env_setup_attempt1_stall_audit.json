@@ -1,0 +1,53 @@
+{
+  "audit_sha256": "38f2c420a7a742d48c54da89e5d7014c9dcaf8acf9f7a38f10774b82b665a461",
+  "command": "/usr/local/miniconda3/bin/python /usr/local/miniconda3/bin/conda create --yes --prefix /root/brats2026/envs/s2_brats_eval_numpy126 python=3.10 pip numpy=1.26.4",
+  "log": {
+    "mtime_ns": 1785150929889245491,
+    "path": "/root/brats2026/runs/s2_e_continue_selection_20260727_r1/logs/eval_env_setup.log",
+    "sha256": "2b238362c67217468f02ad36c534ad5a28e5c57daca355b631a5c5728c80dcaf",
+    "size_bytes": 21312
+  },
+  "network_inspection_tool": null,
+  "network_sockets": [],
+  "observed_at_utc": "2026-07-27T11:45:41.246170+00:00",
+  "parent_pid": 211935,
+  "partial_packages": [
+    {
+      "mtime_ns": 1785150929929244000,
+      "name": "icu-73.1-h6a678d5_0.conda.partial",
+      "size_bytes": 6635520
+    },
+    {
+      "mtime_ns": 1785150930025240420,
+      "name": "mkl-2025.0.0-h6d8faa4_942.conda.partial",
+      "size_bytes": 60489728
+    },
+    {
+      "mtime_ns": 1785150930001241315,
+      "name": "numpy-base-1.26.4-py310he1678cf_1.conda.partial",
+      "size_bytes": 4620288
+    },
+    {
+      "mtime_ns": 1785150930005241165,
+      "name": "python-3.10.20-h17756b0_1.conda.partial",
+      "size_bytes": 5046272
+    }
+  ],
+  "pid": 211937,
+  "planned_recovery_environment": "/root/brats2026/envs/s2_brats_eval_numpy126_r2",
+  "proc_io": {
+    "cancelled_write_bytes": 102400,
+    "rchar": 837332038,
+    "read_bytes": 0,
+    "syscr": 102537,
+    "syscw": 26625,
+    "wchar": 649780862,
+    "write_bytes": 688111616
+  },
+  "process_snapshot": "PID    PPID STAT WCHAN                        ELAPSED     TIME %CPU %MEM CMD\n 211937  211935 Sl   futex_wait_queue_me            30:29 00:00:09  0.5  0.0 /usr/local/miniconda3/bin/python /usr/local/miniconda3/bin/conda create --yes --prefix /root/brats2026/envs/s2_brats_eval_numpy126 python=3.10 pip numpy=1.26.4",
+  "reason": "No log, process-I/O, or partial-file progress for more than 27 minutes.",
+  "schema_version": 1,
+  "status": "stalled",
+  "target_environment": "/root/brats2026/envs/s2_brats_eval_numpy126",
+  "target_environment_exists": false
+}

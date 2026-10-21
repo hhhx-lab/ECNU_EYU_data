@@ -1,0 +1,647 @@
+2 channel Terms of Service accepted
+Retrieving notices: - \ | / - \ | / - \ done
+Channels:
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - done
+Solving environment: | / done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 25.5.1
+    latest version: 26.5.3
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /root/brats2026/envs/s2_brats_eval_numpy126
+
+  added / updated specs:
+    - numpy=1.26.4
+    - pip
+    - python=3.10
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    _openmp_mutex-5.1          |           52_gnu           7 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    blas-1.0                   |              mkl           6 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+    ca-certificates-2026.7.16  |       h06a4308_0         106 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    icu-73.1                   |       h6a678d5_0        25.9 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    intel-openmp-2025.0.0      |    h06a4308_1172        19.3 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    ld_impl_linux-64-2.44      |       h9e0c5a2_3         725 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libexpat-2.8.2             |       h7354ed3_1         126 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libffi-3.4.8               |       h06d3fd0_3         137 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libgcc-15.2.0              |       h69a1729_8         803 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libgcc-ng-15.2.0           |       h166f726_8          28 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libhwloc-2.12.1            |default_hf1bbc79_1000         2.4 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libnsl-2.0.0               |       h5eee18b_0          31 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libstdcxx-15.2.0           |       h39759b7_8         3.7 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libstdcxx-ng-15.2.0        |       hc03a8fd_8          28 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libxml2-2.13.9             |       h2c43086_0         669 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    libzlib-1.3.2              |       h47b2149_0          60 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    mkl-2025.0.0               |     h6d8faa4_942       113.4 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    mkl-service-2.7.2          |  py310h365c7f6_0          72 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    mkl_fft-2.2.0              |  py310h44c8d7b_0         157 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    mkl_random-1.4.1           |  py310h86c3e14_0         379 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    numpy-1.26.4               |  py310h64c44e4_1          13 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    numpy-base-1.26.4          |  py310he1678cf_1         7.1 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    openssl-3.5.7              |       h1b28b03_0         5.5 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    packaging-26.0             |  py310h06a4308_0         165 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    pip-26.1.2                 |     pyhc872135_0         1.1 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    pthread-stubs-0.3          |       h47b2149_2           7 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    python-3.10.20             |       h17756b0_1        24.2 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    readline-8.3               |       hc2a1206_0         471 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    setuptools-83.0.0          |  py310h06a4308_0         1.2 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    sqlite-3.53.2              |       h795bf6d_0         1.2 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    tbb-2022.3.0               |       h698db13_0         181 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    tbb-devel-2022.3.0         |       h698db13_0         1.1 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    tk-8.6.15                  |       h54e0aa7_0         3.4 MB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    tzdata-2026c               |       he532380_0         117 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    wheel-0.47.0               |  py310h06a4308_0          56 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    xorg-xorgproto-2024.1      |       h47b2149_2         550 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    xz-5.8.2                   |       h448239c_0         621 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    zlib-1.3.2                 |       h47b2149_0          92 KB  https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    ------------------------------------------------------------
+                                           Total:       215.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      anaconda/pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      anaconda/pkgs/main/linux-64::_openmp_mutex-5.1-52_gnu 
+  blas               anaconda/pkgs/free/linux-64::blas-1.0-mkl 
+  bzip2              anaconda/pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 
+  ca-certificates    anaconda/pkgs/main/linux-64::ca-certificates-2026.7.16-h06a4308_0 
+  icu                anaconda/pkgs/main/linux-64::icu-73.1-h6a678d5_0 
+  intel-openmp       anaconda/pkgs/main/linux-64::intel-openmp-2025.0.0-h06a4308_1172 
+  ld_impl_linux-64   anaconda/pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3 
+  libexpat           anaconda/pkgs/main/linux-64::libexpat-2.8.2-h7354ed3_1 
+  libffi             anaconda/pkgs/main/linux-64::libffi-3.4.8-h06d3fd0_3 
+  libgcc             anaconda/pkgs/main/linux-64::libgcc-15.2.0-h69a1729_8 
+  libgcc-ng          anaconda/pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_8 
+  libhwloc           anaconda/pkgs/main/linux-64::libhwloc-2.12.1-default_hf1bbc79_1000 
+  libnsl             anaconda/pkgs/main/linux-64::libnsl-2.0.0-h5eee18b_0 
+  libstdcxx          anaconda/pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_8 
+  libstdcxx-ng       anaconda/pkgs/main/linux-64::libstdcxx-ng-15.2.0-hc03a8fd_8 
+  libuuid            anaconda/pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0 
+  libxcb             anaconda/pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0 
+  libxml2            anaconda/pkgs/main/linux-64::libxml2-2.13.9-h2c43086_0 
+  libzlib            anaconda/pkgs/main/linux-64::libzlib-1.3.2-h47b2149_0 
+  mkl                anaconda/pkgs/main/linux-64::mkl-2025.0.0-h6d8faa4_942 
+  mkl-service        anaconda/pkgs/main/linux-64::mkl-service-2.7.2-py310h365c7f6_0 
+  mkl_fft            anaconda/pkgs/main/linux-64::mkl_fft-2.2.0-py310h44c8d7b_0 
+  mkl_random         anaconda/pkgs/main/linux-64::mkl_random-1.4.1-py310h86c3e14_0 
+  ncurses            anaconda/pkgs/main/linux-64::ncurses-6.5-h7934f7d_0 
+  numpy              anaconda/pkgs/main/linux-64::numpy-1.26.4-py310h64c44e4_1 
+  numpy-base         anaconda/pkgs/main/linux-64::numpy-base-1.26.4-py310he1678cf_1 
+  openssl            anaconda/pkgs/main/linux-64::openssl-3.5.7-h1b28b03_0 
+  packaging          anaconda/pkgs/main/linux-64::packaging-26.0-py310h06a4308_0 
+  pip                anaconda/pkgs/main/noarch::pip-26.1.2-pyhc872135_0 
+  pthread-stubs      anaconda/pkgs/main/linux-64::pthread-stubs-0.3-h47b2149_2 
+  python             anaconda/pkgs/main/linux-64::python-3.10.20-h17756b0_1 
+  readline           anaconda/pkgs/main/linux-64::readline-8.3-hc2a1206_0 
+  setuptools         anaconda/pkgs/main/linux-64::setuptools-83.0.0-py310h06a4308_0 
+  sqlite             anaconda/pkgs/main/linux-64::sqlite-3.53.2-h795bf6d_0 
+  tbb                anaconda/pkgs/main/linux-64::tbb-2022.3.0-h698db13_0 
+  tbb-devel          anaconda/pkgs/main/linux-64::tbb-devel-2022.3.0-h698db13_0 
+  tk                 anaconda/pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0 
+  tzdata             anaconda/pkgs/main/noarch::tzdata-2026c-he532380_0 
+  wheel              anaconda/pkgs/main/linux-64::wheel-0.47.0-py310h06a4308_0 
+  xorg-libx11        anaconda/pkgs/main/linux-64::xorg-libx11-1.8.12-h9b100fa_1 
+  xorg-libxau        anaconda/pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0 
+  xorg-libxdmcp      anaconda/pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0 
+  xorg-xorgproto     anaconda/pkgs/main/linux-64::xorg-xorgproto-2024.1-h47b2149_2 
+  xz                 anaconda/pkgs/main/linux-64::xz-5.8.2-h448239c_0 
+  zlib               anaconda/pkgs/main/linux-64::zlib-1.3.2-h47b2149_0 
+
+
+
+Downloading and Extracting Packages: ...working...mkl-2025.0.0         | 113.4 MB  |            |   0% 
+icu-73.1             | 25.9 MB   |            |   0% [A
+
+python-3.10.20       | 24.2 MB   |            |   0% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   |            |   0% [A[A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    |            |   0% [A[A[A[A
+
+
+
+
+openssl-3.5.7        | 5.5 MB    |            |   0% [A[A[A[A[A
+
+
+
+
+
+libstdcxx-15.2.0     | 3.7 MB    |            |   0% [A[A[A[A[A[A
+
+
+
+
+
+
+tk-8.6.15            | 3.4 MB    |            |   0% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+libhwloc-2.12.1      | 2.4 MB    |            |   0% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+sqlite-3.53.2        | 1.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+setuptools-83.0.0    | 1.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+pip-26.1.2           | 1.1 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+tbb-devel-2022.3.0   | 1.1 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+libgcc-15.2.0        | 803 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+ld_impl_linux-64-2.4 | 725 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libxml2-2.13.9       | 669 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xz-5.8.2             | 621 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xorg-xorgproto-2024. | 550 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+readline-8.3         | 471 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[Amkl-2025.0.0         | 113.4 MB  |            |   0% mkl-2025.0.0         | 113.4 MB  | 9          |  10% 
+
+python-3.10.20       | 24.2 MB   |            |   0% [A[Amkl-2025.0.0         | 113.4 MB  | #5         |  15% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    |            |   0% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   |            |   0% [A[A[A
+icu-73.1             | 25.9 MB   |            |   0% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | 3          |   3% [A[A[A[A
+icu-73.1             | 25.9 MB   |            |   0% [A
+
+python-3.10.20       | 24.2 MB   |            |   1% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   |            |   1% [A[A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | 5          |   5% [A[A[A[A
+icu-73.1             | 25.9 MB   |            |   1% [A
+
+python-3.10.20       | 24.2 MB   | 1          |   2% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | 2          |   3% [A[A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #          |  11% [A[A[A[A
+
+python-3.10.20       | 24.2 MB   | 3          |   3% [A[A
+icu-73.1             | 25.9 MB   | 1          |   1% [A
+
+
+intel-openmp-2025.0. | 19.3 MB   | 3          |   4% [A[A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #4         |  14% [A[A[A[A
+
+python-3.10.20       | 24.2 MB   | 4          |   4% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | 4          |   5% [A[A[A
+icu-73.1             | 25.9 MB   | 1          |   2% [A
+
+
+intel-openmp-2025.0. | 19.3 MB   | 5          |   6% [A[A[A
+icu-73.1             | 25.9 MB   | 2          |   2% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #7         |  18% [A[A[A[A
+
+python-3.10.20       | 24.2 MB   | 5          |   6% [A[Amkl-2025.0.0         | 113.4 MB  | ##         |  21% 
+
+
+intel-openmp-2025.0. | 19.3 MB   | 6          |   7% [A[A[A
+icu-73.1             | 25.9 MB   | 2          |   3% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ##1        |  22% [A[A[A[A
+
+python-3.10.20       | 24.2 MB   | 6          |   7% [A[A
+icu-73.1             | 25.9 MB   | 3          |   3% [A
+
+
+intel-openmp-2025.0. | 19.3 MB   | 7          |   8% [A[A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ##4        |  25% [A[A[A[A
+
+python-3.10.20       | 24.2 MB   | 7          |   7% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | 8          |   9% [A[A[A
+icu-73.1             | 25.9 MB   | 3          |   4% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ##8        |  28% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ##4        |  25% 
+
+python-3.10.20       | 24.2 MB   | 9          |   9% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | 9          |  10% [A[A[A
+icu-73.1             | 25.9 MB   | 4          |   4% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ###        |  31% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ##7        |  27% 
+
+
+intel-openmp-2025.0. | 19.3 MB   | #          |  11% [A[A[A
+icu-73.1             | 25.9 MB   | 4          |   5% [A
+
+python-3.10.20       | 24.2 MB   | #          |  10% [A[A
+icu-73.1             | 25.9 MB   | 5          |   5% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ###3       |  33% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #1         |  12% [A[A[Amkl-2025.0.0         | 113.4 MB  | ##9        |  30% 
+
+python-3.10.20       | 24.2 MB   | #          |  11% [A[A
+icu-73.1             | 25.9 MB   | 5          |   6% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ###5       |  36% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #2         |  13% [A[A[A
+icu-73.1             | 25.9 MB   | 6          |   6% [Amkl-2025.0.0         | 113.4 MB  | ###1       |  32% 
+
+python-3.10.20       | 24.2 MB   | #1         |  12% [A[A
+icu-73.1             | 25.9 MB   | 6          |   7% [A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #3         |  13% [A[A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ###7       |  38% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ###3       |  33% 
+
+python-3.10.20       | 24.2 MB   | #2         |  12% [A[A
+icu-73.1             | 25.9 MB   | 7          |   8% [A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #3         |  14% [A[A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ###9       |  39% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ###4       |  35% 
+icu-73.1             | 25.9 MB   | 8          |   8% [A
+
+python-3.10.20       | 24.2 MB   | #2         |  13% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #4         |  15% [A[A[A
+icu-73.1             | 25.9 MB   | 8          |   9% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####       |  41% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ###6       |  36% 
+
+python-3.10.20       | 24.2 MB   | #3         |  13% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #5         |  15% [A[A[A
+icu-73.1             | 25.9 MB   | 9          |   9% [A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####2      |  42% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ###7       |  37% 
+icu-73.1             | 25.9 MB   | 9          |  10% [A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #5         |  16% [A[A[A
+
+python-3.10.20       | 24.2 MB   | #3         |  14% [A[Amkl-2025.0.0         | 113.4 MB  | ###8       |  38% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####3      |  44% [A[A[A[A
+icu-73.1             | 25.9 MB   | #          |  11% [A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #6         |  16% [A[A[A
+
+python-3.10.20       | 24.2 MB   | #4         |  14% [A[A
+icu-73.1             | 25.9 MB   | #1         |  11% [Amkl-2025.0.0         | 113.4 MB  | ###9       |  39% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####5      |  45% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #6         |  17% [A[A[A
+
+python-3.10.20       | 24.2 MB   | #4         |  15% [A[A
+icu-73.1             | 25.9 MB   | #1         |  12% [Amkl-2025.0.0         | 113.4 MB  | ####       |  40% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####6      |  46% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #7         |  17% [A[A[A
+icu-73.1             | 25.9 MB   | #2         |  12% [A
+
+python-3.10.20       | 24.2 MB   | #5         |  15% [A[Amkl-2025.0.0         | 113.4 MB  | ####1      |  41% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####7      |  47% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #7         |  18% [A[A[A
+icu-73.1             | 25.9 MB   | #3         |  13% [A
+
+python-3.10.20       | 24.2 MB   | #5         |  16% [A[Amkl-2025.0.0         | 113.4 MB  | ####2      |  42% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####8      |  49% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #8         |  18% [A[A[A
+icu-73.1             | 25.9 MB   | #3         |  14% [A
+
+python-3.10.20       | 24.2 MB   | #5         |  16% [A[Amkl-2025.0.0         | 113.4 MB  | ####3      |  43% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ####9      |  50% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #8         |  19% [A[A[A
+icu-73.1             | 25.9 MB   | #4         |  14% [Amkl-2025.0.0         | 113.4 MB  | ####3      |  44% 
+
+python-3.10.20       | 24.2 MB   | #6         |  16% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####      |  51% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #9         |  19% [A[A[A
+icu-73.1             | 25.9 MB   | #5         |  15% [A
+
+python-3.10.20       | 24.2 MB   | #6         |  17% [A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | #9         |  20% [A[A[Amkl-2025.0.0         | 113.4 MB  | ####4      |  45% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####1     |  52% [A[A[A[A
+icu-73.1             | 25.9 MB   | #5         |  16% [Amkl-2025.0.0         | 113.4 MB  | ####5      |  46% 
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##         |  21% [A[A[A
+icu-73.1             | 25.9 MB   | #6         |  17% [A
+
+python-3.10.20       | 24.2 MB   | #6         |  17% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####2     |  53% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ####6      |  47% 
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##1        |  21% [A[A[A
+icu-73.1             | 25.9 MB   | #7         |  18% [A
+
+python-3.10.20       | 24.2 MB   | #7         |  17% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####4     |  54% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##1        |  21% [A[A[Amkl-2025.0.0         | 113.4 MB  | ####7      |  47% 
+icu-73.1             | 25.9 MB   | #8         |  18% [A
+
+python-3.10.20       | 24.2 MB   | #7         |  18% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####5     |  55% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##1        |  22% [A[A[A
+icu-73.1             | 25.9 MB   | #9         |  19% [A
+
+python-3.10.20       | 24.2 MB   | #8         |  18% [A[Amkl-2025.0.0         | 113.4 MB  | ####8      |  48% 
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####6     |  56% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##2        |  22% [A[A[A
+icu-73.1             | 25.9 MB   | ##         |  20% [A
+
+python-3.10.20       | 24.2 MB   | #8         |  18% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####7     |  57% [A[A[A[Amkl-2025.0.0         | 113.4 MB  | ####8      |  49% 
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##2        |  23% [A[A[A
+icu-73.1             | 25.9 MB   | ##1        |  21% [A
+
+python-3.10.20       | 24.2 MB   | #8         |  19% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####8     |  58% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##3        |  23% [A[A[Amkl-2025.0.0         | 113.4 MB  | ####9      |  50% 
+icu-73.1             | 25.9 MB   | ##2        |  22% [A
+
+python-3.10.20       | 24.2 MB   | #9         |  19% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | #####9     |  60% [A[A[A[A
+
+
+intel-openmp-2025.0. | 19.3 MB   | ##3        |  24% [A[A[A
+icu-73.1             | 25.9 MB   | ##3        |  23% [Amkl-2025.0.0         | 113.4 MB  | #####      |  50% 
+
+python-3.10.20       | 24.2 MB   | #9         |  20% [A[A
+
+
+
+numpy-base-1.26.4    | 7.1 MB    | ######     |  61% [A[A[A[A

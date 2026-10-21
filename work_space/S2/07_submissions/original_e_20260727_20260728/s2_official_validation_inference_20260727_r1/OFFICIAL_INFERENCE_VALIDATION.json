@@ -1,0 +1,75 @@
+{
+  "allowed_labels": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+  "contract_file_sha256": "ec66d327c91d775dea5537209c2c32fc4de58eff4ba0d1bdc6140d1f34510a92",
+  "contract_identity": "8a233fbef07683688c23d82e69d6b57afd48a15060b5151cce06dc4c68eaacf5",
+  "empty_prediction_case_ids": [
+    "BraTS-MET-01078-002",
+    "BraTS-MET-01089-001",
+    "BraTS-MET-01089-003",
+    "BraTS-MET-01092-002",
+    "BraTS-MET-01107-003",
+    "BraTS-MET-01137-000",
+    "BraTS-MET-01137-003",
+    "BraTS-MET-01139-002",
+    "BraTS-MET-01143-002",
+    "BraTS-MET-01198-003",
+    "BraTS-MET-01200-003",
+    "BraTS-MET-01213-001",
+    "BraTS-MET-01241-003",
+    "BraTS-MET-01250-002",
+    "BraTS-MET-01276-002",
+    "BraTS-MET-01314-001",
+    "BraTS-MET-01320-001"
+  ],
+  "empty_prediction_count": 17,
+  "expected_case_count": 179,
+  "finalizer_script": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/tools/30_finalize_official_inference_no_zip.py",
+  "finalizer_script_sha256": "ffba68da9130c2aaccbace301351d5a5b688705e3eac7833c735962fc54472d3",
+  "generated_at_utc": "2026-07-27T16:02:54.146773+00:00",
+  "geometry_checks": [
+    "array_dimensions",
+    "voxel_spacing",
+    "image_origin",
+    "spatial_orientation",
+    "affine"
+  ],
+  "model_selection_sha256": "380467ce9157ffc31b58baaa6d1182e7882cd4c68555ee1a0048304cc708be5f",
+  "official_prediction_manifest_sha256": "e2c1cad84b8bacfae758bee37d0a154b7060f1115cdc5c7a57baa9d271b0c5b5",
+  "prediction_count": 179,
+  "prediction_manifest_sha256": "5c0f72f7e3abc5be99ecc004d09f7b05136a288f3c9cc51d7191a5a96bc41d70",
+  "prediction_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1/predictions",
+  "role": "BraTS_2026_S2_Task1_official_179_predictions_technical_validation",
+  "run_root": "/root/brats2026/runs/s2_official_validation_inference_20260727_r1",
+  "schema_version": 1,
+  "shards": {
+    "gpu0": {
+      "completion_marker_sha256": "324b655368ca82982a4cbc73bb69507daf3ab516940adc340419fcfdc19c8c97",
+      "log_sha256": "8817e68fb0c24ac93174ca2657026f0847b2f4cf2f154ef318167851b36d2bd1",
+      "output_manifest_sha256": "f2c6f8c944643375d8af2d684b61fb9bb1145292ea70725b97d4d15bdfe9a0b6",
+      "pid": 214774,
+      "pid_stopped": true,
+      "prediction_count": 90
+    },
+    "gpu1": {
+      "completion_marker_sha256": "229565c9e88010915a9e6b83fb1948710c932963d554d2600f571c0d43931087",
+      "log_sha256": "ef3a7077dd396bb71b79185e442ded799ac91e41fe143457534f87595ce73bd2",
+      "output_manifest_sha256": "4c93d7ee21b873e1c23638c4849e019148de3a1a9ad9967dc7911d0861fe90d1",
+      "pid": 214776,
+      "pid_stopped": true,
+      "prediction_count": 89
+    }
+  },
+  "source_root": "/root/brats2026/data/s2_official_validation_179_20260727_r1/Validation",
+  "status": "pass",
+  "synapse_uploaded": false,
+  "validation_script": "/root/brats2026/ECNU_EYU_data/work_space/S2/BraTS2026_S2_RC_v1.0/repository/scripts/07_package_official_submission.py",
+  "validation_script_sha256": "7d0ecb071aeeb3445c568c536d04c170e57e03e9530c19114cd3b1d638125b72",
+  "zip_created": false
+}
