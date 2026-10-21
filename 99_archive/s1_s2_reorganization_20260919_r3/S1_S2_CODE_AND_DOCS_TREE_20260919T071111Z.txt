@@ -1,0 +1,288 @@
+work_space/S1
+├── 01_code
+│   ├── repository
+│   │   ├── configs
+│   │   │   ├── multitask_v1.yaml
+│   │   │   └── multitask_v1_full.yaml
+│   │   ├── datasets
+│   │   │   └── brats_multitask_dataset.py
+│   │   ├── inference
+│   │   │   ├── infer_multitask.py
+│   │   │   └── sliding_window_multitask.py
+│   │   ├── losses
+│   │   │   ├── dice_metric.py
+│   │   │   └── multitask_loss.py
+│   │   ├── metrics
+│   │   │   ├── __init__.py
+│   │   │   └── brats_validation_metrics.py
+│   │   ├── models
+│   │   │   └── multitask_unet.py
+│   │   ├── scripts
+│   │   │   ├── 01_labels
+│   │   │   │   ├── 01_apply_corrected_labels.py
+│   │   │   │   ├── 02_find_invalid_labels.py
+│   │   │   │   ├── 03_fix_invalid_labels.py
+│   │   │   │   ├── 08_build_full_multitask_labels.py
+│   │   │   │   └── README.md
+│   │   │   ├── 02_audit_split
+│   │   │   │   ├── 09_dataset_audit.py
+│   │   │   │   ├── 10_create_full_split.py
+│   │   │   │   └── README.md
+│   │   │   └── README.md
+│   │   ├── trainers
+│   │   │   └── trainer_v1_final.py
+│   │   ├── README.md
+│   │   └── requirements.txt
+│   ├── 00_说明_20260919.md
+│   └── README.md
+├── 05_documents
+│   ├── 00_history
+│   │   ├── README.md
+│   │   └── README_before_20260919.md
+│   ├── 01_methods
+│   │   ├── README.md
+│   │   └── architecture.md
+│   ├── 02_plans
+│   │   ├── README.md
+│   │   └── task_assignment.md
+│   ├── 03_operations
+│   │   ├── README.md
+│   │   ├── S1_服务器运行手册.md
+│   │   ├── S1_服务器运行手册_原代码文档版.md
+│   │   ├── data_preparation.md
+│   │   ├── inference.md
+│   │   └── training.md
+│   ├── 04_reports
+│   │   ├── 04_experiment_log.md
+│   │   ├── README.md
+│   │   └── S1_experiment.txt
+│   └── README.md
+├── 06_operations
+│   ├── slurm
+│   │   ├── 01_s1_realonly.slurm
+│   │   └── run_s1_realonly.sh
+│   └── README.md
+└── README.md
+work_space/S2/01_code
+├── repository
+│   ├── custom_nnunet
+│   │   ├── __init__.py
+│   │   ├── met_aug_core.py
+│   │   ├── met_aug_data_loader.py
+│   │   ├── met_aug_diffusion.py
+│   │   ├── met_aug_fix_v2.py
+│   │   ├── met_aug_fix_v2_calibration.py
+│   │   ├── met_aug_fix_v2_selection.py
+│   │   ├── met_aug_fix_v3.py
+│   │   ├── met_aug_fix_v3_emergency.py
+│   │   ├── met_aug_gate.py
+│   │   ├── met_aug_gate1.py
+│   │   ├── met_aug_gate2.py
+│   │   ├── met_aug_paired_training.py
+│   │   ├── met_aug_screening.py
+│   │   ├── met_aug_transform.py
+│   │   ├── nnUNetTrainerBraTS2026RC.py
+│   │   ├── nnUNetTrainerBraTS2026RCA1CompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCA1FocalCompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCCompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCFocalCompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCMetAugControlFocalCompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCMetAugFixV3EmergencyFocalCompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCMetAugFocalCompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCMetAugScreen125FocalCompletionFineTune.py
+│   │   ├── nnUNetTrainerBraTS2026RCOnlineDiffusion.py
+│   │   ├── nnUNetTrainerBraTS2026RC_inference.py
+│   │   ├── online_diffusion_contract.py
+│   │   ├── online_diffusion_transform.py
+│   │   ├── small_lesion_trainer_mixins.py
+│   │   └── small_lesion_variants.py
+│   ├── scripts
+│   │   ├── 01_data_preparation
+│   │   │   ├── 01_apply_corrected_labels.py
+│   │   │   ├── 01_convert_to_nnunet.py
+│   │   │   ├── 02_find_invalid_labels.py
+│   │   │   ├── 03_fix_invalid_labels.py
+│   │   │   ├── 04_build_fixed_split.py
+│   │   │   ├── 05_validate_fixed_split_cache.py
+│   │   │   ├── 08_prepare_completion_online_split.py
+│   │   │   ├── 09_clone_baseline_plans.py
+│   │   │   └── README.md
+│   │   ├── 02_evaluation_submission
+│   │   │   ├── 06_prepare_official_validation.py
+│   │   │   ├── 07_package_official_submission.py
+│   │   │   ├── 10_prepare_internal_official_eval.py
+│   │   │   ├── 11_run_internal_official_eval.sh
+│   │   │   ├── 28_prepare_official_inference_dual_h20.py
+│   │   │   ├── 29_preflight_official_inference_model.py
+│   │   │   ├── 30_finalize_official_inference_no_zip.py
+│   │   │   └── README.md
+│   │   ├── 03_component_pool_masks
+│   │   │   ├── 12_build_met_aug_component_pool.py
+│   │   │   ├── 14_prepare_met_aug_valid_masks.py
+│   │   │   ├── 21_validate_preprocessed_coordinate_contract.py
+│   │   │   ├── 24_prepare_met_aug_compact_support_reuse.py
+│   │   │   └── README.md
+│   │   ├── 04_route_a
+│   │   │   ├── 13_make_met_aug_route_a_config.py
+│   │   │   ├── 15_run_met_aug_gate1.py
+│   │   │   ├── 16_finalize_met_aug_route_a_gate.py
+│   │   │   ├── 17_prepare_met_aug_gate2_smoke.py
+│   │   │   ├── 18_run_met_aug_gate2_smoke.py
+│   │   │   ├── 19_finalize_met_aug_gate2_review.py
+│   │   │   ├── 20_run_met_aug_training_smoke.py
+│   │   │   ├── 22_validate_gate1_parallel_equivalence.py
+│   │   │   ├── 23_promote_gate1_parallel_candidate.py
+│   │   │   └── README.md
+│   │   ├── 05_original_e_continue
+│   │   │   ├── 25_run_e_continue_training_smoke.py
+│   │   │   ├── 26_prepare_e_continue_preprocessed_overlay.py
+│   │   │   ├── 27_finalize_e_continue_selection.py
+│   │   │   └── README.md
+│   │   ├── 06_fix_v2
+│   │   │   ├── 29_make_met_aug_fix_v2_partitions.py
+│   │   │   ├── 30_freeze_met_aug_fix_v2_calibration.py
+│   │   │   ├── 31_make_met_aug_fix_v2_config.py
+│   │   │   ├── 32_run_met_aug_fix_v2_backend_ablation.py
+│   │   │   ├── 33_extract_met_aug_fix_v2_reference.py
+│   │   │   ├── 34_make_met_aug_fix_v2_measurement_configs.py
+│   │   │   ├── 35_prepare_met_aug_fix_v2_calibration_manifest.py
+│   │   │   ├── 36_run_met_aug_fix_v2_development.py
+│   │   │   ├── 37_validate_met_aug_fix_v2_reference.py
+│   │   │   ├── 38_select_and_derive_met_aug_fix_v2.py
+│   │   │   ├── 39_run_met_aug_fix_v2_fixed_events.py
+│   │   │   ├── 40_finalize_met_aug_fix_v2_qc_holdout.py
+│   │   │   ├── 41_prepare_met_aug_fix_v2_downstream_manifests.py
+│   │   │   ├── 42_validate_met_aug_fix_v2_gate1b_replay.py
+│   │   │   ├── 43_freeze_met_aug_fix_v2_blinded_review.py
+│   │   │   ├── 44_freeze_met_aug_fix_v2_qc_failure.py
+│   │   │   └── README.md
+│   │   ├── 07_fix_v3
+│   │   │   ├── 45_finalize_met_aug_fix_v3_selection.py
+│   │   │   ├── 46_validate_met_aug_fix_v3_training.py
+│   │   │   ├── 47_run_met_aug_fix_v3_fixed_103.py
+│   │   │   └── README.md
+│   │   ├── 08_environment
+│   │   │   ├── README.md
+│   │   │   └── setup_brats_eval_env.sh
+│   │   └── README.md
+│   ├── tests
+│   │   ├── test_build_fixed_split.py
+│   │   ├── test_clone_baseline_plans.py
+│   │   ├── test_e_continue_preprocessed_overlay.py
+│   │   ├── test_e_continue_training_smoke.py
+│   │   ├── test_inference_trainer_shim.py
+│   │   ├── test_met_aug_fix_v2.py
+│   │   ├── test_met_aug_fix_v2_calibration.py
+│   │   ├── test_met_aug_fix_v2_scripts.py
+│   │   ├── test_met_aug_fix_v2_selection.py
+│   │   ├── test_met_aug_fix_v3.py
+│   │   ├── test_met_aug_fix_v3_emergency.py
+│   │   ├── test_met_aug_fix_v3_fixed_103_pipeline.py
+│   │   ├── test_met_aug_fix_v3_selection.py
+│   │   ├── test_met_aug_fix_v3_training_validation.py
+│   │   ├── test_met_aug_gate2.py
+│   │   ├── test_met_aug_preparation_scripts.py
+│   │   ├── test_met_aug_route_a.py
+│   │   ├── test_met_aug_training_smoke.py
+│   │   ├── test_online_diffusion_contract.py
+│   │   ├── test_package_official_submission.py
+│   │   ├── test_prepare_completion_online_split.py
+│   │   ├── test_prepare_internal_official_eval.py
+│   │   ├── test_prepare_official_validation.py
+│   │   ├── test_small_lesion_trainers.py
+│   │   ├── test_small_lesion_variants.py
+│   │   └── test_validate_fixed_split_cache.py
+│   ├── README.md
+│   ├── infer.sh
+│   ├── inference_frozen.py
+│   ├── requirements.txt
+│   ├── requirements_eval.txt
+│   └── train.sh
+├── 00_说明_20260919.md
+└── README.md
+work_space/S2/05_documents
+├── 00_history
+│   ├── README.md
+│   └── README_before_20260919.md
+├── 01_methods
+│   ├── 00_目录说明_20260919.md
+│   ├── 2026-07-30_nnUNet不带样本增强版本的改进策略.md
+│   ├── 2026-07-30_最终样本增强策略.md
+│   ├── ON_THE_FLY_AUGMENTATION.md
+│   ├── README.md
+│   ├── TUNING.md
+│   └── fix-V3.md
+├── 02_plans
+│   ├── MET_AUG_Fix_v1_完整修复方案.md
+│   ├── README.md
+│   ├── S2_小病灶消融对比执行计划.md
+│   └── task_assignment.md
+├── 03_operations
+│   ├── DATASET.md
+│   ├── INFERENCE.md
+│   ├── README.md
+│   ├── S2_服务器运行手册.md
+│   ├── TRAINING.md
+│   └── split_info.md
+├── 04_reports
+│   ├── README.md
+│   └── S2_experiment.txt
+├── 07_references
+│   ├── BraTS 2025.pdf
+│   └── README.md
+└── README.md
+work_space/S2/06_operations
+├── 01_ecnu_legacy_bundle_20260919
+│   ├── 01_prepare_completion_ecnu.slurm
+│   ├── 02_train_completion_v100_ecnu.slurm
+│   ├── 03_train_small_lesion_ablation_a100_ecnu.slurm
+│   ├── 04_validate_existing_completion_cache_ecnu.slurm
+│   ├── 18_prepare_fix_v3_full200_true1mm_ecnu.slurm
+│   ├── 19_eval_e_missing_t2w_val27_ecnu.slurm
+│   ├── 19_rebuild_fix_v3_full200_calibration_ecnu.slurm
+│   ├── 20_smoke_fix_v3_full200_ecnu.slurm
+│   ├── 21_train_fix_v3_full200_ecnu.slurm
+│   ├── 22_rebuild_fix_v3_full200_calibration_ecnu_attempt02.slurm
+│   ├── 23_smoke_fix_v3_full200_ecnu_attempt02.slurm
+│   ├── 24_train_fix_v3_full200_ecnu_attempt02.slurm
+│   ├── README.md
+│   ├── dataset264_rsync_receiver.sh
+│   └── s2_storage_policy.sh
+├── 02_h20_legacy_bundle_20260919
+│   ├── .env.uhost.e_continue_fallback_r1
+│   ├── .env.uhost.example
+│   ├── 05_met_aug_gate_h20_uhost.slurm
+│   ├── 06_train_met_aug_pair_h20_uhost.slurm
+│   ├── 07_launch_met_aug_pair_h20_uhost.sh
+│   ├── 08_status_met_aug_pair_h20_uhost.sh
+│   ├── 09_sync_s2_runtime_to_uhost.sh
+│   ├── 10_relay_dataset264_via_vpn_to_uhost.sh
+│   ├── 11_push_dataset264_direct_to_uhost_ecnu.sh
+│   ├── 12_e_continue_fallback_h20_uhost.sh
+│   ├── 13_eval_frozen_e_true1mm_h20_uhost.sh
+│   ├── 14_eval_frozen_b_true1mm_h20_uhost.sh
+│   ├── 15_eval_e_continue_epoch100_true1mm_h20_uhost.sh
+│   ├── 16_setup_official_eval_env_h20_uhost.sh
+│   ├── 17_run_official_inference_shard_h20_uhost.sh
+│   ├── README.md
+│   ├── requirements-h20.txt
+│   ├── s2_uhost_common.sh
+│   └── setup_s2_h20_environment.sh
+├── 03_nyu_realonly_legacy_20260919
+│   ├── 00_说明_20260919.md
+│   ├── 04_s2_realonly_infer_nyu.slurm
+│   ├── 04_s2_realonly_nyu.slurm
+│   ├── 04_s2_realonly_official_eval_nyu.slurm
+│   ├── 04_s2_realonly_prepare_nyu.slurm
+│   └── README.md
+├── 04_cloud_legacy_bundle_20260919
+│   ├── README.md
+│   ├── rebuild_completion_cache_from_checkpoint.sh
+│   ├── run_completion_t2w_cloud.sh
+│   ├── stop_fix_v3_at_epoch125.launch.json
+│   ├── stop_fix_v3_at_epoch125.plan.json
+│   ├── stop_fix_v3_at_epoch125.py
+│   └── transfer_dataset264_to_t2w.sh
+└── README.md
+
+46 directories, 240 files

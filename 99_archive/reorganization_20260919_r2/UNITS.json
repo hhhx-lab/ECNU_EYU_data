@@ -1,0 +1,667 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "units": [
+    {
+      "old": "BraTS_2023_2024_solutions-main",
+      "new": "03_reference_code/01_original_root_checkout",
+      "title": "原项目根目录中的BraTS 2023/2024代码副本",
+      "purpose": "完整保存此独立来源的上游代码、示例及其历史结果；不与其他副本去重。",
+      "kind": "reference_code",
+      "related": []
+    },
+    {
+      "old": "data_space/past_code/2023",
+      "new": "03_reference_code/02_past_code_2023",
+      "title": "共享资料中的2023代码副本",
+      "purpose": "原data_space来源，保留其内部示例、权重元数据和上游文档；不是当前G1/G2实验。",
+      "kind": "reference_code",
+      "related": []
+    },
+    {
+      "old": "data_space/past_code/2025",
+      "new": "03_reference_code/03_past_code_2025",
+      "title": "共享资料中的2025代码副本",
+      "purpose": "包含2025参考源码及docker_source取回记录，仅保存现有文件，不构建镜像。",
+      "kind": "reference_code",
+      "related": []
+    },
+    {
+      "old": "data_space/task1_2026/datasets",
+      "new": "data_space/01_official_task1_dataset_contracts",
+      "title": "官方Task1数据契约与获取说明",
+      "purpose": "本地是数据契约、现状及获取说明，不是完整原始MRI数据集；不可把文档数量当作病例数量。",
+      "kind": "dataset_contract",
+      "related": []
+    },
+    {
+      "old": "data_space/task1_2026/reference_code",
+      "new": "03_reference_code/04_task1_evaluation_and_trainers",
+      "title": "Task1官方评估及trainer参考代码",
+      "purpose": "包含BraTS-evaluation参考来源与nnUNet自定义trainer；保持包内部结构及许可证。",
+      "kind": "reference_code",
+      "related": []
+    },
+    {
+      "old": "work_space/80_paper_figures/reviewer_visual_examples_20260814",
+      "new": "04_paper_figures/20260814_reviewer_visual_examples",
+      "title": "论文审稿展示图与可编辑素材",
+      "purpose": "保留绘图源码、图注、导出图片/PDF和figure manifest；不是训练数据。",
+      "kind": "figures",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/10_code/brats2025-latent-ensemble-synthesis-main-v3",
+      "new": "work_space/G1/01_code/missing_t2w_vae_bbdm",
+      "title": "缺失T2W的VAE/Encoder-Decoder/BBDM代码",
+      "purpose": "程序、配置、测试和Slurm保留为一个可识别的工程；权重、评估数据及论文已移到各自分类。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/10_code/brats2025-latent-ensemble-synthesis-main-v3/weights",
+      "new": "work_space/G1/04_models/undated_pretrained_vae",
+      "title": "缺失模态代码携带的预训练VAE权重",
+      "purpose": "从代码weights目录分离；未加载模型，不把此预训练权重误认成run3034060微调后的best_model。",
+      "kind": "model",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/10_code/brats2025-latent-ensemble-synthesis-main-v3/data",
+      "new": "work_space/G1/02_datasets/undated_vae_evaluation_inputs",
+      "title": "VAE工程原data目录中的评估输入",
+      "purpose": "来自缺失模态工程的本地评估输入/说明，完整病例数以旁边manifest及文件名计数为准。",
+      "kind": "dataset",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/10_code/BraTS_2023_2024_solutions-main 3",
+      "new": "03_reference_code/05_g1_upstream_snapshot",
+      "title": "G1曾使用的上游工程副本",
+      "purpose": "GliGAN活动工程已单独放到G1代码目录，其余上游任务源码/文档原样归档为参考，保留与根目录副本的区别。",
+      "kind": "reference_code",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/10_code/BraTS_2023_2024_solutions-main 3/Segmentation_Tasks/GliGAN",
+      "new": "work_space/G1/01_code/diffusion_gliGAN",
+      "title": "GliGAN Diffusion增强代码",
+      "purpose": "从上游大工程中完整移出GliGAN子工程，保持其内部脚本、配置、模型实现和测试相对关系。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/20_data/latents",
+      "new": "work_space/G1/02_datasets/undated_sample_latents",
+      "title": "本地保留的潜变量样本",
+      "purpose": "原G1/data/latents中的小规模样本，不是完整latent训练集；不能用它替代服务器上的训练缓存。",
+      "kind": "dataset",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/20_data",
+      "new": "work_space/G1/02_datasets/undated_data_manifests",
+      "title": "G1数据放置与评估清单",
+      "purpose": "保留eval_metrics和data placement manifest。原空的raw/input/output等模板另存历史占位区。",
+      "kind": "dataset_manifest",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/vae_finetuned/run_3034060",
+      "new": "work_space/G1/03_experiments/01_vae_finetuning/undated_run_3034060",
+      "title": "VAE微调前后指标对照 run3034060",
+      "purpose": "包含baseline/finetuned/delta指标CSV。run号不是日期，未从mtime杜撰训练日期。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/v3_validation/run_3056246",
+      "new": "work_space/G1/03_experiments/02_paired_validation/20260715_run_3056246",
+      "title": "V3配对验证 run3056246",
+      "purpose": "evaluation_run记录UTC 2026-07-15及103例；合成影像单独归入对应数据集，指标与生成参数保留在此。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/v3_validation/run_3056246/synthesized",
+      "new": "work_space/G1/02_datasets/20260715_paired103_synthesized_t2w",
+      "title": "V3配对103例合成T2W",
+      "purpose": "来自run3056246的synthesized输出；对应G1配对验证结果，不等同缺失T2W的265例补全集。",
+      "kind": "dataset",
+      "related": [
+        "work_space/G1/03_experiments/02_paired_validation/20260715_run_3056246"
+      ]
+    },
+    {
+      "old": "work_space/G1/30_results/missing_t2w_completion/run_3104668",
+      "new": "work_space/G1/02_datasets/20260717_missing_t2w_completion_run3104668",
+      "title": "265例缺失T2W补全数据及生成证据",
+      "purpose": "inference_run记录UTC 2026-07-17、case_count=265；病例文件、生成manifest、G2接收清单同包保存。265是生成批次，不直接等于全部获批训练样本。",
+      "kind": "dataset",
+      "related": [
+        "work_space/G2/02_dataset_release/20260729_local_release/qc/v3_completion_review/run_3104668"
+      ]
+    },
+    {
+      "old": "work_space/G1/30_results/g1_diffusion_v3_final_20260720",
+      "new": "work_space/G1/03_experiments/03_diffusion_training/20260720_v3_multiserver",
+      "title": "Diffusion V3多服务器训练及评估汇总",
+      "purpose": "canonical和sources是不同来源的证据视图。原始日志、部署、split和评估记录保留，checkpoint实体移到对应模型包且不去重。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/g1_diffusion_v3_final_20260720/canonical/checkpoints",
+      "new": "work_space/G1/04_models/20260720_diffusion_v3_canonical",
+      "title": "Diffusion V3 canonical模型副本",
+      "purpose": "原canonical/checkpoints，属于汇总视图。与各服务器sources中的重复模型全部保留。",
+      "kind": "model",
+      "related": [
+        "work_space/G1/03_experiments/03_diffusion_training/20260720_v3_multiserver"
+      ]
+    },
+    {
+      "old": "work_space/G1/30_results/g1_diffusion_v3_final_20260720/sources/a100_117.50.177.229/checkpoints",
+      "new": "work_space/G1/04_models/20260720_diffusion_v3_sources/a100_117.50.177.229",
+      "title": "Diffusion V3服务器来源模型：a100_117.50.177.229",
+      "purpose": "按原来源分别存放；不因SHA重复删除，训练日志和来源证据在对应实验包。",
+      "kind": "model",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/g1_diffusion_v3_final_20260720/sources/a800_117.50.198.191/checkpoints",
+      "new": "work_space/G1/04_models/20260720_diffusion_v3_sources/a800_117.50.198.191",
+      "title": "Diffusion V3服务器来源模型：a800_117.50.198.191",
+      "purpose": "按原来源分别存放；不因SHA重复删除，训练日志和来源证据在对应实验包。",
+      "kind": "model",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/g1_diffusion_v3_final_20260720/sources/h20_117.50.196.61/checkpoints",
+      "new": "work_space/G1/04_models/20260720_diffusion_v3_sources/h20_117.50.196.61",
+      "title": "Diffusion V3服务器来源模型：h20_117.50.196.61",
+      "purpose": "按原来源分别存放；不因SHA重复删除，训练日志和来源证据在对应实验包。",
+      "kind": "model",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/experimental_unvalidated_single_model_eval_20260812_r4",
+      "new": "work_space/G1/03_experiments/04_model_comparison/experimental_unvalidated_single_model_eval_20260812_r4",
+      "title": "BBDM、EncDec、Ensemble r4图像质量比较",
+      "purpose": "保留三路指标、空间审计、paired结果和失败launch记录；图像质量排名不能直接解释为分割收益。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/G1/30_results/experimental_unvalidated_single_model_eval_20260812_r4/bbdm_only/synthesized",
+      "new": "work_space/G1/02_datasets/20260812_model_comparison/bbdm_only",
+      "title": "r4图像比较的bbdm_only合成影像",
+      "purpose": "仅搬迁本地确实存在的合成影像；对应评估与spatial audit仍放在同一比较实验下。",
+      "kind": "dataset",
+      "related": [
+        "work_space/G1/03_experiments/04_model_comparison/experimental_unvalidated_single_model_eval_20260812_r4/bbdm_only"
+      ]
+    },
+    {
+      "old": "work_space/G1/30_results/experimental_unvalidated_single_model_eval_20260812_r4/encdec_only/synthesized",
+      "new": "work_space/G1/02_datasets/20260812_model_comparison/encdec_only",
+      "title": "r4图像比较的encdec_only合成影像",
+      "purpose": "仅搬迁本地确实存在的合成影像；对应评估与spatial audit仍放在同一比较实验下。",
+      "kind": "dataset",
+      "related": [
+        "work_space/G1/03_experiments/04_model_comparison/experimental_unvalidated_single_model_eval_20260812_r4/encdec_only"
+      ]
+    },
+    {
+      "old": "work_space/G2/10_code",
+      "new": "work_space/G2/01_code",
+      "title": "G2接收、划分、QC及发布脚本",
+      "purpose": "G2数据发布根保持manifests/splits/qc等内部合同，根位置由本项目路径配置明确指定。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release",
+      "title": "G2本地数据发布与QC证据包",
+      "purpose": "这是一个有内部合同的数据发布包：manifests、splits、stats、qc、nnunet_raw相互引用，作为整体归类而不是按扩展名拆散。不同QC批次在qc下继续独立。",
+      "kind": "dataset_release",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/manifests",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/manifests",
+      "title": "病例身份与生成数据清单",
+      "purpose": "病例映射、G1接收和标签来源清单；不能只凭文件数量替代入组合同。",
+      "kind": "dataset",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/splits",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/splits",
+      "title": "固定病例划分",
+      "purpose": "master 1035/130/130与真实T2W子集823/103/104分开保存；同样103例不自动等于相同病例。",
+      "kind": "dataset",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/stats",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/stats",
+      "title": "真实病灶分布与合成目标统计",
+      "purpose": "分布统计和目标计划不是新生成的数据样本。",
+      "kind": "dataset",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/nnunet_raw/Dataset260_BraTS2026_MET_RealOnly",
+      "title": "历史Dataset260数据集视图",
+      "purpose": "本地主要是dataset.json与说明，保持历史Dataset编号；不冒充Dataset264或完整影像数据。",
+      "kind": "dataset",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/qc/diffusion_checkpoint_full94_150000_a800_recovery_20260721",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/qc/diffusion_checkpoint_full94_150000_a800_recovery_20260721",
+      "title": "G2 QC批次：diffusion_checkpoint_full94_150000_a800_recovery_20260721",
+      "purpose": "保留原QC、人工review、gate和来源证据。存在pass或COMPLETE标记不等于本次重新通过科研验收。",
+      "kind": "quality_control",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/qc/diffusion_checkpoint_preflight_150000",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/qc/diffusion_checkpoint_preflight_150000",
+      "title": "G2 QC批次：diffusion_checkpoint_preflight_150000",
+      "purpose": "保留原QC、人工review、gate和来源证据。存在pass或COMPLETE标记不等于本次重新通过科研验收。",
+      "kind": "quality_control",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/qc/diffusion_checkpoint_smoke20_150000_a800_recovery_v2",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/qc/diffusion_checkpoint_smoke20_150000_a800_recovery_v2",
+      "title": "G2 QC批次：diffusion_checkpoint_smoke20_150000_a800_recovery_v2",
+      "purpose": "保留原QC、人工review、gate和来源证据。存在pass或COMPLETE标记不等于本次重新通过科研验收。",
+      "kind": "quality_control",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/qc/v3_completion_review",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/qc/v3_completion_review",
+      "title": "G2 QC批次：v3_completion_review",
+      "purpose": "保留原QC、人工review、gate和来源证据。存在pass或COMPLETE标记不等于本次重新通过科研验收。",
+      "kind": "quality_control",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/qc/v3_paired_validation",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/qc/v3_paired_validation",
+      "title": "G2 QC批次：v3_paired_validation",
+      "purpose": "保留原QC、人工review、gate和来源证据。存在pass或COMPLETE标记不等于本次重新通过科研验收。",
+      "kind": "quality_control",
+      "related": []
+    },
+    {
+      "old": "work_space/G2/30_results/qc/v3_s2_teacher",
+      "new": "work_space/G2/02_dataset_release/20260729_local_release/qc/v3_s2_teacher",
+      "title": "G2 QC批次：v3_s2_teacher",
+      "purpose": "保留原QC、人工review、gate和来源证据。存在pass或COMPLETE标记不等于本次重新通过科研验收。",
+      "kind": "quality_control",
+      "related": []
+    },
+    {
+      "old": "work_space/S1/11_project_brats2026_multitask_s1_v2",
+      "new": "work_space/S1/01_code",
+      "title": "S1分割主工程",
+      "purpose": "保留repository内部代码层级；原代码文档集中在模块05_documents，运行路径须使用新项目路径表。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/11_project_brats2026_s2_rc_v1_0",
+      "new": "work_space/S2/01_code",
+      "title": "S2分割主工程",
+      "purpose": "保留repository内部代码层级；原代码文档集中在模块05_documents，运行路径须使用新项目路径表。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/S3/10_code",
+      "new": "work_space/S3/01_code",
+      "title": "S3分割工程",
+      "purpose": "完整保留模型代码、内部第三方依赖和许可证。S4为SAM2-UNet，S5为SegMamba；未在此任务重跑训练。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/S4/10_code",
+      "new": "work_space/S4/01_code",
+      "title": "S4分割工程",
+      "purpose": "完整保留模型代码、内部第三方依赖和许可证。S4为SAM2-UNet，S5为SegMamba；未在此任务重跑训练。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/S5/10_code",
+      "new": "work_space/S5/01_code",
+      "title": "S5分割工程",
+      "purpose": "完整保留模型代码、内部第三方依赖和许可证。S4为SAM2-UNet，S5为SegMamba；未在此任务重跑训练。",
+      "kind": "code",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/27。result",
+      "new": "work_space/S2/03_experiments/01_baselines_and_original_e/20260814_original_e_missing_t2w_val27",
+      "title": "S2结果批次：20260814_original_e_missing_t2w_val27",
+      "purpose": "历史real-only、completion、原E及其对照；具体模型身份须由checkpoint SHA和选择合同确认。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated_s2_met_aug_fix_v3_full200_20260812_r1_route_rebuild",
+      "new": "work_space/S2/02_datasets/20260812_fixv3_component_pool_and_masks",
+      "title": "FixV3组件池、valid masks及坐标合同",
+      "purpose": "这是增强路线的数据准备产物，不是5000份独立训练结果；components、mask、manifest与坐标合同保持配套。",
+      "kind": "dataset",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated_three_model_fixed103_aggregate_20260814_r1",
+      "new": "work_space/S2/03_experiments/05_fix_v3/experimental_unvalidated_three_model_fixed103_aggregate_20260814_r1",
+      "title": "S2结果批次：experimental_unvalidated_three_model_fixed103_aggregate_20260814_r1",
+      "purpose": "FixV3样本增强及回顾性比较；attempt11和其他历史版本独立保留。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/realonly_fold0",
+      "new": "work_space/S2/03_experiments/01_baselines_and_original_e/realonly_fold0",
+      "title": "S2结果批次：realonly_fold0",
+      "purpose": "历史real-only、completion、原E及其对照；具体模型身份须由checkpoint SHA和选择合同确认。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_completion_dataset264_t2w_20260720",
+      "new": "work_space/S2/03_experiments/01_baselines_and_original_e/s2_completion_dataset264_t2w_20260720",
+      "title": "S2结果批次：s2_completion_dataset264_t2w_20260720",
+      "purpose": "历史real-only、completion、原E及其对照；具体模型身份须由checkpoint SHA和选择合同确认。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_e_continue_fallback_20260726_r1",
+      "new": "work_space/S2/03_experiments/01_baselines_and_original_e/s2_e_continue_fallback_20260726_r1",
+      "title": "S2结果批次：s2_e_continue_fallback_20260726_r1",
+      "purpose": "历史real-only、completion、原E及其对照；具体模型身份须由checkpoint SHA和选择合同确认。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_eval_results",
+      "new": "work_space/S2/03_experiments/01_baselines_and_original_e/s2_eval_results",
+      "title": "S2结果批次：s2_eval_results",
+      "purpose": "历史real-only、completion、原E及其对照；具体模型身份须由checkpoint SHA和选择合同确认。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_met_aug_fix_v2_20260728_r1",
+      "new": "work_space/S2/03_experiments/04_fix_v2/s2_met_aug_fix_v2_20260728_r1",
+      "title": "S2结果批次：s2_met_aug_fix_v2_20260728_r1",
+      "purpose": "FixV2开发、盲审与QC holdout；不同attempt的数组、图像和失败证据保留在各自记录中。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_met_aug_route_a_20260726_r4",
+      "new": "work_space/S2/03_experiments/03_route_a/s2_met_aug_route_a_20260726_r4",
+      "title": "S2结果批次：s2_met_aug_route_a_20260726_r4",
+      "purpose": "Route A增强方案及gate审查；r4与r5分开保留，不从命名推断通过。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_met_aug_route_a_20260726_r5",
+      "new": "work_space/S2/03_experiments/03_route_a/s2_met_aug_route_a_20260726_r5",
+      "title": "S2结果批次：s2_met_aug_route_a_20260726_r5",
+      "purpose": "Route A增强方案及gate审查；r4与r5分开保留，不从命名推断通过。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_official_validation_inference_20260727_r1",
+      "new": "work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_inference_20260727_r1",
+      "title": "原E比赛推理/转移/提交：s2_official_validation_inference_20260727_r1",
+      "purpose": "保留MODEL_SELECTION、推理合同、179例输出证据和提交manifest；仅归档，不上传、不新建ZIP。",
+      "kind": "submission",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_official_validation_submission_20260728_r1",
+      "new": "work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_submission_20260728_r1",
+      "title": "原E比赛推理/转移/提交：s2_official_validation_submission_20260728_r1",
+      "purpose": "保留MODEL_SELECTION、推理合同、179例输出证据和提交manifest；仅归档，不上传、不新建ZIP。",
+      "kind": "submission",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_official_validation_transfer_20260727_r1",
+      "new": "work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_transfer_20260727_r1",
+      "title": "原E比赛推理/转移/提交：s2_official_validation_transfer_20260727_r1",
+      "purpose": "保留MODEL_SELECTION、推理合同、179例输出证据和提交manifest；仅归档，不上传、不新建ZIP。",
+      "kind": "submission",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_small_lesion_ablation_20260721",
+      "new": "work_space/S2/03_experiments/02_small_lesion_and_focal/s2_small_lesion_ablation_20260721",
+      "title": "S2结果批次：s2_small_lesion_ablation_20260721",
+      "purpose": "小病灶与Focal消融；训练快照、timeout和官方评估重试保持独立。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126",
+      "new": "work_space/S2/03_experiments/02_small_lesion_and_focal/s2_small_lesion_ablation_20260724_official_eval_retry_numpy126",
+      "title": "S2结果批次：s2_small_lesion_ablation_20260724_official_eval_retry_numpy126",
+      "purpose": "小病灶与Focal消融；训练快照、timeout和官方评估重试保持独立。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_validation_leaderboard_20260806_r1",
+      "new": "work_space/S2/07_submissions/leaderboard_records/s2_validation_leaderboard_20260806_r1",
+      "title": "历史排行榜记录",
+      "purpose": "原始抓取和截图证据；不是本次重测或当前服务器状态。",
+      "kind": "submission",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_e_fixv3_fixed103_retrospective_20260827_r1",
+      "new": "work_space/S2/03_experiments/05_fix_v3/s2_e_fixv3_fixed103_retrospective_20260827_r1",
+      "title": "S2实验：s2_e_fixv3_fixed103_retrospective_20260827_r1",
+      "purpose": "FixV3样本增强及回顾性比较；attempt11和其他历史版本独立保留。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r1",
+      "new": "work_space/S2/03_experiments/10_g1r4_endpoint/s2_g1r4_endpoint_validation_20260824_r1",
+      "title": "S2实验：s2_g1r4_endpoint_validation_20260824_r1",
+      "purpose": "G1-r4缺失T2W补全后分割endpoint；val27、fixed103、locked26需按各自manifest区分。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_g1r4_endpoint_validation_20260824_r2",
+      "new": "work_space/S2/03_experiments/10_g1r4_endpoint/s2_g1r4_endpoint_validation_20260824_r2",
+      "title": "S2实验：s2_g1r4_endpoint_validation_20260824_r2",
+      "purpose": "G1-r4缺失T2W补全后分割endpoint；val27、fixed103、locked26需按各自manifest区分。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260910_r1",
+      "new": "work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260910_r1",
+      "title": "S2实验：s2_met_aug_bef_epoch175_official_met_20260910_r1",
+      "purpose": "175epoch官方MET及CPU恢复，保留125/175原始值与paired证据；恢复不改写原作业失败结果。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_bef_epoch175_official_met_20260911_r2",
+      "new": "work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2",
+      "title": "S2实验：s2_met_aug_bef_epoch175_official_met_20260911_r2",
+      "purpose": "175epoch官方MET及CPU恢复，保留125/175原始值与paired证据；恢复不改写原作业失败结果。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_bef_extend175_20260903_r1",
+      "new": "work_space/S2/03_experiments/08_bef_extend175/s2_met_aug_bef_extend175_20260903_r1",
+      "title": "S2实验：s2_met_aug_bef_extend175_20260903_r1",
+      "purpose": "B、E-SNFH、F从125延长至175的独立收敛实验；不是原五路等预算对照。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_bef_extend175_20260903_r2",
+      "new": "work_space/S2/03_experiments/08_bef_extend175/s2_met_aug_bef_extend175_20260903_r2",
+      "title": "S2实验：s2_met_aug_bef_extend175_20260903_r2",
+      "purpose": "B、E-SNFH、F从125延长至175的独立收敛实验；不是原五路等预算对照。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_bef_extend175_20260903_r3",
+      "new": "work_space/S2/03_experiments/08_bef_extend175/s2_met_aug_bef_extend175_20260903_r3",
+      "title": "S2实验：s2_met_aug_bef_extend175_20260903_r3",
+      "purpose": "B、E-SNFH、F从125延长至175的独立收敛实验；不是原五路等预算对照。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_bef_extend175_20260907_r4",
+      "new": "work_space/S2/03_experiments/08_bef_extend175/s2_met_aug_bef_extend175_20260907_r4",
+      "title": "S2实验：s2_met_aug_bef_extend175_20260907_r4",
+      "purpose": "B、E-SNFH、F从125延长至175的独立收敛实验；不是原五路等预算对照。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_btof_screen125_20260831_r1",
+      "new": "work_space/S2/03_experiments/06_btof_screen125/s2_met_aug_btof_screen125_20260831_r1",
+      "title": "S2实验：s2_met_aug_btof_screen125_20260831_r1",
+      "purpose": "五路B至F等预算125epoch训练，冻结各自checkpoint选择，不混入175epoch预算。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260903_r1",
+      "new": "work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260903_r1",
+      "title": "S2实验：s2_met_aug_btof_selected103_official_met_20260903_r1",
+      "purpose": "五路selected-checkpoint在fixed103上的官方MET横评；各恢复版本与旧失败记录分别保留。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r2",
+      "new": "work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r2",
+      "title": "S2实验：s2_met_aug_btof_selected103_official_met_20260907_r2",
+      "purpose": "五路selected-checkpoint在fixed103上的官方MET横评；各恢复版本与旧失败记录分别保留。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r3",
+      "new": "work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r3",
+      "title": "S2实验：s2_met_aug_btof_selected103_official_met_20260907_r3",
+      "purpose": "五路selected-checkpoint在fixed103上的官方MET横评；各恢复版本与旧失败记录分别保留。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_btof_selected103_official_met_20260907_r4",
+      "new": "work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4",
+      "title": "S2实验：s2_met_aug_btof_selected103_official_met_20260907_r4",
+      "purpose": "五路selected-checkpoint在fixed103上的官方MET横评；各恢复版本与旧失败记录分别保留。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_met_aug_fix_v3_full200_attempt11_20260823_r1",
+      "new": "work_space/S2/03_experiments/05_fix_v3/s2_met_aug_fix_v3_full200_attempt11_20260823_r1",
+      "title": "S2实验：s2_met_aug_fix_v3_full200_attempt11_20260823_r1",
+      "purpose": "FixV3样本增强及回顾性比较；attempt11和其他历史版本独立保留。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r1",
+      "new": "work_space/S2/03_experiments/11_table7_microf1/s2_table7_disjoint_microf1_20260828_r1",
+      "title": "S2实验：s2_table7_disjoint_microf1_20260828_r1",
+      "purpose": "Table7和micro-F1探索；evaluation-only、GPU版本和失败attempt互不覆盖。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r2_v100",
+      "new": "work_space/S2/03_experiments/11_table7_microf1/s2_table7_disjoint_microf1_20260828_r2_v100",
+      "title": "S2实验：s2_table7_disjoint_microf1_20260828_r2_v100",
+      "purpose": "Table7和micro-F1探索；evaluation-only、GPU版本和失败attempt互不覆盖。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r3_evaluation_only",
+      "new": "work_space/S2/03_experiments/11_table7_microf1/s2_table7_disjoint_microf1_20260828_r3_evaluation_only",
+      "title": "S2实验：s2_table7_disjoint_microf1_20260828_r3_evaluation_only",
+      "purpose": "Table7和micro-F1探索；evaluation-only、GPU版本和失败attempt互不覆盖。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/experimental_unvalidated/s2_table7_disjoint_microf1_20260828_r4_evaluation_only",
+      "new": "work_space/S2/03_experiments/11_table7_microf1/s2_table7_disjoint_microf1_20260828_r4_evaluation_only",
+      "title": "S2实验：s2_table7_disjoint_microf1_20260828_r4_evaluation_only",
+      "purpose": "Table7和micro-F1探索；evaluation-only、GPU版本和失败attempt互不覆盖。",
+      "kind": "experiment",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results/s2_eval_results/reference",
+      "new": "work_space/S2/02_datasets/undated_realonly_fixed103_reference_labels",
+      "title": "Real-only评估保留的103例reference labels",
+      "purpose": "从s2_eval_results中分离reference标签，prediction和官方指标仍归原评估实验。不得作为新的测试集或增强样本。",
+      "kind": "dataset",
+      "related": [
+        "work_space/S2/03_experiments/01_baselines_and_original_e/s2_eval_results"
+      ]
+    },
+    {
+      "old": "work_space/S2/30_results/checkpoint_final.pth",
+      "new": "work_space/S2/04_models/undated_root_checkpoint/checkpoint_final.pth",
+      "title": "原S2结果根目录的checkpoint_final",
+      "purpose": "原文件单独保留并记录SHA；在没有模型选择证据前，不自动将其命名为原E、FixV3或最新最佳。",
+      "kind": "single_model",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/30_results",
+      "new": "work_space/S2/07_submissions/20260715_realonly_validation179",
+      "title": "早期real-only的179例validation提交包",
+      "purpose": "依据配套validation时间UTC 2026-07-15及179例合同，区别于7月27日选择的原E提交。ZIP原样保留，不解包或重打。",
+      "kind": "submission",
+      "related": []
+    },
+    {
+      "old": "work_space/S2/80_submission_container",
+      "new": "work_space/S2/07_submissions/20260730_original_e_container_reserve",
+      "title": "既有原E提交容器保留材料",
+      "purpose": "仅搬迁既有Dockerfile、代码、环境示例和验证证据；不生成或构建新镜像。",
+      "kind": "submission",
+      "related": []
+    }
+  ]
+}

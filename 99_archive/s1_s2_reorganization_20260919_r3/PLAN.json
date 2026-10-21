@@ -1,0 +1,676 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "utc": "2026-09-19T07:04:48.297858+00:00",
+  "moves": [
+    {
+      "old": "work_space/S1/01_code/repository/scripts/01_apply_corrected_labels.py",
+      "new": "work_space/S1/01_code/repository/scripts/01_labels/01_apply_corrected_labels.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/scripts/02_find_invalid_labels.py",
+      "new": "work_space/S1/01_code/repository/scripts/01_labels/02_find_invalid_labels.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/scripts/03_fix_invalid_labels.py",
+      "new": "work_space/S1/01_code/repository/scripts/01_labels/03_fix_invalid_labels.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/scripts/08_build_full_multitask_labels.py",
+      "new": "work_space/S1/01_code/repository/scripts/01_labels/08_build_full_multitask_labels.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/scripts/09_dataset_audit.py",
+      "new": "work_space/S1/01_code/repository/scripts/02_audit_split/09_dataset_audit.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/scripts/10_create_full_split.py",
+      "new": "work_space/S1/01_code/repository/scripts/02_audit_split/10_create_full_split.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/01_apply_corrected_labels.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/01_apply_corrected_labels.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/01_convert_to_nnunet.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/01_convert_to_nnunet.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/02_find_invalid_labels.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/02_find_invalid_labels.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/02_find_invalid_labels_old.py",
+      "new": "99_archive/s1_s2_legacy_20260919/01_legacy_source/S2/scripts/02_find_invalid_labels_old.py",
+      "reason": "Retain explicitly named old source outside active scripts"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/03_fix_invalid_labels.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/03_fix_invalid_labels.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/04_build_fixed_split.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/04_build_fixed_split.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/05_validate_fixed_split_cache.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/05_validate_fixed_split_cache.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/06_prepare_official_validation.py",
+      "new": "work_space/S2/01_code/repository/scripts/02_evaluation_submission/06_prepare_official_validation.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/07_package_official_submission.py",
+      "new": "work_space/S2/01_code/repository/scripts/02_evaluation_submission/07_package_official_submission.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/08_prepare_completion_online_split.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/08_prepare_completion_online_split.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/09_clone_baseline_plans.py",
+      "new": "work_space/S2/01_code/repository/scripts/01_data_preparation/09_clone_baseline_plans.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/10_prepare_internal_official_eval.py",
+      "new": "work_space/S2/01_code/repository/scripts/02_evaluation_submission/10_prepare_internal_official_eval.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/11_run_internal_official_eval.sh",
+      "new": "work_space/S2/01_code/repository/scripts/02_evaluation_submission/11_run_internal_official_eval.sh",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/12_build_met_aug_component_pool.py",
+      "new": "work_space/S2/01_code/repository/scripts/03_component_pool_masks/12_build_met_aug_component_pool.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/13_make_met_aug_route_a_config.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/13_make_met_aug_route_a_config.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/14_prepare_met_aug_valid_masks.py",
+      "new": "work_space/S2/01_code/repository/scripts/03_component_pool_masks/14_prepare_met_aug_valid_masks.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/15_run_met_aug_gate1.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/15_run_met_aug_gate1.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/16_finalize_met_aug_route_a_gate.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/16_finalize_met_aug_route_a_gate.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/17_prepare_met_aug_gate2_smoke.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/17_prepare_met_aug_gate2_smoke.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/18_run_met_aug_gate2_smoke.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/18_run_met_aug_gate2_smoke.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/19_finalize_met_aug_gate2_review.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/19_finalize_met_aug_gate2_review.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/20_run_met_aug_training_smoke.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/20_run_met_aug_training_smoke.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/21_validate_preprocessed_coordinate_contract.py",
+      "new": "work_space/S2/01_code/repository/scripts/03_component_pool_masks/21_validate_preprocessed_coordinate_contract.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/22_validate_gate1_parallel_equivalence.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/22_validate_gate1_parallel_equivalence.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/23_promote_gate1_parallel_candidate.py",
+      "new": "work_space/S2/01_code/repository/scripts/04_route_a/23_promote_gate1_parallel_candidate.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/24_prepare_met_aug_compact_support_reuse.py",
+      "new": "work_space/S2/01_code/repository/scripts/03_component_pool_masks/24_prepare_met_aug_compact_support_reuse.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/25_run_e_continue_training_smoke.py",
+      "new": "work_space/S2/01_code/repository/scripts/05_original_e_continue/25_run_e_continue_training_smoke.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/26_prepare_e_continue_preprocessed_overlay.py",
+      "new": "work_space/S2/01_code/repository/scripts/05_original_e_continue/26_prepare_e_continue_preprocessed_overlay.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/27_finalize_e_continue_selection.py",
+      "new": "work_space/S2/01_code/repository/scripts/05_original_e_continue/27_finalize_e_continue_selection.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/28_prepare_official_inference_dual_h20.py",
+      "new": "work_space/S2/01_code/repository/scripts/02_evaluation_submission/28_prepare_official_inference_dual_h20.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/29_make_met_aug_fix_v2_partitions.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/29_make_met_aug_fix_v2_partitions.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/29_preflight_official_inference_model.py",
+      "new": "work_space/S2/01_code/repository/scripts/02_evaluation_submission/29_preflight_official_inference_model.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/30_finalize_official_inference_no_zip.py",
+      "new": "work_space/S2/01_code/repository/scripts/02_evaluation_submission/30_finalize_official_inference_no_zip.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/30_freeze_met_aug_fix_v2_calibration.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/30_freeze_met_aug_fix_v2_calibration.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/31_make_met_aug_fix_v2_config.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/31_make_met_aug_fix_v2_config.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/32_run_met_aug_fix_v2_backend_ablation.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/32_run_met_aug_fix_v2_backend_ablation.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/33_extract_met_aug_fix_v2_reference.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/33_extract_met_aug_fix_v2_reference.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/34_make_met_aug_fix_v2_measurement_configs.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/34_make_met_aug_fix_v2_measurement_configs.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/35_prepare_met_aug_fix_v2_calibration_manifest.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/35_prepare_met_aug_fix_v2_calibration_manifest.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/36_run_met_aug_fix_v2_development.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/36_run_met_aug_fix_v2_development.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/37_validate_met_aug_fix_v2_reference.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/37_validate_met_aug_fix_v2_reference.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/38_select_and_derive_met_aug_fix_v2.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/38_select_and_derive_met_aug_fix_v2.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/39_run_met_aug_fix_v2_fixed_events.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/39_run_met_aug_fix_v2_fixed_events.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/40_finalize_met_aug_fix_v2_qc_holdout.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/40_finalize_met_aug_fix_v2_qc_holdout.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/41_prepare_met_aug_fix_v2_downstream_manifests.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/41_prepare_met_aug_fix_v2_downstream_manifests.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/42_validate_met_aug_fix_v2_gate1b_replay.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/42_validate_met_aug_fix_v2_gate1b_replay.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/43_freeze_met_aug_fix_v2_blinded_review.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/43_freeze_met_aug_fix_v2_blinded_review.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/44_freeze_met_aug_fix_v2_qc_failure.py",
+      "new": "work_space/S2/01_code/repository/scripts/06_fix_v2/44_freeze_met_aug_fix_v2_qc_failure.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/45_finalize_met_aug_fix_v3_selection.py",
+      "new": "work_space/S2/01_code/repository/scripts/07_fix_v3/45_finalize_met_aug_fix_v3_selection.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/46_validate_met_aug_fix_v3_training.py",
+      "new": "work_space/S2/01_code/repository/scripts/07_fix_v3/46_validate_met_aug_fix_v3_training.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/47_run_met_aug_fix_v3_fixed_103.py",
+      "new": "work_space/S2/01_code/repository/scripts/07_fix_v3/47_run_met_aug_fix_v3_fixed_103.py",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/scripts/setup_brats_eval_env.sh",
+      "new": "work_space/S2/01_code/repository/scripts/08_environment/setup_brats_eval_env.sh",
+      "reason": "Group script by responsibility, keeping original filename"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/datasets/brats_multitask_dataset.py.bak",
+      "new": "99_archive/s1_s2_legacy_20260919/01_legacy_source/S1/datasets/brats_multitask_dataset.py.bak",
+      "reason": "Preserve backup or pre-Dice trainer; not an active entry point"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/datasets/brats_multitask_dataset.py.bak2",
+      "new": "99_archive/s1_s2_legacy_20260919/01_legacy_source/S1/datasets/brats_multitask_dataset.py.bak2",
+      "reason": "Preserve backup or pre-Dice trainer; not an active entry point"
+    },
+    {
+      "old": "work_space/S1/01_code/repository/trainers/trainer_v1_final_before_dice.py",
+      "new": "99_archive/s1_s2_legacy_20260919/01_legacy_source/S1/trainers/trainer_v1_final_before_dice.py",
+      "reason": "Preserve backup or pre-Dice trainer; not an active entry point"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/train.py",
+      "new": "99_archive/s1_s2_legacy_20260919/02_placeholders/S2/train.py",
+      "reason": "Preserve empty template outside active code"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/inference.py",
+      "new": "99_archive/s1_s2_legacy_20260919/02_placeholders/S2/inference.py",
+      "reason": "Preserve empty template outside active code"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/models/README.md",
+      "new": "99_archive/s1_s2_legacy_20260919/02_placeholders/S2/models/README.md",
+      "reason": "Preserve empty template outside active code"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/inference/README.md",
+      "new": "99_archive/s1_s2_legacy_20260919/02_placeholders/S2/inference/README.md",
+      "reason": "Preserve empty template outside active code"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/data/splits/completion_warmstart/completion_online_split_audit.json",
+      "new": "work_space/S2/02_datasets/undated_fixed_split_contracts/completion_warmstart/completion_online_split_audit.json",
+      "reason": "Separate original fixed split and audit data from source"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/data/splits/completion_warmstart/fixed_split_cache_audit.json",
+      "new": "work_space/S2/02_datasets/undated_fixed_split_contracts/completion_warmstart/fixed_split_cache_audit.json",
+      "reason": "Separate original fixed split and audit data from source"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/data/splits/completion_warmstart/test_locked.txt",
+      "new": "work_space/S2/02_datasets/undated_fixed_split_contracts/completion_warmstart/test_locked.txt",
+      "reason": "Separate original fixed split and audit data from source"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/data/splits/completion_warmstart/train_fixed.txt",
+      "new": "work_space/S2/02_datasets/undated_fixed_split_contracts/completion_warmstart/train_fixed.txt",
+      "reason": "Separate original fixed split and audit data from source"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/data/splits/completion_warmstart/val_fixed.txt",
+      "new": "work_space/S2/02_datasets/undated_fixed_split_contracts/completion_warmstart/val_fixed.txt",
+      "reason": "Separate original fixed split and audit data from source"
+    },
+    {
+      "old": "work_space/S2/01_code/repository/configs/split_info.md",
+      "new": "work_space/S2/05_documents/03_operations/split_info.md",
+      "reason": "Move split documentation out of code configuration directory"
+    },
+    {
+      "old": "work_space/S2/05_documents/01_methods/lesion_pool.csv",
+      "new": "work_space/S2/02_datasets/undated_lesion_pool_table/lesion_pool.csv",
+      "reason": "Preserve lesion table as a dataset; do not infer source equivalence"
+    },
+    {
+      "old": "work_space/S2/05_documents/01_methods/BraTS 2025.pdf",
+      "new": "work_space/S2/05_documents/07_references/BraTS 2025.pdf",
+      "reason": "Separate reference paper from authored methods"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/architecture.md",
+      "new": "work_space/S1/05_documents/01_methods/architecture.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/data_preparation.md",
+      "new": "work_space/S1/05_documents/03_operations/data_preparation.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/training.md",
+      "new": "work_space/S1/05_documents/03_operations/training.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/inference.md",
+      "new": "work_space/S1/05_documents/03_operations/inference.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/S1_服务器运行手册.md",
+      "new": "work_space/S1/05_documents/03_operations/S1_服务器运行手册_原代码文档版.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/04_experiment_log.md",
+      "new": "work_space/S1/05_documents/04_reports/04_experiment_log.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/S1_experiment.txt",
+      "new": "work_space/S1/05_documents/04_reports/S1_experiment.txt",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S1/05_documents/06_code_documentation/README.md",
+      "new": "99_archive/s1_s2_legacy_20260919/04_previous_navigation/S1/06_code_documentation_README.md",
+      "reason": "Archive prior navigation for emptied category"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/TUNING.md",
+      "new": "work_space/S2/05_documents/01_methods/TUNING.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/MET_AUG_Fix_v1_完整修复方案.md",
+      "new": "work_space/S2/05_documents/02_plans/MET_AUG_Fix_v1_完整修复方案.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/TRAINING.md",
+      "new": "work_space/S2/05_documents/03_operations/TRAINING.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/INFERENCE.md",
+      "new": "work_space/S2/05_documents/03_operations/INFERENCE.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/DATASET.md",
+      "new": "work_space/S2/05_documents/03_operations/DATASET.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/S2_服务器运行手册.md",
+      "new": "work_space/S2/05_documents/03_operations/S2_服务器运行手册.md",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/S2_experiment.txt",
+      "new": "work_space/S2/05_documents/04_reports/S2_experiment.txt",
+      "reason": "Classify documentation by content, preserve original text"
+    },
+    {
+      "old": "work_space/S2/05_documents/06_code_documentation/README.md",
+      "new": "99_archive/s1_s2_legacy_20260919/04_previous_navigation/S2/06_code_documentation_README.md",
+      "reason": "Archive prior navigation for emptied category"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/.env.uhost.e_continue_fallback_r1",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/.env.uhost.e_continue_fallback_r1",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/.env.uhost.example",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/.env.uhost.example",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/01_prepare_completion_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/01_prepare_completion_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/02_train_completion_v100_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/02_train_completion_v100_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/03_train_small_lesion_ablation_a100_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/03_train_small_lesion_ablation_a100_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/04_validate_existing_completion_cache_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/04_validate_existing_completion_cache_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/05_met_aug_gate_h20_uhost.slurm",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/05_met_aug_gate_h20_uhost.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/06_train_met_aug_pair_h20_uhost.slurm",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/06_train_met_aug_pair_h20_uhost.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/07_launch_met_aug_pair_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/07_launch_met_aug_pair_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/08_status_met_aug_pair_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/08_status_met_aug_pair_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/09_sync_s2_runtime_to_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/09_sync_s2_runtime_to_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/10_relay_dataset264_via_vpn_to_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/10_relay_dataset264_via_vpn_to_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/11_push_dataset264_direct_to_uhost_ecnu.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/11_push_dataset264_direct_to_uhost_ecnu.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/12_e_continue_fallback_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/12_e_continue_fallback_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/13_eval_frozen_e_true1mm_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/13_eval_frozen_e_true1mm_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/14_eval_frozen_b_true1mm_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/14_eval_frozen_b_true1mm_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/15_eval_e_continue_epoch100_true1mm_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/15_eval_e_continue_epoch100_true1mm_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/16_setup_official_eval_env_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/16_setup_official_eval_env_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/17_run_official_inference_shard_h20_uhost.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/17_run_official_inference_shard_h20_uhost.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/18_prepare_fix_v3_full200_true1mm_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/18_prepare_fix_v3_full200_true1mm_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/19_eval_e_missing_t2w_val27_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/19_eval_e_missing_t2w_val27_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/19_rebuild_fix_v3_full200_calibration_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/19_rebuild_fix_v3_full200_calibration_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/20_smoke_fix_v3_full200_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/20_smoke_fix_v3_full200_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/21_train_fix_v3_full200_ecnu.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/21_train_fix_v3_full200_ecnu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/22_rebuild_fix_v3_full200_calibration_ecnu_attempt02.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/22_rebuild_fix_v3_full200_calibration_ecnu_attempt02.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/23_smoke_fix_v3_full200_ecnu_attempt02.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/23_smoke_fix_v3_full200_ecnu_attempt02.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/24_train_fix_v3_full200_ecnu_attempt02.slurm",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/24_train_fix_v3_full200_ecnu_attempt02.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/dataset264_rsync_receiver.sh",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/dataset264_rsync_receiver.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/legacy_realonly/04_s2_realonly_infer_nyu.slurm",
+      "new": "work_space/S2/06_operations/03_nyu_realonly_legacy_20260919/04_s2_realonly_infer_nyu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/legacy_realonly/04_s2_realonly_nyu.slurm",
+      "new": "work_space/S2/06_operations/03_nyu_realonly_legacy_20260919/04_s2_realonly_nyu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/legacy_realonly/04_s2_realonly_official_eval_nyu.slurm",
+      "new": "work_space/S2/06_operations/03_nyu_realonly_legacy_20260919/04_s2_realonly_official_eval_nyu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/legacy_realonly/04_s2_realonly_prepare_nyu.slurm",
+      "new": "work_space/S2/06_operations/03_nyu_realonly_legacy_20260919/04_s2_realonly_prepare_nyu.slurm",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/legacy_realonly/README.md",
+      "new": "work_space/S2/06_operations/03_nyu_realonly_legacy_20260919/README.md",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/requirements-h20.txt",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/requirements-h20.txt",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/s2_storage_policy.sh",
+      "new": "work_space/S2/06_operations/01_ecnu_legacy_bundle_20260919/s2_storage_policy.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/s2_uhost_common.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/s2_uhost_common.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/slurm/setup_s2_h20_environment.sh",
+      "new": "work_space/S2/06_operations/02_h20_legacy_bundle_20260919/setup_s2_h20_environment.sh",
+      "reason": "Keep historical server bundle unmodified"
+    },
+    {
+      "old": "work_space/S2/06_operations/cloud/rebuild_completion_cache_from_checkpoint.sh",
+      "new": "work_space/S2/06_operations/04_cloud_legacy_bundle_20260919/rebuild_completion_cache_from_checkpoint.sh",
+      "reason": "Keep cloud code and its launch evidence together, unchanged"
+    },
+    {
+      "old": "work_space/S2/06_operations/cloud/run_completion_t2w_cloud.sh",
+      "new": "work_space/S2/06_operations/04_cloud_legacy_bundle_20260919/run_completion_t2w_cloud.sh",
+      "reason": "Keep cloud code and its launch evidence together, unchanged"
+    },
+    {
+      "old": "work_space/S2/06_operations/cloud/stop_fix_v3_at_epoch125.launch.json",
+      "new": "work_space/S2/06_operations/04_cloud_legacy_bundle_20260919/stop_fix_v3_at_epoch125.launch.json",
+      "reason": "Keep cloud code and its launch evidence together, unchanged"
+    },
+    {
+      "old": "work_space/S2/06_operations/cloud/stop_fix_v3_at_epoch125.plan.json",
+      "new": "work_space/S2/06_operations/04_cloud_legacy_bundle_20260919/stop_fix_v3_at_epoch125.plan.json",
+      "reason": "Keep cloud code and its launch evidence together, unchanged"
+    },
+    {
+      "old": "work_space/S2/06_operations/cloud/stop_fix_v3_at_epoch125.py",
+      "new": "work_space/S2/06_operations/04_cloud_legacy_bundle_20260919/stop_fix_v3_at_epoch125.py",
+      "reason": "Keep cloud code and its launch evidence together, unchanged"
+    },
+    {
+      "old": "work_space/S2/06_operations/cloud/transfer_dataset264_to_t2w.sh",
+      "new": "work_space/S2/06_operations/04_cloud_legacy_bundle_20260919/transfer_dataset264_to_t2w.sh",
+      "reason": "Keep cloud code and its launch evidence together, unchanged"
+    }
+  ],
+  "preserve_packages": [
+    "custom_nnunet",
+    "S2/03_experiments",
+    "S2/04_models",
+    "S2/07_submissions"
+  ],
+  "no_remote_execution": true,
+  "no_dependency_installation": true
+}
