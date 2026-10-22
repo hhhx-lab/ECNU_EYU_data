@@ -83,6 +83,9 @@ def entries(root):
     def onerror(error):
         raise error
     for base, dirs, files in os.walk(root, followlinks=False, onerror=onerror):
+        # Git metadata is repository state rather than project material.  It
+        # changes after every commit and must not invalidate a catalog check.
+        dirs[:] = [name for name in dirs if name != ".git"]
         for name in sorted(dirs + files):
             path = Path(base) / name
             s = path.lstat()
