@@ -1,0 +1,43 @@
+{
+  "checked_at_utc": "2026-10-22T14:59:48.106777+00:00",
+  "baseline_commit": "525160363f07868ac06bfbdc4274e63a1b21af3c",
+  "cleanup_manifest": {
+    "retained_files_sha_verified": 681,
+    "deleted_generated_files_absent": 402,
+    "all_retained_paths_ignored": true
+  },
+  "production_source_modified": false,
+  "maintenance_unittest": {
+    "total": 9,
+    "passed": 9
+  },
+  "tools_unittest": {
+    "total": 38,
+    "passed": 35,
+    "failures": 2,
+    "errors": 1,
+    "existing_at_task_start": {
+      "missing_vpn_archive": "01_project_documents/04_reference_code_notes/atrust_access/history/20261018_two_file/ecnu_atrust.py",
+      "script_count": {
+        "historical_assertion": 51,
+        "task_start": 54,
+        "current": 54
+      },
+      "custom_nnunet_old_audit_drift": [
+        {
+          "path": "work_space/S2/01_code/repository/custom_nnunet/met_aug_diffusion.py",
+          "september_expected_sha256": "2b17b038b6459fef5ec13bc2bfba53f09b4e4af713eef5c8ccad79fb191ca8d5",
+          "task_start_and_current_sha256": "27b166f17879532abb152e4979d7ce33002d5bce43e91d84be5dc5be006777b9"
+        }
+      ]
+    },
+    "test_source_unchanged_from_baseline": [
+      "tools/test_ecnu_vpn_single_file.py",
+      "tools/test_s1_s2_layout.py",
+      "tools/test_project_paths.py",
+      "总纲/维护/test_catalog.py"
+    ]
+  },
+  "remote_server_operations": false,
+  "new_training_or_evaluation": false
+}
