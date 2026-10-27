@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-27T07:50:59.647Z",
+  "purpose": "Public-source evidence structure, coverage and link consistency check; not method execution or scientific performance validation",
+  "status": "pass",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "coverage": {
+    "screenshot_targets": 21,
+    "public_teams": 20,
+    "public_user_identity": 1,
+    "mets_papers": 32,
+    "cross_track_papers": 1,
+    "github_recursive_trees": 23,
+    "bitbucket_repository_files": 3,
+    "hf_model_repositories": 4,
+    "lfs_file_metadata": 5,
+    "container_manifest_probes": 3,
+    "github_release_lists": 4,
+    "code_text_records": 18,
+    "evidence_files_hashed": 16
+  },
+  "source_retrieval_utc_range": {
+    "first": "2026-10-27T07:03:41.510Z",
+    "last": "2026-10-27T07:24:34.612Z"
+  },
+  "environment": {
+    "workspace": "/Users/hwaigc/比赛+课题/ECNU_EYU_data",
+    "browser": "Chrome + Playwright MCP Bridge",
+    "public_metadata_reader": "existing Node REPL",
+    "pdf_text_extractor": "/Users/hwaigc/miniforge3/bin/python (existing PyMuPDF)",
+    "no_dependency_installation": true
+  },
+  "checks": [
+    {
+      "name": "json_parse",
+      "passed": true,
+      "details": [
+        "CODE_EVIDENCE.json",
+        "CONTAINER_EVIDENCE.json",
+        "EXTRA_SOURCE_EVIDENCE.json",
+        "PAPER_EVIDENCE.json",
+        "RELEASE_EVIDENCE.json",
+        "REPOSITORY_EVIDENCE.json",
+        "SEARCH_EVIDENCE.json",
+        "TEAM_EVIDENCE.json",
+        "TEAM_MAP.json",
+        "WEB_EVIDENCE.json",
+        "WEIGHT_EVIDENCE.json"
+      ]
+    },
+    {
+      "name": "21_unique_target_mappings",
+      "passed": true
+    },
+    {
+      "name": "screenshot_rank_structure",
+      "passed": true
+    },
+    {
+      "name": "exact_32_mets_and_cross_track_peds014",
+      "passed": true
+    },
+    {
+      "name": "all_target_papers_present",
+      "passed": true
+    },
+    {
+      "name": "paper_text_and_original_pdf_identity",
+      "passed": true
+    },
+    {
+      "name": "21_public_memberships_succeeded",
+      "passed": true
+    },
+    {
+      "name": "aymuos_is_public_user_not_team_id",
+      "passed": true
+    },
+    {
+      "name": "23_nontruncated_github_trees",
+      "passed": true
+    },
+    {
+      "name": "4_hf_public_nongated_metadata",
+      "passed": true
+    },
+    {
+      "name": "5_lfs_files_metadata",
+      "passed": true
+    },
+    {
+      "name": "3_anonymous_containers_401_no_digest",
+      "passed": true
+    },
+    {
+      "name": "4_empty_public_release_lists",
+      "passed": true
+    },
+    {
+      "name": "bitbucket_three_actual_files",
+      "passed": true
+    },
+    {
+      "name": "document_code_links_match_saved_tree",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "local_markdown_links_resolve",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "no_token_pattern_candidates",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "all_21_targets_in_report_and_link_table",
+      "passed": true
+    }
+  ],
+  "public_weight_metadata": [
+    {
+      "repo": "NicoloPecco/MedNeXt_BraTS_Metastases",
+      "revision": "c6b49675585f695d20c1a06e9d775a6b3216197b",
+      "path": "model_best.model",
+      "bytes": 756781752,
+      "sha256": "d8819d00bdf5f2cc044c4a208666a4128455a2a071c4dc71288f9d92f482988c"
+    },
+    {
+      "repo": "NicoloPecco/MedNeXt_BraTS_Metastases",
+      "revision": "c6b49675585f695d20c1a06e9d775a6b3216197b",
+      "path": "model_best.model.pkl",
+      "bytes": 401532,
+      "sha256": "46b7546e8e5ebdc2f36b2a4659fe5861fd23c5d69313ad8975fab41afdc5cf02"
+    },
+    {
+      "repo": "NicoloPecco/STUNet_BraTS26_Metastases",
+      "revision": "5aab6c691e922a7c773185c85d1c80bcb3da309a",
+      "path": "checkpoint_best.pth",
+      "bytes": 3521470590,
+      "sha256": "d5c7c04f8255531af58322ab28edd7972e279a46c667037c4705a18c9b1fc07f"
+    },
+    {
+      "repo": "NicoloPecco/nnUNet_BraTS_Metastases",
+      "revision": "5852879d40e5f2cc5b5d1dd5db849dfa7fc41355",
+      "path": "checkpoint_best.pth",
+      "bytes": 246962786,
+      "sha256": "5dcd99861935cdb953e05449fc8b492ff1bf9444b853179292ff00b1574fa6cd"
+    },
+    {
+      "repo": "keramik05/MICCAI-METS_challenge_bi-intel_model",
+      "revision": "4a8291024dafb79b4c0cc381438e976a36072201",
+      "path": "weights.zip",
+      "bytes": 2472704349,
+      "sha256": "d308d3dd5dff4ec8fa899d64f056d8a18651b4d4e56f6618c66a2d8998e334f3"
+    }
+  ],
+  "screenshot_evidence": [
+    {
+      "source": "user_attachment",
+      "path": "/var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/codex-clipboard-4614f7ab-0372-4f0e-ae1d-72701265eeef.png",
+      "bytes": 171408,
+      "sha256": "33bc9008da460d89fa7ff120fa87430720b463d8a7f85a83ed063e033820e864",
+      "retained_copy": false
+    },
+    {
+      "source": "user_attachment",
+      "path": "/var/folders/bw/z8yd4__972b2w0bqf7758zv80000gn/T/codex-clipboard-ba11d17c-685d-4166-b4cc-60e71ff45b4b.png",
+      "bytes": 128028,
+      "sha256": "3ed7947e71b925c0ab4cdd45686f34e143e6cead2caee117188697419c5453b2",
+      "retained_copy": false
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 229,
+      "sha256": "53bde32380670ae03401e6efe3cd22aacc26bcaf927ff413efa66c1384644ae9"
+    },
+    {
+      "path": "CODE_EVIDENCE.json",
+      "bytes": 83310,
+      "sha256": "46ec12bc862f43d0482998950fe68061aa1ceb0878bd76eb8690f0fc5330cb14"
+    },
+    {
+      "path": "CONTAINER_EVIDENCE.json",
+      "bytes": 1808,
+      "sha256": "346c64b72e211fbc0760e7301677563494fd4881d27c8dc8e3d40a1e1872641e"
+    },
+    {
+      "path": "EXTRA_SOURCE_EVIDENCE.json",
+      "bytes": 200211,
+      "sha256": "ec04a995effd84a627fd7afd79d3cb44ed6ba1706c0319e4b1d403566fb65e8c"
+    },
+    {
+      "path": "LINK_INDEX.md",
+      "bytes": 18907,
+      "sha256": "e05a5fd5a271b1c9b15b24bd90a7e58f177fbb64975922961916b0d62e455e16"
+    },
+    {
+      "path": "PAPER_EVIDENCE.json",
+      "bytes": 1091624,
+      "sha256": "b67c30da817f8eaab22e9a9d3766afcea4902a562692f93dbb4a3f2e004e614b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3139,
+      "sha256": "6149fea6d959190d843277c5b2470ca93ce59d54226bb0554cf4b37661722fd5"
+    },
+    {
+      "path": "RELEASE_EVIDENCE.json",
+      "bytes": 1014,
+      "sha256": "3296571c29e440068141f8234195c9aceea6623c6d0be963738b151dc296a11c"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 42798,
+      "sha256": "3841667373d0837e963d5b4cf86d786de8974af7280cbc8efefe9652cb36e0fd"
+    },
+    {
+      "path": "REPOSITORY_EVIDENCE.json",
+      "bytes": 734753,
+      "sha256": "27e9f339383df4eaf243c641dd1763bd3ecefd3f3d4a35a7a7912c404a326b7e"
+    },
+    {
+      "path": "SEARCH_EVIDENCE.json",
+      "bytes": 107642,
+      "sha256": "da824135ddb2f9d0d4d7e1182b62df9aab96c6a9a176d680215a1917c0664fbd"
+    },
+    {
+      "path": "SOURCES.md",
+      "bytes": 12771,
+      "sha256": "9b43288edc7d37c8cfd91d83275fb4b8cceebc7e178a686c3131a04ba99e8f1b"
+    },
+    {
+      "path": "TEAM_EVIDENCE.json",
+      "bytes": 16970,
+      "sha256": "88417a45b6f9ec97fa0c598d8a6dd9f150b500679461c211aa040627dde4a167"
+    },
+    {
+      "path": "TEAM_MAP.json",
+      "bytes": 3122,
+      "sha256": "510ffebc112ac7bc36b9200395df4d4b55ac4528c9f716f7b72eaae229f0d0ce"
+    },
+    {
+      "path": "WEB_EVIDENCE.json",
+      "bytes": 109017,
+      "sha256": "514d3351e4c388b56f90abc113b254ac41e192d55f3bbddbb7d1bd7d915c28fc"
+    },
+    {
+      "path": "WEIGHT_EVIDENCE.json",
+      "bytes": 7614,
+      "sha256": "ecf827cc63bebb8cc8f51746f1b2bad218fe3ef7f0a0b3539eb56446e23497f9"
+    }
+  ],
+  "operations_not_performed": [
+    "ECNU access or VPN",
+    "training or Slurm operations",
+    "reading NIfTI or private challenge ground truth",
+    "downloading model checkpoint, ZIP archive or container layers",
+    "executing third-party repository code",
+    "installing dependencies",
+    "bypassing authentication, paywall, CAPTCHA or rate limits"
+  ],
+  "limitations": [
+    "Screenshot ranks are user-supplied; complete official final tiers not independently retrieved",
+    "PDF text extraction is not figure/formula layout validation",
+    "Metadata LFS SHA is not local post-download byte verification",
+    "Pixel_Perfect recursive tree not retrieved; missing assets not asserted",
+    "Our team repository located by publication only, not re-audited",
+    "OpenReview/Zenodo access denied or network failed; public conference alternatives used",
+    "GitHub anonymous API quota exhausted; no further requests or credentials used",
+    "Author validation, runtime, tests and package contents are not local measurements",
+    "Independent model loading, inference and frozen-output reproduction not performed"
+  ],
+  "distribution": {
+    "git_excludes_local_full_text": [
+      "PAPER_EVIDENCE.json",
+      "REPOSITORY_EVIDENCE.json",
+      "CODE_EVIDENCE.json",
+      "WEB_EVIDENCE.json",
+      "EXTRA_SOURCE_EVIDENCE.json",
+      "SEARCH_EVIDENCE.json"
+    ],
+    "reason": "Avoid republishing complete third-party papers, source mirrors and webpage bodies; source URLs and local hashes retained",
+    "local_source_files_retained": true
+  },
+  "maintenance": {
+    "catalog_environment": "Conda base",
+    "initial_build_result": "failed due to pre-existing missing AGENTS.md link in 总纲/README.md",
+    "repair": "Link existing Agent.md; preserve unstaged AGENTS.md deletion and unrelated G1 snapshot",
+    "first_build_and_check": "pass at snapshot 20261027T074826411329Z; final refresh required after distribution boundary update"
+  }
+}

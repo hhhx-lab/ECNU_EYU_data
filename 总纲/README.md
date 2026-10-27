@@ -38,6 +38,6 @@
 - 旧失败证据和旧解释保留。总纲负责说明差异，不改写历史以制造成功。
 - 科学结果仍为 `artifact_status=experimental_unvalidated`、`operator_approved=false`、`formal_gate_status=not_run_not_passed`。本地文件验收pass不是科学优越性pass。
 
-总纲通过项目级 [AGENTS.md](../AGENTS.md)、[Agent.md](../Agent.md) 的留痕、索引校验与完工提交要求持续更新；它不是后台定时任务，也不会自行启动远端实验。
+总纲通过项目级 [Agent.md](../Agent.md) 的留痕、索引校验与完工提交要求持续更新；它不是后台定时任务，也不会自行启动远端实验。
 
 2026-10-22清理后，测试源码和S5依赖副本仍在本地并进入物理索引，Git检出不包含这些副本；缓存删除与恢复入口见 [维护记录](../01_project_documents/05_maintenance/20261022_cleanup/README.md)。全量索引表示本机文件覆盖，不保证所有索引对象均存储于Git；Git内部不参与枚举。
