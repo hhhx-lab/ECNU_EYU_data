@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "generated_at_local_host_utc": "2026-11-03T16:35:18.943680+00:00",
+  "review_date_local": "2026-11-04",
+  "status": "pass",
+  "scope": "local_plan_consistency_and_existing_lightweight_evidence_only",
+  "checks": {
+    "two_selected_external_models_only": true,
+    "2025_digest_size_matches_public_audit": true,
+    "bio_intel_revision_sha_size_match_public_audit": true,
+    "code_commits_match_public_audit": true,
+    "bio_intel_folds_channels_and_weights_match_source": true,
+    "bio_intel_full_seven_folds_no_substitution": true,
+    "k1_identity_matches_history": true,
+    "cohort_and_reference_manifest_sha_current": true,
+    "103_real_t2w_cases": true,
+    "515_input_reference_contract": true,
+    "no_test_val27_or_synthetic_inputs": true,
+    "seven_job_acyclic_dag": true,
+    "four_single_gpu_jobs_no_ddp": true,
+    "first_four_s1_then_full_and_eval_s2": true,
+    "all_job_states_not_created": true,
+    "no_remote_download_install_submit_started": true,
+    "capacity_planned_not_measured": true,
+    "runtime_planned_not_measured": true,
+    "three_model_scoring_contract": true,
+    "evaluation_versions_and_thresholds_match_history": true,
+    "training_exposure_and_scientific_boundary_retained": true,
+    "no_retry_monitor_or_large_retrieval": true,
+    "local_links_exist_except_verification_to_be_created": true,
+    "all_plan_evidence_paths_exist": true
+  },
+  "details": {
+    "checks": 24,
+    "local_links": 10,
+    "broken_links": [],
+    "actual_jobs": 0,
+    "actual_inference": false,
+    "assets_compressed_gib": 6.444196197204292
+  },
+  "files": [
+    {
+      "path": "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/README.md",
+      "bytes": 1322,
+      "sha256": "8df9021b8004e254fda4a7804a064008897ae638bbbd0ce402c3373ccba9ea33"
+    },
+    {
+      "path": "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/PLAN.md",
+      "bytes": 21607,
+      "sha256": "5dcf2c67a9e95c0afd19cfd856c2f4e6ee481315fcd5823c243efef5a58be7ca"
+    },
+    {
+      "path": "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/PLAN.json",
+      "bytes": 11460,
+      "sha256": "fafeaeefa78deca21bc178cb8eb364b7990f1388cf0b8f9ae0445984293dd2e2"
+    }
+  ],
+  "limitations": [
+    "No ECNU resource/container/asset-license smoke or runtime test was performed.",
+    "BrainIAC identity and installed environment remain pending; resources and budgets are candidates.",
+    "VERIFICATION.json is excluded from its own hash; its links are checked after creation.",
+    "Plan QA does not authorize downloads, dependency installation or job submission."
+  ],
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed"
+}

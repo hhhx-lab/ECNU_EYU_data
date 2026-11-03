@@ -1,9 +1,26 @@
 {
-  "reviewed_at": "2026-11-03T16:09:09.416969+00:00",
+  "reviewed_at": "2026-11-03T16:35:18.943680+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution",
+      "description": "用户选定2025 METS第一名与2026 Bio-Intel后拟定ECNU同fixed103完整成品横评计划，未执行",
+      "kind": "proposal",
+      "state": "plan_ready_server_execution_not_started；两成品固定digest/commit/HF revision、Bio-Intel七fold/BrainIAC/原TTA及融合后处理，主对照K1 selected175、原E仅历史辅助。同103真实四模态/515输入参考/69患者组，当前K1预测SHA/native/新MET历史一致须实测。拟两批7作业：CPU审计、两单A100 smoke、CPU联合门；通过后两全103、CPU三路统一MET/患者组paired。150GiB额外规划不当实测预算；fresh quota、容器fakeroot权限/GPU映射、BrainIAC许可、独立环境/安装清单、原生几何/纵向ID/耗时/scratch待核，48h候选85%估时门。全部Slurm/运行包/JobID未形成，无VPN/ECNU/模型或镜像下载/安装/第三方执行/新评分；未恢复监控或读test、不自动retry。完整Bio-Intel公开train暴露、2025名单未知、K1选模开发状态永久披露；同集工程横评非独立泛化，原比赛基座与旧任务不变。",
+      "reviewed_at": "2026-11-03T16:35:18.943680+00:00",
+      "review_date_local": "2026-11-04",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "evidence": [
+        "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/README.md",
+        "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/PLAN.md",
+        "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/PLAN.json",
+        "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/VERIFICATION.json"
+      ]
+    },
     {
       "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility",
       "description": "外部2026/2025 METS成品模型与本项目fixed103横评可行性、九路历史及公开训练暴露核查",

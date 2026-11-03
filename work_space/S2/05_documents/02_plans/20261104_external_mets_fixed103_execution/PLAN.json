@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "plan_id": "20261104_external_mets_fixed103_execution",
+  "review_date_local": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "status": "plan_ready_server_execution_not_started",
+  "authorization": {
+    "selected_models": true,
+    "plan_requested": true,
+    "remote_execution_started": false,
+    "downloads_started": false,
+    "dependencies_installed": false,
+    "jobs_created": false,
+    "job_ids": [],
+    "next_step": "User execution confirmation; dependency installation requires an explicit inventory approval."
+  },
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "purpose": "Descriptive public pretrained model comparison on the existing real-four-modality fixed103; not independent generalization or training.",
+  "external_models": [
+    {
+      "id": "EXT2025_MET_GLI",
+      "algorithm": "MetastasesAlgorithms.BraTS25_1",
+      "image": "brainles/brats25_met_gli-team",
+      "digest": "sha256:f83d914d4d7a9d316f7605abaf03fa6adbcf0e86d840d93276e86ad65b2a2a82",
+      "compressed_bytes": 4446698630,
+      "platform": "linux/amd64",
+      "wrapper_repo": "https://github.com/BrainLesion/brats",
+      "wrapper_commit": "f587c3f7264b89a08981b6865facc46d54842e67",
+      "training_exposure": "public_training_overlap_unknown",
+      "requires_before_smoke": [
+        "permitted_container_backend",
+        "container_weight_license",
+        "label_and_native_geometry_contract",
+        "longitudinal_internal_id_mapping"
+      ]
+    },
+    {
+      "id": "EXT2026_BIO_INTEL_FULL",
+      "repo": "https://github.com/thekeramik05/MICCAI-METS_challenge_bi-intel",
+      "commit": "83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+      "hf_repo": "https://huggingface.co/keramik05/MICCAI-METS_challenge_bi-intel_model",
+      "hf_revision": "4a8291024dafb79b4c0cc381438e976a36072201",
+      "file": "weights.zip",
+      "compressed_bytes": 2472704349,
+      "sha256": "d308d3dd5dff4ec8fa899d64f056d8a18651b4d4e56f6618c66a2d8998e334f3",
+      "model_a_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "model_b_folds": [
+        1,
+        3
+      ],
+      "checkpoint_name": "checkpoint_final.pth",
+      "channel_order": [
+        "t1c",
+        "t1n",
+        "t2f",
+        "t2w"
+      ],
+      "tile_step_size": 0.5,
+      "tta": false,
+      "ensemble_a_weight": {
+        "background": 0.5,
+        "NETC": 0.5,
+        "SNFH": 0.5,
+        "ET": 0.5,
+        "RC": 0.15
+      },
+      "postprocess": {
+        "enabled": true,
+        "small_component_cutoff_voxels": 50,
+        "confidence": {
+          "NETC": 0.6,
+          "SNFH": 0.6,
+          "ET": 0.6,
+          "RC": 0.5
+        }
+      },
+      "additional_encoder": {
+        "name": "BrainIAC.ckpt",
+        "source": "https://github.com/AIM-KannLab/BrainIAC",
+        "exact_url": null,
+        "revision": null,
+        "bytes": null,
+        "sha256": null,
+        "license_verified_for_execution": false
+      },
+      "training_exposure": "declared_full_ensemble_train_exposed_103_of_103",
+      "heldout_fold_same_patient_training_exposure_cases": 54,
+      "requires_before_smoke": [
+        "all_seven_fold_hashes_and_strict_load",
+        "both_plans_and_dataset_metadata",
+        "BrainIAC_identity_and_license",
+        "isolated_runtime_dependencies"
+      ]
+    }
+  ],
+  "baseline": {
+    "id": "K1_175",
+    "selected_epoch": 175,
+    "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+    "historic_metrics_sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8",
+    "predictions_reuse": "Only after current complete103 SHA/input/reference/native/model audit; rerun approval needed if unavailable.",
+    "training_exposure": "own_holdout_selection_used",
+    "historic_re_evaluation_tolerance": {
+      "absolute": 1e-12,
+      "relative": 1e-9
+    },
+    "original_e": "Historical auxiliary only; no additional model inference or downloads assumed."
+  },
+  "data": {
+    "manifest": "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/manifests/FIXED103_REAL_T2W_CASES.csv",
+    "manifest_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "input_reference_manifest": "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/manifests/INPUT_REFERENCE_SHA256.json",
+    "input_reference_manifest_sha256": "5f52bfdc3a957d848063850460226a7c3d9c25f0926e827f728f21e525fbd9df",
+    "cases": 103,
+    "patient_groups": 69,
+    "multiscan_patient_groups": 22,
+    "input_reference_files": 515,
+    "real_modalities": [
+      "t1n",
+      "t1c",
+      "t2w",
+      "t2f"
+    ],
+    "own_train_patient_overlap": 0,
+    "synthetic_or_reconstructed_inputs": false,
+    "locked_test_access": false,
+    "official179_access": false,
+    "val27_access": false,
+    "images_returned_to_mac": false
+  },
+  "storage": {
+    "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1",
+    "created": false,
+    "known_compressed_asset_bytes": 6919402979,
+    "provisional_additional_gib": 150,
+    "actual_budget_frozen": false,
+    "fresh_quota_and_other_job_reservations_required": true,
+    "capacity_formula": "All added persistent assets+simultaneous download/conversion copies+environment+input staging+two final103 predictions+logs/evaluation+concurrent scratch peak+safety margin.",
+    "all_case_fold_probabilities_retained": false,
+    "concurrency": "two single-GPU full jobs if concurrent capacity passes, otherwise recorded serial DAG; no expansion without budget review",
+    "no_old_data_deletion": true
+  },
+  "inference": {
+    "trained_model_logic_unchanged": true,
+    "new_training": false,
+    "ddp": false,
+    "max_gpu_per_job": 1,
+    "max_concurrent_external_gpu_jobs": 2,
+    "wrapper_random_seed": 20261104,
+    "smoke_case_count_range": [
+      6,
+      8
+    ],
+    "smoke_selection": "Freeze engineering coverage for RC/non-RC/empty-region/small-WT/longitudinal pair/largest geometry/non1mm-if-present; no outcome-based case selection.",
+    "per_case_complete_ensemble": true,
+    "source_inputs_read_only": true,
+    "ground_truth_hidden_from_models": true,
+    "network_disabled_during_inference": true,
+    "missing_modality_fallback_forbidden": true,
+    "post_hoc_threshold_or_fold_selection": false,
+    "max_full_job_hours_candidate": 48,
+    "runtime_estimate_safety_factor": 1.5,
+    "max_walltime_utilization": 0.85,
+    "full_job_runtime_measured": false
+  },
+  "jobs": [
+    {
+      "id": "J01",
+      "role": "input_asset_baseline_audit",
+      "gpu": 0,
+      "cpu": 8,
+      "memory_gib": 64,
+      "hours_candidate": 4,
+      "afterok": [],
+      "submission_stage": "S1",
+      "state": "not_created"
+    },
+    {
+      "id": "J02",
+      "role": "2025_full_model_smoke",
+      "gpu": 1,
+      "gpu_type": "A100",
+      "cpu": 8,
+      "memory_gib": 64,
+      "hours_candidate": 4,
+      "afterok": [
+        "J01"
+      ],
+      "submission_stage": "S1",
+      "state": "not_created"
+    },
+    {
+      "id": "J03",
+      "role": "bio_intel_seven_fold_smoke",
+      "gpu": 1,
+      "gpu_type": "A100",
+      "cpu": 8,
+      "memory_gib": 64,
+      "hours_candidate": 4,
+      "afterok": [
+        "J01"
+      ],
+      "submission_stage": "S1",
+      "state": "not_created"
+    },
+    {
+      "id": "J04",
+      "role": "joint_smoke_capacity_runtime_gate",
+      "gpu": 0,
+      "cpu": 4,
+      "memory_gib": 16,
+      "hours_candidate": 2,
+      "afterok": [
+        "J02",
+        "J03"
+      ],
+      "submission_stage": "S1",
+      "state": "not_created"
+    },
+    {
+      "id": "J05",
+      "role": "2025_full103",
+      "gpu": 1,
+      "gpu_type": "A100",
+      "cpu": 8,
+      "memory_gib": 64,
+      "hours_candidate": 48,
+      "afterok": [
+        "J04"
+      ],
+      "submission_stage": "S2_only_after_S1_success",
+      "state": "not_created"
+    },
+    {
+      "id": "J06",
+      "role": "bio_intel_full103",
+      "gpu": 1,
+      "gpu_type": "A100",
+      "cpu": 8,
+      "memory_gib": 64,
+      "hours_candidate": 48,
+      "afterok": [
+        "J04"
+      ],
+      "additional_dependency_if_serial": "J05",
+      "submission_stage": "S2_only_after_S1_success",
+      "state": "not_created"
+    },
+    {
+      "id": "J07",
+      "role": "uniform_three_model_met_paired_report",
+      "gpu": 0,
+      "cpu": 8,
+      "memory_gib": 64,
+      "hours_candidate": 24,
+      "afterok": [
+        "J05",
+        "J06"
+      ],
+      "submission_stage": "S2_only_after_S1_success",
+      "state": "not_created"
+    }
+  ],
+  "submission": {
+    "real_job_ids_resolved_before_submit": true,
+    "hold_audit_release_same_ids": true,
+    "stage_s1_only_first_four_jobs": true,
+    "stage_s2_only_after_joint_gate_completed_zero_and_complete": true,
+    "full_entry_rechecks_contract_and_markers": true,
+    "scripts_implemented": false,
+    "run_package_sha256": null,
+    "automatic_retry": false,
+    "automatic_timeout_resume": false,
+    "automatic_monitor_creation": false
+  },
+  "evaluation": {
+    "configuration": "mets",
+    "historical_environment": {
+      "python": "3.10.18",
+      "BraTS-evaluation": "0.0.8",
+      "panoptica": "2.1.0",
+      "numpy": "1.26.4"
+    },
+    "actual_code_and_config_sha_required": true,
+    "reference_physical_small_lesion_cutoff_mm3": 27,
+    "parser_detection_overlap_dsc": 0.2,
+    "matcher_minimum_dsc": 0.000001,
+    "regions": {
+      "ET": [
+        3
+      ],
+      "RC": [
+        4
+      ],
+      "TC": [
+        1,
+        3
+      ],
+      "WT": [
+        1,
+        2,
+        3
+      ]
+    },
+    "model_count_main": 3,
+    "prediction_consumption_count": 309,
+    "metric_columns_per_model": 72,
+    "mean_rows": 216,
+    "primary_metric": "lesionwise_dsc_mean_wt",
+    "missing_as_zero": false,
+    "failures_excluded_as_na": false,
+    "paired_unit": "patient-group cluster resampling; per metric G nonempty groups after pairwise finite intersection; all effective scans retained",
+    "bootstrap_repetitions": 20000,
+    "bootstrap_seed": 20260831,
+    "main_weighting": "case_equal",
+    "sensitivity_weighting": "patient_equal",
+    "scientific_superiority_claim": false
+  },
+  "retrieval": {
+    "lightweight_reports_and_manifests_only": true,
+    "verify_local_remote_bytes_sha": true,
+    "return_predictions": false,
+    "return_weights": false,
+    "return_images_zip": false,
+    "return_probabilities": false,
+    "remote_and_local_utc_separate": true
+  },
+  "pending_gates": [
+    "ECNU current quota/backend/GPU/QoS",
+    "2025 inner label/license/timepoint behavior",
+    "BrainIAC exact downloadable identity/license",
+    "independent runtime dependencies and installation approval",
+    "K1 current predictions complete identity",
+    "formal adapters/Slurm/run SHA",
+    "smoke geometry/fold/stability/resource/time acceptance",
+    "actual concurrent capacity and walltime budget"
+  ],
+  "evidence": [
+    "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/REPORT.md",
+    "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/LOCAL_HISTORY_AUDIT.json",
+    "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/PUBLIC_SOURCE_AUDIT.json"
+  ]
+}
