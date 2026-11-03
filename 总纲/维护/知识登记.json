@@ -1,9 +1,28 @@
 {
-  "reviewed_at": "2026-10-27T07:52:18+00:00",
+  "reviewed_at": "2026-11-03T16:09:09.416969+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility",
+      "description": "外部2026/2025 METS成品模型与本项目fixed103横评可行性、九路历史及公开训练暴露核查",
+      "kind": "document",
+      "state": "只读历史/公开源码和轻量元数据；九路CSV原SHA/同103顺序/72指标通过，K1-175 WT0.6303/TC0.6881主候选非万能最佳。fixed103真实四模态69患者组、44top-level/59UCSD公开2025训练来源，本项目train患者交集0；Bio-Intel声明split全103每例四train折，54例单val折仍同患者其他扫描train曝光，不把完整集成当独立测试。2025 BraTS25_1/2 Hub public/active/linux-amd64实际200/digest，优先第一名成品；pediatric非METS。Bio-Intel需BrainIAC/许可及解包核验；TheRealBoys缺v2 plans/dataset、融合RC配置和环境不一致，MicroBT无binary URL。2025/TheRealBoys训练名单未知。建议同103原始输入/GT/native/MET、保留各模型训练时plans，工程描述性与独立泛化分开；新患者组bootstrap另算。无ECNU/VPN/影像体素/test/权重或镜像下载/安装/第三方执行/新推理或作业。旧E/K/G1合同与结果不改。",
+      "reviewed_at": "2026-11-03T16:09:09.416969+00:00",
+      "review_date_local": "2026-11-04",
+      "publication_boundary": "原始公开源码/API正文FULL_PUBLIC_EVIDENCE.json仅本机留存且由本批.gitignore排除；Git只保留原创报告/元数据/固定URL/SHA和聚合交叉计数，不另发布病例清单。旧AGENTS.md删除和G1未跟踪快照不纳入本次提交。",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "evidence": [
+        "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/README.md",
+        "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/REPORT.md",
+        "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/PUBLIC_SOURCE_AUDIT.json",
+        "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/LOCAL_HISTORY_AUDIT.json",
+        "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/VERIFICATION.json"
+      ]
+    },
     {
       "path": "work_space/S2/05_documents/07_references/20261027_brats2026_task1_public_solutions",
       "description": "BraTS2026 Task1前列队伍详细调研：21逐队方法与身份链、33论文、PDF源码模型直达链接和复现边界",

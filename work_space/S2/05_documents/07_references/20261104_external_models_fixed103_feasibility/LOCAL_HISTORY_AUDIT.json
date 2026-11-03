@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "generated_at_local_utc": "2026-11-03T16:09:09.416969+00:00",
+  "review_date_local": "2026-11-04",
+  "scope": "local_manifest_csv_and_logs_no_NIfTI_content_no_remote",
+  "fixed_cohort": {
+    "csv": "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/manifests/FIXED103_REAL_T2W_CASES.csv",
+    "csv_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "cases": 103,
+    "patient_groups": 69,
+    "groups_with_multiple_scans": 22,
+    "master_split_counts": {
+      "val": 103
+    },
+    "t2w_status_counts": {
+      "authentic": 103
+    },
+    "matches_all_realonly_validation": true,
+    "train_val_patient_group_overlap": 0,
+    "raw_origin_counts": {
+      "train_top_level": 44,
+      "train_ucsd": 59
+    },
+    "public_training_origin": "2025 MET top-level and UCSD Training; not the official179 unlabeled validation",
+    "case_id_list_redistributed": false
+  },
+  "input_reference_identity": {
+    "manifest": "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/manifests/INPUT_REFERENCE_SHA256.json",
+    "manifest_sha256": "5f52bfdc3a957d848063850460226a7c3d9c25f0926e827f728f21e525fbd9df",
+    "recorded_files": 515,
+    "actual_image_bytes_rehashed_this_turn": false,
+    "train_split_sha256": "1cfa31a71c1c5014fb6ed457277f634ef0db4a95607270f66a7eafcbf9020b52",
+    "val_split_sha256": "7027d91362adf799901544070204f0821b5ce0608f4d5c85c4d878ee5cc7219a"
+  },
+  "local_specific_inventory": {
+    "historical_reference_directory": "work_space/S2/02_datasets/undated_realonly_fixed103_reference_labels",
+    "label_file_count": 103,
+    "label_total_bytes": 13022825,
+    "current_reference_equivalence_verified": false,
+    "g2_release_imagesTr_nifti_count": 0,
+    "whole_machine_image_search_done": false
+  },
+  "nine_route_validation_source": {
+    "path": "work_space/S2/03_experiments/13_nine_route_selected103_official_met/results/VALIDATION.json",
+    "sha256": "02c95d211ab5cc69fd371aab5ae120ebd1a8fc9ac532a90abde4df90f008d2f3"
+  },
+  "model_results": [
+    {
+      "method": "K1",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+      "metrics_csv": "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/cohort/fixed103/models/K1/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.6372711175573594,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.32296975456101457,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6880705144971573,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.6302630901633124,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.7484345486226375,
+          "finite_n": 93
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.26196191338854385,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 0.6310679611650486,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.1262135922330097,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "K2",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "6f82992015854e5b4a85bd5ccfe4891260d990bbb69003a27729cdeec8973f91",
+      "metrics_csv": "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/cohort/fixed103/models/K2/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "d5da516962109fe921a4c69baff6b0671d669de03e1d3dd7918087e70260c4ba",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.610869345265988,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.3325080574702937,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6511122466285724,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.600738841535517,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.7029238266448198,
+          "finite_n": 94
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.2170997859572177,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 0.7572815533980582,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.2233009708737863,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "K4",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "8bfb5bfdfc6a8b578e2ba1489bfa958655f960e9f8d6a9dfaede29af4b340be8",
+      "metrics_csv": "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k24_selected103_official_met_20261002_r1/cohort/fixed103/models/K4/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "226876a75a4057e3d0a95303198c83c6ef47d7b267f684a13c540946ab030e30",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.6271233711438623,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.3272266224139936,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6704965796528422,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.6130393374673891,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.7326439823205684,
+          "finite_n": 93
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.2829127563306796,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 0.7572815533980582,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.0679611650485437,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "B175",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "61e2cb5006acf990f1a123f4c8c82ea237e821c44a5b6455949c356a6a03db86",
+      "metrics_csv": "work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/B/epoch175/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "4a806aee8fd879e1abaac2bd925638b9d9822aca1fcf91f358ab0c23237d0e68",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.6177197558439839,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.3533431327060796,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6608025101610253,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.5873543828120087,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.7077774391050791,
+          "finite_n": 94
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.29769906479081415,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 0.912621359223301,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.145631067961165,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "C40",
+      "selected_epoch": 50,
+      "checkpoint_sha256": "67a264e2da848a7a9496373d32db1e8e9abcac5f646a1f5838e97225908a0f82",
+      "metrics_csv": "work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/cohort/fixed103/models/C40/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "48eb40a8318b2aa9f4a81308ed73f034fa53643cd81d2debdd83702846669cf5",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.634183380697032,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.3443251520345557,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6593870824904599,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.544178411660358,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.63140550998837,
+          "finite_n": 94
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.09052663438256658,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 1.1941747572815533,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.883495145631068,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "D50",
+      "selected_epoch": 50,
+      "checkpoint_sha256": "c15f3902f94bce89bc7ab9e5768d932cc7e4cd89ce1cdfec69d2c279a7efb209",
+      "metrics_csv": "work_space/S2/03_experiments/07_screen125_official_met/s2_met_aug_btof_selected103_official_met_20260907_r4/cohort/fixed103/models/D/evaluation/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "7e0f36b3cd4261e925277da1beccafd7ae442493202fbba925931273543c24f2",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.5843103255935318,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.45384476130149415,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6227462671052086,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.5283742528084794,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.6412750940966065,
+          "finite_n": 97
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.2906834594389113,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 1.4660194174757282,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 2.9223300970873787,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "E_SNFH175",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "249552241b270d3bfd0a28e546acf3c48eca2ff4829189c4c04a6851670ad763",
+      "metrics_csv": "work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/E_SNFH/epoch175/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "1bb2dcc5a063105c15fc75f0cf8b635ac0d9f953775adbfe2d933dec2873dd61",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.6482021180108875,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.33215008314237787,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6874729823445936,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.6235441733497822,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.7241866170202685,
+          "finite_n": 94
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.25637735643456466,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 0.6990291262135923,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.2233009708737863,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "F175",
+      "selected_epoch": 175,
+      "checkpoint_sha256": "bcb11c9f909ecaee19db46eb029cd03c37cc9e0f0a252f04d9c4c47ba526d8fe",
+      "metrics_csv": "work_space/S2/03_experiments/09_epoch175_official_met/s2_met_aug_bef_epoch175_official_met_20260911_r2/operator/snapshot_20260914T083326Z/remote_exact/sources/F/epoch175/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "55bd220495c19bc6881e9679733832410d6f5989ab837354563001452e9781b1",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.6303925006284086,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.3265938574475024,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6736959181652714,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.6031997713587269,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.7195283703792386,
+          "finite_n": 94
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.27334877977209365,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 0.8252427184466019,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.1650485436893203,
+          "finite_n": 103
+        }
+      }
+    },
+    {
+      "method": "original_E",
+      "selected_epoch": 200,
+      "checkpoint_sha256": "4e5ff8d4a29fc498e4d91f9b0a71c34b818da6cd07d359ccabcc72dcb49e4267",
+      "metrics_csv": "work_space/S2/07_submissions/original_e_20260727_20260728/s2_official_validation_inference_20260727_r1/selection_evidence/E/leaderboard_metrics.csv",
+      "metrics_csv_sha256": "294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167",
+      "case_count": 103,
+      "metric_count": 72,
+      "metrics": {
+        "lesionwise_dsc_mean_et": {
+          "mean": 0.6116520055642963,
+          "finite_n": 85
+        },
+        "lesionwise_dsc_mean_rc": {
+          "mean": 0.31118748213517744,
+          "finite_n": 15
+        },
+        "lesionwise_dsc_mean_tc": {
+          "mean": 0.6577153471756588,
+          "finite_n": 86
+        },
+        "lesionwise_dsc_mean_wt": {
+          "mean": 0.6176131342350146,
+          "finite_n": 87
+        },
+        "all_instance_f1_wt": {
+          "mean": 0.7282567202487361,
+          "finite_n": 96
+        },
+        "small_instance_f1_wt": {
+          "mean": 0.2946585812842902,
+          "finite_n": 46
+        },
+        "all_instance_fp_wt": {
+          "mean": 0.6601941747572816,
+          "finite_n": 103
+        },
+        "all_instance_fn_wt": {
+          "mean": 3.1553398058252426,
+          "finite_n": 103
+        }
+      }
+    }
+  ],
+  "checks": {
+    "all_9_metrics_csv_sha_match": true,
+    "all_9_same_case_set_and_order": true,
+    "all_9_same_72_metric_columns": true,
+    "all_realonly_val_103": true,
+    "no_own_train_patient_group_overlap": true,
+    "fixed_manifest_sha_matches_k1_execution_plan": true
+  },
+  "evaluation_environment": {
+    "python": "3.10.18",
+    "BraTS-evaluation": "0.0.8",
+    "panoptica": "2.1.0",
+    "numpy": "1.26.4",
+    "config": "mets",
+    "vol_threshold_mm3": 27,
+    "overlap_threshold": 0.2,
+    "source": "historical accepted environment file; current remote import/source drift not verified"
+  },
+  "inference": {
+    "artifact_status": "experimental_unvalidated",
+    "case_count": 103,
+    "checkpoint": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k1_selected103_official_met_20261008_r1/model_snapshots/K1/fold_0/checkpoint_final.pth",
+    "checkpoint_sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204",
+    "completed_at_utc": "2026-10-08T05:12:49.540990+00:00",
+    "device_name": "NVIDIA A100-PCIE-40GB",
+    "execution_mode": "sequential_in_process",
+    "export_workers": 0,
+    "formal_gate_status": "not_run_not_passed",
+    "model_name": "K1",
+    "multiprocessing_queue_used": false,
+    "network_builder_shim": "nnUNetTrainerBraTS2026RC",
+    "operator_approved": false,
+    "prediction_count": 103,
+    "preprocess_workers": 0,
+    "save_probabilities": false,
+    "schema_version": 1,
+    "started_at_utc": "2026-10-08T04:49:34.971529+00:00",
+    "status": "pass",
+    "tile_step_size": 0.5,
+    "trainer_name_from_checkpoint": "nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175",
+    "use_gaussian": true,
+    "use_mirroring": true
+  },
+  "audit_parser_initial_failure": {
+    "reason": "Official CSV subject_id includes .nii.gz, manifest source_case_id does not; exact set comparison initially failed.",
+    "resolution": "Remove only exact .nii.gz filename suffix; source data/metrics/manifest unchanged.",
+    "source_sha_drift": false
+  },
+  "interpretation": "K1 WT-Dice point-estimate lead across9; no universally best or formal superiority; fixed103 selection/report reuse; public models can have direct and patient-group training exposure"
+}

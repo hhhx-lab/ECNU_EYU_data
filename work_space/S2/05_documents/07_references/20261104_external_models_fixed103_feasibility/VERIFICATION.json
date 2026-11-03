@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "generated_at_local_host_utc": "2026-11-03T16:13:38.825974+00:00",
+  "status": "pass",
+  "verification_scope": "local_lightweight_evidence_and_report_only_no_image_model_or_remote_execution",
+  "checks": {
+    "github_and_failed_fetch_responses_raw_hashes": true,
+    "browser_metadata_raw_hashes": true,
+    "public_metadata_and_decoded_source_match_raw": true,
+    "report_readme_local_links_exist_except_pending_verification": true,
+    "all_fixed_github_and_hf_revisions_in_report": true,
+    "all_hf_and_docker_files_public_active_metadata": true,
+    "fixed_cohort_and_input_reference_manifest_rehash": true,
+    "nine_csv_current_sha_ids_columns_and_means_match_audit": true,
+    "local_audit_recorded_checks_all_pass": true,
+    "report_history_table_matches_nine_csv_means": true,
+    "bio_intel_per_fold_direct_exposure_recomputed": true,
+    "no_execution_or_scientific_pass_claim": true,
+    "full_source_local_only_ignored_rule": true,
+    "bio_intel_patient_level_exposure_recomputed": true
+  },
+  "details": {
+    "github_and_failed_fetch_responses_response_count": 31,
+    "browser_metadata_response_count": 8,
+    "decoded_sources_checked": 16,
+    "public_mismatch_urls": [],
+    "local_link_count": 12,
+    "broken_links": [],
+    "bio_intel_folds": [
+      {
+        "fold": 0,
+        "train": 74,
+        "val": 29
+      },
+      {
+        "fold": 1,
+        "train": 79,
+        "val": 24
+      },
+      {
+        "fold": 2,
+        "train": 89,
+        "val": 14
+      },
+      {
+        "fold": 3,
+        "train": 85,
+        "val": 18
+      },
+      {
+        "fold": 4,
+        "train": 85,
+        "val": 18
+      }
+    ],
+    "csv_recheck": {
+      "generated_at": "2026-11-03T16:13:38.825974+00:00",
+      "nine_csv_pass": true,
+      "methods": [
+        {
+          "method": "K1",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "K2",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "K4",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "B175",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "C40",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "D50",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "E_SNFH175",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "F175",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        },
+        {
+          "method": "original_E",
+          "sha_ids_schema_means_pass": true,
+          "cases": 103,
+          "summary_rows": [
+            "mean",
+            "std",
+            "median"
+          ]
+        }
+      ],
+      "patient_groups": 69,
+      "multi_scan_groups": 22,
+      "same_patient_train_exposure_even_at_val_fold": 54,
+      "member_csv_sha256": "1c829e7f7cc77505cb487b072bb58b6e9e8ac26ea770f7f938404d6d779f5673",
+      "patient_checks_pass": true
+    }
+  },
+  "files": [
+    {
+      "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/README.md",
+      "bytes": 1350,
+      "sha256": "18a3a676fabb54a12b67aa822408dfc22480c13f975c44b55a435dc8b0bf4f3a",
+      "distribution": "metadata_or_original_analysis"
+    },
+    {
+      "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/REPORT.md",
+      "bytes": 25973,
+      "sha256": "b735b4d7e0e21055d21996c0bc4b8583779315e76ee4a6b0a9715c9cc93b8ccd",
+      "distribution": "metadata_or_original_analysis"
+    },
+    {
+      "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/PUBLIC_SOURCE_AUDIT.json",
+      "bytes": 30186,
+      "sha256": "f05da111d4585d6a7e3ead1dea4fdabaf68b974ffd1af4806c2d141b5bf2acfc",
+      "distribution": "metadata_or_original_analysis"
+    },
+    {
+      "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/LOCAL_HISTORY_AUDIT.json",
+      "bytes": 17110,
+      "sha256": "5b5cd70dfe93972e03907d680b3472a77a847c32a083c0e3fe06962d0acfda5e",
+      "distribution": "metadata_or_original_analysis"
+    },
+    {
+      "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/FULL_PUBLIC_EVIDENCE.json",
+      "bytes": 1144186,
+      "sha256": "b49838fe6f9e1140766d23f27e2d0e8826ca405d380aa0dcb22b66f979723b9a",
+      "distribution": "local_only"
+    },
+    {
+      "path": "work_space/S2/05_documents/07_references/20261104_external_models_fixed103_feasibility/.gitignore",
+      "bytes": 26,
+      "sha256": "d975b4c2fdeef0b619c5b29bcc5ab2382a63a5c3839ac047b54544529cf79652",
+      "distribution": "metadata_or_original_analysis"
+    }
+  ],
+  "preserved_failures": [
+    {
+      "reason": "Official CSV subject_id includes .nii.gz, manifest source_case_id does not; exact set comparison initially failed.",
+      "resolution": "Remove only exact .nii.gz filename suffix; source data/metrics/manifest unchanged.",
+      "source_sha_drift": false
+    },
+    {
+      "operation": "independent_csv_qa_first_pass",
+      "reason": "QA excluded mean/std/count but omitted median summary row, giving 104 instead of 103 rows.",
+      "resolution": "Exclude only exact official mean/std/median rows; cross-check all remaining IDs against fixed103, and recompute all selected metrics. Source CSVs and hashes unchanged.",
+      "source_sha_drift": false
+    }
+  ],
+  "limitations": [
+    "VERIFICATION.json is excluded from its own file hashes; report/readme links to it were checked separately after creation.",
+    "Source bodies are retained local-only; no model file download, load, inference, remote resource or license compliance execution was validated.",
+    "Bio-Intel patient-level split exposure is an audit of declared membership, not proof of actual checkpoint training history."
+  ],
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed"
+}

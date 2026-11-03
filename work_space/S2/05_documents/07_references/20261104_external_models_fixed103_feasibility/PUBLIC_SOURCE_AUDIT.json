@@ -1,0 +1,832 @@
+{
+  "schema_version": 1,
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "review_date_local": "2026-11-04",
+  "review_timezone": "Asia/Shanghai",
+  "generated_at_local_host_utc": "2026-11-03T16:07:57.935Z",
+  "scope": "public_metadata_and_source_only_no_models_no_inference",
+  "source_responses": [
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/contents/brats/data/meta/metastases.yml",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:02.358Z",
+      "response_sha256": "bf4d8538593b86698d0523686dd5f2ec48bac6703a9c7a7857e97286a3219348",
+      "response_bytes": 4432
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/contents/docs/guides/backends.md",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:15.978Z",
+      "response_sha256": "d9c6a947fbfa18191a54742cebea95173fb9e2539b84fc8a5402c36450134583",
+      "response_bytes": 4271,
+      "blob_sha": "8a6882ec56e3e31d1ef774556de334009579f4b6",
+      "decoded_sha256": "055dc190f64dec57345cb1c10bc117de49086ec72fcf7ddf9ebb15fbf9270c17",
+      "decoded_bytes": 2482
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/git/trees/main?recursive=1",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:16.696Z",
+      "response_sha256": "3c499f352b25b37670f6ea93c7ed08f41270fe92d7340866c9d3738fa8c4bfce",
+      "response_bytes": 30729
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/contents/brats/core/segmentation_algorithms.py",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:33.486Z",
+      "response_sha256": "5c1d5368fcb53d9bb821fa02f12e7e2fc7f50bc3425b8817d684d31d65102239",
+      "response_bytes": 29815,
+      "blob_sha": "c4b4fbcf5d6f8bb91ef87d5e5fca594111071f1d",
+      "decoded_sha256": "f241946bddc49d1a974bf167fd0ba5d435f447284a6ce7541b0cde757087f824",
+      "decoded_bytes": 20950
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/contents/brats/core/brats_algorithm.py",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:34.176Z",
+      "response_sha256": "236259fbbb4f3d58c865ac28a901a3d42aa234841b08a92cf207ddbd45329b4e",
+      "response_bytes": 18251,
+      "blob_sha": "55e303cb75544d6ba4361bf2a40ba5312c48b113",
+      "decoded_sha256": "a71b932d82388c2bcd48d84cd1c2d73694d67c27b94a24ff2fd6e0e57d87109f",
+      "decoded_bytes": 12599
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/contents/brats/core/singularity.py",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:34.576Z",
+      "response_sha256": "769f7f5e30880346758b2afb024286b070f3a37c83d26fe60c0e4db9ec146870",
+      "response_bytes": 17293,
+      "blob_sha": "c06987143c2375fd47d950aad01457ad7ff6fa00",
+      "decoded_sha256": "3eb3f9568b50393ea985dd47ba15d4c9d243e149f7150d1e7555f5b92def8fa8",
+      "decoded_bytes": 11924
+    },
+    {
+      "url": "https://api.github.com/repos/NicoloPecco/Segmentation_METs_BraTS2026",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:58.478Z",
+      "response_sha256": "9194db9c31ec92f9e31e2a8080fddcf7050cae385e5352119a6d74e77aa3e89c",
+      "response_bytes": 6274
+    },
+    {
+      "url": "https://api.github.com/repos/NicoloPecco/Segmentation_METs_BraTS2026/contents/predict.py",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:58.978Z",
+      "response_sha256": "32e5b12768d89c4269866321e389bb36367fcc63db6d7acce8745c87e1fa386e",
+      "response_bytes": 11810,
+      "blob_sha": "962c87c5e53d5a0f940db3cb8dfba9af7bc8fdef",
+      "decoded_sha256": "b881866907bbc6a09de845148d899fd02628a1167ff9be3d5a897f12cdd04f64",
+      "decoded_bytes": 7900
+    },
+    {
+      "url": "https://api.github.com/repos/NicoloPecco/Segmentation_METs_BraTS2026/contents/environment.yml",
+      "status": 200,
+      "received_utc": "2026-11-03T15:58:59.988Z",
+      "response_sha256": "d2f51d477d6ea30a9a54d0aebb46e4bf9cabaa0dd175f4ce953c2703f97c0c94",
+      "response_bytes": 4305,
+      "blob_sha": "cb9d5344293867b41e49ca9f265e045e194e61b8",
+      "decoded_sha256": "5e43159434efe4fdae70bc65a8243e9df4b006991b03941d04641b20ed9180c2",
+      "decoded_bytes": 2429
+    },
+    {
+      "url": "https://huggingface.co/api/models/NicoloPecco/nnUNet_BraTS_Metastases?blobs=true",
+      "status": "network_error",
+      "received_utc": "2026-11-03T15:59:21.562Z",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "url": "https://huggingface.co/api/models/NicoloPecco/MedNeXt_BraTS_Metastases?blobs=true",
+      "status": "network_error",
+      "received_utc": "2026-11-03T15:59:32.064Z",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "url": "https://huggingface.co/api/models/NicoloPecco/STUNet_BraTS26_Metastases?blobs=true",
+      "status": "network_error",
+      "received_utc": "2026-11-03T15:59:42.564Z",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "url": "https://huggingface.co/api/models/keramik05/MICCAI-METS_challenge_bi-intel_model?blobs=true",
+      "status": "network_error",
+      "received_utc": "2026-11-03T15:59:53.064Z",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel",
+      "status": 200,
+      "received_utc": "2026-11-03T16:00:38.489Z",
+      "response_sha256": "4bd443cf17c65097959bdeb5fb89c1c9c32050d97818888490b8e4c0204f3d67",
+      "response_bytes": 6301
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/git/trees/main?recursive=1",
+      "status": 200,
+      "received_utc": "2026-11-03T16:00:38.957Z",
+      "response_sha256": "8e73fb144fe1bee458d92b3657116629005489a24703770651d7254a3ed42ee8",
+      "response_bytes": 12394
+    },
+    {
+      "url": "https://api.github.com/repos/NicoloPecco/Segmentation_METs_BraTS2026/contents/README.md",
+      "status": 200,
+      "received_utc": "2026-11-03T16:00:39.376Z",
+      "response_sha256": "47b0fc352039ccc488ca83d08fcdb9ce79f0f9e4602719ca0107dd921aef5073",
+      "response_bytes": 5455,
+      "blob_sha": "07ccc7536c7b3e0b0c30b83b89bdecd70f8792d3",
+      "decoded_sha256": "1700c1fd0179a98f1a928904640c646bd25202b7be714191ededec37808a0f45",
+      "decoded_bytes": 3294
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/splits/splits_final.json",
+      "status": 200,
+      "received_utc": "2026-11-03T16:00:57.816Z",
+      "response_sha256": "403feb6255ef4bc4a0ae651238757d9ee56e6879648e143e9e950d7ab3e18fd9",
+      "response_bytes": 313755,
+      "blob_sha": "22a996f725e1ba35761b89ab09fa776aba4c3da6",
+      "decoded_sha256": "c6746563894634fb7233caae7ae60de004fe3e8d6a1ee3c2bd62260d3e626153",
+      "decoded_bytes": 226967
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/src/config.py",
+      "status": 200,
+      "received_utc": "2026-11-03T16:00:58.275Z",
+      "response_sha256": "1c0a8bfd625611c786cf0b049da63a7d5be5ff6e3cdc0fba408e1af4679fa3c5",
+      "response_bytes": 8139,
+      "blob_sha": "25361a611d28f59598f8b00dad2ac50278900bce",
+      "decoded_sha256": "0dd581f300f80f4e84728020fd10952e00058be01fd594ebdf952ca2f2af8ff4",
+      "decoded_bytes": 5203
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/scripts/prepare_weights.sh",
+      "status": 200,
+      "received_utc": "2026-11-03T16:00:58.846Z",
+      "response_sha256": "39696e5977bc6022b23d6d78ca0dc1d166ce70111e7913db24ab98189c3f076f",
+      "response_bytes": 4708,
+      "blob_sha": "a87e07058e55f990ebed3054d71b8eccdb2f266e",
+      "decoded_sha256": "562435d6f4a141af96848e917e6250b2a3aea418806c313c84531ecefa4b0cb4",
+      "decoded_bytes": 2652
+    },
+    {
+      "url": "https://hub.docker.com/v2/repositories/brainles/brats25_met_gli-team/tags/latest",
+      "status": "network_error",
+      "received_utc": "2026-11-03T16:01:23.391Z",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "url": "https://hub.docker.com/v2/repositories/brainles/brats25_met_weskrikorian/tags/latest",
+      "status": "network_error",
+      "received_utc": "2026-11-03T16:01:33.892Z",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "url": "https://api.github.com/repos/leonlou921/COMPASS-METS/contents/docs/ARTIFACTS.md",
+      "status": 200,
+      "received_utc": "2026-11-03T16:02:37.845Z",
+      "response_sha256": "71418d473bd020cda6994264491fdef79380b6c95b080bbc4113acb42fde7eab",
+      "response_bytes": 5464,
+      "blob_sha": "bf16d08b92a5143fcd573e3ceaf51d59a8e578ad",
+      "decoded_sha256": "89c5eec8a1906da6de0d3fcba0ef4d6ee020669c5f3c39e66fa3c20b826be5ed",
+      "decoded_bytes": 3344
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/src/predict.py",
+      "status": 200,
+      "received_utc": "2026-11-03T16:02:38.508Z",
+      "response_sha256": "a9174e0bdd9f138295ba3ffd3a611f2feb7976e7653e4c4ab20a5592191942f1",
+      "response_bytes": 16397,
+      "blob_sha": "2515d256e0a864fe3d77540d5a99d877fb6061f8",
+      "decoded_sha256": "0934238da7adddf90eefccf3f1e91bc83d85c8708b2548745a67ba9e0c55312f",
+      "decoded_bytes": 11192
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/trainers/nnUNetTrainerBraTS_BrainIACWrapper_RCOversample.py",
+      "status": 200,
+      "received_utc": "2026-11-03T16:02:38.957Z",
+      "response_sha256": "a906fbf2181eddc06677345dd32f8d2f8d0cdf510e78ce1fd87ba9df6646bcc5",
+      "response_bytes": 26401,
+      "blob_sha": "76f1a569d40045d44e28d7c379fed6eb84b41b75",
+      "decoded_sha256": "4a9af462917f3984c01f75a033829d3de5b7e26e49b311646008da6a8a0f367e",
+      "decoded_bytes": 18226
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/contents/brats/core/docker.py",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:28.396Z",
+      "response_sha256": "e6481ed6de774a6166ae1cee6c35864eebbaa7504354ee11607ca14ef5dfd78b",
+      "response_bytes": 25740,
+      "blob_sha": "14578031713392ff12852aea3aab886c43becec8",
+      "decoded_sha256": "03d5342408e1234d5f95c75c2b0f7f82bbb4c9a4402c3310ca90472b71b47b11",
+      "decoded_bytes": 18080
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/contents/pyproject.toml",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:28.977Z",
+      "response_sha256": "8a08bf5f5d63d908e833b05b7d020da736adf542f5b4a551ec4c127e95ba51a4",
+      "response_bytes": 4884,
+      "blob_sha": "2fa4dd0964bd628f5edc4abcff4b32781d411525",
+      "decoded_sha256": "10d98a1a03b6c1b383546c3e66b88beb114e274ed5fc13bb099e0cd6d4a48c3f",
+      "decoded_bytes": 2966
+    },
+    {
+      "url": "https://api.github.com/repos/BrainLesion/brats/commits/main",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:46.290Z",
+      "response_sha256": "6e31a69be58224826ca47cbfe333f9ac91e5c268563a18728240b2ca40d4e1fe",
+      "response_bytes": 5960
+    },
+    {
+      "url": "https://api.github.com/repos/NicoloPecco/Segmentation_METs_BraTS2026/commits/main",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:46.876Z",
+      "response_sha256": "7d11836bab27351465d80bd59de535d8eccc01c76860c50bcc045ff134857b5d",
+      "response_bytes": 5396
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/commits/main",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:47.398Z",
+      "response_sha256": "c50ffaeeef595d3451d36179f3e01f78197c09b07687d73facdfa16643f85002",
+      "response_bytes": 5568
+    },
+    {
+      "url": "https://api.github.com/repos/leonlou921/COMPASS-METS/commits/main",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:48.216Z",
+      "response_sha256": "12fdd3c96416eb7f69faf53a8f4060dc9544211fcc35d5c07745ed7caed3673d",
+      "response_bytes": 103610
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/README.md",
+      "status": 200,
+      "received_utc": "2026-11-03T16:04:19.667Z",
+      "response_sha256": "fc53ed8a7e6bdb743c41d85158a6b9b1ca810cef1e558505430e2057905d1a5c",
+      "response_bytes": 28610,
+      "blob_sha": "f7c55f4663be3fb2c1811206412bcb0726e7b692",
+      "decoded_sha256": "b3e6c7bc924436ddbdc44ab3205b635bc749e1366fe92e21753d8a126742ca03",
+      "decoded_bytes": 20078
+    }
+  ],
+  "browser_metadata": [
+    {
+      "url": "https://huggingface.co/api/models/NicoloPecco/nnUNet_BraTS_Metastases?blobs=true",
+      "status": 200,
+      "received_utc": "2026-11-03T16:00:54.497Z",
+      "response_sha256": "aa2adb54cce5fe1b75db19c21932ee962b8048fdd328d1a095a9d4c9fd52c3d0",
+      "response_bytes": 1156,
+      "metadata": {
+        "_id": "6a7db0cda8fe69c0b27ca923",
+        "id": "NicoloPecco/nnUNet_BraTS_Metastases",
+        "private": false,
+        "pipeline_tag": "image-segmentation",
+        "tags": [
+          "medical-imaging",
+          "segmentation",
+          "brain-tumor",
+          "MRI",
+          "nnunet",
+          "brats",
+          "image-segmentation",
+          "license:cc-by-4.0",
+          "region:us"
+        ],
+        "downloads": 0,
+        "likes": 0,
+        "modelId": "NicoloPecco/nnUNet_BraTS_Metastases",
+        "author": "NicoloPecco",
+        "sha": "5852879d40e5f2cc5b5d1dd5db849dfa7fc41355",
+        "lastModified": "2026-08-13T14:11:40.000Z",
+        "gated": false,
+        "disabled": false,
+        "model-index": null,
+        "config": {},
+        "cardData": {
+          "license": "cc-by-4.0",
+          "tags": [
+            "medical-imaging",
+            "segmentation",
+            "brain-tumor",
+            "MRI",
+            "nnunet",
+            "brats"
+          ],
+          "pipeline_tag": "image-segmentation"
+        },
+        "siblings": [
+          {
+            "rfilename": ".gitattributes",
+            "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "size": 1519
+          },
+          {
+            "rfilename": "README.md",
+            "blobId": "3def25f9981ff38811e0d739bad6e4f85e7da135",
+            "size": 1517
+          },
+          {
+            "rfilename": "checkpoint_best.pth",
+            "blobId": "2fc16cf9c2275a66a9c3f4cd4e9bb5e6b28c18b3",
+            "size": 246962786,
+            "lfs": {
+              "sha256": "5dcd99861935cdb953e05449fc8b492ff1bf9444b853179292ff00b1574fa6cd",
+              "size": 246962786,
+              "pointerSize": 134
+            }
+          }
+        ],
+        "spaces": [],
+        "createdAt": "2026-08-13T11:55:57.000Z",
+        "usedStorage": 246962786
+      }
+    },
+    {
+      "url": "https://huggingface.co/api/models/NicoloPecco/MedNeXt_BraTS_Metastases?blobs=true",
+      "status": 200,
+      "received_utc": "2026-11-03T16:01:34.529Z",
+      "response_sha256": "6e4a40c9df65b825031790e2c4d7187ecc1a9e410186aae833a5cdd902e0095d",
+      "response_bytes": 1376,
+      "metadata": {
+        "_id": "6a7db0e3621c4c5be7476a11",
+        "id": "NicoloPecco/MedNeXt_BraTS_Metastases",
+        "private": false,
+        "pipeline_tag": "image-segmentation",
+        "tags": [
+          "medical-imaging",
+          "segmentation",
+          "brain-tumor",
+          "MRI",
+          "mednext",
+          "brats",
+          "image-segmentation",
+          "license:cc-by-4.0",
+          "region:us"
+        ],
+        "downloads": 0,
+        "likes": 0,
+        "modelId": "NicoloPecco/MedNeXt_BraTS_Metastases",
+        "author": "NicoloPecco",
+        "sha": "c6b49675585f695d20c1a06e9d775a6b3216197b",
+        "lastModified": "2026-08-13T14:13:54.000Z",
+        "gated": false,
+        "disabled": false,
+        "model-index": null,
+        "config": {},
+        "cardData": {
+          "license": "cc-by-4.0",
+          "tags": [
+            "medical-imaging",
+            "segmentation",
+            "brain-tumor",
+            "MRI",
+            "mednext",
+            "brats"
+          ],
+          "pipeline_tag": "image-segmentation"
+        },
+        "siblings": [
+          {
+            "rfilename": ".gitattributes",
+            "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "size": 1519
+          },
+          {
+            "rfilename": "README.md",
+            "blobId": "b48c565298bf5e0c54c28f58146b7dd17b7c54ad",
+            "size": 1608
+          },
+          {
+            "rfilename": "model_best.model",
+            "blobId": "64f87017226c28001fe24e6e437b88ae5627cae8",
+            "size": 756781752,
+            "lfs": {
+              "sha256": "d8819d00bdf5f2cc044c4a208666a4128455a2a071c4dc71288f9d92f482988c",
+              "size": 756781752,
+              "pointerSize": 134
+            }
+          },
+          {
+            "rfilename": "model_best.model.pkl",
+            "blobId": "7f573d2fd9639eff642991b4db396dd3588405d0",
+            "size": 401532,
+            "lfs": {
+              "sha256": "46b7546e8e5ebdc2f36b2a4659fe5861fd23c5d69313ad8975fab41afdc5cf02",
+              "size": 401532,
+              "pointerSize": 131
+            }
+          }
+        ],
+        "spaces": [],
+        "createdAt": "2026-08-13T11:56:19.000Z",
+        "usedStorage": 757183284
+      }
+    },
+    {
+      "url": "https://huggingface.co/api/models/NicoloPecco/STUNet_BraTS26_Metastases?blobs=true",
+      "status": 200,
+      "received_utc": "2026-11-03T16:01:35.051Z",
+      "response_sha256": "4d186a8bace1fc42f4ef2924d0581a1bd5a85ace5def15fbcaf1361ebef3bb4b",
+      "response_bytes": 1163,
+      "metadata": {
+        "_id": "6a7db0a84532c98ebe89707e",
+        "id": "NicoloPecco/STUNet_BraTS26_Metastases",
+        "private": false,
+        "pipeline_tag": "image-segmentation",
+        "tags": [
+          "medical-imaging",
+          "segmentation",
+          "brain-tumor",
+          "MRI",
+          "stunet",
+          "brats",
+          "image-segmentation",
+          "license:cc-by-4.0",
+          "region:us"
+        ],
+        "downloads": 0,
+        "likes": 0,
+        "modelId": "NicoloPecco/STUNet_BraTS26_Metastases",
+        "author": "NicoloPecco",
+        "sha": "5aab6c691e922a7c773185c85d1c80bcb3da309a",
+        "lastModified": "2026-08-13T14:12:47.000Z",
+        "gated": false,
+        "disabled": false,
+        "model-index": null,
+        "config": {},
+        "cardData": {
+          "license": "cc-by-4.0",
+          "tags": [
+            "medical-imaging",
+            "segmentation",
+            "brain-tumor",
+            "MRI",
+            "stunet",
+            "brats"
+          ],
+          "pipeline_tag": "image-segmentation"
+        },
+        "siblings": [
+          {
+            "rfilename": ".gitattributes",
+            "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "size": 1519
+          },
+          {
+            "rfilename": "README.md",
+            "blobId": "58d59c9cbef6ca54409a31702b6ef76e0f88ddd3",
+            "size": 1449
+          },
+          {
+            "rfilename": "checkpoint_best.pth",
+            "blobId": "5cbd2339c3a7ff7a8e313447b815885758f0a975",
+            "size": 3521470590,
+            "lfs": {
+              "sha256": "d5c7c04f8255531af58322ab28edd7972e279a46c667037c4705a18c9b1fc07f",
+              "size": 3521470590,
+              "pointerSize": 135
+            }
+          }
+        ],
+        "spaces": [],
+        "createdAt": "2026-08-13T11:55:20.000Z",
+        "usedStorage": 3521470590
+      }
+    },
+    {
+      "url": "https://huggingface.co/api/models/keramik05/MICCAI-METS_challenge_bi-intel_model?blobs=true",
+      "status": 200,
+      "received_utc": "2026-11-03T16:01:35.718Z",
+      "response_sha256": "d5dab972ac62c662fe198677809e7b8976a7ab47e4d92276efe23e33ac9f3f4b",
+      "response_bytes": 1209,
+      "metadata": {
+        "_id": "6a6b0746290d38c89d744de4",
+        "id": "keramik05/MICCAI-METS_challenge_bi-intel_model",
+        "private": false,
+        "tags": [
+          "medical",
+          "3d-mri",
+          "brain-mri",
+          "segmentation",
+          "nnunet",
+          "brats",
+          "license:other",
+          "region:us"
+        ],
+        "downloads": 0,
+        "likes": 0,
+        "modelId": "keramik05/MICCAI-METS_challenge_bi-intel_model",
+        "author": "keramik05",
+        "sha": "4a8291024dafb79b4c0cc381438e976a36072201",
+        "lastModified": "2026-08-13T04:49:31.000Z",
+        "gated": false,
+        "disabled": false,
+        "model-index": null,
+        "config": {},
+        "cardData": {
+          "license": "other",
+          "license_name": "brainiac-research-only",
+          "license_link": "LICENSE",
+          "tags": [
+            "medical",
+            "3d-mri",
+            "brain-mri",
+            "segmentation",
+            "nnunet",
+            "brats"
+          ]
+        },
+        "siblings": [
+          {
+            "rfilename": ".gitattributes",
+            "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+            "size": 1519
+          },
+          {
+            "rfilename": "LICENSE",
+            "blobId": "d8cea1ec4d6baba1a403d5dc67900341c9ba0e7d",
+            "size": 1492
+          },
+          {
+            "rfilename": "README.md",
+            "blobId": "3acd2743f2aadc7e66fb24226cb09daa6facf771",
+            "size": 2542
+          },
+          {
+            "rfilename": "weights.zip",
+            "blobId": "c1bb29651394cf2c64d14a82937da0e69510bb29",
+            "size": 2472704349,
+            "lfs": {
+              "sha256": "d308d3dd5dff4ec8fa899d64f056d8a18651b4d4e56f6618c66a2d8998e334f3",
+              "size": 2472704349,
+              "pointerSize": 135
+            }
+          }
+        ],
+        "spaces": [],
+        "createdAt": "2026-07-30T08:11:50.000Z",
+        "usedStorage": 5333180655
+      }
+    },
+    {
+      "url": "https://hub.docker.com/v2/repositories/brainles/brats25_met_gli-team/tags/latest",
+      "status": 200,
+      "received_utc": "2026-11-03T16:02:59.097Z",
+      "response_sha256": "23b2d09e30269d66814fd3350a84ab4b69a9af1a2154a2cd7b885dde165531fa",
+      "response_bytes": 825,
+      "metadata": {
+        "creator": 27020399,
+        "id": 978575206,
+        "images": [
+          {
+            "architecture": "amd64",
+            "features": "",
+            "variant": null,
+            "digest": "sha256:f83d914d4d7a9d316f7605abaf03fa6adbcf0e86d840d93276e86ad65b2a2a82",
+            "os": "linux",
+            "os_features": "",
+            "os_version": null,
+            "size": 4446698630,
+            "status": "active",
+            "last_pulled": "2026-11-02T19:46:09.886555196Z",
+            "last_pushed": "2025-09-24T07:34:40.770722807Z"
+          }
+        ],
+        "last_updated": "2025-09-24T07:34:41.136434Z",
+        "last_updater": 27020399,
+        "last_updater_username": "brainles",
+        "name": "latest",
+        "repository": 28657220,
+        "full_size": 4446698630,
+        "v2": true,
+        "tag_status": "active",
+        "tag_last_pulled": "2026-11-02T19:46:09.886555196Z",
+        "tag_last_pushed": "2025-09-24T07:34:41.136434Z",
+        "media_type": "application/vnd.docker.container.image.v1+json",
+        "content_type": "image",
+        "digest": "sha256:f83d914d4d7a9d316f7605abaf03fa6adbcf0e86d840d93276e86ad65b2a2a82"
+      }
+    },
+    {
+      "url": "https://hub.docker.com/v2/repositories/brainles/brats25_met_weskrikorian/tags/latest",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:12.919Z",
+      "response_sha256": "9a0f84611481af18dea550fc4e231095e022afacaccb7060902ac4c01fc791fb",
+      "response_bytes": 827,
+      "metadata": {
+        "creator": 27020399,
+        "id": 978687807,
+        "images": [
+          {
+            "architecture": "amd64",
+            "features": "",
+            "variant": null,
+            "digest": "sha256:7dcdf6f681c7148525df712a016d3a9035294cfbdbdc704bb905277f1fc54541",
+            "os": "linux",
+            "os_features": "",
+            "os_version": null,
+            "size": 10719604197,
+            "status": "active",
+            "last_pulled": "2026-11-02T19:46:09.882053688Z",
+            "last_pushed": "2025-09-24T10:34:21.616072892Z"
+          }
+        ],
+        "last_updated": "2025-09-24T10:34:22.012871Z",
+        "last_updater": 27020399,
+        "last_updater_username": "brainles",
+        "name": "latest",
+        "repository": 28659031,
+        "full_size": 10719604197,
+        "v2": true,
+        "tag_status": "active",
+        "tag_last_pulled": "2026-11-02T19:46:09.882053688Z",
+        "tag_last_pushed": "2025-09-24T10:34:22.012871Z",
+        "media_type": "application/vnd.docker.container.image.v1+json",
+        "content_type": "image",
+        "digest": "sha256:7dcdf6f681c7148525df712a016d3a9035294cfbdbdc704bb905277f1fc54541"
+      }
+    },
+    {
+      "url": "https://hub.docker.com/v2/repositories/brainles/brats25_met_gli-team",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:13.657Z",
+      "response_sha256": "a4e0b180e9146379c00e07e6eb15c5c0cbb8ddd1f65f7d07a2053be2bdcb45ec",
+      "response_bytes": 708,
+      "metadata": {
+        "user": "brainles",
+        "name": "brats25_met_gli-team",
+        "namespace": "brainles",
+        "repository_type": "image",
+        "status": 1,
+        "status_description": "active",
+        "description": "",
+        "is_private": false,
+        "is_automated": false,
+        "star_count": 0,
+        "pull_count": 1406,
+        "last_updated": "2025-09-24T07:34:42.193776Z",
+        "last_modified": "2025-09-24T07:34:42.143296Z",
+        "date_registered": "2025-09-24T07:34:42.143538Z",
+        "collaborator_count": 0,
+        "affiliation": null,
+        "hub_user": "brainles",
+        "has_starred": false,
+        "permissions": {
+          "read": true,
+          "write": false,
+          "admin": false
+        },
+        "media_types": [
+          "application/vnd.docker.container.image.v1+json"
+        ],
+        "content_types": [
+          "image"
+        ],
+        "categories": [],
+        "immutable_tags_settings": {
+          "enabled": false,
+          "rules": [
+            ".*"
+          ]
+        },
+        "storage_size": null,
+        "source": null
+      }
+    },
+    {
+      "url": "https://hub.docker.com/v2/repositories/brainles/brats25_met_weskrikorian",
+      "status": 200,
+      "received_utc": "2026-11-03T16:03:14.368Z",
+      "response_sha256": "3f12f60706bc6961f9f9e651d926ea6076eb606c1441a2c1b26078d9e47cbd46",
+      "response_bytes": 709,
+      "metadata": {
+        "user": "brainles",
+        "name": "brats25_met_weskrikorian",
+        "namespace": "brainles",
+        "repository_type": "image",
+        "status": 1,
+        "status_description": "active",
+        "description": "",
+        "is_private": false,
+        "is_automated": false,
+        "star_count": 0,
+        "pull_count": 436,
+        "last_updated": "2025-09-24T10:34:23.0838Z",
+        "last_modified": "2025-09-24T10:34:23.020028Z",
+        "date_registered": "2025-09-24T10:34:23.021893Z",
+        "collaborator_count": 0,
+        "affiliation": null,
+        "hub_user": "brainles",
+        "has_starred": false,
+        "permissions": {
+          "read": true,
+          "write": false,
+          "admin": false
+        },
+        "media_types": [
+          "application/vnd.docker.container.image.v1+json"
+        ],
+        "content_types": [
+          "image"
+        ],
+        "categories": [],
+        "immutable_tags_settings": {
+          "enabled": false,
+          "rules": [
+            ".*"
+          ]
+        },
+        "storage_size": null,
+        "source": null
+      }
+    }
+  ],
+  "source_commits": [
+    {
+      "repo": "BrainLesion/brats",
+      "status": 200,
+      "commit": "f587c3f7264b89a08981b6865facc46d54842e67",
+      "commit_date": "2026-11-01T20:59:49Z"
+    },
+    {
+      "repo": "NicoloPecco/Segmentation_METs_BraTS2026",
+      "status": 200,
+      "commit": "9e76175b8a13d74efca5cac6ce290fbbca6d6892",
+      "commit_date": "2026-08-13T14:44:56Z"
+    },
+    {
+      "repo": "thekeramik05/MICCAI-METS_challenge_bi-intel",
+      "status": 200,
+      "commit": "83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+      "commit_date": "2026-08-19T12:58:27Z"
+    },
+    {
+      "repo": "leonlou921/COMPASS-METS",
+      "status": 200,
+      "commit": "a93fa7e65c7cd66aaa2d81c44e0c4f9631c28ad0",
+      "commit_date": "2026-08-09T04:03:20Z"
+    }
+  ],
+  "bi_intel_declared_split_overlap": {
+    "fixed103": 103,
+    "folds": [
+      {
+        "fold": 0,
+        "train": 74,
+        "val": 29
+      },
+      {
+        "fold": 1,
+        "train": 79,
+        "val": 24
+      },
+      {
+        "fold": 2,
+        "train": 89,
+        "val": 14
+      },
+      {
+        "fold": 3,
+        "train": 85,
+        "val": 18
+      },
+      {
+        "fold": 4,
+        "train": 85,
+        "val": 18
+      }
+    ],
+    "all_in_declared_corpus": true,
+    "train_exposures_per_case": [
+      4
+    ],
+    "heldout_with_same_patient_in_train": 54
+  },
+  "scope_boundaries": {
+    "weights_downloaded": false,
+    "images_read": false,
+    "test_read": false,
+    "third_party_code_executed": false,
+    "dependencies_installed": false,
+    "ecnu_connected": false,
+    "jobs_submitted": false,
+    "model_inference_verified": false
+  },
+  "failures": [
+    {
+      "operation": "initial_Node_raw_GitHub_request",
+      "status": "tool_timeout_kernel_reset",
+      "note": "The initial request sequence timed out; no completed evidence from that sequence was persisted. Follow-up official GitHub API reads succeeded."
+    },
+    {
+      "operation": "GitHub_browser_display",
+      "status": "login_redirect",
+      "note": "Public official API returned200; login display redirect not treated as private repository."
+    }
+  ],
+  "reused_paper_evidence": {
+    "path": "work_space/S2/05_documents/07_references/20261027_brats2026_task1_public_solutions/PAPER_EVIDENCE.json",
+    "paper_id": 2,
+    "refreshed_pdf": false
+  },
+  "redistribution_boundary": "FULL_PUBLIC_EVIDENCE.json contains public source responses and is excluded by this directory gitignore; only metadata and original analysis are committed."
+}
