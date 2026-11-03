@@ -1,0 +1,98 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "scope": "public_text_metadata_only_no_binary_download_no_third_party_execution",
+  "source_responses": [
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/environment.yaml?ref=83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+      "received_utc": "2026-11-03T16:48:39.051143+00:00",
+      "status": 200,
+      "bytes": 2363,
+      "sha256": "019f0ed85813ed33a43b4d9936fa899f965a3b04509867eb5e480d0e2cb96042",
+      "blob_sha": "c817f6016db1f25f19f6eb2494ad0dd272ccdbf5",
+      "decoded_sha256": "3430a7ccf3d695931cc7444709b39108e1e545ef4257c10351e6a729d38fd116",
+      "decoded_bytes": 863
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/requirements.txt?ref=83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+      "received_utc": "2026-11-03T16:48:40.080583+00:00",
+      "status": 200,
+      "bytes": 1721,
+      "sha256": "4b206e7e33af814e8dc1df02844938fe015f05608d3d71567c2071ef9d86e00a",
+      "blob_sha": "c2e82300b59438d05729fba96946d94f99cde2d1",
+      "decoded_sha256": "5e8b090e46dd4b3ab912de18797c5c43c088ab8f55091372b59fbaf3eabc286a",
+      "decoded_bytes": 397
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/Dockerfile?ref=83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+      "received_utc": "2026-11-03T16:48:41.340722+00:00",
+      "status": 200,
+      "bytes": 7236,
+      "sha256": "7975e61209454a5e2c4502cbf31a4658c1f640bd13e19e32b55923e0770a44c8",
+      "blob_sha": "d32e736a5120935f17599a099725a7404ef624b7",
+      "decoded_sha256": "5ee8518fd955e250876f18d4930642f2a7723c3e0441d97724cdc88e3d321799",
+      "decoded_bytes": 4431
+    },
+    {
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/docker/install_trainers.py?ref=83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+      "received_utc": "2026-11-03T16:48:42.510432+00:00",
+      "status": 200,
+      "bytes": 5527,
+      "sha256": "2135891ffb843baf51a403b3926b6769e99eae1ba0ce9a834786eb3eb36af437",
+      "blob_sha": "2b0eda369f2578dcc347b66cd7788c5df1a2740e",
+      "decoded_sha256": "6df2f2fb3eaea759c689daf45c9931ede7ad321e6b1a8e52a71f881583b69472",
+      "decoded_bytes": 3113
+    },
+    {
+      "url": "https://api.github.com/repos/AIM-KannLab/BrainIAC/contents/README.md?ref=ba60f45bed832ee0e5683c678caeaeefe2072f0d",
+      "received_utc": "2026-11-03T16:48:43.370172+00:00",
+      "status": 200,
+      "bytes": 5774,
+      "sha256": "870ac3db12dbb5c8afdd86600b69002d7deb7c6839a941492f76b060f419305c",
+      "blob_sha": "b74cf636542d9e381cf2672af494fb5ffb41a98a",
+      "decoded_sha256": "98c8fe7ad475930bebfeed99861abb8deef34a0d060ce85597ca571735a9f97c",
+      "decoded_bytes": 3490,
+      "license_or_author_download_text": "# BrainIAC: A foundation model for generalized Brain MRI analysis\n\n<p align=\"center\">\n  <img src=\"pngs/brainiac.jpeg\" width=\"800\" alt=\"BrainIAC_V2 Logo\"/>\n</p>\n\n## Overview\n\nBrainIAC (Brain Imaging Adaptive Core) is vision based foundation model for generalized structural Brain MRI analysis. This repository provides the BrainIAC and downstream model checkpoints, with training/inference pipeline across all downstream tasks. Checkout the [Paper]([https://pmc.ncbi.nlm.nih.gov/articles/PMC11643205/](https://www.nature.com/articles/s41593-026-02202-6))\n\n\n## Installation\n\n### Prerequisites\n- Python 3.9+\n- CUDA 11.0+ \n\n\n\n### Setup Environment\n\n```bash\n# Clone the repository\ngit clone https://github.com/YourUsername/BrainIAC_V2.git\ncd BrainIAC\n\n# Create conda environment\n\n# Create conda environment\nconda create -n brainiac python=3.9\nconda activate brainiac\npip install -r requirements.txt\n```\n\n## Model Checkpoints\n\nDownload the BrainIAC weights and downstream model [checkpoints](https://www.dropbox.com/scl/fo/i51xt63roognvt7vuslbl/AG99uZljziHss5zJz4HiFis?rlkey=9w55le6tslwxlfz6c0viylmjb&st=b9cnvwh8&dl=0) and place them in `./src/checkpoints/`:\n\n\n\n\n\n## Quick Start\n\nSee [quickstart.ipynb](./src/quickstart.ipynb) to get started on how to preprocess data, load BrainIAC to extract features, generate and visualize saliency maps. We provide data samples from publicly available [UPENN-GBM](https://www.cancerimagingarchive.net/collection/upenn-gbm/) [License](https://creativecommons.org/licenses/by/4.0/) (with no modifications to the provided preprocessed images) and the [Pixar](https://openneuro.org/datasets/ds000228/versions/1.1.1)  [License](https://creativecommons.org/public-domain/cc0/) dataset in the [sample_data](src/data/sample/processed/) directory. \n\n\n## Train and Infer Downstream Models\n\n- [Brain Age Prediction](./docs/downstream_tasks/brain_age_prediction.md)\n- [IDH Mutation Classification](./docs/downstream_tasks/idh_mutation_classification.md)\n- [Mild Cognitive Impairment Classification](./docs/downstream_tasks/mild_cognitive_impairment_classification.md)\n- [Diffuse Glioma Overall Survival Prediction](./docs/downstream_tasks/diffuse_glioma_overall_survival.md)\n- [MR Sequence Classification](./docs/downstream_tasks/MR_sequence_classification.md)\n- [Time to Stroke Prediction](./docs/downstream_tasks/timetostroke_prediction.md)\n- [Tumor Segmentation](./docs/downstream_tasks/tumor_segmentation.md)\n\n\n## Brainiac Platform\n\nBrainIAC and all the downstream models are hosted at [**Brainiac Platform**](https://www.brainiac-platform.com/) for inference. The platform provides an interface for uploading the structural brain MRI data and running inference on the models including BrainIAC, brain age, MCI classification, time since stroke prediction etc.\n\n\n\n## Citation\n\n```bibtex\n@article{tak2026generalizable,\n  title={A generalizable foundation model for analysis of human brain MRI},\n  author={Tak, Divyanshu and Gormosa, B.A. and Zapaishchykova, A. and others},\n  journal={Nature Neuroscience},\n  year={2026},\n  publisher={Springer Nature},\n  doi={10.1038/s41593-026-02202-6},\n  url={https://doi.org/10.1038/s41593-026-02202-6}\n}\n```\n\n\n## License\n\nThis project is licensed for non-commercial academic research use only.\nCommercial use is not permitted without a separate license from\nMass General Brigham.\n\nFor commercial licensing inquiries, please contact the\nMass General Brigham Office of Technology Development. See [LICENSE](LICENSE) for details.\n\n\n"
+    },
+    {
+      "url": "https://api.github.com/repos/AIM-KannLab/BrainIAC/contents/LICENSE?ref=ba60f45bed832ee0e5683c678caeaeefe2072f0d",
+      "received_utc": "2026-11-03T16:48:44.260479+00:00",
+      "status": 200,
+      "bytes": 3008,
+      "sha256": "f38712bb1ecbb934c89def5677e05847cfef9e3c13e75abbbf26abe3ec7f0d06",
+      "blob_sha": "4b64b42df7506e5be969db9d7d434927d822f297",
+      "decoded_sha256": "e862b209788af5c4afa80031f75bc0946a8c48464991bce327ab615e742c6690",
+      "decoded_bytes": 1493,
+      "license_or_author_download_text": "BrainIAC Research-Only License\n\nCopyright © 2026\nMass General Brigham and contributors\n\nPermission is hereby granted to use, copy, modify, and distribute this\nsoftware and associated documentation files (the “Software”) solely for\nnon-commercial academic research and educational purposes.\n\nCommercial use of the Software is strictly prohibited without a separate\nwritten license from Mass General Brigham. Commercial use includes, but is\nnot limited to:\n- Use in products, services, or platforms offered for a fee or other\n  commercial advantage;\n- Use in clinical workflows, decision support systems, or healthcare\n  operations;\n- Use by for-profit entities for internal or external commercial purposes;\n- Redistribution or deployment of the Software or derived works as part\n  of a commercial offering.\n\nThe Software may not be sublicensed, sold, leased, or otherwise transferred\nfor commercial purposes without prior written authorization from\nMass General Brigham.\n\nThe Software is provided “AS IS”, without warranty of any kind, express or\nimplied, including but not limited to the warranties of merchantability,\nfitness for a particular purpose, and non-infringement. In no event shall\nthe authors or copyright holders be liable for any claim, damages, or other\nliability, whether in an action of contract, tort, or otherwise, arising\nfrom, out of, or in connection with the Software or the use or other\ndealings in the Software.\n\nAll commercial rights are expressly reserved.\n"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sylabs/singularity/v4.1.1/internal/pkg/runtime/engine/singularity/container_linux.go",
+      "received_utc": "2026-11-03T16:48:45.371227+00:00",
+      "status": 200,
+      "bytes": 85411,
+      "sha256": "9d0337fb1937b00aeb61b8d07bd53d3fbbd9184a70dcea73fa23b6a0b4c5f840",
+      "network_none_excerpts": [
+        {
+          "line": 2296,
+          "text": "}\n\nfunc (c *container) prepareNetworkSetup(system *mount.System, pid int) (func(context.Context) error, error) {\n\tconst (\n\t\tfakerootNet  = \"fakeroot\"\n\t\tnoneNet      = \"none\"\n\t\tprocNetNs    = \"/proc/self/ns/net\"\n\t\tsessionNetNs = \"/netns\"\n\t)\n\n\tnet := c.engine.EngineConfig.GetNetwork()\n\n\t// If we haven't requested a network namespace, or we have but with no config, we are done here\n\tif !c.netNS || net == noneNet {\n\t\treturn nil, nil\n\t}\n"
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sylabs/singularity/v4.1.1/internal/pkg/runtime/engine/singularity/prepare_linux.go",
+      "received_utc": "2026-11-03T16:48:48.132133+00:00",
+      "status": 200,
+      "bytes": 51460,
+      "sha256": "6e3a684a67e9e87b84db9b1cfd590294421f475147fb0a1f06c211790c1ca760",
+      "network_none_excerpts": []
+    }
+  ],
+  "status": "collected",
+  "environment_installation_authorized_by_user": true,
+  "installation_not_performed": true,
+  "brainiac_browser_file_url": "https://www.dropbox.com/scl/fo/i51xt63roognvt7vuslbl/AMblt6reQVvlSrORTB3_2lE/BrainIAC.ckpt?rlkey=9w55le6tslwxlfz6c0viylmjb&dl=0",
+  "brainiac_browser_display_size": "345.34 MB",
+  "brainiac_exact_bytes_and_sha256": "not_yet_verified",
+  "local_full_source_audit_sha256": "3571db7d0a8382a8121c0186e414255ede5ecf5930c3ba13fccf8c216886843c"
+}

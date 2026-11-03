@@ -1,0 +1,319 @@
+{
+  "account_queue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "artifact_status": "experimental_unvalidated",
+  "associations": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "zqchen|zqchen||user_zqchen||\n"
+  },
+  "conda_environment_names": [
+    {
+      "bytes": 0,
+      "is_directory": false,
+      "name": ".conda_envs_dir_test"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "brats_eval"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "brats_g1_v2"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "brats_swin"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "cftrl_ts"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "cgdualdiff-main"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "cgdualdiff-newimp"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "cgdualdiff-tabddpm"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "cpgtransformer"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "deepcpg-train"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "diffusion"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "financial-ts-api-proxy"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "financial-ts-node"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "gemrd38"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "gemrd38_cu113"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "gemrd38_cu117"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "grapecpg"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "panda-dfine"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "panda-mmdet"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "r-melissa"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "r-melissa44"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "segmamba"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "tf214"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "tf_gpu"
+    }
+  ],
+  "container_modules": {
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n",
+    "stdout": "/public/software/modules:\nsingularity-ce/4.1.1\n/public/software/modules:\n/public/software/modules:\n/public/software/modules:\n"
+  },
+  "container_versions": {},
+  "disk": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2188914982912 1109619900416  67% /public\n"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "k1_contract": {
+    "cohort/fixed103/models/K1/evaluation/leaderboard_metrics.csv": {
+      "bytes": 53693,
+      "exists": true,
+      "sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8"
+    },
+    "evidence/K1_VALIDATION.json": {
+      "bytes": 602,
+      "exists": true,
+      "sha256": "cfa6acd73733ab60058cc7291f75f4f9c22c9bdb2f1b44f27d00deacae8efac1"
+    },
+    "manifests/FIXED103_REAL_T2W_CASES.csv": {
+      "bytes": 56139,
+      "exists": true,
+      "sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e"
+    },
+    "manifests/INPUT_REFERENCE_SHA256.json": {
+      "bytes": 140304,
+      "exists": true,
+      "sha256": "5f52bfdc3a957d848063850460226a7c3d9c25f0926e827f728f21e525fbd9df"
+    }
+  },
+  "k1_model_inventory": [
+    {
+      "bytes": 10732,
+      "is_directory": false,
+      "name": "PREDICTION_SHA256.json"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "evaluation"
+    },
+    {
+      "bytes": 1087,
+      "is_directory": false,
+      "name": "inference_audit.json"
+    },
+    {
+      "bytes": 8192,
+      "is_directory": true,
+      "name": "prediction"
+    }
+  ],
+  "k1_predictions_inventory": [],
+  "k1_root_exists": true,
+  "k1_root_inventory": [
+    {
+      "bytes": 2628,
+      "is_directory": false,
+      "name": "EXECUTION_PLAN.json"
+    },
+    {
+      "bytes": 758,
+      "is_directory": false,
+      "name": "README.md"
+    },
+    {
+      "bytes": 1299,
+      "is_directory": false,
+      "name": "STATIC_SHA256.json"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "cohort"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "evidence"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "logs"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "manifests"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "model_snapshots"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "runtime"
+    },
+    {
+      "bytes": 4096,
+      "is_directory": true,
+      "name": "slurm"
+    }
+  ],
+  "k1_snapshot": {
+    "bytes": 249817266,
+    "exists": true,
+    "sha256": "28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204"
+  },
+  "local_received_utc": "2026-11-03T16:43:28.516278+00:00",
+  "new_root_inventory": [],
+  "operator_approved": false,
+  "partitions": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a100|up|infinite|11|gpu:NVIDIAA100-PCIE-40GB:2\n"
+  },
+  "quota": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote_started_utc": "2026-11-03T16:31:42.383617+00:00",
+  "remote_utc": "2026-11-03T16:32:03.278161+00:00",
+  "result_parent_exists": true,
+  "result_parent_writable": true,
+  "result_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1",
+  "result_root_exists": false,
+  "runtime_inventories": {
+    "brats_eval": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"torch\": null, \"nnunetv2\": null, \"brats\": null, \"transformers\": null, \"timm\": null, \"torchvision\": null, \"nibabel\": \"5.4.2\", \"numpy\": \"1.26.4\", \"scipy\": \"1.15.3\", \"SimpleITK\": \"2.5.5\", \"einops\": null, \"PyYAML\": null, \"safetensors\": null}\n"
+    },
+    "brats_swin": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"torch\": \"2.6.0\", \"nnunetv2\": null, \"brats\": null, \"transformers\": null, \"timm\": \"1.0.28\", \"torchvision\": \"0.21.0\", \"nibabel\": \"5.3.3\", \"numpy\": \"2.0.2\", \"scipy\": \"1.13.1\", \"SimpleITK\": null, \"einops\": \"0.8.2\", \"PyYAML\": \"6.0.3\", \"safetensors\": \"0.7.0\"}\n"
+    },
+    "segmamba": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"torch\": \"2.6.0\", \"nnunetv2\": \"2.8.0\", \"brats\": null, \"transformers\": \"4.35.0\", \"timm\": \"1.0.22\", \"torchvision\": \"0.21.0\", \"nibabel\": \"5.4.2\", \"numpy\": \"1.26.4\", \"scipy\": \"1.13.1\", \"SimpleITK\": \"2.4.1\", \"einops\": \"0.8.2\", \"PyYAML\": \"6.0.3\", \"safetensors\": \"0.8.0\"}\n"
+    }
+  },
+  "scope": {
+    "dependencies_installed": false,
+    "images_read": false,
+    "jobs_created": false,
+    "models_downloaded": false,
+    "remote_writes": false,
+    "test_read": false
+  },
+  "status": "snapshot_collected_not_runtime_pass",
+  "subuid_current_user": {
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n",
+    "stdout": "uid=2159(zqchen) gid=100(users) groups=100(users) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023\n"
+  },
+  "tools": {
+    "apptainer": null,
+    "conda": "/public/software/apps/miniconda3/bin/conda",
+    "curl": "/usr/bin/curl",
+    "docker": null,
+    "sacct": "/opt/gridview/slurm/bin/sacct",
+    "sbatch": "/opt/gridview/slurm/bin/sbatch",
+    "singularity": null,
+    "skopeo": null,
+    "squeue": "/opt/gridview/slurm/bin/squeue",
+    "unsquashfs": null,
+    "wget": "/usr/bin/wget"
+  },
+  "user_namespace_metadata": {
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n",
+    "stdout": "/proc/sys/user/max_user_namespaces=0\n"
+  }
+}

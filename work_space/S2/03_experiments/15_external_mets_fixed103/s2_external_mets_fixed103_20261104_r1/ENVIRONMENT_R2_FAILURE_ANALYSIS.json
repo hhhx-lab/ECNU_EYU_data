@@ -1,0 +1,28 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "environment_preparation_failed_not_model_failure",
+  "stage": "author_dependencies",
+  "successful_binary_install": ["torch==2.6.0+cu124", "torchvision==0.21.0+cu124", "pillow==10.4.0"],
+  "failed_package": "pandas==2.3.3",
+  "failure": "PyPI installer selected source tarball; Meson metadata build with host GCC 4.8.5 failed Cython compiler check",
+  "official_pypi_metadata_url": "https://pypi.org/pypi/pandas/2.3.3/json",
+  "official_cp310_x86_64_wheel": "pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+  "host_glibc_version_not_yet_independently_measured": true,
+  "no_forced_incompatible_wheel_install": true,
+  "r1_r2_environments_and_failures_preserved": true,
+  "new_r3_requested_not_authorized_yet": true,
+  "analysis_context": "At R2 failure; subsequently the user approved independent R3, see ENVIRONMENT_R3_AUTHORIZATION.json",
+  "automatic_new_environment_created": false,
+  "model_assets_bounded_resume_independently_authorized_continues": true,
+  "jobs_created": false,
+  "failure_remote_utc": "2026-11-03T17:21:20.192532+00:00",
+  "local_finally_utc": "2026-11-03T17:32:45.928506+00:00",
+  "own_vpn_stop_completed": true,
+  "evidence": [
+    "operator/install_environment_r2_20261103T171724Z/RESULT.json",
+    "operator/install_environment_r2_20261103T171724Z/LOCAL_OPERATION_RECEIPT.json",
+    "operator/inspect_environment_r2_20261103T173304Z/RESULT.json"
+  ]
+}

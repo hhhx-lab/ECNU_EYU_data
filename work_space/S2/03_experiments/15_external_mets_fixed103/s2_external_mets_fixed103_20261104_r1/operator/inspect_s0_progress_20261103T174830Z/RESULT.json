@@ -1,0 +1,45 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "backend_help": {
+    "command_paths": [
+      "/public/software/singularity-ce/4.1.1/bin/singularity",
+      "/usr/sbin/mksquashfs",
+      "/usr/sbin/unsquashfs"
+    ],
+    "docker_archive_documented": false,
+    "mksquashfs_args_supported": false,
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 1097993289728,
+  "logs": {
+    "compatible_solver_preflight.json": {
+      "bytes": 27416,
+      "tail": "\": \"3.11.0\"\n      },\n      {\n        \"base_url\": \"https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\",\n        \"build_number\": 11,\n        \"build_string\": \"11_h47877c9_openblas\",\n        \"channel\": \"conda-forge\",\n        \"dist_name\": \"liblapack-3.11.0-11_h47877c9_openblas\",\n        \"name\": \"liblapack\",\n        \"platform\": \"linux-64\",\n        \"version\": \"3.11.0\"\n      },\n      {\n        \"base_url\": \"https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\",\n        \"build_number\": 2,\n        \"build_string\": \"pyhe01879c_2\",\n        \"channel\": \"conda-forge\",\n        \"dist_name\": \"python-dateutil-2.9.0.post0-pyhe01879c_2\",\n        \"name\": \"python-dateutil\",\n        \"platform\": \"noarch\",\n        \"version\": \"2.9.0.post0\"\n      },\n      {\n        \"base_url\": \"https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\",\n        \"build_number\": 0,\n        \"build_string\": \"pyhd8ed1ab_0\",\n        \"channel\": \"conda-forge\",\n        \"dist_name\": \"wheel-0.48.0-pyhd8ed1ab_0\",\n        \"name\": \"wheel\",\n        \"platform\": \"noarch\",\n        \"version\": \"0.48.0\"\n      },\n      {\n        \"base_url\": \"https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\",\n        \"build_number\": 0,\n        \"build_string\": \"py310hefbff90_0\",\n        \"channel\": \"conda-forge\",\n        \"dist_name\": \"numpy-2.2.6-py310hefbff90_0\",\n        \"name\": \"numpy\",\n        \"platform\": \"linux-64\",\n        \"version\": \"2.2.6\"\n      },\n      {\n        \"base_url\": \"https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\",\n        \"build_number\": 0,\n        \"build_string\": \"pyh8b19718_0\",\n        \"channel\": \"conda-forge\",\n        \"dist_name\": \"pip-26.1.2-pyh8b19718_0\",\n        \"name\": \"pip\",\n        \"platform\": \"noarch\",\n        \"version\": \"26.1.2\"\n      },\n      {\n        \"base_url\": \"https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\",\n        \"build_number\": 2,\n        \"build_string\": \"py310h0158d43_2\",\n        \"channel\": \"conda-forge\",\n        \"dist_name\": \"pandas-2.3.3-py310h0158d43_2\",\n        \"name\": \"pandas\",\n        \"platform\": \"linux-64\",\n        \"version\": \"2.3.3\"\n      }\n    ],\n    \"PREFIX\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_intel_py310_r3\"\n  },\n  \"dry_run\": true,\n  \"prefix\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_intel_py310_r3\",\n  \"success\": true\n}"
+    },
+    "r2_copy_clone.log": {
+      "bytes": 5640,
+      "tail": "14827_1 \n  openssl            conda-forge/linux-64::openssl-3.6.5-h781a0a9_0 \n  packaging          conda-forge/noarch::packaging-26.3-pyhc364b38_0 \n  pip                conda-forge/noarch::pip-26.1.2-pyh8b19718_0 \n  python             conda-forge/linux-64::python-3.10.22-h267e890_0_cpython \n  readline           conda-forge/linux-64::readline-8.3-hd6e31c0_1 \n  setuptools         conda-forge/noarch::setuptools-83.0.0-pyh332efcf_0 \n  tk                 conda-forge/linux-64::tk-8.6.13-noxft_h1df4ec4_4 \n  tzdata             conda-forge/noarch::tzdata-2026e-h5d301ff_0 \n  wheel              conda-forge/noarch::wheel-0.48.0-pyhd8ed1ab_0 \n  zstd               conda-forge/linux-64::zstd-1.5.7-hb78ec9c_7 \n\n\n\nDownloading and Extracting Packages: ...working... done\nPreparing transaction: - \b\b\\ \b\b| \b\b/ \b\b- \b\bdone\nVerifying transaction: | \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\bdone\nExecuting transaction: | \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- "
+    }
+  },
+  "markers": {
+    "COMPLETE.json": null,
+    "FAILED.json": null,
+    "STARTED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "formal_gate_status": "not_run_not_passed",
+      "free_bytes_before": 1103597928448,
+      "host_libc": "glibc 2.17",
+      "no_system_compiler_install": true,
+      "old_failure_sha256": "893fe9cb5914d31921d9dbe85931dc139cedfadd578483fff76a56e114b8da2b",
+      "operator_approved": false,
+      "preflight_sha256": "f3c0f3fdc2c97fcb11b633e1c881686baa66a953132c84cc8ff722a4679e6359",
+      "remote_utc": "2026-11-03T17:29:36.189291+00:00",
+      "reuse_method": "conda_copy_clone_no_shared_environment_files",
+      "status": "compatible_binary_plan_pass_install_started"
+    }
+  },
+  "operator_approved": false,
+  "remote_utc": "2026-11-03T17:37:09.649695+00:00"
+}

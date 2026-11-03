@@ -1,0 +1,23 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "environment_r3_failed_no_retry_no_jobs",
+  "failure_stage": "author_dependencies",
+  "failure_remote_utc": "2026-11-03T17:47:49.693000+00:00",
+  "local_finally_utc": "2026-11-03T17:59:16.519998+00:00",
+  "own_vpn_stop_completed": true,
+  "independent_diagnosis_remote_utc": "2026-11-03T17:53:19.288024+00:00",
+  "host_libc": "glibc 2.17",
+  "successful_preparation_steps": ["compatible_binary_solver", "independent_copy_clone_R2", "pandas_2.3.3_numpy_2.2.6_conda_binary_install"],
+  "verified_versions": {"pandas": "2.3.3", "numpy": "2.2.6", "torch": "2.6.0+cu124", "torchvision": "0.21.0+cu124"},
+  "failed_source_build_dependencies": {"numexpr": "2.14.1", "connected-components-3d": "4.1.1", "ndindex": "1.10.1"},
+  "diagnosis": "PyPI selected source builds for three indirect dependencies; system GCC 4.8.5 failed C/C++ compilation. No complete author environment, trainer registration, or model runtime pass.",
+  "author_log_sha256": "c7f4d519ce24b7300013204225349d4660a7145ac5837e5d70a74436a4714f2e",
+  "evidence": ["operator/install_environment_r3_20261103T174037Z/RESULT.json", "operator/install_environment_r3_20261103T174037Z/LOCAL_OPERATION_RECEIPT.json", "operator/inspect_environment_r3_20261103T180437Z/RESULT.json"],
+  "next_attempt": "requires_user_authorization_for_independent_R4_after_same_version_compatible_binary_preflight",
+  "old_attempts_preserved": true,
+  "models_loaded": false,
+  "jobs_created": false,
+  "automatic_retry": false
+}

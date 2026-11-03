@@ -1,0 +1,1062 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "container_config_files": {
+    "/public/software/singularity-ce/4.1.1/etc/singularity/capability.json": {
+      "bytes": 0,
+      "exists": true,
+      "gid": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": "",
+      "uid": 0
+    },
+    "/public/software/singularity-ce/4.1.1/etc/singularity/ecl.toml": {
+      "bytes": 1990,
+      "exists": true,
+      "gid": 0,
+      "mode": "0o644",
+      "sha256": "7401da19741e72e36ab76fbb97b4f41191cf755c49b78537774d0ed56097706d",
+      "text": "# Singularity Execution Control List config file\n#\n# This file describes execution groups in which SIF files are checked for\n# authorized loading/execution. The decision is made by validating both the\n# location of the sif file in the file system and by checking against a list of\n# signing entities.\n#\n# *****************************************************************************\n# WARNING\n#\n# The ECL is not effective if unprivileged user namespaces are enabled. It is\n# only effectively applied when Singularity is running using the native runtime\n# in setuid mode, and unprivileged container execution is not possible on the\n# host.\n#\n# You must disable unprivileged user namespace creation on the host if you rely\n# on the ECL to limit container execution. This will disable OCI mode, which is\n# unprivileged and cannot enforce the ECL.\n#\n# The ECL only applies to SIF container images. To block execution of other\n# images (e.g. ext3 or sandbox containers), you must also disable them in\n# singularity.conf\n#\n# See the 'Security' and 'Configuration Files' sections of the Admin Guide for\n# more information.\n# *****************************************************************************\n#\n# The current possible list modes are: whitelist, whitestrict and blacklist.\n#\n# Example:\n#\n#activated = true\n#\n#[[execgroup]]\n#  tagname = \"group1\"\n#  mode = \"whitestrict\"\n#  dirpath = \"/var/cache/containers\"\n#  keyfp = [\"5994BE54C31CF1B5E1994F987C52CF6D055F072B\",\"7064B1D6EFF01B1262FED3F03581D99FE87EAFD1\"]\n#\n#[[execgroup]]\n#  tagname = \"group2\"\n#  mode = \"whitelist\"\n#  dirpath = \"/tmp/containers\"\n#  keyfp = [\"7064B1D6EFF01B1262FED3F03581D99FE87EAFD1\"]\n#\n# The above example defines 2 execution groups (dirpath: /var/cache/containers\n# and /tmp/containers), in which only SIF files signed with both Key IDs\n# 055F072B and E87EAFD1 may run if started from /var/cache/containers and only\n# SIF files signed with Key ID E87EAFD1 may run if started from /tmp/containers.\n#\n\nactivated = false\n",
+      "uid": 0
+    },
+    "/public/software/singularity-ce/4.1.1/etc/singularity/singularity.conf": {
+      "bytes": 16610,
+      "exists": true,
+      "gid": 0,
+      "mode": "0o644",
+      "sha256": "140f0a7b8629f2f3169c7aa7bd0182590f998710a36f51dcc08ced8617459014",
+      "text": "# SINGULARITY.CONF\n# This is the global configuration file for Singularity. This file controls\n# what the container is allowed to do on a particular host, and as a result\n# this file must be owned by root.\n\n# ALLOW SETUID: [BOOL]\n# DEFAULT: yes\n# Should we allow users to utilize the setuid program flow within Singularity?\n# note1: This is the default mode, and to utilize all features, this option\n# must be enabled.  For example, without this option loop mounts of image \n# files will not work; only sandbox image directories, which do not need loop\n# mounts, will work (subject to note 2).\n# note2: If this option is disabled, it will rely on unprivileged user\n# namespaces which have not been integrated equally between different Linux\n# distributions.\nallow setuid = yes\n\n# OCI MODE: [BOOL]\n# DEFAULT: no\n# Should we use the OCI runtime, and push/pull OCI-SIF images by default?\n# Mimics always specifying --oci on the command line.\n# Can be reversed by specifying --no-oci on the command line.\n# Note that OCI mode requires unprivileged user namespace creation and\n# subuid / subgid mappings.\noci mode = no\n\n# MAX LOOP DEVICES: [INT]\n# DEFAULT: 256\n# Set the maximum number of loop devices that Singularity should ever attempt\n# to utilize.\nmax loop devices = 256\n\n# ALLOW PID NS: [BOOL]\n# DEFAULT: yes\n# Should we allow users to request the PID namespace? Note that for some HPC\n# resources, the PID namespace may confuse the resource manager and break how\n# some MPI implementations utilize shared memory. (note, on some older\n# systems, the PID namespace is always used)\nallow pid ns = yes\n\n# CONFIG PASSWD: [BOOL]\n# DEFAULT: yes\n# If /etc/passwd exists within the container, this will automatically append\n# an entry for the calling user.\nconfig passwd = yes\n\n# CONFIG GROUP: [BOOL]\n# DEFAULT: yes\n# If /etc/group exists within the container, this will automatically append\n# group entries for the calling user.\nconfig group = yes\n\n# CONFIG RESOLV_CONF: [BOOL]\n# DEFAULT: yes\n# If there is a bind point within the container, use the host's\n# /etc/resolv.conf.\nconfig resolv_conf = yes\n\n# MOUNT PROC: [BOOL]\n# DEFAULT: yes\n# Should we automatically bind mount /proc within the container?\nmount proc = yes\n\n# MOUNT SYS: [BOOL]\n# DEFAULT: yes\n# Should we automatically bind mount /sys within the container?\nmount sys = yes\n\n# MOUNT DEV: [yes/no/minimal]\n# DEFAULT: yes\n# Should we automatically bind mount /dev within the container? If 'minimal'\n# is chosen, then only 'null', 'zero', 'random', 'urandom', and 'shm' will\n# be included (the same effect as the --contain options)\n#\n# Must be set to 'yes' or 'minimal' to use --oci mode.\nmount dev = yes\n\n# MOUNT DEVPTS: [BOOL]\n# DEFAULT: yes\n# Should we mount a new instance of devpts if there is a 'minimal'\n# /dev, or -C is passed?  Note, this requires that your kernel was\n# configured with CONFIG_DEVPTS_MULTIPLE_INSTANCES=y, or that you're\n# running kernel 4.7 or newer.\n#\n# Must be set to 'yes' to use --oci mode.\nmount devpts = yes\n\n# MOUNT HOME: [BOOL]\n# DEFAULT: yes\n# Should we automatically determine the calling user's home directory and\n# attempt to mount it's base path into the container? If the --contain option\n# is used, the home directory will be created within the session directory or\n# can be overridden with the SINGULARITY_HOME or SINGULARITY_WORKDIR\n# environment variables (or their corresponding command line options).\nmount home = yes\n\n# MOUNT TMP: [BOOL]\n# DEFAULT: yes\n# Should we automatically bind mount /tmp and /var/tmp into the container? If\n# the --contain option is used, both tmp locations will be created in the\n# session directory or can be specified via the  SINGULARITY_WORKDIR\n# environment variable (or the --workingdir command line option).\nmount tmp = yes\n\n# MOUNT HOSTFS: [BOOL]\n# DEFAULT: no\n# Probe for all mounted file systems that are mounted on the host, and bind\n# those into the container?\nmount hostfs = no\n\n# BIND PATH: [STRING]\n# DEFAULT: Undefined\n# Define a list of files/directories that should be made available from within\n# the container. The file or directory must exist within the container on\n# which to attach to. you can specify a different source and destination\n# path (respectively) with a colon; otherwise source and dest are the same.\n#\n# In native mode, these are ignored if singularity is invoked with --contain except\n# for /etc/hosts and /etc/localtime. When invoked with --contain and --net,\n# /etc/hosts would contain a default generated content for localhost resolution.\n#\n# In OCI mode these are only mounted when --no-compat is specified.\n#bind path = /etc/singularity/default-nsswitch.conf:/etc/nsswitch.conf\n#bind path = /opt\n#bind path = /scratch\nbind path = /etc/localtime\nbind path = /etc/hosts\n\n# USER BIND CONTROL: [BOOL]\n# DEFAULT: yes\n# Allow users to influence and/or define bind points at runtime? This will allow\n# users to specify bind points, scratch and tmp locations. (note: User bind\n# control is only allowed if the host also supports PR_SET_NO_NEW_PRIVS)\nuser bind control = yes\n\n# ENABLE FUSEMOUNT: [BOOL]\n# DEFAULT: yes\n# Allow users to mount fuse filesystems inside containers with the --fusemount\n# command line option.\nenable fusemount = yes\n\n# ENABLE OVERLAY: [yes/no/try]\n# DEFAULT: try\n# Enabling this option will make it possible to specify bind paths to locations\n# that do not currently exist within the container.  If 'try' is chosen,\n# overlayfs will be tried but if it is unavailable it will be silently ignored.\nenable overlay = try\n\n# ENABLE UNDERLAY: [yes/no]\n# DEFAULT: yes\n# Enabling this option will make it possible to specify bind paths to locations\n# that do not currently exist within the container even if overlay is not\n# working.  If overlay is available, it will be tried first.\nenable underlay = yes\n\n# TMP SANDBOX: [yes/no]\n# DEFAULT: yes\n# If set to yes, container images will automatically be extracted to a\n# temporary sandbox directory when mounting the image is not supported.\n# If set to no, images will not be extracted to a temporary sandbox\n# in action/instance flows. An explicit build to a sandbox will be required.\ntmp sandbox = yes\n\n# MOUNT SLAVE: [BOOL]\n# DEFAULT: yes\n# Should we automatically propagate file-system changes from the host?\n# This should be set to 'yes' when autofs mounts in the system should\n# show up in the container.\nmount slave = yes\n\n# SESSIONDIR MAXSIZE: [STRING]\n# DEFAULT: 64\n# This specifies how large the default tmpfs sessiondir should be (in MB).\n# The sessiondir is used to hold data written to isolated directories when\n# running with --contain, ephemeral changes when running with --writable-tmpfs.\n# In --oci mode, each tmpfs mount in the container can be up to this size.\nsessiondir max size = 64\n\n# *****************************************************************************\n# WARNING\n#\n# The 'limit container' and 'allow container' directives are not effective if\n# unprivileged user namespaces are enabled. They are only effectively applied\n# when Singularity is running using the native runtime in setuid mode, and\n# unprivileged container execution is not possible on the host.\n#\n# You must disable unprivileged user namespace creation on the host if you rely\n# on the these directives to limit container execution. This will disable OCI\n# mode, which is unprivileged and cannot enforce these limits.\n#\n# See the 'Security' and 'Configuration Files' sections of the Admin Guide for\n# more information.\n# *****************************************************************************\n\n# LIMIT CONTAINER OWNERS: [STRING]\n# DEFAULT: NULL\n# Only allow containers to be used that are owned by a given user. If this\n# configuration is undefined (commented or set to NULL), all containers are\n# allowed to be used. \n#\n# Only effective in setuid mode, with unprivileged user namespace creation disabled.\n# Ignored for the root user.\n#limit container owners = gmk, singularity, nobody\n\n\n# LIMIT CONTAINER GROUPS: [STRING]\n# DEFAULT: NULL\n# Only allow containers to be used that are owned by a given group. If this\n# configuration is undefined (commented or set to NULL), all containers are\n# allowed to be used.\n#\n# Only effective in setuid mode, with unprivileged user namespace creation disabled.\n# Ignored for the root user.\n#limit container groups = group1, singularity, nobody\n\n\n# LIMIT CONTAINER PATHS: [STRING]\n# DEFAULT: NULL\n# Only allow containers to be used that are located within an allowed path\n# prefix. If this configuration is undefined (commented or set to NULL),\n# containers will be allowed to run from anywhere on the file system.\n#\n# Only effective in setuid mode, with unprivileged user namespace creation disabled.\n# Ignored for the root user.\n#limit container paths = /scratch, /tmp, /global\n\n\n# ALLOW CONTAINER ${TYPE}: [BOOL]\n# DEFAULT: yes\n# This feature limits what kind of containers that Singularity will allow\n# users to use.\n#\n# Only effective in setuid mode, with unprivileged user namespace creation disabled.\n# Ignored for the root user.\n#\n# Allow use of unencrypted SIF containers\nallow container sif = yes\n#\n# Allow use of encrypted SIF containers\nallow container encrypted = yes\n#\n# Allow use of non-SIF image formats\nallow container squashfs = yes\nallow container extfs = yes\nallow container dir = yes\n\n# ALLOW KERNEL SQUASHFS: [BOOL]\n# DEFAULT: yes\n# If set to no, Singularity will not perform any kernel mounts of squashfs filesystems.\n# Instead, for SIF / SquashFS containers, a squashfuse mount will be attempted, with\n# extraction to a temporary sandbox directory if this fails.\n# Applicable to setuid mode only.\nallow kernel squashfs = yes\n\n# ALLOW KERNEL EXTFS: [BOOL]\n# DEFAULT: yes\n# If set to no, Singularity will not perform any kernel mounts of extfs filesystems.\n# This affects both stand-alone image files and filesystems embedded in a SIF file.\n# Applicable to setuid mode only.\nallow kernel extfs = yes\n\n# ALLOW NET USERS: [STRING]\n# DEFAULT: NULL\n# Allow specified root administered CNI network configurations to be used by the\n# specified list of users. By default only root may use CNI configuration,\n# except in the case of a fakeroot execution where only 40_fakeroot.conflist\n# is used. This feature only applies when Singularity is running in\n# SUID mode and the user is non-root.\n#allow net users = gmk, singularity\n\n\n# ALLOW NET GROUPS: [STRING]\n# DEFAULT: NULL\n# Allow specified root administered CNI network configurations to be used by the\n# specified list of users. By default only root may use CNI configuration,\n# except in the case of a fakeroot execution where only 40_fakeroot.conflist\n# is used. This feature only applies when Singularity is running in\n# SUID mode and the user is non-root.\n#allow net groups = group1, singularity\n\n\n# ALLOW NET NETWORKS: [STRING]\n# DEFAULT: NULL\n# Specify the names of CNI network configurations that may be used by users and\n# groups listed in the allow net users / allow net groups directives. Thus feature\n# only applies when Singularity is running in SUID mode and the user is non-root.\n#allow net networks = bridge\n\n\n# ALWAYS USE NV ${TYPE}: [BOOL]\n# DEFAULT: no\n# This feature allows an administrator to determine that every action command\n# should be executed implicitly with the --nv option (useful for GPU only \n# environments). \nalways use nv = no\n\n# USE NVIDIA-NVIDIA-CONTAINER-CLI ${TYPE}: [BOOL]\n# DEFAULT: no\n# EXPERIMENTAL\n# If set to yes, Singularity will attempt to use nvidia-container-cli to setup\n# GPUs within a container when the --nv flag is enabled.\n# If no (default), the legacy binding of entries in nvbliblist.conf will be performed.\nuse nvidia-container-cli = no\n\n# ALWAYS USE ROCM ${TYPE}: [BOOL]\n# DEFAULT: no\n# This feature allows an administrator to determine that every action command\n# should be executed implicitly with the --rocm option (useful for GPU only\n# environments).\nalways use rocm = no\n\n# ROOT DEFAULT CAPABILITIES: [full/file/no]\n# DEFAULT: full\n# Define default root capability set kept during runtime.\n# Applies to the singularity runtime only, not --oci mode.\n# - full: keep all capabilities (same as --keep-privs)\n# - file: keep capabilities configured for root in\n#         ${prefix}/etc/singularity/capability.json\n# - no: no capabilities (same as --no-privs)\nroot default capabilities = full\n\n# MEMORY FS TYPE: [tmpfs/ramfs]\n# DEFAULT: tmpfs\n# This feature allow to choose temporary filesystem type used by Singularity.\n# Cray CLE 5 and 6 up to CLE 6.0.UP05 there is an issue (kernel panic) when Singularity\n# use tmpfs, so on affected version it's recommended to set this value to ramfs to avoid\n# kernel panic\nmemory fs type = tmpfs\n\n# CNI CONFIGURATION PATH: [STRING]\n# DEFAULT: Undefined\n# Defines path from where CNI configuration files are stored\n#cni configuration path =\n\n# CNI PLUGIN PATH: [STRING]\n# DEFAULT: Undefined\n# Defines path from where CNI executable plugins are stored\n#cni plugin path =\n\n\n# CRYPTSETUP PATH: [STRING]\n# DEFAULT: Undefined\n# Path to the cryptsetup executable, used to work with encrypted containers.\n# Must be set to build or run encrypted containers.\n# Executable must be owned by root for security reasons.\n# cryptsetup path =\ncryptsetup path = /sbin/cryptsetup\n\n# GO PATH: [STRING]\n# DEFAULT: Undefined\n# Path to the go executable, used to compile plugins.\n# If not set, SingularityCE will search $PATH, /usr/local/sbin, /usr/local/bin,\n# /usr/sbin, /usr/bin, /sbin, /bin.\n# go path =\ngo path = /usr/local/go/bin/go\n\n# LDCONFIG PATH: [STRING]\n# DEFAULT: Undefined\n# Path to the ldconfig executable, used to find GPU libraries.\n# Must be set to use --nv / --nvccli.\n# Executable must be owned by root for security reasons.\n# ldconfig path =\nldconfig path = /sbin/ldconfig\n\n# MKSQUASHFS PATH: [STRING]\n# DEFAULT: Undefined\n# Path to the mksquashfs executable, used to create SIF and SquashFS containers.\n# If not set, SingularityCE will search $PATH, /usr/local/sbin, /usr/local/bin,\n# /usr/sbin, /usr/bin, /sbin, /bin.\n# mksquashfs path =\nmksquashfs path = /sbin/mksquashfs\n\n# MKSQUASHFS PROCS: [UINT]\n# DEFAULT: 0 (All CPUs)\n# This allows the administrator to specify the number of CPUs for mksquashfs \n# to use when building an image.  The fewer processors the longer it takes.\n# To enable it to use all available CPU's set this to 0.\n# mksquashfs procs = 0\nmksquashfs procs = 0\n\n# MKSQUASHFS MEM: [STRING]\n# DEFAULT: Unlimited\n# This allows the administrator to set the maximum amount of memory for mkswapfs\n# to use when building an image.  e.g. 1G for 1gb or 500M for 500mb. Restricting memory\n# can have a major impact on the time it takes mksquashfs to create the image.\n# NOTE: This fuctionality did not exist in squashfs-tools prior to version 4.3\n# If using an earlier version you should not set this.\n# mksquashfs mem = 1G\n\n\n# NVIDIA-CONTAINER-CLI PATH: [STRING]\n# DEFAULT: Undefined\n# Path to the nvidia-container-cli executable, used to find GPU libraries.\n# Must be set to use --nvccli.\n# Executable must be owned by root for security reasons.\n# nvidia-container-cli path =\n\n\n# UNSQUASHFS PATH: [STRING]\n# DEFAULT: Undefined\n# Path to the unsquashfs executable, used to extract SIF and SquashFS containers\n# If not set, SingularityCE will search $PATH, /usr/local/sbin, /usr/local/bin,\n# /usr/sbin, /usr/bin, /sbin, /bin.\n# unsquashfs path =\nunsquashfs path = /sbin/unsquashfs\n\n# SHARED LOOP DEVICES: [BOOL]\n# DEFAULT: no\n# Allow to share same images associated with loop devices to minimize loop\n# usage and optimize kernel cache (useful for MPI)\nshared loop devices = no\n\n# DOWNLOAD CONCURRENCY: [UINT]\n# DEFAULT: 3\n# This option specifies how many concurrent streams when downloading (pulling)\n# an image from cloud library.\ndownload concurrency = 3\n\n# DOWNLOAD PART SIZE: [UINT]\n# DEFAULT: 5242880\n# This option specifies the size of each part when concurrent downloads are\n# enabled.\ndownload part size = 5242880\n\n# DOWNLOAD BUFFER SIZE: [UINT]\n# DEFAULT: 32768\n# This option specifies the transfer buffer size when concurrent downloads\n# are enabled.\ndownload buffer size = 32768\n\n# SYSTEMD CGROUPS: [BOOL]\n# DEFAULT: yes\n# Whether to use systemd to manage container cgroups. Required for rootless cgroups\n# functionality. 'no' will manage cgroups directly via cgroupfs.\nsystemd cgroups = yes\n\n# SIF FUSE: [BOOL]\n# DEFAULT: no\n# DEPRECATED - FUSE mounts are now used automatically when kernel mounts are disabled / unavailable.\n# Whether to try mounting SIF images with Squashfuse by default.\n# Applies only to unprivileged / user namespace flows. Requires squashfuse and\n# fusermount on PATH. Will fall back to extracting the SIF on failure.\nsif fuse = no\n",
+      "uid": 0
+    }
+  },
+  "container_exec_help": {
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n",
+    "stdout": "Run a command within a container\n\nUsage:\n  singularity exec [exec options...] <container> <command>\n\nDescription:\n  singularity exec supports the following formats:\n\n  *.sif               Singularity Image Format (SIF). Native to Singularity 3.0+\n  \n  *.sqsh              SquashFS format.  Native to Singularity 2.4+\n\n  *.img               ext3 format. Native to Singularity versions < 2.4.\n\n  directory/          sandbox format. Directory containing a valid root file \n                      system and optionally Singularity meta-data.\n\n  instance://*        A local running instance of a container. (See the instance\n                      command group.)\n\n  library://*         A SIF container hosted on a Library\n                      (default https://cloud.sylabs.io/library)\n\n  docker://*          A Docker/OCI container hosted on Docker Hub or another\n                      OCI registry.\n\n  shub://*            A container hosted on Singularity Hub.\n\n  oras://*            A SIF container hosted on an OCI registry that supports\n                      the OCI Registry As Storage (ORAS) specification.\n\nOptions:\n      --add-caps string               a comma separated capability list to add\n      --allow-setuid                  allow setuid binaries in container\n                                      (root only)\n      --app string                    set an application to run inside a\n                                      container\n      --apply-cgroups string          apply cgroups from file for\n                                      container processes (root only)\n      --authfile string               Docker-style authentication file to\n                                      use for writing/reading OCI registry\n                                      credentials\n  -B, --bind strings                  a user-bind path specification. spec\n                                      has the format src[:dest[:opts]],\n                                      where src and dest are outside and\n                                      inside paths. If dest is not given,\n                                      it is set equal to src. Mount\n                                      options ('opts') may be specified as\n                                      'ro' (read-only) or 'rw'\n                                      (read/write, which is the default).\n                                      Multiple bind paths can be given by\n                                      a comma separated list.\n      --blkio-weight int              Block IO relative weight in range\n                                      10-1000, 0 to disable\n      --blkio-weight-device strings   Device specific block IO relative weight\n      --cdi-dirs strings              comma-separated list of directories\n                                      in which CDI should look for device\n                                      definition JSON files. If omitted,\n                                      default will be: /etc/cdi,/var/run/cdi\n  -e, --cleanenv                      clean environment before running\n                                      container\n      --compat                        apply settings for increased\n                                      OCI/Docker compatibility. Infers\n                                      --containall, --no-init, --no-umask,\n                                      --no-eval, --writable-tmpfs.\n  -c, --contain                       use minimal /dev and empty other\n                                      directories (e.g. /tmp and $HOME)\n                                      instead of sharing filesystems from\n                                      your host\n  -C, --containall                    contain not only file systems, but\n                                      also PID, IPC, and environment\n      --cpu-shares int                CPU shares for container (default -1)\n      --cpus string                   Number of CPUs available to container\n      --cpuset-cpus string            List of host CPUs available to container\n      --cpuset-mems string            List of host memory nodes available\n                                      to container\n      --cwd string                    initial working directory for\n                                      payload process inside the container\n                                      (synonym for --pwd)\n      --device strings                fully-qualified CDI device name(s).\n                                      A fully-qualified CDI device name\n                                      consists of a VENDOR, CLASS, and\n                                      NAME, which are combined as follows:\n                                      <VENDOR>/<CLASS>=<NAME> (e.g.\n                                      vendor.com/device=mydevice).\n                                      Multiple fully-qualified CDI device\n                                      names can be given as a comma\n                                      separated list.\n      --disable-cache                 dont use cache, and dont create cache\n      --dns string                    list of DNS server separated by\n                                      commas to add in resolv.conf\n      --docker-host string            specify a custom Docker daemon host\n      --docker-login                  login to a Docker Repository\n                                      interactively\n      --drop-caps string              a comma separated capability list to drop\n      --env stringToString            pass environment variable to\n                                      contained process (default [])\n      --env-file string               pass environment variables from file\n                                      to contained process\n  -f, --fakeroot                      run container in new user namespace\n                                      as uid 0\n      --fusemount strings             A FUSE filesystem mount\n                                      specification of the form\n                                      '<type>:<fuse command> <mountpoint>'\n                                      - where <type> is 'container' or\n                                      'host', specifying where the mount\n                                      will be performed\n                                      ('container-daemon' or 'host-daemon'\n                                      will run the FUSE process detached).\n                                      <fuse command> is the path to the\n                                      FUSE executable, plus options for\n                                      the mount. <mountpoint> is the\n                                      location in the container to which\n                                      the FUSE mount will be attached.\n                                      E.g. 'container:sshfs 10.0.0.1:/\n                                      /sshfs'. Implies --pid.\n  -h, --help                          help for exec\n  -H, --home string                   a home directory specification. spec\n                                      can either be a src path or src:dest\n                                      pair. src is the source path of the\n                                      home directory outside the container\n                                      and dest overrides the home\n                                      directory within the container.\n                                      (default \"/public/home/zqchen\")\n      --hostname string               set container hostname. Infers --uts.\n  -i, --ipc                           run container in a new IPC namespace\n      --keep-layers                   Keep layers when creating an\n                                      OCI-SIF. Do not squash to a single layer.\n      --keep-privs                    let root user keep privileges in\n                                      container (root only)\n      --memory string                 Memory limit in bytes\n      --memory-reservation string     Memory soft limit in bytes\n      --memory-swap string            Swap limit, use -1 for unlimited swap\n      --mount stringArray             a mount specification e.g.\n                                      'type=bind,source=/opt,destination=/hostopt'.\n  -n, --net                           run container in a new network\n                                      namespace (sets up a bridge network\n                                      interface by default)\n      --network string                specify desired network type\n                                      separated by commas, each network\n                                      will bring up a dedicated interface\n                                      inside container (default \"bridge\")\n      --network-args strings          specify network arguments to pass to\n                                      CNI plugins\n      --no-compat                     (--oci mode) do not apply settings\n                                      for increased OCI/Docker\n                                      compatibility. Emulate native\n                                      runtime defaults without --contain etc.\n      --no-eval                       do not shell evaluate env vars or\n                                      OCI container CMD/ENTRYPOINT/ARGS\n      --no-home                       do NOT mount users home directory if\n                                      /home is not the current working\n                                      directory\n      --no-https                      use http instead of https for\n                                      docker:// oras:// and\n                                      library://<hostname>/... URIs\n      --no-init                       do NOT start shim process with --pid\n      --no-mount strings              disable one or more 'mount xxx'\n                                      options set in singularity.conf,\n                                      specify absolute destination path to\n                                      disable a bind path entry, or\n                                      'bind-paths' to disable all bind\n                                      path entries.\n      --no-oci                        Launch container with native runtime\n      --no-pid                        do not run container in a new PID\n                                      namespace\n      --no-privs                      drop all privileges in container\n                                      (root only in non-OCI mode)\n      --no-setgroups                  disable setgroups when entering\n                                      --fakeroot user namespace\n      --no-tmp-sandbox                Prohibits unpacking of images into\n                                      temporary sandbox dirs\n      --no-umask                      do not propagate umask to the\n                                      container, set default 0022 umask\n      --nv                            enable Nvidia support\n      --nvccli                        use nvidia-container-cli for GPU\n                                      setup (experimental)\n      --oci                           Launch container with OCI runtime\n                                      (experimental)\n      --oom-kill-disable              Disable OOM killer\n  -o, --overlay strings               use an overlayFS image for\n                                      persistent data storage or as\n                                      read-only layer of container\n      --passphrase                    prompt for an encryption passphrase\n      --pem-path string               enter an path to a PEM formatted RSA\n                                      key for an encrypted container\n  -p, --pid                           run container in a new PID namespace\n      --pids-limit int                Limit number of container PIDs, use\n                                      -1 for unlimited\n      --rocm                          enable experimental Rocm support\n  -S, --scratch strings               include a scratch directory within\n                                      the container that is linked to a\n                                      temporary dir (use -W to force location)\n      --security strings              enable security features (SELinux,\n                                      Apparmor, Seccomp)\n      --tmp-sandbox                   Forces unpacking of images into\n                                      temporary sandbox dirs when a kernel\n                                      or FUSE mount would otherwise be used.\n  -u, --userns                        run container in a new user\n                                      namespace, allowing Singularity to\n                                      run completely unprivileged on\n                                      recent kernels. This disables some\n                                      features of Singularity, for example\n                                      it only works with sandbox images.\n      --uts                           run container in a new UTS namespace\n  -W, --workdir string                working directory to be used for\n                                      /tmp and /var/tmp (if -c/--contain\n                                      was also used)\n  -w, --writable                      by default all Singularity\n                                      containers are available as read\n                                      only. This option makes the file\n                                      system accessible as read/write.\n      --writable-tmpfs                makes the file system accessible as\n                                      read-write with non persistent data\n                                      (with overlay support only)\n\n\nExamples:\n  $ singularity exec /tmp/debian.sif cat /etc/debian_version\n  $ singularity exec /tmp/debian.sif python ./hello_world.py\n  $ cat hello_world.py | singularity exec /tmp/debian.sif python\n  $ sudo singularity exec --writable /tmp/debian.sif apt-get update\n  $ singularity exec instance://my_instance ps -ef\n  $ singularity exec library://centos cat /etc/os-release\n\n\nFor additional help or support, please visit https://www.sylabs.io/docs/\n"
+  },
+  "container_helpers": {
+    "/public/software/singularity-ce/4.1.1/libexec/singularity/bin/starter": {
+      "bytes": 24627152,
+      "exists": true,
+      "gid": 0,
+      "mode": "0o755",
+      "uid": 0
+    },
+    "/public/software/singularity-ce/4.1.1/libexec/singularity/bin/starter-suid": {
+      "bytes": 24627152,
+      "exists": true,
+      "gid": 0,
+      "mode": "0o4755",
+      "uid": 0
+    }
+  },
+  "container_network_help": {
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n",
+    "stdout": "Start a named instance of the given container image\n\nUsage:\n  singularity instance start [start options...] <container path> <instance name> [startscript args...]\n\nDescription:\n  The instance start command allows you to create a new named instance from an\n  existing container image that will begin running in the background. If a\n  startscript is defined in the container metadata the commands in that script\n  will be executed with the instance start command as well. You can optionally\n  pass arguments to startscript\n\n  singularity instance start accepts the following container formats\n\n  *.sif               Singularity Image Format (SIF). Native to Singularity 3.0+\n  \n  *.sqsh              SquashFS format.  Native to Singularity 2.4+\n\n  *.img               ext3 format. Native to Singularity versions < 2.4.\n\n  directory/          sandbox format. Directory containing a valid root file \n                      system and optionally Singularity meta-data.\n\n  instance://*        A local running instance of a container. (See the instance\n                      command group.)\n\n  library://*         A SIF container hosted on a Library\n                      (default https://cloud.sylabs.io/library)\n\n  docker://*          A Docker/OCI container hosted on Docker Hub or another\n                      OCI registry.\n\n  shub://*            A container hosted on Singularity Hub.\n\n  oras://*            A SIF container hosted on an OCI registry that supports\n                      the OCI Registry As Storage (ORAS) specification.\n\nOptions:\n      --add-caps string               a comma separated capability list to add\n      --allow-setuid                  allow setuid binaries in container\n                                      (root only)\n      --app string                    set an application to run inside a\n                                      container\n      --apply-cgroups string          apply cgroups from file for\n                                      container processes (root only)\n      --authfile string               Docker-style authentication file to\n                                      use for writing/reading OCI registry\n                                      credentials\n  -B, --bind strings                  a user-bind path specification. spec\n                                      has the format src[:dest[:opts]],\n                                      where src and dest are outside and\n                                      inside paths. If dest is not given,\n                                      it is set equal to src. Mount\n                                      options ('opts') may be specified as\n                                      'ro' (read-only) or 'rw'\n                                      (read/write, which is the default).\n                                      Multiple bind paths can be given by\n                                      a comma separated list.\n      --blkio-weight int              Block IO relative weight in range\n                                      10-1000, 0 to disable\n      --blkio-weight-device strings   Device specific block IO relative weight\n      --boot                          execute /sbin/init to boot container\n                                      (root only)\n  -e, --cleanenv                      clean environment before running\n                                      container\n      --compat                        apply settings for increased\n                                      OCI/Docker compatibility. Infers\n                                      --containall, --no-init, --no-umask,\n                                      --no-eval, --writable-tmpfs.\n  -c, --contain                       use minimal /dev and empty other\n                                      directories (e.g. /tmp and $HOME)\n                                      instead of sharing filesystems from\n                                      your host\n  -C, --containall                    contain not only file systems, but\n                                      also PID, IPC, and environment\n      --cpu-shares int                CPU shares for container (default -1)\n      --cpus string                   Number of CPUs available to container\n      --cpuset-cpus string            List of host CPUs available to container\n      --cpuset-mems string            List of host memory nodes available\n                                      to container\n      --disable-cache                 dont use cache, and dont create cache\n      --dns string                    list of DNS server separated by\n                                      commas to add in resolv.conf\n      --docker-host string            specify a custom Docker daemon host\n      --docker-login                  login to a Docker Repository\n                                      interactively\n      --drop-caps string              a comma separated capability list to drop\n      --env stringToString            pass environment variable to\n                                      contained process (default [])\n      --env-file string               pass environment variables from file\n                                      to contained process\n  -f, --fakeroot                      run container in new user namespace\n                                      as uid 0\n      --fusemount strings             A FUSE filesystem mount\n                                      specification of the form\n                                      '<type>:<fuse command> <mountpoint>'\n                                      - where <type> is 'container' or\n                                      'host', specifying where the mount\n                                      will be performed\n                                      ('container-daemon' or 'host-daemon'\n                                      will run the FUSE process detached).\n                                      <fuse command> is the path to the\n                                      FUSE executable, plus options for\n                                      the mount. <mountpoint> is the\n                                      location in the container to which\n                                      the FUSE mount will be attached.\n                                      E.g. 'container:sshfs 10.0.0.1:/\n                                      /sshfs'. Implies --pid.\n  -h, --help                          help for start\n  -H, --home string                   a home directory specification. spec\n                                      can either be a src path or src:dest\n                                      pair. src is the source path of the\n                                      home directory outside the container\n                                      and dest overrides the home\n                                      directory within the container.\n                                      (default \"/public/home/zqchen\")\n      --hostname string               set container hostname. Infers --uts.\n  -i, --ipc                           run container in a new IPC namespace\n      --keep-layers                   Keep layers when creating an\n                                      OCI-SIF. Do not squash to a single layer.\n      --keep-privs                    let root user keep privileges in\n                                      container (root only)\n      --memory string                 Memory limit in bytes\n      --memory-reservation string     Memory soft limit in bytes\n      --memory-swap string            Swap limit, use -1 for unlimited swap\n      --mount stringArray             a mount specification e.g.\n                                      'type=bind,source=/opt,destination=/hostopt'.\n  -n, --net                           run container in a new network\n                                      namespace (sets up a bridge network\n                                      interface by default)\n      --network string                specify desired network type\n                                      separated by commas, each network\n                                      will bring up a dedicated interface\n                                      inside container (default \"bridge\")\n      --network-args strings          specify network arguments to pass to\n                                      CNI plugins\n      --no-compat                     (--oci mode) do not apply settings\n                                      for increased OCI/Docker\n                                      compatibility. Emulate native\n                                      runtime defaults without --contain etc.\n      --no-eval                       do not shell evaluate env vars or\n                                      OCI container CMD/ENTRYPOINT/ARGS\n      --no-home                       do NOT mount users home directory if\n                                      /home is not the current working\n                                      directory\n      --no-https                      use http instead of https for\n                                      docker:// oras:// and\n                                      library://<hostname>/... URIs\n      --no-init                       do NOT start shim process with --pid\n      --no-mount strings              disable one or more 'mount xxx'\n                                      options set in singularity.conf,\n                                      specify absolute destination path to\n                                      disable a bind path entry, or\n                                      'bind-paths' to disable all bind\n                                      path entries.\n      --no-oci                        Launch container with native runtime\n      --no-privs                      drop all privileges in container\n                                      (root only in non-OCI mode)\n      --no-setgroups                  disable setgroups when entering\n                                      --fakeroot user namespace\n      --no-tmp-sandbox                Prohibits unpacking of images into\n                                      temporary sandbox dirs\n      --no-umask                      do not propagate umask to the\n                                      container, set default 0022 umask\n      --nv                            enable Nvidia support\n      --nvccli                        use nvidia-container-cli for GPU\n                                      setup (experimental)\n      --oci                           Launch container with OCI runtime\n                                      (experimental)\n      --oom-kill-disable              Disable OOM killer\n  -o, --overlay strings               use an overlayFS image for\n                                      persistent data storage or as\n                                      read-only layer of container\n      --passphrase                    prompt for an encryption passphrase\n      --pem-path string               enter an path to a PEM formatted RSA\n                                      key for an encrypted container\n      --pid-file string               write instance PID to the file with\n                                      the given name\n      --pids-limit int                Limit number of container PIDs, use\n                                      -1 for unlimited\n      --rocm                          enable experimental Rocm support\n  -S, --scratch strings               include a scratch directory within\n                                      the container that is linked to a\n                                      temporary dir (use -W to force location)\n      --security strings              enable security features (SELinux,\n                                      Apparmor, Seccomp)\n      --tmp-sandbox                   Forces unpacking of images into\n                                      temporary sandbox dirs when a kernel\n                                      or FUSE mount would otherwise be used.\n  -u, --userns                        run container in a new user\n                                      namespace, allowing Singularity to\n                                      run completely unprivileged on\n                                      recent kernels. This disables some\n                                      features of Singularity, for example\n                                      it only works with sandbox images.\n      --uts                           run container in a new UTS namespace\n  -W, --workdir string                working directory to be used for\n                                      /tmp and /var/tmp (if -c/--contain\n                                      was also used)\n  -w, --writable                      by default all Singularity\n                                      containers are available as read\n                                      only. This option makes the file\n                                      system accessible as read/write.\n      --writable-tmpfs                makes the file system accessible as\n                                      read-write with non persistent data\n                                      (with overlay support only)\n\n\nExamples:\n  $ singularity instance start /tmp/my-sql.sif mysql\n\n  $ singularity shell instance://mysql\n  Singularity my-sql.sif> pwd\n  /home/mibauer/mysql\n  Singularity my-sql.sif> ps\n  PID TTY          TIME CMD\n    1 pts/0    00:00:00 sinit\n    2 pts/0    00:00:00 bash\n    3 pts/0    00:00:00 ps\n  Singularity my-sql.sif>\n\n  $ singularity instance stop /tmp/my-sql.sif mysql\n  Stopping /tmp/my-sql.sif mysql\n\n\nFor additional help or support, please visit https://www.sylabs.io/docs/\n"
+  },
+  "cpu_partition_details": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "PartitionName=cpu_192G\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,tianzhixiong,gtshi,mxbai,yliu,a_test,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,yshen,hysun,ybyao,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,syzhang,scjiang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,test_block1,qzhang,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=NO QoS=partition_cpu_192G\n   DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=node[201-228,230]\n   PriorityJobFactor=1 PriorityTier=9000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=812 TotalNodes=29 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n"
+  },
+  "evaluation_environment_metadata": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"BraTS-evaluation\": \"0.0.8\", \"panoptica\": \"2.1.0\", \"numpy\": \"1.26.4\", \"scipy\": \"1.15.3\", \"nibabel\": \"5.4.2\", \"SimpleITK\": \"2.5.5\"}\n"
+  },
+  "evaluation_source_inventory": [
+    {
+      "bytes": 4096,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o755",
+      "name": "custom_nnunet",
+      "uid": 2159
+    },
+    {
+      "bytes": 6121,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o644",
+      "name": "frozen_s2_inference.py",
+      "uid": 2159
+    },
+    {
+      "bytes": 257,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o644",
+      "name": "inference.py",
+      "uid": 2159
+    },
+    {
+      "bytes": 6008,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o644",
+      "name": "run_official_met_eval.sh",
+      "uid": 2159
+    },
+    {
+      "bytes": 14126,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o644",
+      "name": "workflow.py",
+      "uid": 2159
+    }
+  ],
+  "formal_gate_status": "not_run_not_passed",
+  "hostname": "login1",
+  "k1_evaluation_inventory": [
+    {
+      "bytes": 77,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "EVALUATION_COMPLETE.ok",
+      "uid": 2159
+    },
+    {
+      "bytes": 558,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "EVALUATION_VALIDATION.json",
+      "uid": 2159
+    },
+    {
+      "bytes": 6951,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "brats_evaluate.log",
+      "uid": 2159
+    },
+    {
+      "bytes": 642,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "brats_parse_metrics.log",
+      "uid": 2159
+    },
+    {
+      "bytes": 551,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "evaluation_contract.txt",
+      "uid": 2159
+    },
+    {
+      "bytes": 448,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "evaluation_environment.txt",
+      "uid": 2159
+    },
+    {
+      "bytes": 53693,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "leaderboard_metrics.csv",
+      "uid": 2159
+    },
+    {
+      "bytes": 968594,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "panoptica_evaluation_summary.json",
+      "uid": 2159
+    }
+  ],
+  "k1_inference_audit": {
+    "bytes": 1087,
+    "exists": true,
+    "gid": 100,
+    "mode": "0o600",
+    "sha256": "4c7877c43dbd708f56bbbed3c41a716677d9573df5e542ab672b9e22f386121a",
+    "text": "{\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"case_count\": 103,\n  \"checkpoint\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_met_aug_k1_selected103_official_met_20261008_r1/model_snapshots/K1/fold_0/checkpoint_final.pth\",\n  \"checkpoint_sha256\": \"28e81950b675cd0f5ca26cc1509f9271b2fa827b524f379024b417c0a5402204\",\n  \"completed_at_utc\": \"2026-10-08T05:12:49.540990+00:00\",\n  \"device_name\": \"NVIDIA A100-PCIE-40GB\",\n  \"execution_mode\": \"sequential_in_process\",\n  \"export_workers\": 0,\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"model_name\": \"K1\",\n  \"multiprocessing_queue_used\": false,\n  \"network_builder_shim\": \"nnUNetTrainerBraTS2026RC\",\n  \"operator_approved\": false,\n  \"prediction_count\": 103,\n  \"preprocess_workers\": 0,\n  \"save_probabilities\": false,\n  \"schema_version\": 1,\n  \"started_at_utc\": \"2026-10-08T04:49:34.971529+00:00\",\n  \"status\": \"pass\",\n  \"tile_step_size\": 0.5,\n  \"trainer_name_from_checkpoint\": \"nnUNetTrainerBraTS2026RCMetAugK1245FocalCompletionFineTune175\",\n  \"use_gaussian\": true,\n  \"use_mirroring\": true\n}\n",
+    "uid": 2159
+  },
+  "k1_prediction_inventory": [
+    {
+      "bytes": 27312,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00006-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 26894,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00009-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 31976,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00014-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 35647,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00016-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 22451,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00019-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 24368,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00022-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 17138,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00025-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 11744,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00098-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 29384,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00129-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 23280,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00133-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 11004,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00137-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 12595,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00147-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 13690,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00161-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 9432,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00162-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 23369,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00167-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 11299,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00175-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 20864,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00180-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 20775,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00194-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 24234,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00195-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 31982,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00200-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 25210,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00202-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 16171,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00214-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 30123,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00260-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 20433,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00264-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 14593,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00268-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 24789,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00292-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 27545,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00299-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 19094,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00300-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 19029,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00380-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 10401,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00532-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 16171,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00552-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 7835,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00572-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 42294,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00577-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 8840,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00613-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 70971,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00613-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 55456,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00625-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 12098,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00663-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 15912,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00682-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 9533,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00699-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 8987,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00787-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 11247,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00791-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 9622,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00796-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 14264,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00799-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 12603,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-00807-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 70318,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01058-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 31905,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01060-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 8563,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01096-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 8728,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01096-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 8908,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01096-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 87705,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01105-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 87124,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01105-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 45628,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01109-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 45007,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01109-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 44967,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01109-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 97159,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01117-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 94929,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01117-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 94929,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01117-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 99764,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01119-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 108700,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01119-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 118520,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01119-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 8330,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01134-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 8160,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01134-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 162287,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01149-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 96315,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01149-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 21792,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01172-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 16108,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01172-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 16072,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01172-004.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 19125,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01180-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 18277,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01180-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 44674,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01181-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 37320,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01181-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 97368,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01187-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 94927,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01187-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 94927,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01187-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 50264,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01191-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 50713,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01191-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 49642,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01191-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 55851,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01191-004.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 45540,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01217-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 44966,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01217-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 44966,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01217-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 21285,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01250-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 21285,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01250-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 91661,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01268-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 64846,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01270-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 50097,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01270-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 45692,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01270-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 20360,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01276-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 142890,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01284-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 45694,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01284-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 29140,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01287-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 23829,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01287-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 13250,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01301-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 9339,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01301-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 9304,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01301-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 47010,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01310-001.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 47010,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01310-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 50585,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01314-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 50585,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01314-003.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 90495,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01331-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 101221,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01351-000.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 108971,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01351-002.nii.gz",
+      "uid": 2159
+    },
+    {
+      "bytes": 100009,
+      "exists": true,
+      "gid": 100,
+      "mode": "0o600",
+      "name": "BraTS-MET-01351-003.nii.gz",
+      "uid": 2159
+    }
+  ],
+  "k1_prediction_manifest": {
+    "bytes": 10732,
+    "exists": true,
+    "gid": 100,
+    "mode": "0o400",
+    "sha256": "933d513156f5f1193d9c5eadbc2ffdf33be2ca97c138ce4f47f7726869082701",
+    "text": "{\n  \"allowed_labels\": [\n    0,\n    1,\n    2,\n    3,\n    4\n  ],\n  \"artifact_status\": \"experimental_unvalidated\",\n  \"files\": {\n    \"BraTS-MET-00006-000.nii.gz\": \"ca02573118e3df333b335bcff2c52971fb56a476a2c54cd8297c246a906182e1\",\n    \"BraTS-MET-00009-000.nii.gz\": \"28745a2c17524744264a35cf06e667313dcff51baa3ee81200ba2f84d2b7cd68\",\n    \"BraTS-MET-00014-000.nii.gz\": \"727520680c4a1859f9c255a5b1122d16f2745c2f04b6c3612767d6674d964773\",\n    \"BraTS-MET-00016-000.nii.gz\": \"b3575190a7e46051f3a13292da73d2a12dc3d75ae2fa75d2697e60e6b7b0d1ff\",\n    \"BraTS-MET-00019-000.nii.gz\": \"0ff0efd02fbab3012ce4b5bb916179eed1c8ac67096e60093c186d6d1da7c82d\",\n    \"BraTS-MET-00022-000.nii.gz\": \"bc3cac23b38ec03d8edb493dbc073d7cca347b5c572aca547eb15ba37e32b64a\",\n    \"BraTS-MET-00025-000.nii.gz\": \"2aaf6894a83c522c6f9f319f645833d64ae89e086a772acb517852d089d36cdb\",\n    \"BraTS-MET-00098-000.nii.gz\": \"ca48865f05b170c4706ad73e27c899976c94c9991878d02b1d1d7add9da39da0\",\n    \"BraTS-MET-00129-000.nii.gz\": \"a8f1731d44699e1ee8113ef436b8df92b3ea2c058fe952584a0197072015262b\",\n    \"BraTS-MET-00133-000.nii.gz\": \"5a69cfbc226ea49308f6fe6a7e35880229a63fa2796973d51dd0963f3ed896c3\",\n    \"BraTS-MET-00137-000.nii.gz\": \"ba940c8b0900d836d3bdb59ded4f07ffa264e26cc5aa5ff12fcabcdbd5edb05c\",\n    \"BraTS-MET-00147-000.nii.gz\": \"698fe60fac4bff8c0879590d59a6e3d5299d73dd3f09e367e74ccda5ae99255c\",\n    \"BraTS-MET-00161-000.nii.gz\": \"0d470158549019c4a055b3be4bb2aafb76f7eb6813948061596beeab090a1d5b\",\n    \"BraTS-MET-00162-000.nii.gz\": \"52b274efb31d53e4580e78d0fdaccf0faf4e3cca43b012f19cea1fb1c54460d9\",\n    \"BraTS-MET-00167-000.nii.gz\": \"bcd52f73afc7cb26ad61b3db24852365900ed9821086dacd27dab13cbee338d3\",\n    \"BraTS-MET-00175-000.nii.gz\": \"0e5833c58e2723dff201dd0d0856feaf0d9f3ced704edd5756a3d9b84a62d084\",\n    \"BraTS-MET-00180-000.nii.gz\": \"c240769d6c52c4f079a66f2e81d283fb5950dfe13eb733ae26340ea42d28403d\",\n    \"BraTS-MET-00194-000.nii.gz\": \"d51da045cd32b8070ce23b1e5aae75fa2d0c6daf88216ed3f305349b7b8376cf\",\n    \"BraTS-MET-00195-000.nii.gz\": \"b841e6999cb142c3a929702480494468b8a111164e73bfe4525d350f7daf3979\",\n    \"BraTS-MET-00200-000.nii.gz\": \"33a8ed4c52659198e605b5025a1202eaba0c4531602a9ecfeb1a6baceb57b8db\",\n    \"BraTS-MET-00202-000.nii.gz\": \"972902a5b0c1c013ea0cb9bb8a2e55386c1f4e6816871a294fa58cb49878a84d\",\n    \"BraTS-MET-00214-000.nii.gz\": \"704e20809af927dde23d959b2954ef0764f3d4b479c908719162ed9839f5064f\",\n    \"BraTS-MET-00260-000.nii.gz\": \"498b24c761661f75c196c2677ba1194bd73f320f3909bbcca94e248eaff95c91\",\n    \"BraTS-MET-00264-000.nii.gz\": \"b65aa289f828ac5dadc7e8af36da619d080aa5191d51369b3bd968075b6395d2\",\n    \"BraTS-MET-00268-000.nii.gz\": \"17cd90c1e94376359826376ecaddfc4df1493ab3720395f4bc53ba62da0163ef\",\n    \"BraTS-MET-00292-000.nii.gz\": \"c3954f61ac3455ae53f8436ea204d4b8537b93de41455ddb42356b7194bc54fc\",\n    \"BraTS-MET-00299-000.nii.gz\": \"0eb97a1a49450317312fff3a514ee0edbfba4c0932030b04aed968ec67acbae5\",\n    \"BraTS-MET-00300-000.nii.gz\": \"1ace833371398e1acdb55dd894981eae0c22cec56fbbf0924a15d53e8cf888e2\",\n    \"BraTS-MET-00380-000.nii.gz\": \"240d07794be6d9dcbaf299f1422dd9a791c8e882fbb0e454fa9b57ffdea0a498\",\n    \"BraTS-MET-00532-000.nii.gz\": \"1cfd25dcb34bb97f25ce1ccacc7892798ddc25a8f4dc590794e1eac311f44f6a\",\n    \"BraTS-MET-00552-000.nii.gz\": \"1fb0899a2285c819a4ea044e0c43591a946495f2e0d48819d29d6a5f720b32c1\",\n    \"BraTS-MET-00572-000.nii.gz\": \"d9ced37336126ad060b00bcc1aa73e0026d46b769c4970e1357606a85fa96591\",\n    \"BraTS-MET-00577-001.nii.gz\": \"4d68d3b2bc4b007b36ab506026206594b388075d53b24d6343d17bb2ce605d85\",\n    \"BraTS-MET-00613-000.nii.gz\": \"aab03b2512c9ddadc16fcc97707df9a9ec002d27b9d95b9350fdf533fcc5d822\",\n    \"BraTS-MET-00613-001.nii.gz\": \"2f83d377db6b264f850a973f9cc6f74a6d577d06db3192651a325063547703b7\",\n    \"BraTS-MET-00625-000.nii.gz\": \"7570155d6c56e8a68e3197039eff61d9a09ee2f27b885c63c70097da03109a35\",\n    \"BraTS-MET-00663-000.nii.gz\": \"1ccbd61fdd6416839e1fe65471ce885f1c257aa5eddb84016dc396c91bc320f9\",\n    \"BraTS-MET-00682-000.nii.gz\": \"1a6627f1209da20f7ef3a48ff6d33df1053d556cacf850406d3fb79b25cfab38\",\n    \"BraTS-MET-00699-000.nii.gz\": \"6e2e2393fb14c8f25d79a0247560bf82e5f46baf89f4c1213801ed363e79846b\",\n    \"BraTS-MET-00787-000.nii.gz\": \"61788b409847d9c3401c285c3ed739a13501a3a51eefd92c23987f4f5917d07e\",\n    \"BraTS-MET-00791-000.nii.gz\": \"31a706c3a25e11f3c5b1e67eb2b3c0c7a94804e08368ab57537afc5b167f3255\",\n    \"BraTS-MET-00796-000.nii.gz\": \"54f76560338c9e9d706b798ce05a04e0f3f5d0523b849c880c14b62c2dc78447\",\n    \"BraTS-MET-00799-000.nii.gz\": \"8ca008285e1ee04895c29e52b9d6179dab1649e194dd6525f7594e681f2cded7\",\n    \"BraTS-MET-00807-000.nii.gz\": \"6233152ced5ca782016d1d7022da4838abb2b139f915d3c7052e5ec29be23d8e\",\n    \"BraTS-MET-01058-001.nii.gz\": \"41e9efbb9f53ff6e67c569ce438fc22901c5e93febb6b6acf4bf1de4a33f1395\",\n    \"BraTS-MET-01060-001.nii.gz\": \"c9ef9cb7b48df3ec11e3ad516892011ddd0247609dd13992b56f45d68866d1d6\",\n    \"BraTS-MET-01096-000.nii.gz\": \"350827967919b873976f1e60fdf8075988fc427f7dcc1e897eb8051fc92a4663\",\n    \"BraTS-MET-01096-001.nii.gz\": \"3d845c6191a47186118f412df9332b991c7780144e0b827594f8e1d2d5892642\",\n    \"BraTS-MET-01096-002.nii.gz\": \"928656099a866b981b66a98c71b8216129431b4d0da9777c286fb4bc7f870f8d\",\n    \"BraTS-MET-01105-001.nii.gz\": \"ddbe57703ade03b99f6e5e1bd4f45c65891c8c6398bb697af9a569c66c9b7acf\",\n    \"BraTS-MET-01105-002.nii.gz\": \"6e31054ee7e967485e0cf9fda6999cc83f21db8f71b428c026eba075b409d8d7\",\n    \"BraTS-MET-01109-001.nii.gz\": \"ada39a2cfef640b558dcd0bacc22b0f23b8aec1d9bbb36a34663c42710accebd\",\n    \"BraTS-MET-01109-002.nii.gz\": \"6b54270b74ed35c1b127a2aec529ca81f7286fb14af8fff03836540c1078ad98\",\n    \"BraTS-MET-01109-003.nii.gz\": \"123960d52648ec3fd2e2e14dab24855e66ada85ce1abcb3d690e45c69df957f8\",\n    \"BraTS-MET-01117-001.nii.gz\": \"81f910dbc938ba52ee9c2c63700ac45267539a19d399ca4b9262b72bf31cc68a\",\n    \"BraTS-MET-01117-002.nii.gz\": \"a1d30876fbd9c431dbaabb8ce84f4e7f53d3594dc4bf0dd059bae179992277c7\",\n    \"BraTS-MET-01117-003.nii.gz\": \"a1d30876fbd9c431dbaabb8ce84f4e7f53d3594dc4bf0dd059bae179992277c7\",\n    \"BraTS-MET-01119-000.nii.gz\": \"fb608aace85061d01a3512427e9697fe196c32ae27e351f3b722a8be2ee82918\",\n    \"BraTS-MET-01119-001.nii.gz\": \"999b8bcf038aba3c4aa3ff46519e7127c49730d84de26171ce73b4880bb470df\",\n    \"BraTS-MET-01119-003.nii.gz\": \"2080958590ac62fdde1d1162b247169eefcb581a8bc871efe964c140edd98da1\",\n    \"BraTS-MET-01134-000.nii.gz\": \"b49ea0c27ddf101e12df001ec4c707d6539362379fb8649fe33e50c42bd551ff\",\n    \"BraTS-MET-01134-003.nii.gz\": \"5e6749dfd7f85d4c72794f969eb1d8a5fc9977644e385d6a72bb789eacc795dc\",\n    \"BraTS-MET-01149-000.nii.gz\": \"12f38366d4da2bc143926995b5e5581176adba05912c7d143d7b6bd71f01e7d8\",\n    \"BraTS-MET-01149-001.nii.gz\": \"7b7dea66f93390fb462e30364426fecacb71cd7d1646f4d380a49a13c4979f76\",\n    \"BraTS-MET-01172-001.nii.gz\": \"7638f9f37580f38e065ae524b1298b7a3dc92536b9b5332106cf4f6cfd7a9a6a\",\n    \"BraTS-MET-01172-002.nii.gz\": \"57dbdd11134131b5100b36cdf95bf1a2f6e0f81a5a2da0cc512cab34677df4ce\",\n    \"BraTS-MET-01172-004.nii.gz\": \"6f418813a2adcda9eb085cffda6df259c50627a189c0bf44452856230c6c9ace\",\n    \"BraTS-MET-01180-000.nii.gz\": \"43a42b11c1e3e3d862d4232982ee3d1f6b90c0af2d2aa07ed33714558b838464\",\n    \"BraTS-MET-01180-003.nii.gz\": \"37c2c569002f6717afdb3e8fa4ccbe1d3b89aaf34578089271a5233f09abe900\",\n    \"BraTS-MET-01181-001.nii.gz\": \"9e3f7b35a5f8503297854b495f6309323e0fb096c468b7c2337278b95eb15724\",\n    \"BraTS-MET-01181-002.nii.gz\": \"f431bd7313f49f721c3d20e37956806e91258a4afb58ba39843fe307b882a95a\",\n    \"BraTS-MET-01187-000.nii.gz\": \"6ff5f2026aca95121fb5e01e3c7a0b0525a765fb2bc0762e6a8aa894771abe4e\",\n    \"BraTS-MET-01187-001.nii.gz\": \"c23ffcc6da3ecca16f0f928fb747f327af4b7f58b7693be997cb0a2de33aa1e7\",\n    \"BraTS-MET-01187-003.nii.gz\": \"c23ffcc6da3ecca16f0f928fb747f327af4b7f58b7693be997cb0a2de33aa1e7\",\n    \"BraTS-MET-01191-001.nii.gz\": \"e6435dad372b18d8472d622532d822cd9554a33ab1633cd18399a25b03c9b74f\",\n    \"BraTS-MET-01191-002.nii.gz\": \"bf588e0a98c3958c098f7ccfeb6443330ac05c989c8d1121cba3719ffff7e2fe\",\n    \"BraTS-MET-01191-003.nii.gz\": \"a7cad7b9557b5feadbfbb136e424c33bf8a188f805d96ebe447badab128131ae\",\n    \"BraTS-MET-01191-004.nii.gz\": \"b0c6de4d83c6831c2bff31d0bd6381490562889420636e2cad141137fef83b46\",\n    \"BraTS-MET-01217-000.nii.gz\": \"0c012d3eea2c59a822f4600ef58555d2188212b966e6aac9941c183340631793\",\n    \"BraTS-MET-01217-002.nii.gz\": \"85c99cc2c214730fed6094b4fe0b97796caa48666e914c4e07e4dc8296639d99\",\n    \"BraTS-MET-01217-003.nii.gz\": \"85c99cc2c214730fed6094b4fe0b97796caa48666e914c4e07e4dc8296639d99\",\n    \"BraTS-MET-01250-001.nii.gz\": \"c12ac1c6194e1ffdfa8d30f1b80745ff53f43c31899c247e841ea6fafe796948\",\n    \"BraTS-MET-01250-003.nii.gz\": \"c12ac1c6194e1ffdfa8d30f1b80745ff53f43c31899c247e841ea6fafe796948\",\n    \"BraTS-MET-01268-002.nii.gz\": \"5766729988ae8ad9410a111d1eb8602137b0fd62387bc855b2b1faee7e22def5\",\n    \"BraTS-MET-01270-001.nii.gz\": \"eadf9ba14febd91641b4b2fe704762bd613789ba64fc4937feeaf02084182e93\",\n    \"BraTS-MET-01270-002.nii.gz\": \"8f54a838e283be73ba735de387c23284c77dae304bd048d9e9f8b8e8d4000f67\",\n    \"BraTS-MET-01270-003.nii.gz\": \"b0d99325a875519d6353109b354815bd6c7fd54321d75be10e2ee01ba924cb5c\",\n    \"BraTS-MET-01276-001.nii.gz\": \"9ee28f3587aeb8ddf29bb293b8afb50a35c92d55a8b1bd5cb9b9f6ee2b155bbc\",\n    \"BraTS-MET-01284-000.nii.gz\": \"89312b1e8cfca55c174996d41281ab1684543201907b99ddc7415cb0d836c104\",\n    \"BraTS-MET-01284-002.nii.gz\": \"d5fdc40adc8f83aefc32848497d7af79582be2e514d73a2bbe6ee15f845d8654\",\n    \"BraTS-MET-01287-001.nii.gz\": \"5701fa6318f3bc98601a775f259134e4b6a29eb561c76bd98b69f6c0acecf1fc\",\n    \"BraTS-MET-01287-002.nii.gz\": \"ccfa077582e29616090438de94f3000810e8fb4b6f8ffda226a63e4e00604750\",\n    \"BraTS-MET-01301-000.nii.gz\": \"0d8de4b9769dc00c161f5fa21b247c248f932c155ba9f2c483fba74451b56af6\",\n    \"BraTS-MET-01301-001.nii.gz\": \"f535fa46d5cfdbfef3c4d20aefea47f7d9ed45acfd69422a3327ec6479399ec3\",\n    \"BraTS-MET-01301-002.nii.gz\": \"cea339a6d7e13dfbe5cabe47362b17142412793259c8fc8022340bcde5cf3a9c\",\n    \"BraTS-MET-01310-001.nii.gz\": \"e1d13000952da7a4228c953cd659c9db05be58329d28dd58ccbe4dedd1b424a3\",\n    \"BraTS-MET-01310-002.nii.gz\": \"e1d13000952da7a4228c953cd659c9db05be58329d28dd58ccbe4dedd1b424a3\",\n    \"BraTS-MET-01314-002.nii.gz\": \"515fc902c939070df02e50825bacec4a64610fe12e403f8f4b10157602d2c8ac\",\n    \"BraTS-MET-01314-003.nii.gz\": \"515fc902c939070df02e50825bacec4a64610fe12e403f8f4b10157602d2c8ac\",\n    \"BraTS-MET-01331-002.nii.gz\": \"b93583610a606b598baa0b2fe24f5ef93ada1ba442985e729851cfaacd63fce8\",\n    \"BraTS-MET-01351-000.nii.gz\": \"0e0b6afd74b551eae581d0d36d779013c6f8b5000f9a8c3903b592332929d771\",\n    \"BraTS-MET-01351-002.nii.gz\": \"c48f215adf89075e758f4c2fb3fa2894add75ca85507eea722a426171b128e7d\",\n    \"BraTS-MET-01351-003.nii.gz\": \"6c063e56a539a607b546d5cda6f3bc9871142a886206c7b8eced42e06e2e52a2\"\n  },\n  \"formal_gate_status\": \"not_run_not_passed\",\n  \"operator_approved\": false,\n  \"status\": \"pass\"\n}\n",
+    "uid": 2159
+  },
+  "local_received_utc": "2026-11-03T16:47:19.758352+00:00",
+  "module_help": {
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n",
+    "stdout": "\n----------- Module Specific Help for 'singularity-ce/4.1.1' -------\n\n"
+  },
+  "module_load_and_buildcfg": {
+    "returncode": 0,
+    "stderr": "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\n",
+    "stdout": "/public/software/singularity-ce/4.1.1/bin/singularity\n4.1.1\nPACKAGE_NAME=singularity-ce\nPACKAGE_VERSION=4.1.1\nBUILDDIR=/public/software/singularity/singularity-ce-4.1.1/builddir\nPREFIX=/public/software/singularity-ce/4.1.1\nEXECPREFIX=/public/software/singularity-ce/4.1.1\nBINDIR=/public/software/singularity-ce/4.1.1/bin\nSBINDIR=/public/software/singularity-ce/4.1.1/sbin\nLIBEXECDIR=/public/software/singularity-ce/4.1.1/libexec\nDATAROOTDIR=/public/software/singularity-ce/4.1.1/share\nDATADIR=/public/software/singularity-ce/4.1.1/share\nSYSCONFDIR=/public/software/singularity-ce/4.1.1/etc\nSHAREDSTATEDIR=/public/software/singularity-ce/4.1.1/com\nLOCALSTATEDIR=/public/software/singularity-ce/4.1.1/var\nRUNSTATEDIR=/public/software/singularity-ce/4.1.1/var/run\nINCLUDEDIR=/public/software/singularity-ce/4.1.1/include\nDOCDIR=/public/software/singularity-ce/4.1.1/share/doc/singularity-ce\nINFODIR=/public/software/singularity-ce/4.1.1/share/info\nLIBDIR=/public/software/singularity-ce/4.1.1/lib\nLOCALEDIR=/public/software/singularity-ce/4.1.1/share/locale\nMANDIR=/public/software/singularity-ce/4.1.1/share/man\nSINGULARITY_CONFDIR=/public/software/singularity-ce/4.1.1/etc/singularity\nSESSIONDIR=/public/software/singularity-ce/4.1.1/var/singularity/mnt/session\nPLUGIN_ROOTDIR=/public/software/singularity-ce/4.1.1/libexec/singularity/plugin\nSINGULARITY_CONF_FILE=/public/software/singularity-ce/4.1.1/etc/singularity/singularity.conf\nSINGULARITY_SUID_INSTALL=1\n"
+  },
+  "operator_approved": false,
+  "partition_details": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "PartitionName=a100\n   AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,ybyao,yshen,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL\n   AllocNodes=ALL Default=NO QoS=partition_a100\n   DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO\n   Nodes=gpu[9,11-19,22]\n   PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=528 TotalNodes=11 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   SuspendKeepIdle=n/a\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n\n"
+  },
+  "partitions": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "cpu_192G|up|infinite|29|(null)|28|190913\na100|up|infinite|11|gpu:NVIDIAA100-PCIE-40GB:2|48|386000+\n"
+  },
+  "qos": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "user_zqchen|1000||cpu=1000||\n"
+  },
+  "remote_started_utc": "2026-11-03T16:35:42.383976+00:00",
+  "remote_utc": "2026-11-03T16:35:54.218122+00:00",
+  "scope": {
+    "container_executed": false,
+    "dependencies_installed": false,
+    "image_voxels_read": false,
+    "jobs_created": false,
+    "models_downloaded": false,
+    "module_loaded_only_in_child_shell": true,
+    "namespace_policy_changed": false,
+    "remote_writes": false
+  },
+  "status": "capability_details_not_execution_pass"
+}

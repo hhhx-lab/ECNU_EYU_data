@@ -1,0 +1,115 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "files": [
+    {
+      "path": "workspace/main.py",
+      "layer_digest": "sha256:ef6f7510a72bffd2fe15d989074f930691cd0b02acf033e96fae7df10f33ff92",
+      "bytes": 2773,
+      "sha256": "7bbbe5c9be854df5a6df1db19bf5f1dd2daaa0348282c382a5d018ee6a5294f7",
+      "imports": [
+        "import os",
+        "from pathlib import Path",
+        "import shutil",
+        "import subprocess",
+        "import sys",
+        "from typing import Callable, List"
+      ]
+    },
+    {
+      "path": "preprocessed/Dataset101_submission/dataset_fingerprint.json",
+      "layer_digest": "sha256:4ac313676f08e92e7f6c237bac885aa7e49a8ed2ea9c3f02a359ef223acaa9e0",
+      "bytes": 202994,
+      "sha256": "fc385db57f36ac9c9abd0e99820edb1cf7d4c83128703974deaffb24f4f6c14f"
+    },
+    {
+      "path": "preprocessed/Dataset101_submission/plans.json",
+      "layer_digest": "sha256:4ac313676f08e92e7f6c237bac885aa7e49a8ed2ea9c3f02a359ef223acaa9e0",
+      "bytes": 11733,
+      "sha256": "c26070e78989b4d6458167541af375bbbb6a846342f59801bac9d90b7921fa73"
+    }
+  ],
+  "layers": [
+    {
+      "digest": "sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1",
+      "members": []
+    },
+    {
+      "digest": "sha256:01c183a1cbcdd4616bbe68cf75ce03cfc6db58f8b1ca7174f6320834b971af68",
+      "members": [
+        {
+          "path": "workspace",
+          "bytes": 0,
+          "type": "5"
+        }
+      ]
+    },
+    {
+      "digest": "sha256:ef6f7510a72bffd2fe15d989074f930691cd0b02acf033e96fae7df10f33ff92",
+      "members": [
+        {
+          "path": "workspace",
+          "bytes": 0,
+          "type": "5"
+        },
+        {
+          "path": "workspace/main.py",
+          "bytes": 2773,
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "digest": "sha256:e1fb9995d7ec3c2a1c6d4507b49d1350508f3412daa202fcf183966f6b3a2ef2",
+      "members": [
+        {
+          "path": "raw",
+          "bytes": 0,
+          "type": "5"
+        },
+        {
+          "path": "raw/Dataset101_submission",
+          "bytes": 0,
+          "type": "5"
+        },
+        {
+          "path": "raw/Dataset101_submission/dataset.json",
+          "bytes": 889545,
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "digest": "sha256:4ac313676f08e92e7f6c237bac885aa7e49a8ed2ea9c3f02a359ef223acaa9e0",
+      "members": [
+        {
+          "path": "preprocessed",
+          "bytes": 0,
+          "type": "5"
+        },
+        {
+          "path": "preprocessed/Dataset101_submission",
+          "bytes": 0,
+          "type": "5"
+        },
+        {
+          "path": "preprocessed/Dataset101_submission/dataset.json",
+          "bytes": 889545,
+          "type": "0"
+        },
+        {
+          "path": "preprocessed/Dataset101_submission/dataset_fingerprint.json",
+          "bytes": 202994,
+          "type": "0"
+        },
+        {
+          "path": "preprocessed/Dataset101_submission/plans.json",
+          "bytes": 11733,
+          "type": "0"
+        }
+      ]
+    }
+  ],
+  "model_loaded": false
+}

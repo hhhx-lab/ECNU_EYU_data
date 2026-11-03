@@ -1,0 +1,36 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "failed",
+  "error_type": "URLError",
+  "message": "segmented transfer failed; private URL suppressed",
+  "utc": "2026-11-03T17:11:52.796132+00:00",
+  "verified_files": [
+    {
+      "path": "docker/manifest.json",
+      "bytes": 2629,
+      "sha256": "f83d914d4d7a9d316f7605abaf03fa6adbcf0e86d840d93276e86ad65b2a2a82"
+    },
+    {
+      "path": "docker/config.json",
+      "bytes": 6614,
+      "sha256": "a6f3d5b063061741536fa4c229d71b04b8eddf37901baf0d60f938c3f1e42d52"
+    },
+    {
+      "path": "docker/layers/f557aa5ee22480ee9e1af0a094ce5174a8c3d83e1aa20dc8482e4e387546e0c3.tar.gz",
+      "bytes": 30438509,
+      "sha256": "f557aa5ee22480ee9e1af0a094ce5174a8c3d83e1aa20dc8482e4e387546e0c3",
+      "reused_verified_complete": true
+    },
+    {
+      "path": "docker/layers/8a0c3e162a807f339f885fe8cd62f60ea94d64745c74a483a8c1e419f360cb3e.tar.gz",
+      "bytes": 7206181,
+      "sha256": "8a0c3e162a807f339f885fe8cd62f60ea94d64745c74a483a8c1e419f360cb3e",
+      "reused_verified_complete": true
+    }
+  ],
+  "no_automatic_retry": true,
+  "old_partial_preserved": true,
+  "jobs_created": false
+}

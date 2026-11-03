@@ -1,0 +1,118 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "commands": {
+    "df": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Filesystem             1B-blocks          Used     Available Use% Mounted on\n12.12.15.3:/public 3298534883328 2202597851136 1095937032192  67% /public\n"
+    },
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "complete_marker_exists": false,
+  "files": [
+    {
+      "expected_bytes": 2629,
+      "logical_path": "docker/manifest.json",
+      "partial_bytes": null,
+      "target_bytes": 2629
+    },
+    {
+      "expected_bytes": 6614,
+      "logical_path": "docker/config.json",
+      "partial_bytes": null,
+      "target_bytes": 6614
+    },
+    {
+      "expected_bytes": 30438509,
+      "logical_path": "docker/layers/f557aa5ee22480ee9e1af0a094ce5174a8c3d83e1aa20dc8482e4e387546e0c3.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": 30438509
+    },
+    {
+      "expected_bytes": 7206181,
+      "logical_path": "docker/layers/8a0c3e162a807f339f885fe8cd62f60ea94d64745c74a483a8c1e419f360cb3e.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": 7206181
+    },
+    {
+      "expected_bytes": 3219880475,
+      "logical_path": "docker/layers/ab224c3cf399b42d4c9dfa9bdaa36275478cd38d2738fc03bdd45f8231e4dcf0.tar.gz",
+      "partial_bytes": 1745911808,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 32,
+      "logical_path": "docker/layers/4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 99,
+      "logical_path": "docker/layers/01c183a1cbcdd4616bbe68cf75ce03cfc6db58f8b1ca7174f6320834b971af68.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 5418234,
+      "logical_path": "docker/layers/0f442846d300ab0682cefbe60302cb50f4d6caee3b77d3484eb0c7c807ecbff6.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 421201647,
+      "logical_path": "docker/layers/1b659f477c8920683298a9a8932d1a753719a1c7afd8f4b61fb4ecd4aa175c26.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 1244,
+      "logical_path": "docker/layers/ef6f7510a72bffd2fe15d989074f930691cd0b02acf033e96fae7df10f33ff92.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 36182,
+      "logical_path": "docker/layers/e1fb9995d7ec3c2a1c6d4507b49d1350508f3412daa202fcf183966f6b3a2ef2.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 49320,
+      "logical_path": "docker/layers/4ac313676f08e92e7f6c237bac885aa7e49a8ed2ea9c3f02a359ef223acaa9e0.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 762466707,
+      "logical_path": "docker/layers/f03b27fda9ec889e8be7029bd87a2075a455e4e48104f09a9c7f8682a3eb1555.tar.gz",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 2472704349,
+      "logical_path": "weights.zip",
+      "partial_bytes": null,
+      "target_bytes": null
+    },
+    {
+      "expected_bytes": 362119240,
+      "logical_path": "BrainIAC.ckpt",
+      "partial_bytes": null,
+      "target_bytes": null
+    }
+  ],
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 1095937032192,
+  "images_read": false,
+  "jobs_created": false,
+  "local_received_utc": "2026-11-03T18:09:11.907800+00:00",
+  "models_loaded": false,
+  "operator_approved": false,
+  "remote_utc": "2026-11-03T17:57:46.546573+00:00",
+  "remote_writes": false,
+  "status": "transfer_size_snapshot_not_SHA_acceptance"
+}

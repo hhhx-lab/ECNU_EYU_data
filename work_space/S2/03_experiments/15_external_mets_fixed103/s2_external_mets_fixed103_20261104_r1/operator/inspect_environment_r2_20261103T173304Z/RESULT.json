@@ -1,0 +1,150 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 1103597928448,
+  "logs": {
+    "author_dependencies.log": {
+      "bytes": 5839,
+      "tail": "external_mets_fixed103_20261104_r1/assets/bio_source/requirements.txt (line 9))\n  Downloading nibabel-5.4.0-py3-none-any.whl.metadata (9.1 kB)\nCollecting scipy==1.15.2 (from -r /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/bio_source/requirements.txt (line 10))\n  Downloading scipy-1.15.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)\nRequirement already satisfied: numpy==2.2.6 in ./projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_intel_py310_r2/lib/python3.10/site-packages (from -r /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/bio_source/requirements.txt (line 11)) (2.2.6)\nCollecting einops==0.8.2 (from -r /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/bio_source/requirements.txt (line 12))\n  Downloading einops-0.8.2-py3-none-any.whl.metadata (13 kB)\nCollecting timm==1.0.22 (from -r /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/bio_source/requirements.txt (line 13))\n  Downloading timm-1.0.22-py3-none-any.whl.metadata (63 kB)\nCollecting pandas==2.3.3 (from -r /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/bio_source/requirements.txt (line 14))\n  Downloading pandas-2.3.3.tar.gz (4.5 MB)\n     \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 4.5/4.5 MB 3.1 MB/s  0:00:01\n  Installing build dependencies: started\n  Installing build dependencies: finished with status 'done'\n  Getting requirements to build wheel: started\n  Getting requirements to build wheel: finished with status 'done'\n  Installing backend dependencies: started\n  Installing backend dependencies: finished with status 'done'\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status 'error'\n  error: subprocess-exited-with-error\n  \n  \u00d7 Preparing metadata (pyproject.toml) did not run successfully.\n  \u2502 exit code: 1\n  \u2570\u2500> [17 lines of output]\n      + meson setup /tmp/pip-install-v_4wa021/pandas_0266c94fa1da468d8edfd43c768b2ea9 /tmp/pip-install-v_4wa021/pandas_0266c94fa1da468d8edfd43c768b2ea9/.mesonpy-44bxk3qv -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --vsenv --native-file=/tmp/pip-install-v_4wa021/pandas_0266c94fa1da468d8edfd43c768b2ea9/.mesonpy-44bxk3qv/meson-python-native-file.ini\n      /bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n      The Meson build system\n      Version: 1.12.1\n      Source dir: /tmp/pip-install-v_4wa021/pandas_0266c94fa1da468d8edfd43c768b2ea9\n      Build dir: /tmp/pip-install-v_4wa021/pandas_0266c94fa1da468d8edfd43c768b2ea9/.mesonpy-44bxk3qv\n      Build type: native build\n      Project name: pandas\n      Project version: 2.3.3\n      C compiler for the host machine: cc (gcc 4.8.5 \"cc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)\")\n      C linker for the host machine: cc ld.bfd 9.1\n      C++ compiler for the host machine: c++ (gcc 4.8.5 \"c++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)\")\n      C++ linker for the host machine: c++ ld.bfd 9.1\n      \n      ../meson.build:2:0: ERROR: Compiler cython cannot compile programs.\n      \n      A full log can be found at /tmp/pip-install-v_4wa021/pandas_0266c94fa1da468d8edfd43c768b2ea9/.mesonpy-44bxk3qv/meson-logs/meson-log.txt\n      [end of output]\n  \n  note: This error originates from a subprocess, and is likely not a problem with pip.\nerror: metadata-generation-failed\n\n\u00d7 Encountered error while generating package metadata.\n\u2570\u2500> pandas\n\nnote: This is an issue with the package mentioned above, not pip.\nhint: See above for details.\n"
+    },
+    "conda_create.log": {
+      "bytes": 5738,
+      "tail": "p-26.1.2-pyh8b19718_0 \n  python             conda-forge/linux-64::python-3.10.22-h267e890_0_cpython \n  readline           conda-forge/linux-64::readline-8.3-hd6e31c0_1 \n  setuptools         conda-forge/noarch::setuptools-83.0.0-pyh332efcf_0 \n  tk                 conda-forge/linux-64::tk-8.6.13-noxft_h1df4ec4_4 \n  tzdata             conda-forge/noarch::tzdata-2026e-h5d301ff_0 \n  wheel              conda-forge/noarch::wheel-0.48.0-pyhd8ed1ab_0 \n  zstd               conda-forge/linux-64::zstd-1.5.7-hb78ec9c_7 \n\n\n\nDownloading and Extracting Packages: ...working... done\nPreparing transaction: - \b\b\\ \b\b| \b\b/ \b\b- \b\bdone\nVerifying transaction: | \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\bdone\nExecuting transaction: \\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\bdone\n#\n# To activate this environment, use\n#\n#     $ conda activate /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_intel_py310_r2\n#\n# To deactivate an active environment, use\n#\n#     $ conda deactivate\n\n"
+    },
+    "torch_binary_install.log": {
+      "bytes": 8897,
+      "tail": "\u2501\u2501\u2501\u2501 21.1/21.1 MB 6.8 MB/s  0:00:03\nCollecting triton==3.2.0 (from torch==2.6.0+cu124)\n  Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)\nCollecting sympy==1.13.1 (from torch==2.6.0+cu124)\n  Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)\nCollecting numpy (from torchvision==0.21.0+cu124)\n  Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)\nCollecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch==2.6.0+cu124)\n  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)\nCollecting MarkupSafe>=2.0 (from jinja2->torch==2.6.0+cu124)\n  Downloading markupsafe-3.0.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nDownloading torch-2.6.0%2Bcu124-cp310-cp310-linux_x86_64.whl (768.4 MB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 768.4/768.4 MB 7.3 MB/s  0:01:53\nDownloading torchvision-0.21.0%2Bcu124-cp310-cp310-linux_x86_64.whl (7.3 MB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 7.3/7.3 MB 5.1 MB/s  0:00:01\nDownloading pillow-10.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.4 MB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 4.4/4.4 MB 952.2 kB/s  0:00:05\nDownloading sympy-1.13.1-py3-none-any.whl (6.2 MB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 6.2/6.2 MB 2.7 MB/s  0:00:02\nDownloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (253.1 MB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 253.1/253.1 MB 6.8 MB/s  0:00:36\nDownloading mpmath-1.3.0-py3-none-any.whl (536 kB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 536.2/536.2 kB 5.0 MB/s  0:00:00\nDownloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)\nDownloading filelock-4.1.0-py3-none-any.whl (133 kB)\nDownloading fsspec-2026.9.0-py3-none-any.whl (221 kB)\nDownloading jinja2-3.1.6-py3-none-any.whl (134 kB)\nDownloading markupsafe-3.0.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)\nDownloading networkx-3.4.2-py3-none-any.whl (1.7 MB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 1.7/1.7 MB 4.8 MB/s  0:00:00\nDownloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)\n   \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501 16.8/16.8 MB 4.7 MB/s  0:00:03\nInstalling collected packages: triton, nvidia-cusparselt-cu12, mpmath, typing-extensions, sympy, pillow, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, fsspec, filelock, nvidia-cusparse-cu12, nvidia-cudnn-cu12, jinja2, nvidia-cusolver-cu12, torch, torchvision\n\nSuccessfully installed MarkupSafe-3.0.4 filelock-4.1.0 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.4.2 numpy-2.2.6 nvidia-cublas-cu12-12.4.5.8 nvidia-cuda-cupti-cu12-12.4.127 nvidia-cuda-nvrtc-cu12-12.4.127 nvidia-cuda-runtime-cu12-12.4.127 nvidia-cudnn-cu12-9.1.0.70 nvidia-cufft-cu12-11.2.1.3 nvidia-curand-cu12-10.3.5.147 nvidia-cusolver-cu12-11.6.1.9 nvidia-cusparse-cu12-12.3.1.170 nvidia-cusparselt-cu12-0.6.2 nvidia-nccl-cu12-2.21.5 nvidia-nvjitlink-cu12-12.4.127 nvidia-nvtx-cu12-12.4.127 pillow-10.4.0 sympy-1.13.1 torch-2.6.0+cu124 torchvision-0.21.0+cu124 triton-3.2.0 typing-extensions-4.16.0\n"
+    }
+  },
+  "markers": {
+    "COMPLETE.json": null,
+    "FAILED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "error_type": "AssertionError",
+      "formal_gate_status": "not_run_not_passed",
+      "jobs_created": false,
+      "message": "install stage failed: author_dependencies.log",
+      "no_automatic_retry": true,
+      "operator_approved": false,
+      "remote_utc": "2026-11-03T17:21:20.192532+00:00",
+      "stage": "author_dependencies",
+      "status": "environment_r2_preparation_failed"
+    },
+    "STARTED.json": {
+      "artifact_status": "experimental_unvalidated",
+      "environment": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_intel_py310_r2",
+      "formal_gate_status": "not_run_not_passed",
+      "free_bytes_before": 1109217247232,
+      "old_failure_preserved": true,
+      "only_install_method_changed": true,
+      "operator_approved": false,
+      "status": "started",
+      "utc": "2026-11-03T17:06:18.581704+00:00"
+    }
+  },
+  "operator_approved": false,
+  "remote_utc": "2026-11-03T17:21:59.417541+00:00",
+  "source_identity": {
+    "artifact_status": "experimental_unvalidated",
+    "commit": "83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+    "files": {
+      "Dockerfile": {
+        "bytes": 4431,
+        "git_blob_sha": "d32e736a5120935f17599a099725a7404ef624b7",
+        "sha256": "5ee8518fd955e250876f18d4930642f2a7723c3e0441d97724cdc88e3d321799"
+      },
+      "LICENSE": {
+        "bytes": 11377,
+        "git_blob_sha": "d41c4305ea5ad4f76818dba398f2b6e4c8f64523",
+        "sha256": "fbd195c65cb62102a0accff76830042109e97e9d3198ecc20d9e9e0a937d74c4"
+      },
+      "docker/entrypoint.sh": {
+        "bytes": 858,
+        "git_blob_sha": "e6878efbb5bc3be48b1b0679101eeaac95c8bff4",
+        "sha256": "57cd18f67dbf1ad9c121ffe827b9622376917acef0cb939ea2f2b727d8aca9ad"
+      },
+      "docker/install_trainers.py": {
+        "bytes": 3113,
+        "git_blob_sha": "2b0eda369f2578dcc347b66cd7788c5df1a2740e",
+        "sha256": "6df2f2fb3eaea759c689daf45c9931ede7ad321e6b1a8e52a71f881583b69472"
+      },
+      "environment.yaml": {
+        "bytes": 863,
+        "git_blob_sha": "c817f6016db1f25f19f6eb2494ad0dd272ccdbf5",
+        "sha256": "3430a7ccf3d695931cc7444709b39108e1e545ef4257c10351e6a729d38fd116"
+      },
+      "requirements.txt": {
+        "bytes": 397,
+        "git_blob_sha": "c2e82300b59438d05729fba96946d94f99cde2d1",
+        "sha256": "5e8b090e46dd4b3ab912de18797c5c43c088ab8f55091372b59fbaf3eabc286a"
+      },
+      "src/config.py": {
+        "bytes": 5203,
+        "git_blob_sha": "25361a611d28f59598f8b00dad2ac50278900bce",
+        "sha256": "0dd581f300f80f4e84728020fd10952e00058be01fd594ebdf952ca2f2af8ff4"
+      },
+      "src/postprocess.py": {
+        "bytes": 2336,
+        "git_blob_sha": "b61ec178b48fa208086068019709ac14f4ba87d2",
+        "sha256": "d0b71a0920e47e5cf16c8201409415f788bd8fb9327711e87157009b1c96e453"
+      },
+      "src/predict.py": {
+        "bytes": 11192,
+        "git_blob_sha": "2515d256e0a864fe3d77540d5a99d877fb6061f8",
+        "sha256": "0934238da7adddf90eefccf3f1e91bc83d85c8708b2548745a67ba9e0c55312f"
+      },
+      "trainers/__init__.py": {
+        "bytes": 272,
+        "git_blob_sha": "995af0cf7129bc34df79c30057fd0ee67607cfac",
+        "sha256": "e77188e791bea6d584f0a60db4edec070c25488d5a325375384e4fc32a878faf"
+      },
+      "trainers/custom_dataloaders.py": {
+        "bytes": 8812,
+        "git_blob_sha": "e34107b61da69c7e647b85aaa92896b3d3ce59f7",
+        "sha256": "d74ec2d54f9d406b57b89a3fedd0c81b78271429a6b5d8fc412220a0969fce19"
+      },
+      "trainers/nnUNetTrainerBraTS_BrainIACWrapper_RCOversample.py": {
+        "bytes": 18226,
+        "git_blob_sha": "76f1a569d40045d44e28d7c379fed6eb84b41b75",
+        "sha256": "4a9af462917f3984c01f75a033829d3de5b7e26e49b311646008da6a8a0f367e"
+      },
+      "trainers/nnUNetTrainerBraTS_RCOversample.py": {
+        "bytes": 1853,
+        "git_blob_sha": "8e8c6c98aca7ada60b700227f19839b3c351e50f",
+        "sha256": "3c780a6106e14c585f6e4ce44e09ab57e9132b03ba06e9a4fa28df105de29e3b"
+      },
+      "trainers/nnUNetTrainerBraTS_SmallLesionWeightedCE.py": {
+        "bytes": 14740,
+        "git_blob_sha": "af349001e0bffd662c789e5b2c9ebe609450416f",
+        "sha256": "49c37d567f020d2db15afc2de11096baf1fdb65970417d5fae497caadd7f03a8"
+      },
+      "trainers/nnUNetTrainerBraTS_TriadInit_RCOversample.py": {
+        "bytes": 14292,
+        "git_blob_sha": "352bcb33cbae4e3e170f935c93a27a6e20f1131a",
+        "sha256": "a03f9eb930da69ed2be3a1b5209cdfe3c34e8e30e1a4f32400184c7abb3d16fb"
+      },
+      "trainers/nnUNetTrainerBraTS_TriadInit_SmallLesionWeightedCE.py": {
+        "bytes": 8292,
+        "git_blob_sha": "8f237ead2a482a4639450e31460cd6e04d30064c",
+        "sha256": "f79dab251ab15efe54a4b65d837af319817b54eaeb9037cf36c7a06fdae81738"
+      },
+      "trainers/rc_sampling.py": {
+        "bytes": 1476,
+        "git_blob_sha": "2b99518bd0c233c455dd6c14856a1792e2d3bb67",
+        "sha256": "1153d662840698a3ea37c0e3bd0b086b3a1a009a2614c3fbe29403fcb736ee37"
+      },
+      "trainers/small_lesion_weighting.py": {
+        "bytes": 2704,
+        "git_blob_sha": "68ac173b02620a56d1bc84014fb23a1ff4290bf9",
+        "sha256": "1af93b029672dd8b55d98943be757e939ec3d03a7c77c1b8dd7ae901e5c199b6"
+      },
+      "trainers/weighted_losses.py": {
+        "bytes": 1778,
+        "git_blob_sha": "97dd45251c7107a1ee296baacd4a3314f301ccb4",
+        "sha256": "6b794cbf3eb698b3791f9b1213a986a4eae024d7427521a5cfd90cfa1bf82765"
+      }
+    },
+    "formal_gate_status": "not_run_not_passed",
+    "operator_approved": false
+  }
+}

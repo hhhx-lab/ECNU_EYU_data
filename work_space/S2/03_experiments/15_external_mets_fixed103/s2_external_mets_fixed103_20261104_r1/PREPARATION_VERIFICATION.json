@@ -1,0 +1,83 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "offline_preparation_QA_pass_not_runtime_or_scientific_pass",
+  "checked_utc": "2026-11-03T16:54:03.716631+00:00",
+  "checks": [
+    {
+      "check": "local_and_embedded_AST",
+      "file": "operator/asset_access.py",
+      "status": "pass"
+    },
+    {
+      "check": "local_and_embedded_AST",
+      "file": "operator/asset_network_details.py",
+      "status": "pass"
+    },
+    {
+      "check": "local_and_embedded_AST",
+      "file": "operator/container_details.py",
+      "status": "pass"
+    },
+    {
+      "check": "local_and_embedded_AST",
+      "file": "operator/preflight.py",
+      "status": "pass"
+    },
+    {
+      "check": "local_and_embedded_AST",
+      "file": "operator/public_sources.py",
+      "status": "pass"
+    },
+    {
+      "check": "local_and_embedded_AST",
+      "file": "operator/verify_preparation.py",
+      "status": "pass"
+    }
+  ],
+  "read_only_snapshot_receipts": [
+    {
+      "path": "operator/s0_preflight_20261103T164246Z",
+      "result_sha256": "2697ba96f49da28b0f4ef4ac9714e514bd09a0abfb0cc39920c4bc30d868a02d",
+      "local_receipt_sha256": "49667548a86b038a88e9e31926240556f315231432b6a9167685ea5e19061214",
+      "remote_utc": "2026-11-03T16:32:03.278161+00:00",
+      "received_utc": "2026-11-03T16:43:28.516278+00:00",
+      "vpn_stop_confirmed": true
+    },
+    {
+      "path": "operator/s0_preflight_20261103T164646Z",
+      "result_sha256": "e20b11dfdb64834d7cf1ed87979da72837b0a3b4a28180959f7f9f9f09648934",
+      "local_receipt_sha256": "3bb8ee8a9ef6ecf09d48a7e7d47560a1867ed70ae5be324c01b5b9c866fcc911",
+      "remote_utc": "2026-11-03T16:35:54.218122+00:00",
+      "received_utc": "2026-11-03T16:47:19.758352+00:00",
+      "vpn_stop_confirmed": true
+    },
+    {
+      "path": "operator/s0_preflight_20261103T165006Z",
+      "result_sha256": "d3c152ef9d472b099d9586c504ef44fccb049a18144a4524500e290175eb60cc",
+      "local_receipt_sha256": "f73930719da9822fcae6c5ff35e69cfc3dfcf905f148b7bf497f592ace5d978c",
+      "remote_utc": "2026-11-03T16:40:57.772718+00:00",
+      "received_utc": "2026-11-03T16:52:23.042265+00:00",
+      "vpn_stop_confirmed": true
+    },
+    {
+      "path": "operator/s0_preflight_20261103T165309Z",
+      "result_sha256": "1b2536505e4c432eac7b71c23e73bb6668ce67f4c9ec7ef2936720234a4d51e9",
+      "local_receipt_sha256": "2cbaa53c18886ef4e009aff613728c87d022b473a9864772245eed49b59c8123",
+      "remote_utc": "2026-11-03T16:42:30.251860+00:00",
+      "received_utc": "2026-11-03T16:53:55.477637+00:00",
+      "vpn_stop_confirmed": true
+    }
+  ],
+  "source_metadata_records": 8,
+  "raw_public_text_git_excluded": true,
+  "jobs_created": false,
+  "model_assets_downloaded": false,
+  "dependencies_installed": false,
+  "known_local_probe_failures": [
+    "Unquoted GitHub query URL rejected by zsh before any network request",
+    "Local Dropbox HEAD timed out after 35 seconds; no model body requested",
+    "Playwright network-request argument validation rejected once; corrected to index/response-body; no remote action"
+  ]
+}

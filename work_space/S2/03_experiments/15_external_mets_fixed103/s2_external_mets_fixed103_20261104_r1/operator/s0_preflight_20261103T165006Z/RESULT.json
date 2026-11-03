@@ -1,0 +1,71 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "conda_executable": "/public/software/apps/miniconda3/bin/conda",
+  "docker_manifest": {
+    "error": "<urlopen error [Errno 101] Network is unreachable>",
+    "error_type": "URLError",
+    "no_automatic_retry": true,
+    "status": "error"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "local_received_utc": "2026-11-03T16:52:23.042265+00:00",
+  "operator_approved": false,
+  "remote_started_utc": "2026-11-03T16:39:08.920430+00:00",
+  "remote_utc": "2026-11-03T16:40:57.772718+00:00",
+  "scope": {
+    "binary_download": false,
+    "dependencies_installed": false,
+    "jobs_created": false,
+    "remote_writes": false,
+    "tls_verification_disabled": false
+  },
+  "sources": {
+    "bio_source": {
+      "headers": {
+        "Content-Length": "2363",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "\"c817f6016db1f25f19f6eb2494ad0dd272ccdbf5\""
+      },
+      "requested_utc": "2026-11-03T16:40:19.285083+00:00",
+      "status": 200,
+      "url": "https://api.github.com/repos/thekeramik05/MICCAI-METS_challenge_bi-intel/contents/environment.yaml?ref=83c73e0cac0b5a3c77a298547040ea3ea7f99854"
+    },
+    "bio_weights": {
+      "error": "<urlopen error [Errno 101] Network is unreachable>",
+      "error_type": "URLError",
+      "no_automatic_retry": true,
+      "requested_utc": "2026-11-03T16:39:08.920475+00:00",
+      "status": "error",
+      "url": "https://huggingface.co/keramik05/MICCAI-METS_challenge_bi-intel_model/resolve/4a8291024dafb79b4c0cc381438e976a36072201/weights.zip"
+    },
+    "brainiac": {
+      "error": "<urlopen error [Errno 101] Network is unreachable>",
+      "error_type": "URLError",
+      "no_automatic_retry": true,
+      "requested_utc": "2026-11-03T16:39:44.183212+00:00",
+      "status": "error",
+      "url": "https://www.dropbox.com/scl/fo/i51xt63roognvt7vuslbl/AMblt6reQVvlSrORTB3_2lE/BrainIAC.ckpt?rlkey=9w55le6tslwxlfz6c0viylmjb&dl=1"
+    },
+    "conda_repodata": {
+      "headers": {
+        "Content-Length": "462684227",
+        "Content-Type": "application/json",
+        "ETag": "\"2d2b7a745fa1b75cc7eb15ffeee3f45d\""
+      },
+      "requested_utc": "2026-11-03T16:40:21.355736+00:00",
+      "status": 200,
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/repodata.json"
+    },
+    "torch_index": {
+      "headers": {
+        "Content-Length": "46640",
+        "Content-Type": "text/html",
+        "ETag": "\"b4b7624c3d7f6f3fa17027f509bc257f\""
+      },
+      "requested_utc": "2026-11-03T16:40:21.076673+00:00",
+      "status": 200,
+      "url": "https://download.pytorch.org/whl/cu124/torch/"
+    }
+  },
+  "status": "asset_endpoint_metadata_only"
+}
