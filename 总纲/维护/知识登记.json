@@ -1,15 +1,15 @@
 {
-  "reviewed_at": "2026-11-03T19:06:51Z",
+  "reviewed_at": "2026-11-04T03:20:26Z",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
     {
       "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1",
-      "description": "两外部METS成品同fixed103实施S0，R3依赖失败保留，资产两轮远端SHA及Mac专属清理完成",
+      "description": "两外部METS同fixed103实施S0；资产中转验收完成，R4镜像缺包预检停止、官方源未核实，SIF超时保留",
       "kind": "experiment",
-      "state": "S0_TRANSFER_ACCEPTED_MAC_CLEANED_ENV_R3_FAILED_SIF_TIMEOUT；R3兼容pandas2.3.3/numpy2.2.6及原cu124确认，但三个间接依赖源码编译失败，R4待确认。15资产7281531462bytes两轮远端SHA通过，Mac本批临时根已清除、余127.251751GiB，传输自建VPN关闭。七份Bio checkpoint/plans/dataset及11层OCI diff_id、8.409GB归档身份通过，未加载模型。现有Singularity sandbox展开超时1799.975秒，远端FAILED18:52:43.905621/本地finally19:04:17.537212自建VPN关闭，无SIF COMPLETE，未到压缩/封装；不据超时推断权限/镜像或GPU失败。转换后独立只读诊断因NUL命令编码失败、19:05:15.879142仅关自建VPN，未取得更新存储/进程终态；仅本地bytes([0])/生成代码编译修正及38tests pass，无再SSH或重试。最后有效余1073182932992bytes=999.479492GiB为转换中远端18:27:43.060517，不当最新账号quota或全量峰值门。R1-R3/转换/诊断失败及原资产/归档保留，转换新attempt需单独核定，不改namespace/旧数据/monitor。515源/K1当前native及MET历史一致、完整S1冻结包/隔离/GPU门仍待验，七作业未创建、无JobID/新分数。2025登记103/103实际fold日志未知/Bio训练暴露/K1开发边界保持，不读test，三项科学状态不变。",
-      "reviewed_at": "2026-11-03T19:06:51Z",
+      "state": "S0_R4_PREFLIGHT_STOPPED_MIRROR_PACKAGE_MISSING_OFFICIAL_UNVERIFIED；R4已获同版本二进制核验后创建授权，但未创建或安装。真实host/glibc及六精确版本dry-run在solver停止：服务器现有Conda别名指向清华镜像，PackagesNotFoundError仅列connected-components-3d4.1.1，不证明官方缺包或其余版本联合兼容。远端2026-11-04T02:59:41.062789、本地finally03:11:07.714943仅关自建VPN，旧R1-R3 metadata/Python及失败marker前后SHA未变。独立官方API三固定release请求均URLError，本地03:12:32.114423结束，无二进制下载，未判定网络/TLS原因或官方版本有无。官方完整channel URL的新独立预检已请求确认但未授权/执行，不改全局配置/版本、不自动重试。51项既有brats2023_seg本地测试通过，非完整远端环境/未知权重加载/A100通过。15资产7281531462bytes两轮远端SHA及Mac专属清理已完成；七份Bio checkpoint/plans/dataset与11层OCI diff_id及归档身份通过，未加载模型。原SIF sandbox展开1799.975秒超时、转换后NUL诊断失败保留，无可验收SIF；未获转换重试授权，不据超时断言权限/镜像/GPU错误。最后有效余1073182932992bytes=999.479492GiB为2026-11-03T18:27:43.060517转换中快照，不称当前存储/账号quota。515源/K1当前native及MET历史一致、完整S1冻结包/隔离/GPU门仍待验；七作业未创建、无JobID/新分数，不恢复monitor、不读test。2025登记103/103实际fold日志未知、Bio训练暴露、K1开发边界及三项科学状态保持。",
+      "reviewed_at": "2026-11-04T03:20:26Z",
       "review_date_local": "2026-11-04",
       "publication_boundary": "仅原创代码/文档、轻量身份/许可/聚合SHA与回执入Git，第三方完整源码/镜像dataset正文、模型/ZIP、Mac临时分片、测试源码、.env与代理/凭据不入Git。模型长期存ECNU；本次Mac临时分片仅在全远端验收后限定清除，原失败审计保留，不删除旧数据。",
       "artifact_status": "experimental_unvalidated",
@@ -37,7 +37,13 @@
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/materialize_server_assets_20261103T182944Z/RESULT.json",
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_materialization_20261103T183903Z/RESULT.json",
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_materialization_20261103T190455Z/FAILED.json",
-        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261103T190630Z/VERIFICATION.json"
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261103T190630Z/VERIFICATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_AUTHORIZATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_PREFLIGHT_FAILURE_ANALYSIS.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/preflight_environment_r4_20261104T031004Z/RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/preflight_environment_r4_20261104T031004Z/LOCAL_OPERATION_RECEIPT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/official_conda_r4_metadata_20261104T031220Z/RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T031635Z/VERIFICATION.json"
       ]
     },
     {

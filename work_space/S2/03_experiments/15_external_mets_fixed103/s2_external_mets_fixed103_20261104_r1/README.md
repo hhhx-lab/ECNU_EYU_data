@@ -6,10 +6,12 @@
 
 当前事实以[STATUS_20261104.md](STATUS_20261104.md)和operator逐次UTC回执为准。`.env`只存路径配置，不复制登录密码；凭据只由原服务器env加载。用户已单独授权指定模型资产在Mac专属临时目录中转；全部远端bytes/SHA验收后只清理本批临时文件，模型长期存储仍在服务器。MRI/GT/预测不回传Mac。
 
-最新：`S0_TRANSFER_ACCEPTED_MAC_CLEANED_ENV_R3_FAILED_SIF_TIMEOUT`。R3的兼容pandas/NumPy安装完成，但三个间接依赖源码编译失败，环境无COMPLETE，R4须新确认；[环境失败分析](ENVIRONMENT_R3_FAILURE_ANALYSIS.json)保留原始阶段/版本/两端UTC。15个指定模型资产约6.782GiB已完成两轮远端SHA验收，本次Mac临时目录已清除、传输自建VPN已关闭，见`operator/transfer_assets_20261103T180257Z/TRANSFER_ACCEPTANCE.json`及`MAC_CLEANUP_COMPLETE.json`。七权重/配套metadata及OCI diff_id核验完成；现有Singularity sandbox展开触发1800秒时限，无可验收SIF，见[转换失败分析](ASSET_MATERIALIZATION_FAILURE_ANALYSIS.json)。原资产/归档/失败保留，不自动重试。七Slurm作业仍未创建，无推理或新分数。
+最新：`S0_R4_PREFLIGHT_STOPPED_MIRROR_PACKAGE_MISSING_OFFICIAL_UNVERIFIED`。R4已授权，但一次dry-run实际走现有清华镜像、缺connected-components-3d4.1.1而停止；R4未创建或安装，R1-R3与原失败SHA核验未变。官方API检查也访问失败，不称官方仓库缺包；已请求一次官方完整URL独立预检确认，未执行，见[预检失败分析](ENVIRONMENT_R4_PREFLIGHT_FAILURE_ANALYSIS.json)。此前15模型资产两轮远端SHA和Mac专属清理已完成，原资产/归档/失败留服务器；SIF展开超时未重试。七作业未创建，无模型运行或新分数。
 
 ## 输入、动作与产物
 
+- R4最新：用户已授权同版本二进制核验后创建，但预检实际走服务器既有清华镜像、缺connected-components-3d4.1.1而停止；R4未创建/安装，原R1-R3核验未变。官方API查询均访问失败，不称官方缺包；直接指定官方完整URL的独立预检已请求确认，未执行，见[预检失败分析](ENVIRONMENT_R4_PREFLIGHT_FAILURE_ANALYSIS.json)。上方SIF终态仍是已有资产准备的历史事实，不覆盖本次R4预检停止。
+- operator/preflight_environment_r4.py及environment_binary_contract.py：一次真实glibc/virtual package/精确六版本dry-run，版本/平台/来源/重复/Torch或编译器替换门；不安装、不创建环境。operator/inspect_conda_forge_r4_metadata.py只读固定官方API元数据，不下载模型/包，不重试安装。
 - 输入：固定2025镜像digest、Bio-Intel commit/HF revision、BrainIAC官方链接/研究许可、同103真实四模态及K1原输入参考515清单。不得用其他模型、补全T2W或其他split替代。
 - `operator/preflight.py`及独立能力诊断：四份有界只读S0快照，核资源/容量/容器/资产出口/K1身份，不是完整输入体素验收。
 - `operator/install_environment.py`：原独立环境因CUDA单索引的Pillow源码构建依赖失败，环境/源码/日志/回执保留。
@@ -19,7 +21,7 @@
 - `operator/transfer_assets.py`：仅消费本次唯一成功清单，fresh容量门、独占SCP `.part`、逐文件和全15文件远端SHA、两端UTC验收；之后按专属临时清单SHA核对并清理，不清其他缓存或旧服务器数据。尚未执行时不得称模型已传输或缓存已清。
 - `runtime/materialize_assets.py`：离线OCI/diff_id逐层核验、标准docker-archive及安全独占ZIP展开完成；一次现有CE4.1.1 sandbox展开超时，未到系统mksquashfs和原生SIF封装。原1800秒预算、压缩资源约束和失败保留，不改管理员配置、不自动延时。完整七fold元数据身份已核，模型加载/隔离和SIF门未通过。
 - `operator/snapshot_materialization.py`：转换中一次只读日志/marker/路径大小快照成功，余999.479492GiB；转换后新增进程检查的独立诊断命令编码失败，未取得新存储/进程终态。仅修正本地生成代码并前置编译验证，未再SSH执行，不把本地修正当远端验收。
-- `operator/verify_local_transport.py`：最新38项本地输入、传输回执JSON、敏感头清理、ZIP/解压界限、原生SIF描述符及生成快照代码回归通过，见`operator/verify_transport_20261103T190630Z/VERIFICATION.json`；source SHA/test日志可追溯，测试源码留本机不提交，非远端精确环境或A100测试。
+- `operator/verify_local_transport.py`：最新51项本地输入、传输回执JSON、敏感头清理、ZIP/解压界限、原生SIF描述符、生成代码、二进制合同及官方元数据错误语义回归通过，见`operator/verify_transport_20261104T031635Z/VERIFICATION.json`；source SHA/test日志可追溯，测试源码留本机不提交，非远端精确环境或A100测试。
 
 ## 尚未完成的门
 

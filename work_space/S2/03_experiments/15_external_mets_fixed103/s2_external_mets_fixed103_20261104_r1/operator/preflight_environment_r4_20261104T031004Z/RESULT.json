@@ -1,0 +1,17 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "environment_created": false,
+  "error_type": "AssertionError",
+  "formal_gate_status": "not_run_not_passed",
+  "jobs_created": false,
+  "message": "solver failed: PackagesNotFoundError",
+  "models_loaded": false,
+  "no_automatic_retry": true,
+  "operator_approved": false,
+  "prior_environments_preserved": true,
+  "remote_utc": "2026-11-04T02:59:41.062789+00:00",
+  "solver_sha256": "af47855a93ea3aa0ab21c96fafa11afb9710f083d39843f392ca0fe6f4eadb95",
+  "solver_tail": "{\n  \"allow_retry\": false,\n  \"caused_by\": \"None\",\n  \"channel_urls\": [\n    {\n      \"auth\": null,\n      \"location\": \"mirrors.tuna.tsinghua.edu.cn/anaconda/cloud\",\n      \"name\": \"conda-forge\",\n      \"package_filename\": null,\n      \"platform\": null,\n      \"scheme\": \"https\",\n      \"token\": null\n    }\n  ],\n  \"channels_formatted\": \"  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\",\n  \"error\": \"PackagesNotFoundError: The following packages are not available from current channels:\\n\\n  - connected-components-3d=4.1.1\\n\\nCurrent channels:\\n\\n  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\\n\\nTo search for alternate channels that may provide the conda package you're\\nlooking for, navigate to\\n\\n    https://anaconda.org\\n\\nand use the search bar at the top of the page.\\n\",\n  \"exception_name\": \"PackagesNotFoundError\",\n  \"exception_type\": \"<class 'conda.exceptions.PackagesNotFoundError'>\",\n  \"message\": \"The following packages are not available from current channels:\\n\\n  - connected-components-3d=4.1.1\\n\\nCurrent channels:\\n\\n  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge\\n\\nTo search for alternate channels that may provide the conda package you're\\nlooking for, navigate to\\n\\n    https://anaconda.org\\n\\nand use the search bar at the top of the page.\\n\",\n  \"packages\": [\n    \"connected-components-3d=4.1.1\"\n  ],\n  \"packages_formatted\": \"  - connected-components-3d=4.1.1\"\n}\n\n",
+  "stage": "same_version_binary_solver",
+  "status": "r4_binary_preflight_failed_no_install_no_jobs"
+}
