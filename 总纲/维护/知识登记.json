@@ -1,17 +1,17 @@
 {
-  "reviewed_at": "2026-11-04T05:40:55Z",
+  "reviewed_at": "2026-11-04T05:52:28Z",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
     {
       "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1",
-      "description": "两外部METS同fixed103 S0；官方R4预检在错误历史marker路径处停止，独立修正本地60测试通过未远端执行",
+      "description": "两外部METS同fixed103 S0；修正版官方R2获授权但VPN登录门停止未SSH，正常校园登录与接续确认待完成",
       "kind": "experiment",
-      "state": "S0_R4_OFFICIAL_PREFLIGHT_OPERATOR_MARKER_PATH_STOPPED_BEFORE_SOLVER；用户继续确认官方完整URL预检，但新操作器误要求operator/environment/FAILED.json，原R1安装器/历史回执约定operator/ENV_INSTALL_FAILED.json。SSH退出1/guard报missing，Conda info/solver未调用，未创建R4/安装/提交；不能称旧失败丢失、官方缺包或模型/GPU失败。本次无远端UTC、最新容量/glibc/完整前后SHA门，本地05:36:50.363707仅关自建VPN。旧镜像预检按if exists跳过错误R1 marker，其全部失败marker覆盖对R1不足，metadata/Python核验另列。独立official_r2 AST只修历史标记与新审计路径，原helper/失败保留，60项既有brats2023_seg本地测试pass非远端环境/A100pass；新远端尝试待确认未执行，不自动retry/SIF/恢复monitor。此前镜像缺cc3d4.1.1和官方API URLError不证明官方版本缺失。15资产7281531462bytes两轮远端SHA及Mac专属清理完成，七Bio权重/metadata和11OCI diff_id/归档身份已核未加载模型；SIF1799.975秒超时及结束诊断NUL失败保留，无可验收SIF，转换重试未授权。最后有效余999.479492GiB是11-03T18:27:43转换中观测非当前quota。515源/K1 native及新MET历史一致、完整S1包/隔离/GPU门待验，七作业未创建、无JobID/新分数。2025登记103/103实际fold未知、Bio训练暴露、K1开发边界及科学三状态不变，不读test。",
-      "reviewed_at": "2026-11-04T05:40:55Z",
+      "state": "S0_R4_OFFICIAL_R2_VPN_LOGIN_NOT_READY_NO_SSH；用户明确确认只修历史R1路径后的独立R2预检，33源码SHA与60本地测试一致。一次本地05:48:04启动在VPN归属标记缺失门停止，05:48:41收尾，未SSH/Conda/创建R4/安装/提交，无本次远端UTC/新存储/版本门。未调用stop；一次本机只读status于05:49:37确认logout/tunnelUnavailable，05:50:08脱敏私有登录诊断显示学校SSO密码表单仍在、未命中验证码/MFA文字，不证明密码/账号错误或无其他认证要求。Chrome tab检查未返回，等待取消，不称页面核验。用户需按正常学校流程完成aTrust浏览器登录并确认接续同一未远端执行的R2，不请求密码、不自动再启动VPN/SSH/SIF。原路径/镜像/官方API/环境及转换失败全部保留，旧镜像R1 marker因exists跳过覆盖不足须与metadata/Python门分开。15资产7281531462bytes两轮远端SHA与Mac专属清理完成；七Bio权重/metadata/11OCI diff_id及归档身份已核未加载，SIF展开1799.975秒超时无验收SIF，重试未授权。最后有效余999.479492GiB仍是11-03T18:27:43转换中观测非当前quota。515源/K1 native及新MET历史一致、完整S1/隔离/GPU门待验，七作业未创建、无JobID/新分数。2025登记103/103实际fold未知/Bio训练暴露/K1开发边界及科学三状态保持，不读test/恢复monitor。",
+      "reviewed_at": "2026-11-04T05:52:28Z",
       "review_date_local": "2026-11-04",
-      "publication_boundary": "仅原创代码/文档、轻量身份/许可/聚合SHA与回执入Git，第三方完整源码/镜像dataset正文、模型/ZIP、Mac临时分片、测试源码、.env与代理/凭据不入Git。模型长期存ECNU；本次Mac临时分片仅在全远端验收后限定清除，原失败审计保留，不删除旧数据。",
+      "publication_boundary": "仅原创代码/文档、轻量身份/许可/聚合SHA与回执入Git，第三方完整源码/镜像dataset正文、模型/ZIP、Mac临时分片、测试源码、.env与代理/凭据不入Git。模型长期存ECNU；本次Mac临时分片仅在全远端验收后限定清除，原失败审计保留，不删除旧数据。LOCAL_VPN_STATUS/LOGIN_DIAGNOSTIC虽只含脱敏状态，仍遵守索引敏感名称策略：仅物理路径元数据、不作curated内容证据；私有原VPN回执不复制。",
       "artifact_status": "experimental_unvalidated",
       "operator_approved": false,
       "formal_gate_status": "not_run_not_passed",
@@ -50,7 +50,11 @@
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/preflight_environment_r4_official_20261104T053621Z/LOCAL_OPERATION_RECEIPT.json",
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T053536Z/VERIFICATION.json",
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T053612Z/VERIFICATION.json",
-        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T054037Z/VERIFICATION.json"
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T054037Z/VERIFICATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_OFFICIAL_R2_AUTHORIZATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_OFFICIAL_R2_ACCESS_FAILURE.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/preflight_environment_r4_official_r2_20261104T054804Z/OPERATION_STOPPED.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/preflight_environment_r4_official_r2_20261104T054804Z/LOCAL_OPERATION_RECEIPT.json"
       ]
     },
     {

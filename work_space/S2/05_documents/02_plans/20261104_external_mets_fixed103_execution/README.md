@@ -2,6 +2,8 @@
 
 制定日期：2026-11-04，Asia/Shanghai。
 
+最新实施：修正路径后的独立R2已获用户确认，但本次只到VPN启动，归属未确认而停止，未进入SSH/Conda。未调用stop；一次只读status确认aTrust logout/tunnelUnavailable，SSO密码表单未完成，不推断密码/账号故障。用户需完成学校正常浏览器登录并确认接续同一尚未远端执行的R2；无新安装/作业/分数或SIF重试，见[接入失败分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_OFFICIAL_R2_ACCESS_FAILURE.json)。以下R2待首次授权为历史。
+
 最新实施：用户“继续”确认官方完整URL预检，但操作器误要求R1旧失败marker路径，在调用Conda之前停止；不是依赖/模型/GPU失败，未创建R4或七作业。自建VPN已关闭，未取得本次远端UTC/最新存储/完整身份门。独立R2仅修历史标记与审计路径，60本地测试通过，新的远端尝试待确认；SIF超时继续保留未重试。详见[官方预检分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_OFFICIAL_FAILURE_ANALYSIS.json)。下述首次官方源待确认是历史。
 
 最新实施：R4已获用户授权但预检未通过，实际Conda别名指向清华镜像，缺connected-components-3d4.1.1；旧R1-R3与失败核验未变，未创建/安装R4。官方API访问失败，不等于官方同版本缺失；已请求一次官方完整URL独立预检确认，未执行。51本地测试pass非实际兼容环境/模型通过。模型中转与Mac专属清理成功、SIF展开超时保留，七作业未创建。下列“R4待确认”属之前历史，此次待确认仅指新的官方源独立预检；详见[执行STATUS](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/STATUS_20261104.md)。原PLAN/VERIFICATION不改写。

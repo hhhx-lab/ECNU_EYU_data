@@ -6,7 +6,7 @@
 
 当前事实以[STATUS_20261104.md](STATUS_20261104.md)和operator逐次UTC回执为准。`.env`只存路径配置，不复制登录密码；凭据只由原服务器env加载。用户已单独授权指定模型资产在Mac专属临时目录中转；全部远端bytes/SHA验收后只清理本批临时文件，模型长期存储仍在服务器。MRI/GT/预测不回传Mac。
 
-最新：`S0_R4_OFFICIAL_PREFLIGHT_OPERATOR_MARKER_PATH_STOPPED_BEFORE_SOLVER`。用户“继续”已确认官方完整URL预检，但新操作器误要求`operator/environment/FAILED.json`，原R1实际标记由安装器写在`operator/ENV_INSTALL_FAILED.json`；检查停止，尚未调用Conda求解器/创建R4/安装。不能据此称旧失败丢失、官方缺包或GPU失败；本次未取得远端UTC/最新容量/完整前后身份门。自建VPN已关闭。独立R2仅修两个AST路径常量，本地60测试通过，新的远端尝试待确认；见[官方预检失败分析](ENVIRONMENT_R4_OFFICIAL_FAILURE_ANALYSIS.json)。此前资产中转验收和Mac专属清理完成，SIF超时未重试，七作业未创建。下述官方源待首次确认的描述是历史。
+最新：`S0_R4_OFFICIAL_R2_VPN_LOGIN_NOT_READY_NO_SSH`。用户已确认修正路径后的独立R2预检，33份源码与此前60测试身份一致；一次启动在VPN归属门停止，未SSH或调用Conda/创建R4/安装/提交。未调用stop；本机只读状态确认aTrust logout/tunnelUnavailable，脱敏诊断停在学校SSO密码表单、无验证码/MFA文字，但不判定密码/账号错误。请按学校流程完成aTrust浏览器登录后确认接续同一尚未执行的远端R2；未自动重启VPN或预检。见[接入失败分析](ENVIRONMENT_R4_OFFICIAL_R2_ACCESS_FAILURE.json)。原路径/镜像/SIF失败及资产验收保留，七作业未创建、无新分数；下述R2未获授权是历史。
 
 ## 输入、动作与产物
 
