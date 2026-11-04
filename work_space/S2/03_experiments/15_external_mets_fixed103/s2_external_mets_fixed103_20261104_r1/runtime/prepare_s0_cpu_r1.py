@@ -172,6 +172,10 @@ def main():
         for name, digest in contract['build_env_files'].items():
             require(sha(Path(contract['build_env'])/name) == digest, 'build environment drift: '+name)
         require(prior_guard(root) == contract['prior_guard'], 'old environment or failure drift')
+        require(sha(Path(contract['compiler_preflight'])/'COMPLETE.json')==contract['compiler_preflight_sha256'],
+                'independent compiler/scheduler acceptance drift')
+        require(sha(Path(contract['compiler_solver_preflight'])/'FAILED.json')==contract['original_R3_failed_sha256'],
+                'original R3 failure drift')
         require(sha(contract['archive']) == ARCHIVE_SHA, 'accepted archive drift')
         import shutil
         require(shutil.disk_usage(attempt).free > contract['incremental_budget_bytes'], 'CPU preparation fresh capacity failed')

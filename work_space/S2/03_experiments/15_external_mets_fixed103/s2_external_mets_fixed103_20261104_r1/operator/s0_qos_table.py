@@ -57,3 +57,73 @@ def validate_cpu_qos(rows,names,existing_jobs,cpus=8,mem_mib=65536,wall=14400):
         checked[name]=dict(max_wall_seconds=maximum,max_TRES_per_job=limits,
                            max_jobs_per_user=max_jobs,max_submit_jobs_per_user=max_submit)
     return checked
+
+
+def validate_cpu_snapshot(snapshot):
+    from s0_cpu_submission_contract import job_fields
+    scheduler=snapshot['scheduler']
+    for name,item in scheduler.items():
+        if name!='quota':assert item['returncode']==0, 'scheduler command failed: '+name
+    assert scheduler['libc']['stdout'].strip()=='glibc 2.17', 'real host libc drift'
+    partition=job_fields(scheduler['partition']['stdout'])
+    assert partition['PartitionName']=='cpu_192G' and partition['State']=='UP', 'CPU partition unavailable'
+    assert partition['AllowGroups']=='ALL', 'CPU partition group restriction not reviewed'
+    assert partition['RootOnly']=='NO' and partition['ReqResv']=='NO', 'CPU partition requires special access'
+    limit=wall_seconds(partition['MaxTime'])
+    assert limit is None or limit>=14400, 'CPU partition wall limit'
+    if partition['MaxMemPerNode']!='UNLIMITED':
+        assert memory_mib(partition['MaxMemPerNode'])>=65536, 'CPU partition memory limit'
+    if partition['MaxCPUsPerNode']!='UNLIMITED':
+        assert int(partition['MaxCPUsPerNode'])>=8, 'CPU partition CPU limit'
+    if partition['MaxNodes']!='UNLIMITED':assert int(partition['MaxNodes'])>=1, 'CPU partition node limit'
+    assert int(partition['MinNodes'])<=1, 'CPU partition minimum nodes'
+    associations=list(csv.DictReader(io.StringIO(scheduler['association']['stdout']),delimiter='|'))
+    eligible=[r for r in associations if r['User']=='zqchen' and r['Account']=='zqchen'
+              and r['Partition'] in ('','cpu_192G')]
+    assert len(eligible)==1, 'CPU association absent or ambiguous'
+    association=eligible[0]
+    assert partition['AllowAccounts']=='ALL' or 'zqchen' in partition['AllowAccounts'].split(','), 'CPU account disallowed'
+    queue=[line.split('|') for line in scheduler['own_queue']['stdout'].splitlines() if line]
+    assert all(len(row)==6 for row in queue), 'CPU queue schema drift'
+    count=len(queue)
+    for key in ('MaxJobs','MaxSubmit'):
+        assert key in association, 'association limit header absent'
+        if association[key]:assert int(association[key])>count, 'association job limit reached'
+    rows=parse_qos_table(scheduler['qos']['stdout'])
+    canonical={}
+    for name in rows:
+        assert name.lower() not in canonical, 'case-ambiguous QoS names'
+        canonical[name.lower()]=name
+    requested=[partition['QoS'],*association['QOS'].split(',')]
+    assert all(name and not name.startswith(('+','-')) for name in requested), 'QoS inheritance not resolved'
+    assert all(name.lower() in canonical for name in requested), 'applicable QoS absent'
+    names=list(dict.fromkeys(canonical[name.lower()] for name in requested))
+    allowed=partition['AllowQos']
+    if allowed!='ALL':
+        assert all(name.lower() in allowed.lower().split(',') for name in association['QOS'].split(',')), 'CPU QoS disallowed'
+    checked=validate_cpu_qos(rows,names,count)
+    for name in names:
+        row=rows[name]
+        for key in ('GrpTRES','GrpTRESMins','GrpTRESRunMins','GrpJobs','GrpSubmit','GrpWall','MaxTRESMins'):
+            assert not row.get(key), 'shared or runtime QoS limit requires usage audit: '+key
+        for key in ('MaxTRESPU','MaxTRESPA'):
+            if row.get(key):
+                assert count==0, 'aggregate QoS TRES requires current usage audit'
+                limits=dict(item.split('=',1) for item in row[key].split(','))
+                if 'cpu' in limits:assert int(limits['cpu'])>=8, 'aggregate CPU QoS limit'
+                if 'mem' in limits:assert memory_mib(limits['mem'])>=65536, 'aggregate memory QoS limit'
+                assert set(limits)<= {'cpu','mem','node'}, 'aggregate QoS resource not reviewed'
+                if 'node' in limits:assert int(limits['node'])>=1, 'aggregate node QoS limit'
+        for key in ('MaxJobsPA','MaxSubmitPA'):
+            if row.get(key):assert int(row[key])>count, 'account QoS job limit reached'
+    nodes=[line.split('|') for line in scheduler['nodes']['stdout'].splitlines() if line]
+    assert nodes and all(len(row)==5 for row in nodes), 'CPU node table schema drift'
+    suitable=[r[0] for r in nodes if r[1] in ('idle','mix','alloc') and int(r[2])>=8 and int(r[3])>=65536]
+    assert suitable, 'no configured CPU node meets request'
+    assert snapshot['free_bytes']>150*1024**3, 'CPU preparation filesystem capacity below reservation'
+    return dict(status='CPU_scheduler_request_eligible_not_running_or_full_capacity_pass',
+                account='zqchen',partition='cpu_192G',applicable_qos=names,checked_qos=checked,
+                association=association,existing_jobs=count,suitable_configured_nodes=suitable,
+                requested_resource=dict(cpus=8,memory_mib=65536,wall_seconds=14400,gpu=0),
+                filesystem_free_bytes=snapshot['free_bytes'],CPU_reservation_bytes=150*1024**3,
+                quota_query=scheduler['quota'],numeric_quota_verified=False,full_inference_capacity_pass=False)

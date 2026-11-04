@@ -1,0 +1,76 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "build_environment_exists": false,
+  "failed_marker_sha256": "be077b174c4975aa0ee7daa26dfd562816d726f0c71be433f19fcf0c54960ee6",
+  "failure": {
+    "artifact_status": "experimental_unvalidated",
+    "environment_created": false,
+    "error_type": "KeyError",
+    "formal_gate_status": "not_run_not_passed",
+    "jobs_created": false,
+    "message": "'build-backend'",
+    "models_loaded": false,
+    "no_automatic_retry": true,
+    "operator_approved": false,
+    "prior_environments_preserved": true,
+    "remote_utc": "2026-11-04T14:15:48.603287+00:00",
+    "stage": "accepted_R3_identity_and_source_requirements",
+    "status": "S0_input_staging_failed"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 916431306752,
+  "images_read": false,
+  "install_log_exists": false,
+  "jobs_created": false,
+  "models_loaded": false,
+  "operator_approved": false,
+  "prior_environments_preserved": true,
+  "remote_utc": "2026-11-04T14:17:06.297748+00:00",
+  "remote_writes": false,
+  "runtime_R4_exists": false,
+  "scheduler_acceptance_sha256": "d3057846d363c4850bffdb8c3c25ed9e6b9af5529f783740917f6319e123c014",
+  "solver_rerun": false,
+  "sources": {
+    "connected-components-3d": {
+      "build_system": {
+        "requires": [
+          "setuptools",
+          "wheel",
+          "numpy"
+        ]
+      },
+      "pyproject_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+      "setup_cfg_exists": true,
+      "setup_py_exists": true,
+      "source_sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990"
+    },
+    "ndindex": {
+      "build_system": {
+        "build-backend": "setuptools.build_meta",
+        "requires": [
+          "setuptools; platform_python_implementation != 'PyPy'",
+          "setuptools<72.2; platform_python_implementation == 'PyPy'",
+          "cython"
+        ]
+      },
+      "pyproject_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+      "setup_cfg_exists": true,
+      "setup_py_exists": true,
+      "source_sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11"
+    },
+    "numexpr": {
+      "build_system": {
+        "build-backend": "setuptools.build_meta",
+        "requires": [
+          "setuptools>=77.0.0",
+          "numpy>=2.0.0"
+        ]
+      },
+      "pyproject_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+      "setup_cfg_exists": true,
+      "setup_py_exists": true,
+      "source_sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b"
+    }
+  },
+  "status": "read_only_source_build_failure_diagnosis_not_retry"
+}

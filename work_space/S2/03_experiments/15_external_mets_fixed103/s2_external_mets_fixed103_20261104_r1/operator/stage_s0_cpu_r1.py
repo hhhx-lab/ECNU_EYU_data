@@ -21,9 +21,14 @@ try:
         require(sha(attempt/'runtime'/name)==digest,'received runtime SHA drift: '+name)
         compile((attempt/'runtime'/name).read_text(),name,'exec')
     require(not prefix.exists(),'build environment already exists; no install retry')
-    preflight_audit=root/'operator/s0_source_build_preflight_r3'
-    preflight=json.loads((preflight_audit/'COMPLETE.json').read_text())
-    require(preflight['status']=='s0_source_build_preflight_pass_no_install_no_job','compiler preflight incomplete')
+    accepted_audit=root/'operator/s0_scheduler_acceptance_r1'
+    preflight=json.loads((accepted_audit/'COMPLETE.json').read_text())
+    require(preflight['status']=='s0_scheduler_acceptance_pass_same_R3_plan_no_install_no_job','independent compiler/scheduler acceptance incomplete')
+    preflight_audit=Path(preflight['source_preflight'])
+    require(preflight_audit==root/'operator/s0_source_build_preflight_r3','accepted solver source path drift')
+    require(sha(preflight_audit/'FAILED.json')==preflight['failed_marker_sha256'],'original R3 failure SHA drift')
+    require(not (preflight_audit/'COMPLETE.json').exists(),'R3 original failure overwritten')
+    require({p.name:sha(p) for p in preflight_audit.iterdir() if p.is_file()}==preflight['source_preflight_files'],'original R3 audit changed')
     solver=json.loads((preflight_audit/'SOLVER.json').read_text())
     require(sha(preflight_audit/'SOLVER.json')==preflight['solver_sha256'],'solver identity drift')
     selected=validate_build_plan(solver)
@@ -77,7 +82,8 @@ try:
         backend='/public/software/singularity-ce/4.1.1/bin/singularity',readelf=str(readelf),
         archive=str(root/'assets/container_conversion/fixed2025.docker-archive.tar'),archive_sha256=ARCHIVE_SHA,
         sources=SOURCES,build_configurations=builds,build_env_files=build_files,package_files=package,prior_guard=before,
-        compiler_preflight_sha256=sha(preflight_audit/'COMPLETE.json'),compiler_preflight=str(preflight_audit),
+        compiler_preflight_sha256=sha(accepted_audit/'COMPLETE.json'),compiler_preflight=str(accepted_audit),
+        compiler_solver_preflight=str(preflight_audit),original_R3_failed_sha256=preflight['failed_marker_sha256'],
         source_build_requirements_sha256=sha(audit/'SOURCE_BUILD_REQUIREMENTS.json'),
         incremental_budget_bytes=150*1024**3,budget_scope='conservative_CPU_preparation_reservation_not_full_inference',
         resource=dict(partition='cpu_192G',cpus_per_task=8,memory_gib=64,time_limit='04:00:00',gpu=0),
@@ -111,13 +117,14 @@ def main():
     authorization = json.loads((ROOT/'S0_BUILD_CONVERSION_AUTHORIZATION.json').read_text())
     assert authorization['new_cpu_preparation_job_authorized']
     assert json.loads((ROOT/'S0_SOURCE_BUILD_R3_AUTHORIZATION.json').read_text())['independent_R3_parser_correction_authorized']
+    assert json.loads((ROOT/'S0_SCHEDULER_R1_AUTHORIZATION.json').read_text())['independent_scheduler_acceptance_authorized']
     remote = os.environ['EXTERNAL_MET_REMOTE_ROOT']
     py = os.environ['ECNU_REMOTE_PYTHON']
     with session('stage_s0_cpu_r1') as access:
         bootstrap = '''from pathlib import Path
 import json
 root=Path('''+repr(remote)+''')
-assert json.loads((root/'operator/s0_source_build_preflight_r3/COMPLETE.json').read_text())['status']=='s0_source_build_preflight_pass_no_install_no_job'
+assert json.loads((root/'operator/s0_scheduler_acceptance_r1/COMPLETE.json').read_text())['status']=='s0_scheduler_acceptance_pass_same_R3_plan_no_install_no_job'
 attempt=root/'attempts/s0_cpu_prepare_r1'
 assert not attempt.exists()
 attempt.mkdir(parents=True,mode=0o700)
@@ -130,6 +137,7 @@ print(json.dumps(dict(status='exclusive_CPU_staging_directory_created',attempt=s
             access.scp(ROOT/'runtime'/name, remote+'/attempts/s0_cpu_prepare_r1/runtime/'+name)
         access.scp(ROOT/'S0_BUILD_CONVERSION_AUTHORIZATION.json', remote+'/attempts/s0_cpu_prepare_r1/contract/')
         access.scp(ROOT/'S0_SOURCE_BUILD_R3_AUTHORIZATION.json', remote+'/attempts/s0_cpu_prepare_r1/contract/')
+        access.scp(ROOT/'S0_SCHEDULER_R1_AUTHORIZATION.json', remote+'/attempts/s0_cpu_prepare_r1/contract/')
         command = 'env PYTHONDONTWRITEBYTECODE=1 EXTERNAL_MET_REMOTE_ROOT='+shlex.quote(remote)
         command += ' EXTERNAL_MET_CONDA_BIN='+shlex.quote(os.environ['EXTERNAL_MET_CONDA_BIN'])
         command += ' '+shlex.quote(py)+' -B -c '+shlex.quote(remote_code())

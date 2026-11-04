@@ -1,0 +1,82 @@
+{
+  "CPU_reservation_bytes": 161061273600,
+  "account": "zqchen",
+  "applicable_qos": [
+    "partition_cpu_192g",
+    "user_zqchen"
+  ],
+  "association": {
+    "Account": "zqchen",
+    "MaxJobs": "",
+    "MaxSubmit": "",
+    "Partition": "",
+    "QOS": "user_zqchen",
+    "User": "zqchen"
+  },
+  "checked_qos": {
+    "partition_cpu_192g": {
+      "max_TRES_per_job": {},
+      "max_jobs_per_user": "",
+      "max_submit_jobs_per_user": "",
+      "max_wall_seconds": null
+    },
+    "user_zqchen": {
+      "max_TRES_per_job": {},
+      "max_jobs_per_user": "1000",
+      "max_submit_jobs_per_user": "",
+      "max_wall_seconds": null
+    }
+  },
+  "existing_jobs": 0,
+  "filesystem_free_bytes": 916432355328,
+  "full_inference_capacity_pass": false,
+  "numeric_quota_verified": false,
+  "partition": "cpu_192G",
+  "quota_query": {
+    "argv": [
+      "quota",
+      "-s"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "requested_resource": {
+    "cpus": 8,
+    "gpu": 0,
+    "memory_mib": 65536,
+    "wall_seconds": 14400
+  },
+  "status": "CPU_scheduler_request_eligible_not_running_or_full_capacity_pass",
+  "suitable_configured_nodes": [
+    "node201",
+    "node202",
+    "node203",
+    "node204",
+    "node205",
+    "node206",
+    "node207",
+    "node208",
+    "node209",
+    "node210",
+    "node211",
+    "node212",
+    "node213",
+    "node214",
+    "node215",
+    "node216",
+    "node217",
+    "node218",
+    "node219",
+    "node220",
+    "node221",
+    "node222",
+    "node223",
+    "node224",
+    "node225",
+    "node226",
+    "node227",
+    "node228",
+    "node230"
+  ]
+}

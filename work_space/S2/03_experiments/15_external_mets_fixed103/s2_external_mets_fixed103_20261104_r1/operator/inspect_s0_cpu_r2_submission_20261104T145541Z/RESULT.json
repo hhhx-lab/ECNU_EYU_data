@@ -1,0 +1,195 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "build_identity_unchanged": true,
+  "contract_sha256": "8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980",
+  "failure": {
+    "artifact_status": "experimental_unvalidated",
+    "error_type": "AssertionError",
+    "formal_gate_status": "not_run_not_passed",
+    "job_id": null,
+    "message": "aggregate QoS TRES requires current usage audit",
+    "no_automatic_retry": true,
+    "operator_approved": false,
+    "original_inference_jobs_created": false,
+    "remote_utc": "2026-11-04T14:41:58.990705+00:00",
+    "stage": "CPU_package_and_fresh_scheduler_preflight",
+    "status": "CPU_submission_failed_or_held_for_review"
+  },
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 914544918528,
+  "images_read": false,
+  "jobs_created": false,
+  "models_loaded": false,
+  "operator_approved": false,
+  "parent_CPU_staging_unchanged": true,
+  "prior_environments_preserved": true,
+  "remote_utc": "2026-11-04T14:44:19.441865+00:00",
+  "remote_writes": false,
+  "runtime_identity_unchanged": true,
+  "scheduler": {
+    "association": {
+      "argv": [
+        "sacctmgr",
+        "-P",
+        "show",
+        "assoc",
+        "where",
+        "user=zqchen",
+        "format=User,Account,Partition,QOS,MaxJobs,MaxSubmitJobs"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "User|Account|Partition|QOS|MaxJobs|MaxSubmit\nzqchen|zqchen||user_zqchen||\n"
+    },
+    "own_resources": {
+      "argv": [
+        "squeue",
+        "-h",
+        "-u",
+        "zqchen",
+        "-o",
+        "%i|%T|%P|%j|%C|%m|%D|%q|%a|%b"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4303995|PENDING|a100|p3_smoke|24|176G|1|user_zqchen|zqchen|gpu:1,gpu:1\n4303996|PENDING|cpu_96G|p3_smsum|1|4G|1|user_zqchen|zqchen|N/A\n"
+    },
+    "partition": {
+      "argv": [
+        "scontrol",
+        "show",
+        "partition",
+        "cpu_192G",
+        "-o"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PartitionName=cpu_192G AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,tianzhixiong,gtshi,mxbai,yliu,a_test,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,yshen,hysun,ybyao,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,syzhang,scjiang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,test_block1,qzhang,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_cpu_192G DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=node[201-228,230] PriorityJobFactor=1 PriorityTier=9000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=812 TotalNodes=29 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n"
+    },
+    "qos": {
+      "argv": [
+        "sacctmgr",
+        "-P",
+        "show",
+        "qos"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Name|Priority|GraceTime|Preempt|PreemptExemptTime|PreemptMode|Flags|UsageThres|UsageFactor|GrpTRES|GrpTRESMins|GrpTRESRunMins|GrpJobs|GrpSubmit|GrpWall|MaxTRES|MaxTRESPerNode|MaxTRESMins|MaxWall|MaxTRESPU|MaxJobsPU|MaxSubmitPU|MaxTRESPA|MaxJobsPA|MaxSubmitPA|MinTRES\nnormal|0|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\npartition_xiaohe2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_cpu_96g|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_cpu_192g|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_v100|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_a100|0|00:00:00|||cluster|||1.000000|||||||||||||100||||\nuser_20180208|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang3|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ymei|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang4|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_hlli_exc|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_syzhang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_zychen|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_nih|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_zxfeng|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lichao|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lmzhou|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lxwang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_wxzhang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xlwang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_wxhu|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_liqin|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ylshi|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_szr_e|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ywang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiangsun|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_qhyuan|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_tzhu|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiaohe|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_cgduan|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_dlli|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_longchen|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiaohe2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lkpan|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|100|||||\nuser_scst8|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ccxia|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_gpliu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_tzx|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_tianzhixiong|300|00:00:00|||cluster|||1.000000|||||||||||cpu=999|999|||||\nuser_yangdanfeng|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jwli|0|00:00:00|||cluster|||1.000000||||||||||||4000|||||\nuser_ydf_test|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jxu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_scow_admin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hpctest|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_test_block|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_block1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xlin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_demo_user|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_demo_user1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ectan|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_dmyin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow_8509|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow_5285|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_mzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ldliang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xkzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hcsong|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cmshen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_pbxu|300|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test22|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test33|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_pxwang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_qzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_glwang|300|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_gtshi|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_fxia|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xwei|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wtchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_awzhu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test20260302|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test20260303|100|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_test20260303_2793|100|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_gdzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_eduhpc1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|50|||||\nuser_eduhpc2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|50|||||\nuser_scjiang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yshen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wwang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yycheng|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang2|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yhzhu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_flhong|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yyzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_htsun|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hysun|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\npartition_test_partition1|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_test_partition2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_hqwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_zqchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ecnuhpc|0|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\nuser_ypu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jshu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hymao|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cross_sched|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_zxtian|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng111|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_twang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cldeng|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_rxji|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yliu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\nuser_ybyao|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jiangxu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_pxchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jlyang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_fxqiao|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\n"
+    },
+    "quota": {
+      "argv": [
+        "quota",
+        "-s"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "slurm": {
+    "content": "#!/bin/bash\n#SBATCH --job-name=s2exts0p2\n#SBATCH --partition=cpu_192G\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=8\n#SBATCH --mem=64G\n#SBATCH --time=04:00:00\n#SBATCH --no-requeue\n#SBATCH --export=NONE\n#SBATCH --output=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/logs/s2exts0p2_%j.out\n#SBATCH --error=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/logs/s2exts0p2_%j.err\nset -euo pipefail\numask 077\nsource /etc/profile\nsource /public/software/apps/miniconda3/etc/profile.d/conda.sh\nconda activate /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2\nmodule load singularity-ce/4.1.1\nunset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY\nexport PYTHONDONTWRITEBYTECODE=1 LC_ALL=C CUDA_VISIBLE_DEVICES=\nexport OMP_NUM_THREADS=8 MKL_NUM_THREADS=8 MAX_JOBS=8 CMAKE_BUILD_PARALLEL_LEVEL=8\nexport PIP_NO_INDEX=1 PIP_CONFIG_FILE=/dev/null PIP_DISABLE_PIP_VERSION_CHECK=1\nexport TMPDIR=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/scratch\nexport S0_EXPECTED_CONTRACT_SHA256=8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980\ncd /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2\nexec \"$CONDA_PREFIX/bin/python\" -B /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/runtime/prepare_s0_cpu_r2.py --attempt /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2\n",
+    "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/slurm/prepare.slurm",
+    "sha256": "d879a1addf9756b3bfa8561b96e33f600deb87c1b14f9483e79217d8506620ff"
+  },
+  "solver_rerun": false,
+  "staging": {
+    "artifact_status": "experimental_unvalidated",
+    "attempt": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2",
+    "build_configurations": {
+      "connected-components-3d": {
+        "backend_was_explicit": false,
+        "build_backend": "setuptools.build_meta:__legacy__",
+        "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+        "declared_requires": [
+          "setuptools",
+          "wheel",
+          "numpy"
+        ],
+        "implicit_requires": [
+          "setuptools>=40.8.0"
+        ],
+        "requires": [
+          "setuptools",
+          "wheel",
+          "numpy",
+          "setuptools>=40.8.0"
+        ]
+      },
+      "ndindex": {
+        "backend_was_explicit": true,
+        "build_backend": "setuptools.build_meta",
+        "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+        "declared_requires": [
+          "setuptools; platform_python_implementation != 'PyPy'",
+          "setuptools<72.2; platform_python_implementation == 'PyPy'",
+          "cython"
+        ],
+        "implicit_requires": [],
+        "requires": [
+          "setuptools; platform_python_implementation != 'PyPy'",
+          "setuptools<72.2; platform_python_implementation == 'PyPy'",
+          "cython"
+        ]
+      },
+      "numexpr": {
+        "backend_was_explicit": true,
+        "build_backend": "setuptools.build_meta",
+        "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+        "declared_requires": [
+          "setuptools>=77.0.0",
+          "numpy>=2.0.0"
+        ],
+        "implicit_requires": [],
+        "requires": [
+          "setuptools>=77.0.0",
+          "numpy>=2.0.0"
+        ]
+      }
+    },
+    "build_env": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2",
+    "build_env_explicit_sha256": "866d02c7106d809d4f14b87c0da101e2c3c722ab50f7a8f78e3ea89fb5fc2d77",
+    "contract_sha256": "8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980",
+    "formal_gate_status": "not_run_not_passed",
+    "free_bytes": 914544918528,
+    "jobs_created": false,
+    "models_loaded": false,
+    "operator_approved": false,
+    "prior_environments_preserved": true,
+    "remote_utc": "2026-11-04T14:40:59.929648+00:00",
+    "runtime_R4_installed": false,
+    "status": "S0_offline_CPU_input_staging_pass_not_model_runtime_pass"
+  },
+  "staging_sha256": "42289638f4a8f64f172345677f3694804a26ad80bb278c4f2491de653a5be7f6",
+  "status": "read_only_pre_sbatch_CPU_R2_failure_diagnosis_not_retry",
+  "submission_files": {
+    "HELD_AUDIT.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "HELD_CREATED.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "RELEASE_RESULT.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "RESERVATION.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "SBATCH_RESULT.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "SUBMISSION_FAILED.json": {
+      "exists": true,
+      "sha256": "df7ca183f829e0c896002896f1b12e54115c75902842f3d14991f8a2b52dac03"
+    },
+    "SUBMISSION_RECEIPT.json": {
+      "exists": false,
+      "sha256": null
+    }
+  }
+}
