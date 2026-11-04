@@ -6,10 +6,11 @@
 
 当前事实以[STATUS_20261104.md](STATUS_20261104.md)和operator逐次UTC回执为准。`.env`只存路径配置，不复制登录密码；凭据只由原服务器env加载。用户已单独授权指定模型资产在Mac专属临时目录中转；全部远端bytes/SHA验收后只清理本批临时文件，模型长期存储仍在服务器。MRI/GT/预测不回传Mac。
 
-最新：`S0_R4_PREFLIGHT_STOPPED_MIRROR_PACKAGE_MISSING_OFFICIAL_UNVERIFIED`。R4已授权，但一次dry-run实际走现有清华镜像、缺connected-components-3d4.1.1而停止；R4未创建或安装，R1-R3与原失败SHA核验未变。官方API检查也访问失败，不称官方仓库缺包；已请求一次官方完整URL独立预检确认，未执行，见[预检失败分析](ENVIRONMENT_R4_PREFLIGHT_FAILURE_ANALYSIS.json)。此前15模型资产两轮远端SHA和Mac专属清理已完成，原资产/归档/失败留服务器；SIF展开超时未重试。七作业未创建，无模型运行或新分数。
+最新：`S0_R4_OFFICIAL_PREFLIGHT_OPERATOR_MARKER_PATH_STOPPED_BEFORE_SOLVER`。用户“继续”已确认官方完整URL预检，但新操作器误要求`operator/environment/FAILED.json`，原R1实际标记由安装器写在`operator/ENV_INSTALL_FAILED.json`；检查停止，尚未调用Conda求解器/创建R4/安装。不能据此称旧失败丢失、官方缺包或GPU失败；本次未取得远端UTC/最新容量/完整前后身份门。自建VPN已关闭。独立R2仅修两个AST路径常量，本地60测试通过，新的远端尝试待确认；见[官方预检失败分析](ENVIRONMENT_R4_OFFICIAL_FAILURE_ANALYSIS.json)。此前资产中转验收和Mac专属清理完成，SIF超时未重试，七作业未创建。下述官方源待首次确认的描述是历史。
 
 ## 输入、动作与产物
 
+- 官方预检/R2：原执行helper与失败保留，官方origin检查要求实际URL为官方HTTPS地址；修正版仅调整历史R1标记和新审计目录，生成代码编译/原记录布局回归及60测试通过，尚未远端执行。此前镜像预检按exists跳过不存在标记，R1失败marker未纳入其覆盖，不能将环境metadata/Python核验等同全部失败marker已核验。
 - R4最新：用户已授权同版本二进制核验后创建，但预检实际走服务器既有清华镜像、缺connected-components-3d4.1.1而停止；R4未创建/安装，原R1-R3核验未变。官方API查询均访问失败，不称官方缺包；直接指定官方完整URL的独立预检已请求确认，未执行，见[预检失败分析](ENVIRONMENT_R4_PREFLIGHT_FAILURE_ANALYSIS.json)。上方SIF终态仍是已有资产准备的历史事实，不覆盖本次R4预检停止。
 - operator/preflight_environment_r4.py及environment_binary_contract.py：一次真实glibc/virtual package/精确六版本dry-run，版本/平台/来源/重复/Torch或编译器替换门；不安装、不创建环境。operator/inspect_conda_forge_r4_metadata.py只读固定官方API元数据，不下载模型/包，不重试安装。
 - 输入：固定2025镜像digest、Bio-Intel commit/HF revision、BrainIAC官方链接/研究许可、同103真实四模态及K1原输入参考515清单。不得用其他模型、补全T2W或其他split替代。
