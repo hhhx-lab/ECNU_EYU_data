@@ -1,0 +1,16 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "user_reply": "允许独立R2隔离缓存核验并继续",
+  "latest_execution_request": "进行运行准备，把环境为它们准备好，然后简单做运行验证，最后提交全量推理作业",
+  "scope": "one_independent_compiler_preflight_r2_then_previously_authorized_preparation",
+  "isolated_empty_batch_conda_cache": true,
+  "command_local_official_channel_configuration": true,
+  "partition_read_correction": "cpu_192G",
+  "old_preflight_environment_conversion_failures_preserved": true,
+  "same_model_and_dependency_versions": true,
+  "global_configuration_modified": false,
+  "automatic_retry": false,
+  "full_inference_only_after_real_smokes_and_joint_gate": true
+}

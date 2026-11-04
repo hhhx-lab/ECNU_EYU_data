@@ -1,0 +1,20 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "user_build_reply": "允许独立构建同版依赖后继续",
+  "user_cpu_preparation_reply": "允许新增CPU准备作业并继续",
+  "scope": "one_independent_conda_userland_build_environment_and_one_CPU_S0_preparation_attempt",
+  "same_versions": {"numexpr": "2.14.1", "connected-components-3d": "4.1.1", "ndindex": "1.10.1"},
+  "compiler_candidates": ["gcc_linux-64", "gxx_linux-64", "binutils_linux-64", "sysroot_linux-64=2.17"],
+  "necessary_python_build_dependencies_authorized": true,
+  "new_cpu_preparation_job_authorized": true,
+  "single_sif_conversion_deadline_seconds": 7200,
+  "old_environments_and_failures_preserved": true,
+  "system_glibc_compiler_or_global_config_change": false,
+  "model_digest_versions_algorithms_changed": false,
+  "original_J01_J04_only_after_S0_pass": true,
+  "original_J05_J07_only_after_S1_pass": true,
+  "automatic_retry": false,
+  "restore_monitor": false
+}
