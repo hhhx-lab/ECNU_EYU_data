@@ -1,0 +1,55 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "error_type": "AssertionError",
+  "formal_gate_status": "not_run_not_passed",
+  "frozen_slurm": {
+    "content": "#!/bin/bash\n#SBATCH --job-name=s2exts0p2\n#SBATCH --partition=cpu_192G\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=8\n#SBATCH --mem=64G\n#SBATCH --time=04:00:00\n#SBATCH --no-requeue\n#SBATCH --export=NONE\n#SBATCH --output=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/logs/s2exts0p2_%j.out\n#SBATCH --error=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/logs/s2exts0p2_%j.err\nset -euo pipefail\numask 077\nsource /etc/profile\nsource /public/software/apps/miniconda3/etc/profile.d/conda.sh\nconda activate /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2\nmodule load singularity-ce/4.1.1\nunset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY\nexport PYTHONDONTWRITEBYTECODE=1 LC_ALL=C CUDA_VISIBLE_DEVICES=\nexport OMP_NUM_THREADS=8 MKL_NUM_THREADS=8 MAX_JOBS=8 CMAKE_BUILD_PARALLEL_LEVEL=8\nexport PIP_NO_INDEX=1 PIP_CONFIG_FILE=/dev/null PIP_DISABLE_PIP_VERSION_CHECK=1\nexport TMPDIR=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/scratch\nexport S0_EXPECTED_CONTRACT_SHA256=8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980\ncd /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2\nexec \"$CONDA_PREFIX/bin/python\" -B /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/runtime/prepare_s0_cpu_r2.py --attempt /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2\n",
+    "sha256": "d879a1addf9756b3bfa8561b96e33f600deb87c1b14f9483e79217d8506620ff"
+  },
+  "job_id": null,
+  "light_audit_files": {
+    "AUTHORIZATION.json": {
+      "bytes": 757,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "automatic_retry": false,
+        "dependency_versions_models_and_CPU_resources_unchanged": true,
+        "environment_reinstallation_authorized": false,
+        "formal_gate_status": "not_run_not_passed",
+        "full_inference_only_after_both_real_smokes_and_joint_gate": true,
+        "independent_current_QoS_usage_acceptance_authorized": true,
+        "operator_approved": false,
+        "preserve_original_pre_sbatch_failure": true,
+        "reuse_accepted_R2_build_environment_and_frozen_slurm": true,
+        "single_first_held_submission_and_same_ID_release_authorized": true,
+        "solver_rerun_authorized": false,
+        "user_reply": "\u5141\u8bb8\u72ec\u7acb\u8d44\u6e90\u6838\u9a8c\u540e\u7ee7\u7eed\u9996\u6b21\u63d0\u4ea4\uff08\u63a8\u8350\uff09"
+      },
+      "sha256": "58a2a847d468e81ceafd6afc67064ea7fb74a25db69a7614ab3ae9208aeac303"
+    },
+    "SUBMISSION_FAILED.json": {
+      "bytes": 462,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "error_type": "AssertionError",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": null,
+        "message": "CPU usage partition changed",
+        "no_automatic_retry": true,
+        "operator_approved": false,
+        "original_inference_jobs_created": false,
+        "remote_utc": "2026-11-04T15:45:37.560662+00:00",
+        "stage": "CPU_package_and_fresh_scheduler_preflight",
+        "status": "CPU_submission_failed_or_held_for_review"
+      },
+      "sha256": "9fa1bd3fd29656328d8d35b6fd9ae48f375bf79a197e665714b28ac5d11c5f75"
+    }
+  },
+  "message": "CPU usage partition changed",
+  "no_automatic_retry": true,
+  "operator_approved": false,
+  "original_inference_jobs_created": false,
+  "remote_utc": "2026-11-04T15:45:37.560662+00:00",
+  "stage": "CPU_package_and_fresh_scheduler_preflight",
+  "status": "CPU_submission_failed_or_held_for_review"
+}

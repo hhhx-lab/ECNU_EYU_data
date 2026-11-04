@@ -1,21 +1,31 @@
 {
-  "reviewed_at": "2026-11-04T14:58:48+00:00",
+  "reviewed_at": "2026-11-04T16:04:00+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
     {
       "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1",
-      "description": "两外部METS同fixed103 S0：R2独立构建环境已验收，CPU提交前聚合QoS使用审计hold，未sbatch，无新JobID",
+      "description": "两外部METS同fixed103 S0：实时CPU使用验收因Slurm复合字段解析错误停止，未sbatch；独立R2真实输出/held回放通过、首次执行待确认",
       "kind": "experiment",
-      "state": "S0_R2_BUILD_ENV_PASS_PRE_SBATCH_AGGREGATE_QOS_USAGE_HOLD。独立调度验收已通过，原R3官方47包solver/lock和FAILED保留；CPU staging R1安装前backend parser失败保留，用户授权的独立R2首次staging已实际成功。独立bio_build_glibc217_r2安装/47包身份和三sdist标准backend要求通过，不再solver/源码下载，构建合同SHA8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980。随后CPU冻结Slurm/bash -n/SHA通过，但提交前聚合QoS使用审计停止，未sbatch，无JobID/held/release，失败SHAdf7ca183f829e0c896002896f1b12e54115c75902842f3d14991f8a2b52dac03保留。一次只读诊断核原RESERVATION/SBATCH/HELD/RELEASE均不存在，冻结Slurm与build/runtime/父R1/旧环境失败不变；另两PENDING请求24+1 CPU，连本次8为33低于user_zqchen MaxTRESPU cpu=1000，没有超额证据，但原验收器没有消费非空队列的实时资源使用。独立资源验收及复用环境/冻结Slurm首次提交已询问待确认，不重装/求解/自动重提。staging远端14:40:59.929648/本地14:52:26.302507；失败14:41:58.990705/14:53:25.290902；诊断14:44:19.441865/14:55:45.741141分记，约11分钟钟差保留；文件系统余914544918528bytes=851.736328125GiB，quota返回空非数值额度/全量峰值验收，用户VPN复用不注销。118本机测试/57源码AST与base维护9测试通过非模型/A100 pass；构建环境不是完整推理环境，wheel/SIF未构建，CPU准备及J01-J07均未提交，完整运行包/Slurm待补，无影像/test读取或新分数。15资产验收/Mac专属清理与公开训练暴露边界、fixed103真实四模态/K1-175/native/MET和三项研究状态不变。",
-      "reviewed_at": "2026-11-04T14:58:48+00:00",
-      "review_date_local": "2026-11-04",
+      "state": "S0_CPU_USAGE_R1_SLURM_COMPOUND_FIELD_PARSER_ERROR_NO_SBATCH_R2_AWAITING_AUTHORIZATION。用户批准的实时CPU使用验收已执行一次，在sbatch前因Slurm复合字段解析错误停止，无JobID/held/release。一次只读对照确认两队列/真实分区未变；AllocNode:Sid和ReqB:S:C:T被原正则拼进Partition/CPUs/Task，非实际资源漂移或模型/GPU失败。两次失败SHA及冻结Slurm/构建合同、runtime/build/父R1/旧环境保留，真实输出回放两PENDING请求24+1=25，连本次8为33低于1000CPU上限，非实测GPU运行使用。失败远端15:45:37.560662/本地15:57:04.620463，诊断15:47:18.064896/15:58:45.511692，UTC日期2026-11-04、北京时间11-05，钟差分记；余914544918528bytes=851.736328125GiB非数值quota/全量峰值，用户VPN复用不注销。独立R2解析与生成操作器仅本机，复合字段/重复字段拒绝、两真实输出及held回放136测试/63源码AST通过，不是ECNU预检/模型/A100通过；新R2执行确认已询问、未授权或SSH。原PLAN/模型/版本/资源不改，不solver/重装/自动retry。三个wheel/SIF、完整Bio-Intel推理环境、两真实smoke/联合门未完成，CPU及J01-J07无JobID，无影像/test读取、新分数或监控恢复。15资产已验收/本批Mac中转清理完成，fixed103真实四模态/K1-175/native/MET、公开训练暴露和experimental_unvalidated三项状态保持。",
+      "reviewed_at": "2026-11-04T16:04:00+00:00",
+      "review_date_local": "2026-11-05",
       "publication_boundary": "仅原创代码/文档、轻量身份/许可/聚合SHA与回执入Git，第三方完整源码/镜像dataset正文、模型/ZIP、Mac临时分片、测试源码、.env与代理/凭据不入Git。模型长期存ECNU；本次Mac临时分片仅在全远端验收后限定清除，原失败审计保留，不删除旧数据。LOCAL_VPN_STATUS/LOGIN_DIAGNOSTIC虽只含脱敏状态，仍遵守索引敏感名称策略：仅物理路径元数据、不作curated内容证据；私有原VPN回执不复制。",
       "artifact_status": "experimental_unvalidated",
       "operator_approved": false,
       "formal_gate_status": "not_run_not_passed",
       "evidence": [
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_USAGE_SUBMISSION_AUTHORIZATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_USAGE_R1_FAILURE_ANALYSIS_20261105.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_s0_cpu_usage_r1_20261104T155631Z/RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_s0_cpu_usage_r1_20261104T155631Z/LOCAL_OPERATION_RECEIPT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/inspect_s0_cpu_usage_failure_r1_20261104T155833Z/RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/inspect_s0_cpu_usage_failure_r1_20261104T155833Z/LOCAL_OPERATION_RECEIPT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T155445Z/VERIFICATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T155618Z/VERIFICATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T160021Z/VERIFICATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261104T160423Z/VERIFICATION.json",
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/stage_s0_cpu_r2_20261104T143559Z/RESULT.json",
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/stage_s0_cpu_r2_20261104T143559Z/LOCAL_OPERATION_RECEIPT.json",
         "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_s0_cpu_r2_20261104T145258Z/RESULT.json",
@@ -127,7 +137,8 @@
         "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/VERIFICATION.json",
         "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_COMPATIBILITY_AMENDMENT_20261104.md",
         "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_COMPILER_EXECUTION_UPDATE_20261104.md",
-        "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_CPU_R2_EXECUTION_20261104.md"
+        "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_CPU_R2_EXECUTION_20261104.md",
+        "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_CPU_USAGE_EXECUTION_20261105.md"
       ]
     },
     {

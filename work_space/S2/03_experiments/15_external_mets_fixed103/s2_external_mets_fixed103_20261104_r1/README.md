@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**北京时间2026-11-05最新：实时使用验收因我的Slurm复合字段解析错误停止，未sbatch，无JobID。**只读对照确认分区/队列未变，冻结Slurm/环境/模型/版本和两次失败保留；独立R2解析与真实输出/held回放136本机测试通过，新执行确认已询问、尚未授权或执行。余851.736328125GiB非数值quota/全量预算，两真实smoke及全量未完成。见[CPU使用接续](../../../05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_CPU_USAGE_EXECUTION_20261105.md)及[STATUS](STATUS_20261104.md)，以下“最新/当前/待确认”均为历史。
+
 **最新：R2独立构建环境已安装验收成功；CPU提交前聚合QoS使用审计停止，尚未sbatch，无JobID。**冻结Slurm/原47包锁/失败回执保留；一次只读诊断确认其他两作业PENDING，CPU请求25+8=33低于1000上限，没有实际超额证据，但验收器尚未消费已有作业资源使用。独立审计接续已询问待确认，不重装/求解或自动提作业。118本机测试/57源码AST通过非A100/模型通过；三个wheel与SIF未构建，完整推理环境、两真实smoke/全量未完成。文件系统余851.736328125GiB非数值quota/全量预算，旧失败/环境及用户VPN保留。详见[STATUS](STATUS_20261104.md)和[S0 R2接续](../../../05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_CPU_R2_EXECUTION_20261104.md)；以下“最新/当前/待确认”均为历史。
 
 **当前（UTC14:08本地复核）：R3官方47包求解/精确锁已通过，整体预检因Slurm QoS查询字段失败停止；独立调度验收待确认。**仅补做调度验收且复用同solver/lock，不重跑求解器或改旧FAILED。99本地测试/47源码AST通过；安装前源码构建要求门已准备但未执行。构建环境/R4未创建，无可验收SIF或本批JobID，smoke和全量均未提交。远端13:50/本地14:01两端UTC分记，最后文件系统余853.494140625GiB非账号quota/全量预算。见[最新分析](S0_COMPILER_R3_SCHEDULER_FAILURE_ANALYSIS_20261104.json)及[STATUS](STATUS_20261104.md)；以下“当前/最新/待确认”均为历史。
