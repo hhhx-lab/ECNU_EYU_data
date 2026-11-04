@@ -1,0 +1,51 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "public_pypi_cp310_wheel_metadata_review_no_download_no_install",
+  "local_started_utc": "2026-11-04T11:43:26.790493+00:00",
+  "local_completed_utc": "2026-11-04T11:43:33.025024+00:00",
+  "environment": "existing Conda base",
+  "dependencies_downloaded": false,
+  "remote_access": false,
+  "jobs_created": false,
+  "target": {
+    "interpreter": "CPython3.10",
+    "platform": "linux_x86_64",
+    "glibc": "2.17"
+  },
+  "packages": {
+    "numexpr": {
+      "version": "2.14.1",
+      "url": "https://pypi.org/pypi/numexpr/2.14.1/json",
+      "http_status": 200,
+      "metadata_bytes": 58797,
+      "metadata_sha256": "a67401e445486fc8bf58b8cae3a5a949b7d35a0fee8835712b8a515ef5f63677",
+      "glibc_cp310_wheel": "numexpr-2.14.1-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "compatible_cp310_tagged_linux_glibc217_wheels": 0,
+      "sdist_sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b"
+    },
+    "connected-components-3d": {
+      "version": "4.1.1",
+      "url": "https://pypi.org/pypi/connected-components-3d/4.1.1/json",
+      "http_status": 200,
+      "metadata_bytes": 99706,
+      "metadata_sha256": "69069bd82722ff2adfd738f79cb8bee47d13fe6505833c03b29046738d64b5ce",
+      "glibc_cp310_wheel": "connected_components_3d-4.1.1-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+      "compatible_cp310_tagged_linux_glibc217_wheels": 0,
+      "sdist_sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990"
+    },
+    "ndindex": {
+      "version": "1.10.1",
+      "url": "https://pypi.org/pypi/ndindex/1.10.1/json",
+      "http_status": 200,
+      "metadata_bytes": 60108,
+      "metadata_sha256": "395af5f8030d494cb57d387af54b9034ee1f0f9fb3d0ccff1cb9638b6959966f",
+      "glibc_cp310_wheel": "ndindex-1.10.1-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+      "compatible_cp310_tagged_linux_glibc217_wheels": 0,
+      "sdist_sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11"
+    }
+  },
+  "conclusion": "All three exact PyPI releases returned200. Listed CPython3.10 glibc wheels require2.24 or2.27, newer than the observed server2.17. Musllinux and macOS files are not compatible replacements. Source build has not been verified and requires separate method/dependency approval.",
+  "scientific_quality_claimed": false
+}

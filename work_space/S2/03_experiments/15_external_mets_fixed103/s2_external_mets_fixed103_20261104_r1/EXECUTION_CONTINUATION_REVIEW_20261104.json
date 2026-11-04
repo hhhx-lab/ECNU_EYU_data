@@ -1,0 +1,44 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "execution_requested_s0_compatibility_amendment_awaiting_user_confirmation",
+  "local_review_utc": "2026-11-04T11:43:33.025024+00:00",
+  "user_request": "按PLAN.md执行并往服务器提交作业",
+  "frozen_plan": "work_space/S2/05_documents/02_plans/20261104_external_mets_fixed103_execution/PLAN.md",
+  "prior_official_r2_failure": "ENVIRONMENT_R4_OFFICIAL_R2_FAILURE_ANALYSIS.json",
+  "completed_work": "Local plan/failure/code review and bounded public PyPI metadata inspection only. Prior interrupted local documentation is being validated.",
+  "new_remote_access": false,
+  "dependencies_downloaded": false,
+  "dependencies_installed": false,
+  "environments_created": false,
+  "jobs_created": false,
+  "models_loaded": false,
+  "prior_failure_unchanged": true,
+  "proposal": {
+    "dependency_method": "Separate Conda-managed userland compiler/build environment, real glibc2.17-compatible target, compile original numexpr2.14.1/connected-components-3d4.1.1/ndindex1.10.1; no version downgrade or system compiler installation.",
+    "compiler_candidates": [
+      "gcc_linux-64",
+      "gxx_linux-64",
+      "binutils_linux-64",
+      "sysroot_linux-64=2.17"
+    ],
+    "python_build_candidates": [
+      "setuptools",
+      "wheel",
+      "Cython"
+    ],
+    "exact_build_solver_and_source_build_requirements_not_yet_verified": true,
+    "sif_method": "One new independent CPU preparation attempt using the same accepted OCI/archive and backend; conversion deadline7200s, preserve failed rootfs/assets and administrator configuration.",
+    "additional_s0_cpu_job": true,
+    "original_planned_jobs": 7,
+    "proposed_total_jobs_if_approved": 8,
+    "original_J01_J04_only_after_S0_pass": true,
+    "original_J05_J07_only_after_S1_pass": true
+  },
+  "dependency_amendment_approved": false,
+  "sif_attempt_approved": false,
+  "automatic_retry": false,
+  "monitor_restored": false,
+  "next_action": "Await the two separate confirmations. Do not install build tools, create a CPU preparation job, retry conversion, or submit the original DAG before approval and the applicable gates."
+}

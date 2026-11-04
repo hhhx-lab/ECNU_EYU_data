@@ -1,0 +1,48 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "channel": "https://conda.anaconda.org/conda-forge",
+  "environment_created": false,
+  "error_type": "AssertionError",
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 976142467072,
+  "host_libc": "glibc 2.17",
+  "jobs_created": false,
+  "message": "solver failed: PackagesNotFoundError",
+  "models_loaded": false,
+  "no_automatic_retry": true,
+  "operator_approved": false,
+  "prior_environments_preserved": true,
+  "remote_utc": "2026-11-04T06:06:50.526279+00:00",
+  "solver_sha256": "39710f2985e2f036d15752ed683b9478b7f62995c79088a461af5d776f45d0c8",
+  "solver_tail": "{\n  \"allow_retry\": false,\n  \"caused_by\": \"None\",\n  \"channel_urls\": [\n    {\n      \"auth\": null,\n      \"location\": \"conda.anaconda.org\",\n      \"name\": \"conda-forge\",\n      \"package_filename\": null,\n      \"platform\": null,\n      \"scheme\": \"https\",\n      \"token\": null\n    }\n  ],\n  \"channels_formatted\": \"  - https://conda.anaconda.org/conda-forge\",\n  \"error\": \"PackagesNotFoundError: The following packages are not available from current channels:\\n\\n  - connected-components-3d=4.1.1\\n\\nCurrent channels:\\n\\n  - https://conda.anaconda.org/conda-forge\\n\\nTo search for alternate channels that may provide the conda package you're\\nlooking for, navigate to\\n\\n    https://anaconda.org\\n\\nand use the search bar at the top of the page.\\n\",\n  \"exception_name\": \"PackagesNotFoundError\",\n  \"exception_type\": \"<class 'conda.exceptions.PackagesNotFoundError'>\",\n  \"message\": \"The following packages are not available from current channels:\\n\\n  - connected-components-3d=4.1.1\\n\\nCurrent channels:\\n\\n  - https://conda.anaconda.org/conda-forge\\n\\nTo search for alternate channels that may provide the conda package you're\\nlooking for, navigate to\\n\\n    https://anaconda.org\\n\\nand use the search bar at the top of the page.\\n\",\n  \"packages\": [\n    \"connected-components-3d=4.1.1\"\n  ],\n  \"packages_formatted\": \"  - connected-components-3d=4.1.1\"\n}\n\n",
+  "source_sha256": "cb44e9fa5182d70e4a4d436453aa2dcdb64b78fd1897b9ea71520d313107422f",
+  "stage": "official_same_version_binary_solver",
+  "status": "r4_official_binary_preflight_failed_no_install_no_jobs",
+  "virtual_packages": [
+    [
+      "__archspec",
+      "1",
+      "skylake_avx512"
+    ],
+    [
+      "__conda",
+      "25.5.1",
+      "0"
+    ],
+    [
+      "__glibc",
+      "2.17",
+      "0"
+    ],
+    [
+      "__linux",
+      "3.10.0",
+      "0"
+    ],
+    [
+      "__unix",
+      "0",
+      "0"
+    ]
+  ]
+}

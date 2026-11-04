@@ -1,5 +1,9 @@
 # 两外部METS模型同fixed103执行批次R1
 
+当前执行请求为`S0_COMPATIBILITY_AMENDMENT_AWAITING_USER_CONFIRMATION`：再次执行请求后仅本地复核/公共PyPI元数据，独立同版构建与额外CPU准备/单次转换两项尚待确认，没有新远端操作或作业。见EXECUTION_CONTINUATION_REVIEW_20261104.json及计划S0_COMPATIBILITY_AMENDMENT_20261104.md；下方官方R2失败是最后远端终态。
+
+当前为`S0_R4_OFFICIAL_R2_PACKAGES_NOT_FOUND_NO_INSTALL_NO_JOBS`：校园登录后的官方R2预检已结束，缺锁定`connected-components-3d=4.1.1`，R4与七作业均未创建。详见[终态分析](ENVIRONMENT_R4_OFFICIAL_R2_FAILURE_ANALYSIS.json)及下方当前终态；所有未登录/进行中/待确认段为历史，不覆盖本状态。
+
 2026-11-04用户授权按已拟计划执行并提交。合同入口：[PLAN.md](../../../05_documents/02_plans/20261104_external_mets_fixed103_execution/PLAN.md)。两成品为2025 METS第一名固定镜像与2026 Bio-Intel完整七fold；K1-175主对照，同103真实四模态，公开训练暴露按原计划披露。
 
 本目录先保存独立S0预检与资产/环境门证据。授权提交不等于预检已通过；未取得完整资产/许可、当次容量、独立依赖及smoke合同前不创建训练/推理作业，不修改原计划/旧失败，不自动retry。
@@ -10,6 +14,7 @@
 
 ## 输入、动作与产物
 
+- 当前终态：`S0_R4_OFFICIAL_R2_PACKAGES_NOT_FOUND_NO_INSTALL_NO_JOBS`。用户完成校园登录后，同一修正版实际远端dry-run在官方完整channel报告缺锁定`connected-components-3d=4.1.1`，glibc2.17；没有联合兼容方案/所选包来源门通过，不能据此断言release全球不存在。远端失败06:06:50.526279/本地收尾06:18:16.729937分别记录；文件系统余909.103515625GiB不当quota或全量预算。旧环境及四失败marker核验未变、手动VPN未注销；R4未创建、七作业未创建，无新分数。63本地测试非远端环境/GPU通过；一次进行中只读快照及上方未登录等均为历史。见[官方R2终态分析](ENVIRONMENT_R4_OFFICIAL_R2_FAILURE_ANALYSIS.json)。不自动换依赖来源/构建方法/版本或重试SIF，已有资产验收与Mac清理保留。
 - 官方预检/R2：原执行helper与失败保留，官方origin检查要求实际URL为官方HTTPS地址；修正版仅调整历史R1标记和新审计目录，生成代码编译/原记录布局回归及60测试通过，尚未远端执行。此前镜像预检按exists跳过不存在标记，R1失败marker未纳入其覆盖，不能将环境metadata/Python核验等同全部失败marker已核验。
 - R4最新：用户已授权同版本二进制核验后创建，但预检实际走服务器既有清华镜像、缺connected-components-3d4.1.1而停止；R4未创建/安装，原R1-R3核验未变。官方API查询均访问失败，不称官方缺包；直接指定官方完整URL的独立预检已请求确认，未执行，见[预检失败分析](ENVIRONMENT_R4_PREFLIGHT_FAILURE_ANALYSIS.json)。上方SIF终态仍是已有资产准备的历史事实，不覆盖本次R4预检停止。
 - operator/preflight_environment_r4.py及environment_binary_contract.py：一次真实glibc/virtual package/精确六版本dry-run，版本/平台/来源/重复/Torch或编译器替换门；不安装、不创建环境。operator/inspect_conda_forge_r4_metadata.py只读固定官方API元数据，不下载模型/包，不重试安装。

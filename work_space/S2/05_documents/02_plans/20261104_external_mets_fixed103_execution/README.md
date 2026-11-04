@@ -2,6 +2,10 @@
 
 制定日期：2026-11-04，Asia/Shanghai。
 
+2026-11-04用户再次要求按本方案执行提交；当前只读复核确认S0仍有同版依赖与2025 SIF两处阻断。PyPI三个原版本元数据均200，但所列Linux CPython3.10 wheel要求glibc2.24/2.27，不能直接装到2.17。已提出[独立同版构建及单次CPU转换补充方案](S0_COMPATIBILITY_AMENDMENT_20261104.md)，两项新方法确认尚待用户答复；未新增SSH、安装/转换或作业。原7作业DAG不在门未通过时提前提交，旧失败/模型/同103合同保留。
+
+当前实施终态：`S0_R4_OFFICIAL_R2_PACKAGES_NOT_FOUND_NO_INSTALL_NO_JOBS`。用户完成校园登录并确认接续，修正版已首次实际远端执行；官方完整channel一次dry-run报告缺`connected-components-3d=4.1.1`，host/virtual glibc2.17，无联合兼容方案或所选包来源门通过。旧环境和四失败marker未变；R4未创建/安装、七作业未创建、无新分数，SIF仍无验收产物且未重试。远端失败06:06:50.526279/本地收尾06:18:16.729937分别保存，文件系统余909.103515625GiB不是账号quota或全量预算，手动VPN未注销。见[官方R2终态分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_OFFICIAL_R2_FAILURE_ANALYSIS.json)。以下“最新/进行中/待确认”是先前历史，不覆盖当前；原PLAN/VERIFICATION继续保留制定时合同，不自动改变依赖方法/版本或重建SIF。
+
 最新实施：修正路径后的独立R2已获用户确认，但本次只到VPN启动，归属未确认而停止，未进入SSH/Conda。未调用stop；一次只读status确认aTrust logout/tunnelUnavailable，SSO密码表单未完成，不推断密码/账号故障。用户需完成学校正常浏览器登录并确认接续同一尚未远端执行的R2；无新安装/作业/分数或SIF重试，见[接入失败分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_OFFICIAL_R2_ACCESS_FAILURE.json)。以下R2待首次授权为历史。
 
 最新实施：用户“继续”确认官方完整URL预检，但操作器误要求R1旧失败marker路径，在调用Conda之前停止；不是依赖/模型/GPU失败，未创建R4或七作业。自建VPN已关闭，未取得本次远端UTC/最新存储/完整身份门。独立R2仅修历史标记与审计路径，60本地测试通过，新的远端尝试待确认；SIF超时继续保留未重试。详见[官方预检分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/ENVIRONMENT_R4_OFFICIAL_FAILURE_ANALYSIS.json)。下述首次官方源待确认是历史。
