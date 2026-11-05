@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**北京时间2026-11-05 12:02最新：CPU准备4304740首次提交/同ID释放成功，但运行21秒后FAILED 1:0。**我的冻结Slurm在系统profile之前启用nounset，遇`COLORTERM`未定义退出，尚未进入Python准备；不是GPU或模型失败。即时只读快照无静态/旧失败身份漂移，余835.58984375GiB非数值quota/全量容量门；用户VPN保留。138本机测试通过非模型通过，独立R3初始化顺序修正已询问待授权，原包/失败不改，不自动重提。CPU准备、真实smoke及J01-J07未完成，无新分数。见[失败分析](S0_CPU_USAGE_R2_SUBMISSION_FAILURE_20261105.json)和[STATUS](STATUS_20261104.md)；以下“未SSH/无JobID/最新”等均为历史。
+
 **北京时间2026-11-05 11:15最新：R2已授权，但aTrust断开，尚未SSH或提交作业。**136本机测试通过；本次停在VPN归属门，只读status与界面确认未在线，未logout/改适配器/重装/solver，无新远端UTC或存储观察。请按学校流程恢复登录后接续同一尚未远端执行的R2，不新建提交attempt。见[接入回执](S0_CPU_USAGE_R2_ACCESS_CONTINUATION_20261105.json)和[STATUS](STATUS_20261104.md)；以下“R2待授权”均为历史。
 
 **北京时间2026-11-05最新：实时使用验收因我的Slurm复合字段解析错误停止，未sbatch，无JobID。**只读对照确认分区/队列未变，冻结Slurm/环境/模型/版本和两次失败保留；独立R2解析与真实输出/held回放136本机测试通过，新执行确认已询问、尚未授权或执行。余851.736328125GiB非数值quota/全量预算，两真实smoke及全量未完成。见[CPU使用接续](../../../05_documents/02_plans/20261104_external_mets_fixed103_execution/S0_CPU_USAGE_EXECUTION_20261105.md)及[STATUS](STATUS_20261104.md)，以下“最新/当前/待确认”均为历史。

@@ -1,0 +1,275 @@
+{
+  "artifact_identity": {},
+  "artifact_status": "experimental_unvalidated",
+  "drift": [],
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 897207762944,
+  "images_read": false,
+  "job_id": "4304740",
+  "jobs_created": false,
+  "logs": {
+    "BUILD_ENV_INSTALL.log": {
+      "bytes": 0,
+      "tail": "",
+      "tail_only": true
+    },
+    "s2exts0p2_4304740.err": {
+      "bytes": 63,
+      "tail": "/etc/profile.d/256term.sh: line 9: COLORTERM: unbound variable\n",
+      "tail_only": true
+    },
+    "s2exts0p2_4304740.out": {
+      "bytes": 0,
+      "tail": "",
+      "tail_only": true
+    }
+  },
+  "models_loaded": false,
+  "operator_approved": false,
+  "remote_utc": "2026-11-05T03:49:32.882755+00:00",
+  "remote_writes": false,
+  "reports": {
+    "SOURCE_BUILD_REQUIREMENTS.json": {
+      "bytes": 3705,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "checked": {
+          "connected-components-3d": [
+            {
+              "requirement": "setuptools",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "wheel",
+              "selected_version": "0.48.0"
+            },
+            {
+              "requirement": "numpy",
+              "selected_version": "2.2.6"
+            },
+            {
+              "requirement": "setuptools>=40.8.0",
+              "selected_version": "84.0.0"
+            }
+          ],
+          "ndindex": [
+            {
+              "requirement": "setuptools; platform_python_implementation != 'PyPy'",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "cython",
+              "selected_version": "3.3.0"
+            }
+          ],
+          "numexpr": [
+            {
+              "requirement": "setuptools>=77.0.0",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "numpy>=2.0.0",
+              "selected_version": "2.2.6"
+            }
+          ]
+        },
+        "configurations": {
+          "connected-components-3d": {
+            "backend_was_explicit": false,
+            "build_backend": "setuptools.build_meta:__legacy__",
+            "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+            "declared_requires": [
+              "setuptools",
+              "wheel",
+              "numpy"
+            ],
+            "implicit_requires": [
+              "setuptools>=40.8.0"
+            ],
+            "requires": [
+              "setuptools",
+              "wheel",
+              "numpy",
+              "setuptools>=40.8.0"
+            ]
+          },
+          "ndindex": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+            "declared_requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ]
+          },
+          "numexpr": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+            "declared_requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ]
+          }
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "sources": {
+          "connected-components-3d": {
+            "bytes": 85178,
+            "filename": "connected_components_3d-4.1.1.tar.gz",
+            "sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+            "url": "https://files.pythonhosted.org/packages/23/66/62eeb4d29188a1161289c58c9129294856ce0f134fb9b49c3d13ae0db1d1/connected_components_3d-4.1.1.tar.gz",
+            "version": "4.1.1"
+          },
+          "ndindex": {
+            "bytes": 271395,
+            "filename": "ndindex-1.10.1.tar.gz",
+            "sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+            "url": "https://files.pythonhosted.org/packages/f5/92/4b9d2f4e0f3eabcfc7b02b48261f6e5ad36a3e2c1bbdcc4e3b7b6c768fa6/ndindex-1.10.1.tar.gz",
+            "version": "1.10.1"
+          },
+          "numexpr": {
+            "bytes": 119400,
+            "filename": "numexpr-2.14.1.tar.gz",
+            "sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+            "url": "https://files.pythonhosted.org/packages/cb/2f/fdba158c9dbe5caca9c3eca3eaffffb251f2fb8674bf8e2d0aed5f38d319/numexpr-2.14.1.tar.gz",
+            "version": "2.14.1"
+          }
+        },
+        "status": "source_requirements_covered_by_exact_solver"
+      },
+      "sha256": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85"
+    },
+    "STAGING_COMPLETE.json": {
+      "bytes": 2489,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "attempt": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2",
+        "build_configurations": {
+          "connected-components-3d": {
+            "backend_was_explicit": false,
+            "build_backend": "setuptools.build_meta:__legacy__",
+            "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+            "declared_requires": [
+              "setuptools",
+              "wheel",
+              "numpy"
+            ],
+            "implicit_requires": [
+              "setuptools>=40.8.0"
+            ],
+            "requires": [
+              "setuptools",
+              "wheel",
+              "numpy",
+              "setuptools>=40.8.0"
+            ]
+          },
+          "ndindex": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+            "declared_requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ]
+          },
+          "numexpr": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+            "declared_requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ]
+          }
+        },
+        "build_env": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2",
+        "build_env_explicit_sha256": "866d02c7106d809d4f14b87c0da101e2c3c722ab50f7a8f78e3ea89fb5fc2d77",
+        "contract_sha256": "8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980",
+        "formal_gate_status": "not_run_not_passed",
+        "free_bytes": 914544918528,
+        "jobs_created": false,
+        "models_loaded": false,
+        "operator_approved": false,
+        "prior_environments_preserved": true,
+        "remote_utc": "2026-11-04T14:40:59.929648+00:00",
+        "runtime_R4_installed": false,
+        "status": "S0_offline_CPU_input_staging_pass_not_model_runtime_pass"
+      },
+      "sha256": "42289638f4a8f64f172345677f3694804a26ad80bb278c4f2491de653a5be7f6"
+    }
+  },
+  "scheduler": {
+    "accounting": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobID|JobName|State|ExitCode|Elapsed|Start|End\n4304740|s2exts0p2|FAILED|1:0|00:00:21|2026-11-05T11:47:49|2026-11-05T11:48:10\n4304740.batch|batch|FAILED|1:0|00:00:21|2026-11-05T11:47:49|2026-11-05T11:48:10\n"
+    },
+    "job": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4304740 JobName=s2exts0p2 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=FAILED Reason=NonZeroExitCode Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0 RunTime=00:00:21 TimeLimit=04:00:00 TimeMin=N/A SubmitTime=2026-11-05T11:46:16 EligibleTime=2026-11-05T11:46:17 AccrueTime=2026-11-05T11:46:17 StartTime=2026-11-05T11:47:49 EndTime=2026-11-05T11:48:10 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-05T11:47:49 Partition=cpu_192G AllocNode:Sid=10.11.100.253:74513 ReqNodeList=(null) ExcNodeList=(null) NodeList=node201 BatchHost=node201 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/slurm/prepare.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/logs/s2exts0p2_4304740.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/logs/s2exts0p2_4304740.out Power= NtasksPerTRES:0\n"
+    },
+    "queue": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "solver_rerun": false,
+  "static_identity": {
+    "contract/PREPARATION_CONTRACT.json": {
+      "expected_sha256": "8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980",
+      "observed_sha256": "8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980"
+    },
+    "runtime/prepare_s0_cpu_r2.py": {
+      "expected_sha256": "e1b7f94ac06eb83c4633b7a2771d57dde6cbc5382989af0004b1fae1921963a0",
+      "observed_sha256": "e1b7f94ac06eb83c4633b7a2771d57dde6cbc5382989af0004b1fae1921963a0"
+    },
+    "runtime/s0_build_contract.py": {
+      "expected_sha256": "05ff1b367947bdd7efc9c3bb136d876d626b1b6d328ccbceef37466527ec0db3",
+      "observed_sha256": "05ff1b367947bdd7efc9c3bb136d876d626b1b6d328ccbceef37466527ec0db3"
+    },
+    "runtime/s0_source_requirements_r2.py": {
+      "expected_sha256": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6",
+      "observed_sha256": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6"
+    },
+    "slurm/prepare.slurm": {
+      "expected_sha256": "d879a1addf9756b3bfa8561b96e33f600deb87c1b14f9483e79217d8506620ff",
+      "observed_sha256": "d879a1addf9756b3bfa8561b96e33f600deb87c1b14f9483e79217d8506620ff"
+    }
+  },
+  "status": "read_only_CPU_R2_observation_not_inference_pass",
+  "submission_receipt_sha256": "592c93f24b50993446ff38210c5e0ef352a554beb7c0c3dea147b41ee4f71eda"
+}

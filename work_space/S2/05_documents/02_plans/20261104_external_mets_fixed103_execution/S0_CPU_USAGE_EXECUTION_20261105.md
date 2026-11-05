@@ -1,5 +1,17 @@
 # S0 实时 CPU 使用验收接续
 
+## 12:02 已提交释放但系统初始化失败
+
+用户先确认恢复校园登录，本机UTC03:51:30调用仍在VPN归属门停止，未SSH；一次只读status和客户端标识仍为disconnect/未登录。用户选择手动客户端重连后再确认“连好了”，同一个尚未远端执行R2才首次进入SSH，没有自动第二次启动或新建远端R3。
+
+CPU4304740首次sbatch0/held身份pass/同ID release0，资源cpu_192G/8CPU/64GiB/4h/无GPU。九份轻量JSON往返bytes/SHA及冻结Slurm/合同、owner/account/QoS/资源/日志/无依赖身份本机独立核验通过；释放时PENDING/None/零运行。随后唯一即时只读快照发现allocation/batch FAILED 1:0、21秒，stderr为`/etc/profile.d/256term.sh: line 9: COLORTERM: unbound variable`。Slurm先启用`set -euo pipefail`再读取系统profile，系统对可选变量的引用触发nounset；是我的初始化顺序错误，不是模型/GPU/solver或实际wheel/SIF转换失败。Python STARTED/FAILED/COMPLETE均没有，不能因未出FAILED marker视为健康。
+
+冻结Slurm SHA d879a1ad...6620ff、合同8a224632...29980及旧两失败保持，快照drift为空；新回执SHA `592c93f24b50993446ff38210c5e0ef352a554beb7c0c3dea147b41ee4f71eda`。提交远端UTC03:47:09.683180/本地finally03:58:36.443474，快照03:49:32.882755/04:00:59.611979分别记录，不称同步；Slurm原始起止11:47:49/11:48:10保留原值。文件系统余897207762944bytes=835.58984375GiB，quota0无数值，非额度或全量峰值门。实时CPU保守上界120+145+8=273低于1000，仅请求/分配上界，不是GPU使用量。用户现有VPN复用不注销。
+
+新增`snapshot_s0_cpu_usage_r2.py`只绑定本次R2回执路径，保持仅读日志/marker/静态身份和完成产物验收；138测试/64源码AST通过，非模型/A100 pass。已询问独立R3只改Slurm初始化期间nounset顺序、环境/资产/版本/资源不变，先核验再单次held；尚未授权或提交，不原位改R2或自动重提。J01-J07、真实smoke和全量仍未创建，无新分数/影像/test读取。
+
+证据：[提交与失败分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_USAGE_R2_SUBMISSION_FAILURE_20261105.json)、[提交回执](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_s0_cpu_usage_r2_20261105T035804Z/RESULT.json)、[即时快照](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_s0_cpu_usage_r2_20261105T040052Z/RESULT.json)、[本机快照验收](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261105T040015Z/VERIFICATION.json)。以下均为历史。
+
 ## 11:15 已授权但接入未就绪
 
 用户已确认“允许独立R2修正解析后继续首次提交（推荐）”，登记 `S0_CPU_USAGE_R2_AUTHORIZATION.json`。本机136测试/63源码AST通过，证据 `operator/verify_transport_20261105T031456Z`。随后本机调用 `submit_s0_cpu_usage_r2.py` 在VPN归属门停止，尚未进入SSH或执行远端R2，没有本次sbatch/held/release/JobID；本地停止UTC03:15:11.880249、finally03:15:11.880458。

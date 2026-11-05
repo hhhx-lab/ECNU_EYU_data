@@ -1,5 +1,7 @@
 # 两套外部METS模型同fixed103服务器横评计划
 
+北京时间2026-11-05 12:02最新：用户客户端重连后，独立R2首次CPU准备作业4304740已held核验并同ID释放，随后21秒FAILED 1:0。冻结Slurm的nounset早于系统profile，`COLORTERM`未定义导致Python入口之前退出；原R2/全部失败保留，不自动重提。一次只读快照无身份漂移，余835.58984375GiB非数值quota/全量峰值验收，用户VPN保留；138本机测试非模型/GPU通过。独立R3仅调整初始化顺序已询问待确认，wheel/SIF、完整推理环境、真实smoke及J01-J07仍未完成，见[CPU使用接续](S0_CPU_USAGE_EXECUTION_20261105.md)。原PLAN不改写，以下未SSH/无JobID等为历史。
+
 北京时间2026-11-05 11:15最新：用户已批准复合字段解析修正后的独立R2，136本机测试通过；本机调用因aTrust断开在VPN归属门停止，尚未SSH/执行远端R2/sbatch，无JobID。只读status返回disconnect、界面未登录，旧登录完成卡片不作在线证据；未logout/改VPN或安装/solver，没有新远端UTC/存储观察。已请求恢复学校登录，随后接续同一未远端执行的R2，不新建提交attempt。wheel/SIF、完整推理环境、两真实smoke和全量未完成，见[CPU使用接续](S0_CPU_USAGE_EXECUTION_20261105.md)；原PLAN不改写，下方“当前/最新/待确认”为历史。
 
 当前实施：已批准同版独立构建/额外CPU准备/单次7200秒转换及R2局部配置。编译器R2因操作器误比较Channel JSON而停止，solver未执行；独立R3修正已本机87测试通过、首次远端执行待确认。没有新构建环境/R4/SIF/JobID或推理结果；具体脚本完成度和门控见[S0接续记录](S0_COMPILER_EXECUTION_UPDATE_20261104.md)。下方“当前/最新/待确认”等均是历史，原PLAN不改写。
