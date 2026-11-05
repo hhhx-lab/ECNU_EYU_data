@@ -2,6 +2,12 @@
 
 ## 当前阶段
 
+最新终态为 **4304987 FAILED1:0/00:08:35**，remote snapshot09:06:44.706516、FAILED08:49:35.507987、local finally09:18:11.995601与review09:23:40.799203UTC分记；前次RUNNING不覆盖终态。无normalization完成或native SIF build/COMPLETE，完整Bio环境、两路GPU smoke及全量未提交。四轻量报告bytes/SHA、执行源码和原冻结身份通过，自建VPN关闭，余815.79296875GiB非数值quota/全量峰值验收。见[失败验收](S0_SIF_RECOVERY_R1_FAILURE_ACCEPTANCE_20261105.json)。
+
+失败来自verify_layer末尾的derived.next在Python3.10空tar上seek(-1)，并非原硬链接错误再现或GPU排队。已有原11层header记录含一个合法空层index3，远端栈未单列失败层index；同版本族本机Conda3.10.20空层复现Errno22，3.11.15不复现。原最小同CE fixture和全回归未覆盖空层/3.10，是本方测试覆盖缺口。
+
+仅新增本机候选source factory和独立3.10验证入口：用TarFile迭代器消费derived并核EOF，不异常兜底/跳层，保留全header/bytes/metadata/deadline门。候选SHAb1535f17...de4748，原冻结8c8ba3ac...258205不变，未部署或远端执行。8项针对性3.10测试全pass，3.11完整230项229pass/1skip、81生产AST；单独skip的原错误复现已在3.10通过。已请求独立R2先同服务器Python验证再新held CPU，仅复用三wheel/同模型/资源，尚待授权；不重编/重下载/solver/自动retry，原4304987及所有失败保留。以下均为阶段历史。
+
 最新后续单次只读快照：远端UTC08:50:08.374584，allocation及batch RUNNING/node214；STARTED绑定4304987/合同，远端UTC08:42:54.643241，WHEELS_REUSED的三个实际wheel fresh bytes/SHA通过。无FAILED/COMPLETE、NORMALIZATION_COMPLETE/SUMMARY或native阶段报告；两日志0bytes，无漂移，仍不是完整SIF或环境/GPU通过。accounting00:08:13与scontrol00:09:06为顺序非原子观察，运行中0:0不能当完成。
 
 [最新本机独立复核](operator/snapshot_sif_recovery_r1_20261105T090112Z/LOCAL_SNAPSHOT_REVIEW.json)：三个轻量报告bytes/SHA、执行源码SHA及重新生成一致通过；local review09:06:37.827166/finally09:01:36.157955UTC分记，自建VPN关闭，本机复核未再次SSH。余875952078848bytes=815.7939453125GiB，quota0空非数值账号额度/全量峰值通过。最终正式[验证回执](operator/verify_transport_20261105T090043Z/VERIFICATION.json)为222tests/79生产源码AST，全部源码/测试与日志SHA重新核验；085118原回执实际221tests/78AST，旧文档80AST/交接摘要81AST为计数笔误，原证据不改。GPU smoke/J01-J07和两全量均未提交，CPU/SIF、完整Bio环境及两真实GPU smoke/联合门保持。以下即时无STARTED/822GiB只为初始历史。
