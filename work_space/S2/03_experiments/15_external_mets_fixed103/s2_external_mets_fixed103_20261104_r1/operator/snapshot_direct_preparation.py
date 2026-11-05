@@ -1,4 +1,7 @@
 """One bounded read-only observation of direct inference and R5 preparation."""
+import argparse
+import ast
+import hashlib
 import json
 import os
 import shlex
@@ -18,10 +21,10 @@ def sha(path):
 def tail(path,limit):
  with path.open('rb') as f:
   f.seek(max(0,path.stat().st_size-limit));return f.read(limit).decode(errors='replace')
-for name,base in [('runtime_r5',root/'operator/environment_r5'),('full2025',root/'attempts/full103_2025_r1/operator'),('fullbio',root/'attempts/full103_bio_r1/operator')]:
+for name,base in [('runtime_r5',root/'operator/environment_r5'),('full2025',root/'attempts/full103_2025_r1/operator'),('fullbio',root/'attempts'/BIO_ATTEMPT_NAME/'operator')]:
  items={}
  for p in base.glob('*.json'):
-  if p.name not in ('FAILED.json','COMPLETE.json','PLAN_ACCEPTANCE.json','BASE_PACKAGE_LOCK.json','HELD_CREATED.json','HELD_JOB_MAP.json','SUBMISSION_RECEIPT.json','SUBMISSION_FAILED_hold.json','SUBMISSION_FAILED_release.json','IMAGE_CPU_IMPORT_CHECK.json','RESOURCE_SNAPSHOT.json'):continue
+  if p.name not in ('FAILED.json','COMPLETE.json','PLAN_ACCEPTANCE.json','BASE_PACKAGE_LOCK.json','HELD_CREATED.json','HELD_JOB_MAP.json','SUBMISSION_RECEIPT.json','SUBMISSION_FAILED_hold.json','SUBMISSION_FAILED_release.json','IMAGE_CPU_IMPORT_CHECK.json','RESOURCE_SNAPSHOT.json','PARENT_RECONCILIATION.json','SUBMISSION_RESERVED.json','COMMAND_FAILED_hold_single_sbatch_held.json'):continue
   assert p.stat().st_size<131072,'lightweight marker budget'
   data=p.read_bytes();items[p.name]=dict(sha256=hashlib.sha256(data).hexdigest(),data=json.loads(data))
  out[name]=items
@@ -29,7 +32,7 @@ out['runtime_log_tails']={p.name:tail(p,2500) for p in (root/'logs/environment_r
 out['base_package_files_present']={p.name:p.stat().st_size for p in (root/'operator/environment_r5/base_packages').glob('*') if p.is_file()}
 out['full_reports']={}
 out['full_jobs']={}
-for model,name in [('EXT2025_MET_GLI','full103_2025_r1'),('EXT2026_BIO_INTEL_FULL','full103_bio_r1')]:
+for model,name in [('EXT2025_MET_GLI','full103_2025_r1'),('EXT2026_BIO_INTEL_FULL',BIO_ATTEMPT_NAME)]:
  base=root/'attempts'/name
  out['full_reports'][model]={p.name:json.loads(p.read_text()) for p in (base/'reports'/model).glob('*.json') if p.name in ('STARTED.json','FAILED.json','COMPLETE.json','RUN_CONTRACT.json')}
  out[model+'_logtails']={p.name:tail(p,2000) for p in (base/'logs').glob('*') if p.is_file()}
@@ -49,6 +52,10 @@ for model,name in [('EXT2025_MET_GLI','full103_2025_r1'),('EXT2026_BIO_INTEL_FUL
 p=subprocess.run(['squeue','-h','-u','zqchen','-o','%i|%T|%P|%j|%r|%b'],capture_output=True,text=True,timeout=40)
 assert p.returncode==0,'queue unavailable'
 out['own_queue']=p.stdout;out['remote_utc']=datetime.now(timezone.utc).isoformat()
+if BIO_ATTEMPT_NAME=='full103_bio_r2':
+ p=subprocess.run(['sacct','-n','-P','-u','zqchen','--name=s2ext26full','--starttime=2026-11-05T00:00:00','--format=JobID,JobName,State,ExitCode,Submit,Start'],capture_output=True,text=True,timeout=40)
+ assert len(p.stdout)+len(p.stderr)<65536,'Bio accounting observation budget'
+ out['Bio_accounting']=dict(returncode=p.returncode,stdout=p.stdout,stderr=p.stderr)
 out['disk_free_bytes']=shutil.disk_usage(root).free
 p=subprocess.run(['quota','-s'],capture_output=True,text=True,timeout=40)
 out['quota']=dict(returncode=p.returncode,stdout=p.stdout,stderr=p.stderr)
@@ -58,10 +65,16 @@ print(json.dumps(out))
 
 
 def main():
-    compile(CODE,'snapshot_direct_preparation','exec')
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--bio-attempt',choices=('full103_bio_r1','full103_bio_r2'),default='full103_bio_r1')
+    args=parser.parse_args()
+    code='BIO_ATTEMPT_NAME='+repr(args.bio_attempt)+'\n'+CODE
+    ast.parse(code,feature_version=(3,10))
+    compile(code,'snapshot_direct_preparation','exec')
     with session('snapshot_direct_preparation') as access:
+        access_module.exclusive(access.audit/'EXECUTED_SOURCE.json',dict(source=code,sha256=hashlib.sha256(code.encode()).hexdigest()))
         command='env LC_ALL=C PYTHONDONTWRITEBYTECODE=1 EXTERNAL_MET_REMOTE_ROOT='+shlex.quote(os.environ['EXTERNAL_MET_REMOTE_ROOT'])
-        command+=' '+shlex.quote(os.environ['ECNU_REMOTE_PYTHON'])+' -B -c '+shlex.quote(CODE)
+        command+=' '+shlex.quote(os.environ['ECNU_REMOTE_PYTHON'])+' -B -c '+shlex.quote(code)
         result=json.loads(access.ssh(command,timeout=180).strip().splitlines()[-1])
         access_module.exclusive(access.audit/'RESULT.json',result)
         print(json.dumps(dict(audit=str(access.audit),remote_utc=result['remote_utc'],

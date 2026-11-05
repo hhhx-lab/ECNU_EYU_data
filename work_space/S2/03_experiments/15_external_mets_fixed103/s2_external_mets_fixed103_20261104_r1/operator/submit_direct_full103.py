@@ -166,6 +166,7 @@ def command(argv):
  return p.stdout
 def static():
  for n,d in json.loads((attempt/'contract/PACKAGE_SHA256.json').read_text())['files'].items():assert sha(attempt/n)==d,'package drift: '+n
+ if contract.get('submission_parent'):validate_submission_parent(contract['submission_parent'],root,command,sha,False)
  sys.path.insert(0,str(attempt/'runtime'))
  from full_contract import verify_assets
  verify_assets(contract,contract['selected_model'])
@@ -179,6 +180,10 @@ try:
  if ACTION=='hold':
   assert not attempt.exists(),'full inference attempt already exists; do not retry'
   assert attempt.parent==root/'attempts' and payload['model']==contract['selected_model'],'attempt identity drift'
+  parent_audit=None
+  if contract.get('submission_parent'):
+   stage='parent_submission_reconciliation'
+   parent_audit=validate_submission_parent(contract['submission_parent'],root,command,sha,True)
   attempt.mkdir(mode=0o700)
   stage='freeze_full103_package'
   for n,t in payload['files'].items():
@@ -188,6 +193,7 @@ try:
    p.chmod(0o550 if n.endswith('.slurm') else 0o440)
    if n.endswith('.py'):ast.parse(t,feature_version=(3,10))
   for n in ('logs','operator','reports','scratch','predictions'):(attempt/n).mkdir(mode=0o700)
+  if parent_audit is not None:write(attempt/'operator/PARENT_RECONCILIATION.json',parent_audit)
   static()
   command(['/bin/bash','-n',str(attempt/'slurm/full.slurm')])
   probe="import importlib.metadata as m,json; import torch,nibabel,numpy; print(json.dumps({n:m.version(n) for n in "+repr(contract['controller_versions'])+"}))"
@@ -259,23 +265,19 @@ except BaseException as error:
 '''
 
 
-def code_for(action, payload_path, payload_sha, model, verified=None):
+def code_for(action, payload_path, payload_sha, model, verified=None, extra_source=''):
     import inspect
     code = 'MODELS=' + repr(MODELS) + '\n' + inspect.getsource(job_fields) + '\n' + inspect.getsource(validate_held)
     code = 'import re\n' + code
     code += '\nACTION=' + repr(action) + '\nPAYLOAD_PATH=' + repr(payload_path) + '\nPAYLOAD_SHA=' + repr(payload_sha)
-    code += '\nJOB_NAME=' + repr(MODELS[model][1]) + '\nVERIFIED=' + repr(verified) + '\n' + REMOTE
+    code += '\nJOB_NAME=' + repr(MODELS[model][1]) + '\nVERIFIED=' + repr(verified) + '\n' + extra_source + '\n' + REMOTE
     ast.parse(code, feature_version=(3,10))
     return code
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--model', choices=MODELS, required=True)
-    parser.add_argument('--metadata', type=Path, required=True)
-    args = parser.parse_args()
-    payload = payload_for(args.model, args.metadata)
-    with session('submit_direct_full103_' + args.model.lower()) as access:
+def submit_payload(payload, action_name, extra_source=''):
+    model = payload['model']
+    with session(action_name) as access:
         payload_path = access.audit / 'SUBMISSION_PAYLOAD.json'
         access_module.exclusive(payload_path, payload)
         remote_audit = os.environ['EXTERNAL_MET_REMOTE_ROOT'] + '/operator/' + access.audit.name
@@ -283,7 +285,7 @@ def main():
         access.scp(payload_path, remote_audit + '/')
         remote_path = remote_audit + '/SUBMISSION_PAYLOAD.json'
         def invoke(action, verified=None):
-            code = code_for(action, remote_path, access_module.sha(payload_path), args.model, verified)
+            code = code_for(action, remote_path, access_module.sha(payload_path), model, verified, extra_source)
             access_module.exclusive(access.audit / (action.upper() + '_EXECUTED_SOURCE.json'), dict(source=code,sha256=digest(code)))
             command = 'env LC_ALL=C PYTHONDONTWRITEBYTECODE=1 ' + shlex.quote(os.environ['ECNU_REMOTE_PYTHON']) + ' -B -c ' + shlex.quote(code)
             result = json.loads(access.ssh(command,timeout=900).strip().splitlines()[-1])
@@ -300,6 +302,15 @@ def main():
         access_module.exclusive(access.audit/'LOCAL_HELD_VERIFICATION.json',verified)
         released=invoke('release',verified)
         print(json.dumps(dict(audit=str(access.audit),result=released)),flush=True)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model', choices=MODELS, required=True)
+    parser.add_argument('--metadata', type=Path, required=True)
+    args = parser.parse_args()
+    payload = payload_for(args.model, args.metadata)
+    submit_payload(payload, 'submit_direct_full103_' + args.model.lower())
 
 
 if __name__ == '__main__':

@@ -1,0 +1,81 @@
+{
+  "status": "R2_sbatch_CPU_time_refused_no_Bio_job_independently_reconciled",
+  "reviewed_utc": "2026-11-05T17:49:44.276688+00:00",
+  "checked_remote_lightweight_reports": {
+    "fullbio/COMMAND_FAILED_hold_single_sbatch_held.json": "9c1f30e3b76d0aa2aeeba53d8d90bd0cd038c74c546cdd2ce19c066fac19f3cc",
+    "fullbio/IMAGE_CPU_IMPORT_CHECK.json": "5295738cdc27b0934ac5fb070774066cb6c8777c51e045c79bcf9309fbc4e143",
+    "fullbio/PARENT_RECONCILIATION.json": "bea888d4fa613e98ac84c257f1d20abe9c3b0aceec0b69c21250fdad91676297",
+    "fullbio/RESOURCE_SNAPSHOT.json": "8d3c36bcab025ed9744b5cb371694e2dda1f85634c7c158b9900f036d7d1bea7",
+    "fullbio/SUBMISSION_FAILED_hold.json": "406626ad25fa72fb5d159e5364758dce1365f7fafb8797debd972e5d33f7a663",
+    "fullbio/SUBMISSION_RESERVED.json": "8c9f2eb538b7cdf73f60b718682871cd761c132e9b9e169d6f35c2707fc4d3a0",
+    "full2025/HELD_CREATED.json": "de77fe045064e23ad9b64cd4478e9d4556ed802e7c3356e5027e4622a21e8932",
+    "full2025/HELD_JOB_MAP.json": "c11b0fb487359d209a758b3af091c4b810530e863a69606afe54d694cb26ba06",
+    "full2025/IMAGE_CPU_IMPORT_CHECK.json": "5295738cdc27b0934ac5fb070774066cb6c8777c51e045c79bcf9309fbc4e143",
+    "full2025/RESOURCE_SNAPSHOT.json": "cea101a97bf6af4db616107f736a8ca4e2355afb809d18d77d608b9de6d7a181",
+    "full2025/SUBMISSION_RECEIPT.json": "0ec961665595d6c70023abba12a0f4aebf6d1ee29a6c417620046cdc2e573aca",
+    "full2025/SUBMISSION_RESERVED.json": "c94835da5927cbb71a3087ac994f91b667d57bf60ed82cd510a2ce040e7c6f16",
+    "runtime_r5/BASE_PACKAGE_LOCK.json": "33e4610077836e0bb6950f7718edfe13d9e8b496eda40e1bdcee4d6074af0785",
+    "runtime_r5/COMPLETE.json": "9922af778898655de0605ebc249ad93f33d7586b363f1c33c53cf573b8797bf4",
+    "runtime_r5/PLAN_ACCEPTANCE.json": "bf69d2a535b522e67cc33696a671d73821830fa9a1d11e8f2e681da7613e32fd"
+  },
+  "report_count": 15,
+  "raw_sbatch": {
+    "argv": [
+      "sbatch",
+      "--hold",
+      "--parsable",
+      "--export=NONE",
+      "--chdir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_bio_r2",
+      "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_bio_r2/slurm/full.slurm"
+    ],
+    "remote_utc": "2026-11-05T17:35:59.853490+00:00",
+    "returncode": 1,
+    "stderr": "sbatch: error: Job refused: account zqchen have not enough available CPU time. Please contact the administrator!\nsbatch: error: Batch job submission failed: Unspecified error\n",
+    "stdout": ""
+  },
+  "package_sha256": "365120b27ddf2c03ca183119c453206fae53e8a9ddaa0b3acadb67aac13f1a73",
+  "contract_sha256": "95df0f5461676ec99f8f967505dd10740e34bb0a1eb6d7bec98da274212c9361",
+  "payload_sha256": "a67e167e2f155cdc1f602449fbad46461808e57fec54709e9d33032699d37e69",
+  "executed_source_sha256": "63e79f3d1a56126e2ec3e893ebe4316666aef3370840d7414f4900ed1da3476a",
+  "same_runtime_and_manifest_count": 9,
+  "Bio_queue_and_accounting_empty": true,
+  "protected_2025_job_id": "4310575",
+  "protected_2025_current_state": "PENDING/Priority",
+  "protected_2025_prediction_count": 0,
+  "remote_failure_utc": "2026-11-05T17:35:59.861887+00:00",
+  "remote_snapshot_utc": "2026-11-05T17:37:11.226463+00:00",
+  "local_submission_receipt": {
+    "artifact_status": "experimental_unvalidated",
+    "completed_utc": "2026-11-05T17:47:27.214180+00:00",
+    "formal_gate_status": "not_run_not_passed",
+    "operator_approved": false,
+    "own_vpn_stop_completed": false,
+    "preexisting_vpn_preserved": true,
+    "started_utc": "2026-11-05T17:46:40.098234+00:00",
+    "vpn_owned": false
+  },
+  "local_snapshot_receipt": {
+    "artifact_status": "experimental_unvalidated",
+    "completed_utc": "2026-11-05T17:48:39.036081+00:00",
+    "formal_gate_status": "not_run_not_passed",
+    "operator_approved": false,
+    "own_vpn_stop_completed": false,
+    "preexisting_vpn_preserved": true,
+    "started_utc": "2026-11-05T17:48:33.778575+00:00",
+    "vpn_owned": false
+  },
+  "disk_free_bytes": 744630517760,
+  "disk_free_GiB": 693.4912109375,
+  "quota": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "numeric_CPU_time_balance_unverified": true,
+  "numeric_storage_quota_unverified": true,
+  "automatic_retry": false,
+  "scientific_quality_pass": false,
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed"
+}
