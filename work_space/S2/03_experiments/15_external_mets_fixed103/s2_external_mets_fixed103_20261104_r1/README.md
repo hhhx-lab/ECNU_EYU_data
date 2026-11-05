@@ -1,5 +1,9 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**最新本机复核09:06UTC：CPU4304987仍RUNNING/node214，Python STARTED和三个wheel复用验收已出现；无FAILED/COMPLETE，完整SIF待完成，两路GPU smoke和全量仍未提交。**远端快照08:50:08.374584、本机finally09:01:36.157955分记；三个轻量报告及执行源码/合同SHA复核pass，自建VPN关闭。余815.7939453125GiB非数值quota/全量峰值门；最终正式验证222tests/79生产源码AST（此前221tests/78AST，下方80AST为计数笔误，原回执不改），非模型/GPU质量通过。见[最新快照复核](operator/snapshot_sif_recovery_r1_20261105T090112Z/LOCAL_SNAPSHOT_REVIEW.json)和[STATUS](STATUS_20261104.md)。保持原失败/PLAN，不重提/重编/重下载/solver或恢复监控；下方初始状态均为历史。
+
+**2026-11-05本次接续：同镜像硬链接兼容最小实测通过，新CPU4304987已held核验并释放，即时RUNNING/node214；两全量仍未提交。**第6层whiteout删目标但缓存链接保留，原5byte样本在同CE复现原错误，物化链接后native展开pass。全原归档/实际三wheelSHA一致，不重编/下载/安装solver。派生归档只改变链接存储与diff_ids/configSHA，不称原Docker字节摘要相同；全镜像文件比较/SIF尚待本次CPU产物验收。221tests/80AST、17审计SHA和三执行源码/协议输入核验pass，非GPU/质量pass；旧4304783与全部失败保留。余822.240234375GiB非数值quota/全量预算，自建VPNfinally关闭，完整环境/两真实GPU smoke仍是全量前置门。见[完整兼容恢复记录](S0_SIF_RECOVERY_EXECUTION_20261105.md)与[STATUS](STATUS_20261104.md)，下方为历史。
+
 **北京时间2026-11-05 15:54：VPN/SSH已恢复，CPU4304783实际FAILED1:0/35分26秒；三wheel编译与CPU探针通过，2025镜像SIF展开失败，两全量仍未提交。**只读层元数据确认硬链接目标原本存在且排在前面，具体后端展开问题/恢复方式仍待核验；独立恢复已请求，未自动新建作业/重编/重下载。10轻量报告SHA通过，202本机tests/72AST非模型/GPU通过；余822.24GiB非数值quota或全量预算，两次自建VPN均finally关闭。用base与Chrome Bridge调用网络操作器，不包在找不到playwright-mcp的brats2023_seg测试环境；不改PATH。见[完整失败验收](S0_CPU_R3A_FAILURE_ACCEPTANCE_20261105.json)，下方为历史。
 
 **北京时间2026-11-05 15:41：用户确认重连后，旧认证会话与换网前基线仍被保留，分流验收继续失败，未SSH或提交全量。**脚本的限定路由尝试已回滚，restore_failures为空；未改基线/脚本或注销用户。现需在aTrust退出校园账号登录并暂时保持未登录，才能先捕获当前网络基线后继续官方登录。CPU4304783当前状态/远端容量未知，不凭历史RUNNING提交；完整环境、两真实smoke和联合门仍须核验。见[接续诊断](FULL_INFERENCE_RECONNECT_HOLD_20261105.json)，下方为历史。

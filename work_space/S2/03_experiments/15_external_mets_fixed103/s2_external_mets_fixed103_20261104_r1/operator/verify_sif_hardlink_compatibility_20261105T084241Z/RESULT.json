@@ -1,0 +1,148 @@
+{
+  "fixture_content_sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+  "fixture_source_content_bytes": 5,
+  "free_bytes": 882874777600,
+  "images_read": false,
+  "inventories": [
+    {
+      "hardlinks": 2,
+      "headers": 3518,
+      "index": 0
+    },
+    {
+      "hardlinks": 0,
+      "headers": 2264,
+      "index": 1
+    },
+    {
+      "hardlinks": 18996,
+      "headers": 77605,
+      "index": 2
+    },
+    {
+      "hardlinks": 0,
+      "headers": 0,
+      "index": 3
+    },
+    {
+      "hardlinks": 0,
+      "headers": 1,
+      "index": 4
+    },
+    {
+      "hardlinks": 0,
+      "headers": 1026,
+      "index": 5
+    },
+    {
+      "hardlinks": 0,
+      "headers": 16134,
+      "index": 6
+    },
+    {
+      "hardlinks": 0,
+      "headers": 2,
+      "index": 7
+    },
+    {
+      "hardlinks": 0,
+      "headers": 3,
+      "index": 8
+    },
+    {
+      "hardlinks": 0,
+      "headers": 5,
+      "index": 9
+    },
+    {
+      "hardlinks": 0,
+      "headers": 8,
+      "index": 10
+    }
+  ],
+  "jobs_created": false,
+  "minimal_normalization": {
+    "bytes": 30720,
+    "derived_config_sha256": "ebd203984894a42a79d481fc96aff2a12dd85955da91c2ef110f2ff0db25be10",
+    "every_member_bytes_and_metadata_compared": true,
+    "inode_sharing_not_preserved": true,
+    "layers": [
+      {
+        "bytes": 10240,
+        "hardlinks": [
+          {
+            "bytes": 5,
+            "content_sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+            "name": "opt/conda/pkgs/pip-25.1.1-pyh8b19718_0/site-packages/pip-25.1.1.dist-info/INSTALLER",
+            "original_target": "opt/conda/lib/python3.11/site-packages/pip-25.1.1.dist-info/INSTALLER",
+            "resolved_regular_target": "opt/conda/lib/python3.11/site-packages/pip-25.1.1.dist-info/INSTALLER"
+          }
+        ],
+        "headers": 2,
+        "index": 0,
+        "original_diff_id": "sha256:f4de7689139d1264260b5b0b773c643561f872712ffb17ced0c63b4fe909bbc7",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/normalized_fixture/0.tar",
+        "sha256": "77f2a6e0385d2c3511d6afd02c48f4f568be1fc194c3e982a354acb42f1bd0f1"
+      },
+      {
+        "bytes": 10240,
+        "hardlinks": [],
+        "headers": 1,
+        "index": 1,
+        "original_diff_id": "sha256:2cb2f72231c777682b1f8515bccdde4fc0e3cffd81c2da823b71109471d22cef",
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/normalized_fixture/1.tar",
+        "sha256": "2cb2f72231c777682b1f8515bccdde4fc0e3cffd81c2da823b71109471d22cef"
+      }
+    ],
+    "method": "regular_file_materialization_of_original_tar_hardlinks_then_unchanged_native_OCI_merger",
+    "models_loaded": false,
+    "not_original_byte_identical_Docker_digest": true,
+    "only_hardlink_storage_and_rootfs_diff_ids_changed": true,
+    "original_archive_preserved": true,
+    "original_archive_sha256": "d988b41606fac19e8f07e43f6d00f6c328d27cc5439ce074b399d81635e20620",
+    "original_config_sha256": "63df64d116b2da266fcbef658965b75e69966d203a6d8a95ef151ae5431b2829",
+    "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/normalized_fixture/hardlinks_materialized.docker-archive.tar",
+    "rootfs_extracted_by_this_program": false,
+    "sha256": "870d5e608ad9eb19ac47479d870238f69d6597b86be4aefd17144b901fed48f1"
+  },
+  "models_loaded": false,
+  "normalized_native_probe_pass": true,
+  "normalizer_source_sha256": "8c8ba3ac4daad96a4f6a8fe043757e4d102f7e913a0a2a88ec28960005258205",
+  "observations": {
+    "normalized": {
+      "command": [
+        "/public/software/singularity-ce/4.1.1/bin/singularity",
+        "build",
+        "--disable-cache",
+        "--sandbox",
+        "--no-cleanup",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/normalized_rootfs",
+        "docker-archive:///public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/normalized_fixture/hardlinks_materialized.docker-archive.tar"
+      ],
+      "returncode": 0,
+      "stderr": "INFO:    Starting build...\nINFO:    Fetching OCI image...\nINFO:    Extracting OCI image...\nINFO:    Inserting Singularity configuration...\nINFO:    Creating sandbox directory...\nINFO:    Build performed with no clean up option, build bundle(s) located at: [/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/build-temp-3316673281/rootfs /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/tmp/bundle-temp-1560181744]\nINFO:    Build complete: /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/normalized_rootfs\n",
+      "stdout": ""
+    },
+    "original": {
+      "command": [
+        "/public/software/singularity-ce/4.1.1/bin/singularity",
+        "build",
+        "--disable-cache",
+        "--sandbox",
+        "--no-cleanup",
+        "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/original_rootfs",
+        "docker-archive:///public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/original_header_fixture.tar"
+      ],
+      "returncode": 255,
+      "stderr": "INFO:    Starting build...\nINFO:    Fetching OCI image...\nINFO:    Extracting OCI image...\nINFO:    Build performed with no clean up option, build bundle(s) located at: [/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/build-temp-655117011/rootfs /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_hardlink_compatibility_r1/tmp/bundle-temp-2434814496]\nFATAL:   While performing build: packer failed to pack: while unpacking tmpfs: error unpacking rootfs: unpack entry: opt/conda/pkgs/pip-25.1.1-pyh8b19718_0/site-packages/pip-25.1.1.dist-info/INSTALLER: link: unpriv.link: unpriv.wrap target: no such file or directory\n",
+      "stdout": ""
+    }
+  },
+  "original_archive_bytes": 8409948160,
+  "original_error_reproduced": true,
+  "original_full_SHA_recomputed_in_this_probe": false,
+  "original_image_full_conversion_attempted": false,
+  "packages_installed": false,
+  "remote_utc": "2026-11-05T08:31:40.607754+00:00",
+  "status": "same_image_minimal_hardlink_whiteout_native_compatibility_pass_not_full_SIF_or_GPU_pass"
+}

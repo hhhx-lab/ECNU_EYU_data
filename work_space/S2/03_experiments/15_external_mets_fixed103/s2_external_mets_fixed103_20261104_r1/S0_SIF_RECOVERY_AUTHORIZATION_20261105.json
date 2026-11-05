@@ -1,0 +1,21 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "user_reply": "允许核验后独立恢复并继续（推荐）",
+  "independent_same_image_compatibility_recovery_authorized": true,
+  "verify_successful_wheels_before_reuse": true,
+  "single_new_CPU_held_submission_after_compatibility_verification_authorized": true,
+  "failed_parent_job_id": "4304783",
+  "failed_parent_marker_sha256": "8a5d33b7f6900d27c8f9c282c82b08cd373330ca3dcb2f321a1520a53c4c4432",
+  "preserve_original_archive_sha256": "731b17a23514bf2460083d4585a42d5ece4137643960c354469790857af52735",
+  "reuse_build_environment": "bio_build_glibc217_r2",
+  "resource": {"partition": "cpu_192G", "cpus_per_task": 8, "memory_gib": 64, "time_limit": "04:00:00", "gpu": 0},
+  "conversion_deadline_seconds": 7200,
+  "recompile_or_redownload_authorized": false,
+  "install_new_dependency_or_backend_authorized": false,
+  "automatic_retry": false,
+  "restore_monitor": false,
+  "full_inference_requires_both_real_GPU_smokes": true,
+  "recovery_method": "pending_existing_tool_and_same_image_compatibility_verification"
+}
