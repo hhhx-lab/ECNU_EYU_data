@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**北京时间2026-11-05 15:25复核：已收到“提交两个的全量推理作业”，本次因分流验收未通过停在接入门，未SSH或创建新作业。**aTrust在线/隧道可用，但原本机默认网关基线已变化，三个公网探针重新走校园隧道；不改基线或绕过门、未注销用户会话。用户选择手动重连后继续，后续一次本机只读status仍同登录会话/default changed，等待完成确认。4304783本轮状态未知，12:51 RUNNING仅最后历史快照；CPU产物/完整环境/两真实smoke尚无本轮验收，不提前提交两全量。202本机tests/71AST通过只为只读入口，不是远端通过。见[接入停止记录](FULL_INFERENCE_ACCESS_HOLD_20261105.json)，以下为历史。
+
 **北京时间2026-11-05 12:51复核：用户授权R3a首次CPU准备4304783已held核验并同ID释放，即时快照RUNNING/node201。**资源cpu_192G/8CPU/64GiB/4h/无GPU，sbatch/release均0，十轻量审计bytes/SHA和冻结身份本机通过；STARTED/FAILED/COMPLETE均无、两日志0bytes，非CPU产物或GPU推理通过。旧R3误引用operator而非reports导致sbatch前失败无JobID，原四文件SHA/旧4304740/R2及失败永久保留。201本机tests/70AST通过，真实冻结脚本bootstrap通过；无重装/solver/监控恢复，用户VPN保留。最新文件系统余835.12890625GiB非数值quota/全量峰值门；完整推理环境、两真实smoke和J01-J07仍未完成。见[R3/R3a执行记录](S0_CPU_R3_R3A_EXECUTION_20261105.md)及[STATUS](STATUS_20261104.md)，下方状态为历史。
 
 **北京时间2026-11-05 12:18：已补实际启动检查，本次不重提交。**修正初始化候选在远端干净 shell、七 import、C/C++ 语法及容器 CLI 通过；162 本机测试/65 AST 通过。原脚本更早触发 HISTCONTROL，与 Slurm 的 COLORTERM 同根因。原回执和 R2 冻结包保留，独立本机验收仅认 bootstrap pass，不认 wheel/SIF/GPU pass。无新 R3/JobID、安装/solver/真实转换，smoke 和全量仍未提交；用户 VPN 保留，容量未刷新。见[完整复核](S0_CPU_BOOTSTRAP_REVIEW_20261105.md)；下方状态为历史。

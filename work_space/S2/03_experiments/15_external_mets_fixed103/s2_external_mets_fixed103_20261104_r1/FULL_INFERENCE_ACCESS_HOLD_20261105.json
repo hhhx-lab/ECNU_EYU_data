@@ -1,0 +1,40 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "user_request": "提交两个 的全量推理作业",
+  "status": "FULL_INFERENCE_REQUESTED_ACCESS_HOLD_NO_SSH_NO_NEW_JOBS",
+  "local_stop_utc": "2026-11-05T05:35:32.305492+00:00",
+  "local_finally_utc": "2026-11-05T05:35:32.305803+00:00",
+  "access_stop": "VPN_SESSION_OWNED marker not returned; start did not pass",
+  "read_only_local_status": {
+    "atrust_status": "online",
+    "tunnel_status": "tunnelAvailable",
+    "managed_state": "split_verified",
+    "default_gateway_changed_from_managed_baseline": true,
+    "default_interface_unchanged": true,
+    "three_public_probe_routes_currently_use_atrust_tunnel": true,
+    "split_check_returncode": 1,
+    "split_check_error": "default changed; split check failed (no automatic rewrite)"
+  },
+  "private_network_details": "Remain only in original local VPN state; not copied into project",
+  "manual_user_session_preserved": true,
+  "remote_attempted": false,
+  "new_job_ids": [],
+  "CPU_4304783_current_state": "unknown_this_turn; last_valid_snapshot_was_RUNNING",
+  "current_remote_utc_or_capacity_obtained": false,
+  "last_valid_remote_snapshot_utc": "2026-11-05T04:37:03.195737+00:00",
+  "automatic_retry": false,
+  "monitor_restored": false,
+  "new_dependency_installation": false,
+  "images_or_models_read": false,
+  "user_reply": "我重新连接 aTrust 后继续",
+  "post_reply_read_only_status_utc": "2026-11-05T07:25:36+00:00",
+  "post_reply_split_check_still_failed": true,
+  "post_reply_authenticated_session_unchanged": true,
+  "continuation": "Wait for user confirmation that reconnection has completed; resume the same read-only check before any environment/smoke/full-submission gates",
+  "evidence": [
+    "operator/snapshot_s0_cpu_r3a_20261105T053532Z/OPERATION_STOPPED.json",
+    "operator/snapshot_s0_cpu_r3a_20261105T053532Z/LOCAL_OPERATION_RECEIPT.json"
+  ]
+}

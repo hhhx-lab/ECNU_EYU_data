@@ -1,5 +1,11 @@
 # S0 实时 CPU 使用验收接续
 
+## 15:25 全量请求因本机分流漂移尚未SSH
+
+用户要求提交两外部成品同fixed103全量；先新增只读snapshot_s0_cpu_r3a入口绑定4304783，201tests/71AST通过后调用一次，UTC05:35:32.305492在VPN归属门停止/finally05:35:32.305803，无本轮SSH/远端UTC/容量/新JobID/安装。只读本机status显示aTrust online/tunnelAvailable，但默认网关不同于旧基线、三个公网探针重新走隧道；不改基线/降门/注销用户会话，私有网络明细只留原本机状态。
+
+用户选择“我重新连接 aTrust 后继续”，等待完成确认；之后UTC07:25:36一次本机只读status仍同登录会话/default changed。补只读入口完整执行测试，202tests/71AST通过，非远端或GPU通过。4304783当前未知，旧RUNNING和835.13GiB不得当本轮验收；CPU完成、三wheel/SIF身份、完整环境及两真实smoke/联合门前，不创建两全量。无重装/solver/自动retry/监控恢复或影像/test读取。见[接入停止分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/FULL_INFERENCE_ACCESS_HOLD_20261105.json)，原PLAN不改，以下历史保留。
+
 ## 12:51 R3a单次提交释放与CPU运行
 
 用户确认独立R3a核验后继续提交。201本机tests/70AST通过，覆盖准备完整入口/最终脚本/真实shell错误退出、完整held与main传输链。原R3引用operator路径错误、sbatch前无JobID，原诊断漏import os及本机fixture失败全部保留；正确reports SHA与原R3四文件集合严格绑定，未改原失败。复用R2环境/47包锁/模型/资源，不重装/solver/自动retry。
