@@ -1,5 +1,13 @@
 # S0 实时 CPU 使用验收接续
 
+## 12:51 R3a单次提交释放与CPU运行
+
+用户确认独立R3a核验后继续提交。201本机tests/70AST通过，覆盖准备完整入口/最终脚本/真实shell错误退出、完整held与main传输链。原R3引用operator路径错误、sbatch前无JobID，原诊断漏import os及本机fixture失败全部保留；正确reports SHA与原R3四文件集合严格绑定，未改原失败。复用R2环境/47包锁/模型/资源，不重装/solver/自动retry。
+
+CPU4304783/cpu_192G/8CPU/64GiB/4h/无GPU首次sbatch0/held审计pass，本机验十轻量JSON及合同/冻结Slurm，再同IDrelease0；释放PENDING/None/零运行，唯一即时只读快照RUNNING/node201。Python STARTED/FAILED/COMPLETE均无、日志0bytes；非实际wheel/SIF或模型/GPU通过。SHA drift为空，用户VPN保留、无第二次SSH或监控恢复。合同6615846d...1063c，脚本cc76d642...795d5，原锁不变；CPU请求保守273<1000而非GPU使用实测。
+
+held远端04:36:55.764448、release04:36:59.534791、snapshot04:37:03.195737，本机held验04:48:22.725902/finally04:48:29.979731/复核04:51:14UTC分别记录。最新余896712835072bytes=835.12890625GiB，仅本次CPU150GiB增量门通过，quota0无数值，非全量容量验收。CPU完成须COMPLETED0:0+COMPLETE+三wheel/SIF完整SHA；完整推理环境、两真实smoke/联合门、J01-J07仍未完成/创建，无新分数/读test/模型回传。见[完整R3/R3a记录](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_R3_R3A_EXECUTION_20261105.md)及[提交/快照回执](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_s0_cpu_r3a_20261105T044747Z/)。以下均为历史，原PLAN与研究边界不变。
+
 ## 12:18 启动与执行链检查
 
 用户要求认真检查后再提交。本轮补完整准备控制流模拟、真实 shell 错误退出和分类拒绝测试，162测试/65AST通过；一次有界远端检查修正初始化、七import、C/C++语法及容器CLI通过。原脚本在干净环境先报HISTCONTROL，与已失败COLORTERM同根因；原汇总仅认COLORTERM的限制通过独立本机验收解释，原RESULT不改、不二次SSH。R2/4304740失败和旧环境保持，用户VPN保留，无新R3/作业/安装/solver/真实转换/影像或容量观察，非wheel/SIF/模型/A100通过。见[完整复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_BOOTSTRAP_REVIEW_20261105.md)，以下为历史。

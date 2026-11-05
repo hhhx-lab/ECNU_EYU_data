@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**北京时间2026-11-05 12:51复核：用户授权R3a首次CPU准备4304783已held核验并同ID释放，即时快照RUNNING/node201。**资源cpu_192G/8CPU/64GiB/4h/无GPU，sbatch/release均0，十轻量审计bytes/SHA和冻结身份本机通过；STARTED/FAILED/COMPLETE均无、两日志0bytes，非CPU产物或GPU推理通过。旧R3误引用operator而非reports导致sbatch前失败无JobID，原四文件SHA/旧4304740/R2及失败永久保留。201本机tests/70AST通过，真实冻结脚本bootstrap通过；无重装/solver/监控恢复，用户VPN保留。最新文件系统余835.12890625GiB非数值quota/全量峰值门；完整推理环境、两真实smoke和J01-J07仍未完成。见[R3/R3a执行记录](S0_CPU_R3_R3A_EXECUTION_20261105.md)及[STATUS](STATUS_20261104.md)，下方状态为历史。
+
 **北京时间2026-11-05 12:18：已补实际启动检查，本次不重提交。**修正初始化候选在远端干净 shell、七 import、C/C++ 语法及容器 CLI 通过；162 本机测试/65 AST 通过。原脚本更早触发 HISTCONTROL，与 Slurm 的 COLORTERM 同根因。原回执和 R2 冻结包保留，独立本机验收仅认 bootstrap pass，不认 wheel/SIF/GPU pass。无新 R3/JobID、安装/solver/真实转换，smoke 和全量仍未提交；用户 VPN 保留，容量未刷新。见[完整复核](S0_CPU_BOOTSTRAP_REVIEW_20261105.md)；下方状态为历史。
 
 **北京时间2026-11-05 12:02最新：CPU准备4304740首次提交/同ID释放成功，但运行21秒后FAILED 1:0。**我的冻结Slurm在系统profile之前启用nounset，遇`COLORTERM`未定义退出，尚未进入Python准备；不是GPU或模型失败。即时只读快照无静态/旧失败身份漂移，余835.58984375GiB非数值quota/全量容量门；用户VPN保留。138本机测试通过非模型通过，独立R3初始化顺序修正已询问待授权，原包/失败不改，不自动重提。CPU准备、真实smoke及J01-J07未完成，无新分数。见[失败分析](S0_CPU_USAGE_R2_SUBMISSION_FAILURE_20261105.json)和[STATUS](STATUS_20261104.md)；以下“未SSH/无JobID/最新”等均为历史。

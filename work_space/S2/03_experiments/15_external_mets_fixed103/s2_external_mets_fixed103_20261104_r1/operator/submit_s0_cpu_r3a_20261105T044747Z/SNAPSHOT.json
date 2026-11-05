@@ -1,0 +1,213 @@
+{
+  "artifact_identity": {},
+  "artifact_status": "experimental_unvalidated",
+  "drift": [],
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 896712835072,
+  "images_read": false,
+  "job_id": "4304783",
+  "jobs_created": false,
+  "logs": {
+    "s2exts0p3a_4304783.err": {
+      "bytes": 0,
+      "tail": "",
+      "tail_only": true
+    },
+    "s2exts0p3a_4304783.out": {
+      "bytes": 0,
+      "tail": "",
+      "tail_only": true
+    }
+  },
+  "models_loaded": false,
+  "operator_approved": false,
+  "remote_utc": "2026-11-05T04:37:03.195737+00:00",
+  "remote_writes": false,
+  "reports": {
+    "SOURCE_BUILD_REQUIREMENTS.json": {
+      "bytes": 3705,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "checked": {
+          "connected-components-3d": [
+            {
+              "requirement": "setuptools",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "wheel",
+              "selected_version": "0.48.0"
+            },
+            {
+              "requirement": "numpy",
+              "selected_version": "2.2.6"
+            },
+            {
+              "requirement": "setuptools>=40.8.0",
+              "selected_version": "84.0.0"
+            }
+          ],
+          "ndindex": [
+            {
+              "requirement": "setuptools; platform_python_implementation != 'PyPy'",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "cython",
+              "selected_version": "3.3.0"
+            }
+          ],
+          "numexpr": [
+            {
+              "requirement": "setuptools>=77.0.0",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "numpy>=2.0.0",
+              "selected_version": "2.2.6"
+            }
+          ]
+        },
+        "configurations": {
+          "connected-components-3d": {
+            "backend_was_explicit": false,
+            "build_backend": "setuptools.build_meta:__legacy__",
+            "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+            "declared_requires": [
+              "setuptools",
+              "wheel",
+              "numpy"
+            ],
+            "implicit_requires": [
+              "setuptools>=40.8.0"
+            ],
+            "requires": [
+              "setuptools",
+              "wheel",
+              "numpy",
+              "setuptools>=40.8.0"
+            ]
+          },
+          "ndindex": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+            "declared_requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ]
+          },
+          "numexpr": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+            "declared_requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ]
+          }
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "sources": {
+          "connected-components-3d": {
+            "bytes": 85178,
+            "filename": "connected_components_3d-4.1.1.tar.gz",
+            "sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+            "url": "https://files.pythonhosted.org/packages/23/66/62eeb4d29188a1161289c58c9129294856ce0f134fb9b49c3d13ae0db1d1/connected_components_3d-4.1.1.tar.gz",
+            "version": "4.1.1"
+          },
+          "ndindex": {
+            "bytes": 271395,
+            "filename": "ndindex-1.10.1.tar.gz",
+            "sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+            "url": "https://files.pythonhosted.org/packages/f5/92/4b9d2f4e0f3eabcfc7b02b48261f6e5ad36a3e2c1bbdcc4e3b7b6c768fa6/ndindex-1.10.1.tar.gz",
+            "version": "1.10.1"
+          },
+          "numexpr": {
+            "bytes": 119400,
+            "filename": "numexpr-2.14.1.tar.gz",
+            "sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+            "url": "https://files.pythonhosted.org/packages/cb/2f/fdba158c9dbe5caca9c3eca3eaffffb251f2fb8674bf8e2d0aed5f38d319/numexpr-2.14.1.tar.gz",
+            "version": "2.14.1"
+          }
+        },
+        "status": "source_requirements_covered_by_exact_solver"
+      },
+      "sha256": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85"
+    },
+    "STAGING_COMPLETE.json": {
+      "bytes": 402,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "environment_reinstalled": false,
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:36:55.044027+00:00",
+        "solver_rerun": false,
+        "status": "S0_offline_CPU_input_staging_pass_not_model_runtime_pass"
+      },
+      "sha256": "55dce942435fc5aba7e3feda53e3dc7ce0e027394fb2072bc797d746f245df74"
+    }
+  },
+  "scheduler": {
+    "accounting": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobID|JobName|State|ExitCode|Elapsed|Start|End\n4304783|s2exts0p3a|RUNNING|0:0|00:00:02|2026-11-05T12:36:07|Unknown\n4304783.batch|batch|RUNNING|0:0|00:00:02|2026-11-05T12:36:07|Unknown\n"
+    },
+    "job": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4304783 JobName=s2exts0p3a UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=RUNNING Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:55 TimeLimit=04:00:00 TimeMin=N/A SubmitTime=2026-11-05T12:36:02 EligibleTime=2026-11-05T12:36:07 AccrueTime=Unknown StartTime=2026-11-05T12:36:07 EndTime=2026-11-05T16:36:07 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-05T12:36:07 Partition=cpu_192G AllocNode:Sid=10.11.100.253:13432 ReqNodeList=(null) ExcNodeList=(null) NodeList=node201 BatchHost=node201 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/slurm/prepare.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.out Power= NtasksPerTRES:0\n"
+    },
+    "queue": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4304783|RUNNING|cpu_192G|s2exts0p3a|None\n"
+    },
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "solver_rerun": false,
+  "static_identity": {
+    "contract/PREPARATION_CONTRACT.json": {
+      "expected_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+      "observed_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c"
+    },
+    "runtime/prepare_s0_cpu_r3a.py": {
+      "expected_sha256": "771c3bec7e959c91d9ff772ed635decb53a4d3eac579d4e5d1ee9bdc65b4b88b",
+      "observed_sha256": "771c3bec7e959c91d9ff772ed635decb53a4d3eac579d4e5d1ee9bdc65b4b88b"
+    },
+    "runtime/s0_build_contract.py": {
+      "expected_sha256": "d64ff60a271d8132588da00a56a3cabbb3e088f1715d272f1582abb6e3bc1f9a",
+      "observed_sha256": "d64ff60a271d8132588da00a56a3cabbb3e088f1715d272f1582abb6e3bc1f9a"
+    },
+    "runtime/s0_source_requirements_r2.py": {
+      "expected_sha256": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6",
+      "observed_sha256": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6"
+    },
+    "slurm/prepare.slurm": {
+      "expected_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+      "observed_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5"
+    }
+  },
+  "status": "read_only_CPU_R3a_observation_not_inference_pass",
+  "submission_receipt_sha256": "c7f4a30f4f95d78a4d14104c008f1c174192c1e8bce267ea58b981a4b46808ae"
+}

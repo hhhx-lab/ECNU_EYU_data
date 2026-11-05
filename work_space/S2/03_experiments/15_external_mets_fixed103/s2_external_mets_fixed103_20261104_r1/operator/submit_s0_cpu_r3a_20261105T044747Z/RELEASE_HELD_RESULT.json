@@ -1,0 +1,2042 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "contract": {
+    "archive": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/container_conversion/fixed2025.docker-archive.tar",
+    "archive_sha256": "731b17a23514bf2460083d4585a42d5ece4137643960c354469790857af52735",
+    "artifact_status": "experimental_unvalidated",
+    "attempt": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a",
+    "automatic_retry": false,
+    "backend": "/public/software/singularity-ce/4.1.1/bin/singularity",
+    "bootstrap_verification_sha256": "7ce1cdac2c4bda31ea96e2fa41d14662818fe9e27003b416bced4ea91a08c146",
+    "budget_scope": "conservative_CPU_preparation_reservation_not_full_inference",
+    "build_configurations": {
+      "connected-components-3d": {
+        "backend_was_explicit": false,
+        "build_backend": "setuptools.build_meta:__legacy__",
+        "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+        "declared_requires": [
+          "setuptools",
+          "wheel",
+          "numpy"
+        ],
+        "implicit_requires": [
+          "setuptools>=40.8.0"
+        ],
+        "requires": [
+          "setuptools",
+          "wheel",
+          "numpy",
+          "setuptools>=40.8.0"
+        ]
+      },
+      "ndindex": {
+        "backend_was_explicit": true,
+        "build_backend": "setuptools.build_meta",
+        "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+        "declared_requires": [
+          "setuptools; platform_python_implementation != 'PyPy'",
+          "setuptools<72.2; platform_python_implementation == 'PyPy'",
+          "cython"
+        ],
+        "implicit_requires": [],
+        "requires": [
+          "setuptools; platform_python_implementation != 'PyPy'",
+          "setuptools<72.2; platform_python_implementation == 'PyPy'",
+          "cython"
+        ]
+      },
+      "numexpr": {
+        "backend_was_explicit": true,
+        "build_backend": "setuptools.build_meta",
+        "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+        "declared_requires": [
+          "setuptools>=77.0.0",
+          "numpy>=2.0.0"
+        ],
+        "implicit_requires": [],
+        "requires": [
+          "setuptools>=77.0.0",
+          "numpy>=2.0.0"
+        ]
+      }
+    },
+    "build_env": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2",
+    "build_env_explicit_sha256": "866d02c7106d809d4f14b87c0da101e2c3c722ab50f7a8f78e3ea89fb5fc2d77",
+    "build_env_files": {
+      "bin/python": "78e97b53b087b329eefc17348c1a9a270a8def74088b4c0dba004b18e86c6bd6",
+      "bin/x86_64-conda-linux-gnu-c++": "f3043ba4d6dce732378de6c4c6ebb62ff89229e90dc982df6ed1071396e66029",
+      "bin/x86_64-conda-linux-gnu-cc": "6420cb0972435d925a3248db3ccb0c1c4ff7f1a81e6aa8f37e1ae54da1538d98",
+      "bin/x86_64-conda-linux-gnu-readelf": "8612fe7756a95965b35c40d2483271d1f30d5a7a829a50a1801315f598fdf67b",
+      "conda-meta/_openmp_mutex-4.5-20_gnu.json": "9f000dcc7da53bd748adb34ef0650725c20549240cd4205c45421f49e1bde0b6",
+      "conda-meta/binutils_impl_linux-64-2.46.1-default_hfdba357_103.json": "c68597c96af45f18c76b1f2443181a3c97a2b9ac678f582001bdc6e6808001c0",
+      "conda-meta/binutils_linux-64-2.46.1-default_h4852527_103.json": "30f111a305c380bbc10679471966097d58abbda01bab63292ae5cf333a916f98",
+      "conda-meta/bzip2-1.0.8-hda65f42_10.json": "23d37a831d112891e6ab61025ccdcf7bc543e1824febfb92716f8ddd9c396de2",
+      "conda-meta/ca-certificates-2026.10.23-hbd8a1cb_0.json": "b7c62cc8db0b078e1d1764829285afe5714e10461556116d30f6e81723480fa2",
+      "conda-meta/cython-3.3.0-py310h4ddbdcc_0.json": "077ad8d09be7b3820e8763945ad6f4fd4003550538f1530a4c0b19918a13badc",
+      "conda-meta/gcc_impl_linux-64-13.4.0-h649a46b_20.json": "867dbe073b94ac2de52c686e2647eaa3f23bdcd0e95c93057cc3cfee2ced07a1",
+      "conda-meta/gcc_linux-64-13.4.0-h5174b15_28.json": "6a466f83daa4bdd3875c947f4b02e4aa09dbfc3c37fe1add260515c13273b817",
+      "conda-meta/gxx_impl_linux-64-13.4.0-h5415f34_20.json": "b16a423b0a26299345f1f90882ea3ded2f4fdac3a9ba62ef71149755a65cd8c4",
+      "conda-meta/gxx_linux-64-13.4.0-hb11295d_28.json": "bd82b0f3539d0098be1bf3c36bf2880d3640126c49ce2a378ec47020128a2701",
+      "conda-meta/history": "3e58e29c840007eb127c65e09b06516fb8bc0b92f1c29f7741c556ebb7c3220f",
+      "conda-meta/kernel-headers_linux-64-3.10.0-he073ed8_18.json": "dfc3a784ff04b3dd09b45ade415153c04034408cac3da3fd6014e0afebcb1681",
+      "conda-meta/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.json": "ec85a82f50d795814d1decd4d204fff59f8fc34bfea8e3c2f894607b0ccab33b",
+      "conda-meta/libblas-3.11.0-11_h4a7cf45_openblas.json": "0cd9ce634a7dea89bab2afc0f69f6137cb146be1fa9d84e432632a9c95cdf8d6",
+      "conda-meta/libcblas-3.11.0-11_h0358290_openblas.json": "85aa88a2a3f94b27e98280f28e39588963707b1eb3cd8bb4233aa56c59997ec3",
+      "conda-meta/libexpat-2.9.0-hd2095e1_0.json": "656cf2cef6b2402f4817c6542447a9ed38d6f781b6afe37e7012f7e0ce349f59",
+      "conda-meta/libffi-3.7.0-h81df57d_1.json": "126077643fede96fbea446b298fb34cbac2628f2f53af6ae179710cb12516fdb",
+      "conda-meta/libgcc-16.2.0-ha9f2e26_7.json": "5af1278c834981f5ee7f0e8e1abe761fbaf63aa343970f584a63461916ffe5e1",
+      "conda-meta/libgcc-devel_linux-64-13.4.0-hd1d28cc_120.json": "3f2697c87ca2cb0733fb43ffa1fbd642c228824186026b260296271caab827e9",
+      "conda-meta/libgfortran-16.2.0-h69a702a_7.json": "86392c88ee9c54b5627a7841fa48d1adabe536f96dbd6fad098cd936c5f96b4e",
+      "conda-meta/libgfortran5-16.2.0-h6b99dfc_7.json": "12aeab7a5671fa7b21e1464ed52d72d8d1ff8d3adce01a51d06693daa95fc7da",
+      "conda-meta/libgomp-16.2.0-he0feb66_7.json": "2b19891d512fecdf50df0f01235fca8e3fbea127175407142c7e2b8d7fb48fe2",
+      "conda-meta/liblapack-3.11.0-11_h47877c9_openblas.json": "cf29c481a30f24b9aeb6fe28bb4a35f99f8977ebe290735577a66ead10febdff",
+      "conda-meta/liblzma-5.8.3-hb03c661_1.json": "03fd83d6fc18aba8056eb71b9493774ba5860df1cb60b9f5ae369564ff6bbee7",
+      "conda-meta/libnsl-2.0.1-hb9d3cd8_1.json": "407c13d1fedfe5a2075caa7a25e9b07e1799a955ef6f344a5efd1fdb0294ff21",
+      "conda-meta/libopenblas-0.3.34-pthreads_hf13c14d_2.json": "05172c58c424ad124bb4a1ced25f2b3d9b0f6bdb1f4cb82783e82da2aa84961e",
+      "conda-meta/libsanitizer-13.4.0-hf18ac3d_20.json": "462277c5971af88e07ff5eb4f53b48df25ab49fe1065fca2dbca89f44edc767c",
+      "conda-meta/libsqlite-3.54.1-h0737f62_101.json": "4a39a25b4da320d86d2951df4fce1e8f2be1a632390016ec806f6aef40c720ba",
+      "conda-meta/libstdcxx-16.2.0-h934c35e_7.json": "beacd55b337db16c437c47253f9e94dbb1888c2515e89ec3247a9abb22ad5080",
+      "conda-meta/libstdcxx-devel_linux-64-13.4.0-h6963c3b_120.json": "70f937e8ee289765099b67bde7afca1596df013dd04e62b2c0c66d6b396dd591",
+      "conda-meta/libuuid-2.42.4-hcfc3c73_0.json": "7c633ae7861893309144237ad9b8ea7b76986bb11a44908aeef422ae697e070f",
+      "conda-meta/libxcrypt-4.4.38-h280c20c_0.json": "84996307632d89ac5d3184b355ce211dc5706d755c4a06ba5bdf91532cd143b6",
+      "conda-meta/libzlib-1.3.2-h25fd6f3_3.json": "98333853e08a55b1a3c6b340cc0e8cfe239d9094b6fb0b58b5afb8f0fd7095a6",
+      "conda-meta/ncurses-6.6-hdb14827_1.json": "44cc7cc6ac07ccafbe71fbe66f4875d0c6bb265e3ac8f81fe3dce2cdc09cd83a",
+      "conda-meta/numpy-2.2.6-py310hefbff90_0.json": "2db3a4482d81db6b0de75b513259dcd794f53bbf9dc10fa8630d0961b07b8bdc",
+      "conda-meta/openssl-3.6.5-h781a0a9_0.json": "bc4982311b600dd51a6613459e33133b000397a8a1c734b4cc1b83f4b4abbb5d",
+      "conda-meta/packaging-26.3-pyhc364b38_0.json": "336524e6fb026820ebac86929e4e4375be4e902c4cf03a82352e410ebec41a76",
+      "conda-meta/pip-26.2.1-pyh8b19718_0.json": "3ca7bada5e7c5832d7ec42da9067f8b25d2b72170a0ac434b253a8e5c0bb84a3",
+      "conda-meta/python-3.10.22-h267e890_0_cpython.json": "5764f8193be3a21dc9e2fb35e1edca220446a331197bc12ba33427d2f5ead62c",
+      "conda-meta/python_abi-3.10-9_cp310.json": "a42c33ec8a92b6748829960ee518d0233a2bb597e567d1e4771fcad92df49ddd",
+      "conda-meta/readline-8.3-hd6e31c0_1.json": "2b8c4a90819bce1a3fc06bf93bb8ee03c5199cfa1953a2eba0549b7e6e56bdfd",
+      "conda-meta/setuptools-84.0.0-pyh332efcf_0.json": "ec23757a565b38da46f6e3447297411703370f279eb14a9019edd9bcf22959df",
+      "conda-meta/sysroot_linux-64-2.17-h0157908_18.json": "8ad5e959acafc06429a9cb34eec487770c5c11a035f32a5e6d5614b621794541",
+      "conda-meta/tk-8.6.13-noxft_h1df4ec4_4.json": "4c21f3999ea9db0a4f3127787a76bc87d11f2c8bd5376ea2692e165f8e6d2af8",
+      "conda-meta/tomli-2.4.1-pyhcf101f3_0.json": "e22a4de9326bfe831c266ce65aa92c5aeb6795f489b7d2da217650b768a1f098",
+      "conda-meta/tzdata-2026e-h5d301ff_0.json": "352b7363914f8f1bb6dc618134ce9402c42a6bfba876bd1a2470250cb8e5cc93",
+      "conda-meta/wheel-0.48.0-pyhd8ed1ab_0.json": "e6950d3a8ba19fbb9933eca9c16075136b9330d77da280afba0c108612da76ac",
+      "conda-meta/zstd-1.5.7-hb78ec9c_7.json": "0cb875ae925366f60e66a25eb07aaa6fa98ac505b9612553154d9604475e3e5e"
+    },
+    "compiler_preflight": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/s0_scheduler_acceptance_r1",
+    "compiler_preflight_sha256": "d3057846d363c4850bffdb8c3c25ed9e6b9af5529f783740917f6319e123c014",
+    "compiler_solver_preflight": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/s0_source_build_preflight_r3",
+    "failed_R3_attempt_files": {
+      "contract/BOOTSTRAP_VERIFICATION.json": "7ce1cdac2c4bda31ea96e2fa41d14662818fe9e27003b416bced4ea91a08c146",
+      "contract/BUILD_ENV_EXPLICIT.txt": "866d02c7106d809d4f14b87c0da101e2c3c722ab50f7a8f78e3ea89fb5fc2d77",
+      "contract/USER_AUTHORIZATION.json": "f31dae05deb4003a8f3d23cbcad6ddfed044a7c7e3f32a4cfc966e821474aa8c",
+      "operator/SUBMISSION_FAILED.json": "48af2f4f423d66ff8c8a8d2158f52842028a05de1a0b6e08b8b9f3df50c77127"
+    },
+    "formal_gate_status": "not_run_not_passed",
+    "incremental_budget_bytes": 161061273600,
+    "initialization_policy": "nounset_after_system_conda_module_initialization",
+    "operator_approved": false,
+    "original_R3_failed_sha256": "7ab5ed495a16d03e697425e7c217eddbad2461f9b39c5716f92b925bad403894",
+    "original_inference_jobs_created": false,
+    "package_files": {
+      "runtime/prepare_s0_cpu_r3a.py": "771c3bec7e959c91d9ff772ed635decb53a4d3eac579d4e5d1ee9bdc65b4b88b",
+      "runtime/s0_build_contract.py": "d64ff60a271d8132588da00a56a3cabbb3e088f1715d272f1582abb6e3bc1f9a",
+      "runtime/s0_source_requirements_r2.py": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6"
+    },
+    "parent_R2_attempt_files": {
+      "contract/BUILD_ENV_EXPLICIT.txt": "866d02c7106d809d4f14b87c0da101e2c3c722ab50f7a8f78e3ea89fb5fc2d77",
+      "contract/PREPARATION_CONTRACT.json": "8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980",
+      "contract/S0_BUILD_CONVERSION_AUTHORIZATION.json": "9811ed99a3c897cb2ea80069f5fd1445b7509ea1794ad65ba55cc83fb46cdd8d",
+      "contract/S0_SCHEDULER_R1_AUTHORIZATION.json": "183190191a63cf159b4797581755f9e828d61ddd2028abf4f123e151f23b3e2d",
+      "contract/S0_STAGING_R2_AUTHORIZATION.json": "2f3dc24d80b8c31cf2d19ed34834fe4db4beda323e1c23b97bcfef9bf4239d60",
+      "logs/BUILD_ENV_INSTALL.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "logs/s2exts0p2_4304740.err": "7fe3bd6652e8d74891fb8b5687bd8ee10fbc7c4100721e19bf30e9e25df01359",
+      "logs/s2exts0p2_4304740.out": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "operator/SUBMISSION_FAILED.json": "df7ca183f829e0c896002896f1b12e54115c75902842f3d14991f8a2b52dac03",
+      "operator/submit_usage_r1/AUTHORIZATION.json": "58a2a847d468e81ceafd6afc67064ea7fb74a25db69a7614ab3ae9208aeac303",
+      "operator/submit_usage_r1/SUBMISSION_FAILED.json": "9fa1bd3fd29656328d8d35b6fd9ae48f375bf79a197e665714b28ac5d11c5f75",
+      "operator/submit_usage_r2/AUTHORIZATION.json": "83798304535e46590e1f99d7eccba4f6e75bbea00ecb926cdde4eb449e3694c3",
+      "operator/submit_usage_r2/HELD_AUDIT.json": "adfcb8274fc80676ac6c11038d8ba90b47f26a3f571e4e2db32175f3c82f2e18",
+      "operator/submit_usage_r2/HELD_CREATED.json": "35f36af4a30d3aa32717a31694200ddd42f544f0ff2a3537f8cf9e955f9884cc",
+      "operator/submit_usage_r2/RELEASE_RESULT.json": "c20e97c275d154fae41cad3eaf9177747d1d0cd980eeff18ab91916c1b6e42e6",
+      "operator/submit_usage_r2/RESERVATION.json": "49ee9ed1ea751ace3fba9c1d16250b842ab499b7d4916a4604cf5d075099963f",
+      "operator/submit_usage_r2/RESOURCE_SNAPSHOT.json": "69ac9673803acaa0b10be540483b02b37b881fdadb9a50a3f734344346689d23",
+      "operator/submit_usage_r2/SBATCH_RESULT.json": "415b855033fff255b006cdbbbf2c64e1bf9f1ed0fffb2deef9b4a2a96f2353d2",
+      "operator/submit_usage_r2/STATIC_PREFLIGHT.json": "576f9b652ba9b8f6ff240a8a1a096e796e55d1600dfda169ea78c626c736b801",
+      "operator/submit_usage_r2/SUBMISSION_RECEIPT.json": "592c93f24b50993446ff38210c5e0ef352a554beb7c0c3dea147b41ee4f71eda",
+      "reports/SOURCE_BUILD_REQUIREMENTS.json": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85",
+      "reports/STAGING_COMPLETE.json": "42289638f4a8f64f172345677f3694804a26ad80bb278c4f2491de653a5be7f6",
+      "runtime/prepare_s0_cpu_r2.py": "e1b7f94ac06eb83c4633b7a2771d57dde6cbc5382989af0004b1fae1921963a0",
+      "runtime/s0_build_contract.py": "05ff1b367947bdd7efc9c3bb136d876d626b1b6d328ccbceef37466527ec0db3",
+      "runtime/s0_source_requirements_r2.py": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6",
+      "slurm/prepare.slurm": "d879a1addf9756b3bfa8561b96e33f600deb87c1b14f9483e79217d8506620ff",
+      "sources/connected_components_3d-4.1.1.tar.gz": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+      "sources/ndindex-1.10.1.tar.gz": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+      "sources/numexpr-2.14.1.tar.gz": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b"
+    },
+    "parent_R2_contract_sha256": "8a2246326f58d7351712785e2395c54fb81949ad7a4390f19e18e80980329980",
+    "parent_attempt_files": {
+      "contract/BUILD_ENV_EXPLICIT.txt": "866d02c7106d809d4f14b87c0da101e2c3c722ab50f7a8f78e3ea89fb5fc2d77",
+      "contract/S0_BUILD_CONVERSION_AUTHORIZATION.json": "9811ed99a3c897cb2ea80069f5fd1445b7509ea1794ad65ba55cc83fb46cdd8d",
+      "contract/S0_SCHEDULER_R1_AUTHORIZATION.json": "183190191a63cf159b4797581755f9e828d61ddd2028abf4f123e151f23b3e2d",
+      "contract/S0_SOURCE_BUILD_R3_AUTHORIZATION.json": "a6dd65c52f6931a9d5d1bf08193f10eb63cb1e93a2417ce36153df466493aa73",
+      "reports/STAGING_FAILED.json": "be077b174c4975aa0ee7daa26dfd562816d726f0c71be433f19fcf0c54960ee6",
+      "runtime/prepare_s0_cpu_r1.py": "274c726c2db8a7dafc02f9e7912dd5b2ac266b3cb886504339635083e996248d",
+      "runtime/s0_build_contract.py": "e48acf45fea160ab323377322ea7dd42b3f8abca3792707eba4edf3e64c8633b",
+      "sources/connected_components_3d-4.1.1.tar.gz": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+      "sources/ndindex-1.10.1.tar.gz": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+      "sources/numexpr-2.14.1.tar.gz": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b"
+    },
+    "prior_guard": {
+      "bio_intel_py310": {
+        "bin/python": "7b586d53dadc34cce4ca820a3015d3e29cc41ded43611f2c7e533f03251acabd",
+        "conda-meta/_openmp_mutex-4.5-20_gnu.json": "87c323e93b34ed483875124398724cd795fa395f6637afc228b065fb082b0e5e",
+        "conda-meta/bzip2-1.0.8-hda65f42_10.json": "1253e44af4dabcb476aba4d7bfdcddf0192015a14f8a174d4cb0c9259dc6dbe0",
+        "conda-meta/ca-certificates-2026.10.23-hbd8a1cb_0.json": "1c216c2a87a5eea2d331dbcf0b1b63ba85e45451aba552c05ea87b41551c2edf",
+        "conda-meta/history": "a8943f60600e13e6e3e1d196e5a584fb0d15119abf3d6754042212eda4268988",
+        "conda-meta/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.json": "c7d223e43131fb3d60553857a5c9894bc1f91667ca3922c0e70f3fb67c9920b9",
+        "conda-meta/libexpat-2.9.0-hd2095e1_0.json": "046003b0678f53fbb020f80cb6e78b76b3011221b83e0802ff096e22e0ba1bca",
+        "conda-meta/libffi-3.7.0-h81df57d_1.json": "a77a0f1c64ff28408cd7a3a67c20d4c563f3cc68171474ab9f9621897d350505",
+        "conda-meta/libgcc-16.2.0-ha9f2e26_7.json": "d8a6fc3851db33971fac3bdc047a57bce2c901541592e4f4c0a038ea9beb5666",
+        "conda-meta/libgomp-16.2.0-he0feb66_7.json": "f57e4c04bff37f006a7415c54880e8f9f64d49b64263accf1b3e03f501f2571d",
+        "conda-meta/liblzma-5.8.3-hb03c661_1.json": "269b864bd03550c899f84d2db67b6cacb8a920761c6678658480795d1295bab6",
+        "conda-meta/libnsl-2.0.1-hb9d3cd8_1.json": "619d24724eec787011467d834ffe921df71a5f9c56f453ffd42dc7257a179257",
+        "conda-meta/libsqlite-3.54.1-h0737f62_101.json": "6a45832b76a180106088c890ff598c1b44edefa7479de28d2443cbac38608daa",
+        "conda-meta/libuuid-2.42.4-hcfc3c73_0.json": "e2b6759d555ddc265cd9676cca6ecd45f926e8a99d7f9738b42073bb7106a7ac",
+        "conda-meta/libxcrypt-4.4.38-h280c20c_0.json": "a513d679b8ad10b681538e52eb01e18869c505a9d0c7e084c05ec1f0f7efd209",
+        "conda-meta/libzlib-1.3.2-h25fd6f3_3.json": "5db3b3e7013f0622889820402123c42d5e196bb52fb654c2382884c8feb4e476",
+        "conda-meta/ncurses-6.6-hdb14827_1.json": "94b71bd7c69622bce4a47e9051440d86cca281dea07ae0213c6f3bf11b8db230",
+        "conda-meta/openssl-3.6.5-h781a0a9_0.json": "d2a9aa6caac80225078d87b8c2ffb3e4f3d4ff047d9c13aad94df742d2ff2274",
+        "conda-meta/packaging-26.3-pyhc364b38_0.json": "a3f2cc1b3ed3a04f844e461e66521f883d430547384e27ea833db7a239e9b559",
+        "conda-meta/pip-26.1.2-pyh8b19718_0.json": "fde18fa6332bd183fa33072c9c5b6223a7bc637b644ae2322db35473c20b3f99",
+        "conda-meta/python-3.10.22-h267e890_0_cpython.json": "46055545a9f8c76141c77a57ea0230b87e179129340c29c974a9b3995cb88f58",
+        "conda-meta/readline-8.3-hd6e31c0_1.json": "9d6c00c8e3dc09206494ad32c1452b0c2c9211a20b667f2fd61f2ec519959cf4",
+        "conda-meta/setuptools-83.0.0-pyh332efcf_0.json": "b08a82948d90d495eb74818435111457bf67754b929cd7f87df33909f3679342",
+        "conda-meta/tk-8.6.13-noxft_h1df4ec4_4.json": "2ea054b7524787721ffe31d08970c2472af3c448860ca667ee93086074291b7f",
+        "conda-meta/tzdata-2026e-h5d301ff_0.json": "45c0d2be7216da157c31eaf2bf204f11e798468b7394b2133995ad66e103a50c",
+        "conda-meta/wheel-0.48.0-pyhd8ed1ab_0.json": "b0d5d36de28a9d31b14de914595196678c52109392698d9d88c10e6b46ae322e",
+        "conda-meta/zstd-1.5.7-hb78ec9c_7.json": "a8c801ffca344809f8017b94f41083a109d7ca136921e4ea3ae78bb06bde6806"
+      },
+      "bio_intel_py310_r2": {
+        "bin/python": "fb679cdb9e8390574e2e10f4cf82bb0f6dfbfcdc4472be2a283bfbce40290f13",
+        "conda-meta/_openmp_mutex-4.5-20_gnu.json": "87c323e93b34ed483875124398724cd795fa395f6637afc228b065fb082b0e5e",
+        "conda-meta/bzip2-1.0.8-hda65f42_10.json": "1253e44af4dabcb476aba4d7bfdcddf0192015a14f8a174d4cb0c9259dc6dbe0",
+        "conda-meta/ca-certificates-2026.10.23-hbd8a1cb_0.json": "1c216c2a87a5eea2d331dbcf0b1b63ba85e45451aba552c05ea87b41551c2edf",
+        "conda-meta/history": "c1a45053ff622412e9306fb489c75c6ad60604c8bca0ef8ee3dffa42a17bc4a8",
+        "conda-meta/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.json": "0e7ab74751ee96a4386d8771c875cf4e89f4bc6b04e2c16186c0a18fc5a39815",
+        "conda-meta/libexpat-2.9.0-hd2095e1_0.json": "046003b0678f53fbb020f80cb6e78b76b3011221b83e0802ff096e22e0ba1bca",
+        "conda-meta/libffi-3.7.0-h81df57d_1.json": "7137400d76d85267bbcc6f5939be0b50bdfee9dd6cdb195c0f158f075173865e",
+        "conda-meta/libgcc-16.2.0-ha9f2e26_7.json": "d8a6fc3851db33971fac3bdc047a57bce2c901541592e4f4c0a038ea9beb5666",
+        "conda-meta/libgomp-16.2.0-he0feb66_7.json": "f57e4c04bff37f006a7415c54880e8f9f64d49b64263accf1b3e03f501f2571d",
+        "conda-meta/liblzma-5.8.3-hb03c661_1.json": "269b864bd03550c899f84d2db67b6cacb8a920761c6678658480795d1295bab6",
+        "conda-meta/libnsl-2.0.1-hb9d3cd8_1.json": "d9627e9692560b04ac60268281f36a8b85fa454dd9800a4edb7d00fe56d03019",
+        "conda-meta/libsqlite-3.54.1-h0737f62_101.json": "ae017f826a19769719586d039efdd3ec8adb249866cb48edc5117eee24863d5f",
+        "conda-meta/libuuid-2.42.4-hcfc3c73_0.json": "7b3173e1b9b2c00a3859123093e1bf566fc8f7634e29ecac5acb048ec943bf74",
+        "conda-meta/libxcrypt-4.4.38-h280c20c_0.json": "656dbaecf5588431d90a93c93e6a918dbfc7cce0f49eac515cfeddd103179f20",
+        "conda-meta/libzlib-1.3.2-h25fd6f3_3.json": "5db3b3e7013f0622889820402123c42d5e196bb52fb654c2382884c8feb4e476",
+        "conda-meta/ncurses-6.6-hdb14827_1.json": "db67aaa7867f49ecd7d59dadf2b7c7693689296c8b32dcc972553f4bcb91ea7c",
+        "conda-meta/openssl-3.6.5-h781a0a9_0.json": "427312a2328f6bfea545200de8fe6c9861f00dcc5462ef07f5b04c6e57be627f",
+        "conda-meta/packaging-26.3-pyhc364b38_0.json": "a3f2cc1b3ed3a04f844e461e66521f883d430547384e27ea833db7a239e9b559",
+        "conda-meta/pip-26.1.2-pyh8b19718_0.json": "fde18fa6332bd183fa33072c9c5b6223a7bc637b644ae2322db35473c20b3f99",
+        "conda-meta/python-3.10.22-h267e890_0_cpython.json": "62d76669a2ef26f119362ee91c3d3fc6acf9733db4882e1506985afee949df57",
+        "conda-meta/readline-8.3-hd6e31c0_1.json": "b79c388de4aa64018c7f821760ae4dfc49b3e702b1f7185386417c40ee2d3019",
+        "conda-meta/setuptools-83.0.0-pyh332efcf_0.json": "b08a82948d90d495eb74818435111457bf67754b929cd7f87df33909f3679342",
+        "conda-meta/tk-8.6.13-noxft_h1df4ec4_4.json": "316010a367c116f06ad7ad7f0ca809f29c35df56f85465aff6b7b86f195e79ab",
+        "conda-meta/tzdata-2026e-h5d301ff_0.json": "45c0d2be7216da157c31eaf2bf204f11e798468b7394b2133995ad66e103a50c",
+        "conda-meta/wheel-0.48.0-pyhd8ed1ab_0.json": "b0d5d36de28a9d31b14de914595196678c52109392698d9d88c10e6b46ae322e",
+        "conda-meta/zstd-1.5.7-hb78ec9c_7.json": "870378e2353144348fde138409091dfcb3c5df7c393e0c69a33efc7b90dee8f4"
+      },
+      "bio_intel_py310_r3": {
+        "bin/python": "b6986370f5edc2d2e5565ef56795cf11dcf1d4f5706ee1b445be125cf3f43b1f",
+        "conda-meta/_openmp_mutex-4.5-20_gnu.json": "3d754020f42aef3111923d610010a659701dd213c50f69ef8489953244b18545",
+        "conda-meta/bzip2-1.0.8-hda65f42_10.json": "4a030cf7a52d7c6327ebf8e2ba3da0754e5daf484827e5c7fd7f3501d836b09a",
+        "conda-meta/ca-certificates-2026.10.23-hbd8a1cb_0.json": "edeb19badae6567462e84017d13ccdbd115b2bf0023ea86d7c53143bd6e54d65",
+        "conda-meta/history": "71ec85b8bda016203adecf1f1d91a7882b690fe128e06a46a519f484a6d0bd87",
+        "conda-meta/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.json": "00dde30de53747bd97553e57f81894bca2bed530721676fdb39d3aefd1064573",
+        "conda-meta/libblas-3.11.0-11_h4a7cf45_openblas.json": "611a385603eaede192eb0f44eb7a1de01d7bf1ea3b58977a3be3b77fb6c25e23",
+        "conda-meta/libcblas-3.11.0-11_h0358290_openblas.json": "0558b67497f3158d571f302ed0687d66763d65eae2d8819c6ad7de26379110e6",
+        "conda-meta/libexpat-2.9.0-hd2095e1_0.json": "211643483f5a772435a843d1334bc7495d0cb5d5e72aab1a31e8361f07340a0f",
+        "conda-meta/libffi-3.7.0-h81df57d_1.json": "fee04f502ccb4b40235215e5cbfa2da6227c62aca3ca5259c73caf61a892408c",
+        "conda-meta/libgcc-16.2.0-ha9f2e26_7.json": "369bf5b4cdb5c4a1e6ebe327e4f671340ee889d50beac182d253fa750a6c4a20",
+        "conda-meta/libgfortran-16.2.0-h69a702a_7.json": "1c73afc964abd6dcc12d75f1adcfd12e87678a0b1f2eab4f021b6a0ef2536353",
+        "conda-meta/libgfortran5-16.2.0-h6b99dfc_7.json": "306ece4abd85ca913cc338543691fec8b563ae8597c3e32b7bc54f6ddd00fe6e",
+        "conda-meta/libgomp-16.2.0-he0feb66_7.json": "800e03b25345f30e9d27602bce370769d16cd8e83ac66781554f4c6dad5a0254",
+        "conda-meta/liblapack-3.11.0-11_h47877c9_openblas.json": "19681735f5f7067531eddc2f3f02c9a4c33ec1690c782d888459b2e868c09008",
+        "conda-meta/liblzma-5.8.3-hb03c661_1.json": "f47d6dd348863efc2df3bed8ed063d864bd2cd62ad052ea8da72f77c8d9f1a41",
+        "conda-meta/libnsl-2.0.1-hb9d3cd8_1.json": "9065dd319f163b1668afc58dafd993860988693a8067276980b0403432645cbb",
+        "conda-meta/libopenblas-0.3.34-pthreads_hf13c14d_2.json": "8ec45b6a8795ab39c00223375024200752333e39bfab2a85c3960306037e9aa3",
+        "conda-meta/libsqlite-3.54.1-h0737f62_101.json": "017add675b71709314d70cdbfea4a9f10c569c72cbc7fe4549aab54c458dcb51",
+        "conda-meta/libstdcxx-16.2.0-h934c35e_7.json": "27272e036b00db9ae550c27ab22de955dc9f16f3e461d1707068516e4401682f",
+        "conda-meta/libuuid-2.42.4-hcfc3c73_0.json": "da93dc61a39bab263aae0fc46cf7a8705b01606570fd6305264ac4008d602539",
+        "conda-meta/libxcrypt-4.4.38-h280c20c_0.json": "b392464e35c9f7f8a8eb6bc5d4afb52b9d9da3b86f2a8187779061d262604a99",
+        "conda-meta/libzlib-1.3.2-h25fd6f3_3.json": "ceab2d181f1236ffda7bc772ad885d9b7dd06792bf7dca60ad9b5f57e2ca2601",
+        "conda-meta/ncurses-6.6-hdb14827_1.json": "fff57b09aa50fbb18d979dc5c739f5df671560a7b0a69aa0d11c511bbd1cdf9f",
+        "conda-meta/numpy-2.2.6-py310hefbff90_0.json": "87684f3c04bb2a28a31fcba3f7d0bd60ab3e3faef73ed6e3275433c2729e5545",
+        "conda-meta/openssl-3.6.5-h781a0a9_0.json": "af4f9630118cabe09ca8b89a4ddb3953a59c933c0a77c72faac6fc3be6346cd0",
+        "conda-meta/packaging-26.3-pyhc364b38_0.json": "6fa96ff5d51e2e786b787a1df07d895464d228a043210f1287a32c1108c9efb4",
+        "conda-meta/pandas-2.3.3-py310h0158d43_2.json": "9896f6be35339336bd24bbd422883f4e1f376a4f19e76a8dbb53f7ccfdafca25",
+        "conda-meta/pip-26.1.2-pyh8b19718_0.json": "e42c8f2f8475bc7e7f46a29363b278e613cff934fb86bc4f94d91bab7b30d5e6",
+        "conda-meta/python-3.10.22-h267e890_0_cpython.json": "37232cd21ba58d30e6ca4bcec08181cfd20864b819e218ec6c1762dc95474e23",
+        "conda-meta/python-dateutil-2.9.0.post0-pyhe01879c_2.json": "0e8e80a5822a46ea2db2bfa95f83972ee033fc4b846e278f39a071068daf0b76",
+        "conda-meta/python-tzdata-2025.3-pyhd8ed1ab_0.json": "5beea8bd268a0a0c6762282cf001c8cdb4148d7aa6f06228b807ad7c7d3745d4",
+        "conda-meta/python_abi-3.10-6_cp310.json": "322280fccb9914a1b98b77f54be8777bb6641de8243dd480c01fba38dd55532f",
+        "conda-meta/pytz-2026.1.post1-pyhcf101f3_0.json": "6149a4f826c0d8bc7580ee6936b8bdc1d062b3c1bba82628b9beb089e8f5c7a7",
+        "conda-meta/readline-8.3-hd6e31c0_1.json": "942bf92f892e7252ff05314434fb44154aa1d56554a8efc48e5a35d979e478fa",
+        "conda-meta/setuptools-83.0.0-pyh332efcf_0.json": "4b7ca26b9c0b0abea4b0f4950de8b4b76e8f0d839e9deef5585501becc08be45",
+        "conda-meta/six-1.17.0-pyhe01879c_1.json": "72390d1377568ef3367dac0c87d6050b79172604f3f8fe42b5fa7d7a966761c8",
+        "conda-meta/tk-8.6.13-noxft_h1df4ec4_4.json": "dd11cdf56048cd880d0902fdef941036396db04c561a06a24418392213d628df",
+        "conda-meta/tzdata-2026e-h5d301ff_0.json": "3dafb0202aee455cdc4c4bf64baf8788f29d6d8daaf5b70df2d922ad45c22dd9",
+        "conda-meta/wheel-0.48.0-pyhd8ed1ab_0.json": "35a1781fa197cc61c918b29a1312cdab8f705be3ec044bcd752daccd90fddd15",
+        "conda-meta/zstd-1.5.7-hb78ec9c_7.json": "98f6b6d0b5265cd556a97d854acb8f097f21df542c639d79b3b5e096f97f64dc"
+      },
+      "failures": {
+        "operator/ENV_INSTALL_FAILED.json": "1488b4494e57902e4b7d67482910b4bacceea138226f6791a50a34575cb1b190",
+        "operator/asset_materialization/FAILED.json": "533d1d0fa1f2aae68f5243885bf122bd12f9bec549c97fe67eaf6bbab09a4981",
+        "operator/environment_r2/FAILED.json": "893fe9cb5914d31921d9dbe85931dc139cedfadd578483fff76a56e114b8da2b",
+        "operator/environment_r3/FAILED.json": "1a73c34ff38c3d97bb28632a78a0924805b820816b7f80e8b45fc88f4ec388e7",
+        "operator/environment_r4_official_preflight_r2/FAILED.json": "facab1fe4908e8d8bf0348ac2b30c46f912982d9b15c3c5a0cf24a123e549956",
+        "operator/environment_r4_preflight/FAILED.json": "fba76a53a29d139342bd1fc932e149728a076931486ff3410fb960ccc1edae58"
+      }
+    },
+    "readelf": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/x86_64-conda-linux-gnu-readelf",
+    "remote_root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1",
+    "resource": {
+      "cpus_per_task": 8,
+      "gpu": 0,
+      "memory_gib": 64,
+      "partition": "cpu_192G",
+      "time_limit": "04:00:00"
+    },
+    "single_conversion_deadline_seconds": 7200,
+    "source_build_requirements_sha256": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85",
+    "sources": {
+      "connected-components-3d": {
+        "bytes": 85178,
+        "filename": "connected_components_3d-4.1.1.tar.gz",
+        "sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+        "url": "https://files.pythonhosted.org/packages/23/66/62eeb4d29188a1161289c58c9129294856ce0f134fb9b49c3d13ae0db1d1/connected_components_3d-4.1.1.tar.gz",
+        "version": "4.1.1"
+      },
+      "ndindex": {
+        "bytes": 271395,
+        "filename": "ndindex-1.10.1.tar.gz",
+        "sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+        "url": "https://files.pythonhosted.org/packages/f5/92/4b9d2f4e0f3eabcfc7b02b48261f6e5ad36a3e2c1bbdcc4e3b7b6c768fa6/ndindex-1.10.1.tar.gz",
+        "version": "1.10.1"
+      },
+      "numexpr": {
+        "bytes": 119400,
+        "filename": "numexpr-2.14.1.tar.gz",
+        "sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+        "url": "https://files.pythonhosted.org/packages/cb/2f/fdba158c9dbe5caca9c3eca3eaffffb251f2fb8674bf8e2d0aed5f38d319/numexpr-2.14.1.tar.gz",
+        "version": "2.14.1"
+      }
+    },
+    "stage": "S0_CPU_preparation_only",
+    "user_authorization_sha256": "e416191dd0d8ccc6e8eeddbaee8c688166fc47f389a571c663e32b59ab277c62"
+  },
+  "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+  "formal_gate_status": "not_run_not_passed",
+  "frozen_slurm": "#!/bin/bash\n#SBATCH --job-name=s2exts0p3a\n#SBATCH --partition=cpu_192G\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=8\n#SBATCH --mem=64G\n#SBATCH --time=04:00:00\n#SBATCH --no-requeue\n#SBATCH --export=NONE\n#SBATCH --output=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_%j.out\n#SBATCH --error=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_%j.err\nset -eo pipefail\numask 077\nsource /etc/profile\nsource /public/software/apps/miniconda3/etc/profile.d/conda.sh\nconda activate /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2\nmodule load singularity-ce/4.1.1\nset -u\nunset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY\nexport PYTHONDONTWRITEBYTECODE=1 LC_ALL=C CUDA_VISIBLE_DEVICES=\nexport OMP_NUM_THREADS=8 MKL_NUM_THREADS=8 MAX_JOBS=8 CMAKE_BUILD_PARALLEL_LEVEL=8\nexport PIP_NO_INDEX=1 PIP_CONFIG_FILE=/dev/null PIP_DISABLE_PIP_VERSION_CHECK=1\nexport TMPDIR=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/scratch\nexport S0_EXPECTED_CONTRACT_SHA256=6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c\ncd /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a\nexec \"$CONDA_PREFIX/bin/python\" -B /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/runtime/prepare_s0_cpu_r3a.py --attempt /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a\n",
+  "images_read": false,
+  "job_id": "4304783",
+  "light_audit_files": {
+    "BOOTSTRAP_EXECUTION.json": {
+      "bytes": 38715,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "returncode": 0,
+        "slurm_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+        "stderr": "",
+        "stdout": "S0_BOOTSTRAP_PROBE={\"status\": \"bootstrap_import_compiler_CLI_probe_pass_not_artifact_pass\", \"interpreter\": \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python3.10\", \"versions\": {\"numpy\": \"2.2.6\", \"pip\": \"26.2.1\", \"setuptools\": \"84.0.0\", \"wheel\": \"0.48.0\", \"Cython\": \"3.3.0\", \"tomli\": \"2.4.1\", \"packaging\": \"26.3\"}, \"commands\": {\"import_numpy\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-c\", \"import numpy\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"import_pip\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-c\", \"import pip\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"import_setuptools\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-c\", \"import setuptools\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"import_wheel\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-c\", \"import wheel\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"import_Cython\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-c\", \"import Cython\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"import_tomli\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-c\", \"import tomli\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"import_packaging\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-c\", \"import packaging\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"pip_wheel_cli\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python\", \"-B\", \"-m\", \"pip\", \"wheel\", \"--help\"], \"returncode\": 0, \"stdout\": \"\\nUsage:   \\n  /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_\\nunvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin\\n/python -m pip wheel [options] <requirement specifier> ...\\n  /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_\\nunvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin\\n/python -m pip wheel [options] -r <requirements file> ...\\n  /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_\\nunvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin\\n/python -m pip wheel [options] [-e] <vcs project url> ...\\n  /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_\\nunvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin\\n/python -m pip wheel [options] [-e] <local project path> ...\\n  /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_\\nunvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin\\n/python -m pip wheel [options] <archive url/path> ...\\n\\nDescription:\\n  Build Wheel archives for your requirements and dependencies.\\n  \\n  Wheel is a built-package format, and offers the advantage of not\\n  recompiling your software during every install. For more details, see the\\n  wheel docs: https://wheel.readthedocs.io/en/latest/\\n  \\n  'pip wheel' uses the build system interface as described here:\\n  https://pip.pypa.io/en/stable/reference/build-system/\\n\\nWheel Options:\\n  -w, --wheel-dir <dir>       Build wheels into <dir>, where the default is\\n                              the current working directory.\\n  --no-build-isolation        Disable isolation when building a modern source\\n                              distribution. Build dependencies specified by\\n                              PEP 518 must be already installed if this option\\n                              is used.\\n  --check-build-dependencies  Check the build dependencies.\\n  -c, --constraint <file>     Constrain versions using the given constraints\\n                              file. This option can be used multiple times.\\n  --build-constraint <file>   Constrain build dependencies using the given\\n                              constraints file. This option can be used\\n                              multiple times.\\n  -e, --editable <path/url>   Install a project in editable mode (i.e.\\n                              setuptools \\\"develop mode\\\") from a local project\\n                              path or a VCS url.\\n  -r, --requirement <file>    Install from the given requirements file. The\\n                              file or URL can be in pip's requirements.txt\\n                              format, or pylock.toml format. pylock.toml\\n                              support is experimental. This option can be used\\n                              multiple times.\\n  --requirements-from-script <file>\\n                              Install dependencies of the given script file as\\n                              defined by PEP 723 inline metadata.\\n  --src <dir>                 Directory to check out editable projects into.\\n                              The default in a virtualenv is \\\"<venv\\n                              path>/src\\\". The default for global installs is\\n                              \\\"<current dir>/src\\\".\\n  --ignore-requires-python    Ignore the Requires-Python information.\\n  --no-deps                   Don't install package dependencies.\\n  --only-deps                 Take only the dependencies of the provided\\n                              requirements into account, not the requirements\\n                              themselves. Cannot be used in combination\\n                              with --no-\\n                              deps,\\n                              --group, --requirement,\\n                              or --requirements-from-\\n                              script. No user-supplied requirements will be\\n                              handled, even if they were dependencies of other\\n                              user-supplied requirements.\\n  --progress-bar <progress_bar>\\n                              Specify whether the progress bar should be used.\\n                              In 'auto' mode, --quiet\\n                              will suppress all progress bars. [auto, on,\\n                              off, raw] (default: auto)\\n  --no-verify                 Don't verify if built wheel is valid.\\n  -C, --config-settings <settings>\\n                              Configuration settings to be passed to the build\\n                              backend. Settings take the form KEY=VALUE. Use\\n                              multiple --config-settings\\n                              options to pass multiple keys to the backend.\\n  --require-hashes            Require a hash to check each requirement\\n                              against, for repeatable installs. This option is\\n                              implied when any package in a requirements file\\n                              has a --hash option.\\n  --no-require-hashes         Do not automatically enable\\n                              --require-hashes when encountering a\\n                              requirement with hashes.\\n  --group <[path:]group>     Install a named dependency-group from a\\n                              \\\"pyproject.toml\\\" file. If a path is given, the\\n                              name of the file must be \\\"pyproject.toml\\\".\\n                              Defaults to using \\\"pyproject.toml\\\" in the\\n                              current directory.\\n  --no-clean                  Don't clean up build directories.\\n\\nPackage Selection Options:\\n  --pre                       Include pre-release and development versions. By\\n                              default, pip only finds stable versions.\\n  --all-releases <release_control>\\n                              Allow all release types (including pre-releases)\\n                              for a package. Can be supplied multiple times,\\n                              and each time adds to the existing value.\\n                              Accepts either \\\":all:\\\" to allow pre-releases for\\n                              all packages, \\\":none:\\\" to empty the set (notice\\n                              the colons), or one or more package names with\\n                              commas between them (no colons). Cannot be used\\n                              with --pre.\\n  --only-final <release_control>\\n                              Only allow final releases (no pre-releases) for\\n                              a package. Can be supplied multiple times, and\\n                              each time adds to the existing value. Accepts\\n                              either \\\":all:\\\" to disable pre-releases for all\\n                              packages, \\\":none:\\\" to empty the set, or one or\\n                              more package names with commas between them.\\n                              Cannot be used with --pre.\\n  --no-binary <format_control>\\n                              Do not download binary packages. Cached binary\\n                              packages may still be used. Can be supplied\\n                              multiple times, and each time adds to the\\n                              existing value. Accepts either ':all:' to\\n                              disable all binary packages, ':none:' to empty\\n                              the set (notice the colons), or one or more\\n                              package names with commas between them (no\\n                              colons). Note that some packages are tricky to\\n                              compile and may fail to install when this option\\n                              is used on them.\\n  --only-binary <format_control>\\n                              Do not use source packages. Can be supplied\\n                              multiple times, and each time adds to the\\n                              existing value. Accepts either \\\":all:\\\" to\\n                              disable all source packages, \\\":none:\\\" to empty\\n                              the set, or one or more package names with\\n                              commas between them. Packages without binary\\n                              distributions will fail to install when this\\n                              option is used on them.\\n  --prefer-binary             Prefer binary packages over source packages,\\n                              even if the source packages are newer.\\n\\nPackage Index Options:\\n  -i, --index-url <url>       Base URL of the Python Package Index (default\\n                              https://pypi.org/simple). This should point to a\\n                              repository compliant with PEP 503 (the simple\\n                              repository API) or a local directory laid out in\\n                              the same format.\\n  --extra-index-url <url>     Extra URLs of package indexes to use in addition\\n                              to --index-url. Should\\n                              follow the same rules as\\n                              --index-url.\\n  --no-index                  Ignore package index (only looking\\n                              at --find-links URLs\\n                              instead).\\n  --refresh-package <refresh_package>\\n                              Refresh package index information for the given\\n                              packages instead of using cached responses.\\n                              Accepts ':all:' to apply to all packages, or a\\n                              comma-separated list of package names.\\n  -f, --find-links <url>      If a URL or path to an html file, then parse for\\n                              links to archives such as sdist (.tar.gz) or\\n                              wheel (.whl) files. If a local path or file://\\n                              URL that's a directory, then look for archives\\n                              in the directory listing. Links to VCS project\\n                              URLs are not supported.\\n  --uploaded-prior-to <datetime_or_duration>\\n                              Only consider packages uploaded prior to the\\n                              given value. Accepts an ISO 8601 datetime (e.g.,\\n                              '2023-01-01T00:00:00Z', uses local timezone if\\n                              none specified) or a duration in days (e.g.,\\n                              'P3D' for packages uploaded at least 3 days\\n                              ago). Only effective when using indexes that\\n                              provide upload-time metadata.\\n\\nGeneral Options:\\n  -h, --help                  Show help.\\n  --debug                     Let unhandled exceptions propagate outside the\\n                              main subroutine, instead of logging them to\\n                              stderr.\\n  --isolated                  Run pip in an isolated mode, ignoring\\n                              environment variables and user configuration.\\n  --require-virtualenv        Allow pip to only run in a virtual environment;\\n                              exit with an error otherwise.\\n  --python <python>           Run pip with the specified Python interpreter.\\n  -v, --verbose               Give more output. Option is additive, and can be\\n                              used up to 3 times.\\n  -V, --version               Show version and exit.\\n  -q, --quiet                 Give less output. Option is additive, and can be\\n                              used up to 3 times (corresponding to WARNING,\\n                              ERROR, and CRITICAL logging levels).\\n  --log <path>                Path to a verbose appending log.\\n  --no-input                  Disable prompting for input.\\n  --keyring-provider <keyring_provider>\\n                              Enable the credential lookup via the keyring\\n                              library if user input is allowed. Specify which\\n                              mechanism to use [auto, disabled, import,\\n                              subprocess]. (default: auto)\\n  --proxy <proxy>             Specify a proxy in the form\\n                              scheme://[user:passwd@]proxy.server:port.\\n  --no-proxy-env              Do not read proxy configuration from environment\\n                              variables.\\n  --retries <retries>         Maximum attempts to establish a new HTTP\\n                              connection. (default: 5)\\n  --timeout <sec>             Set the socket timeout (default 15 seconds).\\n  --exists-action <action>    Default action when a path already exists:\\n                              (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.\\n  --trusted-host <hostname>   Mark this host or host:port pair as trusted,\\n                              even though it does not have valid or any HTTPS.\\n  --cert <path>               Path to PEM-encoded CA certificate bundle. If\\n                              provided, overrides the default. See 'SSL\\n                              Certificate Verification' in pip documentation\\n                              for more information.\\n  --client-cert <path>        Path to SSL client certificate, a single file\\n                              containing the private key and the certificate\\n                              in PEM format.\\n  --cache-dir <dir>           Store the cache data in <dir>.\\n  --no-cache-dir              Disable the cache.\\n  --disable-pip-version-check\\n                              Don't periodically check PyPI to determine\\n                              whether a new version of pip is available for\\n                              download. Implied with --no-\\n                              index.\\n  --no-color                  Suppress colored output.\\n  --use-feature <feature>     Enable new functionality, that may be backward\\n                              incompatible.\\n  --use-deprecated <feature>  Enable deprecated functionality, that will be\\n                              removed in the future.\\n  --resume-retries <resume_retries>\\n                              Maximum attempts to resume or restart an\\n                              incomplete download. (default: 5)\\n\", \"stderr\": \"\"}, \"libc\": {\"argv\": [\"getconf\", \"GNU_LIBC_VERSION\"], \"returncode\": 0, \"stdout\": \"glibc 2.17\\n\", \"stderr\": \"\"}, \"CC_version\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/x86_64-conda-linux-gnu-cc\", \"--version\"], \"returncode\": 0, \"stdout\": \"x86_64-conda-linux-gnu-cc (conda-forge gcc 13.4.0-20) 13.4.0\\nCopyright (C) 2023 Free Software Foundation, Inc.\\nThis is free software; see the source for copying conditions.  There is NO\\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\\n\\n\", \"stderr\": \"\"}, \"CC_syntax\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/x86_64-conda-linux-gnu-cc\", \"-x\", \"c\", \"-fsyntax-only\", \"-\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"CXX_version\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/x86_64-conda-linux-gnu-c++\", \"--version\"], \"returncode\": 0, \"stdout\": \"x86_64-conda-linux-gnu-c++ (conda-forge gcc 13.4.0-20) 13.4.0\\nCopyright (C) 2023 Free Software Foundation, Inc.\\nThis is free software; see the source for copying conditions.  There is NO\\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\\n\\n\", \"stderr\": \"\"}, \"CXX_syntax\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/x86_64-conda-linux-gnu-c++\", \"-x\", \"c++\", \"-fsyntax-only\", \"-\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"singularity_version\": {\"argv\": [\"/public/software/singularity-ce/4.1.1/bin/singularity\", \"version\"], \"returncode\": 0, \"stdout\": \"4.1.1\\n\", \"stderr\": \"\"}, \"singularity_build_help\": {\"argv\": [\"/public/software/singularity-ce/4.1.1/bin/singularity\", \"build\", \"--help\"], \"returncode\": 0, \"stdout\": \"Build a Singularity image\\n\\nUsage:\\n  singularity build [local options...] <IMAGE PATH> <BUILD SPEC>\\n\\nDescription:\\n\\n  IMAGE PATH:\\n\\n  When Singularity builds the container, output can be one of a few formats:\\n\\n      default:    The compressed Singularity read only image format (default)\\n      sandbox:    This is a read-write container within a directory structure\\n\\n  note: It is a common workflow to use the \\\"sandbox\\\" mode for development of the\\n  container, and then build it as a default Singularity image for production \\n  use. The default format is immutable.\\n\\n  BUILD SPEC:\\n\\n  The build spec target is a definition (def) file, local image, or URI that can \\n  be used to create a Singularity container. Several different local target \\n  formats exist:\\n\\n      def file  : This is a recipe for building a container (examples below)\\n      directory:  A directory structure containing a (ch)root file system\\n      image:      A local image on your machine (will convert to sif if\\n                  it is legacy format)\\n\\n  Targets can also be remote and defined by a URI of the following formats:\\n\\n      library://  an image library (default https://cloud.sylabs.io/library)\\n      docker://   a Docker/OCI registry (default Docker Hub)\\n      shub://     a Singularity registry (default Singularity Hub)\\n      oras://     an OCI registry that holds SIF files using ORAS\\n\\nOptions:\\n      --arch string             architecture for remote build (default \\\"amd64\\\")\\n      --authfile string         Docker-style authentication file to use\\n                                for writing/reading OCI registry credentials\\n  -B, --bind strings            a user-bind path specification. spec has\\n                                the format src[:dest[:opts]],where src and\\n                                dest are outside and inside paths. If dest\\n                                is not given,it is set equal to src. Mount\\n                                options ('opts') may be specified as\\n                                'ro'(read-only) or 'rw' (read/write, which\\n                                is the default).Multiple bind paths can be\\n                                given by a comma separated list. (not\\n                                supported with remote build)\\n      --build-arg strings       provide value to replace {{ variable }}\\n                                entries in build definition file, in\\n                                variable=value format\\n      --build-arg-file string   specifies a file containing variable=value\\n                                lines to replace '{{ variable }}' with\\n                                value in build definition files\\n      --builder string          remote Build Service URL, setting this\\n                                implies --remote\\n  -d, --detached                submit build job and print build ID (no\\n                                real-time logs and requires --remote)\\n      --disable-cache           do not use cache or create cache\\n      --docker-host string      specify a custom Docker daemon host\\n      --docker-login            login to a Docker Repository interactively\\n  -e, --encrypt                 build an image with an encrypted file system\\n  -f, --fakeroot                build using user namespace to fake root\\n                                user (requires a privileged installation)\\n      --fix-perms               ensure owner has rwX permissions on all\\n                                container content for oci/docker sources\\n  -F, --force                   overwrite an image file if it exists\\n  -h, --help                    help for build\\n      --json                    interpret build definition as JSON\\n      --keep-layers             Keep layers when creating an OCI-SIF. Do\\n                                not squash to a single layer.\\n      --library string          container Library URL\\n      --mount stringArray       a mount specification e.g.\\n                                'type=bind,source=/opt,destination=/hostopt'.\\n      --no-cleanup              do NOT clean up bundle after failed build,\\n                                can be helpful for debugging\\n      --no-https                use http instead of https for docker://\\n                                oras:// and library://<hostname>/... URIs\\n      --no-oci                  Launch container with native runtime\\n      --no-setgroups            disable setgroups when entering --fakeroot\\n                                user namespace\\n  -T, --notest                  build without running tests in %test section\\n      --nv                      inject host Nvidia libraries during build\\n                                for post and test sections (not supported\\n                                with remote build)\\n      --nvccli                  use nvidia-container-cli for GPU setup\\n                                (experimental)\\n      --oci                     Launch container with OCI runtime\\n                                (experimental)\\n      --passphrase              prompt for an encryption passphrase\\n      --pem-path string         enter an path to a PEM formatted RSA key\\n                                for an encrypted container\\n  -r, --remote                  build image remotely (does not require root)\\n      --rocm                    inject host Rocm libraries during build\\n                                for post and test sections (not supported\\n                                with remote build)\\n  -s, --sandbox                 build image as sandbox format (chroot\\n                                directory structure)\\n      --section strings         only run specific section(s) of deffile\\n                                (setup, post, files, environment, test,\\n                                labels, none) (default [all])\\n  -u, --update                  run definition over existing container\\n                                (skips header)\\n      --writable-tmpfs          during the %test section, makes the file\\n                                system accessible as read-write with non\\n                                persistent data (with overlay support only)\\n\\n\\nExamples:\\n\\n  DEF FILE BASE OS:\\n\\n      Library:\\n          Bootstrap: library\\n          From: debian:9\\n\\n      Docker:\\n          Bootstrap: docker\\n          From: tensorflow/tensorflow:latest\\n          IncludeCmd: yes # Use the CMD as runscript instead of ENTRYPOINT\\n\\n      Singularity Hub:\\n          Bootstrap: shub\\n          From: singularityhub/centos\\n\\n      YUM/RHEL:\\n          Bootstrap: yum\\n          OSVersion: 7\\n          MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/x86_64/\\n          Include: yum\\n\\n      Debian/Ubuntu:\\n          Bootstrap: debootstrap\\n          OSVersion: trusty\\n          MirrorURL: http://us.archive.ubuntu.com/ubuntu/\\n\\n      Local Image:\\n          Bootstrap: localimage\\n          From: /home/dave/starter.img\\n\\n      Scratch:\\n          Bootstrap: scratch # Populate the container with a minimal rootfs in %setup\\n\\n  DEFFILE SECTIONS:\\n\\n  The following sections are presented in the order of processing, with the exception\\n  that labels and environment can also be manipulated in %post.\\n\\n      %pre\\n          echo \\\"This is a scriptlet that will be executed on the host, as root before\\\"\\n          echo \\\"the container has been bootstrapped. This section is not commonly used.\\\"\\n\\n      %setup\\n          echo \\\"This is a scriptlet that will be executed on the host, as root, after\\\"\\n          echo \\\"the container has been bootstrapped. To install things into the container\\\"\\n          echo \\\"reference the file system location with $SINGULARITY_ROOTFS.\\\"\\n\\n      %files\\n          /path/on/host/file.txt /path/on/container/file.txt\\n          relative_file.txt /path/on/container/relative_file.txt\\n\\n      %post\\n          echo \\\"This scriptlet section will be executed from within the container after\\\"\\n          echo \\\"the bootstrap/base has been created and setup.\\\"\\n\\n      %environment\\n          LUKE=goodguy\\n          VADER=badguy\\n          HAN=someguy\\n          export HAN VADER LUKE\\n\\n      %test\\n          echo \\\"Define any test commands that should be executed after container has been\\\"\\n          echo \\\"built. This scriptlet will be executed from within the running container\\\"\\n          echo \\\"as the root user. Pay attention to the exit/return value of this scriptlet\\\"\\n          echo \\\"as any non-zero exit code will be assumed as failure.\\\"\\n          exit 0\\n\\n      %runscript\\n          echo \\\"Define actions for the container to be executed with the run command or\\\"\\n          echo \\\"when container is executed.\\\"\\n\\n      %startscript\\n          echo \\\"Define actions for container to perform when started as an instance.\\\"\\n\\n      %labels\\n          HELLO MOTO\\n          KEY VALUE\\n\\n      %help\\n          This is a text file to be displayed with the run-help command.\\n\\n  COMMANDS:\\n\\n      Build a sif file from a Singularity recipe file:\\n          $ singularity build /tmp/debian0.sif /path/to/debian.def\\n\\n      Build a sif image from the Library:\\n          $ singularity build /tmp/debian1.sif library://debian:latest\\n\\n      Build a base sandbox from DockerHub, make changes to it, then build sif\\n          $ singularity build --sandbox /tmp/debian docker://debian:latest\\n          $ singularity exec --writable /tmp/debian apt-get install python\\n          $ singularity build /tmp/debian2.sif /tmp/debian\\n\\n\\nFor additional help or support, please visit https://www.sylabs.io/docs/\\n\", \"stderr\": \"\"}, \"singularity_sif_add_help\": {\"argv\": [\"/public/software/singularity-ce/4.1.1/bin/singularity\", \"sif\", \"add\", \"--help\"], \"returncode\": 0, \"stdout\": \"Add data object\\n\\nUsage:\\n  singularity sif add <sif_path> <object_path> [flags]\\n\\nDescription:Add a data object to a SIF image.\\n\\nOptions:\\n      --alignment int       set alignment [default: 4096 with --datatype\\n                            4-Partition, 0 otherwise]\\n      --datatype int        the type of data to add\\n                            [NEEDED, no default]:\\n                              1-Deffile,        2-EnvVar,        3-Labels,\\n                              4-Partition,      5-Signature,    \\n                            6-GenericJSON,\\n                              7-Generic,        8-CryptoMessage, 9-SBOM,\\n                              10-OCI.RootIndex, 11-OCI.Blob\\n      --filename string     set logical filename/handle [default: input\\n                            filename]\\n      --groupid uint32      set groupid [default: 0]\\n  -h, --help                help for add\\n      --link uint32         set link pointer [default: 0]\\n      --partarch int32      the main architecture used (with --datatype\\n                            4-Partition)\\n                            [NEEDED, no default]:\\n                              1-386,       2-amd64,     3-arm,\\n                              4-arm64,     5-ppc64,     6-ppc64le,\\n                              7-mips,      8-mipsle,    9-mips64,\\n                              10-mips64le, 11-s390x,    12-riscv64\\n      --partfs int32        the filesystem used (with --datatype\\n                            4-Partition)\\n                            [NEEDED, no default]:\\n                              1-Squash,    2-Ext3,      3-ImmuObj,\\n                              4-Raw\\n      --parttype int32      the type of partition (with --datatype\\n                            4-Partition)\\n                            [NEEDED, no default]:\\n                              1-System,    2-PrimSys,   3-Data,\\n                              4-Overlay\\n      --sbomformat string   the SBOM format (with --datatype 9-sbom):\\n                              cyclonedx-json, cyclonedx-xml,  github-json,\\n                              spdx-json,      spdx-rdf,      \\n                            spdx-tag-value,\\n                              spdx-yaml,      syft-json\\n      --signentity string   the entity that signs (with --datatype\\n                            5-Signature)\\n                            [NEEDED, no default]:\\n                              example: 433FE984155206BD962725E20E8713472A879943\\n      --signhash int32      the signature hash used (with --datatype\\n                            5-Signature)\\n                            [NEEDED, no default]:\\n                              1-SHA256,      2-SHA384,      3-SHA512,\\n                              4-BLAKE2s_256, 5-BLAKE2b_256\\n\\n\\nExamples:sif add image.sif recipe.def --datatype 1\\nsif add image.sif rootfs.squashfs --datatype 4 --parttype 1 --partfs 1 --partarch 2\\nsif add image.sif signature.bin --datatype 5 --signentity 433FE984155206BD962725E20E8713472A879943 --signhash 1\\n\\n\\nFor additional help or support, please visit https://www.sylabs.io/docs/\\n\", \"stderr\": \"\"}, \"singularity_sif_new_help\": {\"argv\": [\"/public/software/singularity-ce/4.1.1/bin/singularity\", \"sif\", \"new\", \"--help\"], \"returncode\": 0, \"stdout\": \"Create SIF image\\n\\nUsage:\\n  singularity sif new <sif_path>\\n\\nDescription:Create a new, empty SIF image.\\n\\nOptions:\\n  -h, --help   help for new\\n\\n\\nExamples:sif new image.sif\\n\\n\\nFor additional help or support, please visit https://www.sylabs.io/docs/\\n\", \"stderr\": \"\"}, \"mksquashfs_help\": {\"argv\": [\"/usr/sbin/mksquashfs\", \"-help\"], \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"SYNTAX:/usr/sbin/mksquashfs source1 source2 ...  dest [options] [-e list of exclude\\ndirs/files]\\n\\nFilesystem build options:\\n-comp <comp>\\t\\tselect <comp> compression\\n\\t\\t\\tCompressors available:\\n\\t\\t\\t\\tgzip (default)\\n\\t\\t\\t\\tlzma\\n\\t\\t\\t\\tlzo\\n\\t\\t\\t\\txz\\n-b <block_size>\\t\\tset data block to <block_size>.  Default 131072 bytes\\n-no-exports\\t\\tdon't make the filesystem exportable via NFS\\n-no-sparse\\t\\tdon't detect sparse files\\n-no-xattrs\\t\\tdon't store extended attributes\\n-xattrs\\t\\t\\tstore extended attributes (default)\\n-noI\\t\\t\\tdo not compress inode table\\n-noD\\t\\t\\tdo not compress data blocks\\n-noF\\t\\t\\tdo not compress fragment blocks\\n-noX\\t\\t\\tdo not compress extended attributes\\n-no-fragments\\t\\tdo not use fragments\\n-always-use-fragments\\tuse fragment blocks for files larger than block size\\n-no-duplicates\\t\\tdo not perform duplicate checking\\n-all-root\\t\\tmake all files owned by root\\n-force-uid uid\\t\\tset all file uids to uid\\n-force-gid gid\\t\\tset all file gids to gid\\n-nopad\\t\\t\\tdo not pad filesystem to a multiple of 4K\\n-keep-as-directory\\tif one source directory is specified, create a root\\n\\t\\t\\tdirectory containing that directory, rather than the\\n\\t\\t\\tcontents of the directory\\n\\nFilesystem filter options:\\n-p <pseudo-definition>\\tAdd pseudo file definition\\n-pf <pseudo-file>\\tAdd list of pseudo file definitions\\n-sort <sort_file>\\tsort files according to priorities in <sort_file>.  One\\n\\t\\t\\tfile or dir with priority per line.  Priority -32768 to\\n\\t\\t\\t32767, default priority 0\\n-ef <exclude_file>\\tlist of exclude dirs/files.  One per line\\n-wildcards\\t\\tAllow extended shell wildcards (globbing) to be used in\\n\\t\\t\\texclude dirs/files\\n-regex\\t\\t\\tAllow POSIX regular expressions to be used in exclude\\n\\t\\t\\tdirs/files\\n\\nFilesystem append options:\\n-noappend\\t\\tdo not append to existing filesystem\\n-root-becomes <name>\\twhen appending source files/directories, make the\\n\\t\\t\\toriginal root become a subdirectory in the new root\\n\\t\\t\\tcalled <name>, rather than adding the new source items\\n\\t\\t\\tto the original root\\n\\nMksquashfs runtime options:\\n-version\\t\\tprint version, licence and copyright message\\n-recover <name>\\t\\trecover filesystem data using recovery file <name>\\n-no-recovery\\t\\tdon't generate a recovery file\\n-info\\t\\t\\tprint files written to filesystem\\n-no-progress\\t\\tdon't display the progress bar\\n-progress\\t\\tdisplay progress bar when using the -info option\\n-processors <number>\\tUse <number> processors.  By default will use number of\\n\\t\\t\\tprocessors available\\n-read-queue <size>\\tSet input queue to <size> Mbytes.  Default 64 Mbytes\\n-write-queue <size>\\tSet output queue to <size> Mbytes.  Default 512 Mbytes\\n-fragment-queue <size>\\tSet fragment queue to <size> Mbytes.  Default 64 Mbytes\\n\\nMiscellaneous options:\\n-root-owned\\t\\talternative name for -all-root\\n-noInodeCompression\\talternative name for -noI\\n-noDataCompression\\talternative name for -noD\\n-noFragmentCompression\\talternative name for -noF\\n-noXattrCompression\\talternative name for -noX\\n\\nCompressors available and compressor specific options:\\n\\tgzip (no options) (default)\\n\\tlzma (no options)\\n\\tlzo (no options)\\n\\txz\\n\\t  -Xbcj filter1,filter2,...,filterN\\n\\t\\tCompress using filter1,filter2,...,filterN in turn\\n\\t\\t(in addition to no filter), and choose the best compression.\\n\\t\\tAvailable filters: x86, arm, armthumb, powerpc, sparc, ia64\\n\\t  -Xdict-size <dict-size>\\n\\t\\tUse <dict-size> as the XZ dictionary size.  The dictionary size\\n\\t\\tcan be specified as a percentage of the block size, or as an\\n\\t\\tabsolute value.  The dictionary size must be less than or equal\\n\\t\\tto the block size and 8192 bytes or larger.  It must also be\\n\\t\\tstorable in the xz header as either 2^n or as 2^n+2^(n+1).\\n\\t\\tExample dict-sizes are 75%, 50%, 37.5%, 25%, or 32K, 16K, 8K\\n\\t\\tetc.\\n\"}, \"readelf_version\": {\"argv\": [\"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/x86_64-conda-linux-gnu-readelf\", \"--version\"], \"returncode\": 0, \"stdout\": \"GNU readelf (GNU Binutils) 2.46.1\\nCopyright (C) 2026 Free Software Foundation, Inc.\\nThis program is free software; you may redistribute it under the terms of\\nthe GNU General Public License version 3 or (at your option) any later version.\\nThis program has absolutely no warranty.\\n\", \"stderr\": \"\"}}, \"images_read\": false, \"models_loaded\": false, \"packages_installed\": false, \"assets_written\": false}\n"
+      },
+      "sha256": "a6b6d12e68d00708c84b0c2364f418581131218c3b1ab2b197421b3d9011d849"
+    },
+    "HELD_AUDIT.json": {
+      "bytes": 4170,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "fields": {
+          "Account": "zqchen",
+          "AccrueTime": "Unknown",
+          "AllocNode:Sid": "10.11.100.253:13432",
+          "BatchFlag": "1",
+          "CPUs/Task": "8",
+          "Command": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/slurm/prepare.slurm",
+          "Contiguous": "0",
+          "CoreSpec": "*",
+          "Deadline": "N/A",
+          "DelayBoot": "00:00:00",
+          "Dependency": "(null)",
+          "EligibleTime": "Unknown",
+          "EndTime": "Unknown",
+          "ExcNodeList": "(null)",
+          "ExitCode": "0:0",
+          "Features": "(null)",
+          "GroupId": "users(100)",
+          "JobId": "4304783",
+          "JobName": "s2exts0p3a",
+          "JobState": "PENDING",
+          "LastSchedEval": "2026-11-05T12:36:02",
+          "Licenses": "(null)",
+          "MCS_label": "N/A",
+          "MinCPUsNode": "8",
+          "MinMemoryNode": "64G",
+          "MinTmpDiskNode": "0",
+          "Network": "(null)",
+          "Nice": "0",
+          "NodeList": "(null)",
+          "NtasksPerN:B:S:C": "0:0:*:*",
+          "NtasksPerTRES": "0",
+          "NumCPUs": "8",
+          "NumNodes": "1-1",
+          "NumTasks": "1",
+          "OverSubscribe": "OK",
+          "Partition": "cpu_192G",
+          "Power": "",
+          "Priority": "0",
+          "QOS": "user_zqchen",
+          "Reason": "JobHeldUser",
+          "Reboot": "0",
+          "ReqB:S:C:T": "0:0:*:*",
+          "ReqNodeList": "(null)",
+          "Requeue": "0",
+          "Restarts": "0",
+          "RunTime": "00:00:00",
+          "SecsPreSuspend": "0",
+          "Socks/Node": "*",
+          "StartTime": "Unknown",
+          "StdErr": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.err",
+          "StdIn": "/dev/null",
+          "StdOut": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.out",
+          "SubmitTime": "2026-11-05T12:36:02",
+          "SuspendTime": "None",
+          "TRES": "cpu=8,mem=64G,node=1,billing=8",
+          "TimeLimit": "04:00:00",
+          "TimeMin": "N/A",
+          "UserId": "zqchen(2159)",
+          "WorkDir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a"
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4304783",
+        "operator_approved": false,
+        "raw_scontrol": "JobId=4304783 JobName=s2exts0p3a UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A SubmitTime=2026-11-05T12:36:02 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-05T12:36:02 Partition=cpu_192G AllocNode:Sid=10.11.100.253:13432 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/slurm/prepare.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.out Power= NtasksPerTRES:0\n",
+        "remote_utc": "2026-11-05T04:36:55.758615+00:00",
+        "status": "CPU_held_identity_pass"
+      },
+      "sha256": "563d9b6a1f330636e49b62f9c3803d387ab18026e66014756541c1bddfd441bf"
+    },
+    "HELD_CREATED.json": {
+      "bytes": 8939,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "cpu_usage": {
+          "active_cpu_upper_bound": 120,
+          "all_active_allocations_explicit": false,
+          "checked_limits": [
+            {
+              "active_cpu_upper_bound": 120,
+              "new_job_cpus": 8,
+              "pending_cpu_upper_bound": 145,
+              "per_user_cpu_limit": 1000,
+              "prospective_cpu_upper_bound": 273,
+              "qos": "user_zqchen"
+            }
+          ],
+          "elapsed_seconds": 1.2272052690386772,
+          "jobs": [
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304220",
+              "job_name": "p3_SM0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304228",
+              "job_name": "p3_T2D0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304227",
+              "job_name": "p3_P0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304226",
+              "job_name": "p3_LES_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304225",
+              "job_name": "p3_LES_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304224",
+              "job_name": "p3_LES_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304223",
+              "job_name": "p3_LES_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304222",
+              "job_name": "p3_LES_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304221",
+              "job_name": "p3_E2K0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304219",
+              "job_name": "p3_R0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304217",
+              "job_name": "p3_M_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 24,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304218",
+              "job_name": "p3_L_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 24,
+                "TRES": 24
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304216",
+              "job_name": "p3_M_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304215",
+              "job_name": "p3_M_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304214",
+              "job_name": "p3_M_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304213",
+              "job_name": "p3_M_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 1,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304229",
+              "job_name": "p3_w2sum",
+              "observed_cpu_fields": {
+                "NumCPUs": 1,
+                "TRES": 1
+              },
+              "partition": "cpu_96G",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            }
+          ],
+          "known_explicit_allocated_cpu": 0,
+          "pending_cpu_upper_bound": 145,
+          "queue_sha256": "13ae1353e7f4196a3a39f9f6e0be93cbd45b797d2108df867f56c69dd2902036",
+          "scope": "all_own_jobs_conservative_including_pending_requests_not_measured_GPU_usage",
+          "status": "coherent_own_job_CPU_upper_bound_snapshot"
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4304783",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:36:55.017805+00:00",
+        "slurm_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+        "status": "CPU_held_created",
+        "validation": {
+          "CPU_reservation_bytes": 161061273600,
+          "account": "zqchen",
+          "applicable_qos": [
+            "partition_cpu_192g",
+            "user_zqchen"
+          ],
+          "association": {
+            "Account": "zqchen",
+            "MaxJobs": "",
+            "MaxSubmit": "",
+            "Partition": "",
+            "QOS": "user_zqchen",
+            "User": "zqchen"
+          },
+          "checked_qos": {
+            "partition_cpu_192g": {
+              "max_TRES_per_job": {},
+              "max_jobs_per_user": "",
+              "max_submit_jobs_per_user": "",
+              "max_wall_seconds": null
+            },
+            "user_zqchen": {
+              "max_TRES_per_job": {},
+              "max_jobs_per_user": "1000",
+              "max_submit_jobs_per_user": "",
+              "max_wall_seconds": null
+            }
+          },
+          "existing_jobs": 17,
+          "filesystem_free_bytes": 896712835072,
+          "full_inference_capacity_pass": false,
+          "numeric_quota_verified": false,
+          "partition": "cpu_192G",
+          "quota_query": {
+            "argv": [
+              "quota",
+              "-s"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ""
+          },
+          "requested_resource": {
+            "cpus": 8,
+            "gpu": 0,
+            "memory_mib": 65536,
+            "wall_seconds": 14400
+          },
+          "status": "CPU_scheduler_request_eligible_not_running_or_full_capacity_pass",
+          "suitable_configured_nodes": [
+            "node201",
+            "node202",
+            "node203",
+            "node204",
+            "node205",
+            "node206",
+            "node207",
+            "node208",
+            "node209",
+            "node210",
+            "node211",
+            "node212",
+            "node213",
+            "node214",
+            "node215",
+            "node216",
+            "node217",
+            "node218",
+            "node219",
+            "node220",
+            "node221",
+            "node222",
+            "node223",
+            "node224",
+            "node225",
+            "node226",
+            "node227",
+            "node228",
+            "node230"
+          ]
+        }
+      },
+      "sha256": "601849bf09a2bd64cb29a99289e318dadcffd1f162aade20eb24a6749ff0f17b"
+    },
+    "LOCAL_HELD_VERIFICATION.json": {
+      "bytes": 697,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "formal_gate_status": "not_run_not_passed",
+        "held_audit_sha256": "563d9b6a1f330636e49b62f9c3803d387ab18026e66014756541c1bddfd441bf",
+        "images_read": false,
+        "job_id": "4304783",
+        "local_held_verification_pass": true,
+        "local_utc": "2026-11-05T04:48:22.725902+00:00",
+        "models_loaded": false,
+        "operator_approved": false,
+        "resource": {
+          "cpus_per_task": 8,
+          "gpu": 0,
+          "memory_gib": 64,
+          "partition": "cpu_192G",
+          "time_limit": "04:00:00"
+        },
+        "slurm_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5"
+      },
+      "sha256": "9c94f727d9fdac7a4961aaa43439fa47c1954e204ad5a307f43bea447437aa57"
+    },
+    "RELEASE_RESULT.json": {
+      "bytes": 316,
+      "content": {
+        "argv": [
+          "scontrol",
+          "release",
+          "4304783"
+        ],
+        "artifact_status": "experimental_unvalidated",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4304783",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:36:59.534791+00:00",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "sha256": "f11f7058cf8963a69d32fead08b5a5f86aa47945640a0f88d223f34bc4038a83"
+    },
+    "RESERVATION.json": {
+      "bytes": 8929,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "cpu_usage": {
+          "active_cpu_upper_bound": 120,
+          "all_active_allocations_explicit": false,
+          "checked_limits": [
+            {
+              "active_cpu_upper_bound": 120,
+              "new_job_cpus": 8,
+              "pending_cpu_upper_bound": 145,
+              "per_user_cpu_limit": 1000,
+              "prospective_cpu_upper_bound": 273,
+              "qos": "user_zqchen"
+            }
+          ],
+          "elapsed_seconds": 1.2272052690386772,
+          "jobs": [
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304220",
+              "job_name": "p3_SM0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304228",
+              "job_name": "p3_T2D0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304227",
+              "job_name": "p3_P0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304226",
+              "job_name": "p3_LES_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304225",
+              "job_name": "p3_LES_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304224",
+              "job_name": "p3_LES_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304223",
+              "job_name": "p3_LES_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304222",
+              "job_name": "p3_LES_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304221",
+              "job_name": "p3_E2K0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304219",
+              "job_name": "p3_R0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304217",
+              "job_name": "p3_M_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 24,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304218",
+              "job_name": "p3_L_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 24,
+                "TRES": 24
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304216",
+              "job_name": "p3_M_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304215",
+              "job_name": "p3_M_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304214",
+              "job_name": "p3_M_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304213",
+              "job_name": "p3_M_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 1,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304229",
+              "job_name": "p3_w2sum",
+              "observed_cpu_fields": {
+                "NumCPUs": 1,
+                "TRES": 1
+              },
+              "partition": "cpu_96G",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            }
+          ],
+          "known_explicit_allocated_cpu": 0,
+          "pending_cpu_upper_bound": 145,
+          "queue_sha256": "13ae1353e7f4196a3a39f9f6e0be93cbd45b797d2108df867f56c69dd2902036",
+          "scope": "all_own_jobs_conservative_including_pending_requests_not_measured_GPU_usage",
+          "status": "coherent_own_job_CPU_upper_bound_snapshot"
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:36:55.017805+00:00",
+        "slurm_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+        "status": "R3_single_submission_reserved",
+        "validation": {
+          "CPU_reservation_bytes": 161061273600,
+          "account": "zqchen",
+          "applicable_qos": [
+            "partition_cpu_192g",
+            "user_zqchen"
+          ],
+          "association": {
+            "Account": "zqchen",
+            "MaxJobs": "",
+            "MaxSubmit": "",
+            "Partition": "",
+            "QOS": "user_zqchen",
+            "User": "zqchen"
+          },
+          "checked_qos": {
+            "partition_cpu_192g": {
+              "max_TRES_per_job": {},
+              "max_jobs_per_user": "",
+              "max_submit_jobs_per_user": "",
+              "max_wall_seconds": null
+            },
+            "user_zqchen": {
+              "max_TRES_per_job": {},
+              "max_jobs_per_user": "1000",
+              "max_submit_jobs_per_user": "",
+              "max_wall_seconds": null
+            }
+          },
+          "existing_jobs": 17,
+          "filesystem_free_bytes": 896712835072,
+          "full_inference_capacity_pass": false,
+          "numeric_quota_verified": false,
+          "partition": "cpu_192G",
+          "quota_query": {
+            "argv": [
+              "quota",
+              "-s"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ""
+          },
+          "requested_resource": {
+            "cpus": 8,
+            "gpu": 0,
+            "memory_mib": 65536,
+            "wall_seconds": 14400
+          },
+          "status": "CPU_scheduler_request_eligible_not_running_or_full_capacity_pass",
+          "suitable_configured_nodes": [
+            "node201",
+            "node202",
+            "node203",
+            "node204",
+            "node205",
+            "node206",
+            "node207",
+            "node208",
+            "node209",
+            "node210",
+            "node211",
+            "node212",
+            "node213",
+            "node214",
+            "node215",
+            "node216",
+            "node217",
+            "node218",
+            "node219",
+            "node220",
+            "node221",
+            "node222",
+            "node223",
+            "node224",
+            "node225",
+            "node226",
+            "node227",
+            "node228",
+            "node230"
+          ]
+        }
+      },
+      "sha256": "41c2c73508f7af5f8cb6302a7839efd0b0d1fef1f424f9b16713db6ad32a9fba"
+    },
+    "RESOURCE_SNAPSHOT.json": {
+      "bytes": 20349,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "cpu_usage": {
+          "active_cpu_upper_bound": 120,
+          "all_active_allocations_explicit": false,
+          "elapsed_seconds": 1.2272052690386772,
+          "jobs": [
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304220",
+              "job_name": "p3_SM0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304228",
+              "job_name": "p3_T2D0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304227",
+              "job_name": "p3_P0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304226",
+              "job_name": "p3_LES_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304225",
+              "job_name": "p3_LES_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304224",
+              "job_name": "p3_LES_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304223",
+              "job_name": "p3_LES_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304222",
+              "job_name": "p3_LES_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304221",
+              "job_name": "p3_E2K0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304219",
+              "job_name": "p3_R0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304217",
+              "job_name": "p3_M_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 24,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304218",
+              "job_name": "p3_L_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 24,
+                "TRES": 24
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304216",
+              "job_name": "p3_M_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304215",
+              "job_name": "p3_M_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304214",
+              "job_name": "p3_M_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304213",
+              "job_name": "p3_M_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 1,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304229",
+              "job_name": "p3_w2sum",
+              "observed_cpu_fields": {
+                "NumCPUs": 1,
+                "TRES": 1
+              },
+              "partition": "cpu_96G",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            }
+          ],
+          "known_explicit_allocated_cpu": 0,
+          "pending_cpu_upper_bound": 145,
+          "queue_sha256": "13ae1353e7f4196a3a39f9f6e0be93cbd45b797d2108df867f56c69dd2902036",
+          "scope": "all_own_jobs_conservative_including_pending_requests_not_measured_GPU_usage",
+          "status": "coherent_own_job_CPU_upper_bound_snapshot"
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "free_bytes": 896712835072,
+        "operator_approved": false,
+        "scheduler": {
+          "association": {
+            "argv": [
+              "sacctmgr",
+              "-P",
+              "show",
+              "assoc",
+              "where",
+              "user=zqchen",
+              "format=User,Account,Partition,QOS,MaxJobs,MaxSubmitJobs"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "User|Account|Partition|QOS|MaxJobs|MaxSubmit\nzqchen|zqchen||user_zqchen||\n"
+          },
+          "libc": {
+            "argv": [
+              "getconf",
+              "GNU_LIBC_VERSION"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "glibc 2.17\n"
+          },
+          "nodes": {
+            "argv": [
+              "sinfo",
+              "-N",
+              "-h",
+              "-p",
+              "cpu_192G",
+              "-o",
+              "%N|%t|%c|%m|%G"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "node201|mix|28|190913|(null)\nnode202|alloc|28|190913|(null)\nnode203|alloc|28|190913|(null)\nnode204|alloc|28|190913|(null)\nnode205|alloc|28|190913|(null)\nnode206|alloc|28|190913|(null)\nnode207|alloc|28|190913|(null)\nnode208|alloc|28|190913|(null)\nnode209|alloc|28|190913|(null)\nnode210|alloc|28|190913|(null)\nnode211|alloc|28|190913|(null)\nnode212|mix|28|190913|(null)\nnode213|mix|28|190913|(null)\nnode214|mix|28|190913|(null)\nnode215|mix|28|190913|(null)\nnode216|mix|28|190913|(null)\nnode217|mix|28|190913|(null)\nnode218|mix|28|190913|(null)\nnode219|mix|28|190913|(null)\nnode220|alloc|28|190913|(null)\nnode221|mix|28|190913|(null)\nnode222|mix|28|190913|(null)\nnode223|mix|28|190913|(null)\nnode224|alloc|28|190913|(null)\nnode225|mix|28|190913|(null)\nnode226|mix|28|190913|(null)\nnode227|idle|28|190913|(null)\nnode228|mix|28|190913|(null)\nnode230|mix|28|190913|(null)\n"
+          },
+          "own_queue": {
+            "argv": [
+              "squeue",
+              "-h",
+              "-u",
+              "zqchen",
+              "-o",
+              "%i|%T|%P|%j|%r|%b"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "4304220|PENDING|a100|p3_SM0|Resources|gpu:1,gpu:1\n4304228|PENDING|a100|p3_T2D0|Dependency|gpu:1,gpu:1\n4304227|PENDING|a100|p3_P0|Dependency|gpu:1,gpu:1\n4304226|PENDING|a100|p3_LES_f4|Dependency|gpu:1,gpu:1\n4304225|PENDING|a100|p3_LES_f3|Dependency|gpu:1,gpu:1\n4304224|PENDING|a100|p3_LES_f2|Dependency|gpu:1,gpu:1\n4304223|PENDING|a100|p3_LES_f1|Dependency|gpu:1,gpu:1\n4304222|PENDING|a100|p3_LES_f0|Dependency|gpu:1,gpu:1\n4304221|PENDING|a100|p3_E2K0|Dependency|gpu:1,gpu:1\n4304219|RUNNING|a100|p3_R0|None|gpu:1,gpu:1\n4304217|RUNNING|a100|p3_M_f4|None|gpu:1,gpu:1\n4304218|RUNNING|a100|p3_L_f0|None|gpu:1,gpu:1\n4304216|RUNNING|a100|p3_M_f3|None|gpu:1,gpu:1\n4304215|RUNNING|a100|p3_M_f2|None|gpu:1,gpu:1\n4304214|RUNNING|a100|p3_M_f1|None|gpu:1,gpu:1\n4304213|RUNNING|a100|p3_M_f0|None|gpu:1,gpu:1\n4304229|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n"
+          },
+          "partition": {
+            "argv": [
+              "scontrol",
+              "show",
+              "partition",
+              "cpu_192G",
+              "-o"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "PartitionName=cpu_192G AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,tianzhixiong,gtshi,mxbai,yliu,a_test,yangdanfeng,lianghe2,ydf_test,demo_user1,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,yshen,hysun,ybyao,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,syzhang,scjiang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,test_block1,qzhang,xiangsun,khuang,xiaohe,yangdanfeng111,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,xwei,hzhang,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_cpu_192G DefaultTime=10-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=node[201-228,230] PriorityJobFactor=1 PriorityTier=9000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=812 TotalNodes=29 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n"
+          },
+          "qos": {
+            "argv": [
+              "sacctmgr",
+              "-P",
+              "show",
+              "qos"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "Name|Priority|GraceTime|Preempt|PreemptExemptTime|PreemptMode|Flags|UsageThres|UsageFactor|GrpTRES|GrpTRESMins|GrpTRESRunMins|GrpJobs|GrpSubmit|GrpWall|MaxTRES|MaxTRESPerNode|MaxTRESMins|MaxWall|MaxTRESPU|MaxJobsPU|MaxSubmitPU|MaxTRESPA|MaxJobsPA|MaxSubmitPA|MinTRES\nnormal|0|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\npartition_xiaohe2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_cpu_96g|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_cpu_192g|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_v100|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_a100|0|00:00:00|||cluster|||1.000000|||||||||||||100||||\nuser_20180208|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang3|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ymei|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang4|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_hlli_exc|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_syzhang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_zychen|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_nih|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_zxfeng|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lichao|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lmzhou|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lxwang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_wxzhang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xlwang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_wxhu|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_liqin|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ylshi|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_szr_e|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ywang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiangsun|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_qhyuan|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_tzhu|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiaohe|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_cgduan|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_dlli|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_longchen|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiaohe2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lkpan|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|100|||||\nuser_scst8|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ccxia|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_gpliu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_tzx|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_tianzhixiong|300|00:00:00|||cluster|||1.000000|||||||||||cpu=999|999|||||\nuser_yangdanfeng|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jwli|0|00:00:00|||cluster|||1.000000||||||||||||4000|||||\nuser_ydf_test|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jxu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_scow_admin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hpctest|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_test_block|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_block1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xlin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_demo_user|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_demo_user1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ectan|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_dmyin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow_8509|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow_5285|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_mzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ldliang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xkzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hcsong|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cmshen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_pbxu|300|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test22|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test33|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_pxwang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_qzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_glwang|300|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_gtshi|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_fxia|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xwei|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wtchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_awzhu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test20260302|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test20260303|100|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_test20260303_2793|100|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_gdzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_eduhpc1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|50|||||\nuser_eduhpc2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|50|||||\nuser_scjiang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yshen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wwang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yycheng|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang2|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yhzhu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_flhong|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yyzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_htsun|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hysun|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\npartition_test_partition1|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_test_partition2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_hqwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_zqchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ecnuhpc|0|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\nuser_ypu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jshu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hymao|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cross_sched|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_zxtian|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng111|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_twang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cldeng|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_rxji|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yliu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\nuser_ybyao|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jiangxu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_pxchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jlyang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_fxqiao|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\n"
+          },
+          "quota": {
+            "argv": [
+              "quota",
+              "-s"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ""
+          }
+        }
+      },
+      "sha256": "61d30db08419e8f8889cf4e77689b1c7cf376befab5adc86b4abc50f174e159b"
+    },
+    "SBATCH_RESULT.json": {
+      "bytes": 604,
+      "content": {
+        "argv": [
+          "sbatch",
+          "--hold",
+          "--parsable",
+          "--chdir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/slurm/prepare.slurm"
+        ],
+        "artifact_status": "experimental_unvalidated",
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "4304783\n"
+      },
+      "sha256": "177a8c53f8155b5625e263cc7dc758ebefb00cf30d5ca780ea390343501ba564"
+    },
+    "STATIC_PREFLIGHT.json": {
+      "bytes": 8935,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "cpu_usage": {
+          "active_cpu_upper_bound": 120,
+          "all_active_allocations_explicit": false,
+          "checked_limits": [
+            {
+              "active_cpu_upper_bound": 120,
+              "new_job_cpus": 8,
+              "pending_cpu_upper_bound": 145,
+              "per_user_cpu_limit": 1000,
+              "prospective_cpu_upper_bound": 273,
+              "qos": "user_zqchen"
+            }
+          ],
+          "elapsed_seconds": 1.2272052690386772,
+          "jobs": [
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304220",
+              "job_name": "p3_SM0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304228",
+              "job_name": "p3_T2D0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304227",
+              "job_name": "p3_P0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304226",
+              "job_name": "p3_LES_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304225",
+              "job_name": "p3_LES_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304224",
+              "job_name": "p3_LES_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304223",
+              "job_name": "p3_LES_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304222",
+              "job_name": "p3_LES_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304221",
+              "job_name": "p3_E2K0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304219",
+              "job_name": "p3_R0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304217",
+              "job_name": "p3_M_f4",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 24,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304218",
+              "job_name": "p3_L_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 24,
+                "TRES": 24
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304216",
+              "job_name": "p3_M_f3",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304215",
+              "job_name": "p3_M_f2",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304214",
+              "job_name": "p3_M_f1",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 16,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304213",
+              "job_name": "p3_M_f0",
+              "observed_cpu_fields": {
+                "NumCPUs": 16,
+                "TRES": 16
+              },
+              "partition": "a100",
+              "qos": "user_zqchen",
+              "state": "RUNNING"
+            },
+            {
+              "account": "zqchen",
+              "cpu_upper_bound": 1,
+              "explicit_allocated_cpu": null,
+              "job_id": "4304229",
+              "job_name": "p3_w2sum",
+              "observed_cpu_fields": {
+                "NumCPUs": 1,
+                "TRES": 1
+              },
+              "partition": "cpu_96G",
+              "qos": "user_zqchen",
+              "state": "PENDING"
+            }
+          ],
+          "known_explicit_allocated_cpu": 0,
+          "pending_cpu_upper_bound": 145,
+          "queue_sha256": "13ae1353e7f4196a3a39f9f6e0be93cbd45b797d2108df867f56c69dd2902036",
+          "scope": "all_own_jobs_conservative_including_pending_requests_not_measured_GPU_usage",
+          "status": "coherent_own_job_CPU_upper_bound_snapshot"
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:36:55.017805+00:00",
+        "slurm_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+        "status": "CPU_static_and_fresh_scheduler_pass",
+        "validation": {
+          "CPU_reservation_bytes": 161061273600,
+          "account": "zqchen",
+          "applicable_qos": [
+            "partition_cpu_192g",
+            "user_zqchen"
+          ],
+          "association": {
+            "Account": "zqchen",
+            "MaxJobs": "",
+            "MaxSubmit": "",
+            "Partition": "",
+            "QOS": "user_zqchen",
+            "User": "zqchen"
+          },
+          "checked_qos": {
+            "partition_cpu_192g": {
+              "max_TRES_per_job": {},
+              "max_jobs_per_user": "",
+              "max_submit_jobs_per_user": "",
+              "max_wall_seconds": null
+            },
+            "user_zqchen": {
+              "max_TRES_per_job": {},
+              "max_jobs_per_user": "1000",
+              "max_submit_jobs_per_user": "",
+              "max_wall_seconds": null
+            }
+          },
+          "existing_jobs": 17,
+          "filesystem_free_bytes": 896712835072,
+          "full_inference_capacity_pass": false,
+          "numeric_quota_verified": false,
+          "partition": "cpu_192G",
+          "quota_query": {
+            "argv": [
+              "quota",
+              "-s"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ""
+          },
+          "requested_resource": {
+            "cpus": 8,
+            "gpu": 0,
+            "memory_mib": 65536,
+            "wall_seconds": 14400
+          },
+          "status": "CPU_scheduler_request_eligible_not_running_or_full_capacity_pass",
+          "suitable_configured_nodes": [
+            "node201",
+            "node202",
+            "node203",
+            "node204",
+            "node205",
+            "node206",
+            "node207",
+            "node208",
+            "node209",
+            "node210",
+            "node211",
+            "node212",
+            "node213",
+            "node214",
+            "node215",
+            "node216",
+            "node217",
+            "node218",
+            "node219",
+            "node220",
+            "node221",
+            "node222",
+            "node223",
+            "node224",
+            "node225",
+            "node226",
+            "node227",
+            "node228",
+            "node230"
+          ]
+        }
+      },
+      "sha256": "f33eb20478a3144ef582a31102d2a0d18d849b14c1c26d2b69cfca215c7dd58f"
+    },
+    "SUBMISSION_RECEIPT.json": {
+      "bytes": 2810,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "formal_gate_status": "not_run_not_passed",
+        "images_read": false,
+        "job_id": "4304783",
+        "models_loaded": false,
+        "observed_job": {
+          "Account": "zqchen",
+          "AccrueTime": "Unknown",
+          "AllocNode:Sid": "10.11.100.253:13432",
+          "BatchFlag": "1",
+          "CPUs/Task": "8",
+          "Command": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/slurm/prepare.slurm",
+          "Contiguous": "0",
+          "CoreSpec": "*",
+          "Deadline": "N/A",
+          "DelayBoot": "00:00:00",
+          "Dependency": "(null)",
+          "EligibleTime": "Unknown",
+          "EndTime": "Unknown",
+          "ExcNodeList": "(null)",
+          "ExitCode": "0:0",
+          "Features": "(null)",
+          "GroupId": "users(100)",
+          "JobId": "4304783",
+          "JobName": "s2exts0p3a",
+          "JobState": "PENDING",
+          "LastSchedEval": "2026-11-05T12:36:02",
+          "Licenses": "(null)",
+          "MCS_label": "N/A",
+          "MinCPUsNode": "8",
+          "MinMemoryNode": "64G",
+          "MinTmpDiskNode": "0",
+          "Network": "(null)",
+          "Nice": "0",
+          "NodeList": "(null)",
+          "NtasksPerN:B:S:C": "0:0:*:*",
+          "NtasksPerTRES": "0",
+          "NumCPUs": "8",
+          "NumNodes": "1-1",
+          "NumTasks": "1",
+          "OverSubscribe": "OK",
+          "Partition": "cpu_192G",
+          "Power": "",
+          "Priority": "1200",
+          "QOS": "user_zqchen",
+          "Reason": "None",
+          "Reboot": "0",
+          "ReqB:S:C:T": "0:0:*:*",
+          "ReqNodeList": "(null)",
+          "Requeue": "0",
+          "Restarts": "0",
+          "RunTime": "00:00:00",
+          "SecsPreSuspend": "0",
+          "Socks/Node": "*",
+          "StartTime": "Unknown",
+          "StdErr": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.err",
+          "StdIn": "/dev/null",
+          "StdOut": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.out",
+          "SubmitTime": "2026-11-05T12:36:02",
+          "SuspendTime": "None",
+          "TRES": "cpu=8,mem=64G,node=1,billing=8",
+          "TimeLimit": "04:00:00",
+          "TimeMin": "N/A",
+          "UserId": "zqchen(2159)",
+          "WorkDir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a"
+        },
+        "operator_approved": false,
+        "original_inference_jobs_created": false,
+        "remote_utc": "2026-11-05T04:36:59.618171+00:00",
+        "slurm_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+        "status": "CPU_preparation_job_released_not_artifact_or_model_runtime_pass"
+      },
+      "sha256": "c7f4a30f4f95d78a4d14104c008f1c174192c1e8bce267ea58b981a4b46808ae"
+    }
+  },
+  "models_loaded": false,
+  "observed_job": {
+    "Account": "zqchen",
+    "AccrueTime": "Unknown",
+    "AllocNode:Sid": "10.11.100.253:13432",
+    "BatchFlag": "1",
+    "CPUs/Task": "8",
+    "Command": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/slurm/prepare.slurm",
+    "Contiguous": "0",
+    "CoreSpec": "*",
+    "Deadline": "N/A",
+    "DelayBoot": "00:00:00",
+    "Dependency": "(null)",
+    "EligibleTime": "Unknown",
+    "EndTime": "Unknown",
+    "ExcNodeList": "(null)",
+    "ExitCode": "0:0",
+    "Features": "(null)",
+    "GroupId": "users(100)",
+    "JobId": "4304783",
+    "JobName": "s2exts0p3a",
+    "JobState": "PENDING",
+    "LastSchedEval": "2026-11-05T12:36:02",
+    "Licenses": "(null)",
+    "MCS_label": "N/A",
+    "MinCPUsNode": "8",
+    "MinMemoryNode": "64G",
+    "MinTmpDiskNode": "0",
+    "Network": "(null)",
+    "Nice": "0",
+    "NodeList": "(null)",
+    "NtasksPerN:B:S:C": "0:0:*:*",
+    "NtasksPerTRES": "0",
+    "NumCPUs": "8",
+    "NumNodes": "1-1",
+    "NumTasks": "1",
+    "OverSubscribe": "OK",
+    "Partition": "cpu_192G",
+    "Power": "",
+    "Priority": "1200",
+    "QOS": "user_zqchen",
+    "Reason": "None",
+    "Reboot": "0",
+    "ReqB:S:C:T": "0:0:*:*",
+    "ReqNodeList": "(null)",
+    "Requeue": "0",
+    "Restarts": "0",
+    "RunTime": "00:00:00",
+    "SecsPreSuspend": "0",
+    "Socks/Node": "*",
+    "StartTime": "Unknown",
+    "StdErr": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.err",
+    "StdIn": "/dev/null",
+    "StdOut": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/logs/s2exts0p3a_4304783.out",
+    "SubmitTime": "2026-11-05T12:36:02",
+    "SuspendTime": "None",
+    "TRES": "cpu=8,mem=64G,node=1,billing=8",
+    "TimeLimit": "04:00:00",
+    "TimeMin": "N/A",
+    "UserId": "zqchen(2159)",
+    "WorkDir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a"
+  },
+  "operator_approved": false,
+  "original_inference_jobs_created": false,
+  "remote_utc": "2026-11-05T04:36:59.618171+00:00",
+  "slurm_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+  "status": "CPU_preparation_job_released_not_artifact_or_model_runtime_pass"
+}

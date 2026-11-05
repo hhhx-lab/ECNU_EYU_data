@@ -1,0 +1,80 @@
+{
+  "R3_partial_files": {
+    "contract/BOOTSTRAP_VERIFICATION.json": {
+      "bytes": 725,
+      "sha256": "7ce1cdac2c4bda31ea96e2fa41d14662818fe9e27003b416bced4ea91a08c146"
+    },
+    "contract/BUILD_ENV_EXPLICIT.txt": {
+      "bytes": 7034,
+      "sha256": "866d02c7106d809d4f14b87c0da101e2c3c722ab50f7a8f78e3ea89fb5fc2d77"
+    },
+    "contract/USER_AUTHORIZATION.json": {
+      "bytes": 956,
+      "sha256": "f31dae05deb4003a8f3d23cbcad6ddfed044a7c7e3f32a4cfc966e821474aa8c"
+    },
+    "operator/SUBMISSION_FAILED.json": {
+      "bytes": 606,
+      "sha256": "48af2f4f423d66ff8c8a8d2158f52842028a05de1a0b6e08b8b9f3df50c77127"
+    }
+  },
+  "artifact_status": "experimental_unvalidated",
+  "environment_reinstalled": false,
+  "failed": {
+    "artifact_status": "experimental_unvalidated",
+    "error_type": "FileNotFoundError",
+    "formal_gate_status": "not_run_not_passed",
+    "job_id": null,
+    "message": "[Errno 2] No such file or directory: '/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r2/operator/SOURCE_BUILD_REQUIREMENTS.json'",
+    "no_automatic_retry": true,
+    "operator_approved": false,
+    "remote_utc": "2026-11-05T04:22:49.669747+00:00",
+    "stage": "freeze_R3_package",
+    "status": "R3_CPU_operation_stopped_no_automatic_retry"
+  },
+  "failed_sha256": "48af2f4f423d66ff8c8a8d2158f52842028a05de1a0b6e08b8b9f3df50c77127",
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 896958201856,
+  "images_read": false,
+  "jobs_created": false,
+  "observations": {
+    "operator/SOURCE_BUILD_REQUIREMENTS.json": {
+      "exists": false,
+      "expected_sha256": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85",
+      "sha256": null
+    },
+    "reports/SOURCE_BUILD_REQUIREMENTS.json": {
+      "exists": true,
+      "expected_sha256": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85",
+      "sha256": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85"
+    }
+  },
+  "operator_approved": false,
+  "queries": {
+    "accounting": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobID|JobName|State|ExitCode\n"
+    },
+    "queue": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "remote_utc": "2026-11-05T04:27:13.621448+00:00",
+  "remote_writes": false,
+  "status": "read_only_R3_freeze_diagnosis_no_retry",
+  "submission_markers_absent": {
+    "HELD_AUDIT.json": true,
+    "HELD_CREATED.json": true,
+    "RELEASE_RESULT.json": true,
+    "RESERVATION.json": true,
+    "SBATCH_RESULT.json": true,
+    "SUBMISSION_RECEIPT.json": true
+  }
+}

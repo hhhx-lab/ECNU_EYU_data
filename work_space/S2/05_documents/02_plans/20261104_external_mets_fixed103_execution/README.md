@@ -1,5 +1,7 @@
 # 两套外部METS模型同fixed103服务器横评计划
 
+北京时间2026-11-05 12:51复核：用户授权独立R3a后，单个CPU准备4304783已held核验并同ID释放，唯一即时快照RUNNING/node201；8CPU/64GiB/4h/无GPU，非全量推理或CPU产物完成。STARTED/FAILED/COMPLETE均无、日志0bytes，201本机tests/70AST及真实冻结脚本bootstrap通过非wheel/SIF/A100通过。原R3引用路径错误在sbatch前失败无JobID，其四文件SHA与旧4304740/环境全部保留。复用R2环境和版本，不重装/solver/恢复监控；用户VPN保留，835.12890625GiB为文件系统余量非数值quota/全量峰值验收。完整环境、两真实smoke和J01-J07仍未完成，见[执行记录](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_R3_R3A_EXECUTION_20261105.md)。原PLAN不改，下方为历史。
+
 北京时间2026-11-05 12:18：按用户要求补实际代码检查，修正初始化候选的真实远端 bootstrap/import/C/C++语法/容器CLI通过，162本机测试/65AST通过；非真实CPU构建或GPU通过。原R2/4304740失败保留，无新R3/作业/安装/solver/转换，容量未刷新，用户VPN保留。见[启动复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_BOOTSTRAP_REVIEW_20261105.md)。原PLAN不改，下方状态为历史。
 
 北京时间2026-11-05 12:02最新：用户客户端重连后，独立R2首次CPU准备作业4304740已held核验并同ID释放，随后21秒FAILED 1:0。冻结Slurm的nounset早于系统profile，`COLORTERM`未定义导致Python入口之前退出；原R2/全部失败保留，不自动重提。一次只读快照无身份漂移，余835.58984375GiB非数值quota/全量峰值验收，用户VPN保留；138本机测试非模型/GPU通过。独立R3仅调整初始化顺序已询问待确认，wheel/SIF、完整推理环境、真实smoke及J01-J07仍未完成，见[CPU使用接续](S0_CPU_USAGE_EXECUTION_20261105.md)。原PLAN不改写，以下未SSH/无JobID等为历史。
