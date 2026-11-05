@@ -1,5 +1,11 @@
 # SIF 恢复 R2：实际验证和 CPU 提交
 
+## 2026-11-05 21:50 最新查询
+
+CPU4309579 allocation/batch均RUNNING/node225，sacct00:22:44、scontrol00:23:37是顺序观察，运行中0:0不是成功终态。11层/18998硬链接规范化已完成，逐成员bytes/metadata比较通过；8850720-byte详细ledger仅留SHA在轻量快照，原件留远端。CE阶段0在remote UTC13:28:48.146751启动，日志目前为Extracting OCI image；暂无FAILED/最终COMPLETE或身份漂移，完整SIF尚未完成。
+
+六轻量报告bytes/SHA与实际执行源码重新生成一致，STARTED绑定本JobID/原合同，三wheel fresh SHA复用报告通过。远端snapshot13:38:41.953739、本机finally13:50:09.433781UTC分记；用户VPN保留，文件系统余833090486272bytes=775.8759765625GiB，非数值quota/全量峰值门。只查询一次，无远端写入/重提/安装solver/重编下载/读MRI-GT-test或恢复监控。完整Bio环境/两真实GPU smoke/J01-J07/两全量未完成或提交。证据：[快照复核](operator/snapshot_sif_recovery_r2_20261105T135002Z/LOCAL_SNAPSHOT_REVIEW.json)。以下为13:26提交阶段历史，不覆盖本次RUNNING观察。
+
 本地复核 UTC：2026-11-05T13:26:37Z。`experimental_unvalidated`、`operator_approved=false`、`formal_gate_status=not_run_not_passed`。
 
 ## 当前状态
