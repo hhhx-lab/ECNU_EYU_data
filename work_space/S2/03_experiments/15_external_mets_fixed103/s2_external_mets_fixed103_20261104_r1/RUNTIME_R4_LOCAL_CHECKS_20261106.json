@@ -1,0 +1,31 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "purpose": "Prepare the approved exact Bio-Intel R4 runtime before S1 inference submission",
+  "latest_user_request": "开始提交推理作业",
+  "new_readiness_tests_base": {"discovered": 5, "passed": 5},
+  "new_runtime_plan_tests_base": {"discovered": 9, "passed": 9},
+  "initial_full_discovery_base": {
+    "discovered": 260,
+    "errors": 15,
+    "skipped": 2,
+    "reason": "base lacks nibabel required by the existing image contract tests; no remote installation or submission had started",
+    "original_failure_not_claimed_pass": true
+  },
+  "full_discovery_project_environment": {
+    "environment": "brats2023_seg",
+    "command": "conda run --no-capture-output -n brats2023_seg python -B -m unittest discover -s work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/tests -q",
+    "discovered": 260,
+    "passed": 258,
+    "skipped": 2,
+    "errors": 0,
+    "wall_seconds_reported": 4.217,
+    "skips_not_counted_as_executed_pass": true
+  },
+  "remote_operator_environment": "Conda base, separate from the project image-test environment",
+  "new_runtime_source_python310_syntax_checked": true,
+  "remote_runtime_or_GPU_pass": false,
+  "new_jobs_submitted": false,
+  "do_not_recompile_redownload_reconvert_old_successful_CPU_artifacts": true
+}

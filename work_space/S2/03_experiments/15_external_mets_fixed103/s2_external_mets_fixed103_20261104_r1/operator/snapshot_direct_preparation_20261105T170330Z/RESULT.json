@@ -1,0 +1,1571 @@
+{
+  "EXT2025_MET_GLI_logtails": {},
+  "EXT2026_BIO_INTEL_FULL_logtails": {},
+  "base_package_files_present": {
+    "_openmp_mutex-4.5-20_gnu.conda": 28948,
+    "bzip2-1.0.8-hda65f42_10.conda": 257808,
+    "ca-certificates-2026.10.23-hbd8a1cb_0.conda": 130057,
+    "ld_impl_linux-64-2.46.1-default_hbd61a6d_103.conda": 742109,
+    "libblas-3.11.0-11_h4a7cf45_openblas.conda": 18246,
+    "libcblas-3.11.0-11_h0358290_openblas.conda": 18196,
+    "libexpat-2.9.0-hd2095e1_0.conda": 78894,
+    "libffi-3.7.0-h81df57d_1.conda": 68004,
+    "libgcc-16.2.0-ha9f2e26_7.conda": 1058444,
+    "libgfortran-16.2.0-h69a702a_7.conda": 28571,
+    "libgfortran5-16.2.0-h6b99dfc_7.conda": 2528180,
+    "libgomp-16.2.0-he0feb66_7.conda": 640566,
+    "liblapack-3.11.0-11_h47877c9_openblas.conda": 18227,
+    "liblzma-5.8.3-hb03c661_1.conda": 112995,
+    "libnsl-2.0.1-hb9d3cd8_1.conda": 33731,
+    "libopenblas-0.3.34-pthreads_hf13c14d_2.conda": 6845411,
+    "libsqlite-3.54.1-h0737f62_101.conda": 980491,
+    "libstdcxx-16.2.0-h934c35e_7.conda": 6615436,
+    "libuuid-2.42.4-hcfc3c73_0.conda": 34442,
+    "libxcrypt-4.4.38-h280c20c_0.conda": 101957,
+    "libzlib-1.3.2-h25fd6f3_3.conda": 63713,
+    "ncurses-6.6-hdb14827_1.conda": 911196,
+    "numpy-2.2.6-py310hefbff90_0.conda": 7893263,
+    "openssl-3.6.5-h781a0a9_0.conda": 3195299,
+    "packaging-26.3-pyhc364b38_0.conda": 116363,
+    "pandas-2.3.3-py310h0158d43_2.conda": 12391209,
+    "pip-26.1.2-pyh8b19718_0.conda": 1203173,
+    "python-3.10.22-h267e890_0_cpython.conda": 25334749,
+    "python-dateutil-2.9.0.post0-pyhe01879c_2.conda": 233310,
+    "python-tzdata-2025.3-pyhd8ed1ab_0.conda": 143542,
+    "python_abi-3.10-6_cp310.conda": 6858,
+    "pytz-2026.1.post1-pyhcf101f3_0.conda": 201725,
+    "readline-8.3-hd6e31c0_1.conda": 348899,
+    "setuptools-83.0.0-pyh332efcf_0.conda": 642081,
+    "six-1.17.0-pyhe01879c_1.conda": 18455,
+    "tk-8.6.13-noxft_h1df4ec4_4.conda": 3566806,
+    "tzdata-2026e-h5d301ff_0.conda": 119208,
+    "wheel-0.48.0-pyhd8ed1ab_0.conda": 34528,
+    "zstd-1.5.7-hb78ec9c_7.conda": 601301
+  },
+  "full2025": {
+    "HELD_CREATED.json": {
+      "data": {
+        "job_id": "4310575",
+        "model": "EXT2025_MET_GLI"
+      },
+      "sha256": "de77fe045064e23ad9b64cd4478e9d4556ed802e7c3356e5027e4622a21e8932"
+    },
+    "HELD_JOB_MAP.json": {
+      "data": {
+        "contract_sha256": "b6ede31460d7a67c156fb3693f79f6d1c747ffad6f51695e60de35105150c3ff",
+        "jobs": {
+          "EXT2025_MET_GLI": {
+            "job_id": "4310575"
+          }
+        },
+        "package_sha256": "4536d7d16462ba784bdd3e8c9b518cc6656755ea53e8e23ef1e648b7f7ff1c44"
+      },
+      "sha256": "c11b0fb487359d209a758b3af091c4b810530e863a69606afe54d694cb26ba06"
+    },
+    "IMAGE_CPU_IMPORT_CHECK.json": {
+      "data": {
+        "scope": "CPU_imports_no_model_no_GPU_smoke",
+        "stdout": "{\"torch\": \"2.7.1+cu118\", \"numpy\": \"2.2.6\", \"models_loaded\": false, \"images_read\": false, \"GPU_smoke\": \"waived_by_user_not_pass\"}\n"
+      },
+      "sha256": "5295738cdc27b0934ac5fb070774066cb6c8777c51e045c79bcf9309fbc4e143"
+    },
+    "RESOURCE_SNAPSHOT.json": {
+      "data": {
+        "association": [
+          {
+            "Account": "zqchen",
+            "MaxJobs": "",
+            "MaxSubmit": "",
+            "Partition": "",
+            "QOS": "user_zqchen",
+            "User": "zqchen"
+          }
+        ],
+        "free_bytes": 783105916928,
+        "measured_runtime_peak_gate": "waived_by_user_not_pass",
+        "own_queue": "4304993|PENDING|a100|p3_T2D0|Dependency|gpu:1,gpu:1\n4304942|PENDING|a100|p3_LES_f4|Dependency|gpu:1,gpu:1\n4304922|PENDING|a100|p3_LES_f3|Dependency|gpu:1,gpu:1\n4304227|PENDING|a100|p3_P0|Dependency|gpu:1,gpu:1\n4304224|PENDING|a100|p3_LES_f2|Dependency|gpu:1,gpu:1\n4304223|PENDING|a100|p3_LES_f1|Dependency|gpu:1,gpu:1\n4304222|RUNNING|a100|p3_LES_f0|None|gpu:1,gpu:1\n4304941|RUNNING|a100|p3_M_f4|None|gpu:1,gpu:1\n4304921|RUNNING|a100|p3_M_f3|None|gpu:1,gpu:1\n4304924|RUNNING|a100|p3_SM0|None|gpu:1,gpu:1\n4304221|RUNNING|a100|p3_E2K0|None|gpu:1,gpu:1\n4304219|RUNNING|a100|p3_R0|None|gpu:1,gpu:1\n4304218|RUNNING|a100|p3_L_f0|None|gpu:1,gpu:1\n4304215|RUNNING|a100|p3_M_f2|None|gpu:1,gpu:1\n4304994|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304943|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304925|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304923|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304229|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n",
+        "partition": {
+          "AllocNodes": "ALL",
+          "AllowAccounts": "gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,ybyao,yshen,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan",
+          "AllowGroups": "ALL",
+          "AllowQos": "ALL",
+          "DefMemPerNode": "UNLIMITED",
+          "Default": "NO",
+          "DefaultTime": "15-00:00:00",
+          "DisableRootJobs": "YES",
+          "ExclusiveUser": "NO",
+          "GraceTime": "0",
+          "Hidden": "NO",
+          "JobDefaults": "(null)",
+          "LLN": "NO",
+          "LLS": "NO",
+          "MaxCPUsPerNode": "UNLIMITED",
+          "MaxMemPerNode": "UNLIMITED",
+          "MaxNodes": "UNLIMITED",
+          "MaxTime": "UNLIMITED",
+          "MinNodes": "0",
+          "Nodes": "gpu[9,11-19,22]",
+          "OverSubscribe": "NO",
+          "OverTimeLimit": "NONE",
+          "PartitionName": "a100",
+          "PreemptMode": "OFF",
+          "PriorityJobFactor": "1",
+          "PriorityTier": "6000",
+          "QoS": "partition_a100",
+          "ReqResv": "NO",
+          "RootOnly": "NO",
+          "SelectTypeParameters": "NONE",
+          "State": "UP",
+          "SuspendKeepIdle": "n/a",
+          "TotalCPUs": "528",
+          "TotalNodes": "11"
+        },
+        "prospective_CPU_upper_bound": 245,
+        "qos": [
+          {
+            "Flags": "",
+            "GraceTime": "00:00:00",
+            "GrpJobs": "",
+            "GrpSubmit": "",
+            "GrpTRES": "",
+            "GrpTRESMins": "",
+            "GrpTRESRunMins": "",
+            "GrpWall": "",
+            "MaxJobsPA": "",
+            "MaxJobsPU": "",
+            "MaxSubmitPA": "",
+            "MaxSubmitPU": "100",
+            "MaxTRES": "",
+            "MaxTRESMins": "",
+            "MaxTRESPA": "",
+            "MaxTRESPU": "",
+            "MaxTRESPerNode": "",
+            "MaxWall": "",
+            "MinTRES": "",
+            "Name": "partition_a100",
+            "Preempt": "",
+            "PreemptExemptTime": "",
+            "PreemptMode": "cluster",
+            "Priority": "0",
+            "UsageFactor": "1.000000",
+            "UsageThres": ""
+          },
+          {
+            "Flags": "",
+            "GraceTime": "00:00:00",
+            "GrpJobs": "",
+            "GrpSubmit": "",
+            "GrpTRES": "",
+            "GrpTRESMins": "",
+            "GrpTRESRunMins": "",
+            "GrpWall": "",
+            "MaxJobsPA": "",
+            "MaxJobsPU": "1000",
+            "MaxSubmitPA": "",
+            "MaxSubmitPU": "",
+            "MaxTRES": "",
+            "MaxTRESMins": "",
+            "MaxTRESPA": "",
+            "MaxTRESPU": "cpu=1000",
+            "MaxTRESPerNode": "",
+            "MaxWall": "",
+            "MinTRES": "",
+            "Name": "user_zqchen",
+            "Preempt": "",
+            "PreemptExemptTime": "",
+            "PreemptMode": "cluster",
+            "Priority": "100",
+            "UsageFactor": "1.000000",
+            "UsageThres": ""
+          }
+        ],
+        "quota_stdout": "",
+        "remote_utc": "2026-11-05T16:36:04.947610+00:00",
+        "reserved_bytes": 161061273600
+      },
+      "sha256": "cea101a97bf6af4db616107f736a8ca4e2355afb809d18d77d608b9de6d7a181"
+    },
+    "SUBMISSION_RECEIPT.json": {
+      "data": {
+        "contract_sha256": "b6ede31460d7a67c156fb3693f79f6d1c747ffad6f51695e60de35105150c3ff",
+        "free_bytes": 767366791168,
+        "job_id": "4310575",
+        "model": "EXT2025_MET_GLI",
+        "observed_job": {
+          "Account": "zqchen",
+          "AccrueTime": "Unknown",
+          "AllocNode:Sid": "10.11.100.253:35685",
+          "BatchFlag": "1",
+          "CPUs/Task": "8",
+          "Command": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/slurm/full.slurm",
+          "Contiguous": "0",
+          "CoreSpec": "*",
+          "Deadline": "N/A",
+          "DelayBoot": "00:00:00",
+          "Dependency": "(null)",
+          "EligibleTime": "Unknown",
+          "EndTime": "Unknown",
+          "ExcNodeList": "(null)",
+          "ExitCode": "0:0",
+          "Features": "(null)",
+          "GroupId": "users(100)",
+          "JobId": "4310575",
+          "JobName": "s2ext25full",
+          "JobState": "PENDING",
+          "LastSchedEval": "2026-11-06T00:35:12",
+          "Licenses": "(null)",
+          "MCS_label": "N/A",
+          "MinCPUsNode": "8",
+          "MinMemoryNode": "64G",
+          "MinTmpDiskNode": "0",
+          "Network": "(null)",
+          "Nice": "0",
+          "NodeList": "(null)",
+          "NtasksPerN:B:S:C": "0:0:*:*",
+          "NtasksPerTRES": "0",
+          "NumCPUs": "8",
+          "NumNodes": "1-1",
+          "NumTasks": "1",
+          "OverSubscribe": "OK",
+          "Partition": "a100",
+          "Power": "",
+          "Priority": "1200",
+          "QOS": "user_zqchen",
+          "Reason": "None",
+          "Reboot": "0",
+          "ReqB:S:C:T": "0:0:*:*",
+          "ReqNodeList": "(null)",
+          "Requeue": "0",
+          "Restarts": "0",
+          "RunTime": "00:00:00",
+          "SecsPreSuspend": "0",
+          "Socks/Node": "*",
+          "StartTime": "Unknown",
+          "StdErr": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/logs/s2ext25full_4310575.err",
+          "StdIn": "/dev/null",
+          "StdOut": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/logs/s2ext25full_4310575.out",
+          "SubmitTime": "2026-11-06T00:35:12",
+          "SuspendTime": "None",
+          "TRES": "cpu=8,mem=64G,node=1,billing=8,gres/gpu=1",
+          "TimeLimit": "2-00:00:00",
+          "TimeMin": "N/A",
+          "TresPerNode": "gpu:1,gpu:1",
+          "UserId": "zqchen(2159)",
+          "WorkDir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1"
+        },
+        "package_sha256": "4536d7d16462ba784bdd3e8c9b518cc6656755ea53e8e23ef1e648b7f7ff1c44",
+        "release_returncode": 0,
+        "remote_utc": "2026-11-05T16:40:32.347385+00:00",
+        "smoke_gate": "waived_by_user_not_pass",
+        "status": "full103_released_not_completion_or_quality_pass"
+      },
+      "sha256": "0ec961665595d6c70023abba12a0f4aebf6d1ee29a6c417620046cdc2e573aca"
+    }
+  },
+  "full_reports": {
+    "EXT2025_MET_GLI": {},
+    "EXT2026_BIO_INTEL_FULL": {}
+  },
+  "fullbio": {},
+  "images_read": false,
+  "models_loaded": false,
+  "own_queue": "4310575|PENDING|a100|s2ext25full|Priority|gpu:1,gpu:1\n4304993|PENDING|a100|p3_T2D0|Dependency|gpu:1,gpu:1\n4304942|PENDING|a100|p3_LES_f4|Dependency|gpu:1,gpu:1\n4304922|PENDING|a100|p3_LES_f3|Dependency|gpu:1,gpu:1\n4304223|PENDING|a100|p3_LES_f1|Dependency|gpu:1,gpu:1\n4304227|RUNNING|a100|p3_P0|None|gpu:1,gpu:1\n4304224|RUNNING|a100|p3_LES_f2|None|gpu:1,gpu:1\n4304222|RUNNING|a100|p3_LES_f0|None|gpu:1,gpu:1\n4304941|RUNNING|a100|p3_M_f4|None|gpu:1,gpu:1\n4304921|RUNNING|a100|p3_M_f3|None|gpu:1,gpu:1\n4304924|RUNNING|a100|p3_SM0|None|gpu:1,gpu:1\n4304221|RUNNING|a100|p3_E2K0|None|gpu:1,gpu:1\n4304218|RUNNING|a100|p3_L_f0|None|gpu:1,gpu:1\n4311183|PENDING|cpu_96G|p3e_sum|Dependency|N/A\n4304994|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304943|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304925|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304923|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304229|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4311182|RUNNING|cpu_96G|p3e_M_f2|None|N/A\n",
+  "remote_utc": "2026-11-05T16:52:06.438334+00:00",
+  "remote_writes": false,
+  "runtime_log_tails": {
+    "base_explicit_install.log": " \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\b- \b\b\\ \b\b| \b\b/ \b\bdone\n#\n# To activate this environment, use\n#\n#     $ conda activate /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_intel_py310_r5\n#\n# To deactivate an active environment, use\n#\n#     $ conda deactivate\n\n",
+    "copy_untracked_base.log": ""
+  },
+  "runtime_r5": {
+    "BASE_PACKAGE_LOCK.json": {
+      "data": {
+        "old_metadata_guard": {
+          "bin/python": "b6986370f5edc2d2e5565ef56795cf11dcf1d4f5706ee1b445be125cf3f43b1f",
+          "conda-meta/_openmp_mutex-4.5-20_gnu.json": "3d754020f42aef3111923d610010a659701dd213c50f69ef8489953244b18545",
+          "conda-meta/bzip2-1.0.8-hda65f42_10.json": "4a030cf7a52d7c6327ebf8e2ba3da0754e5daf484827e5c7fd7f3501d836b09a",
+          "conda-meta/ca-certificates-2026.10.23-hbd8a1cb_0.json": "edeb19badae6567462e84017d13ccdbd115b2bf0023ea86d7c53143bd6e54d65",
+          "conda-meta/history": "71ec85b8bda016203adecf1f1d91a7882b690fe128e06a46a519f484a6d0bd87",
+          "conda-meta/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.json": "00dde30de53747bd97553e57f81894bca2bed530721676fdb39d3aefd1064573",
+          "conda-meta/libblas-3.11.0-11_h4a7cf45_openblas.json": "611a385603eaede192eb0f44eb7a1de01d7bf1ea3b58977a3be3b77fb6c25e23",
+          "conda-meta/libcblas-3.11.0-11_h0358290_openblas.json": "0558b67497f3158d571f302ed0687d66763d65eae2d8819c6ad7de26379110e6",
+          "conda-meta/libexpat-2.9.0-hd2095e1_0.json": "211643483f5a772435a843d1334bc7495d0cb5d5e72aab1a31e8361f07340a0f",
+          "conda-meta/libffi-3.7.0-h81df57d_1.json": "fee04f502ccb4b40235215e5cbfa2da6227c62aca3ca5259c73caf61a892408c",
+          "conda-meta/libgcc-16.2.0-ha9f2e26_7.json": "369bf5b4cdb5c4a1e6ebe327e4f671340ee889d50beac182d253fa750a6c4a20",
+          "conda-meta/libgfortran-16.2.0-h69a702a_7.json": "1c73afc964abd6dcc12d75f1adcfd12e87678a0b1f2eab4f021b6a0ef2536353",
+          "conda-meta/libgfortran5-16.2.0-h6b99dfc_7.json": "306ece4abd85ca913cc338543691fec8b563ae8597c3e32b7bc54f6ddd00fe6e",
+          "conda-meta/libgomp-16.2.0-he0feb66_7.json": "800e03b25345f30e9d27602bce370769d16cd8e83ac66781554f4c6dad5a0254",
+          "conda-meta/liblapack-3.11.0-11_h47877c9_openblas.json": "19681735f5f7067531eddc2f3f02c9a4c33ec1690c782d888459b2e868c09008",
+          "conda-meta/liblzma-5.8.3-hb03c661_1.json": "f47d6dd348863efc2df3bed8ed063d864bd2cd62ad052ea8da72f77c8d9f1a41",
+          "conda-meta/libnsl-2.0.1-hb9d3cd8_1.json": "9065dd319f163b1668afc58dafd993860988693a8067276980b0403432645cbb",
+          "conda-meta/libopenblas-0.3.34-pthreads_hf13c14d_2.json": "8ec45b6a8795ab39c00223375024200752333e39bfab2a85c3960306037e9aa3",
+          "conda-meta/libsqlite-3.54.1-h0737f62_101.json": "017add675b71709314d70cdbfea4a9f10c569c72cbc7fe4549aab54c458dcb51",
+          "conda-meta/libstdcxx-16.2.0-h934c35e_7.json": "27272e036b00db9ae550c27ab22de955dc9f16f3e461d1707068516e4401682f",
+          "conda-meta/libuuid-2.42.4-hcfc3c73_0.json": "da93dc61a39bab263aae0fc46cf7a8705b01606570fd6305264ac4008d602539",
+          "conda-meta/libxcrypt-4.4.38-h280c20c_0.json": "b392464e35c9f7f8a8eb6bc5d4afb52b9d9da3b86f2a8187779061d262604a99",
+          "conda-meta/libzlib-1.3.2-h25fd6f3_3.json": "ceab2d181f1236ffda7bc772ad885d9b7dd06792bf7dca60ad9b5f57e2ca2601",
+          "conda-meta/ncurses-6.6-hdb14827_1.json": "fff57b09aa50fbb18d979dc5c739f5df671560a7b0a69aa0d11c511bbd1cdf9f",
+          "conda-meta/numpy-2.2.6-py310hefbff90_0.json": "87684f3c04bb2a28a31fcba3f7d0bd60ab3e3faef73ed6e3275433c2729e5545",
+          "conda-meta/openssl-3.6.5-h781a0a9_0.json": "af4f9630118cabe09ca8b89a4ddb3953a59c933c0a77c72faac6fc3be6346cd0",
+          "conda-meta/packaging-26.3-pyhc364b38_0.json": "6fa96ff5d51e2e786b787a1df07d895464d228a043210f1287a32c1108c9efb4",
+          "conda-meta/pandas-2.3.3-py310h0158d43_2.json": "9896f6be35339336bd24bbd422883f4e1f376a4f19e76a8dbb53f7ccfdafca25",
+          "conda-meta/pip-26.1.2-pyh8b19718_0.json": "e42c8f2f8475bc7e7f46a29363b278e613cff934fb86bc4f94d91bab7b30d5e6",
+          "conda-meta/python-3.10.22-h267e890_0_cpython.json": "37232cd21ba58d30e6ca4bcec08181cfd20864b819e218ec6c1762dc95474e23",
+          "conda-meta/python-dateutil-2.9.0.post0-pyhe01879c_2.json": "0e8e80a5822a46ea2db2bfa95f83972ee033fc4b846e278f39a071068daf0b76",
+          "conda-meta/python-tzdata-2025.3-pyhd8ed1ab_0.json": "5beea8bd268a0a0c6762282cf001c8cdb4148d7aa6f06228b807ad7c7d3745d4",
+          "conda-meta/python_abi-3.10-6_cp310.json": "322280fccb9914a1b98b77f54be8777bb6641de8243dd480c01fba38dd55532f",
+          "conda-meta/pytz-2026.1.post1-pyhcf101f3_0.json": "6149a4f826c0d8bc7580ee6936b8bdc1d062b3c1bba82628b9beb089e8f5c7a7",
+          "conda-meta/readline-8.3-hd6e31c0_1.json": "942bf92f892e7252ff05314434fb44154aa1d56554a8efc48e5a35d979e478fa",
+          "conda-meta/setuptools-83.0.0-pyh332efcf_0.json": "4b7ca26b9c0b0abea4b0f4950de8b4b76e8f0d839e9deef5585501becc08be45",
+          "conda-meta/six-1.17.0-pyhe01879c_1.json": "72390d1377568ef3367dac0c87d6050b79172604f3f8fe42b5fa7d7a966761c8",
+          "conda-meta/tk-8.6.13-noxft_h1df4ec4_4.json": "dd11cdf56048cd880d0902fdef941036396db04c561a06a24418392213d628df",
+          "conda-meta/tzdata-2026e-h5d301ff_0.json": "3dafb0202aee455cdc4c4bf64baf8788f29d6d8daaf5b70df2d922ad45c22dd9",
+          "conda-meta/wheel-0.48.0-pyhd8ed1ab_0.json": "35a1781fa197cc61c918b29a1312cdab8f705be3ec044bcd752daccd90fddd15",
+          "conda-meta/zstd-1.5.7-hb78ec9c_7.json": "98f6b6d0b5265cd556a97d854acb8f097f21df542c639d79b3b5e096f97f64dc"
+        },
+        "records": [
+          {
+            "build": "20_gnu",
+            "filename": "_openmp_mutex-4.5-20_gnu.conda",
+            "name": "_openmp_mutex",
+            "sha256": "1dd3fffd892081df9726d7eb7e0dea6198962ba775bd88842135a4ddb4deb3c9",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda",
+            "version": "4.5"
+          },
+          {
+            "build": "hda65f42_10",
+            "filename": "bzip2-1.0.8-hda65f42_10.conda",
+            "name": "bzip2",
+            "sha256": "1a0d382c515ebf55f8ee1f38c8b81bc95af5c2acc42ad53b66bc5df932032f96",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/bzip2-1.0.8-hda65f42_10.conda",
+            "version": "1.0.8"
+          },
+          {
+            "build": "hbd8a1cb_0",
+            "filename": "ca-certificates-2026.10.23-hbd8a1cb_0.conda",
+            "name": "ca-certificates",
+            "sha256": "95619b9c1184be7175392eeb0ee7eeb5ccf25d280951f4225f2d62e725790be3",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.10.23-hbd8a1cb_0.conda",
+            "version": "2026.10.23"
+          },
+          {
+            "build": "default_hbd61a6d_103",
+            "filename": "ld_impl_linux-64-2.46.1-default_hbd61a6d_103.conda",
+            "name": "ld_impl_linux-64",
+            "sha256": "901649b1edbe841fd4ee7e2d491a05184ed540eb01cdae506872f344babc1d28",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.conda",
+            "version": "2.46.1"
+          },
+          {
+            "build": "11_h4a7cf45_openblas",
+            "filename": "libblas-3.11.0-11_h4a7cf45_openblas.conda",
+            "name": "libblas",
+            "sha256": "d942e0c820d60a613a6f786d074f0820fb6343e3f1ccfb110b1d98b44fb75968",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libblas-3.11.0-11_h4a7cf45_openblas.conda",
+            "version": "3.11.0"
+          },
+          {
+            "build": "11_h0358290_openblas",
+            "filename": "libcblas-3.11.0-11_h0358290_openblas.conda",
+            "name": "libcblas",
+            "sha256": "f7d1bbdea61cf94ba219d17b2cb571a29830f8025385af799bff5a7ad1ef45e6",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libcblas-3.11.0-11_h0358290_openblas.conda",
+            "version": "3.11.0"
+          },
+          {
+            "build": "hd2095e1_0",
+            "filename": "libexpat-2.9.0-hd2095e1_0.conda",
+            "name": "libexpat",
+            "sha256": "7b930a8b6bc6553cb754b4977a11f9c862c719a652fc2d128d89270992ce8beb",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libexpat-2.9.0-hd2095e1_0.conda",
+            "version": "2.9.0"
+          },
+          {
+            "build": "h81df57d_1",
+            "filename": "libffi-3.7.0-h81df57d_1.conda",
+            "name": "libffi",
+            "sha256": "c8c7583ef063bc3c430f1d48298e5ad24f796a35c22ed5b14183325825a61106",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libffi-3.7.0-h81df57d_1.conda",
+            "version": "3.7.0"
+          },
+          {
+            "build": "ha9f2e26_7",
+            "filename": "libgcc-16.2.0-ha9f2e26_7.conda",
+            "name": "libgcc",
+            "sha256": "e031634c3a928f9594eba868bc46ef5230d6571a364a0c63215b06c4563bfcea",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda",
+            "version": "16.2.0"
+          },
+          {
+            "build": "h69a702a_7",
+            "filename": "libgfortran-16.2.0-h69a702a_7.conda",
+            "name": "libgfortran",
+            "sha256": "9682ae4dd11487e10b904b3cb3ab6379cad25233d45fdfdf90d54349df244494",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran-16.2.0-h69a702a_7.conda",
+            "version": "16.2.0"
+          },
+          {
+            "build": "h6b99dfc_7",
+            "filename": "libgfortran5-16.2.0-h6b99dfc_7.conda",
+            "name": "libgfortran5",
+            "sha256": "04dbab12c925b92977bb835dd2f5eda413607afa79f95a554e5a04b07a380322",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran5-16.2.0-h6b99dfc_7.conda",
+            "version": "16.2.0"
+          },
+          {
+            "build": "he0feb66_7",
+            "filename": "libgomp-16.2.0-he0feb66_7.conda",
+            "name": "libgomp",
+            "sha256": "92a0bb350c7be6a4eedcb4e111c60aefd176018e6b1c009a6e025dbe9bbcd758",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_7.conda",
+            "version": "16.2.0"
+          },
+          {
+            "build": "11_h47877c9_openblas",
+            "filename": "liblapack-3.11.0-11_h47877c9_openblas.conda",
+            "name": "liblapack",
+            "sha256": "1ad3f43c9319ef398a8ef45989f4903a06e3965b51e77fc669a4c894168a8411",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/liblapack-3.11.0-11_h47877c9_openblas.conda",
+            "version": "3.11.0"
+          },
+          {
+            "build": "hb03c661_1",
+            "filename": "liblzma-5.8.3-hb03c661_1.conda",
+            "name": "liblzma",
+            "sha256": "9787df8c22a59c9a70d3e5a10db9ad663485e75e9ccc3f09bd092cb7b95e0dab",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/liblzma-5.8.3-hb03c661_1.conda",
+            "version": "5.8.3"
+          },
+          {
+            "build": "hb9d3cd8_1",
+            "filename": "libnsl-2.0.1-hb9d3cd8_1.conda",
+            "name": "libnsl",
+            "sha256": "927fe72b054277cde6cb82597d0fcf6baf127dcbce2e0a9d8925a68f1265eef5",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libnsl-2.0.1-hb9d3cd8_1.conda",
+            "version": "2.0.1"
+          },
+          {
+            "build": "pthreads_hf13c14d_2",
+            "filename": "libopenblas-0.3.34-pthreads_hf13c14d_2.conda",
+            "name": "libopenblas",
+            "sha256": "69a722751e14eab2eb3bfdcb9acb1187afbd962b0c49b48d829341e0f6787f60",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenblas-0.3.34-pthreads_hf13c14d_2.conda",
+            "version": "0.3.34"
+          },
+          {
+            "build": "h0737f62_101",
+            "filename": "libsqlite-3.54.1-h0737f62_101.conda",
+            "name": "libsqlite",
+            "sha256": "c294029f893d05286f1061bbab85b820f1eea73dd859af4bcc619197bcc34810",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libsqlite-3.54.1-h0737f62_101.conda",
+            "version": "3.54.1"
+          },
+          {
+            "build": "h934c35e_7",
+            "filename": "libstdcxx-16.2.0-h934c35e_7.conda",
+            "name": "libstdcxx",
+            "sha256": "fa7018298629fc429971fffd6ecba3d27a7b02e4e890d6a93ea01ffebe8cb745",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_7.conda",
+            "version": "16.2.0"
+          },
+          {
+            "build": "hcfc3c73_0",
+            "filename": "libuuid-2.42.4-hcfc3c73_0.conda",
+            "name": "libuuid",
+            "sha256": "f34b8d1de9a2bf62476d8608057d9b8a918d97444236dc53a47128f2fae79041",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libuuid-2.42.4-hcfc3c73_0.conda",
+            "version": "2.42.4"
+          },
+          {
+            "build": "h280c20c_0",
+            "filename": "libxcrypt-4.4.38-h280c20c_0.conda",
+            "name": "libxcrypt",
+            "sha256": "f7e9292dd219a6435bbb1223da9586c3e70d66d169c5a92f08db3f2127df04e9",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libxcrypt-4.4.38-h280c20c_0.conda",
+            "version": "4.4.38"
+          },
+          {
+            "build": "h25fd6f3_3",
+            "filename": "libzlib-1.3.2-h25fd6f3_3.conda",
+            "name": "libzlib",
+            "sha256": "eb8a0db0aa570124f7d2a93d7c7f596e3390df5e047818d873baad32985fc736",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/libzlib-1.3.2-h25fd6f3_3.conda",
+            "version": "1.3.2"
+          },
+          {
+            "build": "hdb14827_1",
+            "filename": "ncurses-6.6-hdb14827_1.conda",
+            "name": "ncurses",
+            "sha256": "5d46557214ed184381dafe835b7c94a474a1c3b307a08a250b1ea4779b44ffb3",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/ncurses-6.6-hdb14827_1.conda",
+            "version": "6.6"
+          },
+          {
+            "build": "py310hefbff90_0",
+            "filename": "numpy-2.2.6-py310hefbff90_0.conda",
+            "name": "numpy",
+            "sha256": "0ba94a61f91d67413e60fa8daa85627a8f299b5054b0eff8f93d26da83ec755e",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/numpy-2.2.6-py310hefbff90_0.conda",
+            "version": "2.2.6"
+          },
+          {
+            "build": "h781a0a9_0",
+            "filename": "openssl-3.6.5-h781a0a9_0.conda",
+            "name": "openssl",
+            "sha256": "9c1533f1cf784f0e250919c0c9762d0b0e6bc727a79290ffb7cea1ceca1d038c",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda",
+            "version": "3.6.5"
+          },
+          {
+            "build": "pyhc364b38_0",
+            "filename": "packaging-26.3-pyhc364b38_0.conda",
+            "name": "packaging",
+            "sha256": "c432626b16768b8dab228bfb706f7060c2d462a21c516d240f68f2f902b5a044",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/packaging-26.3-pyhc364b38_0.conda",
+            "version": "26.3"
+          },
+          {
+            "build": "py310h0158d43_2",
+            "filename": "pandas-2.3.3-py310h0158d43_2.conda",
+            "name": "pandas",
+            "sha256": "b9e88fa02fd5e99f54c168df622eda9ddf898cc15e631179963aca51d97244bf",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/pandas-2.3.3-py310h0158d43_2.conda",
+            "version": "2.3.3"
+          },
+          {
+            "build": "pyh8b19718_0",
+            "filename": "pip-26.1.2-pyh8b19718_0.conda",
+            "name": "pip",
+            "sha256": "29b7d75bf81ad11645a8e320b369abdc90a92b93f2a9178e853d9dddf82e5106",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/pip-26.1.2-pyh8b19718_0.conda",
+            "version": "26.1.2"
+          },
+          {
+            "build": "h267e890_0_cpython",
+            "filename": "python-3.10.22-h267e890_0_cpython.conda",
+            "name": "python",
+            "sha256": "819fa140a71ab005c448bf164eb182f91610b50f0bffca5b0b94cb6773c5e2f4",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/python-3.10.22-h267e890_0_cpython.conda",
+            "version": "3.10.22"
+          },
+          {
+            "build": "pyhe01879c_2",
+            "filename": "python-dateutil-2.9.0.post0-pyhe01879c_2.conda",
+            "name": "python-dateutil",
+            "sha256": "d6a17ece93bbd5139e02d2bd7dbfa80bee1a4261dced63f65f679121686bf664",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.conda",
+            "version": "2.9.0.post0"
+          },
+          {
+            "build": "pyhd8ed1ab_0",
+            "filename": "python-tzdata-2025.3-pyhd8ed1ab_0.conda",
+            "name": "python-tzdata",
+            "sha256": "467134ef39f0af2dbb57d78cb3e4821f01003488d331a8dd7119334f4f47bfbd",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/python-tzdata-2025.3-pyhd8ed1ab_0.conda",
+            "version": "2025.3"
+          },
+          {
+            "build": "6_cp310",
+            "filename": "python_abi-3.10-6_cp310.conda",
+            "name": "python_abi",
+            "sha256": "716287b4c15fb9a78b49a627dd7057c9fc7a29c6d4056b506fc84dab2cd2ca85",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/python_abi-3.10-6_cp310.conda",
+            "version": "3.10"
+          },
+          {
+            "build": "pyhcf101f3_0",
+            "filename": "pytz-2026.1.post1-pyhcf101f3_0.conda",
+            "name": "pytz",
+            "sha256": "d35c15c861d5635db1ba847a2e0e7de4c01994999602db1f82e41b5935a9578a",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/pytz-2026.1.post1-pyhcf101f3_0.conda",
+            "version": "2026.1.post1"
+          },
+          {
+            "build": "hd6e31c0_1",
+            "filename": "readline-8.3-hd6e31c0_1.conda",
+            "name": "readline",
+            "sha256": "01b3fe073a66e321970d09e04b388708f8cbdca5cdfbfcb7c9eeb470ad10383d",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/readline-8.3-hd6e31c0_1.conda",
+            "version": "8.3"
+          },
+          {
+            "build": "pyh332efcf_0",
+            "filename": "setuptools-83.0.0-pyh332efcf_0.conda",
+            "name": "setuptools",
+            "sha256": "48a9f96016505debadfc67f06de7ac548decbc38d327409b24b0432ef6f16335",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/setuptools-83.0.0-pyh332efcf_0.conda",
+            "version": "83.0.0"
+          },
+          {
+            "build": "pyhe01879c_1",
+            "filename": "six-1.17.0-pyhe01879c_1.conda",
+            "name": "six",
+            "sha256": "458227f759d5e3fcec5d9b7acce54e10c9e1f4f4b7ec978f3bfd54ce4ee9853d",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/six-1.17.0-pyhe01879c_1.conda",
+            "version": "1.17.0"
+          },
+          {
+            "build": "noxft_h1df4ec4_4",
+            "filename": "tk-8.6.13-noxft_h1df4ec4_4.conda",
+            "name": "tk",
+            "sha256": "a1a241d172c1ccab067ba245206dd048bc3c2d1b84504b53c9468e99adfc16a1",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h1df4ec4_4.conda",
+            "version": "8.6.13"
+          },
+          {
+            "build": "h5d301ff_0",
+            "filename": "tzdata-2026e-h5d301ff_0.conda",
+            "name": "tzdata",
+            "sha256": "2b7ca858879f183ce2dcc65b300f48a0133d5430550f35b23d80d405a0788dbf",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/tzdata-2026e-h5d301ff_0.conda",
+            "version": "2026e"
+          },
+          {
+            "build": "pyhd8ed1ab_0",
+            "filename": "wheel-0.48.0-pyhd8ed1ab_0.conda",
+            "name": "wheel",
+            "sha256": "ba64b29b6d418024cb565081a1799262cb2780d2534ff4c14f76aa858c4286cd",
+            "url": "https://conda.anaconda.org/conda-forge/noarch/wheel-0.48.0-pyhd8ed1ab_0.conda",
+            "version": "0.48.0"
+          },
+          {
+            "build": "hb78ec9c_7",
+            "filename": "zstd-1.5.7-hb78ec9c_7.conda",
+            "name": "zstd",
+            "sha256": "47d682b9f6d6ec9eb1a6e6c3e75ea6273e899e78fb7fc59f81d39745009fbc60",
+            "url": "https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_7.conda",
+            "version": "1.5.7"
+          }
+        ],
+        "solver_rerun": false
+      },
+      "sha256": "33e4610077836e0bb6950f7718edfe13d9e8b496eda40e1bdcee4d6074af0785"
+    },
+    "PLAN_ACCEPTANCE.json": {
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "compiled_wheels": [
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ]
+                ],
+                "path": "numexpr/interpreter.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "b134c249089857e85f7bab13f12c2bdc36ed094708cf03acc243acfcc9a43bc7"
+              }
+            ],
+            "bytes": 174132,
+            "configuration": {
+              "backend_was_explicit": true,
+              "build_backend": "setuptools.build_meta",
+              "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+              "declared_requires": [
+                "setuptools>=77.0.0",
+                "numpy>=2.0.0"
+              ],
+              "implicit_requires": [],
+              "requires": [
+                "setuptools>=77.0.0",
+                "numpy>=2.0.0"
+              ]
+            },
+            "name": "numexpr",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/numexpr/numexpr-2.14.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy>=1.23.0"
+            ],
+            "sha256": "f623c397a6b879ae06d8bf034c047fe08833bf2abedb235e626fe493e4871a47",
+            "source_sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+            "version": "2.14.1"
+          },
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ]
+                ],
+                "path": "cc3d/fastcc3d.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "e955bb4d8a879f0cac6c56f870448b46061ac38407cc4bcc00406e2526555686"
+              }
+            ],
+            "bytes": 1030729,
+            "configuration": {
+              "backend_was_explicit": false,
+              "build_backend": "setuptools.build_meta:__legacy__",
+              "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+              "declared_requires": [
+                "setuptools",
+                "wheel",
+                "numpy"
+              ],
+              "implicit_requires": [
+                "setuptools>=40.8.0"
+              ],
+              "requires": [
+                "setuptools",
+                "wheel",
+                "numpy",
+                "setuptools>=40.8.0"
+              ]
+            },
+            "name": "connected-components-3d",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/connected-components-3d/connected_components_3d-4.1.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy",
+              "crackle-codec; extra == \"stack\"",
+              "fastremap; extra == \"stack\""
+            ],
+            "sha256": "0f5390389f76e21b96d8bb457f357bddd2c6679252876ad6ff581e79e3b96a52",
+            "source_sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+            "version": "4.1.1"
+          },
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ]
+                ],
+                "path": "ndindex/_slice.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "5aa7f4b7000f7d07591e221bfd9d698ec9f1ed1e606e206b1d1fbdad0fb43ca7"
+              },
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ]
+                ],
+                "path": "ndindex/_tuple.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "c3b9fa7592914d2684926473e1f8811c5594e3b32d80fd18771c88490d9f9c28"
+              }
+            ],
+            "bytes": 175585,
+            "configuration": {
+              "backend_was_explicit": true,
+              "build_backend": "setuptools.build_meta",
+              "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+              "declared_requires": [
+                "setuptools; platform_python_implementation != 'PyPy'",
+                "setuptools<72.2; platform_python_implementation == 'PyPy'",
+                "cython"
+              ],
+              "implicit_requires": [],
+              "requires": [
+                "setuptools; platform_python_implementation != 'PyPy'",
+                "setuptools<72.2; platform_python_implementation == 'PyPy'",
+                "cython"
+              ]
+            },
+            "name": "ndindex",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/ndindex/ndindex-1.10.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy; extra == \"arrays\""
+            ],
+            "sha256": "66c113d5220590899a8433b766cab7f1df0d2f4098f62ba770241169196e9266",
+            "source_sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+            "version": "1.10.1"
+          }
+        ],
+        "formal_gate_status": "not_run_not_passed",
+        "installed_base": {
+          "SimpleITK": null,
+          "einops": null,
+          "matplotlib": null,
+          "monai": null,
+          "nibabel": null,
+          "nnunetv2": null,
+          "numpy": "2.2.6",
+          "pandas": "2.3.3",
+          "pillow": "10.4.0",
+          "scipy": null,
+          "threadpoolctl": null,
+          "timm": null,
+          "torch": "2.6.0+cu124",
+          "torchvision": "0.21.0+cu124"
+        },
+        "old_guard": {
+          "bin/python": "b6986370f5edc2d2e5565ef56795cf11dcf1d4f5706ee1b445be125cf3f43b1f",
+          "conda-meta/_openmp_mutex-4.5-20_gnu.json": "3d754020f42aef3111923d610010a659701dd213c50f69ef8489953244b18545",
+          "conda-meta/bzip2-1.0.8-hda65f42_10.json": "4a030cf7a52d7c6327ebf8e2ba3da0754e5daf484827e5c7fd7f3501d836b09a",
+          "conda-meta/ca-certificates-2026.10.23-hbd8a1cb_0.json": "edeb19badae6567462e84017d13ccdbd115b2bf0023ea86d7c53143bd6e54d65",
+          "conda-meta/history": "71ec85b8bda016203adecf1f1d91a7882b690fe128e06a46a519f484a6d0bd87",
+          "conda-meta/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.json": "00dde30de53747bd97553e57f81894bca2bed530721676fdb39d3aefd1064573",
+          "conda-meta/libblas-3.11.0-11_h4a7cf45_openblas.json": "611a385603eaede192eb0f44eb7a1de01d7bf1ea3b58977a3be3b77fb6c25e23",
+          "conda-meta/libcblas-3.11.0-11_h0358290_openblas.json": "0558b67497f3158d571f302ed0687d66763d65eae2d8819c6ad7de26379110e6",
+          "conda-meta/libexpat-2.9.0-hd2095e1_0.json": "211643483f5a772435a843d1334bc7495d0cb5d5e72aab1a31e8361f07340a0f",
+          "conda-meta/libffi-3.7.0-h81df57d_1.json": "fee04f502ccb4b40235215e5cbfa2da6227c62aca3ca5259c73caf61a892408c",
+          "conda-meta/libgcc-16.2.0-ha9f2e26_7.json": "369bf5b4cdb5c4a1e6ebe327e4f671340ee889d50beac182d253fa750a6c4a20",
+          "conda-meta/libgfortran-16.2.0-h69a702a_7.json": "1c73afc964abd6dcc12d75f1adcfd12e87678a0b1f2eab4f021b6a0ef2536353",
+          "conda-meta/libgfortran5-16.2.0-h6b99dfc_7.json": "306ece4abd85ca913cc338543691fec8b563ae8597c3e32b7bc54f6ddd00fe6e",
+          "conda-meta/libgomp-16.2.0-he0feb66_7.json": "800e03b25345f30e9d27602bce370769d16cd8e83ac66781554f4c6dad5a0254",
+          "conda-meta/liblapack-3.11.0-11_h47877c9_openblas.json": "19681735f5f7067531eddc2f3f02c9a4c33ec1690c782d888459b2e868c09008",
+          "conda-meta/liblzma-5.8.3-hb03c661_1.json": "f47d6dd348863efc2df3bed8ed063d864bd2cd62ad052ea8da72f77c8d9f1a41",
+          "conda-meta/libnsl-2.0.1-hb9d3cd8_1.json": "9065dd319f163b1668afc58dafd993860988693a8067276980b0403432645cbb",
+          "conda-meta/libopenblas-0.3.34-pthreads_hf13c14d_2.json": "8ec45b6a8795ab39c00223375024200752333e39bfab2a85c3960306037e9aa3",
+          "conda-meta/libsqlite-3.54.1-h0737f62_101.json": "017add675b71709314d70cdbfea4a9f10c569c72cbc7fe4549aab54c458dcb51",
+          "conda-meta/libstdcxx-16.2.0-h934c35e_7.json": "27272e036b00db9ae550c27ab22de955dc9f16f3e461d1707068516e4401682f",
+          "conda-meta/libuuid-2.42.4-hcfc3c73_0.json": "da93dc61a39bab263aae0fc46cf7a8705b01606570fd6305264ac4008d602539",
+          "conda-meta/libxcrypt-4.4.38-h280c20c_0.json": "b392464e35c9f7f8a8eb6bc5d4afb52b9d9da3b86f2a8187779061d262604a99",
+          "conda-meta/libzlib-1.3.2-h25fd6f3_3.json": "ceab2d181f1236ffda7bc772ad885d9b7dd06792bf7dca60ad9b5f57e2ca2601",
+          "conda-meta/ncurses-6.6-hdb14827_1.json": "fff57b09aa50fbb18d979dc5c739f5df671560a7b0a69aa0d11c511bbd1cdf9f",
+          "conda-meta/numpy-2.2.6-py310hefbff90_0.json": "87684f3c04bb2a28a31fcba3f7d0bd60ab3e3faef73ed6e3275433c2729e5545",
+          "conda-meta/openssl-3.6.5-h781a0a9_0.json": "af4f9630118cabe09ca8b89a4ddb3953a59c933c0a77c72faac6fc3be6346cd0",
+          "conda-meta/packaging-26.3-pyhc364b38_0.json": "6fa96ff5d51e2e786b787a1df07d895464d228a043210f1287a32c1108c9efb4",
+          "conda-meta/pandas-2.3.3-py310h0158d43_2.json": "9896f6be35339336bd24bbd422883f4e1f376a4f19e76a8dbb53f7ccfdafca25",
+          "conda-meta/pip-26.1.2-pyh8b19718_0.json": "e42c8f2f8475bc7e7f46a29363b278e613cff934fb86bc4f94d91bab7b30d5e6",
+          "conda-meta/python-3.10.22-h267e890_0_cpython.json": "37232cd21ba58d30e6ca4bcec08181cfd20864b819e218ec6c1762dc95474e23",
+          "conda-meta/python-dateutil-2.9.0.post0-pyhe01879c_2.json": "0e8e80a5822a46ea2db2bfa95f83972ee033fc4b846e278f39a071068daf0b76",
+          "conda-meta/python-tzdata-2025.3-pyhd8ed1ab_0.json": "5beea8bd268a0a0c6762282cf001c8cdb4148d7aa6f06228b807ad7c7d3745d4",
+          "conda-meta/python_abi-3.10-6_cp310.json": "322280fccb9914a1b98b77f54be8777bb6641de8243dd480c01fba38dd55532f",
+          "conda-meta/pytz-2026.1.post1-pyhcf101f3_0.json": "6149a4f826c0d8bc7580ee6936b8bdc1d062b3c1bba82628b9beb089e8f5c7a7",
+          "conda-meta/readline-8.3-hd6e31c0_1.json": "942bf92f892e7252ff05314434fb44154aa1d56554a8efc48e5a35d979e478fa",
+          "conda-meta/setuptools-83.0.0-pyh332efcf_0.json": "4b7ca26b9c0b0abea4b0f4950de8b4b76e8f0d839e9deef5585501becc08be45",
+          "conda-meta/six-1.17.0-pyhe01879c_1.json": "72390d1377568ef3367dac0c87d6050b79172604f3f8fe42b5fa7d7a966761c8",
+          "conda-meta/tk-8.6.13-noxft_h1df4ec4_4.json": "dd11cdf56048cd880d0902fdef941036396db04c561a06a24418392213d628df",
+          "conda-meta/tzdata-2026e-h5d301ff_0.json": "3dafb0202aee455cdc4c4bf64baf8788f29d6d8daaf5b70df2d922ad45c22dd9",
+          "conda-meta/wheel-0.48.0-pyhd8ed1ab_0.json": "35a1781fa197cc61c918b29a1312cdab8f705be3ec044bcd752daccd90fddd15",
+          "conda-meta/zstd-1.5.7-hb78ec9c_7.json": "98f6b6d0b5265cd556a97d854acb8f097f21df542c639d79b3b5e096f97f64dc"
+        },
+        "operator_approved": false,
+        "plan_sha256": "f310957e4a49ad06fca73740590da52b4892b0bb9a2765cc719052614783c1da",
+        "prior_failure_guard": {
+          "attempts/s0_cpu_prepare_r3a/reports/FAILED.json": "8a5d33b7f6900d27c8f9c282c82b08cd373330ca3dcb2f321a1520a53c4c4432",
+          "attempts/s0_sif_recovery_r1/reports/FAILED.json": "526085de8e5a3209ab43cd38cce22826aad54e1ea5a89f4a8fe338da79ad2e9d",
+          "operator/ENV_INSTALL_FAILED.json": "1488b4494e57902e4b7d67482910b4bacceea138226f6791a50a34575cb1b190",
+          "operator/environment_r2/FAILED.json": "893fe9cb5914d31921d9dbe85931dc139cedfadd578483fff76a56e114b8da2b",
+          "operator/environment_r3/FAILED.json": "1a73c34ff38c3d97bb28632a78a0924805b820816b7f80e8b45fc88f4ec388e7",
+          "operator/environment_r4/FAILED.json": "376029d8a7e4e31e94596934e2071876e88f9f4ae404496a7af9594142419791"
+        },
+        "remote_utc": "2026-11-05T16:34:59.883811+00:00",
+        "selected": {
+          "acvl-utils": "0.2.7",
+          "annotated-types": "0.8.0",
+          "anyio": "4.16.0",
+          "batchgenerators": "0.25.6",
+          "batchgeneratorsv2": "0.3.7",
+          "blosc2": "4.3.3",
+          "certifi": "2026.10.23",
+          "charset-normalizer": "3.5.2",
+          "click": "8.5.0",
+          "cloudpickle": "3.1.2",
+          "connected-components-3d": "4.1.1",
+          "contourpy": "1.3.2",
+          "cycler": "0.12.1",
+          "dynamic-network-architectures": "0.4.4",
+          "einops": "0.8.2",
+          "exceptiongroup": "1.3.1",
+          "fonttools": "4.65.0",
+          "graphviz": "0.21",
+          "h11": "0.16.0",
+          "hf-xet": "1.8.0",
+          "httpcore2": "2.14.0",
+          "httpx2": "2.14.0",
+          "huggingface-hub": "2.4.0",
+          "idna": "3.20",
+          "imagecodecs": "2025.3.30",
+          "imageio": "2.38.0",
+          "importlib-resources": "7.1.0",
+          "joblib": "1.6.0",
+          "kiwisolver": "1.5.1",
+          "lazy-loader": "0.6",
+          "matplotlib": "3.10.9",
+          "monai": "1.5.2",
+          "msgpack": "1.2.4",
+          "ndindex": "1.10.1",
+          "nibabel": "5.4.0",
+          "nnunetv2": "2.7.0",
+          "numexpr": "2.14.1",
+          "pydantic": "2.14.3",
+          "pydantic-core": "2.50.4",
+          "pyparsing": "3.3.3",
+          "pyyaml": "6.0.3",
+          "requests": "2.34.2",
+          "safetensors": "0.8.0",
+          "scikit-image": "0.25.2",
+          "scikit-learn": "1.7.2",
+          "scipy": "1.15.2",
+          "seaborn": "0.13.2",
+          "simpleitk": "2.5.5",
+          "threadpoolctl": "3.6.0",
+          "tifffile": "2025.5.10",
+          "timm": "1.0.22",
+          "tomli": "2.5.0",
+          "tqdm": "4.70.1",
+          "truststore": "0.10.5",
+          "typing-inspection": "0.4.5",
+          "urllib3": "2.8.0",
+          "yacs": "0.1.8"
+        },
+        "status": "previous_R4_exact_dependency_plan_consumed_without_resolver"
+      },
+      "sha256": "bf69d2a535b522e67cc33696a671d73821830fa9a1d11e8f2e681da7613e32fd"
+    }
+  }
+}

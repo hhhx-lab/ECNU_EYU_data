@@ -1,0 +1,171 @@
+{
+  "accounting": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "association": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "User|Account|Partition|QOS|MaxJobs|MaxSubmit\nzqchen|zqchen||user_zqchen||\n"
+  },
+  "automatic_retry": false,
+  "jobs_released": false,
+  "jobs_submitted": false,
+  "no_original_cause_inferred": true,
+  "partition": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "PartitionName=a100 AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,ybyao,yshen,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_a100 DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=gpu[9,11-19,22] PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=528 TotalNodes=11 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n"
+  },
+  "qos": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Name|Priority|GraceTime|Preempt|PreemptExemptTime|PreemptMode|Flags|UsageThres|UsageFactor|GrpTRES|GrpTRESMins|GrpTRESRunMins|GrpJobs|GrpSubmit|GrpWall|MaxTRES|MaxTRESPerNode|MaxTRESMins|MaxWall|MaxTRESPU|MaxJobsPU|MaxSubmitPU|MaxTRESPA|MaxJobsPA|MaxSubmitPA|MinTRES\nnormal|0|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\npartition_xiaohe2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_cpu_96g|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_cpu_192g|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_v100|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_a100|0|00:00:00|||cluster|||1.000000|||||||||||||100||||\nuser_20180208|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang3|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ymei|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_khuang4|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_hlli_exc|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_syzhang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_zychen|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_nih|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_zxfeng|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lichao|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lmzhou|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lxwang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_wxzhang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xlwang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_wxhu|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_liqin|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ylshi|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_szr_e|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_ywang|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiangsun|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_qhyuan|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_tzhu|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiaohe|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_cgduan|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_dlli|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_longchen|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xiaohe2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_lkpan|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|100|||||\nuser_scst8|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ccxia|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_gpliu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_tzx|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_tianzhixiong|300|00:00:00|||cluster|||1.000000|||||||||||cpu=999|999|||||\nuser_yangdanfeng|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jwli|0|00:00:00|||cluster|||1.000000||||||||||||4000|||||\nuser_ydf_test|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jxu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_scow_admin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hpctest|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_test_block|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_block1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xlin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_demo_user|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_demo_user1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ectan|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test_sync3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_dmyin|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow_8509|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng_scow_5285|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_mzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ldliang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xkzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hcsong|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cmshen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_pbxu|300|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test22|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ydf_test33|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_pxwang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_qzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_glwang|300|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_gtshi|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_fxia|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_xwei|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wtchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_awzhu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test20260302|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_test20260303|100|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_test20260303_2793|100|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_gdzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_eduhpc1|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|50|||||\nuser_eduhpc2|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|50|||||\nuser_scjiang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yshen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_wwang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yycheng|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang2|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yhzhu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_flhong|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yyzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_htsun|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hysun|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\npartition_test_partition1|0|00:00:00|||cluster|||1.000000|||||||||||||||||\npartition_test_partition2|0|00:00:00|||cluster|||1.000000|||||||||||||||||\nuser_hqwu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_zqchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_ecnuhpc|0|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\nuser_ypu|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jshu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hymao|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cross_sched|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_hzhang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_zxtian|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yangdanfeng111|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_twang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_cldeng|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_rxji|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_xnwang3|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_yliu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1500|1000|||||\nuser_ybyao|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jiangxu|500|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_pxchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_jlyang|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\nuser_fxqiao|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\n"
+  },
+  "queue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4310575|PENDING|a100|s2ext25full|Priority|gpu:1,gpu:1\n4304993|PENDING|a100|p3_T2D0|Dependency|gpu:1,gpu:1\n4304942|PENDING|a100|p3_LES_f4|Dependency|gpu:1,gpu:1\n4304922|PENDING|a100|p3_LES_f3|Dependency|gpu:1,gpu:1\n4304223|PENDING|a100|p3_LES_f1|Dependency|gpu:1,gpu:1\n4304227|RUNNING|a100|p3_P0|None|gpu:1,gpu:1\n4304224|RUNNING|a100|p3_LES_f2|None|gpu:1,gpu:1\n4304222|RUNNING|a100|p3_LES_f0|None|gpu:1,gpu:1\n4304941|RUNNING|a100|p3_M_f4|None|gpu:1,gpu:1\n4304921|RUNNING|a100|p3_M_f3|None|gpu:1,gpu:1\n4304924|RUNNING|a100|p3_SM0|None|gpu:1,gpu:1\n4304221|RUNNING|a100|p3_E2K0|None|gpu:1,gpu:1\n4304218|RUNNING|a100|p3_L_f0|None|gpu:1,gpu:1\n4311183|PENDING|cpu_96G|p3e_sum|Dependency|N/A\n4304994|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304943|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304925|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304923|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304229|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4311182|RUNNING|cpu_96G|p3e_M_f2|None|N/A\n"
+  },
+  "raw_original_sbatch_error_discarded_by_assertion": true,
+  "remote_utc": "2026-11-05T17:08:42.832031+00:00",
+  "remote_writes": false,
+  "reports": {
+    "RESOURCE_SNAPSHOT.json": {
+      "data": {
+        "association": [
+          {
+            "Account": "zqchen",
+            "MaxJobs": "",
+            "MaxSubmit": "",
+            "Partition": "",
+            "QOS": "user_zqchen",
+            "User": "zqchen"
+          }
+        ],
+        "free_bytes": 744635760640,
+        "measured_runtime_peak_gate": "waived_by_user_not_pass",
+        "own_queue": "4310575|PENDING|a100|s2ext25full|Priority|gpu:1,gpu:1\n4304993|PENDING|a100|p3_T2D0|Dependency|gpu:1,gpu:1\n4304942|PENDING|a100|p3_LES_f4|Dependency|gpu:1,gpu:1\n4304922|PENDING|a100|p3_LES_f3|Dependency|gpu:1,gpu:1\n4304223|PENDING|a100|p3_LES_f1|Dependency|gpu:1,gpu:1\n4304227|RUNNING|a100|p3_P0|None|gpu:1,gpu:1\n4304224|RUNNING|a100|p3_LES_f2|None|gpu:1,gpu:1\n4304222|RUNNING|a100|p3_LES_f0|None|gpu:1,gpu:1\n4304941|RUNNING|a100|p3_M_f4|None|gpu:1,gpu:1\n4304921|RUNNING|a100|p3_M_f3|None|gpu:1,gpu:1\n4304924|RUNNING|a100|p3_SM0|None|gpu:1,gpu:1\n4304221|RUNNING|a100|p3_E2K0|None|gpu:1,gpu:1\n4304218|RUNNING|a100|p3_L_f0|None|gpu:1,gpu:1\n4311183|PENDING|cpu_96G|p3e_sum|Dependency|N/A\n4304994|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304943|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304925|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304923|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4304229|PENDING|cpu_96G|p3_w2sum|Dependency|N/A\n4311182|RUNNING|cpu_96G|p3e_M_f2|None|N/A\n",
+        "partition": {
+          "AllocNodes": "ALL",
+          "AllowAccounts": "gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,ybyao,yshen,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan",
+          "AllowGroups": "ALL",
+          "AllowQos": "ALL",
+          "DefMemPerNode": "UNLIMITED",
+          "Default": "NO",
+          "DefaultTime": "15-00:00:00",
+          "DisableRootJobs": "YES",
+          "ExclusiveUser": "NO",
+          "GraceTime": "0",
+          "Hidden": "NO",
+          "JobDefaults": "(null)",
+          "LLN": "NO",
+          "LLS": "NO",
+          "MaxCPUsPerNode": "UNLIMITED",
+          "MaxMemPerNode": "UNLIMITED",
+          "MaxNodes": "UNLIMITED",
+          "MaxTime": "UNLIMITED",
+          "MinNodes": "0",
+          "Nodes": "gpu[9,11-19,22]",
+          "OverSubscribe": "NO",
+          "OverTimeLimit": "NONE",
+          "PartitionName": "a100",
+          "PreemptMode": "OFF",
+          "PriorityJobFactor": "1",
+          "PriorityTier": "6000",
+          "QoS": "partition_a100",
+          "ReqResv": "NO",
+          "RootOnly": "NO",
+          "SelectTypeParameters": "NONE",
+          "State": "UP",
+          "SuspendKeepIdle": "n/a",
+          "TotalCPUs": "528",
+          "TotalNodes": "11"
+        },
+        "prospective_CPU_upper_bound": 226,
+        "qos": [
+          {
+            "Flags": "",
+            "GraceTime": "00:00:00",
+            "GrpJobs": "",
+            "GrpSubmit": "",
+            "GrpTRES": "",
+            "GrpTRESMins": "",
+            "GrpTRESRunMins": "",
+            "GrpWall": "",
+            "MaxJobsPA": "",
+            "MaxJobsPU": "",
+            "MaxSubmitPA": "",
+            "MaxSubmitPU": "100",
+            "MaxTRES": "",
+            "MaxTRESMins": "",
+            "MaxTRESPA": "",
+            "MaxTRESPU": "",
+            "MaxTRESPerNode": "",
+            "MaxWall": "",
+            "MinTRES": "",
+            "Name": "partition_a100",
+            "Preempt": "",
+            "PreemptExemptTime": "",
+            "PreemptMode": "cluster",
+            "Priority": "0",
+            "UsageFactor": "1.000000",
+            "UsageThres": ""
+          },
+          {
+            "Flags": "",
+            "GraceTime": "00:00:00",
+            "GrpJobs": "",
+            "GrpSubmit": "",
+            "GrpTRES": "",
+            "GrpTRESMins": "",
+            "GrpTRESRunMins": "",
+            "GrpWall": "",
+            "MaxJobsPA": "",
+            "MaxJobsPU": "1000",
+            "MaxSubmitPA": "",
+            "MaxSubmitPU": "",
+            "MaxTRES": "",
+            "MaxTRESMins": "",
+            "MaxTRESPA": "",
+            "MaxTRESPU": "cpu=1000",
+            "MaxTRESPerNode": "",
+            "MaxWall": "",
+            "MinTRES": "",
+            "Name": "user_zqchen",
+            "Preempt": "",
+            "PreemptExemptTime": "",
+            "PreemptMode": "cluster",
+            "Priority": "100",
+            "UsageFactor": "1.000000",
+            "UsageThres": ""
+          }
+        ],
+        "quota_stdout": "",
+        "remote_utc": "2026-11-05T17:07:00.190344+00:00",
+        "reserved_bytes": 161061273600
+      },
+      "sha256": "60ee9746b05d4f8bf40b13c9448bf18fb876455d9be807f43ea1fad8e7e5d6fb"
+    },
+    "SUBMISSION_FAILED_hold.json": {
+      "data": {
+        "automatic_retry": false,
+        "error_type": "AssertionError",
+        "job_id": null,
+        "message": "command failed: ['sbatch', '--hold', '--parsable', '--export=NONE', '--chdir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_bio_r1', '/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_bio_r1/slurm/full.slurm']",
+        "remote_utc": "2026-11-05T17:07:00.462493+00:00",
+        "stage": "single_sbatch_held",
+        "status": "direct_full103_submission_stopped"
+      },
+      "sha256": "3ced04769ce960d68544bed000e44b0f8e29d7a476f10936fd30b3b972ac9cad"
+    },
+    "SUBMISSION_RESERVED.json": {
+      "data": {
+        "contract_sha256": "62bce88b6516184481c3f5b5f757f0df5f8a83b4d6ce2257227d4dc707bbc94b",
+        "model": "EXT2026_BIO_INTEL_FULL"
+      },
+      "sha256": "ccebd3097aa1b6d164cc75a9ee991b430da70dbbba513174c012d9203fdc5e95"
+    }
+  }
+}

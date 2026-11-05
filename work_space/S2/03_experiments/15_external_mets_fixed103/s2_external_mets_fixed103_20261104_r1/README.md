@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**2026-11-06直接全量最新：2025作业4310575已首次释放，当前PENDING/Priority；Bio完整七折R5环境已完成并独立验收，但首次全量R1 sbatch非零拒绝，无JobID。**队列/accounting无Bio作业，原stderr漏记，不能擅判GPU或环境失败；本机修正错误回执记录，279发现/277pass/2skip，独立提交R2已请求确认尚未执行。用户取消额外smoke/独立J01-J04，跳过门为`waived_by_user_not_pass`。原模型/版本/数据/资源/失败和两冻结包保留，不重装/solver/自动retry。详见[最新状态](STATUS_20261106.md)。下方均为历史，不覆盖本状态。
+
 **最新北京时间2026-11-05 23:46：CPU4309579已COMPLETED 0:0，耗时1小时16分29秒，最终2025 SIF转换及大小/SHA验收通过。**SIF 4.1253 GiB，三复用wheel身份一致，COMPLETE存在、无FAILED或漂移；这是转换工程通过，不是GPU推理通过。完整Bio-Intel环境、两路真实GPU smoke及全量仍未完成或提交。最新文件系统余744.78 GiB，账号数值quota/全量峰值门未验证；本次仅一次只读快照，不安装或新增作业，用户VPN保留，原失败不删。见[完成复核](operator/snapshot_sif_recovery_r2_20261105T154434Z/LOCAL_SNAPSHOT_REVIEW.json)与[STATUS](STATUS_20261104.md)，下方压缩中为历史。
 
 **最新北京时间2026-11-05 22:40：CPU4309579 RUNNING/node225约1小时13分钟，原生展开成功，正在SquashFS压缩。**暂无FAILED/最终COMPLETE或漂移，完整SIF/Bio环境/两GPU smoke及全量仍未完成/提交。七轻量报告和源码本机复核通过；文件系统余763.01GiB非数值quota/全量预算，一次只读查询不改作业、用户VPN保留。见[快照复核](operator/snapshot_sif_recovery_r2_20261105T143947Z/LOCAL_SNAPSHOT_REVIEW.json)与[STATUS](STATUS_20261104.md)，下方为历史。
