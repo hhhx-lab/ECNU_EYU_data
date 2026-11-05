@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**北京时间2026-11-05 12:18：已补实际启动检查，本次不重提交。**修正初始化候选在远端干净 shell、七 import、C/C++ 语法及容器 CLI 通过；162 本机测试/65 AST 通过。原脚本更早触发 HISTCONTROL，与 Slurm 的 COLORTERM 同根因。原回执和 R2 冻结包保留，独立本机验收仅认 bootstrap pass，不认 wheel/SIF/GPU pass。无新 R3/JobID、安装/solver/真实转换，smoke 和全量仍未提交；用户 VPN 保留，容量未刷新。见[完整复核](S0_CPU_BOOTSTRAP_REVIEW_20261105.md)；下方状态为历史。
+
 **北京时间2026-11-05 12:02最新：CPU准备4304740首次提交/同ID释放成功，但运行21秒后FAILED 1:0。**我的冻结Slurm在系统profile之前启用nounset，遇`COLORTERM`未定义退出，尚未进入Python准备；不是GPU或模型失败。即时只读快照无静态/旧失败身份漂移，余835.58984375GiB非数值quota/全量容量门；用户VPN保留。138本机测试通过非模型通过，独立R3初始化顺序修正已询问待授权，原包/失败不改，不自动重提。CPU准备、真实smoke及J01-J07未完成，无新分数。见[失败分析](S0_CPU_USAGE_R2_SUBMISSION_FAILURE_20261105.json)和[STATUS](STATUS_20261104.md)；以下“未SSH/无JobID/最新”等均为历史。
 
 **北京时间2026-11-05 11:15最新：R2已授权，但aTrust断开，尚未SSH或提交作业。**136本机测试通过；本次停在VPN归属门，只读status与界面确认未在线，未logout/改适配器/重装/solver，无新远端UTC或存储观察。请按学校流程恢复登录后接续同一尚未远端执行的R2，不新建提交attempt。见[接入回执](S0_CPU_USAGE_R2_ACCESS_CONTINUATION_20261105.json)和[STATUS](STATUS_20261104.md)；以下“R2待授权”均为历史。
