@@ -1,0 +1,48 @@
+{
+  "all_eight_checks_pass": true,
+  "candidate_source_sha256": "b1535f17f33b073f3a9d9f94701045e98faf5db4372e742e64f05da3acde4748",
+  "checks": [
+    "original_empty_errno22_reproduced",
+    "candidate_empty_layer_pass",
+    "complete_empty_Docker_archive_pass",
+    "eleven_layers_empty_fourth_hardlinks_whiteout_pass",
+    "added_member_rejected",
+    "missing_member_rejected",
+    "changed_bytes_rejected",
+    "expired_deadline_rejected"
+  ],
+  "failed_recovery_sha256": "526085de8e5a3209ab43cd38cce22826aad54e1ea5a89f4a8fe338da79ad2e9d",
+  "fixture_derived_sha256": "1b860a51bbbe53afb0149f8e7f2b3e26e80db14e9bd9b808cb50e9080d7c9a04",
+  "fixture_original_sha256": "b8b982d5e8b8de2795aff448aeab1ff5ff96e507465e214fb09dc64966d61e49",
+  "free_bytes": 857309446144,
+  "full_image_conversion_attempted": false,
+  "images_read": false,
+  "jobs_created": false,
+  "models_loaded": false,
+  "native_probe": {
+    "command": [
+      "/public/software/singularity-ce/4.1.1/bin/singularity",
+      "build",
+      "--disable-cache",
+      "--sandbox",
+      "--no-cleanup",
+      "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_empty_layer_verification_r2/native_fixture_rootfs",
+      "docker-archive:///public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_empty_layer_verification_r2/normalized_fixture/hardlinks_materialized.docker-archive.tar"
+    ],
+    "returncode": 0,
+    "stderr": "INFO:    Starting build...\nINFO:    Fetching OCI image...\nINFO:    Extracting OCI image...\nINFO:    Inserting Singularity configuration...\nINFO:    Creating sandbox directory...\nINFO:    Build performed with no clean up option, build bundle(s) located at: [/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_empty_layer_verification_r2/build-temp-177794087/rootfs /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_empty_layer_verification_r2/tmp/bundle-temp-463441576]\nINFO:    Build complete: /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/operator/sif_empty_layer_verification_r2/native_fixture_rootfs\n",
+    "stdout": ""
+  },
+  "original_empty_errno22_reproduced": true,
+  "original_source_sha256": "8c8ba3ac4daad96a4f6a8fe043757e4d102f7e913a0a2a88ec28960005258205",
+  "packages_installed": false,
+  "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+  "python_executable": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/envs/bio_build_glibc217_r2/bin/python",
+  "python_major_minor": [
+    3,
+    10
+  ],
+  "remote_utc": "2026-11-05T13:11:54.955355+00:00",
+  "small_same_backend_native_probe_pass": true,
+  "status": "same_remote_Python310_empty_layer_and_small_native_probe_pass_not_full_SIF_or_GPU_pass"
+}

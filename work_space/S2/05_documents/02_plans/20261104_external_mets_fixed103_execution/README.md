@@ -1,5 +1,7 @@
 # 两套外部METS模型同fixed103服务器横评计划
 
+北京时间2026-11-05 21:26最新：独立R2已获授权，服务器同Python3.10八项及最小CE4.1.1验证通过，唯一新CPU4309579已held核验/同IDrelease0；即时PENDING/Resources，尚未运行镜像转换。17轻量审计/实际源码和Slurm独立再核通过、无漂移；完整SIF/Bio环境/两真实GPU smoke及全量仍未完成/提交。原PLAN/模型/依赖/资源/三wheel和全部失败保留，不重编/下载/安装solver/自动retry；余798.46875GiB非数值quota/全量预算，用户VPN保留。详见[R2实际执行](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_SIF_RECOVERY_R2_EXECUTION_20261105.md)，下方待授权等为历史。
+
 2026-11-05 17:23本机最新：CPU4304987已FAILED1:0/8分35秒，完整SIF/Bio环境与两真实GPU smoke未通过，两全量未提交；不是等待GPU。错误为本方normalizer在Python3.10读取合法空层结束位置的Errno22，原最小fixture漏空层、本机3.11测试不足以覆盖服务器3.10。独立本机候选8项3.10全pass、3.11完整229pass/1skip（该项另在3.10通过）/81生产AST；原冻结/模型/三wheel/所有失败不改，未部署候选或重提，独立R2同服务器验证后新CPU held恢复已询问待确认。余815.79296875GiB非数值quota/全量峰值门，remote09:06:44.706516/local finally09:18:11.995601分记，自建VPN关闭；见[失败验收](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_SIF_RECOVERY_R1_FAILURE_ACCEPTANCE_20261105.json)。原PLAN不改，下方RUNNING为历史。
 
 最新本机09:06UTC复核：唯一CPU恢复4304987仍RUNNING/node214，Python STARTED/三个wheel fresh bytes-SHA复用通过，无FAILED/COMPLETE或完整SIF，GPU smoke和两全量未提交。远端单次快照08:50:08.374584、本机finally09:01:36.157955分记，自建VPN关闭；余815.7939453125GiB非数值quota/全量预算。三个轻量报告与执行源码/合同身份通过，222tests/79生产源码AST为正式最新记录（原085118为221/78，下方80计数笔误不改原证据），非SIF/完整Bio环境/GPU质量pass。见[最新快照复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_sif_recovery_r1_20261105T090112Z/LOCAL_SNAPSHOT_REVIEW.json)。原PLAN/模型/同fixed103不改，不重提/重编/下载/solver/监控；下方初始快照为历史。

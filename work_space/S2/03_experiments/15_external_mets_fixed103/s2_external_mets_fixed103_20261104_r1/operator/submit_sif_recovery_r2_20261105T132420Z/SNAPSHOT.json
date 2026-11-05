@@ -1,0 +1,82 @@
+{
+  "artifact_identity": {},
+  "artifact_status": "experimental_unvalidated",
+  "drift": [],
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 857349292032,
+  "images_read": false,
+  "job_id": "4309579",
+  "jobs_created": false,
+  "logs": {},
+  "models_loaded": false,
+  "operator_approved": false,
+  "remote_utc": "2026-11-05T13:13:50.833218+00:00",
+  "remote_writes": false,
+  "reports": {
+    "STAGING_COMPLETE.json": {
+      "bytes": 402,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "2ae261ab3ccaa72b84e90fc105d3275e1b5bbd94d8c7300af98d987ce3938c20",
+        "environment_reinstalled": false,
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T13:13:35.393740+00:00",
+        "solver_rerun": false,
+        "status": "S0_offline_CPU_input_staging_pass_not_model_runtime_pass"
+      },
+      "sha256": "1c8a2b1756d13b6b451d5e2d5f93012d9ce0f5403f9d92336b58a47e88d2127a"
+    }
+  },
+  "scheduler": {
+    "accounting": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobID|JobName|State|ExitCode|Elapsed|Start|End\n4309579|s2exts0sifr2|PENDING|0:0|00:00:00|Unknown|Unknown\n"
+    },
+    "job": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4309579 JobName=s2exts0sifr2 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=Resources Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A SubmitTime=2026-11-05T21:12:42 EligibleTime=2026-11-05T21:12:51 AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-05T21:12:51 Partition=cpu_192G AllocNode:Sid=10.11.100.253:42082 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/slurm/prepare.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/logs/s2exts0sifr2_4309579.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/logs/s2exts0sifr2_4309579.out Power= NtasksPerTRES:0\n"
+    },
+    "queue": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4309579|PENDING|cpu_192G|s2exts0sifr2|Resources\n"
+    },
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "solver_rerun": false,
+  "static_identity": {
+    "contract/PREPARATION_CONTRACT.json": {
+      "expected_sha256": "2ae261ab3ccaa72b84e90fc105d3275e1b5bbd94d8c7300af98d987ce3938c20",
+      "observed_sha256": "2ae261ab3ccaa72b84e90fc105d3275e1b5bbd94d8c7300af98d987ce3938c20"
+    },
+    "runtime/normalize_oci_hardlinks.py": {
+      "expected_sha256": "b1535f17f33b073f3a9d9f94701045e98faf5db4372e742e64f05da3acde4748",
+      "observed_sha256": "b1535f17f33b073f3a9d9f94701045e98faf5db4372e742e64f05da3acde4748"
+    },
+    "runtime/prepare_s0_cpu_r1.py": {
+      "expected_sha256": "274c726c2db8a7dafc02f9e7912dd5b2ac266b3cb886504339635083e996248d",
+      "observed_sha256": "274c726c2db8a7dafc02f9e7912dd5b2ac266b3cb886504339635083e996248d"
+    },
+    "runtime/prepare_sif_recovery_r2.py": {
+      "expected_sha256": "40895012d7f2c6a2d42db56ae74a4d3298b50ce193886107f6de669cfc8505c0",
+      "observed_sha256": "40895012d7f2c6a2d42db56ae74a4d3298b50ce193886107f6de669cfc8505c0"
+    },
+    "runtime/s0_build_contract.py": {
+      "expected_sha256": "b54a36122fa5ac83b9eb1df6a21ada3d5d27e1405adca6570563e8981c99060d",
+      "observed_sha256": "b54a36122fa5ac83b9eb1df6a21ada3d5d27e1405adca6570563e8981c99060d"
+    },
+    "slurm/prepare.slurm": {
+      "expected_sha256": "2399c321e002bd1241c42b6dadeca8fe5642e92f1bcc82baf18ecc246b60c56d",
+      "observed_sha256": "2399c321e002bd1241c42b6dadeca8fe5642e92f1bcc82baf18ecc246b60c56d"
+    }
+  },
+  "status": "read_only_SIF_recovery_observation_not_inference_pass",
+  "submission_receipt_sha256": "f6de2652445a55870be937069e51561bc389686d934c218f9146242fa9102392"
+}

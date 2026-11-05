@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**最新北京时间2026-11-05 21:26：R2服务器Python3.10/最小CE验证通过，唯一新CPU4309579已held核验并同ID释放，当前PENDING/Resources，尚未运行。**本机完整246发现/244pass/2版本限定skip，3.10核心24项无skippass；17轻量审计和三实际源码/协议输入及冻结Slurm独立复核通过。只有STAGING_COMPLETE，无Python STARTED/FAILED/COMPLETE，完整SIF/Bio环境/两真实GPU smoke仍未通过，两全量/J01-J07未提交。复用三wheel，无重编/下载/安装solver/自动retry，旧失败保留；余798.46875GiB非数值quota/全量预算，两端UTC分记、用户VPN保留。见[R2实际执行记录](S0_SIF_RECOVERY_R2_EXECUTION_20261105.md)与[STATUS](STATUS_20261104.md)，下方均为历史。
+
 **最新17:23本机复核：4304987已FAILED1:0/8分35秒，不是等待GPU；完整SIF/Bio环境和两路真实GPU smoke尚未通过，两全量未提交。**Python3.10空tar的结束读取触发本方normalizer Errno22，原最小验证漏空层、本机3.11回归未覆盖该版本边界。已用现有Conda3.10复现，独立修正候选8项全pass；3.11全回归230发现/229pass/1skip（原错误复现项另在3.10通过）、81生产AST。冻结原程序/所有失败不改，候选只本机，独立服务器验证和新held CPU恢复已询问待确认，无自动重提/重编/重下载/安装。见[失败验收](S0_SIF_RECOVERY_R1_FAILURE_ACCEPTANCE_20261105.json)，remote09:06:44.706516/local finally09:18:11.995601分记、自建VPN关闭，余815.79296875GiB非数值quota/全量峰值门；下方RUNNING均为历史。
 
 **最新本机复核09:06UTC：CPU4304987仍RUNNING/node214，Python STARTED和三个wheel复用验收已出现；无FAILED/COMPLETE，完整SIF待完成，两路GPU smoke和全量仍未提交。**远端快照08:50:08.374584、本机finally09:01:36.157955分记；三个轻量报告及执行源码/合同SHA复核pass，自建VPN关闭。余815.7939453125GiB非数值quota/全量峰值门；最终正式验证222tests/79生产源码AST（此前221tests/78AST，下方80AST为计数笔误，原回执不改），非模型/GPU质量通过。见[最新快照复核](operator/snapshot_sif_recovery_r1_20261105T090112Z/LOCAL_SNAPSHOT_REVIEW.json)和[STATUS](STATUS_20261104.md)。保持原失败/PLAN，不重提/重编/重下载/solver或恢复监控；下方初始状态均为历史。
