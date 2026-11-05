@@ -1,0 +1,1050 @@
+{
+  "artifact_identity": {},
+  "artifact_status": "experimental_unvalidated",
+  "drift": [],
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 819276546048,
+  "images_read": false,
+  "job_id": "4309579",
+  "jobs_created": false,
+  "logs": {
+    "SIF_BUILD.log": {
+      "bytes": 854,
+      "tail": "INFO:    Starting build...\nINFO:    Fetching OCI image...\nINFO:    Extracting OCI image...\nINFO:    Inserting Singularity configuration...\nINFO:    Creating sandbox directory...\nINFO:    Build performed with no clean up option, build bundle(s) located at: [/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/build-temp-3024393566/rootfs /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/tmp/bundle-temp-1268383878]\nINFO:    Build complete: /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs\n",
+      "tail_only": true
+    },
+    "s2exts0sifr2_4309579.err": {
+      "bytes": 0,
+      "tail": "",
+      "tail_only": true
+    },
+    "s2exts0sifr2_4309579.out": {
+      "bytes": 0,
+      "tail": "",
+      "tail_only": true
+    }
+  },
+  "models_loaded": false,
+  "operator_approved": false,
+  "remote_utc": "2026-11-05T14:28:32.072525+00:00",
+  "remote_writes": false,
+  "reports": {
+    "NATIVE_BUILD_COMMANDS.json": {
+      "bytes": 2492,
+      "content": {
+        "administrator_configuration_changed": false,
+        "artifact_status": "experimental_unvalidated",
+        "commands": [
+          [
+            "/public/software/singularity-ce/4.1.1/bin/singularity",
+            "build",
+            "--disable-cache",
+            "--sandbox",
+            "--no-cleanup",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs",
+            "docker-archive:///public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/normalized/hardlinks_materialized.docker-archive.tar"
+          ],
+          [
+            "/usr/sbin/mksquashfs",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs.squashfs",
+            "-noappend",
+            "-all-root",
+            "-comp",
+            "gzip",
+            "-processors",
+            "2",
+            "-read-queue",
+            "64",
+            "-write-queue",
+            "128",
+            "-fragment-queue",
+            "64",
+            "-no-progress"
+          ],
+          [
+            "/public/software/singularity-ce/4.1.1/bin/singularity",
+            "sif",
+            "new",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/fixed2025.part.sif"
+          ],
+          [
+            "/public/software/singularity-ce/4.1.1/bin/singularity",
+            "sif",
+            "add",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/fixed2025.part.sif",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs.squashfs",
+            "--datatype",
+            "4",
+            "--parttype",
+            "2",
+            "--partfs",
+            "1",
+            "--partarch",
+            "2"
+          ]
+        ],
+        "compression_queue_mib": 256,
+        "compression_threads": 2,
+        "deadline_seconds": 7200,
+        "formal_gate_status": "not_run_not_passed",
+        "normalization_included_in_deadline": true,
+        "operator_approved": false
+      },
+      "sha256": "eee6ad1e670295d8bc5bc31331dfcbafe6b0bf0c90e1ae24938757e28a771583"
+    },
+    "NORMALIZATION_COMPLETE.json": {
+      "bytes": 8850720,
+      "content_not_transferred": true,
+      "sha256": "67dc10ba696fe20ca1575a4cbace00aa3cc5798c38ec3dd5c9d821f602555491"
+    },
+    "NORMALIZATION_SUMMARY.json": {
+      "bytes": 851,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "derived_archive_bytes": 8791521280,
+        "derived_archive_path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/normalized/hardlinks_materialized.docker-archive.tar",
+        "derived_archive_sha256": "c3e534700fc2d4eb1a97ccff3f593f5f3f3203ab6d1c22af440ab41ee519d865",
+        "every_member_bytes_and_metadata_compared": true,
+        "formal_gate_status": "not_run_not_passed",
+        "hardlinks": 18998,
+        "inode_sharing_not_preserved": true,
+        "layers": 11,
+        "models_loaded": false,
+        "operator_approved": false,
+        "original_archive_sha256": "731b17a23514bf2460083d4585a42d5ece4137643960c354469790857af52735",
+        "report_sha256": "67dc10ba696fe20ca1575a4cbace00aa3cc5798c38ec3dd5c9d821f602555491"
+      },
+      "sha256": "70c48d5d50e64209c95ab9c34a009c85d41bec3e435f7bbef612dcc199c71daa"
+    },
+    "SIF_STAGE_0_STARTED.json": {
+      "bytes": 765,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "command": [
+          "/public/software/singularity-ce/4.1.1/bin/singularity",
+          "build",
+          "--disable-cache",
+          "--sandbox",
+          "--no-cleanup",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs",
+          "docker-archive:///public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/normalized/hardlinks_materialized.docker-archive.tar"
+        ],
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T13:28:48.146751+00:00"
+      },
+      "sha256": "28e9b8f0497581bb1edde698ae5041ceb669feac731423de0cd38d330b30166e"
+    },
+    "SIF_STAGE_1_STARTED.json": {
+      "bytes": 812,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "command": [
+          "/usr/sbin/mksquashfs",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/native_rootfs.squashfs",
+          "-noappend",
+          "-all-root",
+          "-comp",
+          "gzip",
+          "-processors",
+          "2",
+          "-read-queue",
+          "64",
+          "-write-queue",
+          "128",
+          "-fragment-queue",
+          "64",
+          "-no-progress"
+        ],
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T13:59:50.868280+00:00"
+      },
+      "sha256": "d1765a2231fb2f7428f07fa5f4219b95d7c1fba14ff11d636bd35fd483af5ac2"
+    },
+    "STAGING_COMPLETE.json": {
+      "bytes": 402,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "2ae261ab3ccaa72b84e90fc105d3275e1b5bbd94d8c7300af98d987ce3938c20",
+        "environment_reinstalled": false,
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T13:13:35.393740+00:00",
+        "solver_rerun": false,
+        "status": "S0_offline_CPU_input_staging_pass_not_model_runtime_pass"
+      },
+      "sha256": "1c8a2b1756d13b6b451d5e2d5f93012d9ce0f5403f9d92336b58a47e88d2127a"
+    },
+    "STARTED.json": {
+      "bytes": 398,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "2ae261ab3ccaa72b84e90fc105d3275e1b5bbd94d8c7300af98d987ce3938c20",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4309579",
+        "models_loaded": false,
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T13:16:43.307383+00:00",
+        "status": "allocated_CPU_SIF_recovery_started",
+        "wheels_recompiled": false
+      },
+      "sha256": "4773f3c260cf795ee4af0a300427a2a164a2f3ff17e4fb56f929252818d088cb"
+    },
+    "WHEELS_REUSED.json": {
+      "bytes": 15322,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "formal_gate_status": "not_run_not_passed",
+        "fresh_bytes_SHA_pass": true,
+        "operator_approved": false,
+        "original_wheels_manifest_sha256": "79b288745b7912cdd3b4ddebe4782ee4b8a66d96c8fd159bec6a0440394eb6d5",
+        "wheels": [
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ]
+                ],
+                "path": "numexpr/interpreter.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "b134c249089857e85f7bab13f12c2bdc36ed094708cf03acc243acfcc9a43bc7"
+              }
+            ],
+            "bytes": 174132,
+            "configuration": {
+              "backend_was_explicit": true,
+              "build_backend": "setuptools.build_meta",
+              "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+              "declared_requires": [
+                "setuptools>=77.0.0",
+                "numpy>=2.0.0"
+              ],
+              "implicit_requires": [],
+              "requires": [
+                "setuptools>=77.0.0",
+                "numpy>=2.0.0"
+              ]
+            },
+            "name": "numexpr",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/numexpr/numexpr-2.14.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy>=1.23.0"
+            ],
+            "sha256": "f623c397a6b879ae06d8bf034c047fe08833bf2abedb235e626fe493e4871a47",
+            "source_sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+            "version": "2.14.1"
+          },
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ]
+                ],
+                "path": "cc3d/fastcc3d.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "e955bb4d8a879f0cac6c56f870448b46061ac38407cc4bcc00406e2526555686"
+              }
+            ],
+            "bytes": 1030729,
+            "configuration": {
+              "backend_was_explicit": false,
+              "build_backend": "setuptools.build_meta:__legacy__",
+              "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+              "declared_requires": [
+                "setuptools",
+                "wheel",
+                "numpy"
+              ],
+              "implicit_requires": [
+                "setuptools>=40.8.0"
+              ],
+              "requires": [
+                "setuptools",
+                "wheel",
+                "numpy",
+                "setuptools>=40.8.0"
+              ]
+            },
+            "name": "connected-components-3d",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/connected-components-3d/connected_components_3d-4.1.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy",
+              "crackle-codec; extra == \"stack\"",
+              "fastremap; extra == \"stack\""
+            ],
+            "sha256": "0f5390389f76e21b96d8bb457f357bddd2c6679252876ad6ff581e79e3b96a52",
+            "source_sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+            "version": "4.1.1"
+          },
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ]
+                ],
+                "path": "ndindex/_slice.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "5aa7f4b7000f7d07591e221bfd9d698ec9f1ed1e606e206b1d1fbdad0fb43ca7"
+              },
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ]
+                ],
+                "path": "ndindex/_tuple.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "c3b9fa7592914d2684926473e1f8811c5594e3b32d80fd18771c88490d9f9c28"
+              }
+            ],
+            "bytes": 175585,
+            "configuration": {
+              "backend_was_explicit": true,
+              "build_backend": "setuptools.build_meta",
+              "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+              "declared_requires": [
+                "setuptools; platform_python_implementation != 'PyPy'",
+                "setuptools<72.2; platform_python_implementation == 'PyPy'",
+                "cython"
+              ],
+              "implicit_requires": [],
+              "requires": [
+                "setuptools; platform_python_implementation != 'PyPy'",
+                "setuptools<72.2; platform_python_implementation == 'PyPy'",
+                "cython"
+              ]
+            },
+            "name": "ndindex",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/ndindex/ndindex-1.10.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy; extra == \"arrays\""
+            ],
+            "sha256": "66c113d5220590899a8433b766cab7f1df0d2f4098f62ba770241169196e9266",
+            "source_sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+            "version": "1.10.1"
+          }
+        ],
+        "wheels_recompiled": false
+      },
+      "sha256": "feaa73ab787ce3c6dc08570d4149f346bf88868891eb1d3d5059ddc54d606a24"
+    }
+  },
+  "scheduler": {
+    "accounting": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobID|JobName|State|ExitCode|Elapsed|Start|End\n4309579|s2exts0sifr2|RUNNING|0:0|01:12:32|2026-11-05T21:15:03|Unknown\n4309579.batch|batch|RUNNING|0:0|01:12:32|2026-11-05T21:15:03|Unknown\n"
+    },
+    "job": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobId=4309579 JobName=s2exts0sifr2 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=RUNNING Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=01:13:25 TimeLimit=04:00:00 TimeMin=N/A SubmitTime=2026-11-05T21:12:42 EligibleTime=2026-11-05T21:12:51 AccrueTime=2026-11-05T21:12:51 StartTime=2026-11-05T21:15:03 EndTime=2026-11-06T01:15:03 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-05T21:15:03 Partition=cpu_192G AllocNode:Sid=10.11.100.253:42082 ReqNodeList=(null) ExcNodeList=(null) NodeList=node225 BatchHost=node225 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/slurm/prepare.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/logs/s2exts0sifr2_4309579.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/logs/s2exts0sifr2_4309579.out Power= NtasksPerTRES:0\n"
+    },
+    "queue": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4309579|RUNNING|cpu_192G|s2exts0sifr2|None\n"
+    },
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "solver_rerun": false,
+  "static_identity": {
+    "contract/PREPARATION_CONTRACT.json": {
+      "expected_sha256": "2ae261ab3ccaa72b84e90fc105d3275e1b5bbd94d8c7300af98d987ce3938c20",
+      "observed_sha256": "2ae261ab3ccaa72b84e90fc105d3275e1b5bbd94d8c7300af98d987ce3938c20"
+    },
+    "runtime/normalize_oci_hardlinks.py": {
+      "expected_sha256": "b1535f17f33b073f3a9d9f94701045e98faf5db4372e742e64f05da3acde4748",
+      "observed_sha256": "b1535f17f33b073f3a9d9f94701045e98faf5db4372e742e64f05da3acde4748"
+    },
+    "runtime/prepare_s0_cpu_r1.py": {
+      "expected_sha256": "274c726c2db8a7dafc02f9e7912dd5b2ac266b3cb886504339635083e996248d",
+      "observed_sha256": "274c726c2db8a7dafc02f9e7912dd5b2ac266b3cb886504339635083e996248d"
+    },
+    "runtime/prepare_sif_recovery_r2.py": {
+      "expected_sha256": "40895012d7f2c6a2d42db56ae74a4d3298b50ce193886107f6de669cfc8505c0",
+      "observed_sha256": "40895012d7f2c6a2d42db56ae74a4d3298b50ce193886107f6de669cfc8505c0"
+    },
+    "runtime/s0_build_contract.py": {
+      "expected_sha256": "b54a36122fa5ac83b9eb1df6a21ada3d5d27e1405adca6570563e8981c99060d",
+      "observed_sha256": "b54a36122fa5ac83b9eb1df6a21ada3d5d27e1405adca6570563e8981c99060d"
+    },
+    "slurm/prepare.slurm": {
+      "expected_sha256": "2399c321e002bd1241c42b6dadeca8fe5642e92f1bcc82baf18ecc246b60c56d",
+      "observed_sha256": "2399c321e002bd1241c42b6dadeca8fe5642e92f1bcc82baf18ecc246b60c56d"
+    }
+  },
+  "status": "read_only_SIF_recovery_observation_not_inference_pass",
+  "submission_receipt_sha256": "f6de2652445a55870be937069e51561bc389686d934c218f9146242fa9102392"
+}

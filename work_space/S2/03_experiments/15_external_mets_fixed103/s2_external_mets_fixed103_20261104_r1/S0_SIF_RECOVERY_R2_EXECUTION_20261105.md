@@ -1,5 +1,9 @@
 # SIF 恢复 R2：实际验证和 CPU 提交
 
+## 2026-11-05 22:40 最新查询
+
+CPU4309579 allocation/batch RUNNING/node225，sacct01:12:32、scontrol01:13:25是顺序观察，0:0不是完成终态。原生CE展开成功，日志native_rootfs Build complete，阶段1于remote UTC13:59:50.868280进入mksquashfs压缩；暂无FAILED/最终COMPLETE或身份漂移。七轻量报告bytes/SHA、执行源码再生、STARTED合同及三wheel复用报告通过，详细规范化ledger留远端。remote snapshot14:28:32.072525/local finally14:39:59.486201分记，用户VPN保留；余819276546048bytes=763.0107421875GiB非数值quota/全量峰值门。只读查询不改/重提作业或安装、不读MRI-GT-test；完整SIF/Bio环境/两真实GPU smoke及全量未完成/提交。见[快照复核](operator/snapshot_sif_recovery_r2_20261105T143947Z/LOCAL_SNAPSHOT_REVIEW.json)。以下为此前阶段历史。
+
 ## 2026-11-05 21:50 最新查询
 
 CPU4309579 allocation/batch均RUNNING/node225，sacct00:22:44、scontrol00:23:37是顺序观察，运行中0:0不是成功终态。11层/18998硬链接规范化已完成，逐成员bytes/metadata比较通过；8850720-byte详细ledger仅留SHA在轻量快照，原件留远端。CE阶段0在remote UTC13:28:48.146751启动，日志目前为Extracting OCI image；暂无FAILED/最终COMPLETE或身份漂移，完整SIF尚未完成。

@@ -1,5 +1,7 @@
 # 两套外部METS模型同fixed103服务器横评计划
 
+北京时间2026-11-05 22:40最新查询：CPU4309579运行约1小时13分钟，CE原生展开完成、正在SquashFS压缩，无FAILED/最终COMPLETE或身份漂移；完整SIF/Bio环境和两GPU smoke/全量仍未完成或提交。七轻量报告/执行源码本机核验通过，余763.01GiB非数值quota/全量预算；一次只读查询，模型/资源/失败不改、用户VPN保留。见[快照复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_sif_recovery_r2_20261105T143947Z/LOCAL_SNAPSHOT_REVIEW.json)。下方展开进行中为历史，原PLAN保持。
+
 北京时间2026-11-05 21:50最新查询：CPU4309579已RUNNING/node225约23分钟，11层/18998硬链接规范化的逐成员bytes/metadata校验完成，正在CE原生展开；暂无FAILED/最终COMPLETE或漂移，非完整SIF/环境/GPU通过。两GPU smoke/J01-J07及全量仍未提交，当前余775.88GiB非数值quota/全量预算。仅一次只读快照、用户VPN保留，无重提/安装/读图，见[快照复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_sif_recovery_r2_20261105T135002Z/LOCAL_SNAPSHOT_REVIEW.json)。原PLAN与失败保留，下方PENDING为历史。
 
 北京时间2026-11-05 21:26最新：独立R2已获授权，服务器同Python3.10八项及最小CE4.1.1验证通过，唯一新CPU4309579已held核验/同IDrelease0；即时PENDING/Resources，尚未运行镜像转换。17轻量审计/实际源码和Slurm独立再核通过、无漂移；完整SIF/Bio环境/两真实GPU smoke及全量仍未完成/提交。原PLAN/模型/依赖/资源/三wheel和全部失败保留，不重编/下载/安装solver/自动retry；余798.46875GiB非数值quota/全量预算，用户VPN保留。详见[R2实际执行](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_SIF_RECOVERY_R2_EXECUTION_20261105.md)，下方待授权等为历史。
