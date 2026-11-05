@@ -1,0 +1,43 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "S0_CPU_USAGE_R2_AUTHORIZED_VPN_DISCONNECTED_NO_SSH",
+  "authorization": "S0_CPU_USAGE_R2_AUTHORIZATION.json",
+  "user_reply": "允许独立R2修正解析后继续首次提交（推荐）",
+  "local_operation": "operator/submit_s0_cpu_usage_r2_20261105T031511Z",
+  "local_started_utc": "2026-11-05T03:15:11.791824+00:00",
+  "local_stopped_utc": "2026-11-05T03:15:11.880249+00:00",
+  "local_finally_utc": "2026-11-05T03:15:11.880458+00:00",
+  "access_error": "VPN ownership not confirmed; private output suppressed",
+  "one_read_only_status_observation": {
+    "status": "disconnect",
+    "tunnel_status": "tunnelAvailable",
+    "native_UI_label": "未登录",
+    "stale_login_complete_tile_is_not_current_connection_proof": true,
+    "verified_online_campus_connection": false
+  },
+  "local_tests": {
+    "verification": "operator/verify_transport_20261105T031456Z/VERIFICATION.json",
+    "count": 136,
+    "source_AST_count": 63,
+    "status": "pass",
+    "external_model_or_A100_pass": false
+  },
+  "remote_R2_executed": false,
+  "SSH_started": false,
+  "sbatch_called": false,
+  "job_id": null,
+  "held_created": false,
+  "release_called": false,
+  "remote_utc": null,
+  "fresh_remote_storage_observed": false,
+  "VPN_stop_or_logout_issued": false,
+  "VPN_adapter_modified": false,
+  "solver_rerun": false,
+  "environment_reinstalled": false,
+  "automatic_retry": false,
+  "same_unexecuted_remote_R2_may_continue_after_user_restores_official_login": true,
+  "old_failed_audits_frozen_slurm_models_versions_resources_preserved": true,
+  "boundary": "Do not treat tunnelAvailable or the old login-complete tile as online verification. User should restore official aTrust login; no logout, protection bypass, server writes or duplicate sbatch. Wheel/SIF preparation and J01-J07 remain incomplete, with no new inference scores or test reads."
+}

@@ -1,5 +1,15 @@
 # S0 实时 CPU 使用验收接续
 
+## 11:15 已授权但接入未就绪
+
+用户已确认“允许独立R2修正解析后继续首次提交（推荐）”，登记 `S0_CPU_USAGE_R2_AUTHORIZATION.json`。本机136测试/63源码AST通过，证据 `operator/verify_transport_20261105T031456Z`。随后本机调用 `submit_s0_cpu_usage_r2.py` 在VPN归属门停止，尚未进入SSH或执行远端R2，没有本次sbatch/held/release/JobID；本地停止UTC03:15:11.880249、finally03:15:11.880458。
+
+一次只读status返回disconnect/tunnelAvailable，aTrust界面标注“未登录”；旧的“登录完成”卡片不是当前连接证据。没有调用stop/logout或修改VPN适配器，不绕过官方登录/在线验收门；没有新远端UTC、最新配额或存储观察，旧851.736328125GiB只保留历史标记。已请求用户按学校流程恢复浏览器登录，不发送密码；恢复后继续同一个尚未远端执行的R2，不建立新提交attempt，不自动重复start/SSH/sbatch。
+
+见[接入分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_USAGE_R2_ACCESS_CONTINUATION_20261105.json)、[本机停止回执](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_s0_cpu_usage_r2_20261105T031511Z/OPERATION_STOPPED.json)和[收尾回执](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_s0_cpu_usage_r2_20261105T031511Z/LOCAL_OPERATION_RECEIPT.json)。两次远端失败、冻结Slurm/构建合同/环境与模型资源不改；CPU准备、真实smoke和全量仍未提交。
+
+## 以下为前次解析修正历史
+
 北京时间2026-11-05，远端/本地UTC日期仍为2026-11-04。原PLAN、冻结Slurm、构建环境、模型/版本/资源和全部失败保持不变。本次没有创建作业。
 
 ## 实际执行
