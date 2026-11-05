@@ -1,0 +1,31 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "source_archive_commit": "b272ac01",
+  "original_post_commit_test_result": {
+    "discovered": 292,
+    "failures": 1,
+    "skipped": 2,
+    "test": "test_bio_full103_r2.BioR2.test_wrong_remote_root_rejected",
+    "expected_error": "remote root drift",
+    "observed_error": "authorized source commit drift",
+    "cause": "The isolated wrong-root fixture did not pin the historical authorized Git HEAD; after the archive commit, the earlier HEAD check correctly fired first."
+  },
+  "fix_scope": "Pin only the authorized historical source commit inside this local unit-test fixture, consistent with other R2 replay fixtures.",
+  "production_runtime_or_operator_changed": false,
+  "initial_catalog_refresh_stopped_before_snapshot": "Curated execution document changed and reviewed_at had not yet advanced; conclusions re-reviewed and the timestamp advanced before refreshing the catalog.",
+  "test_source_retained_local_and_not_committed": true,
+  "rerun_verification": "operator/verify_transport_20261105T175432Z/VERIFICATION.json",
+  "rerun_test_log": "operator/verify_transport_20261105T175432Z/UNITTEST.log",
+  "rerun_result": {
+    "discovered": 292,
+    "passed": 290,
+    "version_specific_skipped": 2,
+    "production_Python310_ASTs": 100
+  },
+  "no_remote_reexecution_or_resubmission": true,
+  "R2_sbatch_CPU_time_refusal_and_no_JobID_unchanged": true,
+  "2025_4310575_not_modified": true,
+  "scientific_quality_pass": false
+}

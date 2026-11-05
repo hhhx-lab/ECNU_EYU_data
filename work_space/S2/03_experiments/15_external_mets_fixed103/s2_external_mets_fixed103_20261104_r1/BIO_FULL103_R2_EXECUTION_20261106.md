@@ -39,6 +39,8 @@ CPU请求保守上界221<user_zqchen1000，18在队<partition_a100 MaxSubmitPU10
 
 后续须先由管理员核验并恢复账号可用CPU机时，再由用户授权新的独立提交；不得改变时限/CPU/模型/数据绕过本次拒绝。本次R2已消耗一次提交授权，原失败永久保留。
 
+归档后本机回放曾有一项错误路径测试未固定历史Git HEAD，实际先触发合法的授权HEAD检查而不符该测试预期；只修正本机测试夹具，原失败留见[回放审计](LOCAL_R2_POSTCOMMIT_REPLAY_20261106.json)。最终[复验](operator/verify_transport_20261105T175432Z/VERIFICATION.json)仍292发现/290pass/2原版本skip、100生产3.10 AST。生产操作器/冻结包/服务器状态均不改，无再次SSH或提交；本机测试源码仅本地保留不提交。
+
 环境：本机Conda base运行操作器，brats2023_seg跑测试；凭据仅从约定env加载，显式`ECNU_SERVER_ENV_FILE`精确路径、Chrome Bridge。session显式调用分流脚本start/check，finally只关闭本次自建VPN，用户既有会话保留。
 
 科学状态保持`experimental_unvalidated/operator_approved=false/formal_gate_status=not_run_not_passed`；GPU smoke和实测耗时/峰值门保持`waived_by_user_not_pass`。推理完成须`sacct COMPLETED 0:0`、同JobID/合同COMPLETE及103预测native/标签/SHA验收；本次不是统一评分或科学质量结论。
