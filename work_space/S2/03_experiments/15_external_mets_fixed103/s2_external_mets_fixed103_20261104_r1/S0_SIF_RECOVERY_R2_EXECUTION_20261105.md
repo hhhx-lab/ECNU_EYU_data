@@ -1,5 +1,13 @@
 # SIF 恢复 R2：实际验证和 CPU 提交
 
+## 2026-11-05 23:46 完成查询
+
+现有CPU4309579 allocation/batch均COMPLETED 0:0，耗时01:16:29；COMPLETE remote UTC14:31:29.808108，SIF四阶段已结束。最终`conversion/fixed2025.sif` 4429500416 bytes，SHA256 `9b44613ad15c837987db6708a259d7ac226f21ae75d54d62e3f124986b0a960b`，实际文件大小/SHA、单一原生amd64 SquashFS描述符及三复用wheel身份验收一致；没有FAILED或静态/父失败漂移。派生SIF保持原模型文件bytes等价报告，但不是原Docker字节摘要，也不是模型运行或科学质量通过。
+
+命令环境仍为Conda base，source批次`.env`与唯一获准服务器env，显式`ECNU_SERVER_ENV_FILE`和`ECNU_ATRUST_BROWSER=bridge`；只调用`submit_sif_recovery_r2.snapshot_code("4309579")`，不调用提交`main()`。`session("snapshot_sif_recovery_r2")`负责start/check和finally，用户已有VPN保留；SSH只执行一次。实际源码SHA `8aa082e95be0e0703e474637bdd9bb034e4b5429fc8fd5ca13aef4cdf53bcf4a`再生一致。10轻量报告重编码bytes/SHA、6静态文件、STARTED合同/COMPLETE及四实际产物身份本机复核通过；ledger正文与SIF不回传。remote snapshot15:34:20.236373/local finally15:45:47.625054/review15:46:39.352632 UTC分记，原始Slurm21:15:03-22:31:32不冒称本机同步时间。文件系统余744.7802734375 GiB，quota0空非数值额度或全量容量门。
+
+本次用户仅要求检查，无远端写入、依赖安装、solver、重编/下载、重提/释放、MRI/GT/test加载或监控恢复。完整Bio-Intel环境仍待消费已验收wheel和精确依赖；后续两真实GPU smoke、联合容量/耗时门及全量未完成/提交。原4304987/4304783/4304740及全部失败保留。见[本次轻量快照与复核](operator/snapshot_sif_recovery_r2_20261105T154434Z/LOCAL_SNAPSHOT_REVIEW.json)，以下为此前运行阶段历史。
+
 ## 2026-11-05 22:40 最新查询
 
 CPU4309579 allocation/batch RUNNING/node225，sacct01:12:32、scontrol01:13:25是顺序观察，0:0不是完成终态。原生CE展开成功，日志native_rootfs Build complete，阶段1于remote UTC13:59:50.868280进入mksquashfs压缩；暂无FAILED/最终COMPLETE或身份漂移。七轻量报告bytes/SHA、执行源码再生、STARTED合同及三wheel复用报告通过，详细规范化ledger留远端。remote snapshot14:28:32.072525/local finally14:39:59.486201分记，用户VPN保留；余819276546048bytes=763.0107421875GiB非数值quota/全量峰值门。只读查询不改/重提作业或安装、不读MRI-GT-test；完整SIF/Bio环境/两真实GPU smoke及全量未完成/提交。见[快照复核](operator/snapshot_sif_recovery_r2_20261105T143947Z/LOCAL_SNAPSHOT_REVIEW.json)。以下为此前阶段历史。

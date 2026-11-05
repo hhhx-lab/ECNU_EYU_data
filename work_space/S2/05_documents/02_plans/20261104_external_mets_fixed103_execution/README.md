@@ -1,5 +1,7 @@
 # 两套外部METS模型同fixed103服务器横评计划
 
+北京时间2026-11-05 23:46完成复核：CPU4309579 allocation/batch均COMPLETED 0:0，耗时1小时16分29秒；2025 SIF 4.1253 GiB，实际大小/SHA与COMPLETE一致，三复用wheel身份通过，无FAILED或漂移。完整Bio-Intel环境、两路真实GPU smoke及全量仍未完成或提交；SIF转换验收不替代推理/质量门。10轻量报告和执行源码本机复核通过，本次只读一次、不安装或新增作业，原PLAN/失败/用户VPN保留。文件系统余744.78 GiB非数值quota/全量峰值门，两端UTC分记。见[完成复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_sif_recovery_r2_20261105T154434Z/LOCAL_SNAPSHOT_REVIEW.json)，下方压缩中为历史。
+
 北京时间2026-11-05 22:40最新查询：CPU4309579运行约1小时13分钟，CE原生展开完成、正在SquashFS压缩，无FAILED/最终COMPLETE或身份漂移；完整SIF/Bio环境和两GPU smoke/全量仍未完成或提交。七轻量报告/执行源码本机核验通过，余763.01GiB非数值quota/全量预算；一次只读查询，模型/资源/失败不改、用户VPN保留。见[快照复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_sif_recovery_r2_20261105T143947Z/LOCAL_SNAPSHOT_REVIEW.json)。下方展开进行中为历史，原PLAN保持。
 
 北京时间2026-11-05 21:50最新查询：CPU4309579已RUNNING/node225约23分钟，11层/18998硬链接规范化的逐成员bytes/metadata校验完成，正在CE原生展开；暂无FAILED/最终COMPLETE或漂移，非完整SIF/环境/GPU通过。两GPU smoke/J01-J07及全量仍未提交，当前余775.88GiB非数值quota/全量预算。仅一次只读快照、用户VPN保留，无重提/安装/读图，见[快照复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_sif_recovery_r2_20261105T135002Z/LOCAL_SNAPSHOT_REVIEW.json)。原PLAN与失败保留，下方PENDING为历史。
