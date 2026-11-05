@@ -1,0 +1,43 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "RECONNECT_CONFIRMED_SAME_LOGIN_STALE_NETWORK_BASELINE_NO_SSH",
+  "user_confirmation": "已重连",
+  "local_reviewed_utc": "2026-11-05T07:41:24+00:00",
+  "local_gate_receipts": [
+    "operator/snapshot_s0_cpu_r3a_20261105T073752Z/LOCAL_OPERATION_RECEIPT.json",
+    "operator/snapshot_s0_cpu_r3a_20261105T073940Z/LOCAL_OPERATION_RECEIPT.json"
+  ],
+  "local_gate_attempt_count_including_predecessor": 2,
+  "latest_start_utc": "2026-11-05T07:39:40.056413+00:00",
+  "latest_stop_utc": "2026-11-05T07:39:45.640368+00:00",
+  "latest_finally_utc": "2026-11-05T07:39:45.640571+00:00",
+  "read_only_local_status": {
+    "returncode": 1,
+    "authenticated_status": "online",
+    "tunnel_status": "tunnelAvailable",
+    "login_identity_unchanged_from_prior_observation": true,
+    "managed_state": "split_failed_restored",
+    "error": "default changed; split check failed (no automatic rewrite)",
+    "restore_failures": [],
+    "scope_routes_added_before_rollback": 3,
+    "atrust_routes_removed_before_rollback": 241
+  },
+  "diagnosis": "Existing start() deliberately retains the old baseline when loginTime is unchanged. The currently reported authenticated session is unchanged despite the user's reconnect confirmation. Split validation fails against the old network baseline; this is not a newly observed Slurm or model failure.",
+  "network_action_boundary": "The existing start attempted scoped routing and restored its changes on failure. No baseline overwrite, adapter edit, protection change or logout was performed. Empty rollback-failure list is a script receipt, not a proof of all applications' packet paths.",
+  "private_network_details": "Original local VPN state only; addresses, gateways, DNS and proxy details are not copied into project evidence.",
+  "remote_attempted": false,
+  "remote_utc_obtained": false,
+  "remote_capacity_obtained": false,
+  "CPU_4304783_current_state": "unknown; historical RUNNING is not current evidence",
+  "new_job_ids": [],
+  "two_full_inference_jobs_submitted": false,
+  "remote_installation_or_solver_executed": false,
+  "models_or_images_read": false,
+  "manual_user_session_preserved": true,
+  "automatic_remote_retry": false,
+  "monitor_restored": false,
+  "next_required_user_action": "Exit the ECNU account login in aTrust, not merely disconnect/reconnect, and leave it logged out. Then notify this thread so the existing script can capture a fresh disconnected baseline before the official login flow.",
+  "continuation": "Only after split/start/check pass, observe existing CPU4304783; accept CPU artifacts and complete environments, then real GPU smoke and joint gates before the two fixed103 full inference submissions. Do not create a replacement CPU attempt on an access failure."
+}

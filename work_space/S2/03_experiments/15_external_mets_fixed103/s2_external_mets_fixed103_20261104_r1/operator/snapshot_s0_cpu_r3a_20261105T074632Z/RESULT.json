@@ -1,0 +1,1955 @@
+{
+  "artifact_identity": {},
+  "artifact_status": "experimental_unvalidated",
+  "drift": [],
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 882876874752,
+  "images_read": false,
+  "job_id": "4304783",
+  "jobs_created": false,
+  "logs": {
+    "SIF_BUILD.log": {
+      "bytes": 828,
+      "tail": "INFO:    Starting build...\nINFO:    Fetching OCI image...\nINFO:    Extracting OCI image...\nINFO:    Build performed with no clean up option, build bundle(s) located at: [/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/build-temp-1939842888/rootfs /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/tmp/bundle-temp-1091211738]\nFATAL:   While performing build: packer failed to pack: while unpacking tmpfs: error unpacking rootfs: unpack entry: opt/conda/pkgs/pip-25.1.1-pyh8b19718_0/site-packages/pip-25.1.1.dist-info/INSTALLER: link: unpriv.link: unpriv.wrap target: no such file or directory\n",
+      "tail_only": true
+    },
+    "connected-components-3d_BUILD.log": {
+      "bytes": 1004,
+      "tail": "Processing ./sources/connected_components_3d-4.1.1.tar.gz\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status 'done'\nBuilding wheels for collected packages: connected-components-3d\n  Building wheel for connected-components-3d (pyproject.toml): started\n  Building wheel for connected-components-3d (pyproject.toml): still running...\n  Building wheel for connected-components-3d (pyproject.toml): finished with status 'done'\n  Created wheel for connected-components-3d: filename=connected_components_3d-4.1.1-cp310-cp310-linux_x86_64.whl size=1030729 sha256=0f5390389f76e21b96d8bb457f357bddd2c6679252876ad6ff581e79e3b96a52\n  Stored in directory: /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/scratch/pip-ephem-wheel-cache-ihikq59h/wheels/4b/a7/c5/89148dcb6a4579918a33b6fea3307000ce62b5e7ccc1a022a1\nSuccessfully built connected-components-3d\n",
+      "tail_only": true
+    },
+    "ndindex_BUILD.log": {
+      "bytes": 813,
+      "tail": "Processing ./sources/ndindex-1.10.1.tar.gz\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status 'done'\nBuilding wheels for collected packages: ndindex\n  Building wheel for ndindex (pyproject.toml): started\n  Building wheel for ndindex (pyproject.toml): finished with status 'done'\n  Created wheel for ndindex: filename=ndindex-1.10.1-cp310-cp310-linux_x86_64.whl size=175585 sha256=66c113d5220590899a8433b766cab7f1df0d2f4098f62ba770241169196e9266\n  Stored in directory: /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/scratch/pip-ephem-wheel-cache-f3tt8_7n/wheels/92/3c/3f/cbad0f1d67fa5e521e46b160cde1ab8e5a3463fe1810325157\nSuccessfully built ndindex\n",
+      "tail_only": true
+    },
+    "numexpr_BUILD.log": {
+      "bytes": 813,
+      "tail": "Processing ./sources/numexpr-2.14.1.tar.gz\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status 'done'\nBuilding wheels for collected packages: numexpr\n  Building wheel for numexpr (pyproject.toml): started\n  Building wheel for numexpr (pyproject.toml): finished with status 'done'\n  Created wheel for numexpr: filename=numexpr-2.14.1-cp310-cp310-linux_x86_64.whl size=174132 sha256=f623c397a6b879ae06d8bf034c047fe08833bf2abedb235e626fe493e4871a47\n  Stored in directory: /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/scratch/pip-ephem-wheel-cache-kcudffo1/wheels/6d/02/74/5e607f462ac328f9c9ecd85c1c9ca0562826dff29332fca77e\nSuccessfully built numexpr\n",
+      "tail_only": true
+    },
+    "s2exts0p3a_4304783.err": {
+      "bytes": 1411,
+      "tail": "Traceback (most recent call last):\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/runtime/prepare_s0_cpu_r3a.py\", line 235, in <module>\n    main()\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/runtime/prepare_s0_cpu_r3a.py\", line 212, in main\n    sif = convert_sif(attempt, contract, env)\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/runtime/prepare_s0_cpu_r3a.py\", line 129, in convert_sif\n    run_owned(command, log, env, remaining, compression=index == 1)\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/runtime/prepare_s0_cpu_r3a.py\", line 32, in run_owned\n    require(process.wait(timeout=timeout) == 0, 'CPU preparation subprocess failed')\n  File \"/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/runtime/s0_build_contract.py\", line 28, in require\n    raise RuntimeError(message)\nRuntimeError: CPU preparation subprocess failed\n",
+      "tail_only": true
+    },
+    "s2exts0p3a_4304783.out": {
+      "bytes": 0,
+      "tail": "",
+      "tail_only": true
+    }
+  },
+  "models_loaded": false,
+  "operator_approved": false,
+  "remote_utc": "2026-11-05T07:35:42.601566+00:00",
+  "remote_writes": false,
+  "reports": {
+    "FAILED.json": {
+      "bytes": 450,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "error_type": "RuntimeError",
+        "formal_gate_status": "not_run_not_passed",
+        "images_read": false,
+        "job_id": "4304783",
+        "message": "CPU preparation subprocess failed",
+        "models_loaded": false,
+        "no_automatic_retry": true,
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T05:11:32.354266+00:00",
+        "stage": "single_offline_SIF_conversion",
+        "status": "S0_CPU_preparation_failed"
+      },
+      "sha256": "8a5d33b7f6900d27c8f9c282c82b08cd373330ca3dcb2f321a1520a53c4c4432"
+    },
+    "NATIVE_BUILD_COMMANDS.json": {
+      "bytes": 2404,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "commands": [
+          [
+            "/public/software/singularity-ce/4.1.1/bin/singularity",
+            "build",
+            "--disable-cache",
+            "--sandbox",
+            "--no-cleanup",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/native_rootfs",
+            "docker-archive:///public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/container_conversion/fixed2025.docker-archive.tar"
+          ],
+          [
+            "/usr/sbin/mksquashfs",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/native_rootfs",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/native_rootfs.squashfs",
+            "-noappend",
+            "-all-root",
+            "-comp",
+            "gzip",
+            "-processors",
+            "2",
+            "-read-queue",
+            "64",
+            "-write-queue",
+            "128",
+            "-fragment-queue",
+            "64",
+            "-no-progress"
+          ],
+          [
+            "/public/software/singularity-ce/4.1.1/bin/singularity",
+            "sif",
+            "new",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/fixed2025.part.sif"
+          ],
+          [
+            "/public/software/singularity-ce/4.1.1/bin/singularity",
+            "sif",
+            "add",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/fixed2025.part.sif",
+            "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/native_rootfs.squashfs",
+            "--datatype",
+            "4",
+            "--parttype",
+            "2",
+            "--partfs",
+            "1",
+            "--partarch",
+            "2"
+          ]
+        ],
+        "compression_queue_mib": 256,
+        "compression_threads": 2,
+        "deadline_seconds": 7200,
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "system_configuration_changed": false
+      },
+      "sha256": "68a70a1118f1c0e14060fdd6d15f99916112c380873c84c1e8b203c805b6060a"
+    },
+    "SIF_STAGE_0_STARTED.json": {
+      "bytes": 730,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "command": [
+          "/public/software/singularity-ce/4.1.1/bin/singularity",
+          "build",
+          "--disable-cache",
+          "--sandbox",
+          "--no-cleanup",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/conversion/native_rootfs",
+          "docker-archive:///public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/assets/container_conversion/fixed2025.docker-archive.tar"
+        ],
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:40:26.775853+00:00"
+      },
+      "sha256": "874e6c26918d46654fc7d1dcc466ee5cf7e9783934bccf2970cb5e4b43851aca"
+    },
+    "SOURCE_BUILD_REQUIREMENTS.json": {
+      "bytes": 3705,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "checked": {
+          "connected-components-3d": [
+            {
+              "requirement": "setuptools",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "wheel",
+              "selected_version": "0.48.0"
+            },
+            {
+              "requirement": "numpy",
+              "selected_version": "2.2.6"
+            },
+            {
+              "requirement": "setuptools>=40.8.0",
+              "selected_version": "84.0.0"
+            }
+          ],
+          "ndindex": [
+            {
+              "requirement": "setuptools; platform_python_implementation != 'PyPy'",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "cython",
+              "selected_version": "3.3.0"
+            }
+          ],
+          "numexpr": [
+            {
+              "requirement": "setuptools>=77.0.0",
+              "selected_version": "84.0.0"
+            },
+            {
+              "requirement": "numpy>=2.0.0",
+              "selected_version": "2.2.6"
+            }
+          ]
+        },
+        "configurations": {
+          "connected-components-3d": {
+            "backend_was_explicit": false,
+            "build_backend": "setuptools.build_meta:__legacy__",
+            "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+            "declared_requires": [
+              "setuptools",
+              "wheel",
+              "numpy"
+            ],
+            "implicit_requires": [
+              "setuptools>=40.8.0"
+            ],
+            "requires": [
+              "setuptools",
+              "wheel",
+              "numpy",
+              "setuptools>=40.8.0"
+            ]
+          },
+          "ndindex": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+            "declared_requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools; platform_python_implementation != 'PyPy'",
+              "setuptools<72.2; platform_python_implementation == 'PyPy'",
+              "cython"
+            ]
+          },
+          "numexpr": {
+            "backend_was_explicit": true,
+            "build_backend": "setuptools.build_meta",
+            "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+            "declared_requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ],
+            "implicit_requires": [],
+            "requires": [
+              "setuptools>=77.0.0",
+              "numpy>=2.0.0"
+            ]
+          }
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "sources": {
+          "connected-components-3d": {
+            "bytes": 85178,
+            "filename": "connected_components_3d-4.1.1.tar.gz",
+            "sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+            "url": "https://files.pythonhosted.org/packages/23/66/62eeb4d29188a1161289c58c9129294856ce0f134fb9b49c3d13ae0db1d1/connected_components_3d-4.1.1.tar.gz",
+            "version": "4.1.1"
+          },
+          "ndindex": {
+            "bytes": 271395,
+            "filename": "ndindex-1.10.1.tar.gz",
+            "sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+            "url": "https://files.pythonhosted.org/packages/f5/92/4b9d2f4e0f3eabcfc7b02b48261f6e5ad36a3e2c1bbdcc4e3b7b6c768fa6/ndindex-1.10.1.tar.gz",
+            "version": "1.10.1"
+          },
+          "numexpr": {
+            "bytes": 119400,
+            "filename": "numexpr-2.14.1.tar.gz",
+            "sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+            "url": "https://files.pythonhosted.org/packages/cb/2f/fdba158c9dbe5caca9c3eca3eaffffb251f2fb8674bf8e2d0aed5f38d319/numexpr-2.14.1.tar.gz",
+            "version": "2.14.1"
+          }
+        },
+        "status": "source_requirements_covered_by_exact_solver"
+      },
+      "sha256": "27867735b456b703672e55de5622422c8d906b3c52fb03e1d0d570c616445f85"
+    },
+    "STAGING_COMPLETE.json": {
+      "bytes": 402,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "environment_reinstalled": false,
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:36:55.044027+00:00",
+        "solver_rerun": false,
+        "status": "S0_offline_CPU_input_staging_pass_not_model_runtime_pass"
+      },
+      "sha256": "55dce942435fc5aba7e3feda53e3dc7ce0e027394fb2072bc797d746f245df74"
+    },
+    "STARTED.json": {
+      "bytes": 339,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4304783",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T04:37:46.970383+00:00",
+        "status": "CPU_offline_preparation_started"
+      },
+      "sha256": "c093adb756b413af3915a9249429ae8ac4aa9af0395bf7ab1e0d3459f00ffb9e"
+    },
+    "WHEELS_COMPLETE.json": {
+      "bytes": 15211,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "formal_gate_status": "not_run_not_passed",
+        "operator_approved": false,
+        "status": "three_same_version_wheels_CPU_probe_pass",
+        "wheels": [
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    2
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ]
+                ],
+                "path": "numexpr/interpreter.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "b134c249089857e85f7bab13f12c2bdc36ed094708cf03acc243acfcc9a43bc7"
+              }
+            ],
+            "bytes": 174132,
+            "configuration": {
+              "backend_was_explicit": true,
+              "build_backend": "setuptools.build_meta",
+              "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+              "declared_requires": [
+                "setuptools>=77.0.0",
+                "numpy>=2.0.0"
+              ],
+              "implicit_requires": [],
+              "requires": [
+                "setuptools>=77.0.0",
+                "numpy>=2.0.0"
+              ]
+            },
+            "name": "numexpr",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/numexpr/numexpr-2.14.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy>=1.23.0"
+            ],
+            "sha256": "f623c397a6b879ae06d8bf034c047fe08833bf2abedb235e626fe493e4871a47",
+            "source_sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+            "version": "2.14.1"
+          },
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3,
+                    4
+                  ]
+                ],
+                "path": "cc3d/fastcc3d.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "e955bb4d8a879f0cac6c56f870448b46061ac38407cc4bcc00406e2526555686"
+              }
+            ],
+            "bytes": 1030729,
+            "configuration": {
+              "backend_was_explicit": false,
+              "build_backend": "setuptools.build_meta:__legacy__",
+              "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+              "declared_requires": [
+                "setuptools",
+                "wheel",
+                "numpy"
+              ],
+              "implicit_requires": [
+                "setuptools>=40.8.0"
+              ],
+              "requires": [
+                "setuptools",
+                "wheel",
+                "numpy",
+                "setuptools>=40.8.0"
+              ]
+            },
+            "name": "connected-components-3d",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/connected-components-3d/connected_components_3d-4.1.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy",
+              "crackle-codec; extra == \"stack\"",
+              "fastremap; extra == \"stack\""
+            ],
+            "sha256": "0f5390389f76e21b96d8bb457f357bddd2c6679252876ad6ff581e79e3b96a52",
+            "source_sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+            "version": "4.1.1"
+          },
+          {
+            "binaries": [
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    14
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ]
+                ],
+                "path": "ndindex/_slice.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "5aa7f4b7000f7d07591e221bfd9d698ec9f1ed1e606e206b1d1fbdad0fb43ca7"
+              },
+              {
+                "glibc_versions": [
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    2,
+                    5
+                  ]
+                ],
+                "path": "ndindex/_tuple.cpython-310-x86_64-linux-gnu.so",
+                "sha256": "c3b9fa7592914d2684926473e1f8811c5594e3b32d80fd18771c88490d9f9c28"
+              }
+            ],
+            "bytes": 175585,
+            "configuration": {
+              "backend_was_explicit": true,
+              "build_backend": "setuptools.build_meta",
+              "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+              "declared_requires": [
+                "setuptools; platform_python_implementation != 'PyPy'",
+                "setuptools<72.2; platform_python_implementation == 'PyPy'",
+                "cython"
+              ],
+              "implicit_requires": [],
+              "requires": [
+                "setuptools; platform_python_implementation != 'PyPy'",
+                "setuptools<72.2; platform_python_implementation == 'PyPy'",
+                "cython"
+              ]
+            },
+            "name": "ndindex",
+            "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/ndindex/ndindex-1.10.1-cp310-cp310-linux_x86_64.whl",
+            "requires_dist": [
+              "numpy; extra == \"arrays\""
+            ],
+            "sha256": "66c113d5220590899a8433b766cab7f1df0d2f4098f62ba770241169196e9266",
+            "source_sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+            "version": "1.10.1"
+          }
+        ]
+      },
+      "sha256": "79b288745b7912cdd3b4ddebe4782ee4b8a66d96c8fd159bec6a0440394eb6d5"
+    },
+    "WHEEL_connected-components-3d.json": {
+      "bytes": 2315,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "binaries": [
+          {
+            "glibc_versions": [
+              [
+                2,
+                3,
+                4
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3,
+                4
+              ],
+              [
+                2,
+                14
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                14
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3,
+                4
+              ]
+            ],
+            "path": "cc3d/fastcc3d.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "e955bb4d8a879f0cac6c56f870448b46061ac38407cc4bcc00406e2526555686"
+          }
+        ],
+        "bytes": 1030729,
+        "configuration": {
+          "backend_was_explicit": false,
+          "build_backend": "setuptools.build_meta:__legacy__",
+          "configuration_sha256": "687a517aaa73a2ecdd06943d74c90a81d83f426d1f7729f0395ee8b07095d7be",
+          "declared_requires": [
+            "setuptools",
+            "wheel",
+            "numpy"
+          ],
+          "implicit_requires": [
+            "setuptools>=40.8.0"
+          ],
+          "requires": [
+            "setuptools",
+            "wheel",
+            "numpy",
+            "setuptools>=40.8.0"
+          ]
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "name": "connected-components-3d",
+        "operator_approved": false,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/connected-components-3d/connected_components_3d-4.1.1-cp310-cp310-linux_x86_64.whl",
+        "requires_dist": [
+          "numpy",
+          "crackle-codec; extra == \"stack\"",
+          "fastremap; extra == \"stack\""
+        ],
+        "sha256": "0f5390389f76e21b96d8bb457f357bddd2c6679252876ad6ff581e79e3b96a52",
+        "source_sha256": "becc200f0b9fd8c16ffe0ddb37c94a963737b96b79705c8ae25dd141f402f990",
+        "version": "4.1.1"
+      },
+      "sha256": "c41099b75590fa4a386d433a4f534e49887140f737599fbb583360efad0c7d10"
+    },
+    "WHEEL_ndindex.json": {
+      "bytes": 2767,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "binaries": [
+          {
+            "glibc_versions": [
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                14
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                14
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "path": "ndindex/_slice.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "5aa7f4b7000f7d07591e221bfd9d698ec9f1ed1e606e206b1d1fbdad0fb43ca7"
+          },
+          {
+            "glibc_versions": [
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                2,
+                5
+              ]
+            ],
+            "path": "ndindex/_tuple.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "c3b9fa7592914d2684926473e1f8811c5594e3b32d80fd18771c88490d9f9c28"
+          }
+        ],
+        "bytes": 175585,
+        "configuration": {
+          "backend_was_explicit": true,
+          "build_backend": "setuptools.build_meta",
+          "configuration_sha256": "377ec2d7f720d41d108c29e7c9f13301cff7b8a41dae61c05ec5a76b5706c2d6",
+          "declared_requires": [
+            "setuptools; platform_python_implementation != 'PyPy'",
+            "setuptools<72.2; platform_python_implementation == 'PyPy'",
+            "cython"
+          ],
+          "implicit_requires": [],
+          "requires": [
+            "setuptools; platform_python_implementation != 'PyPy'",
+            "setuptools<72.2; platform_python_implementation == 'PyPy'",
+            "cython"
+          ]
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "name": "ndindex",
+        "operator_approved": false,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/ndindex/ndindex-1.10.1-cp310-cp310-linux_x86_64.whl",
+        "requires_dist": [
+          "numpy; extra == \"arrays\""
+        ],
+        "sha256": "66c113d5220590899a8433b766cab7f1df0d2f4098f62ba770241169196e9266",
+        "source_sha256": "0f6113c1f031248f8818cbee1aa92aa3c9472b7701debcce9fddebcd2f610f11",
+        "version": "1.10.1"
+      },
+      "sha256": "d747b582f7a70e36c89c6db6f350f022c251b6d3daf5dd4327dad715f015ebae"
+    },
+    "WHEEL_numexpr.json": {
+      "bytes": 7147,
+      "content": {
+        "artifact_status": "experimental_unvalidated",
+        "binaries": [
+          {
+            "glibc_versions": [
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3,
+                2
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                14
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3,
+                2
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3,
+                2
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3,
+                4
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                3,
+                2
+              ],
+              [
+                2,
+                3,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                14
+              ],
+              [
+                2,
+                2,
+                5
+              ],
+              [
+                2,
+                2,
+                5
+              ]
+            ],
+            "path": "numexpr/interpreter.cpython-310-x86_64-linux-gnu.so",
+            "sha256": "b134c249089857e85f7bab13f12c2bdc36ed094708cf03acc243acfcc9a43bc7"
+          }
+        ],
+        "bytes": 174132,
+        "configuration": {
+          "backend_was_explicit": true,
+          "build_backend": "setuptools.build_meta",
+          "configuration_sha256": "32c82810913f75185abd057a50521b166f7ebeac7107e15fef4095ebf152c8a9",
+          "declared_requires": [
+            "setuptools>=77.0.0",
+            "numpy>=2.0.0"
+          ],
+          "implicit_requires": [],
+          "requires": [
+            "setuptools>=77.0.0",
+            "numpy>=2.0.0"
+          ]
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "name": "numexpr",
+        "operator_approved": false,
+        "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_cpu_prepare_r3a/wheels/numexpr/numexpr-2.14.1-cp310-cp310-linux_x86_64.whl",
+        "requires_dist": [
+          "numpy>=1.23.0"
+        ],
+        "sha256": "f623c397a6b879ae06d8bf034c047fe08833bf2abedb235e626fe493e4871a47",
+        "source_sha256": "4be00b1086c7b7a5c32e31558122b7b80243fe098579b170967da83f3152b48b",
+        "version": "2.14.1"
+      },
+      "sha256": "d61c32e1f96a7f590b059be3b75dc4afcc56fcfd28dd2d9c7b41b0dd119b6b17"
+    }
+  },
+  "scheduler": {
+    "accounting": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "JobID|JobName|State|ExitCode|Elapsed|Start|End\n4304783|s2exts0p3a|FAILED|1:0|00:35:26|2026-11-05T12:36:07|2026-11-05T13:11:33\n4304783.batch|batch|FAILED|1:0|00:35:26|2026-11-05T12:36:07|2026-11-05T13:11:33\n"
+    },
+    "job": {
+      "returncode": 1,
+      "stderr": "slurm_load_jobs error: Invalid job id specified\n",
+      "stdout": ""
+    },
+    "queue": {
+      "returncode": 1,
+      "stderr": "slurm_load_jobs error: Invalid job id specified\n",
+      "stdout": ""
+    },
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  },
+  "solver_rerun": false,
+  "static_identity": {
+    "contract/PREPARATION_CONTRACT.json": {
+      "expected_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c",
+      "observed_sha256": "6615846dca72b6b0cd2dd861cfa8e656ae9e2c9f51ffbb952f566fc62481063c"
+    },
+    "runtime/prepare_s0_cpu_r3a.py": {
+      "expected_sha256": "771c3bec7e959c91d9ff772ed635decb53a4d3eac579d4e5d1ee9bdc65b4b88b",
+      "observed_sha256": "771c3bec7e959c91d9ff772ed635decb53a4d3eac579d4e5d1ee9bdc65b4b88b"
+    },
+    "runtime/s0_build_contract.py": {
+      "expected_sha256": "d64ff60a271d8132588da00a56a3cabbb3e088f1715d272f1582abb6e3bc1f9a",
+      "observed_sha256": "d64ff60a271d8132588da00a56a3cabbb3e088f1715d272f1582abb6e3bc1f9a"
+    },
+    "runtime/s0_source_requirements_r2.py": {
+      "expected_sha256": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6",
+      "observed_sha256": "b8d011a0199f45670c0bf385b5db4e4b8e58de59f1c29bc152f6fac5e5cfe2d6"
+    },
+    "slurm/prepare.slurm": {
+      "expected_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5",
+      "observed_sha256": "cc76d642f087be1b5b83d3b7208ffb152ca256e303071017f7f7ee66438795d5"
+    }
+  },
+  "status": "read_only_CPU_R3a_observation_not_inference_pass",
+  "submission_receipt_sha256": "c7f4a30f4f95d78a4d14104c008f1c174192c1e8bce267ea58b981a4b46808ae"
+}

@@ -1,0 +1,127 @@
+{
+  "MRI_or_GT_read": false,
+  "archive_bytes": 8409948160,
+  "conversion_retried": false,
+  "current_full_archive_sha_recomputed": false,
+  "failure_sha256": "8a5d33b7f6900d27c8f9c282c82b08cd373330ca3dcb2f321a1520a53c4c4432",
+  "job_id": "4304783",
+  "jobs_created": false,
+  "layers": [
+    {
+      "header_count": 3518,
+      "layer_index": 0,
+      "layer_name": "0/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 2264,
+      "layer_index": 1,
+      "layer_name": "1/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 77605,
+      "layer_index": 2,
+      "layer_name": "2/layer.tar",
+      "link_target_headers": [
+        {
+          "data_offset": 3706456064,
+          "header_offset": 3706455552,
+          "linkname": "",
+          "name": "opt/conda/lib/python3.11/site-packages/pip-25.1.1.dist-info/INSTALLER",
+          "size": 5,
+          "type": "0"
+        }
+      ],
+      "relevant": [
+        {
+          "data_offset": 3706456064,
+          "header_offset": 3706455552,
+          "linkname": "",
+          "name": "opt/conda/lib/python3.11/site-packages/pip-25.1.1.dist-info/INSTALLER",
+          "size": 5,
+          "type": "0"
+        },
+        {
+          "data_offset": 6365869568,
+          "header_offset": 6365869056,
+          "linkname": "opt/conda/lib/python3.11/site-packages/pip-25.1.1.dist-info/INSTALLER",
+          "name": "opt/conda/pkgs/pip-25.1.1-pyh8b19718_0/site-packages/pip-25.1.1.dist-info/INSTALLER",
+          "size": 0,
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "header_count": 0,
+      "layer_index": 3,
+      "layer_name": "3/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 1,
+      "layer_index": 4,
+      "layer_name": "4/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 1026,
+      "layer_index": 5,
+      "layer_name": "5/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 16134,
+      "layer_index": 6,
+      "layer_name": "6/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 2,
+      "layer_index": 7,
+      "layer_name": "7/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 3,
+      "layer_index": 8,
+      "layer_name": "8/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 5,
+      "layer_index": 9,
+      "layer_name": "9/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    },
+    {
+      "header_count": 8,
+      "layer_index": 10,
+      "layer_name": "10/layer.tar",
+      "link_target_headers": [],
+      "relevant": []
+    }
+  ],
+  "model_loaded": false,
+  "partial_root_exists": true,
+  "partial_state": {
+    "opt/conda/lib/python3.11/site-packages/pip-25.1.1.dist-info/INSTALLER": {
+      "exists": false
+    },
+    "opt/conda/pkgs/pip-25.1.1-pyh8b19718_0/site-packages/pip-25.1.1.dist-info/INSTALLER": {
+      "exists": false
+    }
+  },
+  "remote_utc": "2026-11-05T07:41:37.449605+00:00",
+  "remote_writes": false,
+  "status": "read_only_container_header_diagnosis_not_conversion_pass"
+}

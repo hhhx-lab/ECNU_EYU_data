@@ -1,5 +1,9 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**北京时间2026-11-05 15:54：VPN/SSH已恢复，CPU4304783实际FAILED1:0/35分26秒；三wheel编译与CPU探针通过，2025镜像SIF展开失败，两全量仍未提交。**只读层元数据确认硬链接目标原本存在且排在前面，具体后端展开问题/恢复方式仍待核验；独立恢复已请求，未自动新建作业/重编/重下载。10轻量报告SHA通过，202本机tests/72AST非模型/GPU通过；余822.24GiB非数值quota或全量预算，两次自建VPN均finally关闭。用base与Chrome Bridge调用网络操作器，不包在找不到playwright-mcp的brats2023_seg测试环境；不改PATH。见[完整失败验收](S0_CPU_R3A_FAILURE_ACCEPTANCE_20261105.json)，下方为历史。
+
+**北京时间2026-11-05 15:41：用户确认重连后，旧认证会话与换网前基线仍被保留，分流验收继续失败，未SSH或提交全量。**脚本的限定路由尝试已回滚，restore_failures为空；未改基线/脚本或注销用户。现需在aTrust退出校园账号登录并暂时保持未登录，才能先捕获当前网络基线后继续官方登录。CPU4304783当前状态/远端容量未知，不凭历史RUNNING提交；完整环境、两真实smoke和联合门仍须核验。见[接续诊断](FULL_INFERENCE_RECONNECT_HOLD_20261105.json)，下方为历史。
+
 **北京时间2026-11-05 15:25复核：已收到“提交两个的全量推理作业”，本次因分流验收未通过停在接入门，未SSH或创建新作业。**aTrust在线/隧道可用，但原本机默认网关基线已变化，三个公网探针重新走校园隧道；不改基线或绕过门、未注销用户会话。用户选择手动重连后继续，后续一次本机只读status仍同登录会话/default changed，等待完成确认。4304783本轮状态未知，12:51 RUNNING仅最后历史快照；CPU产物/完整环境/两真实smoke尚无本轮验收，不提前提交两全量。202本机tests/71AST通过只为只读入口，不是远端通过。见[接入停止记录](FULL_INFERENCE_ACCESS_HOLD_20261105.json)，以下为历史。
 
 **北京时间2026-11-05 12:51复核：用户授权R3a首次CPU准备4304783已held核验并同ID释放，即时快照RUNNING/node201。**资源cpu_192G/8CPU/64GiB/4h/无GPU，sbatch/release均0，十轻量审计bytes/SHA和冻结身份本机通过；STARTED/FAILED/COMPLETE均无、两日志0bytes，非CPU产物或GPU推理通过。旧R3误引用operator而非reports导致sbatch前失败无JobID，原四文件SHA/旧4304740/R2及失败永久保留。201本机tests/70AST通过，真实冻结脚本bootstrap通过；无重装/solver/监控恢复，用户VPN保留。最新文件系统余835.12890625GiB非数值quota/全量峰值门；完整推理环境、两真实smoke和J01-J07仍未完成。见[R3/R3a执行记录](S0_CPU_R3_R3A_EXECUTION_20261105.md)及[STATUS](STATUS_20261104.md)，下方状态为历史。

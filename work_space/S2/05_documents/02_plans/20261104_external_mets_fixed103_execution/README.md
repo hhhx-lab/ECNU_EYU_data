@@ -1,5 +1,9 @@
 # 两套外部METS模型同fixed103服务器横评计划
 
+北京时间2026-11-05 15:54：退出校园账号后，base/Chrome Bridge按原脚本取得新基线并通过分流/SSH；误用brats2023_seg导致命令不可见的本机失败保留，不改PATH/装包。CPU4304783已FAILED1:0/35分26秒，三同版wheel真实CPU构建/探针通过，2025 SIF展开报硬链接目标不存在；原层元数据证明目标在同层且早于链接，具体恢复仍待核验。独立恢复已请求，不自动重提/重编/重下载，完整环境/两真实smoke之前不提交全量。最新余822.24GiB非账号数值quota/全量预算，两自建VPNfinally关闭，三项研究状态与PLAN不变。见[失败验收](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_R3A_FAILURE_ACCEPTANCE_20261105.json)，下方为历史。
+
+北京时间2026-11-05 15:41：重连已获用户确认，但客户端仍报告旧认证会话，现有脚本沿用换网前基线，分流`default changed`验收失败。限定路由尝试已回滚、失败清单为空，未SSH/改基线/注销用户或提交全量；请求在aTrust退出校园账号登录并暂时保持未登录，以捕获新未连接基线再官方登录。4304783当前与远端容量仍未知，完整环境/真实smoke/联合门之前不提交全量。见[接续诊断](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/FULL_INFERENCE_RECONNECT_HOLD_20261105.json)；原PLAN与失败保留，下方为历史。
+
 北京时间2026-11-05 15:25：用户要求提交两个全量，先执行4304783只读观察；本轮因VPN归属/分流门停止，未SSH、安装或提交。aTrust在线但网关基线变化且公网探针走隧道，不自动改基线或注销用户；用户选择手动重连后继续，07:25UTC只读status仍同会话/default changed，等待完成确认。4304783当前未知，上轮RUNNING/835.13GiB仅历史；两全量未提交，仍须CPU产物、完整环境及两真实smoke/联合门。202本机tests/71AST通过非远端/GPU通过，详见[接入分析](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/FULL_INFERENCE_ACCESS_HOLD_20261105.json)。原PLAN不改，下方为历史。
 
 北京时间2026-11-05 12:51复核：用户授权独立R3a后，单个CPU准备4304783已held核验并同ID释放，唯一即时快照RUNNING/node201；8CPU/64GiB/4h/无GPU，非全量推理或CPU产物完成。STARTED/FAILED/COMPLETE均无、日志0bytes，201本机tests/70AST及真实冻结脚本bootstrap通过非wheel/SIF/A100通过。原R3引用路径错误在sbatch前失败无JobID，其四文件SHA与旧4304740/环境全部保留。复用R2环境和版本，不重装/solver/恢复监控；用户VPN保留，835.12890625GiB为文件系统余量非数值quota/全量峰值验收。完整环境、两真实smoke和J01-J07仍未完成，见[执行记录](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/S0_CPU_R3_R3A_EXECUTION_20261105.md)。原PLAN不改，下方为历史。
