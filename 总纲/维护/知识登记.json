@@ -1,9 +1,29 @@
 {
-  "reviewed_at": "2026-11-06T13:06:51Z",
+  "reviewed_at": "2026-11-06T13:21:52Z",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/COHORT_YEAR_AND_SPLIT_CLARIFICATION_20261106.md",
+      "description": "澄清2026比赛发放的BraTS2025命名训练包、2025登记同1296病例全集与seed42内部val103/test104的区别",
+      "kind": "document",
+      "state": "本地保存2026 Task1页面明确列BraTS2025命名训练ZIP/syn64919665，不能把旧2025池措辞解释为我们换用去年数据。原manifest1296与2025镜像登记1296病例ID全集一致、差集0；跨年MRI/标签byte及官方隐藏test完全相同未验收。原master/real-only JSON与逐例membership均seed42患者组，1035/130/130及823/103/104，fixed103恰等于real-only val和master val/authentic，69患者组与本项目train/test交集0。未重划split，103是内部验证而非locked104；对我们留出不代表外部成品未见，2025所用checkpoint训练fold仍未知。Conda base本机结构/集合/SHA复核，无在线网页重读/下载/SSH/VPN/新作业/评分/MRI-GT-checkpoint读取或解锁104，旧分数/模型/数据及科学三项保持。",
+      "reviewed_at": "2026-11-06T13:21:52Z",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "evidence": [
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/COHORT_YEAR_AND_SPLIT_CLARIFICATION_20261106.json",
+        "01_project_documents/01_competition_and_assignments/task1_2026/BraTS2026_Task1_English.md",
+        "work_space/G2/01_code/g2_create_train_val_test_split.py",
+        "work_space/G2/02_dataset_release/20260919_archived_local_release/manifests/real_train_manifest.csv",
+        "work_space/G2/02_dataset_release/20260919_archived_local_release/splits/splits_master_train_val_test.json",
+        "work_space/G2/02_dataset_release/20260919_archived_local_release/splits/splits_final_train_val_test.json",
+        "work_space/G2/02_dataset_release/20260919_archived_local_release/splits/splits_master_train_val_test_membership.csv",
+        "work_space/G2/02_dataset_release/20260919_archived_local_release/splits/splits_final_train_val_test_membership.csv"
+      ]
+    },
     {
       "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/DATASET_PROVENANCE_REVIEW_20261106.md",
       "description": "2025 METS数据入口、镜像登记103/103重叠与现有横评训练污染风险的本机/公开元数据复核；非新独立队列或训练泄漏法证证明",

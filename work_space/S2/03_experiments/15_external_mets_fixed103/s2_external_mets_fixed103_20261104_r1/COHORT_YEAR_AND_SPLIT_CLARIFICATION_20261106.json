@@ -1,0 +1,73 @@
+{
+  "reviewed_at": "2026-11-06T13:21:52Z",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "scope": "local_2026_competition_notes_original_manifest_and_existing_split_crosscheck",
+  "clarifies": "DATASET_PROVENANCE_REVIEW_20261106.json",
+  "delivery_context": {
+    "competition": "BraTS2026_Task1",
+    "page_url": "https://challenges.synapse.org/Challenges/DetailsPage/Task1?id=syn74274097",
+    "local_page_notes_accessed": "2026-05-04",
+    "local_page_notes_are_structured_extraction_not_verbatim_mirror": true,
+    "live_page_revisited": false,
+    "training_archive_name_listed": "MICCAI-LH-BraTS2025-MET-Challenge-TrainingData_batch1.zip",
+    "training_entity_listed": "syn64919665",
+    "training_md5_listed_not_rehashed_this_review": "a67d67f756c8ef14e8dbda08ca73688c",
+    "validation_entity_listed": "syn64919141",
+    "corrected_labels_entity_listed": "syn65888166",
+    "modified_on_string_listed": "4/29/2026 3:48 AM",
+    "delivery_year_is_not_archive_name_year_or_scan_acquisition_year": true
+  },
+  "cohort_crosscheck": {
+    "our_original_manifest_cases": 1296,
+    "external_2025_model_registry_cases": 1296,
+    "entire_case_id_intersection": 1296,
+    "our_manifest_only_count": 0,
+    "external_registry_only_count": 0,
+    "same_case_id_universe_confirmed": true,
+    "all_cross_year_image_or_label_bytes_equal_verified": false,
+    "official_cross_year_hidden_test_same_verified": false,
+    "master_after_qc_cases": 1295
+  },
+  "split_crosscheck": {
+    "seed": "42",
+    "policy": "g1_v3_seed42_authentic_anchor_then_patient_group_balanced_missing",
+    "patient_group_rule": "remove_final_numeric_case_suffix",
+    "master_counts": {"train": 1035, "val": 130, "test": 130},
+    "realonly_counts": {"train": 823, "val": 103, "test": 104},
+    "fixed103_equals_realonly_val_and_master_authentic_val": true,
+    "fixed103_split": "val",
+    "fixed103_patient_groups": 69,
+    "fixed103_train_patient_overlap": 0,
+    "fixed103_test_patient_overlap": 0,
+    "fixed103_source_types": {"train_top_level": 44, "train_ucsd": 59},
+    "split_recreated_or_modified": false,
+    "test_images_read_or_unlocked": false
+  },
+  "interpretation": {
+    "current_cohort_description": "2026_challenge_supplied_labelled_training_pool_with_2025_archive_name_our_seed42_patient_group_validation_subset",
+    "previous_2025_only_wording_omitted_2026_delivery_context": true,
+    "dataset_replaced_by_our_research": false,
+    "our_internal_holdout_implies_external_model_holdout": false,
+    "actual_2025_checkpoint_fold_training_membership_verified": false,
+    "high_scores_prove_competition_leakage": false,
+    "independent_generalization_claim_permitted": false,
+    "existing_results_changed": false
+  },
+  "environment": "Conda_base_standard_library",
+  "no_new_web_or_ssh_or_jobs_or_dependency_or_dataset_download": true,
+  "source_images_and_checkpoint_not_read": true,
+  "source_sha256": {
+    "../../../../../01_project_documents/01_competition_and_assignments/task1_2026/BraTS2026_Task1_English.md": "1196e3fa7787b99c79e91415a997076777f975c0c7d81c888c747e5cca6f8ab4",
+    "../../../../G2/01_code/g2_create_train_val_test_split.py": "137c75f584021a2204d1cbba0cc4c7fb59f4dc74a855370a1ca470a4bcf99d6d",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/manifests/real_train_manifest.csv": "bcf5c4eff5bcc3ae6752c5c57059697936e4d989f8eebe375422fa66d19c6161",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/splits/splits_master_train_val_test.json": "5b77bf4ae92e08df2495a17ace104d5e4160c77ed718bba1a7f2cdde87adfcc6",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/splits/splits_final_train_val_test.json": "1a512487aeef292f040fd68932a1a623c36aa22b85baedcc1d96a9f0c8918e22",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/splits/splits_master_train_val_test_membership.csv": "1c829e7f7cc77505cb487b072bb58b6e9e8ac26ea770f7f938404d6d779f5673",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/splits/splits_final_train_val_test_membership.csv": "0a533791617d44d1ffe1afefe04b1154db2e7f8cf6db9f3421a8c1ff1aec7f9a",
+    "../../12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/manifests/FIXED103_REAL_T2W_CASES.csv": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "operator/inspect_image_dataset_20261103T171004Z/RAW_IMAGE_DATASET.json": "37ce12afdf846e193783e7d067d003f8f1b10e034ad15b450f2d8086022538f9"
+  },
+  "raw_external_registry_git_excluded": true
+}

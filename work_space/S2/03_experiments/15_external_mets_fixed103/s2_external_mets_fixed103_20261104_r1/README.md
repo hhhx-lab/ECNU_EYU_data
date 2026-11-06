@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+UTC13:21年份/划分补正：我们使用2026 Task1发放入口列出的BraTS2025命名训练包，没有换用另一套去年数据；原manifest与2025镜像的1296病例ID全集一致。fixed103是seed42患者组划分的真实T2W val103，独立real-only test104未用于本表；原byte版本/2025实际训练fold仍未知。见[2026入口与split证据](COHORT_YEAR_AND_SPLIT_CLARIFICATION_20261106.md)。本轮仅本机查证，无新服务器状态或作业，旧分数/科学边界不变。
+
 2026-11-06数据来源复核：**2025镜像数据登记与fixed103精确ID交集103/103，不能将本表当外部未曝光测试。** 实际checkpoint各fold训练成员仍未知；当前队列来自公开2025标注训练池，不是独立2024测试。已定位2025 Synapse参考页、核实Zenodo DOI是挑战说明非MRI；未下载数据或更新服务器进度，旧分数和完成证据保持。见[数据入口、证据与独立评估要求](DATASET_PROVENANCE_REVIEW_20261106.md)。
 
 **2026-11-06当前：三路统一评分4319117已COMPLETED 0:0/01:13:43，2025、K1-175、原比赛E-200各103例/72项全部完成，K1与原E各自历史逐例完全复现。** 12份轻量结果已回本地逐SHA验收，216条均值与216条共同finite配对计数/均值/差值本地复算通过。见[中文结果入口及全部72项](results/comparison_light_20261106T121856Z/README.md)与[完成复核](COMPARISON_COMPLETION_REVIEW_20261106_1223UTC.json)。

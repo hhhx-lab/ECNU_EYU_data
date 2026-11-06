@@ -6,6 +6,8 @@ formal_gate_status: not_run_not_passed
 
 # 在同一验证集上比较本项目与外部分割模型
 
+UTC2026-11-06T13:21来源口径补正：[2026发放/seed42核查](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/COHORT_YEAR_AND_SPLIT_CLARIFICATION_20261106.md)确认2026 Task1保存页面列出BraTS2025命名训练包，本项目原manifest与2025镜像登记的1296病例ID全集一致。下文“2025公开训练来源”不是说我们没使用2026比赛给的数据；fixed103为seed42患者组内部val的authentic子集，real-only test104未用于横评。尚未验收跨年MRI/标签byte相同或2025所用checkpoint全部训练fold；本项目split可复现不保证外部成品未见103。无本轮下载/SSH/作业或新分数。
+
 2026-11-06补充：[去年数据入口与训练重叠复核](../../../03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/DATASET_PROVENANCE_REVIEW_20261106.md)已重放确认2025冠军镜像`BraTS2025MET`登记1296病例，fixed103全部103/103在登记中；实际checkpoint fold训练成员仍未知。原元数据给出[2025 METS参考页](https://www.synapse.org/Synapse:syn64153130/wiki/631058)，Zenodo DOI15094823经官方API确认是2025挑战说明PDF、不是MRI下载包。当前103本来来自公开2025标注训练池，不是独立2024测试集；现有横评分数不删改，不能称独立泛化。Synapse地区限制未绕过，2024专属下载入口/跨年独立性未验收；本次未读MRI/GT、未连接服务器或提交。下方2025名单未知等为最初可行性状态，需与后续登记交集补充一起阅读。
 
 复核日期：2026-11-04，Asia/Shanghai。范围是 BraTS-METS 分割，不是 G1 影像生成 SSIM；本次只做可行性与历史复核，没有下载、安装、推理或提交。
