@@ -1,0 +1,88 @@
+{
+  "reviewed_at": "2026-11-06T13:06:51Z",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "scope": "local_registry_csv_replay_and_public_dataset_reference_research_only",
+  "model_year": 2025,
+  "registry": {
+    "name": "BraTS2025MET",
+    "description": "MRI data for 2025 BraTS MET challenge",
+    "numTraining": 1296,
+    "registered_cases": 1296,
+    "reference": "https://www.synapse.org/Synapse:syn64153130/wiki/631058",
+    "licence_field": "https://doi.org/10.5281/zenodo.15094823",
+    "reference_origin": "selected_2025_image_dataset_json_not_live_synapse_download_verification",
+    "source_layer_sha256": "e1fb9995d7ec3c2a1c6d4507b49d1350508f3412daa202fcf183966f6b3a2ef2",
+    "original_image_dataset_json_sha256": "e40f30fb9952a79b45cc11f989e5244e39b627def90d5167203115a1c9010c02",
+    "local_reserialized_registry_sha256": "37ce12afdf846e193783e7d067d003f8f1b10e034ad15b450f2d8086022538f9",
+    "different_serializations_are_not_a_sha_drift_comparison": true,
+    "raw_registry_git_excluded": true
+  },
+  "fixed103": {
+    "csv_sha256": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "id_column": "source_case_id",
+    "rows": 103,
+    "unique_ids": 103,
+    "registry_exact_id_overlap": 103,
+    "missing_ids": [],
+    "original_exposure_audit_reproduced": true,
+    "patient_groups_from_prior_membership_audit": 69,
+    "cohort_source": "internal_validation_subset_of_public_2025_labelled_training_sources_not_official_test"
+  },
+  "public_document": {
+    "metadata_url": "https://zenodo.org/api/records/15094823",
+    "doi_url": "https://doi.org/10.5281/zenodo.15094823",
+    "metadata_read_success": true,
+    "title": "MICCAI 2025 Lighthouse Challenge: Brain Tumor Segmentation Cluster of Challenges (BraTS)",
+    "publication_date": "2025-03-27",
+    "mets_task_number_in_2025": 4,
+    "mets_scope": "pre_and_post_treatment_brain_metastases",
+    "data_platform": "Synapse",
+    "listed_file_count": 1,
+    "listed_file_type": "challenge_description_pdf_not_mri_dataset",
+    "listed_file_bytes": 549240,
+    "record_license": "cc-by-4.0",
+    "record_license_does_not_establish_dataset_or_model_license": true,
+    "file_downloaded": false
+  },
+  "access_limits": {
+    "synapse_previous_attempt_status": "GEO_RESTRICTION",
+    "synapse_not_retried_after_restriction": true,
+    "correct_2025_reference_live_contents_verified": false,
+    "2024_mets_specific_download_entry_verified": false,
+    "penn_legacy_brats2024_page_result": "page_not_found",
+    "legacy_local_2025_raw_directory_and_two_batch1_zip_paths_exist_at_exact_old_paths": false,
+    "old_path_absence_does_not_prove_dataset_absent_from_other_storage": true,
+    "remote_storage_or_job_status_queried": false
+  },
+  "conclusions": {
+    "2025_registry_overlap_confirmed": true,
+    "actual_2025_checkpoint_fold_training_membership_verified": false,
+    "inference_ground_truth_access_proven": false,
+    "competition_misconduct_proven": false,
+    "high_score_alone_proves_leakage": false,
+    "independent_generalization_claim_permitted": false,
+    "different_year_alone_guarantees_unseen_patients": false,
+    "previous_metrics_changed": false
+  },
+  "operations": {
+    "environment": "Conda base standard_library_and_existing_curl_jq",
+    "source_images_read": false,
+    "ground_truth_voxels_read": false,
+    "checkpoints_loaded": false,
+    "dataset_or_model_downloaded": false,
+    "ssh_or_vpn_used": false,
+    "jobs_submitted_or_modified": false,
+    "dependencies_installed": false,
+    "locked_test_unlocked": false
+  },
+  "evidence": [
+    "IMAGE2025_REGISTRY_EXPOSURE.json",
+    "operator/inspect_image_dataset_20261103T171004Z/IMAGE_DATASET_AUDIT.json",
+    "operator/inspect_image_dataset.py",
+    "operator/inspect_image_sources_20261103T170202Z/IMAGE_SOURCE_AUDIT.json",
+    "../../../05_documents/07_references/20261104_external_models_fixed103_feasibility/REPORT.md",
+    "../../12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/manifests/FIXED103_REAL_T2W_CASES.csv"
+  ]
+}
