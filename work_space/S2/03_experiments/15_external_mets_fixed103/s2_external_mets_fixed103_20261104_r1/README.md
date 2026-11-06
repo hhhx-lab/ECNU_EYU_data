@@ -1,5 +1,7 @@
 # 两外部METS模型同fixed103执行批次R1
 
+2026-11-06本次进度：Bio4319113仍排队；CPU评分4319117已运行约47分钟，2025的103例评分已完成，K1评分中，原E/历史重放/最终汇总待完成。没有失败或包漂移，现有告警保留。见[进度复核](PROGRESS_REVIEW_20261106_1126UTC.json)。下文早期快照为历史。
+
 收尾最新快照：评分4319117已RUNNING/node203且Python STARTED同合同；暂无FAILED/COMPLETE或包漂移，Bio仍PENDING/Priority。2025预测已回传，三路分割指标仍计算中；见[执行复核](EXECUTION_REVIEW_20261106.json)。
 
 **当前：Bio-Intel4319113已提交/释放，PENDING/Priority；三路统一评分4319117已提交/释放，RUNNING/node203；2025的103预测已在Mac逐SHA验收通过。** CPU评分采用原官方MET环境与固定103验证集、69患者组，K1-175与原比赛E-200历史重放及全部72指标；还没有2025新分数/完成对比表。原R1大小写匹配误拒已查明，独立R2复用原冻结runtime/数据/环境后完成首次提交，全部旧失败保留。见[执行记录](EXECUTION_AND_COMPARISON_20261106.md)与[STATUS](STATUS_20261106.md)。下文评分未提交等均为历史，不读锁定测试或重提Bio。

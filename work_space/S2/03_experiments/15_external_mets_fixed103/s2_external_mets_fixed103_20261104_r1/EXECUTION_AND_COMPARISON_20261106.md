@@ -16,6 +16,12 @@
 
 ## 评分执行与暂未完成项
 
+### 本次进度查询
+
+2026-11-06本次即时只读检查：Bio-Intel4319113仍PENDING/Priority、0预测、无STARTED/FAILED/COMPLETE，未运行。三路评分4319117 allocation/batch RUNNING/node203，squeue elapsed47:28（sacct46:35，保留实际观测差异）。EXT2025的PROGRESS已记录103例且日志确认完整72列CSV产生；K1已进入官方评价，PROGRESS尚无；原E、历史重放与总COMPLETE尚无。无包漂移或FAILED，未回传半成品评分CSV，不据单列日志值判优劣。K1日志保留原Panoptica NSD默认0.5及非整数dtype告警，不等于作业FAILED，也不声称无告警。remote UTC2026-11-06T11:15:22.205392+00:00、本地finally11:26:50.706159/复核2026-11-06T11:27:59+00:00分记；余588223873024bytes=547.826171875GiB，quota0空非数值账号额度。只使用现有只读入口，无新提交/释放/安装/影像或GT读取，用户VPN保留，不恢复监控。
+
+本次仅读现有两job状态、marker、日志尾及静态包身份；2025的103份预测已在上次完整验收回Mac，本轮未下载MRI/模型或未完成的评分。EXT2025单路进度不等于三路历史复现/paired/bootstrap完成，也不等于Bio完成。源码未修改、依赖未安装，本次没有重跑模型或评分。见[进度复核](PROGRESS_REVIEW_20261106_1126UTC.json)和[原始只读快照](operator/snapshot_current_comparison_20261106T112642Z/RESULT.json)。最终评分完成后仍须allocation/batch COMPLETED0:0、COMPLETE、历史逐例72项复现及回传SHA。
+
 **收尾快照：4319117在node203运行5分17秒，评分Python STARTED已出现并绑定同JobID/合同；无FAILED/COMPLETE或包漂移，三路PROGRESS尚无。** Bio4319113仍PENDING/Priority、0预测。快照remote UTC10:33:10.347387、本机复核UTC10:45:28分记；最新文件系统余613466243072bytes=571.3349609375GiB，quota0空。全部评分结果仍等待本作业完成，不生成虚构的2025对比数值。见[最终执行复核](EXECUTION_REVIEW_20261106.json)和[收尾快照](operator/snapshot_current_comparison_20261106T104425Z/RESULT.json)。下文STARTED尚无是10:29初始快照的历史。
 
 最终104356完整309发现/307pass/2原版本skip，108生产源码Python3.10 AST与base三控制入口imports通过，含新增本地独立提交验收入口。索引第一次build与测试日志/VERIFICATION写入相撞，报告仅这两项变动，源码/curated链接无漂移；文件写完后再build/check。原测试、提交和索引失败均留证，不以工程验收升级科学结果。

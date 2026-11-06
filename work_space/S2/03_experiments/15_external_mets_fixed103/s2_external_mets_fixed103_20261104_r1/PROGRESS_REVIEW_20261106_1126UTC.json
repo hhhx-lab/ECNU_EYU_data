@@ -1,0 +1,78 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "Bio_pending_2025_MET103_scored_K1_evaluation_running_final_comparison_pending",
+  "local_reviewed_utc": "2026-11-06T11:27:59+00:00",
+  "snapshot": {
+    "finished_remote_utc": "2026-11-06T11:15:22.205392+00:00",
+    "squeue": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4319113|PENDING|0:00|(Priority)\n4319117|RUNNING|47:28|node203\n"
+    },
+    "sacct": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "4319113|s2ext26full|PENDING|0:0|00:00:00|None assigned|Unknown|Unknown\n4319117|s2ext25k1e|RUNNING|0:0|00:46:35|node203|2026-11-06T18:27:53|Unknown\n4319117.batch|batch|RUNNING|0:0|00:46:35|node203|2026-11-06T18:27:53|Unknown\n"
+    },
+    "drift": [],
+    "free_bytes": 588223873024,
+    "quota": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "Bio_prediction_file_count": 0,
+    "Bio_reports": {
+      "COMPLETE.json": null,
+      "FAILED.json": null,
+      "RUN_CONTRACT.json": null,
+      "STARTED.json": null
+    },
+    "comparison_reports": {
+      "COMPLETE.json": null,
+      "FAILED.json": null,
+      "HISTORICAL_REPLAY.json": null,
+      "PROGRESS_EXT2025.json": {
+        "bytes": 218,
+        "data": {
+          "artifact_status": "experimental_unvalidated",
+          "cases": 103,
+          "formal_gate_status": "not_run_not_passed",
+          "model": "EXT2025",
+          "operator_approved": false,
+          "remote_utc": "2026-11-06T10:55:01.510466+00:00"
+        },
+        "sha256": "a0523f3acb6ccda6e0cfcff1aaf4602a77e3f7f8666a312fed8c72a764dcbeba"
+      },
+      "PROGRESS_K1_175.json": null,
+      "PROGRESS_original_E_200.json": null,
+      "STARTED.json": {
+        "bytes": 293,
+        "data": {
+          "artifact_status": "experimental_unvalidated",
+          "contract_sha256": "ae679cbb723ed9bccbdfcda172056d7f0ab17371db2ffc67f3685d1bef058ed5",
+          "formal_gate_status": "not_run_not_passed",
+          "job_id": "4319117",
+          "operator_approved": false,
+          "started_utc": "2026-11-06T10:28:20.970620+00:00"
+        },
+        "sha256": "2038dc05c37d73356951856dc748d8f7850d0181ea0e30cee9eaf1d5b2720606"
+      }
+    }
+  },
+  "source": "operator/snapshot_current_comparison_20261106T112642Z/RESULT.json",
+  "warnings_retained": [
+    "Panoptica NSD threshold default 0.5",
+    "K1 input arrays dtype non-integer; current runtime validates finite legal values; no downgrade of actual errors"
+  ],
+  "remote_writes": false,
+  "new_submissions_or_releases": false,
+  "images_or_GT_read": false,
+  "partial_scores_downloaded": false,
+  "own_vpn_created": false,
+  "preexisting_vpn_preserved": true,
+  "scientific_superiority_pass": false,
+  "locked_test_read": false
+}
