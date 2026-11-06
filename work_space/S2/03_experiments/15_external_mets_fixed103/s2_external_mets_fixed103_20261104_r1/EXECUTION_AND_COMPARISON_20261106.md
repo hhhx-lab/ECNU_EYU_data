@@ -16,6 +16,12 @@
 
 ## 评分执行与暂未完成项
 
+### 19:52进度查询
+
+2025与K1已各自完成103例/72列评分，CPU4319117在node203运行1:13:15，已进入原比赛E评价。K1评价日志记录CSV SHA与历史相同；原E进度、全量历史重放、总COMPLETE均尚无，不以部分结果判断谁更好，不回传未验收的最终表。Bio4319113仍PENDING/Priority，0预测、未开始。无FAILED或静态漂移，现有NSD默认阈值/dtype告警保留。本次仅现有操作器一次即时只读快照，未改源码/模型/环境/资源，不重跑测试/提交/释放/安装/影像GT读取或恢复监控；用户VPN保留。
+
+remoteUTC11:41:09.264230/local finally11:52:37.668038/本地复核2026-11-06T11:53:52+00:00分记，余588107481088bytes=547.7177734375GiB，quota0空。见[本次复核](PROGRESS_REVIEW_20261106_1152UTC.json)与[原始快照](operator/snapshot_current_comparison_20261106T115223Z/RESULT.json)，后续段落中的K1未完成是此前快照。
+
 ### 本次进度查询
 
 2026-11-06本次即时只读检查：Bio-Intel4319113仍PENDING/Priority、0预测、无STARTED/FAILED/COMPLETE，未运行。三路评分4319117 allocation/batch RUNNING/node203，squeue elapsed47:28（sacct46:35，保留实际观测差异）。EXT2025的PROGRESS已记录103例且日志确认完整72列CSV产生；K1已进入官方评价，PROGRESS尚无；原E、历史重放与总COMPLETE尚无。无包漂移或FAILED，未回传半成品评分CSV，不据单列日志值判优劣。K1日志保留原Panoptica NSD默认0.5及非整数dtype告警，不等于作业FAILED，也不声称无告警。remote UTC2026-11-06T11:15:22.205392+00:00、本地finally11:26:50.706159/复核2026-11-06T11:27:59+00:00分记；余588223873024bytes=547.826171875GiB，quota0空非数值账号额度。只使用现有只读入口，无新提交/释放/安装/影像或GT读取，用户VPN保留，不恢复监控。
