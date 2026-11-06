@@ -1,5 +1,11 @@
 # 两外部METS模型同fixed103执行批次R1
 
+收尾最新快照：评分4319117已RUNNING/node203且Python STARTED同合同；暂无FAILED/COMPLETE或包漂移，Bio仍PENDING/Priority。2025预测已回传，三路分割指标仍计算中；见[执行复核](EXECUTION_REVIEW_20261106.json)。
+
+**当前：Bio-Intel4319113已提交/释放，PENDING/Priority；三路统一评分4319117已提交/释放，RUNNING/node203；2025的103预测已在Mac逐SHA验收通过。** CPU评分采用原官方MET环境与固定103验证集、69患者组，K1-175与原比赛E-200历史重放及全部72指标；还没有2025新分数/完成对比表。原R1大小写匹配误拒已查明，独立R2复用原冻结runtime/数据/环境后完成首次提交，全部旧失败保留。见[执行记录](EXECUTION_AND_COMPARISON_20261106.md)与[STATUS](STATUS_20261106.md)。下文评分未提交等均为历史，不读锁定测试或重提Bio。
+
+**2026-11-06本次执行：Bio完整七折R3 4319113已提交、held审计及首次release0，当前PENDING/Priority。2025已完成的103预测已回Mac并逐文件大小/SHA通过。**原E本地103份预测已找到，绑定比赛epoch200且native/标签/参考一致性通过；K1现存预测与当前官方MET环境SHA通过。三路统一评分首次CPU资源门在sbatch前停止，尚无评分JobID/2025新分数，正在只读诊断；原失败保留，不重提Bio。见[执行与比较记录](EXECUTION_AND_COMPARISON_20261106.md)、[本地预测](results/2025_full103_download_20261106T102424Z/README.md)和[STATUS](STATUS_20261106.md)。下方无Bio JobID/只回轻量清单是历史，锁定test不读与科学边界不变。
+
 **2026-11-06再次查询：2025全量4310575已COMPLETED 0:0，18分27秒完成103预测，当前103文件大小/SHA与完成清单独立核验通过。** 5份轻量清单已拉回，模型/NIfTI留远端；统一分割评分未运行，非科学质量pass。Bio仍无JobID/queue/accounting，原R2机时拒绝保留，但当前数值余额未取得、不复投，不能据旧错误说现在仍不足/已恢复。余584.085GiB非数值quota；退出finalizer清理Errno39告警保留，作业0和当前输出身份一致。20轻量回执SHA、实际执行源码和两端UTC复核通过，两个只读会话均保留用户VPN，无重提/释放/安装或GT-test读取。见[当前复核](FULL103_STATUS_REVIEW_20261106_0732UTC.json)、[103预测轻量清单](operator/accept_2025_full103_completion_20261106T073525Z/PREDICTION_SHA256.json)与[最新状态](STATUS_20261106.md)。下方R2拒绝/PENDING等均为历史，原模型/数据/公开训练暴露和科学边界保持。
 
 **最新北京时间2026-11-05 23:46：CPU4309579已COMPLETED 0:0，耗时1小时16分29秒，最终2025 SIF转换及大小/SHA验收通过。**SIF 4.1253 GiB，三复用wheel身份一致，COMPLETE存在、无FAILED或漂移；这是转换工程通过，不是GPU推理通过。完整Bio-Intel环境、两路真实GPU smoke及全量仍未完成或提交。最新文件系统余744.78 GiB，账号数值quota/全量峰值门未验证；本次仅一次只读快照，不安装或新增作业，用户VPN保留，原失败不删。见[完成复核](operator/snapshot_sif_recovery_r2_20261105T154434Z/LOCAL_SNAPSHOT_REVIEW.json)与[STATUS](STATUS_20261104.md)，下方压缩中为历史。

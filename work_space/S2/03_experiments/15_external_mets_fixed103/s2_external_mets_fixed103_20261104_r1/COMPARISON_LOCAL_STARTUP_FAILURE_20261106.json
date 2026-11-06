@@ -1,0 +1,14 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "stage": "local_module_import_before_VPN_or_SSH",
+  "command": "conda run --no-capture-output -n base python -B operator/submit_fixed103_comparison.py",
+  "returncode": 1,
+  "error": "ModuleNotFoundError: No module named 'numpy'",
+  "cause": "submission operator imported local audit module whose data-only imports were at module scope",
+  "correction": "move NumPy/nibabel imports inside local audit main; submission continues in base without adding dependencies",
+  "remote_attempted": false,
+  "jobs_created": false,
+  "dependencies_installed": false
+}

@@ -1,0 +1,59 @@
+{
+  "Bio_prediction_file_count": 0,
+  "Bio_reports": {
+    "COMPLETE.json": null,
+    "FAILED.json": null,
+    "RUN_CONTRACT.json": null,
+    "STARTED.json": null
+  },
+  "artifact_status": "experimental_unvalidated",
+  "comparison_acceptance": "not_complete",
+  "comparison_reports": {
+    "COMPLETE.json": null,
+    "FAILED.json": null,
+    "HISTORICAL_REPLAY.json": null,
+    "PROGRESS_EXT2025.json": null,
+    "PROGRESS_K1_175.json": null,
+    "PROGRESS_original_E_200.json": null,
+    "STARTED.json": {
+      "bytes": 293,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "ae679cbb723ed9bccbdfcda172056d7f0ab17371db2ffc67f3685d1bef058ed5",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4319117",
+        "operator_approved": false,
+        "started_utc": "2026-11-06T10:28:20.970620+00:00"
+      },
+      "sha256": "2038dc05c37d73356951856dc748d8f7850d0181ea0e30cee9eaf1d5b2720606"
+    }
+  },
+  "drift": [],
+  "finished_remote_utc": "2026-11-06T10:33:10.347387+00:00",
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 613466243072,
+  "images_or_GT_read": false,
+  "lightweight_download_files": {},
+  "logtails": {
+    "attempts/compare_2025_K1_E_r2/logs/compare_4319117.err": "",
+    "attempts/compare_2025_K1_E_r2/logs/compare_4319117.out": ""
+  },
+  "operator_approved": false,
+  "quota": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote_utc": "2026-11-06T10:33:01.857806+00:00",
+  "remote_writes": false,
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4319113|s2ext26full|PENDING|0:0|00:00:00|None assigned|Unknown|Unknown\n4319117|s2ext25k1e|RUNNING|0:0|00:04:24|node203|2026-11-06T18:27:53|Unknown\n4319117.batch|batch|RUNNING|0:0|00:04:24|node203|2026-11-06T18:27:53|Unknown\n"
+  },
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4319113|PENDING|0:00|(Priority)\n4319117|RUNNING|5:17|node203\n"
+  }
+}

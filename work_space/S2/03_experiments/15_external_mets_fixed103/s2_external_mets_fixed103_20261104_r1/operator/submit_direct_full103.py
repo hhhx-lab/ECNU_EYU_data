@@ -27,6 +27,16 @@ def digest(text):
     return hashlib.sha256(text.encode()).hexdigest()
 
 
+def expanded_queue(text):
+    import re
+    rows = [line.split('|') for line in text.splitlines() if line]
+    assert all(len(row) == 7 for row in rows), 'expanded queue column drift'
+    assert all(re.fullmatch(r'\d+(?:_\d+)?', row[0]) and row[6].isdigit()
+               and int(row[6]) > 0 for row in rows), 'unexpanded or invalid queue row'
+    assert len({row[0] for row in rows}) == len(rows), 'duplicate queue job'
+    return rows
+
+
 def render_slurm(attempt, model, contract_sha):
     assert model in MODELS and Path(attempt).is_absolute()
     name = MODELS[model][1]
@@ -210,10 +220,10 @@ try:
   qos=list(csv.DictReader(io.StringIO(command(['sacctmgr','-P','show','qos'])),delimiter='|'))
   selected=[x for x in qos if x['Name'] in ('user_zqchen','partition_a100')]
   assert len(selected)==2,'applicable QoS missing'
-  queue=command(['squeue','-h','-u','zqchen','-o','%i|%T|%P|%j|%r|%b'])
-  jobs=[x.split('|') for x in queue.splitlines() if x]
+  queue=command(['squeue','-r','-h','-u','zqchen','-o','%i|%T|%P|%j|%r|%b|%C'])
+  jobs=expanded_queue(queue)
   assert not any(x[3] in ('s2ext25full','s2ext26full') and x[3]==JOB_NAME for x in jobs),'full inference already queued'
-  usage=sum(int(job_fields(command(['scontrol','show','job',x[0],'-o']))['NumCPUs']) for x in jobs)
+  usage=sum(int(x[6]) for x in jobs)
   for q in selected:
    limit=q.get('MaxTRESPU','')
    if limit:
@@ -267,7 +277,7 @@ except BaseException as error:
 
 def code_for(action, payload_path, payload_sha, model, verified=None, extra_source=''):
     import inspect
-    code = 'MODELS=' + repr(MODELS) + '\n' + inspect.getsource(job_fields) + '\n' + inspect.getsource(validate_held)
+    code = 'MODELS=' + repr(MODELS) + '\n' + inspect.getsource(job_fields) + '\n' + inspect.getsource(validate_held) + '\n' + inspect.getsource(expanded_queue)
     code = 'import re\n' + code
     code += '\nACTION=' + repr(action) + '\nPAYLOAD_PATH=' + repr(payload_path) + '\nPAYLOAD_SHA=' + repr(payload_sha)
     code += '\nJOB_NAME=' + repr(MODELS[model][1]) + '\nVERIFIED=' + repr(verified) + '\n' + extra_source + '\n' + REMOTE
