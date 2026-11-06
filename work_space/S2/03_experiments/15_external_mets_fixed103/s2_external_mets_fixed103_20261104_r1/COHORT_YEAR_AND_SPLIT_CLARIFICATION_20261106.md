@@ -69,3 +69,35 @@ Conda base标准库集合核对结果：
 所以训练污染风险存在于“拿同源公开训练池里我们的内部验证子集做外部权重泛化比较”，而不是仅凭2025文件名指控比赛数据泄漏、篡改我们的数据或推理读取GT。现有72指标/模型/预测/旧失败全部保留，不改正式比赛成绩、不解锁104，也不更新Bio远端进度。
 
 本次各源文件SHA、全集交集和split核验见[结构化补正](COHORT_YEAR_AND_SPLIT_CLARIFICATION_20261106.json)。工具仅Conda base标准库，本地JSON/CSV/文本读取；旧[数据来源报告](DATASET_PROVENANCE_REVIEW_20261106.md)需与本补正共同阅读，不能继续把“2025公开训练池”理解为非2026发放来源。
+
+## 6. Pre/Post是否分开处理
+
+UTC2026-11-06T14:58:32本机补充核查：官方描述是**治疗前/治疗后**，不严格等于手术前/手术后；UCSD纵向资料还包括非手术治疗场景。T1N/T1C的造影剂注射前/后是另一含义，不能当作治疗状态。
+
+| 层次 | 现有处理 | 边界 |
+|---|---|---|
+| 官方任务 | 同时覆盖pre-treatment和post-treatment，RC=4表示切除腔 | 未取得可核验逐例临床pre/post清单，不断言官方其他位置没有该元数据 |
+| 本项目manifest/split | 检查原manifest、master/real-only membership及fixed103四张表，没有pre/post-treatment、surgery或timepoint临床状态列 | `split_source`是数据来源，`patient_group`和病例后缀用于身份/纵向分组，不是术前术后诊断 |
+| 本项目划分 | seed42按患者组随机，authentic anchor及missing组分配；患者跨split交集0 | 没有按临床pre/post做比例分层，同患者时间点放在同split不等于分开训练 |
+| 本项目S2训练 | 共用分割网络，保留标签4/RC；K1等有RC-aware增强 | 按RC类别处理不等于输入临床状态或分别训练术前/术后模型；本次不证明外部2025作者的内部训练策略 |
+| 本次三路比较 | 各模型同103例，输出ET/RC/TC/WT区域指标及患者组配对统计 | 未报告真正pre/post临床子组；RC区域分数不是整个术后人群分数 |
+
+既有G2 `labels_present_after_overlay`字段与fixed103 ID交叉显示**16/103有RC标注，87/103没有RC标注**。这是标签登记的本地统计，没有重新打开GT体素或验证当前临床病历；不能写成“16术后、87术前”。无RC可能是未经手术的治疗后、无可见切除腔等情况，不能仅靠这一代理赋临床类别。病例`-000/-001`后缀也不能自动映射到术前/术后；103后缀分布52/20/17/12/2（000至004）只是身份统计。
+
+真实pre/post横评需要可追溯的病例级治疗状态，保持原fixed103与患者组关系，并对分层有效病例数/患者数、区域分母及置信区间单列。若只能取得RC信息，可做“RC-present/RC-absent”描述性敏感性分析，但不得冒充术前/术后成绩。现有MET某指标的finite分母也不是全部有RC病例数，不能拿它推算术后人数。
+
+结构化证据和八份源SHA见[TREATMENT_STATUS_REVIEW_20261106.json](TREATMENT_STATUS_REVIEW_20261106.json)。本次不改模型、训练/评分代码、split或已有分数，不提交额外作业、不下载数据或读取MRI/GT/checkpoint，不更新Bio远端状态。
+
+## 7. 当前服务器保留数据有没有逐例Pre/Post表
+
+上述本机复核之后，按授权做了一次有界只读目录/元数据检查，使用[专用检查器](operator/inspect_official_clinical_metadata.py)，原始[RESULT](operator/inspect_official_clinical_metadata_20261106T150544Z/RESULT.json)及[本机回执](operator/inspect_official_clinical_metadata_20261106T150544Z/LOCAL_OPERATION_RECEIPT.json)保留。远端开始/完成UTC14:54:23.741618/14:54:30.002355，本机开始/完成UTC15:05:44.465368/15:05:58.569887分别记录，不宣称时钟同步。
+
+- `/public/home/zqchen/data`当前规范化/保留目录：1298目录、7779条目；没有找到元数据文件、ZIP/tar归档或按临床pre/post命名的目录，元数据内容读取0bytes，错误和枚举截断均空。
+- 项目`work_space/G1/data/raw`：2目录、3条目，仅保留corrected-labels目录；没有训练原ZIP、逐例临床状态表或pre/post目录。它不是完整未修改官方发行包。
+- 因此**当前检查的服务器数据目录没有可直接使用的病例级pre/post表，本机主manifest/split也未接入这项临床状态**。不能推论原ZIP、Synapse平台其他表或管理员别处从未提供过；也不能据目录缺表说RC标签丢失。
+
+检查仅枚举目录和候选元数据，不打开MRI/GT/checkpoint，不查询或变动作业；复用用户已连接VPN，`vpn_owned=false`、`preexisting_vpn_preserved=true`，未关闭用户会话。
+
+## 8. RC有无是否进入loss与评分分母
+
+后续用户询问presence indicator与权重归一化，已独立追溯原E合同、7月Git源码与K1历史SHA清单，详见[RC存在性/loss/有效样本复核](RC_PRESENCE_LOSS_REVIEW_20261106.md)及[结构化审计](RC_PRESENCE_LOSS_REVIEW_20261106.json)。focal按有效GT体素权重和归一化，无RC不额外加入权重3；没有单独的病例/类别presence开关。参考Dice保留全部前景通道、smooth避免0/0，完整历史已安装底层源码未独立验收。16有RC扫描只属8患者，病灶Dice实际n15；阴性87例的MET RC误报扫描数2025/K1/原E为0/4/3，不能仅靠阳性Dice判断全部RC能力。无新评分、训练/模型/划分改动或依赖安装。

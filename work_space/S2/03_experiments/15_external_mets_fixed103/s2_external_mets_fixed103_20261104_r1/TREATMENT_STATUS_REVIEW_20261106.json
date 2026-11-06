@@ -1,0 +1,63 @@
+{
+  "reviewed_at": "2026-11-06T14:58:32Z",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "scope": "existing_local_clinical_context_manifest_schema_split_code_and_comparison_code_review",
+  "official_context": {
+    "declared_case_status": "pre_treatment_and_post_treatment",
+    "post_treatment_not_limited_to_post_surgery": true,
+    "includes_longitudinal_UCSD_cases_and_non_surgical_treatment_context": true,
+    "RC_label": 4,
+    "RC_meaning": "resection_cavity",
+    "T1_pre_post_contrast_is_different_from_pre_post_treatment": true,
+    "official_per_case_clinical_status_mapping_verified": false,
+    "live_page_revisited": false
+  },
+  "local_schema_checks": {
+    "real_train_manifest_clinical_status_columns": [],
+    "master_membership_clinical_status_columns": [],
+    "realonly_membership_clinical_status_columns": [],
+    "fixed103_clinical_status_columns": [],
+    "clinical_column_search": "pre/post-op, pre/post-treatment, treatment, surgery, timepoint",
+    "actual_per_case_pre_post_labels_known": false,
+    "absence_in_checked_tables_does_not_prove_official_metadata_absent_elsewhere": true
+  },
+  "fixed103_existing_label_registry": {
+    "cases": 103,
+    "labels_field": "labels_present_after_overlay",
+    "RC_present_cases": 16,
+    "RC_not_present_cases": 87,
+    "count_basis": "existing_G2_manifest_label_tokens_not_new_NIfTI_read",
+    "RC_presence_not_complete_clinical_pre_post_classifier": true,
+    "no_RC_does_not_imply_pre_treatment": true,
+    "case_suffix_does_not_establish_surgery_status": true,
+    "timepoint_suffix_counts_not_clinical_status": {"000": 52, "001": 20, "002": 17, "003": 12, "004": 2}
+  },
+  "workflow": {
+    "split_seed": "42",
+    "patient_group_cross_split_overlap": 0,
+    "split_stratified_by_clinical_pre_post_status": false,
+    "local_S2_training_has_explicit_pre_post_clinical_input_or_routing": false,
+    "RC_as_segmentation_class_preserved": true,
+    "RC_aware_augmentation_not_a_pre_post_classifier": true,
+    "current_comparison_has_pre_post_clinical_subgroup_reports": false,
+    "current_comparison_reports_regions": ["ET", "RC", "TC", "WT"],
+    "regional_RC_score_not_post_treatment_cohort_score": true,
+    "external_2025_internal_training_or_clinical_stratification_verified": false
+  },
+  "next_step_boundary": "verified_case_level_treatment_metadata_needed_for_true_pre_post_analysis_RC_presence_only_descriptive_proxy_no_automatic_relabelling_or_jobs",
+  "environment": "Conda_base_standard_library_and_existing_shell_tools",
+  "no_MRI_or_GT_voxel_reads_checkpoint_loads_downloads_SSH_jobs_or_dependency_installs": true,
+  "existing_metrics_or_split_changed": false,
+  "source_sha256": {
+    "../../../../../01_project_documents/01_competition_and_assignments/task1_2026/BraTS2026_Task1_English.md": "1196e3fa7787b99c79e91415a997076777f975c0c7d81c888c747e5cca6f8ab4",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/manifests/real_train_manifest.csv": "bcf5c4eff5bcc3ae6752c5c57059697936e4d989f8eebe375422fa66d19c6161",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/splits/splits_master_train_val_test_membership.csv": "1c829e7f7cc77505cb487b072bb58b6e9e8ac26ea770f7f938404d6d779f5673",
+    "../../../../G2/02_dataset_release/20260919_archived_local_release/splits/splits_final_train_val_test_membership.csv": "0a533791617d44d1ffe1afefe04b1154db2e7f8cf6db9f3421a8c1ff1aec7f9a",
+    "../../12_k1245_rc_aware/s2_met_aug_k1_selected103_official_met_20261008_r1/manifests/FIXED103_REAL_T2W_CASES.csv": "86ba853dadc64ffc45357895ba0bd543bf5b6b14c0c83eb789f1e875d4aa2e7e",
+    "../../../../G2/01_code/g2_create_train_val_test_split.py": "137c75f584021a2204d1cbba0cc4c7fb59f4dc74a855370a1ca470a4bcf99d6d",
+    "../../../01_code/repository/custom_nnunet/nnUNetTrainerBraTS2026RC.py": "1d84ce2e30daa3400b3132a62bbf1e467648a6022180879ffda33621f3c4346d",
+    "runtime/compare_fixed103.py": "ea807db97bc36ae549d6b6f860dbf833ff98f4933ab5a945af5d1be8b79e0c92"
+  }
+}

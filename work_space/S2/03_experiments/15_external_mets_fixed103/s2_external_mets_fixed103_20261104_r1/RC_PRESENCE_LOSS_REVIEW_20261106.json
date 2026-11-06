@@ -1,0 +1,227 @@
+{
+  "reviewed_at": "2026-11-06T15:12:57Z",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "scope": "historical_custom_loss_source_identity_existing_MET_CSV_and_CPU_synthetic_tensors_only",
+  "source_bindings": {
+    "small_lesion_variants.py": {
+      "sha256": "c25d14c8cf24ffc4bb06ce36aa1fdffbc4460164e0c3d6eed3895d0515723fd0",
+      "K1_historical_source_ledger_match": true,
+      "july27_git_bytes_match": true
+    },
+    "small_lesion_trainer_mixins.py": {
+      "sha256": "151c7eab05e13cbe27d867fd8e805b922b5f4d2c75714de47aedb1c5cd2e56b7",
+      "K1_historical_source_ledger_match": true,
+      "july27_git_bytes_match": true
+    },
+    "nnUNetTrainerBraTS2026RCFocalCompletionFineTune.py": {
+      "sha256": "25096e52a3512d80f47083806f9a411fcf51da31eb729cbd5ed76922610cc697",
+      "K1_historical_source_ledger_match": true,
+      "july27_git_bytes_match": true
+    }
+  },
+  "existing_MET_RC_subsets": {
+    "EXT2025": {
+      "RC_present": {
+        "scans": 16,
+        "patients": 8,
+        "finite_lesion_Dice": 15,
+        "finite_all_instance_F1": 16,
+        "FP_scans": 2,
+        "FP_instances": 2
+      },
+      "RC_absent": {
+        "scans": 87,
+        "patients": 63,
+        "finite_lesion_Dice": 0,
+        "finite_all_instance_F1": 0,
+        "FP_scans": 0,
+        "FP_instances": 0
+      }
+    },
+    "K1_175": {
+      "RC_present": {
+        "scans": 16,
+        "patients": 8,
+        "finite_lesion_Dice": 15,
+        "finite_all_instance_F1": 16,
+        "FP_scans": 1,
+        "FP_instances": 1
+      },
+      "RC_absent": {
+        "scans": 87,
+        "patients": 63,
+        "finite_lesion_Dice": 0,
+        "finite_all_instance_F1": 4,
+        "FP_scans": 4,
+        "FP_instances": 4
+      }
+    },
+    "original_E_200": {
+      "RC_present": {
+        "scans": 16,
+        "patients": 8,
+        "finite_lesion_Dice": 15,
+        "finite_all_instance_F1": 16,
+        "FP_scans": 1,
+        "FP_instances": 1
+      },
+      "RC_absent": {
+        "scans": 87,
+        "patients": 63,
+        "finite_lesion_Dice": 0,
+        "finite_all_instance_F1": 3,
+        "FP_scans": 3,
+        "FP_instances": 3
+      }
+    }
+  },
+  "source_sha256": {
+    "work_space/S2/01_code/repository/custom_nnunet/small_lesion_variants.py": "c25d14c8cf24ffc4bb06ce36aa1fdffbc4460164e0c3d6eed3895d0515723fd0",
+    "work_space/S2/01_code/repository/custom_nnunet/small_lesion_trainer_mixins.py": "151c7eab05e13cbe27d867fd8e805b922b5f4d2c75714de47aedb1c5cd2e56b7",
+    "work_space/S2/01_code/repository/custom_nnunet/nnUNetTrainerBraTS2026RCFocalCompletionFineTune.py": "25096e52a3512d80f47083806f9a411fcf51da31eb729cbd5ed76922610cc697",
+    "work_space/S2/03_experiments/12_k1245_rc_aware/s2_met_aug_k1245_20260923_r3_fallback/operator/k1_resume_source_inspection_20261002_20261002T034139Z/SOURCE_CHECKPOINT_INSPECTION.json": "3da7999c2b8b2034f96cd410a008eafc41dd74f452ecec8ceaf7d9bedf038c2c",
+    "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/results/comparison_light_20261106T121856Z/evaluation/EXT2025/leaderboard_metrics.csv": "f686483df709730dee54d31c894ff326ad04ced5dba93fbec0664c75af55b1d0",
+    "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/results/comparison_light_20261106T121856Z/evaluation/K1_175/leaderboard_metrics.csv": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8",
+    "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/results/comparison_light_20261106T121856Z/evaluation/original_E_200/leaderboard_metrics.csv": "294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167"
+  },
+  "loss_findings": {
+    "class_weights": [
+      1,
+      1,
+      1,
+      1,
+      3
+    ],
+    "gamma": 2,
+    "voxel_ignore_indicator": true,
+    "weighted_focal_denominator": "sum(weight[target[v]] for valid voxels v)",
+    "explicit_GT_class_presence_indicator": false,
+    "RC_absent_contributes_no_target_weight_3": true,
+    "RC_false_positive_still_penalized_by_multiclass_focal": true,
+    "Dice_RC_weight_3": false,
+    "Dice_reference_foreground_mean_includes_absent_classes": true,
+    "Dice_smooth": 0.00001,
+    "deep_supervision_normalization_is_not_RC_indicator": true,
+    "missing_annotation_not_equivalent_to_class_absence": true,
+    "patch_presence_not_necessarily_case_presence": true
+  },
+  "historical_boundary": {
+    "original_E_training_manifest": "work_space/S2/03_experiments/02_small_lesion_and_focal/s2_small_lesion_ablation_20260721/run_manifest.json",
+    "original_E_recorded_epochs": 200,
+    "original_E_recorded_gamma": 2,
+    "original_E_recorded_RC_weight": 3,
+    "original_E_full_installed_loss_byte_attestation_retrieved": false,
+    "K1_three_custom_loss_files_match_20261002_inspection": true,
+    "July27_git_revision": "3eeeb3c8",
+    "installed_nnUNet_Dice_source_for_historical_E_K1_not_attested": true,
+    "reference_Dice_behavior_not_claimed_as_new_remote_runtime_verification": true
+  },
+  "evaluation_findings": {
+    "per_metric_mean_uses_finite_indicator_in_denominator": true,
+    "paired_comparison_uses_common_finite_indicator": true,
+    "RC_lesion_Dice_finite_cases_all_models": 15,
+    "RC_lesion_Dice_finite_is_not_all_103_or_all_16": true,
+    "RC_lesion_Dice_can_exclude_negative_case_false_positives": true,
+    "negative_case_instance_FP_F1_retained": true,
+    "small_RC_only_case_excluded_from_large_lesion_Dice": "BraTS-MET-01250-001",
+    "RC_present_patients": 8,
+    "RC_absent_patients": 63,
+    "all_patients": 69,
+    "RC_subgroups_patient_disjoint": false,
+    "new_GT_voxel_reads": false,
+    "new_segmentation_metric_execution": false,
+    "new_bootstrap_CI_computed": false,
+    "external_training_exposure_boundary_unchanged": true
+  },
+  "synthetic_CPU_validation": {
+    "environment": "Conda brats2023_seg",
+    "torch": "2.5.1",
+    "focal_source_sha256": "c25d14c8cf24ffc4bb06ce36aa1fdffbc4460164e0c3d6eed3895d0515723fd0",
+    "july27_git_source_identical": true,
+    "focal_tests": [
+      {
+        "labels": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "denominator": 4,
+        "loss": 0.8913763051122701,
+        "finite_gradient": true,
+        "ignored_gradient_zero": true
+      },
+      {
+        "labels": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "denominator": 6,
+        "loss": 0.6818688575267751,
+        "finite_gradient": true,
+        "ignored_gradient_zero": true
+      },
+      {
+        "labels": [
+          0,
+          4,
+          -100,
+          2
+        ],
+        "denominator": 5,
+        "loss": 1.1371833947275245,
+        "finite_gradient": true,
+        "ignored_gradient_zero": true
+      },
+      {
+        "labels": [
+          -100,
+          -100,
+          -100,
+          -100
+        ],
+        "denominator": 0,
+        "loss": 0,
+        "finite_gradient": true,
+        "ignored_gradient_zero": true
+      }
+    ],
+    "dice_reference_only_not_historical_runtime_attestation": true,
+    "dice_source_sha256": "11feaa74d4c6f7b38b1406bd60fc431b3efb4140f551cc736f65646377cb3a60",
+    "dice_tests": [
+      {
+        "rc_probability": 0.001,
+        "dice_loss": -0.0006328162793226931,
+        "rc_gradient": 0.6218866798092053
+      },
+      {
+        "rc_probability": 0.1,
+        "dice_loss": -0.000015624726567870977,
+        "rc_gradient": 0.00006249687511718359
+      }
+    ]
+  },
+  "synthetic_command": "conda run --no-capture-output -n brats2023_seg python -B -c 'import ast,json,hashlib,subprocess; from pathlib import Path; from typing import Callable; import torch; from torch import nn; import torch.nn.functional as F; p=Path(\"work_space/S2/01_code/repository/custom_nnunet/small_lesion_variants.py\"); src=p.read_text(); node=next(n for n in ast.parse(src).body if isinstance(n,ast.ClassDef) and n.name==\"FocalCrossEntropyLoss\"); ns={\"torch\":torch,\"nn\":nn,\"Tensor\":torch.Tensor,\"F\":F}; exec(compile(ast.Module(body=[node],type_ignores=[]),str(p),\"exec\"),ns); C=ns[\"FocalCrossEntropyLoss\"]; weight=torch.tensor([1.,1.,1.,1.,3.],dtype=torch.float64); tests=[];\nfor labels in [[0,1,2,3],[0,1,2,4],[0,4,-100,2],[-100,-100,-100,-100]]:\n target=torch.tensor([labels]); logits=torch.tensor([[[.4,.1,.3,.6],[.2,.5,.3,.1],[.2,.1,.5,.1],[.1,.2,.1,.2],[.1,.1,.1,.8]]],dtype=torch.float64,requires_grad=True); valid=target!=-100; safe=target.masked_fill(~valid,0); ce=F.cross_entropy(logits,target,weight=weight,ignore_index=-100,reduction=\"none\"); pt=logits.softmax(1).gather(1,safe.unsqueeze(1)).squeeze(1); den=weight[safe][valid].sum(); expected=((1-pt).square()*ce).sum()/den if den else logits.sum()*0; got=C(weight=weight)(logits,target); assert torch.allclose(got,expected); got.backward(); assert torch.isfinite(logits.grad).all(); assert (logits.grad[:,:,~valid[0]]==0).all();\n if 4 not in labels and valid.any(): assert logits.grad[:,4,valid[0]].sum()>0\n tests.append(dict(labels=labels,denominator=float(den),loss=float(got.detach()),finite_gradient=True,ignored_gradient_zero=True))\nold=subprocess.check_output([\"/opt/homebrew/bin/git\",\"show\",\"3eeeb3c8:work_space/S2/BraTS2026_S2_RC_v1.0/repository/custom_nnunet/small_lesion_variants.py\"],text=True); assert old==src; q=Path(\"03_reference_code/01_original_root_checkout/Segmentation_Tasks/nnUNet_install/nnunetv2/training/loss/dice.py\"); dn=next(n for n in ast.parse(q.read_text()).body if isinstance(n,ast.ClassDef) and n.name==\"MemoryEfficientSoftDiceLoss\"); ds={\"torch\":torch,\"nn\":nn,\"Callable\":Callable}; exec(compile(ast.Module(body=[dn],type_ignores=[]),str(q),\"exec\"),ds); d=ds[\"MemoryEfficientSoftDiceLoss\"](apply_nonlin=None,batch_dice=False,do_bg=False,smooth=1e-5,ddp=False); vals=[];\nfor rc in [.001,.1]:\n probs=torch.full((1,5,2,2),.2,dtype=torch.float64); probs[:,4]=rc; probs.requires_grad_(); loss=d(probs,torch.zeros((1,1,2,2),dtype=torch.long)); loss.backward(); assert torch.isfinite(loss) and probs.grad[:,4].sum()>0; vals.append(dict(rc_probability=rc,dice_loss=float(loss.detach()),rc_gradient=float(probs.grad[:,4].sum())))\nassert vals[1][\"dice_loss\"]>vals[0][\"dice_loss\"]; print(json.dumps(dict(environment=\"Conda brats2023_seg\",torch=torch.__version__,focal_source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),july27_git_source_identical=True,focal_tests=tests,dice_reference_only_not_historical_runtime_attestation=True,dice_source_sha256=hashlib.sha256(q.read_bytes()).hexdigest(),dice_tests=vals),indent=2))'",
+  "earlier_synthetic_extraction_failure_preserved": {
+    "environment": "Conda brats2023_seg",
+    "failure": "NameError: Callable not defined in AST-only Dice fixture namespace",
+    "stage": "synthetic_reference_Dice_class_extraction_after_four_focal_checks",
+    "production_sources_changed": false,
+    "resolution": "provide typing.Callable to fixture namespace; rerun synthetic check only",
+    "not_remote_job_or_model_failure": true
+  },
+  "action_boundary": {
+    "training_or_scoring_code_changed": false,
+    "model_or_split_changed": false,
+    "checkpoint_loaded": false,
+    "dependencies_installed": false,
+    "jobs_submitted_or_modified": false,
+    "Bio_progress_queried": false,
+    "clinical_RC_presence_indicator_used_at_inference": false
+  },
+  "proposed_not_executed": "For a new experiment only: positive-class weighted Dice uses sum(w_c*I_c*L_c)/sum(w_c*I_c), with explicit all-empty handling; retain CE/focal supervision of all known voxels including RC-negative patches; do not label GT-absent RC as unknown or change official MET."
+}
