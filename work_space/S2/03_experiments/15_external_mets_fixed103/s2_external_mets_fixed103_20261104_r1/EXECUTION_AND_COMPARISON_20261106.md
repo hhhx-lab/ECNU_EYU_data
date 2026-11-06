@@ -1,5 +1,17 @@
 # Bio全量R3提交与2025/K1/原E同fixed103比较
 
+## 完成查询与回传（本机UTC12:20）
+
+现有`operator/snapshot_current_comparison.py`本轮仅一次即时只读SSH快照，Conda base且凭据由精确`ECNU_SERVER_ENV_FILE`原路径加载，复用用户VPN并保留；没有sbatch/release/安装或远端写入。Bio4319113仍PENDING/Priority、0/103预测，STARTED/RUN_CONTRACT/FAILED/COMPLETE均无，不将排队称运行。
+
+评分4319117 allocation/batch均COMPLETED0:0，node203，01:13:43。三路各103例/72项、K1-175和原比赛E-200历史逐例schema/NA/数值重放（max abs diff=0）、患者组paired bootstrap20000/seed20260831均完成，无FAILED/静态漂移。仅下载完成manifest选择的12份轻量结果248452 bytes；服务器和本机大小/SHA验收通过，不下载MRI/模型或追加未验收表。
+
+本地标准库验收命令使用`conda run --no-capture-output -n base python -B -c`，解析完成清单/快照/CSV，交叉绑定12文件SHA和同JobID合同、三路相同103病例/72列，复算216条finite均值及216条共同finite配对分母/均值/raw delta。全部通过，不在本机重算bootstrap CI，不重读影像/GT，不重跑此前训练/模型测试。
+
+成果见[下载结果中文README](results/comparison_light_20261106T121856Z/README.md)和[本轮完成复核](COMPARISON_COMPLETION_REVIEW_20261106_1223UTC.json)。WT病灶Dice2025/K1/原E为0.703347/0.630263/0.617613（各n87）；其余全部72项及配对CI保留原精度，n变化与NA不补0。点估计领先只作同fixed103公开成品描述，不升级为独立泛化或官方排名。
+
+完成remoteUTC2026-11-06T11:41:36.142287；快照remoteUTC12:07:38.040352；本机接收12:20:36.451110/finally12:20:36.452238/复核12:23:51.667888分记。余588020449280bytes=547.63671875GiB，quota0空非数值账号配额。Bio尚不在三路完成表且未有CPU评分JobID，待103预测及完成身份验收后另建独立评分/四路汇总，复用三路，不重评/覆盖。原NSD/dtype告警、全部失败、科学三项及豁免门保持；下文评分中/待完成段落为历史。
+
 ## 本次输入与授权
 
 用户要求机时恢复后提交Bio-Intel完整模型，并回传2025预测与K1、原E在同一队列比较。这里是103扫描/69患者组的fixed103验证集，不是锁定test104、master test130或官方179。用户本次允许2025预测NIfTI回Mac；不下载MRI、外部权重或镜像，不恢复监控。

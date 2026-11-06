@@ -1,0 +1,111 @@
+{
+  "local_reviewed_utc": "2026-11-06T12:23:51.667888+00:00",
+  "status": "local_lightweight_completion_acceptance_pass_Bio_pending",
+  "validated_download_files": 12,
+  "validated_download_bytes": 248452,
+  "metrics_per_model": 72,
+  "cases_per_model": 103,
+  "mean_rows_verified": 216,
+  "paired_common_finite_counts_means_deltas_verified": 216,
+  "bootstrap_CI_independently_recomputed_locally": false,
+  "historical_replay_remote_pass_local_report_identity_verified": true,
+  "historical_replay_max_absolute_difference": 0,
+  "source": "operator/snapshot_current_comparison_20261106T121856Z/RESULT.json",
+  "download": "results/comparison_light_20261106T121856Z/DOWNLOAD_ACCEPTANCE.json",
+  "snapshot_remote_utc": "2026-11-06T12:07:38.040352+00:00",
+  "local_received_utc": "2026-11-06T12:20:36.451110+00:00",
+  "local_finally_utc": "2026-11-06T12:20:36.452238+00:00",
+  "free_bytes": 588020449280,
+  "free_gib": 547.63671875,
+  "quota_numeric_known": false,
+  "Bio_job_id": "4319113",
+  "Bio_status": "PENDING/Priority",
+  "Bio_prediction_file_count": 0,
+  "comparison_job_id": "4319117",
+  "comparison_allocation_and_batch": "COMPLETED 0:0",
+  "elapsed": "01:13:43",
+  "complete_remote_utc": "2026-11-06T11:41:36.142287+00:00",
+  "selected_means": [
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_et",
+      "mean": "0.7065126172310324",
+      "finite_cases": "85"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_rc",
+      "mean": "0.6989661801421144",
+      "finite_cases": "15"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_tc",
+      "mean": "0.7476622844563671",
+      "finite_cases": "86"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_wt",
+      "mean": "0.7033467156655887",
+      "finite_cases": "87"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_et",
+      "mean": "0.6372711175573594",
+      "finite_cases": "85"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_rc",
+      "mean": "0.32296975456101457",
+      "finite_cases": "15"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_tc",
+      "mean": "0.6880705144971574",
+      "finite_cases": "86"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_wt",
+      "mean": "0.6302630901633124",
+      "finite_cases": "87"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_et",
+      "mean": "0.6116520055642963",
+      "finite_cases": "85"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_rc",
+      "mean": "0.3111874821351774",
+      "finite_cases": "15"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_tc",
+      "mean": "0.6577153471756587",
+      "finite_cases": "86"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_wt",
+      "mean": "0.6176131342350145",
+      "finite_cases": "87"
+    }
+  ],
+  "remote_writes": false,
+  "new_submissions_or_releases": false,
+  "images_or_GT_read": false,
+  "preexisting_vpn_preserved": true,
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "local_verification_environment": "conda run --no-capture-output -n base python -B -c; Python standard-library json/csv/hashlib/math/pathlib only",
+  "local_verification_scope": "All 12 transferred files bytes/SHA, frozen COMPLETE/snapshot/output manifest cross-binding, Slurm allocation and batch COMPLETED0:0, matching three sets of 103 subject IDs and 72 metrics, all 216 finite-case means and 216 common-finite paired counts/means/raw deltas. Bootstrap CIs not independently recalculated locally."
+}

@@ -1,0 +1,370 @@
+{
+  "Bio_prediction_file_count": 0,
+  "Bio_reports": {
+    "COMPLETE.json": null,
+    "FAILED.json": null,
+    "RUN_CONTRACT.json": null,
+    "STARTED.json": null
+  },
+  "artifact_status": "experimental_unvalidated",
+  "comparison_acceptance": "completed_accounting_and_output_SHA_pass",
+  "comparison_reports": {
+    "COMPLETE.json": {
+      "bytes": 6947,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "bootstrap_iterations": 20000,
+        "bootstrap_seed": 20260831,
+        "cases": 103,
+        "contract_sha256": "ae679cbb723ed9bccbdfcda172056d7f0ab17371db2ffc67f3685d1bef058ed5",
+        "formal_gate_status": "not_run_not_passed",
+        "historical_replay": {
+          "K1_175": {
+            "atol": 1e-12,
+            "cases": 103,
+            "max_absolute_difference": 0.0,
+            "pass_per_case_72_metrics": true,
+            "rtol": 1e-09
+          },
+          "original_E_200": {
+            "atol": 1e-12,
+            "cases": 103,
+            "max_absolute_difference": 0.0,
+            "pass_per_case_72_metrics": true,
+            "rtol": 1e-09
+          }
+        },
+        "job_id": "4319117",
+        "locked_test_read": false,
+        "metric_columns": 72,
+        "models": [
+          "EXT2025",
+          "K1_175",
+          "original_E_200"
+        ],
+        "operator_approved": false,
+        "outputs": {
+          "evaluation/EXT2025/EVALUATION_COMPLETE.ok": {
+            "bytes": 77,
+            "sha256": "f14c65810f3059c7e780134690da2eb50c553f846c59d211984f40b1617f4ba5"
+          },
+          "evaluation/EXT2025/EVALUATION_VALIDATION.json": {
+            "bytes": 558,
+            "sha256": "d6d189a54348bf5ae84e4952b78f9c9ec5653d3dfc54b3642a4eb7c45e5a1b6a"
+          },
+          "evaluation/EXT2025/brats_evaluate.log": {
+            "bytes": 6950,
+            "sha256": "6bbea142a1592202671330e830897148e0d4d97bc7c4863c82ace11e1a7d2a8e"
+          },
+          "evaluation/EXT2025/brats_parse_metrics.log": {
+            "bytes": 641,
+            "sha256": "be23b4a37f3cb5f14a14fe9dc2055746fb7c5ef111146fdc1d75cedee9331b26"
+          },
+          "evaluation/EXT2025/evaluation_contract.txt": {
+            "bytes": 550,
+            "sha256": "d11f26ae9aafb544f3ff34ac641299bc2be84c98c3e7256a693bb31c9c49c1d7"
+          },
+          "evaluation/EXT2025/evaluation_environment.txt": {
+            "bytes": 448,
+            "sha256": "0b104fcf7d7d219b50ec70138a93b1416293efc12bed2da7edbc727e264dbdcd"
+          },
+          "evaluation/EXT2025/leaderboard_metrics.csv": {
+            "bytes": 52912,
+            "sha256": "f686483df709730dee54d31c894ff326ad04ced5dba93fbec0664c75af55b1d0"
+          },
+          "evaluation/EXT2025/panoptica_evaluation_summary.json": {
+            "bytes": 986729,
+            "sha256": "3e61642138291968688470732e96457f1dca764654e01a272926d11c6a4a2eb9"
+          },
+          "evaluation/K1_175/EVALUATION_COMPLETE.ok": {
+            "bytes": 77,
+            "sha256": "f14c65810f3059c7e780134690da2eb50c553f846c59d211984f40b1617f4ba5"
+          },
+          "evaluation/K1_175/EVALUATION_VALIDATION.json": {
+            "bytes": 558,
+            "sha256": "8afd208b5f7840f7275f487804823d512ef1086fdfed1d789d880a8447294ad1"
+          },
+          "evaluation/K1_175/brats_evaluate.log": {
+            "bytes": 6949,
+            "sha256": "1821a753631e57a509c52c4c98311d37fe39428ba80817994f421a1a48235c37"
+          },
+          "evaluation/K1_175/brats_parse_metrics.log": {
+            "bytes": 640,
+            "sha256": "df02a26d8971c6eda46b585560bd945d9954e56befb870761c31d84a65f12b10"
+          },
+          "evaluation/K1_175/evaluation_contract.txt": {
+            "bytes": 549,
+            "sha256": "17a964f89c9b436723359b48796b8662f53db30e30b0769f9f4f398788d060ed"
+          },
+          "evaluation/K1_175/evaluation_environment.txt": {
+            "bytes": 448,
+            "sha256": "0b104fcf7d7d219b50ec70138a93b1416293efc12bed2da7edbc727e264dbdcd"
+          },
+          "evaluation/K1_175/leaderboard_metrics.csv": {
+            "bytes": 53693,
+            "sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8"
+          },
+          "evaluation/K1_175/panoptica_evaluation_summary.json": {
+            "bytes": 968594,
+            "sha256": "59c71bdc3730a19eda80d518fd2c37f6efa6b890e1e8c93aab40eda07891f033"
+          },
+          "evaluation/original_E_200/EVALUATION_COMPLETE.ok": {
+            "bytes": 77,
+            "sha256": "f14c65810f3059c7e780134690da2eb50c553f846c59d211984f40b1617f4ba5"
+          },
+          "evaluation/original_E_200/EVALUATION_VALIDATION.json": {
+            "bytes": 558,
+            "sha256": "b02dfd97679c1a85c3dfaa604fbbf33441b20266d737b91f3562ed89fe5fe375"
+          },
+          "evaluation/original_E_200/brats_evaluate.log": {
+            "bytes": 6957,
+            "sha256": "25d4b29abd15b680008a7bf0fc50962fd26f4c43d36df7dff0ea5d0b2c7150d8"
+          },
+          "evaluation/original_E_200/brats_parse_metrics.log": {
+            "bytes": 648,
+            "sha256": "6aa138feea1a22ff48145f8018d3c59d32d9a98505258b1050533f5d193e43ce"
+          },
+          "evaluation/original_E_200/evaluation_contract.txt": {
+            "bytes": 557,
+            "sha256": "bc923e49cdcd19589e84dcdad90f8795076541102cf54d85ea64ee17d05a830a"
+          },
+          "evaluation/original_E_200/evaluation_environment.txt": {
+            "bytes": 448,
+            "sha256": "0b104fcf7d7d219b50ec70138a93b1416293efc12bed2da7edbc727e264dbdcd"
+          },
+          "evaluation/original_E_200/leaderboard_metrics.csv": {
+            "bytes": 53590,
+            "sha256": "294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167"
+          },
+          "evaluation/original_E_200/panoptica_evaluation_summary.json": {
+            "bytes": 966976,
+            "sha256": "84386da89e89d24003579bfbdfe36728ed4e49856b16a84c4f9edf1d65569fc1"
+          },
+          "logs/EXT2025_evaluation.log": {
+            "bytes": 8107,
+            "sha256": "0ce97de8df02c3663bd0b20308e371d7026ed3f3922b441d31e72796b207e241"
+          },
+          "logs/K1_175_evaluation.log": {
+            "bytes": 8105,
+            "sha256": "9bd172c4419eb7c9a225791e75823bdd3f0bf425167177d4b7b1ac9dbb91c91b"
+          },
+          "logs/compare_4319117.err": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "logs/compare_4319117.out": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "logs/original_E_200_evaluation.log": {
+            "bytes": 8121,
+            "sha256": "d88e585af5e54e398bf9068716603be62d04ad07d923c88146ac61e2bd243778"
+          },
+          "reports/COMPARISON_REPORT.md": {
+            "bytes": 6815,
+            "sha256": "d9df870fa511cff1910a1554683c3e149ffa02f6d40aedb3734d26cefc8f771c"
+          },
+          "reports/HISTORICAL_REPLAY.json": {
+            "bytes": 478,
+            "sha256": "bfe0786bb6852dad8c64f6023eff8909db0d11c291688dbc104541829afeeba2"
+          },
+          "reports/MEANS_216.csv": {
+            "bytes": 11628,
+            "sha256": "d34fcec50d73d2146c226c62375f05ddc68a4a10be0429afe92e659e9c0f1170"
+          },
+          "reports/PAIRED_ALL_216.csv": {
+            "bytes": 61436,
+            "sha256": "d15f14f50f8499d3725a338aa45b24cdfbd81592ecd038e242b7073a99ec2b09"
+          },
+          "reports/PROGRESS_EXT2025.json": {
+            "bytes": 218,
+            "sha256": "a0523f3acb6ccda6e0cfcff1aaf4602a77e3f7f8666a312fed8c72a764dcbeba"
+          },
+          "reports/PROGRESS_K1_175.json": {
+            "bytes": 217,
+            "sha256": "5ee675cb74b1ddda78d73541438e49fc866facbb31bdbb923dad2b5006fb32df"
+          },
+          "reports/PROGRESS_original_E_200.json": {
+            "bytes": 225,
+            "sha256": "5d7d18c7ba5260c25a8060f37d904453a9bc85b87de4936a5271f180e8425d3a"
+          },
+          "reports/STARTED.json": {
+            "bytes": 293,
+            "sha256": "2038dc05c37d73356951856dc748d8f7850d0181ea0e30cee9eaf1d5b2720606"
+          }
+        },
+        "remote_utc": "2026-11-06T11:41:36.142287+00:00",
+        "scientific_superiority_pass": false,
+        "started_utc": "2026-11-06T10:28:20.970620+00:00",
+        "status": "three_model_fixed103_MET_replay_and_descriptive_comparison_complete"
+      },
+      "sha256": "04efd10c4252ef1eb327b167ee038d2506fdee1e37676f578c51b0841eb8c10b"
+    },
+    "FAILED.json": null,
+    "HISTORICAL_REPLAY.json": {
+      "bytes": 478,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "formal_gate_status": "not_run_not_passed",
+        "models": {
+          "K1_175": {
+            "atol": 1e-12,
+            "cases": 103,
+            "max_absolute_difference": 0.0,
+            "pass_per_case_72_metrics": true,
+            "rtol": 1e-09
+          },
+          "original_E_200": {
+            "atol": 1e-12,
+            "cases": 103,
+            "max_absolute_difference": 0.0,
+            "pass_per_case_72_metrics": true,
+            "rtol": 1e-09
+          }
+        },
+        "operator_approved": false
+      },
+      "sha256": "bfe0786bb6852dad8c64f6023eff8909db0d11c291688dbc104541829afeeba2"
+    },
+    "PROGRESS_EXT2025.json": {
+      "bytes": 218,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 103,
+        "formal_gate_status": "not_run_not_passed",
+        "model": "EXT2025",
+        "operator_approved": false,
+        "remote_utc": "2026-11-06T10:55:01.510466+00:00"
+      },
+      "sha256": "a0523f3acb6ccda6e0cfcff1aaf4602a77e3f7f8666a312fed8c72a764dcbeba"
+    },
+    "PROGRESS_K1_175.json": {
+      "bytes": 217,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 103,
+        "formal_gate_status": "not_run_not_passed",
+        "model": "K1_175",
+        "operator_approved": false,
+        "remote_utc": "2026-11-06T11:19:28.679714+00:00"
+      },
+      "sha256": "5ee675cb74b1ddda78d73541438e49fc866facbb31bdbb923dad2b5006fb32df"
+    },
+    "PROGRESS_original_E_200.json": {
+      "bytes": 225,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 103,
+        "formal_gate_status": "not_run_not_passed",
+        "model": "original_E_200",
+        "operator_approved": false,
+        "remote_utc": "2026-11-06T11:41:16.395209+00:00"
+      },
+      "sha256": "5d7d18c7ba5260c25a8060f37d904453a9bc85b87de4936a5271f180e8425d3a"
+    },
+    "STARTED.json": {
+      "bytes": 293,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "contract_sha256": "ae679cbb723ed9bccbdfcda172056d7f0ab17371db2ffc67f3685d1bef058ed5",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4319117",
+        "operator_approved": false,
+        "started_utc": "2026-11-06T10:28:20.970620+00:00"
+      },
+      "sha256": "2038dc05c37d73356951856dc748d8f7850d0181ea0e30cee9eaf1d5b2720606"
+    }
+  },
+  "drift": [],
+  "finished_remote_utc": "2026-11-06T12:07:38.040352+00:00",
+  "formal_gate_status": "not_run_not_passed",
+  "free_bytes": 588020449280,
+  "images_or_GT_read": false,
+  "lightweight_download_files": {
+    "evaluation/EXT2025/leaderboard_metrics.csv": {
+      "bytes": 52912,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/EXT2025/leaderboard_metrics.csv",
+      "sha256": "f686483df709730dee54d31c894ff326ad04ced5dba93fbec0664c75af55b1d0"
+    },
+    "evaluation/K1_175/leaderboard_metrics.csv": {
+      "bytes": 53693,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/K1_175/leaderboard_metrics.csv",
+      "sha256": "62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8"
+    },
+    "evaluation/original_E_200/leaderboard_metrics.csv": {
+      "bytes": 53590,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/original_E_200/leaderboard_metrics.csv",
+      "sha256": "294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167"
+    },
+    "reports/COMPARISON_REPORT.md": {
+      "bytes": 6815,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/COMPARISON_REPORT.md",
+      "sha256": "d9df870fa511cff1910a1554683c3e149ffa02f6d40aedb3734d26cefc8f771c"
+    },
+    "reports/COMPLETE.json": {
+      "bytes": 6947,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/COMPLETE.json",
+      "sha256": "04efd10c4252ef1eb327b167ee038d2506fdee1e37676f578c51b0841eb8c10b"
+    },
+    "reports/HISTORICAL_REPLAY.json": {
+      "bytes": 478,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/HISTORICAL_REPLAY.json",
+      "sha256": "bfe0786bb6852dad8c64f6023eff8909db0d11c291688dbc104541829afeeba2"
+    },
+    "reports/MEANS_216.csv": {
+      "bytes": 11628,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/MEANS_216.csv",
+      "sha256": "d34fcec50d73d2146c226c62375f05ddc68a4a10be0429afe92e659e9c0f1170"
+    },
+    "reports/PAIRED_ALL_216.csv": {
+      "bytes": 61436,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/PAIRED_ALL_216.csv",
+      "sha256": "d15f14f50f8499d3725a338aa45b24cdfbd81592ecd038e242b7073a99ec2b09"
+    },
+    "reports/PROGRESS_EXT2025.json": {
+      "bytes": 218,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/PROGRESS_EXT2025.json",
+      "sha256": "a0523f3acb6ccda6e0cfcff1aaf4602a77e3f7f8666a312fed8c72a764dcbeba"
+    },
+    "reports/PROGRESS_K1_175.json": {
+      "bytes": 217,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/PROGRESS_K1_175.json",
+      "sha256": "5ee675cb74b1ddda78d73541438e49fc866facbb31bdbb923dad2b5006fb32df"
+    },
+    "reports/PROGRESS_original_E_200.json": {
+      "bytes": 225,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/PROGRESS_original_E_200.json",
+      "sha256": "5d7d18c7ba5260c25a8060f37d904453a9bc85b87de4936a5271f180e8425d3a"
+    },
+    "reports/STARTED.json": {
+      "bytes": 293,
+      "path": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/reports/STARTED.json",
+      "sha256": "2038dc05c37d73356951856dc748d8f7850d0181ea0e30cee9eaf1d5b2720606"
+    }
+  },
+  "logtails": {
+    "attempts/compare_2025_K1_E_r2/logs/EXT2025_evaluation.log": "aluating BraTS-MET-00147-000.nii.gz...\n[13/103] Evaluating BraTS-MET-00161-000.nii.gz...\n[14/103] Evaluating BraTS-MET-00162-000.nii.gz...\n[15/103] Evaluating BraTS-MET-00167-000.nii.gz...\n[16/103] Evaluating BraTS-MET-00175-000.nii.gz...\n[17/103] Evaluating BraTS-MET-00180-000.nii.gz...\n[18/103] Evaluating BraTS-MET-00194-000.nii.gz...\n[19/103] Evaluating BraTS-MET-00195-000.nii.gz...\n[20/103] Evaluating BraTS-MET-00200-000.nii.gz...\n[21/103] Evaluating BraTS-MET-00202-000.nii.gz...\n[22/103] Evaluating BraTS-MET-00214-000.nii.gz...\n[23/103] Evaluating BraTS-MET-00260-000.nii.gz...\n[24/103] Evaluating BraTS-MET-00264-000.nii.gz...\n[25/103] Evaluating BraTS-MET-00268-000.nii.gz...\n[26/103] Evaluating BraTS-MET-00292-000.nii.gz...\n[27/103] Evaluating BraTS-MET-00299-000.nii.gz...\n[28/103] Evaluating BraTS-MET-00300-000.nii.gz...\n[29/103] Evaluating BraTS-MET-00380-000.nii.gz...\n[30/103] Evaluating BraTS-MET-00532-000.nii.gz...\n[31/103] Evaluating BraTS-MET-00552-000.nii.gz...\n[32/103] Evaluating BraTS-MET-00572-000.nii.gz...\n[33/103] Evaluating BraTS-MET-00577-001.nii.gz...\n[34/103] Evaluating BraTS-MET-00613-000.nii.gz...\n[35/103] Evaluating BraTS-MET-00613-001.nii.gz...\n[36/103] Evaluating BraTS-MET-00625-000.nii.gz...\n[37/103] Evaluating BraTS-MET-00663-000.nii.gz...\n[38/103] Evaluating BraTS-MET-00682-000.nii.gz...\n[39/103] Evaluating BraTS-MET-00699-000.nii.gz...\n[40/103] Evaluating BraTS-MET-00787-000.nii.gz...\n[41/103] Evaluating BraTS-MET-00791-000.nii.gz...\n[42/103] Evaluating BraTS-MET-00796-000.nii.gz...\n[43/103] Evaluating BraTS-MET-00799-000.nii.gz...\n[44/103] Evaluating BraTS-MET-00807-000.nii.gz...\n[45/103] Evaluating BraTS-MET-01058-001.nii.gz...\n[46/103] Evaluating BraTS-MET-01060-001.nii.gz...\n[47/103] Evaluating BraTS-MET-01096-000.nii.gz...\n[48/103] Evaluating BraTS-MET-01096-001.nii.gz...\n[49/103] Evaluating BraTS-MET-01096-002.nii.gz...\n[50/103] Evaluating BraTS-MET-01105-001.nii.gz...\n[51/103] Evaluating BraTS-MET-01105-002.nii.gz...\n[52/103] Evaluating BraTS-MET-01109-001.nii.gz...\n[53/103] Evaluating BraTS-MET-01109-002.nii.gz...\n[54/103] Evaluating BraTS-MET-01109-003.nii.gz...\n[55/103] Evaluating BraTS-MET-01117-001.nii.gz...\n[56/103] Evaluating BraTS-MET-01117-002.nii.gz...\n[57/103] Evaluating BraTS-MET-01117-003.nii.gz...\n[58/103] Evaluating BraTS-MET-01119-000.nii.gz...\n[59/103] Evaluating BraTS-MET-01119-001.nii.gz...\n[60/103] Evaluating BraTS-MET-01119-003.nii.gz...\n[61/103] Evaluating BraTS-MET-01134-000.nii.gz...\n[62/103] Evaluating BraTS-MET-01134-003.nii.gz...\n[63/103] Evaluating BraTS-MET-01149-000.nii.gz...\n[64/103] Evaluating BraTS-MET-01149-001.nii.gz...\n[65/103] Evaluating BraTS-MET-01172-001.nii.gz...\n[66/103] Evaluating BraTS-MET-01172-002.nii.gz...\n[67/103] Evaluating BraTS-MET-01172-004.nii.gz...\n[68/103] Evaluating BraTS-MET-01180-000.nii.gz...\n[69/103] Evaluating BraTS-MET-01180-003.nii.gz...\n[70/103] Evaluating BraTS-MET-01181-001.nii.gz...\n[71/103] Evaluating BraTS-MET-01181-002.nii.gz...\n[72/103] Evaluating BraTS-MET-01187-000.nii.gz...\n[73/103] Evaluating BraTS-MET-01187-001.nii.gz...\n[74/103] Evaluating BraTS-MET-01187-003.nii.gz...\n[75/103] Evaluating BraTS-MET-01191-001.nii.gz...\n[76/103] Evaluating BraTS-MET-01191-002.nii.gz...\n[77/103] Evaluating BraTS-MET-01191-003.nii.gz...\n[78/103] Evaluating BraTS-MET-01191-004.nii.gz...\n[79/103] Evaluating BraTS-MET-01217-000.nii.gz...\n[80/103] Evaluating BraTS-MET-01217-002.nii.gz...\n[81/103] Evaluating BraTS-MET-01217-003.nii.gz...\n[82/103] Evaluating BraTS-MET-01250-001.nii.gz...\n[83/103] Evaluating BraTS-MET-01250-003.nii.gz...\n[84/103] Evaluating BraTS-MET-01268-002.nii.gz...\n[85/103] Evaluating BraTS-MET-01270-001.nii.gz...\n[86/103] Evaluating BraTS-MET-01270-002.nii.gz...\n[87/103] Evaluating BraTS-MET-01270-003.nii.gz...\n[88/103] Evaluating BraTS-MET-01276-001.nii.gz...\n[89/103] Evaluating BraTS-MET-01284-000.nii.gz...\n[90/103] Evaluating BraTS-MET-01284-002.nii.gz...\n[91/103] Evaluating BraTS-MET-01287-001.nii.gz...\n[92/103] Evaluating BraTS-MET-01287-002.nii.gz...\n[93/103] Evaluating BraTS-MET-01301-000.nii.gz...\n[94/103] Evaluating BraTS-MET-01301-001.nii.gz...\n[95/103] Evaluating BraTS-MET-01301-002.nii.gz...\n[96/103] Evaluating BraTS-MET-01310-001.nii.gz...\n[97/103] Evaluating BraTS-MET-01310-002.nii.gz...\n[98/103] Evaluating BraTS-MET-01314-002.nii.gz...\n[99/103] Evaluating BraTS-MET-01314-003.nii.gz...\n[100/103] Evaluating BraTS-MET-01331-002.nii.gz...\n[101/103] Evaluating BraTS-MET-01351-000.nii.gz...\n[102/103] Evaluating BraTS-MET-01351-002.nii.gz...\n[103/103] Evaluating BraTS-MET-01351-003.nii.gz...\n\nEvaluation complete. Results saved to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/EXT2025/panoptica_evaluation_summary.json\nJSON file loaded successfully.\nDataFrame saved successfully to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/EXT2025/leaderboard_metrics.csv\n                     subject_id  ...  small_instance_f1_wt\n101  BraTS-MET-01351-002.nii.gz  ...              0.300752\n102  BraTS-MET-01351-003.nii.gz  ...              0.086957\n103                        mean  ...              0.338859\n104                         std  ...              0.375200\n105                      median  ...              0.168478\n\n[5 rows x 73 columns]\n{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-11-06T10:55:01.499033+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"f686483df709730dee54d31c894ff326ad04ced5dba93fbec0664c75af55b1d0\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"3e61642138291968688470732e96457f1dca764654e01a272926d11c6a4a2eb9\"}\n",
+    "attempts/compare_2025_K1_E_r2/logs/K1_175_evaluation.log": "Evaluating BraTS-MET-00147-000.nii.gz...\n[13/103] Evaluating BraTS-MET-00161-000.nii.gz...\n[14/103] Evaluating BraTS-MET-00162-000.nii.gz...\n[15/103] Evaluating BraTS-MET-00167-000.nii.gz...\n[16/103] Evaluating BraTS-MET-00175-000.nii.gz...\n[17/103] Evaluating BraTS-MET-00180-000.nii.gz...\n[18/103] Evaluating BraTS-MET-00194-000.nii.gz...\n[19/103] Evaluating BraTS-MET-00195-000.nii.gz...\n[20/103] Evaluating BraTS-MET-00200-000.nii.gz...\n[21/103] Evaluating BraTS-MET-00202-000.nii.gz...\n[22/103] Evaluating BraTS-MET-00214-000.nii.gz...\n[23/103] Evaluating BraTS-MET-00260-000.nii.gz...\n[24/103] Evaluating BraTS-MET-00264-000.nii.gz...\n[25/103] Evaluating BraTS-MET-00268-000.nii.gz...\n[26/103] Evaluating BraTS-MET-00292-000.nii.gz...\n[27/103] Evaluating BraTS-MET-00299-000.nii.gz...\n[28/103] Evaluating BraTS-MET-00300-000.nii.gz...\n[29/103] Evaluating BraTS-MET-00380-000.nii.gz...\n[30/103] Evaluating BraTS-MET-00532-000.nii.gz...\n[31/103] Evaluating BraTS-MET-00552-000.nii.gz...\n[32/103] Evaluating BraTS-MET-00572-000.nii.gz...\n[33/103] Evaluating BraTS-MET-00577-001.nii.gz...\n[34/103] Evaluating BraTS-MET-00613-000.nii.gz...\n[35/103] Evaluating BraTS-MET-00613-001.nii.gz...\n[36/103] Evaluating BraTS-MET-00625-000.nii.gz...\n[37/103] Evaluating BraTS-MET-00663-000.nii.gz...\n[38/103] Evaluating BraTS-MET-00682-000.nii.gz...\n[39/103] Evaluating BraTS-MET-00699-000.nii.gz...\n[40/103] Evaluating BraTS-MET-00787-000.nii.gz...\n[41/103] Evaluating BraTS-MET-00791-000.nii.gz...\n[42/103] Evaluating BraTS-MET-00796-000.nii.gz...\n[43/103] Evaluating BraTS-MET-00799-000.nii.gz...\n[44/103] Evaluating BraTS-MET-00807-000.nii.gz...\n[45/103] Evaluating BraTS-MET-01058-001.nii.gz...\n[46/103] Evaluating BraTS-MET-01060-001.nii.gz...\n[47/103] Evaluating BraTS-MET-01096-000.nii.gz...\n[48/103] Evaluating BraTS-MET-01096-001.nii.gz...\n[49/103] Evaluating BraTS-MET-01096-002.nii.gz...\n[50/103] Evaluating BraTS-MET-01105-001.nii.gz...\n[51/103] Evaluating BraTS-MET-01105-002.nii.gz...\n[52/103] Evaluating BraTS-MET-01109-001.nii.gz...\n[53/103] Evaluating BraTS-MET-01109-002.nii.gz...\n[54/103] Evaluating BraTS-MET-01109-003.nii.gz...\n[55/103] Evaluating BraTS-MET-01117-001.nii.gz...\n[56/103] Evaluating BraTS-MET-01117-002.nii.gz...\n[57/103] Evaluating BraTS-MET-01117-003.nii.gz...\n[58/103] Evaluating BraTS-MET-01119-000.nii.gz...\n[59/103] Evaluating BraTS-MET-01119-001.nii.gz...\n[60/103] Evaluating BraTS-MET-01119-003.nii.gz...\n[61/103] Evaluating BraTS-MET-01134-000.nii.gz...\n[62/103] Evaluating BraTS-MET-01134-003.nii.gz...\n[63/103] Evaluating BraTS-MET-01149-000.nii.gz...\n[64/103] Evaluating BraTS-MET-01149-001.nii.gz...\n[65/103] Evaluating BraTS-MET-01172-001.nii.gz...\n[66/103] Evaluating BraTS-MET-01172-002.nii.gz...\n[67/103] Evaluating BraTS-MET-01172-004.nii.gz...\n[68/103] Evaluating BraTS-MET-01180-000.nii.gz...\n[69/103] Evaluating BraTS-MET-01180-003.nii.gz...\n[70/103] Evaluating BraTS-MET-01181-001.nii.gz...\n[71/103] Evaluating BraTS-MET-01181-002.nii.gz...\n[72/103] Evaluating BraTS-MET-01187-000.nii.gz...\n[73/103] Evaluating BraTS-MET-01187-001.nii.gz...\n[74/103] Evaluating BraTS-MET-01187-003.nii.gz...\n[75/103] Evaluating BraTS-MET-01191-001.nii.gz...\n[76/103] Evaluating BraTS-MET-01191-002.nii.gz...\n[77/103] Evaluating BraTS-MET-01191-003.nii.gz...\n[78/103] Evaluating BraTS-MET-01191-004.nii.gz...\n[79/103] Evaluating BraTS-MET-01217-000.nii.gz...\n[80/103] Evaluating BraTS-MET-01217-002.nii.gz...\n[81/103] Evaluating BraTS-MET-01217-003.nii.gz...\n[82/103] Evaluating BraTS-MET-01250-001.nii.gz...\n[83/103] Evaluating BraTS-MET-01250-003.nii.gz...\n[84/103] Evaluating BraTS-MET-01268-002.nii.gz...\n[85/103] Evaluating BraTS-MET-01270-001.nii.gz...\n[86/103] Evaluating BraTS-MET-01270-002.nii.gz...\n[87/103] Evaluating BraTS-MET-01270-003.nii.gz...\n[88/103] Evaluating BraTS-MET-01276-001.nii.gz...\n[89/103] Evaluating BraTS-MET-01284-000.nii.gz...\n[90/103] Evaluating BraTS-MET-01284-002.nii.gz...\n[91/103] Evaluating BraTS-MET-01287-001.nii.gz...\n[92/103] Evaluating BraTS-MET-01287-002.nii.gz...\n[93/103] Evaluating BraTS-MET-01301-000.nii.gz...\n[94/103] Evaluating BraTS-MET-01301-001.nii.gz...\n[95/103] Evaluating BraTS-MET-01301-002.nii.gz...\n[96/103] Evaluating BraTS-MET-01310-001.nii.gz...\n[97/103] Evaluating BraTS-MET-01310-002.nii.gz...\n[98/103] Evaluating BraTS-MET-01314-002.nii.gz...\n[99/103] Evaluating BraTS-MET-01314-003.nii.gz...\n[100/103] Evaluating BraTS-MET-01331-002.nii.gz...\n[101/103] Evaluating BraTS-MET-01351-000.nii.gz...\n[102/103] Evaluating BraTS-MET-01351-002.nii.gz...\n[103/103] Evaluating BraTS-MET-01351-003.nii.gz...\n\nEvaluation complete. Results saved to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/K1_175/panoptica_evaluation_summary.json\nJSON file loaded successfully.\nDataFrame saved successfully to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/K1_175/leaderboard_metrics.csv\n                     subject_id  ...  small_instance_f1_wt\n101  BraTS-MET-01351-002.nii.gz  ...              0.234375\n102  BraTS-MET-01351-003.nii.gz  ...              0.000000\n103                        mean  ...              0.261962\n104                         std  ...              0.308999\n105                      median  ...              0.055556\n\n[5 rows x 73 columns]\n{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-11-06T11:19:28.666784+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"62e25bd3c6402bc8ad2d25ab9a5c7c0d71ba4b06a80a20319dafa76c7eaf65a8\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"59c71bdc3730a19eda80d518fd2c37f6efa6b890e1e8c93aab40eda07891f033\"}\n",
+    "attempts/compare_2025_K1_E_r2/logs/compare_4319117.err": "",
+    "attempts/compare_2025_K1_E_r2/logs/compare_4319117.out": "",
+    "attempts/compare_2025_K1_E_r2/logs/original_E_200_evaluation.log": "-MET-00147-000.nii.gz...\n[13/103] Evaluating BraTS-MET-00161-000.nii.gz...\n[14/103] Evaluating BraTS-MET-00162-000.nii.gz...\n[15/103] Evaluating BraTS-MET-00167-000.nii.gz...\n[16/103] Evaluating BraTS-MET-00175-000.nii.gz...\n[17/103] Evaluating BraTS-MET-00180-000.nii.gz...\n[18/103] Evaluating BraTS-MET-00194-000.nii.gz...\n[19/103] Evaluating BraTS-MET-00195-000.nii.gz...\n[20/103] Evaluating BraTS-MET-00200-000.nii.gz...\n[21/103] Evaluating BraTS-MET-00202-000.nii.gz...\n[22/103] Evaluating BraTS-MET-00214-000.nii.gz...\n[23/103] Evaluating BraTS-MET-00260-000.nii.gz...\n[24/103] Evaluating BraTS-MET-00264-000.nii.gz...\n[25/103] Evaluating BraTS-MET-00268-000.nii.gz...\n[26/103] Evaluating BraTS-MET-00292-000.nii.gz...\n[27/103] Evaluating BraTS-MET-00299-000.nii.gz...\n[28/103] Evaluating BraTS-MET-00300-000.nii.gz...\n[29/103] Evaluating BraTS-MET-00380-000.nii.gz...\n[30/103] Evaluating BraTS-MET-00532-000.nii.gz...\n[31/103] Evaluating BraTS-MET-00552-000.nii.gz...\n[32/103] Evaluating BraTS-MET-00572-000.nii.gz...\n[33/103] Evaluating BraTS-MET-00577-001.nii.gz...\n[34/103] Evaluating BraTS-MET-00613-000.nii.gz...\n[35/103] Evaluating BraTS-MET-00613-001.nii.gz...\n[36/103] Evaluating BraTS-MET-00625-000.nii.gz...\n[37/103] Evaluating BraTS-MET-00663-000.nii.gz...\n[38/103] Evaluating BraTS-MET-00682-000.nii.gz...\n[39/103] Evaluating BraTS-MET-00699-000.nii.gz...\n[40/103] Evaluating BraTS-MET-00787-000.nii.gz...\n[41/103] Evaluating BraTS-MET-00791-000.nii.gz...\n[42/103] Evaluating BraTS-MET-00796-000.nii.gz...\n[43/103] Evaluating BraTS-MET-00799-000.nii.gz...\n[44/103] Evaluating BraTS-MET-00807-000.nii.gz...\n[45/103] Evaluating BraTS-MET-01058-001.nii.gz...\n[46/103] Evaluating BraTS-MET-01060-001.nii.gz...\n[47/103] Evaluating BraTS-MET-01096-000.nii.gz...\n[48/103] Evaluating BraTS-MET-01096-001.nii.gz...\n[49/103] Evaluating BraTS-MET-01096-002.nii.gz...\n[50/103] Evaluating BraTS-MET-01105-001.nii.gz...\n[51/103] Evaluating BraTS-MET-01105-002.nii.gz...\n[52/103] Evaluating BraTS-MET-01109-001.nii.gz...\n[53/103] Evaluating BraTS-MET-01109-002.nii.gz...\n[54/103] Evaluating BraTS-MET-01109-003.nii.gz...\n[55/103] Evaluating BraTS-MET-01117-001.nii.gz...\n[56/103] Evaluating BraTS-MET-01117-002.nii.gz...\n[57/103] Evaluating BraTS-MET-01117-003.nii.gz...\n[58/103] Evaluating BraTS-MET-01119-000.nii.gz...\n[59/103] Evaluating BraTS-MET-01119-001.nii.gz...\n[60/103] Evaluating BraTS-MET-01119-003.nii.gz...\n[61/103] Evaluating BraTS-MET-01134-000.nii.gz...\n[62/103] Evaluating BraTS-MET-01134-003.nii.gz...\n[63/103] Evaluating BraTS-MET-01149-000.nii.gz...\n[64/103] Evaluating BraTS-MET-01149-001.nii.gz...\n[65/103] Evaluating BraTS-MET-01172-001.nii.gz...\n[66/103] Evaluating BraTS-MET-01172-002.nii.gz...\n[67/103] Evaluating BraTS-MET-01172-004.nii.gz...\n[68/103] Evaluating BraTS-MET-01180-000.nii.gz...\n[69/103] Evaluating BraTS-MET-01180-003.nii.gz...\n[70/103] Evaluating BraTS-MET-01181-001.nii.gz...\n[71/103] Evaluating BraTS-MET-01181-002.nii.gz...\n[72/103] Evaluating BraTS-MET-01187-000.nii.gz...\n[73/103] Evaluating BraTS-MET-01187-001.nii.gz...\n[74/103] Evaluating BraTS-MET-01187-003.nii.gz...\n[75/103] Evaluating BraTS-MET-01191-001.nii.gz...\n[76/103] Evaluating BraTS-MET-01191-002.nii.gz...\n[77/103] Evaluating BraTS-MET-01191-003.nii.gz...\n[78/103] Evaluating BraTS-MET-01191-004.nii.gz...\n[79/103] Evaluating BraTS-MET-01217-000.nii.gz...\n[80/103] Evaluating BraTS-MET-01217-002.nii.gz...\n[81/103] Evaluating BraTS-MET-01217-003.nii.gz...\n[82/103] Evaluating BraTS-MET-01250-001.nii.gz...\n[83/103] Evaluating BraTS-MET-01250-003.nii.gz...\n[84/103] Evaluating BraTS-MET-01268-002.nii.gz...\n[85/103] Evaluating BraTS-MET-01270-001.nii.gz...\n[86/103] Evaluating BraTS-MET-01270-002.nii.gz...\n[87/103] Evaluating BraTS-MET-01270-003.nii.gz...\n[88/103] Evaluating BraTS-MET-01276-001.nii.gz...\n[89/103] Evaluating BraTS-MET-01284-000.nii.gz...\n[90/103] Evaluating BraTS-MET-01284-002.nii.gz...\n[91/103] Evaluating BraTS-MET-01287-001.nii.gz...\n[92/103] Evaluating BraTS-MET-01287-002.nii.gz...\n[93/103] Evaluating BraTS-MET-01301-000.nii.gz...\n[94/103] Evaluating BraTS-MET-01301-001.nii.gz...\n[95/103] Evaluating BraTS-MET-01301-002.nii.gz...\n[96/103] Evaluating BraTS-MET-01310-001.nii.gz...\n[97/103] Evaluating BraTS-MET-01310-002.nii.gz...\n[98/103] Evaluating BraTS-MET-01314-002.nii.gz...\n[99/103] Evaluating BraTS-MET-01314-003.nii.gz...\n[100/103] Evaluating BraTS-MET-01331-002.nii.gz...\n[101/103] Evaluating BraTS-MET-01351-000.nii.gz...\n[102/103] Evaluating BraTS-MET-01351-002.nii.gz...\n[103/103] Evaluating BraTS-MET-01351-003.nii.gz...\n\nEvaluation complete. Results saved to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/original_E_200/panoptica_evaluation_summary.json\nJSON file loaded successfully.\nDataFrame saved successfully to /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/compare_2025_K1_E_r2/evaluation/original_E_200/leaderboard_metrics.csv\n                     subject_id  ...  small_instance_f1_wt\n101  BraTS-MET-01351-002.nii.gz  ...              0.250000\n102  BraTS-MET-01351-003.nii.gz  ...              0.086957\n103                        mean  ...              0.294659\n104                         std  ...              0.335147\n105                      median  ...              0.120401\n\n[5 rows x 73 columns]\n{\"artifact_status\": \"experimental_unvalidated\", \"case_count\": 103, \"completed_at_utc\": \"2026-11-06T11:41:16.384061+00:00\", \"csv_data_row_count\": 103, \"csv_summary_rows\": [\"mean\", \"std\", \"median\"], \"formal_gate_status\": \"not_run_not_passed\", \"metric_column_count\": 72, \"metrics_csv_sha256\": \"294a1451a8737344a929902c8ef118c89bd9a3da971952d11b453fafccc3e167\", \"operator_approved\": false, \"schema_version\": 1, \"status\": \"pass\", \"summary_json_sha256\": \"84386da89e89d24003579bfbdfe36728ed4e49856b16a84c4f9edf1d65569fc1\"}\n"
+  },
+  "operator_approved": false,
+  "quota": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote_utc": "2026-11-06T12:07:33.590841+00:00",
+  "remote_writes": false,
+  "sacct": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4319113|s2ext26full|PENDING|0:0|00:00:00|None assigned|Unknown|Unknown\n4319117|s2ext25k1e|COMPLETED|0:0|01:13:43|node203|2026-11-06T18:27:53|2026-11-06T19:41:36\n4319117.batch|batch|COMPLETED|0:0|01:13:43|node203|2026-11-06T18:27:53|2026-11-06T19:41:36\n"
+  },
+  "squeue": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4319113|PENDING|0:00|(Priority)\n"
+  }
+}
