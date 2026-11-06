@@ -1,0 +1,112 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "2025_full103_COMPLETED_0_0_current_predictions_SHA_pass_Bio_no_job",
+  "reviewed_utc": "2026-11-06T07:36:29.438037+00:00",
+  "checked_remote_lightweight_reports": {
+    "fullbio/COMMAND_FAILED_hold_single_sbatch_held.json": "9c1f30e3b76d0aa2aeeba53d8d90bd0cd038c74c546cdd2ce19c066fac19f3cc",
+    "fullbio/IMAGE_CPU_IMPORT_CHECK.json": "5295738cdc27b0934ac5fb070774066cb6c8777c51e045c79bcf9309fbc4e143",
+    "fullbio/PARENT_RECONCILIATION.json": "bea888d4fa613e98ac84c257f1d20abe9c3b0aceec0b69c21250fdad91676297",
+    "fullbio/RESOURCE_SNAPSHOT.json": "8d3c36bcab025ed9744b5cb371694e2dda1f85634c7c158b9900f036d7d1bea7",
+    "fullbio/SUBMISSION_FAILED_hold.json": "406626ad25fa72fb5d159e5364758dce1365f7fafb8797debd972e5d33f7a663",
+    "fullbio/SUBMISSION_RESERVED.json": "8c9f2eb538b7cdf73f60b718682871cd761c132e9b9e169d6f35c2707fc4d3a0",
+    "full2025/HELD_CREATED.json": "de77fe045064e23ad9b64cd4478e9d4556ed802e7c3356e5027e4622a21e8932",
+    "full2025/HELD_JOB_MAP.json": "c11b0fb487359d209a758b3af091c4b810530e863a69606afe54d694cb26ba06",
+    "full2025/IMAGE_CPU_IMPORT_CHECK.json": "5295738cdc27b0934ac5fb070774066cb6c8777c51e045c79bcf9309fbc4e143",
+    "full2025/RESOURCE_SNAPSHOT.json": "cea101a97bf6af4db616107f736a8ca4e2355afb809d18d77d608b9de6d7a181",
+    "full2025/SUBMISSION_RECEIPT.json": "0ec961665595d6c70023abba12a0f4aebf6d1ee29a6c417620046cdc2e573aca",
+    "full2025/SUBMISSION_RESERVED.json": "c94835da5927cbb71a3087ac994f91b667d57bf60ed82cd510a2ce040e7c6f16",
+    "runtime_r5/BASE_PACKAGE_LOCK.json": "33e4610077836e0bb6950f7718edfe13d9e8b496eda40e1bdcee4d6074af0785",
+    "runtime_r5/COMPLETE.json": "9922af778898655de0605ebc249ad93f33d7586b363f1c33c53cf573b8797bf4",
+    "runtime_r5/PLAN_ACCEPTANCE.json": "bf69d2a535b522e67cc33696a671d73821830fa9a1d11e8f2e681da7613e32fd",
+    "completed2025/COMPLETE.json": "fb26a4ab47a8922fae89a78c62b73583ff959d982c2733f6e7277e14743228ff",
+    "completed2025/INPUT_ADAPTER.json": "6e2382158884a353f2fac4f9fb1e19cd4eccda21668805db1cadd469d4f302dd",
+    "completed2025/PREDICTION_SHA256.json": "c0ffe07f452aa911d7e1b17128add3db25c443ddfb64fe45e7dac2bb84a34717",
+    "completed2025/RUN_CONTRACT.json": "c994eadb54739f54a4e5ec89aa99602c25873eed2966f3c807c2905baa3ddcee",
+    "completed2025/STARTED.json": "2be3d323850a3b1b7f758374a5ad97ab6e5cbd8c36c88e8234d639d30815c8cd"
+  },
+  "lightweight_reports_checked": 20,
+  "full2025": {
+    "job_id": "4310575",
+    "allocation_and_batch_state": "COMPLETED",
+    "exit_code": "0:0",
+    "Slurm_elapsed": "00:18:27",
+    "node": "gpu19",
+    "current_predictions": 103,
+    "current_prediction_bytes": 4260855,
+    "prediction_manifest_sha256": "c0ffe07f452aa911d7e1b17128add3db25c443ddfb64fe45e7dac2bb84a34717",
+    "completed_remote_utc": "2026-11-05T19:37:57.771922+00:00",
+    "inference_elapsed_seconds": 1068.7466035038233,
+    "native_geometry_and_legal_labels_scope": "validated_by_frozen_completed_job_not_reloaded_in_this_read_only_acceptance",
+    "partition_GPU_name": "NVIDIA A100-PCIE-40GB",
+    "cleanup_warning": "The log tail contains multiprocessing exit-finalizer _remove_temp_dir/rmtree Errno39. Allocation/batch exit0 and current103 output SHA acceptance pass; no full log or image arrays were rescanned."
+  },
+  "Bio": {
+    "queue_and_accounting_empty": true,
+    "no_JobID": true,
+    "original_R2_failure_SHA": "406626ad25fa72fb5d159e5364758dce1365f7fafb8797debd972e5d33f7a663",
+    "previous_refusal": "account zqchen have not enough available CPU time",
+    "current_numeric_available_CPU_time_unknown": true,
+    "original_failure_not_current_balance_proof": true,
+    "retry_attempted": false
+  },
+  "fresh_scheduling": {
+    "association": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "User|Account|Partition|QOS|MaxJobs|MaxSubmit\nzqchen|zqchen||user_zqchen||\n"
+    },
+    "association_with_usage": {
+      "returncode": 1,
+      "stderr": "sacctmgr: error: Invalid value for AssocId (withusage)\n Unknown condition: user=zqchen\n",
+      "stdout": ""
+    },
+    "partition": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PartitionName=a100 AllowGroups=ALL AllowAccounts=gdzhang,xnwang3,xnwang2,nih,zxfeng,cmshen,jlyang,lichao,lmzhou,zqchen,wxzhang,xlwang,ylshi,ywang,xlin,scst8,qhyuan,tzhu,jshu,cgduan,dlli,longchen,ldliang,dysun,htsun,rxji,scow_admin,wwang,pxchen,ypu,sunli,yhzhu,gtshi,tianzhixiong,a_test,mxbai,yliu,yangdanfeng,lianghe2,ydf_test,xjshi,hymao,fxia,pbxu,ecnuhpc,cyli,kxbai,zhzhang,hysun,ybyao,yshen,jhjiang,sugon,jiangxu,mzhang,ymei,dmyin,glwang,scjiang,syzhang,wtchen,zychen,ccxia,lxwang,wwu,hqwu,test20260302,wxhu,liqin,lkpan,test20260303,szr_e,awzhu,qzhang,zxtian,xiangsun,khuang,test,xiaohe,hcsong,hlli,xkzhang,jwli,fwang,fmfang,kyu,fxqiao,qzhuhe,jwu,yycheng,czyypj,demo_user,root,hzhang,xwei,yfqi,qingll,yqian,tzhu2,jxu,zfyang,xlwang2,twang,gpliu,xnwang,flhong,lychen,yyzhang,mrxie,pxwang,ectan AllowQos=ALL AllocNodes=ALL Default=NO QoS=partition_a100 DefaultTime=15-00:00:00 DisableRootJobs=YES ExclusiveUser=NO GraceTime=0 Hidden=NO MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED LLS=NO Nodes=gpu[9,11-19,22] PriorityJobFactor=1 PriorityTier=6000 RootOnly=NO ReqResv=NO OverSubscribe=NO OverTimeLimit=NONE PreemptMode=OFF State=UP TotalCPUs=528 TotalNodes=11 SelectTypeParameters=NONE JobDefaults=(null) SuspendKeepIdle=n/a DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n"
+    },
+    "qos": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Name|Priority|GraceTime|Preempt|PreemptExemptTime|PreemptMode|Flags|UsageThres|UsageFactor|GrpTRES|GrpTRESMins|GrpTRESRunMins|GrpJobs|GrpSubmit|GrpWall|MaxTRES|MaxTRESPerNode|MaxTRESMins|MaxWall|MaxTRESPU|MaxJobsPU|MaxSubmitPU|MaxTRESPA|MaxJobsPA|MaxSubmitPA|MinTRES\npartition_a100|0|00:00:00|||cluster|||1.000000|||||||||||||100||||\nuser_zqchen|100|00:00:00|||cluster|||1.000000|||||||||||cpu=1000|1000|||||\n"
+    }
+  },
+  "disk_free_bytes": 627156451328,
+  "disk_free_GiB": 584.0849609375,
+  "quota": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote_snapshot_started_utc": "2026-11-06T07:21:10.869261+00:00",
+  "remote_snapshot_finished_utc": "2026-11-06T07:21:12.909908+00:00",
+  "remote_completion_acceptance_utc": "2026-11-06T07:24:05.469526+00:00",
+  "local_snapshot_receipt": {
+    "artifact_status": "experimental_unvalidated",
+    "completed_utc": "2026-11-06T07:32:41.241508+00:00",
+    "formal_gate_status": "not_run_not_passed",
+    "operator_approved": false,
+    "own_vpn_stop_completed": false,
+    "preexisting_vpn_preserved": true,
+    "started_utc": "2026-11-06T07:32:24.841026+00:00",
+    "vpn_owned": false
+  },
+  "local_acceptance_receipt": {
+    "artifact_status": "experimental_unvalidated",
+    "completed_utc": "2026-11-06T07:35:33.746884+00:00",
+    "formal_gate_status": "not_run_not_passed",
+    "operator_approved": false,
+    "own_vpn_stop_completed": false,
+    "preexisting_vpn_preserved": true,
+    "started_utc": "2026-11-06T07:35:25.160494+00:00",
+    "vpn_owned": false
+  },
+  "predictions_downloaded": false,
+  "models_downloaded": false,
+  "images_or_GT_arrays_read": false,
+  "new_scores": false,
+  "new_jobs_or_release": false,
+  "automatic_retry": false
+}

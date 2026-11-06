@@ -1,6 +1,6 @@
 # 两外部METS模型同fixed103执行批次R1
 
-**2026-11-06最新：Bio独立R2已获授权并执行一次held提交，Slurm明确因账号zqchen可用CPU机时不足拒绝，无JobID。** 原始stderr完整保留，唯一后续queue/accounting无Bio；2025的4310575仍PENDING/Priority、运行零、0预测，不重复提交/释放。R5环境独立验收及完整七折/真实fixed103/资源不改，原R1原因仍未知不倒推。292本机发现/290pass/2版本skip、100生产3.10 AST和15轻量回执SHA通过，非GPU/质量pass。余693.491GiB为文件系统余量，非数值quota或机时余额；需管理员恢复CPU机时后另行授权，不自动R3/重装solver/smoke或监控。详见[R2执行](BIO_FULL103_R2_EXECUTION_20261106.md)、[失败复核](BIO_FULL103_R2_FAILURE_REVIEW_20261106.json)和[最新状态](STATUS_20261106.md)。下方均为历史，跳过门保持`waived_by_user_not_pass`及原科学边界。
+**2026-11-06再次查询：2025全量4310575已COMPLETED 0:0，18分27秒完成103预测，当前103文件大小/SHA与完成清单独立核验通过。** 5份轻量清单已拉回，模型/NIfTI留远端；统一分割评分未运行，非科学质量pass。Bio仍无JobID/queue/accounting，原R2机时拒绝保留，但当前数值余额未取得、不复投，不能据旧错误说现在仍不足/已恢复。余584.085GiB非数值quota；退出finalizer清理Errno39告警保留，作业0和当前输出身份一致。20轻量回执SHA、实际执行源码和两端UTC复核通过，两个只读会话均保留用户VPN，无重提/释放/安装或GT-test读取。见[当前复核](FULL103_STATUS_REVIEW_20261106_0732UTC.json)、[103预测轻量清单](operator/accept_2025_full103_completion_20261106T073525Z/PREDICTION_SHA256.json)与[最新状态](STATUS_20261106.md)。下方R2拒绝/PENDING等均为历史，原模型/数据/公开训练暴露和科学边界保持。
 
 **最新北京时间2026-11-05 23:46：CPU4309579已COMPLETED 0:0，耗时1小时16分29秒，最终2025 SIF转换及大小/SHA验收通过。**SIF 4.1253 GiB，三复用wheel身份一致，COMPLETE存在、无FAILED或漂移；这是转换工程通过，不是GPU推理通过。完整Bio-Intel环境、两路真实GPU smoke及全量仍未完成或提交。最新文件系统余744.78 GiB，账号数值quota/全量峰值门未验证；本次仅一次只读快照，不安装或新增作业，用户VPN保留，原失败不删。见[完成复核](operator/snapshot_sif_recovery_r2_20261105T154434Z/LOCAL_SNAPSHOT_REVIEW.json)与[STATUS](STATUS_20261104.md)，下方压缩中为历史。
 

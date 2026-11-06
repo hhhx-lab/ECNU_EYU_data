@@ -1,0 +1,1482 @@
+{
+  "accounting": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4310575|COMPLETED|0:0|00:18:27|gpu19|JobHeldUser\n4310575.batch|COMPLETED|0:0|00:18:27|gpu19|\n"
+  },
+  "automatic_retry": false,
+  "contract_sha256": "b6ede31460d7a67c156fb3693f79f6d1c747ffad6f51695e60de35105150c3ff",
+  "current_prediction_bytes": 4260855,
+  "current_predictions": 103,
+  "jobs_released": false,
+  "jobs_submitted": false,
+  "models_loaded": false,
+  "native_geometry_and_legal_labels_scope": "validated_by_frozen_completed_job_not_reloaded_in_this_read_only_acceptance",
+  "package_sha256": "4536d7d16462ba784bdd3e8c9b518cc6656755ea53e8e23ef1e648b7f7ff1c44",
+  "prediction_arrays_read": false,
+  "reference_images_or_GT_arrays_read": false,
+  "remote_utc": "2026-11-06T07:24:05.469526+00:00",
+  "remote_writes": false,
+  "reports": {
+    "COMPLETE.json": {
+      "bytes": 694,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 103,
+        "contract_sha256": "b6ede31460d7a67c156fb3693f79f6d1c747ffad6f51695e60de35105150c3ff",
+        "elapsed_seconds": 1068.7466035038233,
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4310575",
+        "measured_runtime_peak_gate": "waived_by_user_not_pass",
+        "model": "EXT2025_MET_GLI",
+        "operator_approved": false,
+        "prediction_manifest_sha256": "c0ffe07f452aa911d7e1b17128add3db25c443ddfb64fe45e7dac2bb84a34717",
+        "reference_labels_read": false,
+        "remote_utc": "2026-11-05T19:37:57.771922+00:00",
+        "smoke_gate": "waived_by_user_not_pass",
+        "status": "full103_inference_outputs_validated_not_scientific_quality_pass"
+      },
+      "sha256": "fb26a4ab47a8922fae89a78c62b73583ff959d982c2733f6e7277e14743228ff"
+    },
+    "INPUT_ADAPTER.json": {
+      "bytes": 46575,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": {
+          "BraTS-MET-00006-000": {
+            "input_sha256": {
+              "t1c": "8f54153160ab0c4a752f4514ef59a6172d0b4ddf1bddc45e47adc7b98addf200",
+              "t1n": "451d0082e2393b74a1e38fb359cc37e60b9acad2477884acbabfc09ab39fe947",
+              "t2f": "1beb511bb427d8ee144ee5a8c6bebd3285e61e1dde13398dd6f5fb2f8b47a888",
+              "t2w": "349da0f76fad684946f2fa3611c25b7151c2a7631521a14e4c48ac41fa89bff7"
+            },
+            "internal_case_id": "BraTS-MET-00000-000"
+          },
+          "BraTS-MET-00009-000": {
+            "input_sha256": {
+              "t1c": "4e8a505cf7e2202e1edec74dd7cdba0d309523cc7e332c51ded19a114c0fbed2",
+              "t1n": "245c3946643a130a6cdd148171f6cdff7f9648f5807e2cd5599ce354d9aa6aa0",
+              "t2f": "cc31674f9fbc76fb7c4358c66246c86979f98323c2162ae5dd1a7d1996b9be98",
+              "t2w": "df328c84d3c535a2cc619bfc4d83352ddf4da6a918d85f527552d5cb1d6a49d4"
+            },
+            "internal_case_id": "BraTS-MET-00001-000"
+          },
+          "BraTS-MET-00014-000": {
+            "input_sha256": {
+              "t1c": "616d5edc88e08a7d5544818b424fc0bcea08dfb42975151f84558a6323cc41e3",
+              "t1n": "73c5ec064e9795e468d2e7586b4a652daf6a1a4f380a1fffb63ba96938a8fc0c",
+              "t2f": "1bc51602dfea781e004dd975dc1834d8de7ff86e6cdf714d63d1a7283f19f1b6",
+              "t2w": "25e67bf7213c295a7134328521b664b5e23f38fbaf30e55ad92f6024e6a602ab"
+            },
+            "internal_case_id": "BraTS-MET-00002-000"
+          },
+          "BraTS-MET-00016-000": {
+            "input_sha256": {
+              "t1c": "860ed2d06641dd72a09c5780834c16cfbcb68504fa1aac9b20e988b5ddbcddff",
+              "t1n": "dd92f7b6bbcfc68989dde04ea7b828f97c75470495c3992a4dc6a3ed498165ab",
+              "t2f": "2a4b9cc3f46a93591e0f6813fecc1fe83e068323b019bf476112857e61808ecb",
+              "t2w": "9546466ad24b557099a80614726b03c001e9ae9ece8f182117b8bb0e929b2f28"
+            },
+            "internal_case_id": "BraTS-MET-00003-000"
+          },
+          "BraTS-MET-00019-000": {
+            "input_sha256": {
+              "t1c": "897560cd91dd06ee6d3cb1fe817d605d1b08e35073aeb2d82e11dfc103d1739d",
+              "t1n": "46f4e85883b29302448ab68b021d3e2f24ba36fd8a8606216d14962dd9b731a2",
+              "t2f": "27551df2524396c128c829de5a7a2d554f3e452732660cc5330e6b194412dd74",
+              "t2w": "f2240b9bffbff00e5400f80ad11d554422d842d0dcedfe71c8cdae770a5312a4"
+            },
+            "internal_case_id": "BraTS-MET-00004-000"
+          },
+          "BraTS-MET-00022-000": {
+            "input_sha256": {
+              "t1c": "e48cefc91ca759ea2a0a3dd6878f2004d18dde11ac67307c30fdfed114253570",
+              "t1n": "595e361451f6596d61c873da0a5d1be8bac8594f02cce4cfb8e0fbe4de7374de",
+              "t2f": "55e9de1b3ff551556bbd50b593982d5d66f70d41457f34e2b2b93e08f165ac41",
+              "t2w": "567ccbe6ff04924cb523c553418e57a24dba2e9dbb0f188069f087743413930b"
+            },
+            "internal_case_id": "BraTS-MET-00005-000"
+          },
+          "BraTS-MET-00025-000": {
+            "input_sha256": {
+              "t1c": "c2cc8d819484c3f664b27d9f828b58588afd8d5de13517b09dd84b3c4f9a03d8",
+              "t1n": "fae880a866d6e71b51af017d49387b3a9aea72b7b8ba72558097f3d9edf7f3e9",
+              "t2f": "7df159c7e27deb7f02200ea10fb87e7110b69499165fdfe51866d74cbda9257d",
+              "t2w": "911f1b9ee046a19f51bb638af31eae69ef0665027fa0985894ec782f3d2ce13c"
+            },
+            "internal_case_id": "BraTS-MET-00006-000"
+          },
+          "BraTS-MET-00098-000": {
+            "input_sha256": {
+              "t1c": "359d0ce1635803dd10c3615487f73e51aa7e18113f173874f3156231da7935ec",
+              "t1n": "e596f081967abcf181ed1a1b445a9bc787b6af3ea8eed637fae6c7a82691f416",
+              "t2f": "62d212e77860e12b5311acdb584f0803ad94e8bdb3863c4909e56b9df462ba62",
+              "t2w": "8980258bcfcbb03ff0fea5079e47e6ca6182d5ce5bbb11f4560b4f8258467f67"
+            },
+            "internal_case_id": "BraTS-MET-00007-000"
+          },
+          "BraTS-MET-00129-000": {
+            "input_sha256": {
+              "t1c": "d31a5606670e1a9d199ce43a921012bc23ad569ef49bab271a281bb2cc6c7990",
+              "t1n": "922c6bcc24a445578e9d676501d31bb8b865c2a29acba2fd2aa8476fcdd98b8a",
+              "t2f": "1827f49de121b57ccb691414d25ea5943b4a2a162b6f9e285ef23b03590c20b5",
+              "t2w": "8e75c78b0a90cad0f2053cba7e9b23f17202dba194a0a8f96531314630d56cc6"
+            },
+            "internal_case_id": "BraTS-MET-00008-000"
+          },
+          "BraTS-MET-00133-000": {
+            "input_sha256": {
+              "t1c": "9e4987fc85ec946f793b413dacd64d501577662722966b998a4800a52f1b5992",
+              "t1n": "fa96e0d820219289e225c9f6c3f4fbdb9c82f681e555fb0a6e4a97592d40e617",
+              "t2f": "32d5a6408885254ba8c7ce0ddcec529684c710c34ea209d8f7e9298616b1e4ca",
+              "t2w": "d09a95f49af158cbfed377ce920ad558caeeca6f62d303472f9feb537daca26d"
+            },
+            "internal_case_id": "BraTS-MET-00009-000"
+          },
+          "BraTS-MET-00137-000": {
+            "input_sha256": {
+              "t1c": "6086aac5bfa275c2a80aae34f6418e57099bc1448943250d5c3e2fa6130f1fcc",
+              "t1n": "e8bd673fa8c5e95774d03d8aa144e3dea789cb1ffe7881776e328cf9f92b942c",
+              "t2f": "6577e46e3529358dd9a1e4f0654d217008235975abad0f3058e56052b193befc",
+              "t2w": "b8e69669c2fa00819c53dea75e9e0d8eae0be62c8e7dd36b10f14b1b522a7a2b"
+            },
+            "internal_case_id": "BraTS-MET-00010-000"
+          },
+          "BraTS-MET-00147-000": {
+            "input_sha256": {
+              "t1c": "e9720b441acfcfa96c4cabcfe8eb8f5437ffa1dfdd986d1c3b65bbd2733b24d8",
+              "t1n": "ece8cf5167252412e45f551221f80ef8c2ee8a6b5f3c1b43b8e302d46152da95",
+              "t2f": "0164b668ff53fa9bd1991f015839838d5de08eb1357418ff6c02cc5b10993f0f",
+              "t2w": "5e9e56782eefb18562d1f79f615048c025c0b2425db044f770716e3f61d43778"
+            },
+            "internal_case_id": "BraTS-MET-00011-000"
+          },
+          "BraTS-MET-00161-000": {
+            "input_sha256": {
+              "t1c": "887f79df32af5cd077945d2e06ca2fda419826d01b5478a6bf9d2782da7e6a0e",
+              "t1n": "44f2fde43a9dab67e5ae54a873370bb6993ddae2bea66ea394afbddafac7898d",
+              "t2f": "5b9c34d725dd9cf3481a282f7af4849165098d5e8e9bb735b0f7fdf7bc244a98",
+              "t2w": "6fca5e53e51ea69f3aa248ff449dad0d90e634556cfc00d6ce981a2dd56437bf"
+            },
+            "internal_case_id": "BraTS-MET-00012-000"
+          },
+          "BraTS-MET-00162-000": {
+            "input_sha256": {
+              "t1c": "5b9b517920e9f3ab9c2b3014e65cfb5beb43495abd8d0231108469bb06a9c44e",
+              "t1n": "136559e86465d74db4db6b4db8fc507a508db921ab7fa6cbaac556a24627ce0c",
+              "t2f": "11fc40f6ed14da07e65c0e605a6ed9812393776dc92310667fa5be887e102a96",
+              "t2w": "9f4ba2454cce036ce8dd1abc3375a7ee18810ec94f668f9e78ba10fa6357030d"
+            },
+            "internal_case_id": "BraTS-MET-00013-000"
+          },
+          "BraTS-MET-00167-000": {
+            "input_sha256": {
+              "t1c": "28462da208cbdc3698f99ed8293d98e5c3d8e892ccbe1090a29b5373bf5a78ff",
+              "t1n": "3c5b17a3f270ba0e0c671e43826381533b9ee79cc20e0305e26c28bb36a74d19",
+              "t2f": "bf902585445ccdffc4d876487681dacf6c50f9af832eb2e702301912d87aae11",
+              "t2w": "9ebc7e908f9dd6204c4a048d8a3d51ddf20cec247826a3efa9e7887667f08474"
+            },
+            "internal_case_id": "BraTS-MET-00014-000"
+          },
+          "BraTS-MET-00175-000": {
+            "input_sha256": {
+              "t1c": "5b8b0f96480a4b6de24a503397d6649c0784d9434005aeff1dd84f6e2ea2c0fa",
+              "t1n": "b77e70de3aa9a2c41c77413d98b75431bd579c171aaf7319d3942f5286f052d6",
+              "t2f": "0775810108250757354ce829254e37687d94aaacd5165564311be0976ab38086",
+              "t2w": "5e765474da7b1514a7ddf2ac769adec307ab7c9275b07eb12fed0c3cca29dfe2"
+            },
+            "internal_case_id": "BraTS-MET-00015-000"
+          },
+          "BraTS-MET-00180-000": {
+            "input_sha256": {
+              "t1c": "8446ed0425f687b275ec1fd57f8e92dbef0727ef7bec424d862d2962a20c6d75",
+              "t1n": "808fe2f46a934553a16f832c99f09935721cf943e3ca15c6ecb21a3819518133",
+              "t2f": "063eeae3f83fcb6f6e72e087209a8e0d3e4612f63c651632389074d27b57087b",
+              "t2w": "5891216bdb5ad9d7d543173890a1cf6d7d53c667f540f3d953fc836b17922431"
+            },
+            "internal_case_id": "BraTS-MET-00016-000"
+          },
+          "BraTS-MET-00194-000": {
+            "input_sha256": {
+              "t1c": "623052b84d6c6038fd072c341ff85d7b95b7dc2cc92bdc7ea93ee9f922184479",
+              "t1n": "995f795e4b5b6220ddef58cc3d8c9bc57eec55508ea5f2e31eeeee4b103c6228",
+              "t2f": "1eb31a53461bcaa3da16066e30bba15f79d64cdfa7760b111408b49de60851e8",
+              "t2w": "a4f8cd3990e26f77cca1506a4fd65a7295902a06e5e427131807ae7e467874d9"
+            },
+            "internal_case_id": "BraTS-MET-00017-000"
+          },
+          "BraTS-MET-00195-000": {
+            "input_sha256": {
+              "t1c": "64443e4ec72ad9104d5432c4102bf4129b1d7770bc8f3fc8ebd2f603957d9f0f",
+              "t1n": "bd6f45a31b0b826befe2da3be2b57485540b6e7a31c8262ed12b520f58a10648",
+              "t2f": "932f8fbfcda0c04234f1856782c7baa56cf32e4f351c3f3e53f181d822173c37",
+              "t2w": "162045016124d583597bfb71534fca73886494f264826a71daedb0b89c44fc87"
+            },
+            "internal_case_id": "BraTS-MET-00018-000"
+          },
+          "BraTS-MET-00200-000": {
+            "input_sha256": {
+              "t1c": "66d7d3014083498bc2f288d676035f6e167b86c070f8762ff8fbdcee38c58ced",
+              "t1n": "b00eace2545713b1727602f5f4b001542401627c3d36fd87a461ffb1bc1fee48",
+              "t2f": "77d9f6adf85bc6692ee8cc7914d6c23976e22176f614d909e91408f7c8ac61f9",
+              "t2w": "b7f693091fcf6e014f63de5936a21ca534d2e0b2e9852832fd47272ca9d8dfb7"
+            },
+            "internal_case_id": "BraTS-MET-00019-000"
+          },
+          "BraTS-MET-00202-000": {
+            "input_sha256": {
+              "t1c": "8eaa3f58400f25c8a016157a62733cacc516986d9b91d9b16a732ceac3669c36",
+              "t1n": "266f62ce68ff41e44b611d97fccf74bf979f0eade17d3bacce5fbe9571b20ee5",
+              "t2f": "cb2dce3c0b074dbe0f42e31a6765b47eb46ac6cec00ffc541040226b52a1dc54",
+              "t2w": "133cd91fac2d8994be6feffc5cdb06c7f77fc02d129095b644a43c94a73dc19d"
+            },
+            "internal_case_id": "BraTS-MET-00020-000"
+          },
+          "BraTS-MET-00214-000": {
+            "input_sha256": {
+              "t1c": "5662a78b4d845d5ab95398327e5d4b522ecda14f43960c614800602cf7c8c243",
+              "t1n": "eaebe69052428048eb305997c2bd27e01c3c17821772fe9f374fd749799635b0",
+              "t2f": "8a53caf7b9f24946c6f0af01236f8fbe7cf46eba2023aa3d8ed9d73ad69c2dac",
+              "t2w": "91a4af062126d00245ff6b966bdada17212810d46df434ab4a0d6ee9600fcf2f"
+            },
+            "internal_case_id": "BraTS-MET-00021-000"
+          },
+          "BraTS-MET-00260-000": {
+            "input_sha256": {
+              "t1c": "851273542b94bea923fb776a7377565140ec91e40080a138325e87932b0de6f8",
+              "t1n": "2cecd4aba54e214d84700adde51604f5205760f634fcbdc9936fa1119f73e65a",
+              "t2f": "56005f78798be03239913708abec2f27c07677a16e9b0e9555af2247a463086a",
+              "t2w": "9ddc05f0122dfe93dc1cb2607950f5519be85de138c33fa56f8c363a5566219e"
+            },
+            "internal_case_id": "BraTS-MET-00022-000"
+          },
+          "BraTS-MET-00264-000": {
+            "input_sha256": {
+              "t1c": "64ddfc42bcfc406526553520aa75653f96cc99f4616eb8b4234f5f0f7932786c",
+              "t1n": "1a71757f89c8c23888612aa9e1d90f79e4d976fe299621610aeb008901782640",
+              "t2f": "d66cc8db072a1ec45e69cb203c1f8ffc54e0ab9b7133100a11e5f1563abd01a9",
+              "t2w": "6613a791bb8975a73318bf38696187853c8252eb89821c1a8b81a8c2e2ca86a0"
+            },
+            "internal_case_id": "BraTS-MET-00023-000"
+          },
+          "BraTS-MET-00268-000": {
+            "input_sha256": {
+              "t1c": "d33807467921b02610e0be3fe04b1f845a555a080ca65d8cda8f7e51324f7a4e",
+              "t1n": "37dceeafbd7c2919c8d64ca45e10174aec4a6f1b757668d5333724401bd6afd8",
+              "t2f": "21123896089aff37b92943236c7e7097ccb0f7e4e4f1b255d9ffd00ece30719e",
+              "t2w": "1c300440abfb211715784a335ed8049b6eaf7f170bc31b3354b60e9085592a44"
+            },
+            "internal_case_id": "BraTS-MET-00024-000"
+          },
+          "BraTS-MET-00292-000": {
+            "input_sha256": {
+              "t1c": "0cc80ad94a5d3be328f62c9930abd72170225543f31ed023d85e54005196e30a",
+              "t1n": "0881f015a2dd95a0592c66f73d998270a3793a9853fd32f6c7680aeeec71cca3",
+              "t2f": "2dc4987a6710a60c9a81ba0cd187c409247ff18bdead48c9c5b3aa7d8921cc07",
+              "t2w": "8dbc29911eee21138cfdbf514b5b9c45ae21ba030f68c5481be7cd1d202fd01a"
+            },
+            "internal_case_id": "BraTS-MET-00025-000"
+          },
+          "BraTS-MET-00299-000": {
+            "input_sha256": {
+              "t1c": "16965ab02701d163acd79c9fc63284bca3adfc225120ea898ccefc0a5db273bd",
+              "t1n": "f68f04da37343b0d4a9171fd2b50e872db110079d9b1e9be7910c21b783c0713",
+              "t2f": "8eca21de96f77fa096ee839d332a78dfa14692205bd7a4c2a55b7a7b61494a8f",
+              "t2w": "525ed38670ec3ab4a37053a499df9bbf8a1ca5aebc66e99eca6ddb077f7ef863"
+            },
+            "internal_case_id": "BraTS-MET-00026-000"
+          },
+          "BraTS-MET-00300-000": {
+            "input_sha256": {
+              "t1c": "92187a0990da8e7a2d6a96c07c374e4c112538c34cadf1d427748f4ec9839787",
+              "t1n": "272959d11a8ec14277976a5809bb48db5a4bbc656f32c293aa4dea6261832838",
+              "t2f": "eed9af406c7f93778d084fdfc8b37593e1edf4689621a139ca873693c6d97bfb",
+              "t2w": "ba22d377f29696ccb03fc32c13965ed329daf60a9aab1b2d048f5d06f15c61e9"
+            },
+            "internal_case_id": "BraTS-MET-00027-000"
+          },
+          "BraTS-MET-00380-000": {
+            "input_sha256": {
+              "t1c": "345bedccae7dd31bf22f7e31ca962b15fad767d68caf30a012d1315b09541c66",
+              "t1n": "048c52690d2675f43508beeb27afaba1c7725689b7dc547a6124c325635d4739",
+              "t2f": "8c428984e817125ea89180693afa05ca2a466af84ffc85f41a05107f5c9d9c2e",
+              "t2w": "ce0ed698aaa07dd0b41fd55f8cd16fd40c47ac9dafbe2c7a83a4e620312d5780"
+            },
+            "internal_case_id": "BraTS-MET-00028-000"
+          },
+          "BraTS-MET-00532-000": {
+            "input_sha256": {
+              "t1c": "a300dceefd7c3695416b098d4d16f9202c8b9422b0bae0ef4f487152621478b3",
+              "t1n": "91ebb62f03970c561635c05d5694f7ac567236fba04ec68d20466449eb26e8fe",
+              "t2f": "de302fbf2beb9ed4bcd5fca41134a855189c8b5c8d0656ea4dd694c4dbf422bd",
+              "t2w": "17e706ec3194a6cf5357a09ae1b9eda7c3716106d1f6c587d67f3e1bea01611c"
+            },
+            "internal_case_id": "BraTS-MET-00029-000"
+          },
+          "BraTS-MET-00552-000": {
+            "input_sha256": {
+              "t1c": "15cb2a63538a79ad6f6180a92045cab284169376bcfa6eaade7676c22eaa7f68",
+              "t1n": "6f8f81623fc21345ae489eede03140ea04c7723313e0d58f74fc20a1dd86d1be",
+              "t2f": "9e43375cd4dce1d6d356d8423c2a9e4781a0ad0e8cbd96cd6666219313c5c28c",
+              "t2w": "1643c06cf6dfda377bdf5d17b586979274b2e185d691e479bda25d616e64c337"
+            },
+            "internal_case_id": "BraTS-MET-00030-000"
+          },
+          "BraTS-MET-00572-000": {
+            "input_sha256": {
+              "t1c": "e53b464091b241c71c0fb0a789e9df438bb5c30a6cc5d3f252ebb74eb03c6c6c",
+              "t1n": "af8ebcb7a7260185f7cbdb84e0af2bbb23382704b34df1bf6e190125c4079e49",
+              "t2f": "f5ec87413226a75b54f726273adf8c501b93a009e94dd5f93c473f66467051e7",
+              "t2w": "7dd484f23a81d68ce5d41ccb784eb8b41aaf135f633645d2ba74e49c67f7d82c"
+            },
+            "internal_case_id": "BraTS-MET-00031-000"
+          },
+          "BraTS-MET-00577-001": {
+            "input_sha256": {
+              "t1c": "81ed17f9c0593a142de0cf97eca65a15860911ccc5581661489820cbde9c70fd",
+              "t1n": "3ef8950cb3cfd281f1eafd9c0f16d00dbe4ca4ea1b08add2e4c967c8153ecbfa",
+              "t2f": "60aff4c098adc0d14edd9a52dcdbabb8798d560a9e505c98cb6cc95a13dbbba1",
+              "t2w": "6c8fe1a0839716abfed8f32a3bc418aad1e3aeeedc98de5bc541ff07ffbd7fda"
+            },
+            "internal_case_id": "BraTS-MET-00032-000"
+          },
+          "BraTS-MET-00613-000": {
+            "input_sha256": {
+              "t1c": "8e74e183ac66e0572caf3a41c8531538b12fe4b747c08f9c5021a2576efd6c2a",
+              "t1n": "37d15027988c48579a46bf58b5921bbe9e3ea4e99104cf9266df9589a62bc4b5",
+              "t2f": "c13a96fe4e49aa4f51ad60e14955dfcd1660d6592611c88ee007e92177d15512",
+              "t2w": "cf0cef3e33d6a0747ed4e9be83545a61819cc7ac5ab87496159aca817a8580f3"
+            },
+            "internal_case_id": "BraTS-MET-00033-000"
+          },
+          "BraTS-MET-00613-001": {
+            "input_sha256": {
+              "t1c": "818f4320f2070f6da55485d0eae9d1ba14d2d19a0879fba15f9c990e77d0f4b2",
+              "t1n": "5400eef3915fdbcd2d1d5788a071685f6eeeffa82d50467a5faf724612093a07",
+              "t2f": "597cf879b051ff730696e73551322a5d6b95fb5de91371d0b98464247a028eda",
+              "t2w": "0c9b605b76f05b269238ca6f4a9d79fcf7eb94ea6d3533ddffd8d054150ae9ce"
+            },
+            "internal_case_id": "BraTS-MET-00034-000"
+          },
+          "BraTS-MET-00625-000": {
+            "input_sha256": {
+              "t1c": "3feb15172e5632a5ea77290225a65c0669f7110d488549089219d129850e9c6b",
+              "t1n": "443a4637bf89bec7dcd7134f7637db4895a8a31da1c4b03ebae3c9ee8c7e1430",
+              "t2f": "5959f02393cf33bdfbbf8698904bd544088c69e94253961c2e21f2a6a8bbf7bf",
+              "t2w": "34f0cf062df3952c9266c9f46712dfab0f41ecc00a64326fce3bdedefd3db3de"
+            },
+            "internal_case_id": "BraTS-MET-00035-000"
+          },
+          "BraTS-MET-00663-000": {
+            "input_sha256": {
+              "t1c": "13a1677c972fe495030ac8474146c54f2ab8cc2eff0507e8ed106a18d1f2eb92",
+              "t1n": "6a3c5fabe46a1bb5e33ab5197c57d33222e4bc9a3672074ab10b4e66b43e9586",
+              "t2f": "1db3aa81a04eb7e101821b77f5c48e01ee7c74fbbc7b8bc752b94b05415c8259",
+              "t2w": "0130e99ae344253f6b340857b6d2efffae117943c13a82a19ffd0f011d41461e"
+            },
+            "internal_case_id": "BraTS-MET-00036-000"
+          },
+          "BraTS-MET-00682-000": {
+            "input_sha256": {
+              "t1c": "81e44cc76dd35c17e35c83277d65f6f0dd37640232adc45e0de9eaeee20070af",
+              "t1n": "01fe5778afaa63ff25e507657203b8402fe3ea983e670314536109b4dfca39ad",
+              "t2f": "319d4345d7255fc71e67cee45f4111d739c9ba1d0ee2812ca34c7f52e9abd78b",
+              "t2w": "844aa864cb8bc8ef92f22d8bfd480fb4976900acaebce70fec76c4adc4bea74a"
+            },
+            "internal_case_id": "BraTS-MET-00037-000"
+          },
+          "BraTS-MET-00699-000": {
+            "input_sha256": {
+              "t1c": "fc5ad206e734c1a88b4abd22efda3330df51b8dc916d98018c18bb2d7704d32d",
+              "t1n": "1af0937fde889125bddeb46e596398d9658b11786e5157dbe788728348dfea49",
+              "t2f": "5e4970bd9b08f89fcc3664fd8a86bdac4008a3d2271dbc91a21eee91aa3f74d6",
+              "t2w": "c5f82362b3c029dfc0004c926c57302149fecf72b04bebb263b00e4fb4cc63fd"
+            },
+            "internal_case_id": "BraTS-MET-00038-000"
+          },
+          "BraTS-MET-00787-000": {
+            "input_sha256": {
+              "t1c": "3b38a8e4369735c4a3eaa1751067a2aa8b47175c07c00c42598283f6e4cec9c0",
+              "t1n": "3b40d311991f56af48659ecd5babf1384517051b4d385771620c9097e66d1b72",
+              "t2f": "e7bf15ce594ce5dd7f246a375f934099a1413f2bd83f87aa11823437d8f720cc",
+              "t2w": "2361fb2098d32eb8ec724c85e3dbb48a0e854998c3e449f1c9005bda0cb372e8"
+            },
+            "internal_case_id": "BraTS-MET-00039-000"
+          },
+          "BraTS-MET-00791-000": {
+            "input_sha256": {
+              "t1c": "88c01255024b4e00e472cd0ae0562eef31a9b29757c42c8a85f9bc3a42f3ef84",
+              "t1n": "8e66d39fc57e138acce74012351d904456dc0df8de34f085a012d9fac233418d",
+              "t2f": "c17347a4825d6eb9024954e3aeb282b28cc5d2511a330b319daa18a4f3e5af2f",
+              "t2w": "40652a6a44e6d6a5c646d93bbf5f6ad82361ed733cb4040d2cc67cd5683533d9"
+            },
+            "internal_case_id": "BraTS-MET-00040-000"
+          },
+          "BraTS-MET-00796-000": {
+            "input_sha256": {
+              "t1c": "301835ad3cb4aa0b171ace3fa28f8ec6ec8850fd50a40ad05ad75c31770c7777",
+              "t1n": "926c0bfe17eaa36b1569c343fa107dd50f4593ef0359036094541bedd8a8c879",
+              "t2f": "e70a19951eebe2730ff38a8765d926bde98c4afa2a103256af13d695cf5c56ee",
+              "t2w": "00f1a93abd5cf29ee5e2c1296a47c68642f5d16aa914f049994561cc42de2172"
+            },
+            "internal_case_id": "BraTS-MET-00041-000"
+          },
+          "BraTS-MET-00799-000": {
+            "input_sha256": {
+              "t1c": "5ad3429b4afa903dc6552eb51772563facb20d7e3bee17dbd8a06ca6844748ff",
+              "t1n": "907cde2da53ac86e1d698a17f9ae1ba45a1580ff3f13a85b78282c9b1bde12b0",
+              "t2f": "95ad74129a4d6058bc4fcf3798a6d10510eb780b72476aef0849f3fdc66d292a",
+              "t2w": "12715acb67555689befaa122c08da8aa88dc912d621864b58c1f0ebfe3a561c9"
+            },
+            "internal_case_id": "BraTS-MET-00042-000"
+          },
+          "BraTS-MET-00807-000": {
+            "input_sha256": {
+              "t1c": "cd106b7a3a79bdb466d4c47ec94146037d0fc2065242c77408c2f4c9c59a449c",
+              "t1n": "08a15dceb0c58975025311e01d7e34b3f4ed5ca104157c6566570f016237c43a",
+              "t2f": "9ddb0f63e08c5cc62a48650de8785e20f002621ed2c61240462d7c8314875aca",
+              "t2w": "21ee955ba814ecb65cde553d131fbaccc61aa054d55a57f97744446807a8ec8e"
+            },
+            "internal_case_id": "BraTS-MET-00043-000"
+          },
+          "BraTS-MET-01058-001": {
+            "input_sha256": {
+              "t1c": "5eb3161bd5f443f2ddde1d1c49db35a38da2d0331b6625bac93caa23aff1cb45",
+              "t1n": "30c30fd653f404eef32a896963bb5f607c2de70b078ea7d92307c74d66e9ce46",
+              "t2f": "375b648a793113d9d33a19ad457c9415070f2e9d3d9601cbd5db16b70c253896",
+              "t2w": "ec0b0205741fadc1f6ef264b9cf2183ae363a59c290e7cd549a721a40339de05"
+            },
+            "internal_case_id": "BraTS-MET-00044-000"
+          },
+          "BraTS-MET-01060-001": {
+            "input_sha256": {
+              "t1c": "e964c76850e51cd5903f99892a95057a370f1c38551fefee4b41b1b280d843b0",
+              "t1n": "2d476fbfef9d009993699b5c2813ad5921766255b974482db5e09431d8b6c495",
+              "t2f": "59e6f54758ad7cec395dd1bdd72e6ac32ed161a6aeefd92b143bd15ceef63c9f",
+              "t2w": "88fa3e44f3c9d0b7cd7b56f3c02248c3298826433bd81ca9c348243a7d548423"
+            },
+            "internal_case_id": "BraTS-MET-00045-000"
+          },
+          "BraTS-MET-01096-000": {
+            "input_sha256": {
+              "t1c": "25e65919be2de116752e564f597616fbbcdcc6ce5f6c17c68d8f72743e7cedf4",
+              "t1n": "0c6663cacbc3b1cd440db864cd8991439e234f6d53f75c9f720b3e53e7c3d7d5",
+              "t2f": "4b5faa5391b1855d60547fb897c2fc3083ab03b1c7eb04a5aef40aac5ad131d8",
+              "t2w": "4e954ba3fa7f97b660c0e1fda8e1ee324b41951de8cbcd4598ff2ff01e202bd9"
+            },
+            "internal_case_id": "BraTS-MET-00046-000"
+          },
+          "BraTS-MET-01096-001": {
+            "input_sha256": {
+              "t1c": "8ec3d1460fe5e5160c7876f9cd83b004c8599e9bdc0e7e7fdbe44fb32dc08e81",
+              "t1n": "08d9dd7a7007b28585ca305bca00ae9bbfb4a52f58b8e691aad7b72d802eb57c",
+              "t2f": "d53f12a5288ff1df64f09d0893ac31ef68abf76377dad96eae6a8c2a5cf7b2cd",
+              "t2w": "cd610bcd16a55f5d20dc22964bf6734ed536645c5bd51da0456ccc66d784b3b5"
+            },
+            "internal_case_id": "BraTS-MET-00047-000"
+          },
+          "BraTS-MET-01096-002": {
+            "input_sha256": {
+              "t1c": "0be4ced7ca92e776cf2c8f282ec698d0efaa3e3bd5b1d18dbedfec232e82e17c",
+              "t1n": "f9ac427d6957783b45d60b1f56319b6808899b1ff2d2f37f3d3338ca315908c2",
+              "t2f": "18cb4cf41cb9834bc67b2dcceeaa7e586ae52804c74feae02fcd08fb7581f699",
+              "t2w": "9f7fbab5b65b589cd28fe7187270fadaf3950697b7046f24f6f349c0ab5d01ab"
+            },
+            "internal_case_id": "BraTS-MET-00048-000"
+          },
+          "BraTS-MET-01105-001": {
+            "input_sha256": {
+              "t1c": "f485d1ffc9d9cff0d9356be636dfecd8d6fe6fc65533f2cecb2e02c722a89b60",
+              "t1n": "dabcc3a1528b1363322de33251fbf021fbc312e11038f3bb3ed51024d2570aed",
+              "t2f": "0114dfed10fcc77ca6d8d003e56edaabece0553c83a80c434387baab30854b1c",
+              "t2w": "e87fdd8b4a9457aa7b226203c91c97910652f09e6df2d8606467742ebdab2edb"
+            },
+            "internal_case_id": "BraTS-MET-00049-000"
+          },
+          "BraTS-MET-01105-002": {
+            "input_sha256": {
+              "t1c": "57e01e337102518aaaaaddefb194e0ca752e4418c9bf79ab778f728f9439802d",
+              "t1n": "e36ceca42ee2b935bb50e0f5a341b64643af656b7f5c8ada85f19f0b805d1222",
+              "t2f": "df9df57bf6dd9e9fd3c2d992539edc1174e86a092d61261992d0b1b93d9ab319",
+              "t2w": "111c7eb6e05004cc6191c70e715a1279210c559a05319277fc64d557cb27d4d0"
+            },
+            "internal_case_id": "BraTS-MET-00050-000"
+          },
+          "BraTS-MET-01109-001": {
+            "input_sha256": {
+              "t1c": "d1ec8e67e005a9dfd32901685bfefefe268891aaae929f6cbea0a86710849cad",
+              "t1n": "49dbb7db72af9ae6a0d3a21cd49ee7fd0f82a2059593f0c623c6526920f1c1e4",
+              "t2f": "c5848ec5274e2762416676dcd4d0cec10611a66cbec74d53fe5762e44a7f2458",
+              "t2w": "a508dcc702d2a35aa490fe6095ad27ad84e36a60777bad518b8fbae81270405b"
+            },
+            "internal_case_id": "BraTS-MET-00051-000"
+          },
+          "BraTS-MET-01109-002": {
+            "input_sha256": {
+              "t1c": "364b948de57078fb5e1f21d3b6ee948885c30e41f5dfe730987ee7d847de905c",
+              "t1n": "b0e37c483b03d38b738cf095b0b09f9ebbb24ba4e646c241eeda539690f704f3",
+              "t2f": "47062b0accc845f94c0bc4f3a9c85b667fa01f74ffd92fb9dd76ea3599408350",
+              "t2w": "1d193b1797701874cd2b8d87efdf41374f3e433b81fd074fe1967cb65ed06894"
+            },
+            "internal_case_id": "BraTS-MET-00052-000"
+          },
+          "BraTS-MET-01109-003": {
+            "input_sha256": {
+              "t1c": "32ee7ef5f8c2ebc7e9a0580518c38a1b2b36d281660bfef98afd24c6cf55d0d2",
+              "t1n": "15e8a29d2d1e7fee7114e90cb8588b1149aa35ef5999ae557b66e0b3e9e747dd",
+              "t2f": "cd392e43c65aed364c15d4fe13a9f65aa77f4f5577966814c2f91c560a30411e",
+              "t2w": "bcdf0a0b16026fb969bea45d6c6db6c2f10212ecba51470fbe067aea6edc80db"
+            },
+            "internal_case_id": "BraTS-MET-00053-000"
+          },
+          "BraTS-MET-01117-001": {
+            "input_sha256": {
+              "t1c": "7c4617a058214ce15b3df237fb17dc91444e7a538893d7d56fc1b87b78df2d0f",
+              "t1n": "6bb14c8f94264689e03febbe1eb719d3641e3fc8fc03111c9497464e3dfcef02",
+              "t2f": "fd8711aaa54ac4cc28d53e1ee6ee0d4b3f5f3514b7480409079d789fc78cc448",
+              "t2w": "eadeb37671c4c162974098e7ed15199bde69267d01b967ef8b889407b0f2dc43"
+            },
+            "internal_case_id": "BraTS-MET-00054-000"
+          },
+          "BraTS-MET-01117-002": {
+            "input_sha256": {
+              "t1c": "d6afc9eff920317daec2e75d4cbd295b0a2a8b885c7babeb289b1dfeb3f71a82",
+              "t1n": "c181b446aa8f3066d22b2bf0909bda0b9bc3c8a4d5c7888b9e61d32c017502e8",
+              "t2f": "73e15acbc5f8c32b42d828b7910e1075f6f654da89ee5dbf5d99cf736969a14e",
+              "t2w": "714b871dc7fb580faaf6617e63fc8c4bbb0852d209e41a653252b530fd43c81d"
+            },
+            "internal_case_id": "BraTS-MET-00055-000"
+          },
+          "BraTS-MET-01117-003": {
+            "input_sha256": {
+              "t1c": "cd0f1004a6ce28d86fac638ae3c100c47babcce73e7887abff96ab20b90d2202",
+              "t1n": "b34bbc827d96655bedf4b175bc13ab7e97ea26574db8c63ef94124b7ac505b3a",
+              "t2f": "76dfb3fe018d3e257274cf2aa0768443badc9cf87c1453e7e27b974685ad849f",
+              "t2w": "dd21265caee42eee1b5d13ab0446dafafcff86315305883f6aa2fa55f7692d3e"
+            },
+            "internal_case_id": "BraTS-MET-00056-000"
+          },
+          "BraTS-MET-01119-000": {
+            "input_sha256": {
+              "t1c": "c4f49fb1f4c75ade40e0af1fc65442f48b4d39f72f09ac449c86a634756bab5b",
+              "t1n": "1833f990b7fdb0174fc8363dadacf3e994f4267f89a773b86075d8acd41bc91d",
+              "t2f": "da31724e5e4a5cb259ed5197ab43964e378ba6c74f2a2f1d83131b2362d1b4fb",
+              "t2w": "6ca671bad91a609f744239e3c976bac275a04527bbe64dffb08eabdf4117ade3"
+            },
+            "internal_case_id": "BraTS-MET-00057-000"
+          },
+          "BraTS-MET-01119-001": {
+            "input_sha256": {
+              "t1c": "86958c72cd6bc479f57279b35e131af4d78512adb8989f9d9563c16175f411d4",
+              "t1n": "63f9059d4487f9ae016ba51768792537c7d65c79f1ed114b4a169a4f12458dbf",
+              "t2f": "be89f77771201354131867ca9ca1cf54d2d3b79dd5c6ccc0819397fafd438e90",
+              "t2w": "10743a4063775d46aa5fe0692b19dc255e0a8368207f934746d70c013f0abda2"
+            },
+            "internal_case_id": "BraTS-MET-00058-000"
+          },
+          "BraTS-MET-01119-003": {
+            "input_sha256": {
+              "t1c": "0d13d586e77a78f6ba9fbcac736bb3162b8f501b535c12f0b4ee9adb8756469c",
+              "t1n": "b2f59cc9bfe3bbd64b63664b6887c72ffc92dbe421434c651c0370e7da62600b",
+              "t2f": "565947e9f052ff3294ad093ed5c1a4c5bfe0c898a69091d8f2e0cdddfa6bfd39",
+              "t2w": "abf09cdf30b4a52be13644046e3b1aa031ef4f89619c662fb39ee7bb5129c0e7"
+            },
+            "internal_case_id": "BraTS-MET-00059-000"
+          },
+          "BraTS-MET-01134-000": {
+            "input_sha256": {
+              "t1c": "97a5b7486e83a2d85126e2617df220c7a53575faab1de7addc6a89b43878f9eb",
+              "t1n": "9b959d077c91f125cf220b647ffcb624a9fc443644adf6513214e1ec33d9eb0d",
+              "t2f": "fa0071c8d8d706d1ec2a187020ac79fe53d7b5478416e37a977719dfbc5aefe6",
+              "t2w": "827af68bbd7324b757accabe6d8341d92cc1910b98ae1daeb7b6d6a1d8295f07"
+            },
+            "internal_case_id": "BraTS-MET-00060-000"
+          },
+          "BraTS-MET-01134-003": {
+            "input_sha256": {
+              "t1c": "c87614c0219f27abb61aea9649f3f27a4a8bcc0f3cc5771cc098ed3b06938804",
+              "t1n": "924d82709e7a288f0d9276b20f4c6e67da13d63d8c64bbd37f0eb9547d5601b2",
+              "t2f": "1dddb1cdcc172d1dff94615b10462e7ca7ca9e1ce375c58711f647f60ac1c285",
+              "t2w": "b979baa1930076a446597859ec749dbed0f362008ad5bf0246846a3f44f35e4d"
+            },
+            "internal_case_id": "BraTS-MET-00061-000"
+          },
+          "BraTS-MET-01149-000": {
+            "input_sha256": {
+              "t1c": "4fbcebc86b48047e2fb9a710847a887dca988946d4a29102631cef5bc21679c5",
+              "t1n": "9a1c56bc268afa65edb22d5faab7ca71361a964203b9712ea08204908e4250d9",
+              "t2f": "b039760f2b1eb5e57681bc64c2a0034b6533b84893a636de79d21f3a6e34499f",
+              "t2w": "40e921afbaf8ac2ba73d74c08d29a0a4e3bb1d843ab6588bbc82128774a8bd86"
+            },
+            "internal_case_id": "BraTS-MET-00062-000"
+          },
+          "BraTS-MET-01149-001": {
+            "input_sha256": {
+              "t1c": "a10fbfdeca9b0932c1661b5a663d4d8f565817f8ecdd479b5828decb05777d11",
+              "t1n": "ce3250860e76384f1fa362b839ad49bd84d84d8d7891f741f3b9d295ae6663d8",
+              "t2f": "5e66439963ff500f22bf29b0614fbe655db953162526ee1963a7966455338d1c",
+              "t2w": "c6543e8d7a3680300c2bb7cd79c365435a37370cb35f7767185a03368c13fc31"
+            },
+            "internal_case_id": "BraTS-MET-00063-000"
+          },
+          "BraTS-MET-01172-001": {
+            "input_sha256": {
+              "t1c": "d96bb433f78a02f6de2f7906a47096a1431f531a6cd2519f9d259ac99e7fc796",
+              "t1n": "425e1979572ae009f4d2126e4877c4174e183399e0a02c3cd336dae73f852f44",
+              "t2f": "bc55454756193d6cf11cc000952cd66c6f7b567bd8a4f7889a92cf6daba2e9fb",
+              "t2w": "4ec93326d49c3ee8a0aa79b4d245f9f571745e6a21765f86e543d8d328b1bc0e"
+            },
+            "internal_case_id": "BraTS-MET-00064-000"
+          },
+          "BraTS-MET-01172-002": {
+            "input_sha256": {
+              "t1c": "317d25db64a0a80a36c6f29145d1bdafc43f8764ae81f6e22992b0f76bd91e49",
+              "t1n": "a2f868fe500069234d35038e545d40bfafcbf1170f857676904d9e8ada31549b",
+              "t2f": "ad7902bb29d08e47ad2fb8ffb813a11d56886d01c70844b94b70f631b46951ac",
+              "t2w": "2315a46c0a11fc6b9b4aed83dfdf74246754564092e66e8ee9fe724a8c37eea4"
+            },
+            "internal_case_id": "BraTS-MET-00065-000"
+          },
+          "BraTS-MET-01172-004": {
+            "input_sha256": {
+              "t1c": "5132958fd89c6bbee7bd477fcc7c72316a9ab3b1db8bd0805cb845ded748c2a4",
+              "t1n": "ff152967343bede37ab0bbebd6e76326fb756d05a58c192db613063e3e7b20f4",
+              "t2f": "885a0318b385a6e6ef1ff960e409e39ee0126f667868255cff13079d510491b7",
+              "t2w": "4c926f9c9d058963803d8abdac66a9a6d8f6ea700cede85aa09c92dfce586444"
+            },
+            "internal_case_id": "BraTS-MET-00066-000"
+          },
+          "BraTS-MET-01180-000": {
+            "input_sha256": {
+              "t1c": "1b7b7e90e46230c78fdcf75ea4037d437760bd3e99ad80edb526e4f71aefdc17",
+              "t1n": "b1715e4f1932a32922f5d9a17431ab9120400620bcb818630fed1dac64ca02e4",
+              "t2f": "ba42ce6081fcf1bd196de8a10c6768b216a00cc9b3411be84c8f13cfaafe8a1d",
+              "t2w": "4b82d890b57e97149189b4460a10d31aed02191737e28698efba4c8198af6d22"
+            },
+            "internal_case_id": "BraTS-MET-00067-000"
+          },
+          "BraTS-MET-01180-003": {
+            "input_sha256": {
+              "t1c": "ada47a366f0667dca8c299c70613bc7fff7468a9014300fdd61cb4adbe8f7ee0",
+              "t1n": "f47c4e09737cae8104a41ceb450f971f84b5002953d53022bde7c1ce90bbca1b",
+              "t2f": "78ca8f962853e7d82b675564e40a6e7a6ae1f725fdb0b6a4c6afc64b8cb3863f",
+              "t2w": "4ebc4d092c648d17b45f13d3a28c8e375a1a491382de2db2324aa940e47dc363"
+            },
+            "internal_case_id": "BraTS-MET-00068-000"
+          },
+          "BraTS-MET-01181-001": {
+            "input_sha256": {
+              "t1c": "13d5a26b3a50c0c58277c2362cea23e78d5bd41c79ccffbdd661135a737e14e4",
+              "t1n": "2484b05881efa2f19227a431fcf40e35d01de61b118046fe3834a6d3383efeb9",
+              "t2f": "89ba237cb0a6e81d1445cc94a4d635b7dc75bae3ffb0418f22a050947be330a0",
+              "t2w": "4eca09f319ccbe7f27979542fc42b8911c0c25958377f6703c151e67fd2c8c9e"
+            },
+            "internal_case_id": "BraTS-MET-00069-000"
+          },
+          "BraTS-MET-01181-002": {
+            "input_sha256": {
+              "t1c": "ad0ae2efb1e9adee7bc5a0f79620d5fb8cf6f2b47b23c5bd5591bbd4293854b1",
+              "t1n": "414e88206dadbc798292bff211e896f193c2e9a52b36567a4147a2d0721abf08",
+              "t2f": "9aa50c1f9176f8eeee03a3a49375bce3c1e7de7964afc63677bdc6a5a411f767",
+              "t2w": "a68c11ab9cc030d7ce52f6a4c9020fd5f1bf0fc628308ca9ade43f55cf756604"
+            },
+            "internal_case_id": "BraTS-MET-00070-000"
+          },
+          "BraTS-MET-01187-000": {
+            "input_sha256": {
+              "t1c": "eca866a43247e61adcf62b26fd2542a66701271620f77fa8c825c207957d9935",
+              "t1n": "e2b74a88333b35fa64b25d9802fcbd3ef5d2b3be5da5a6806d75804780333d9a",
+              "t2f": "e92d901a9d9bab72ffa7584a524de3c443509a291de874cab761fc60f0107be0",
+              "t2w": "91f6890f90047be26cb0c1a065cfe4a026b4ba9569825f6df7abc2d56d5cfe84"
+            },
+            "internal_case_id": "BraTS-MET-00071-000"
+          },
+          "BraTS-MET-01187-001": {
+            "input_sha256": {
+              "t1c": "143141c7ca60ca68872c0ab45648b39d5a85882a3bde8c61d52d8bf76fa30768",
+              "t1n": "2a8e8f7060a8def3480280ab2d7e91be871e931f2db131a543e415982bbf5b4f",
+              "t2f": "4cdd59ae1d7021a23a302b01f6513e82eab145c52a5440ec72db5e4fa43082c7",
+              "t2w": "7de25cf2ed828e441cdfd3d6949f21d42147f0c98df2a2426a9a99648eb3425d"
+            },
+            "internal_case_id": "BraTS-MET-00072-000"
+          },
+          "BraTS-MET-01187-003": {
+            "input_sha256": {
+              "t1c": "cea25d2a2d43bc426214f450c6ea8c1c90b53d9a499a1ab11080126e8c1d7ac0",
+              "t1n": "b1466a2ca6becae93ebe26549d0a9191288114eae7ea195ac081d807b7700811",
+              "t2f": "4cf1a3decae63dc5c7576e560a21e7574a1154de8eeee679191392b3056e95d5",
+              "t2w": "90425f5f8bee4eaaad8f9420c6093017cddcb17de89e4f6001d7c0bc064e5378"
+            },
+            "internal_case_id": "BraTS-MET-00073-000"
+          },
+          "BraTS-MET-01191-001": {
+            "input_sha256": {
+              "t1c": "d594eebdfdcdabd7130b1c9aeba94d8efa94fd50b2d4c68ecd165888b5c92054",
+              "t1n": "15be6ef007039d41cc030f3bb9f254853e09f614e075a6c95a7487bb30da588e",
+              "t2f": "48aa4510c774eff539cbd82142e6f91a905c4f48d4a74f68261f86412602545c",
+              "t2w": "18d805ceeaa37e50aadc4f2118e1587a14e6163204ad8298ffd9da0c3632baf1"
+            },
+            "internal_case_id": "BraTS-MET-00074-000"
+          },
+          "BraTS-MET-01191-002": {
+            "input_sha256": {
+              "t1c": "274823857f04383d2b1ac9e82633848871048972e42d449a08aa1ae33bf45633",
+              "t1n": "fb6258a4cf0ddf5df30924845c8ebea0e8678ec343610c4998aab10341a7d139",
+              "t2f": "633b7af3037d722ca5bb605d14be3135bc3f8be78e5e8ce41d9bd3f4f7e9122d",
+              "t2w": "de5a9eb44c7a8f8c9c1f7176ec3763db0becc4d0b39e759b401b16af0fd97a65"
+            },
+            "internal_case_id": "BraTS-MET-00075-000"
+          },
+          "BraTS-MET-01191-003": {
+            "input_sha256": {
+              "t1c": "f03eb74a709aba3f999196126c0a903739bf8409be2056b2000826250726adb5",
+              "t1n": "c706f112e4d6b145034f43654deb23ea62d9d9b0ef5b9978cdbd016a3a83e1ce",
+              "t2f": "9504abb69b02c3b08a59ea44cadd7dc1f2dee0d5d4c671c8f59299bcf5881fff",
+              "t2w": "ef9480d28fdfe64d6c3d6146ca008b19096f652706d732e5b2226379968492af"
+            },
+            "internal_case_id": "BraTS-MET-00076-000"
+          },
+          "BraTS-MET-01191-004": {
+            "input_sha256": {
+              "t1c": "83f222d39e8c0a7fab52ff51c3b23d4f24feebba35484dd9d643efab4b7309ff",
+              "t1n": "dc53de420bd49253b7f32bf57e39cd7d03df4dbd6dd1f2086951abc214167172",
+              "t2f": "a2552fac118888a9abafaeec4ff13355ee2e5c802cd8b0fc0456236ec746579f",
+              "t2w": "fc2e4bb952ee44c556e52fa73108a45dd6c74d6934a76ae6c674e39389e72b10"
+            },
+            "internal_case_id": "BraTS-MET-00077-000"
+          },
+          "BraTS-MET-01217-000": {
+            "input_sha256": {
+              "t1c": "356661644cf70c9848401fa14e3aa3e7f87a977fc6ada783aa91afe168044fa0",
+              "t1n": "556847b783c03d072cb9581be67a78c62e80ab96f49da766a1aaa30b399bcd09",
+              "t2f": "9d0ddfca6546df5b0b6a51ebdf2fa4ebfd2f42ed0cd748dbeac7cbd5471583f7",
+              "t2w": "084f6e36a1566fe2c6790fc23cabb4f4c8212792fb353dab13d9701f6be0cb70"
+            },
+            "internal_case_id": "BraTS-MET-00078-000"
+          },
+          "BraTS-MET-01217-002": {
+            "input_sha256": {
+              "t1c": "a1c3717c9db681601045e52c1aad92667bab5e2cf6120810075c3b418d49923e",
+              "t1n": "4d9b8f0933c6dc99422f1cf9690f680523233cdb06c3ffb3c553d5885056ef8e",
+              "t2f": "c8632f6a5d919ea75a567410ce85d10fcf2f536410d430172b77d236fc633ec2",
+              "t2w": "88fa5867338ee3d844795472ee7f8917929264de698ce2dd6684f6c2d7d012fa"
+            },
+            "internal_case_id": "BraTS-MET-00079-000"
+          },
+          "BraTS-MET-01217-003": {
+            "input_sha256": {
+              "t1c": "f3ecf865e7ba3eb04f6a522afba13fc4650b7c796387b2902b379fc9e0d0285e",
+              "t1n": "5da69407c05f7ae60ebe8857506e568ca948d9dd3e3e6b99e487412c5fa97ded",
+              "t2f": "ae825adf4fb4c90f009c77b65467815d9c8d7777e4a5d25b875dc915ee920ec6",
+              "t2w": "572e9e185279c03ff42f40f95578440338008e6a5fae040db8826c4aa14788a6"
+            },
+            "internal_case_id": "BraTS-MET-00080-000"
+          },
+          "BraTS-MET-01250-001": {
+            "input_sha256": {
+              "t1c": "82c55d9e020e63c150b07225012855fc5307f899ca5288f4528e3ced597eee31",
+              "t1n": "01110af8f934a5a798e01459decb1ed51eba4dbdeafd467fbd4879794c5af499",
+              "t2f": "c3731eb2a8f57703e37e5b07f30399a99281fd073ed7d5f2db1585aa7a4feb93",
+              "t2w": "7ee3d9e52118850d21f9074916970b5c60ea12bb2235940d5636fd6970156725"
+            },
+            "internal_case_id": "BraTS-MET-00081-000"
+          },
+          "BraTS-MET-01250-003": {
+            "input_sha256": {
+              "t1c": "2f0bd6a6aacd5f34f17079a12034ff3fa1a948e93c26cb16820dbfe407a51aa4",
+              "t1n": "28645b8cc7697fbf895833edac8bb7e646023af2eb941ee0f9bd3af6830557f6",
+              "t2f": "808a404bf5007a1eae25d0b82b2aaab92859857167b9f677c6c504d408eaded1",
+              "t2w": "92cf42f85cee81c8baede70c4535780f7321ca2a6c04192ee525a3ce04252c5c"
+            },
+            "internal_case_id": "BraTS-MET-00082-000"
+          },
+          "BraTS-MET-01268-002": {
+            "input_sha256": {
+              "t1c": "23c5541659956b66e22161b28537f1397dfbe23631f5a214b315e543c3b9827e",
+              "t1n": "983131f155a51a99380540dd1a744537d99567c656deb3f22e216a99451eedd6",
+              "t2f": "4d4695d595c000a0245a9226dc56e88857721d4cf9091d4849b71efd0cba95a4",
+              "t2w": "c7738415c616d46a3d6ca07d0990601e6dc76bfcc24a58bb265fa5135bf666a7"
+            },
+            "internal_case_id": "BraTS-MET-00083-000"
+          },
+          "BraTS-MET-01270-001": {
+            "input_sha256": {
+              "t1c": "14d3d81c0067813335d17eda36e762113fe3f7a8aa581357560d951ce6c8d401",
+              "t1n": "e6ee5498581abfdc7eff69c082385d559431194444ac1dfd9799e62f18315e99",
+              "t2f": "85b533a5317749deee4f2d429fbf2a1ba8ea84a32923caf2f75ceab09e282211",
+              "t2w": "a3e46d9b89f47bb422bfd5e3c029abc03e56c0d48ec4197faef0a9f736138597"
+            },
+            "internal_case_id": "BraTS-MET-00084-000"
+          },
+          "BraTS-MET-01270-002": {
+            "input_sha256": {
+              "t1c": "c460ea160ebfadc8c929779d600beadd0a1e721a6024cf0f0f162d2ed3ea61bf",
+              "t1n": "fc2b62e0d15981ea81aff435a96b5b4cfb1a75d6050f908fb64eb653a050fa25",
+              "t2f": "8f28d06bf77ecea1bfb583066985a75d15b45197d274dd196da65403c3bdb0e9",
+              "t2w": "ceb2946d4c672bb20b32be7c81c72177292dc0972f72e61d4bc69fc86215660f"
+            },
+            "internal_case_id": "BraTS-MET-00085-000"
+          },
+          "BraTS-MET-01270-003": {
+            "input_sha256": {
+              "t1c": "8fbd6898142bbe3d11155b6653a7b15a6be6c26f91c8191571f0e5388f6142da",
+              "t1n": "81b38033c7cb6d2a2396b9649a2db67fde0aa1efa82bc60f5b2c51865f982277",
+              "t2f": "372995661f5214b00bedcf3e3d3fe9528b8b55fe7afce560658691c701ef6dcf",
+              "t2w": "c730e6c695568b9d9fd463c5f63706a2cfb16f52759b7380c70eed56363762b8"
+            },
+            "internal_case_id": "BraTS-MET-00086-000"
+          },
+          "BraTS-MET-01276-001": {
+            "input_sha256": {
+              "t1c": "c039adb93a2947f9a8011deaf990e8a3b593ce60433f8749b067c11096822e8c",
+              "t1n": "48779283ff8a59916a6c3382b3056c06c039219460b55ab6f34f07991b63cb2f",
+              "t2f": "61969a24221e521066ebe83dbcbf4db2640c7a8037349efa1afa061523485f6b",
+              "t2w": "be83187302b0703790f36dd463546cfb5e8c84cccf5be84eba4a31f684ff4cd7"
+            },
+            "internal_case_id": "BraTS-MET-00087-000"
+          },
+          "BraTS-MET-01284-000": {
+            "input_sha256": {
+              "t1c": "7afb05084d2a64638ed0756772b0c0c338a4255d1185b69c9bd671cb82e8f170",
+              "t1n": "e4bcdd15ebaa417ab01dc964369878148b5e8639c6edc97ce950f74fb70ca9e0",
+              "t2f": "31c17ea2a8ae0bdbef330732dfdf355bbc1c572d65424ce34e466c70bb1105f4",
+              "t2w": "38a430e4eab0978976f8db1e0a2f5047965e5df94cd3ca8afa0fcba3f74fe7c5"
+            },
+            "internal_case_id": "BraTS-MET-00088-000"
+          },
+          "BraTS-MET-01284-002": {
+            "input_sha256": {
+              "t1c": "4a1424d5e023a15d8b99df6eaecf01ce4db82adb40c4807f93f2ebdc9d2edbbe",
+              "t1n": "6084d7357938508b42e96de8748bb9b4f6f167e153fea0915236046726d5ca92",
+              "t2f": "cfa8b77ca7f421dc90b2311076f5736b744bf03a64e5c5640c41d8599a340a43",
+              "t2w": "90fdbf8cb4be05d3114eb248a94bd604d87dcaba0d5bb8c5d0474d537f577471"
+            },
+            "internal_case_id": "BraTS-MET-00089-000"
+          },
+          "BraTS-MET-01287-001": {
+            "input_sha256": {
+              "t1c": "b98df39cf5e3f5e4c9c1df12ee02d78c089b5537a1e5a803810b73181a36b7e4",
+              "t1n": "c84086ddc23c4007b8efdab83b8458135902ae5f4ace1a28a4d84b0bfc95245c",
+              "t2f": "02ffac2affd9a114d6d03c4045b2f01e0d41f50d0a8c3dd277f7a04393cba015",
+              "t2w": "049195f96bb1694c023f77701dd28100d6d33fce8659c11af40c1b8d9f208e23"
+            },
+            "internal_case_id": "BraTS-MET-00090-000"
+          },
+          "BraTS-MET-01287-002": {
+            "input_sha256": {
+              "t1c": "284fe1dea3089c52054ae53232d67eb06ad23b89d475373aea6c8fc3721e19c7",
+              "t1n": "ff6316c4c2044ea9012992c46bc43210af4963796e8a6dd79f807329f618a41f",
+              "t2f": "1be0804f9357fa42163a8fd910deb26d0b4832880b54f3a786f541195aa585e0",
+              "t2w": "a50c943ebe27159251c563183e3a9b998927b4da6c9e6fef87712e4a22ee8011"
+            },
+            "internal_case_id": "BraTS-MET-00091-000"
+          },
+          "BraTS-MET-01301-000": {
+            "input_sha256": {
+              "t1c": "34495762bdc3f6f0505dae050112586871e0deb869d6dcd54b7dc715c23939f5",
+              "t1n": "20bd76ac2218fc1045d4cd6f96d26132c5593bc09390838dc381fbed1a3f72f5",
+              "t2f": "29c35405b0da72e7faf8cbeeb8aa0b1c354b0e8376fd2b84f22b2fd5ed2ac58f",
+              "t2w": "3ae5a69cb19ad0f9872ccbf5c9e2a45b59a021e6fc8e48aebd548b9d9de5b874"
+            },
+            "internal_case_id": "BraTS-MET-00092-000"
+          },
+          "BraTS-MET-01301-001": {
+            "input_sha256": {
+              "t1c": "7d573382dcd4f1be7dad85c457ac45e2b900195da2f6833a2df7749384c90863",
+              "t1n": "1d43180fa0891c7bbf2d109a4c3daabc40f62958ab3ef5c7496ce513483f83b7",
+              "t2f": "afe0da65c9e39d6036bed67db09a3f5ec23846a11e4619cf24313470347ebab4",
+              "t2w": "4f863f1ca8f893886d61556569ae0d93cf6591f46f56d7520c1deee07da54e42"
+            },
+            "internal_case_id": "BraTS-MET-00093-000"
+          },
+          "BraTS-MET-01301-002": {
+            "input_sha256": {
+              "t1c": "f713e01429f3463bf25ca8c793d67184c3de52560140042ca7965345a8d07bfc",
+              "t1n": "24661b0a794fa33f6266846c41ad47ee76c10e4fdc63d801c1e6b4282133216f",
+              "t2f": "19f8041afc3ef1d92326c2e785d3daef6f5091b65d6cf633c7721a29b3b29e44",
+              "t2w": "5679a3d7707541b2f4d19df6cb80efd84ae2a77c885c5f9cbf95877e2f79713a"
+            },
+            "internal_case_id": "BraTS-MET-00094-000"
+          },
+          "BraTS-MET-01310-001": {
+            "input_sha256": {
+              "t1c": "8e7c0e448f01ffdfafa9d9ae80a837ddd1a8a8bd4908cf7a247eafd91f0614ae",
+              "t1n": "b3c2d59f2b6e3a76ce1eab936287f00641a4e4d6c1f2da21674db328d1ae12ae",
+              "t2f": "03fca4798d4215ecfd3ed22ee6a6ea185870f67b4ef44a6bebfce435b357d249",
+              "t2w": "a90e5e2725f6f1060bbe04b6eecb1569b4b53439948054a2a18e17f39137c8ae"
+            },
+            "internal_case_id": "BraTS-MET-00095-000"
+          },
+          "BraTS-MET-01310-002": {
+            "input_sha256": {
+              "t1c": "b4f378d87c7092435bc97d25e220996828ad209d4b3dfa619ed4f0208a79a73f",
+              "t1n": "84be8713f2d2bfce2268e1c7802ac8726327cf3041bba45111ec88aef3d5c606",
+              "t2f": "46c57a1101c18e31ed84d0d6825ca9deb3ac5c5de0ff3f9ea884b9e1c1f45ca0",
+              "t2w": "f33f33bf3fd53f8e9fb75f967556523a52205af6075607e49d7bb3b0e4e27cf4"
+            },
+            "internal_case_id": "BraTS-MET-00096-000"
+          },
+          "BraTS-MET-01314-002": {
+            "input_sha256": {
+              "t1c": "95311806d6d311fe3d7883d6f019b78cd32c68ae7ae689d8a16eb55cf0db1ed6",
+              "t1n": "e9cd6018338d0622aaed462e8b058e080cac4f832269932bc4a7a9613fce1b92",
+              "t2f": "01615c5e98e890a00a9a7c4b0c8eb61dd46c954b66f1101e8e170148791debce",
+              "t2w": "2bc13c04163bd6382fa128cbcda58c272305f8f4509425ba84be4ef7d7d4b8b1"
+            },
+            "internal_case_id": "BraTS-MET-00097-000"
+          },
+          "BraTS-MET-01314-003": {
+            "input_sha256": {
+              "t1c": "cf2b03d47d268275cda33ae0dc8245e24fbaddedb41616f4732137b310e84f1b",
+              "t1n": "3a5dc3fa33bd75f6b04580cc2ddf358fc4fa60147ea0a19ccd9f84e706b6d885",
+              "t2f": "0f916c8e802dfadb284023f58b2e5a6c3b51cdbb8131d2d55cfd1975995cd46f",
+              "t2w": "c976cf6057ded055421db9d9212f7e1bd810cad9de875a2b2b7bf61e57b98555"
+            },
+            "internal_case_id": "BraTS-MET-00098-000"
+          },
+          "BraTS-MET-01331-002": {
+            "input_sha256": {
+              "t1c": "58f1a38234e0b204844dd9e2a17f133c81f50d35165f0879fe793314eac50a3c",
+              "t1n": "df42eeb3f46387e6880be22a034a209445b0237c3f136f99a9ce21aaa2805f0b",
+              "t2f": "a132f7f8b38680a8bc3f7bc1b961a28bc4647b7e964a58c1e4caf51de3fc3e8f",
+              "t2w": "49fc26d0a5516246e7d29db8898f6afa27a3bab326e1ded407bd2c87e5a145ea"
+            },
+            "internal_case_id": "BraTS-MET-00099-000"
+          },
+          "BraTS-MET-01351-000": {
+            "input_sha256": {
+              "t1c": "aede1e92e829414e5f0d8e90776fdc65bf9ef47f219fcaaae5e7ead4c05dab7b",
+              "t1n": "b776d49bf1af3bf28608582480e6bc54a74cc401063d82aea2d181e7cc1d4f11",
+              "t2f": "51efdf7c95d646fd32f27f727e737f6c1597c33ed5e87a0468ca732617c4821c",
+              "t2w": "abd0e0f636038cd2f2624c88bdef186da9ea61ed2c944cefe67cb883d6ce0517"
+            },
+            "internal_case_id": "BraTS-MET-00100-000"
+          },
+          "BraTS-MET-01351-002": {
+            "input_sha256": {
+              "t1c": "a4ebf82ae1c5c0a077435732590eb2b3d80dc79293a3b67c593a1240fdcdab1c",
+              "t1n": "67a8c7fb265bb9e31e8173b984b6fbfe11ce3fb1f28ae62da069757162000bd0",
+              "t2f": "7066cad6f5d3ded5877d3782786db1e7665de24c6c45eced3d99cf38f9abf1ac",
+              "t2w": "7189e7dab98a1e9c66581657e5ced2be7ecdd6d17c44c252fe44319948902b05"
+            },
+            "internal_case_id": "BraTS-MET-00101-000"
+          },
+          "BraTS-MET-01351-003": {
+            "input_sha256": {
+              "t1c": "0b749d78674504a81ad8c089a8dc59ae24d06d58788cce1d8c12b51b769792b7",
+              "t1n": "e9c78878f8cc7a2c58da7b21ef798be1731bc5309a7c8de24a441905e5624a1c",
+              "t2f": "1ab122c2dc38978d5532dd82ddfbb08d0c7e5bbd6fea08587ba86baacaed69c3",
+              "t2w": "9a0aee3442f0a077f0880dc7d74aaf90a947c9b5caec413903de3b017b083f94"
+            },
+            "internal_case_id": "BraTS-MET-00102-000"
+          }
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "image_bind": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/scratch/EXT2025_MET_GLI/input",
+        "input_files": 412,
+        "labels_read": false,
+        "missing_modality_fallback": false,
+        "operator_approved": false
+      },
+      "sha256": "6e2382158884a353f2fac4f9fb1e19cd4eccda21668805db1cadd469d4f302dd"
+    },
+    "PREDICTION_SHA256.json": {
+      "bytes": 15581,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 103,
+        "contract_sha256": "b6ede31460d7a67c156fb3693f79f6d1c747ffad6f51695e60de35105150c3ff",
+        "files": {
+          "BraTS-MET-00006-000.nii.gz": {
+            "bytes": 27468,
+            "sha256": "36199a7a3bfc4b2863636ca882c9e954229857f30f5ffc7a12fb321965fa61de"
+          },
+          "BraTS-MET-00009-000.nii.gz": {
+            "bytes": 26949,
+            "sha256": "2651ad61c2a4d9946cc9c62c27709ef01fb9f04e054ccb431ee79c08edd6c4fa"
+          },
+          "BraTS-MET-00014-000.nii.gz": {
+            "bytes": 31521,
+            "sha256": "e129baf157d7949a65d5219038fbad10565a1f0fe9891a627e26d79b60d4b0cc"
+          },
+          "BraTS-MET-00016-000.nii.gz": {
+            "bytes": 42964,
+            "sha256": "870be7ba89d14ca264b38b9582040dac77d28cfb6e2d7bb91650e1fdc9bc83e0"
+          },
+          "BraTS-MET-00019-000.nii.gz": {
+            "bytes": 22470,
+            "sha256": "1e087cecb4bf3d5f4d3b0295abcf8aaafc6736b8d1136a9e0b50cc7851df0f8d"
+          },
+          "BraTS-MET-00022-000.nii.gz": {
+            "bytes": 29082,
+            "sha256": "ce240dcd2f9add78a28b107228a50b5b890bcc44833eab8d986eede47aa0c79f"
+          },
+          "BraTS-MET-00025-000.nii.gz": {
+            "bytes": 17096,
+            "sha256": "7e62e58d0a4185be631fa25b58ec48420a46f718fe8842f93d680004fe5b098e"
+          },
+          "BraTS-MET-00098-000.nii.gz": {
+            "bytes": 11668,
+            "sha256": "52fb7202e9f63d8cccd2d296d1e674d6cd6ea6a93c58f889edd30979b19c055f"
+          },
+          "BraTS-MET-00129-000.nii.gz": {
+            "bytes": 29419,
+            "sha256": "a516f6971e5224de2d0d2551b312b0e03ba5c8a52e597eac4cad6a52644a511e"
+          },
+          "BraTS-MET-00133-000.nii.gz": {
+            "bytes": 23452,
+            "sha256": "721daec908d1dcc971375fe9da99e986df02f2bc386ba7f5cf138ad54795c610"
+          },
+          "BraTS-MET-00137-000.nii.gz": {
+            "bytes": 8985,
+            "sha256": "28d9667ef58cda1aecc10efa408217d95f42acf2dc94c9ce3fb73d156ef35727"
+          },
+          "BraTS-MET-00147-000.nii.gz": {
+            "bytes": 12454,
+            "sha256": "d845f0ea3c3f47112bf040c7125ba793c999d392258fb368497d8f26affa158d"
+          },
+          "BraTS-MET-00161-000.nii.gz": {
+            "bytes": 13619,
+            "sha256": "7a2dd3013101ad307e52760275e5e71adf7bb57a79d45416a33b6ac6f328fb1f"
+          },
+          "BraTS-MET-00162-000.nii.gz": {
+            "bytes": 9655,
+            "sha256": "f026ecd49588aa5883c8961926cf240a324ede3ad610a6152fcadc905ae5e5cd"
+          },
+          "BraTS-MET-00167-000.nii.gz": {
+            "bytes": 22589,
+            "sha256": "7cc79ce31d771dc2005bfac55dc8c58d507829eafe626fb4f50c20c2a51083a8"
+          },
+          "BraTS-MET-00175-000.nii.gz": {
+            "bytes": 11295,
+            "sha256": "7b4be19befc0c7811126332fdc01970799407cbe786c2e80d0ea45c6a0b73859"
+          },
+          "BraTS-MET-00180-000.nii.gz": {
+            "bytes": 21056,
+            "sha256": "6d29e83b4471139ccaf64579a6826e4f631f321ee81f3c0aa286d5ecd1ea2553"
+          },
+          "BraTS-MET-00194-000.nii.gz": {
+            "bytes": 20925,
+            "sha256": "9427ed405ae09ebd2a8a478f69091fdd045eb0ee8d9619ae2a2c758138ebfd8a"
+          },
+          "BraTS-MET-00195-000.nii.gz": {
+            "bytes": 24725,
+            "sha256": "45eea9f81b478ad066d5cb6069ac1fb2338cb06d19970c71bafe08c14ca3f01c"
+          },
+          "BraTS-MET-00200-000.nii.gz": {
+            "bytes": 30698,
+            "sha256": "4fe3e3c2a3a524fdb8848c30bc3abab0b3263a6a346dae92bf9794732a18d08d"
+          },
+          "BraTS-MET-00202-000.nii.gz": {
+            "bytes": 25666,
+            "sha256": "3ed00790cac41de6f4e505f9a8e70a5824038e15111a25c15fffaa4b78382e22"
+          },
+          "BraTS-MET-00214-000.nii.gz": {
+            "bytes": 14923,
+            "sha256": "53c8c78122f34df808a14bbd0901b52c58a34a1b24e917c64f7900636d8eaa9b"
+          },
+          "BraTS-MET-00260-000.nii.gz": {
+            "bytes": 30311,
+            "sha256": "8a309fac1e44692cd6ab29dc3887888bb5b5d684d3bf31c9c793d198b0ad5664"
+          },
+          "BraTS-MET-00264-000.nii.gz": {
+            "bytes": 20280,
+            "sha256": "b94e6a52379fb2e22253630547c8cffec5e24494e654648b0ac079ae8af43acd"
+          },
+          "BraTS-MET-00268-000.nii.gz": {
+            "bytes": 14600,
+            "sha256": "f6c783106edea89975cf9ba036f5b8b5ec09c31689f4a21eafe2d128f6dbd82e"
+          },
+          "BraTS-MET-00292-000.nii.gz": {
+            "bytes": 24701,
+            "sha256": "517dc72701c7bd03c1b2da44906c4dd9ede932d905d7f22942780043640ddf3b"
+          },
+          "BraTS-MET-00299-000.nii.gz": {
+            "bytes": 27375,
+            "sha256": "a043c4edd03a54ec9587ea115dc2b058faa65b7b56caa2a1f7a395962a8b5dda"
+          },
+          "BraTS-MET-00300-000.nii.gz": {
+            "bytes": 19198,
+            "sha256": "08644deeefac85c091fb0bbd9e73d81fe84c4d9ac3df36153dc8363e45644572"
+          },
+          "BraTS-MET-00380-000.nii.gz": {
+            "bytes": 19109,
+            "sha256": "f5643477e041030464a7168c7d2a72f5852cdb7cfd27f7b52e5df4a18e1ff42e"
+          },
+          "BraTS-MET-00532-000.nii.gz": {
+            "bytes": 10392,
+            "sha256": "005f86d14d27d9e4a0d3849024d4e12d8873c9ce3c9bc66c90ad31d67bddf222"
+          },
+          "BraTS-MET-00552-000.nii.gz": {
+            "bytes": 16292,
+            "sha256": "7ee9d5a8f1daf9dd661454f4b4b56d89459abac702719d1a2c004cba309fe6a8"
+          },
+          "BraTS-MET-00572-000.nii.gz": {
+            "bytes": 7868,
+            "sha256": "04609d1fe36307fa59fa1b2e76f20a4c320d0bc8bb55c62047bc8e07b2de6939"
+          },
+          "BraTS-MET-00577-001.nii.gz": {
+            "bytes": 41668,
+            "sha256": "0bfe0545f9624d32273f48fe493f6da08dd0b67d700ae36d68caca51bb78d816"
+          },
+          "BraTS-MET-00613-000.nii.gz": {
+            "bytes": 8853,
+            "sha256": "0b41df880c11ad73a61552b8f782322d5cdec838ff5235e7cec96906a9936cae"
+          },
+          "BraTS-MET-00613-001.nii.gz": {
+            "bytes": 71738,
+            "sha256": "3352d7d76d0809f8be90b470235f8f00f377be8d9fe1413492d3ffe0a30b65f5"
+          },
+          "BraTS-MET-00625-000.nii.gz": {
+            "bytes": 53835,
+            "sha256": "f9a834e02e28c69e669b7846ddfdbde647bdf32534fb0fff91821d6d6b993af4"
+          },
+          "BraTS-MET-00663-000.nii.gz": {
+            "bytes": 12365,
+            "sha256": "f895daa333a9dda52e76722710a62c92af3e895503aad6ca87e75dabcbaa966d"
+          },
+          "BraTS-MET-00682-000.nii.gz": {
+            "bytes": 13797,
+            "sha256": "f08a0c5ace928848619abfdd44c9c9a02adc89796d78ad9ef437d2fe9e80b471"
+          },
+          "BraTS-MET-00699-000.nii.gz": {
+            "bytes": 9570,
+            "sha256": "2c056d884d49eaacf0460597f647ac397c6b8b71a45feae2979dc2822eef9399"
+          },
+          "BraTS-MET-00787-000.nii.gz": {
+            "bytes": 9040,
+            "sha256": "5f3a1db92109d93112bcc9d7a89f8d6fbcc4e847babc2cc2d5ac76802dffd0ad"
+          },
+          "BraTS-MET-00791-000.nii.gz": {
+            "bytes": 11179,
+            "sha256": "9c35cde5b3eaf20e341ebbfbcf4f07ae3f096e0e4e2cdc7b9aa2694c251ca52e"
+          },
+          "BraTS-MET-00796-000.nii.gz": {
+            "bytes": 9667,
+            "sha256": "dd099198a7fd0866cf8fb141a6cf3337061e8bae6269f7332c8e92ade6af170a"
+          },
+          "BraTS-MET-00799-000.nii.gz": {
+            "bytes": 14438,
+            "sha256": "b30b994f3dd987e2044d6528dd25044e314ccdfcdeb6a25bb6ba2b99550a675d"
+          },
+          "BraTS-MET-00807-000.nii.gz": {
+            "bytes": 12769,
+            "sha256": "1ec9e4abf014cd9bf7fbe2d7a8b82a62746defcbc6d7f2d8aa82f4901436924b"
+          },
+          "BraTS-MET-01058-001.nii.gz": {
+            "bytes": 69439,
+            "sha256": "0ee3e2a1f631b35f24b0825f1ec863de736447f4b0697fc301ffd5621f7ccb22"
+          },
+          "BraTS-MET-01060-001.nii.gz": {
+            "bytes": 30927,
+            "sha256": "a968f5c29f2f6471ad7d71f83c57990743650dd849088c9e144bc7d77c0782e4"
+          },
+          "BraTS-MET-01096-000.nii.gz": {
+            "bytes": 8577,
+            "sha256": "48bf7ba19a68dcd121f017bf801c4cc99286f342e17c88a7442b9ec7dcc44eb7"
+          },
+          "BraTS-MET-01096-001.nii.gz": {
+            "bytes": 8750,
+            "sha256": "7900d0ba8e9bd6361c9dc6221124a820339c858c671792b766d76d422ca73daa"
+          },
+          "BraTS-MET-01096-002.nii.gz": {
+            "bytes": 8965,
+            "sha256": "303a04af221f894de1087ebc5e9e81bd80eae56883667b8887635058e12cb07f"
+          },
+          "BraTS-MET-01105-001.nii.gz": {
+            "bytes": 90876,
+            "sha256": "c050329810f448660aa03c793ee7d03225f07f0b9035b326d62b96c2eed3bf59"
+          },
+          "BraTS-MET-01105-002.nii.gz": {
+            "bytes": 89812,
+            "sha256": "284effaf5f82f12aebc8df6f11405c937602999fa576e595fd1b0c41998cca1a"
+          },
+          "BraTS-MET-01109-001.nii.gz": {
+            "bytes": 45779,
+            "sha256": "da0667f72f68cef2268c65935ef13ed3914d369a664887787ed542cf3f68547c"
+          },
+          "BraTS-MET-01109-002.nii.gz": {
+            "bytes": 45058,
+            "sha256": "97893c41947e8ae8fe4cfe1252cce866cbff8508f97b31fd96658fb05dfc0ab0"
+          },
+          "BraTS-MET-01109-003.nii.gz": {
+            "bytes": 45009,
+            "sha256": "611046ab59984d5144b2ad2707e605adfa5246e7046bb5dad073e9d0b976c46e"
+          },
+          "BraTS-MET-01117-001.nii.gz": {
+            "bytes": 97035,
+            "sha256": "9199ba6539d52360030dd1af3e9b7b8a5ae661962d8bfd9dce5696c1bab0af53"
+          },
+          "BraTS-MET-01117-002.nii.gz": {
+            "bytes": 94929,
+            "sha256": "a1d30876fbd9c431dbaabb8ce84f4e7f53d3594dc4bf0dd059bae179992277c7"
+          },
+          "BraTS-MET-01117-003.nii.gz": {
+            "bytes": 94929,
+            "sha256": "a1d30876fbd9c431dbaabb8ce84f4e7f53d3594dc4bf0dd059bae179992277c7"
+          },
+          "BraTS-MET-01119-000.nii.gz": {
+            "bytes": 99430,
+            "sha256": "6f193810af80720487ee2aa8946334ed4eb5749338b90c65bea571fea9c063f3"
+          },
+          "BraTS-MET-01119-001.nii.gz": {
+            "bytes": 107370,
+            "sha256": "8d1d6902bcaa9068862f9ee4ab55c18ccad7be6c2b30800419cace495f307b91"
+          },
+          "BraTS-MET-01119-003.nii.gz": {
+            "bytes": 117180,
+            "sha256": "a9733d2da34040c0969c452399e92012804669518e3544165075ca0972f5caf6"
+          },
+          "BraTS-MET-01134-000.nii.gz": {
+            "bytes": 8357,
+            "sha256": "6d1100afdeb020a251bf7714da6cd35480ee7ccf56baf2e8eba14fceebce4d45"
+          },
+          "BraTS-MET-01134-003.nii.gz": {
+            "bytes": 8160,
+            "sha256": "5e6749dfd7f85d4c72794f969eb1d8a5fc9977644e385d6a72bb789eacc795dc"
+          },
+          "BraTS-MET-01149-000.nii.gz": {
+            "bytes": 164848,
+            "sha256": "9799922a8ad0ff18d45269cc23bcdaa53d5c059d0d0f93a7d6258b8d3da1c0d7"
+          },
+          "BraTS-MET-01149-001.nii.gz": {
+            "bytes": 96780,
+            "sha256": "616371049c58dacd06b3afb5db45b87590f2db97fe4e560a6219e9ede7ca4e35"
+          },
+          "BraTS-MET-01172-001.nii.gz": {
+            "bytes": 21545,
+            "sha256": "caf108b22202d1076d95cfcf0ec7c373a911925f495263d54eb0e6b486454ae5"
+          },
+          "BraTS-MET-01172-002.nii.gz": {
+            "bytes": 16496,
+            "sha256": "89470bd30e587310dfa42757f7566613e5c7313c519b006d6e7f005434671aaa"
+          },
+          "BraTS-MET-01172-004.nii.gz": {
+            "bytes": 16593,
+            "sha256": "6eda10d63eb9c5dfbaedfb24d30a9d40f520ac0b926d9776b73123dbfb8ec063"
+          },
+          "BraTS-MET-01180-000.nii.gz": {
+            "bytes": 19094,
+            "sha256": "c0b7752e58bb1922c022a88a5ceef381296884e1aa2f85be2dd9fbefd51839c4"
+          },
+          "BraTS-MET-01180-003.nii.gz": {
+            "bytes": 18476,
+            "sha256": "33726369829999507facd70fd5708da376faec9b0c70551ca24f3c885ff4fe2a"
+          },
+          "BraTS-MET-01181-001.nii.gz": {
+            "bytes": 43747,
+            "sha256": "a482f1dc2e5e0498547c8fedf7296b6227a110038e1aeeb512fbea300cae7e1b"
+          },
+          "BraTS-MET-01181-002.nii.gz": {
+            "bytes": 37024,
+            "sha256": "48deacb0eb34c7495aafaaf8583447c85ee7d9282d7574de0fe01a7bbd10067e"
+          },
+          "BraTS-MET-01187-000.nii.gz": {
+            "bytes": 98681,
+            "sha256": "ff29120b7611066111490469168fb9ad347a605db6414bc085834ab257576219"
+          },
+          "BraTS-MET-01187-001.nii.gz": {
+            "bytes": 94927,
+            "sha256": "c23ffcc6da3ecca16f0f928fb747f327af4b7f58b7693be997cb0a2de33aa1e7"
+          },
+          "BraTS-MET-01187-003.nii.gz": {
+            "bytes": 94927,
+            "sha256": "c23ffcc6da3ecca16f0f928fb747f327af4b7f58b7693be997cb0a2de33aa1e7"
+          },
+          "BraTS-MET-01191-001.nii.gz": {
+            "bytes": 50406,
+            "sha256": "658eacf45526758d183e9f7e2c91d56cb5fa8f67c5558fc361fc0bebbaace240"
+          },
+          "BraTS-MET-01191-002.nii.gz": {
+            "bytes": 50601,
+            "sha256": "dce10cff6fe3edad44d2b6b6a91504b7adbfe059e6eb84588293cf50022c4098"
+          },
+          "BraTS-MET-01191-003.nii.gz": {
+            "bytes": 49867,
+            "sha256": "fbae8fa677e658ac7ef2989b77d64b0186f3b30ce4d0db2ddd3359a5d983f37c"
+          },
+          "BraTS-MET-01191-004.nii.gz": {
+            "bytes": 56241,
+            "sha256": "57b7e6e086eeea4253ba68fa52a95fb3d0b5bb3f97ca74004067144dbe86dce7"
+          },
+          "BraTS-MET-01217-000.nii.gz": {
+            "bytes": 45549,
+            "sha256": "b461d819bb1cabd20b844de6982ca64a2470a7322d27ac2de7dfe42adab60c7d"
+          },
+          "BraTS-MET-01217-002.nii.gz": {
+            "bytes": 44966,
+            "sha256": "85c99cc2c214730fed6094b4fe0b97796caa48666e914c4e07e4dc8296639d99"
+          },
+          "BraTS-MET-01217-003.nii.gz": {
+            "bytes": 44966,
+            "sha256": "85c99cc2c214730fed6094b4fe0b97796caa48666e914c4e07e4dc8296639d99"
+          },
+          "BraTS-MET-01250-001.nii.gz": {
+            "bytes": 21285,
+            "sha256": "c12ac1c6194e1ffdfa8d30f1b80745ff53f43c31899c247e841ea6fafe796948"
+          },
+          "BraTS-MET-01250-003.nii.gz": {
+            "bytes": 21285,
+            "sha256": "c12ac1c6194e1ffdfa8d30f1b80745ff53f43c31899c247e841ea6fafe796948"
+          },
+          "BraTS-MET-01268-002.nii.gz": {
+            "bytes": 92304,
+            "sha256": "8d9f20455668dbcfeeb086c03b8a83eb65e030d0e33efba4f65da6059c414363"
+          },
+          "BraTS-MET-01270-001.nii.gz": {
+            "bytes": 65366,
+            "sha256": "3076d5ab771fc341f70fb578d91f641ed54856656a7144ace1eb0a59df7e9080"
+          },
+          "BraTS-MET-01270-002.nii.gz": {
+            "bytes": 50152,
+            "sha256": "0d901834040b5a5b79858368b82889027326d37ae48b2c6636b2caf78e45772e"
+          },
+          "BraTS-MET-01270-003.nii.gz": {
+            "bytes": 46721,
+            "sha256": "f496e73f81831e53b475c4ed1c006a5179d5f5952d9b405cd13889cd5037a2dd"
+          },
+          "BraTS-MET-01276-001.nii.gz": {
+            "bytes": 20728,
+            "sha256": "38c930999cad53140e9214ce7265395ceb976ea90edb8b76681068de08f852c7"
+          },
+          "BraTS-MET-01284-000.nii.gz": {
+            "bytes": 141462,
+            "sha256": "59af1713020da247668c9921f285649da1414107ef16641e4b23dcb1a13a68e0"
+          },
+          "BraTS-MET-01284-002.nii.gz": {
+            "bytes": 45746,
+            "sha256": "afdfdf270c134475fac12e5a31c2ce5e9443d324ec374f49718463121e55986b"
+          },
+          "BraTS-MET-01287-001.nii.gz": {
+            "bytes": 28813,
+            "sha256": "32566b1fbf329781d55821a2c1f6363598c29e25446519d2f2172870a0da3315"
+          },
+          "BraTS-MET-01287-002.nii.gz": {
+            "bytes": 22879,
+            "sha256": "b0f408850d94ce193538bf02113e19b6b24d96ead57332798c86734bf71fc17e"
+          },
+          "BraTS-MET-01301-000.nii.gz": {
+            "bytes": 13147,
+            "sha256": "07209777067c7ca20e347d09faedd864664b451ee4373b512b7aa0cfaf223630"
+          },
+          "BraTS-MET-01301-001.nii.gz": {
+            "bytes": 9381,
+            "sha256": "3b3f9822d1e24c360bf1c2003f39463f27f985562648c5e50be97ad9680dcf8a"
+          },
+          "BraTS-MET-01301-002.nii.gz": {
+            "bytes": 9304,
+            "sha256": "cea339a6d7e13dfbe5cabe47362b17142412793259c8fc8022340bcde5cf3a9c"
+          },
+          "BraTS-MET-01310-001.nii.gz": {
+            "bytes": 47010,
+            "sha256": "e1d13000952da7a4228c953cd659c9db05be58329d28dd58ccbe4dedd1b424a3"
+          },
+          "BraTS-MET-01310-002.nii.gz": {
+            "bytes": 47010,
+            "sha256": "e1d13000952da7a4228c953cd659c9db05be58329d28dd58ccbe4dedd1b424a3"
+          },
+          "BraTS-MET-01314-002.nii.gz": {
+            "bytes": 50585,
+            "sha256": "515fc902c939070df02e50825bacec4a64610fe12e403f8f4b10157602d2c8ac"
+          },
+          "BraTS-MET-01314-003.nii.gz": {
+            "bytes": 50585,
+            "sha256": "515fc902c939070df02e50825bacec4a64610fe12e403f8f4b10157602d2c8ac"
+          },
+          "BraTS-MET-01331-002.nii.gz": {
+            "bytes": 91448,
+            "sha256": "3a8c0b1704d2f761c034353c3e9a858f69bcd8fa8b781cbdcbe75e68aa2d85cb"
+          },
+          "BraTS-MET-01351-000.nii.gz": {
+            "bytes": 101157,
+            "sha256": "2ee51cd07d613dca2115fcd504c96492e5c79ac0b19e07885fadfe81a1a0e97d"
+          },
+          "BraTS-MET-01351-002.nii.gz": {
+            "bytes": 110378,
+            "sha256": "444edf369cc326b7547c2b38fdf62d237e0cf0d3ac462312a24dbc9900dd25eb"
+          },
+          "BraTS-MET-01351-003.nii.gz": {
+            "bytes": 100069,
+            "sha256": "d1e8df748ea48957f06fca70476cbe91fe5df21752ae445340d01d7cb5cc14e9"
+          }
+        },
+        "formal_gate_status": "not_run_not_passed",
+        "input_adapter_sha256": "6e2382158884a353f2fac4f9fb1e19cd4eccda21668805db1cadd469d4f302dd",
+        "operator_approved": false
+      },
+      "sha256": "c0ffe07f452aa911d7e1b17128add3db25c443ddfb64fe45e7dac2bb84a34717"
+    },
+    "RUN_CONTRACT.json": {
+      "bytes": 1992,
+      "data": {
+        "DDP": false,
+        "argv": [
+          "/public/software/singularity-ce/4.1.1/bin/singularity",
+          "exec",
+          "--cleanenv",
+          "--containall",
+          "--no-home",
+          "--no-mount",
+          "hostfs,bind-paths",
+          "--net",
+          "--network",
+          "none",
+          "--nv",
+          "--writable-tmpfs",
+          "--pwd",
+          "/tmp",
+          "--bind",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/scratch/EXT2025_MET_GLI/input:/input:ro",
+          "--bind",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/scratch/EXT2025_MET_GLI/raw_output:/output:rw",
+          "--bind",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/scratch/EXT2025_MET_GLI/tmp:/tmp:rw",
+          "--bind",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/full103_2025_r1/runtime:/runtime:ro",
+          "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/results/experimental_unvalidated/s2_external_mets_fixed103_20261104_r1/attempts/s0_sif_recovery_r2/conversion/fixed2025.sif",
+          "python3",
+          "-B",
+          "/runtime/checked_2025.py"
+        ],
+        "artifact_status": "experimental_unvalidated",
+        "author_revision": "83c73e0cac0b5a3c77a298547040ea3ea7f99854",
+        "cases": 103,
+        "credentials_bound": false,
+        "fold_selection": "all",
+        "formal_gate_status": "not_run_not_passed",
+        "gpu": {
+          "device_count": 1,
+          "device_order": "FASTEST_FIRST",
+          "name": "NVIDIA A100-PCIE-40GB",
+          "total_memory": 42298834944,
+          "uuid": "5f998087d2f8418d4ffd81a86a16d742",
+          "visible_devices": "0"
+        },
+        "ground_truth_bound": false,
+        "network": "none",
+        "operator_approved": false,
+        "smoke_gate": "waived_by_user_not_pass",
+        "training": false
+      },
+      "sha256": "c994eadb54739f54a4e5ec89aa99602c25873eed2966f3c807c2905baa3ddcee"
+    },
+    "STARTED.json": {
+      "bytes": 440,
+      "data": {
+        "artifact_status": "experimental_unvalidated",
+        "cases": 103,
+        "contract_sha256": "b6ede31460d7a67c156fb3693f79f6d1c747ffad6f51695e60de35105150c3ff",
+        "formal_gate_status": "not_run_not_passed",
+        "job_id": "4310575",
+        "measured_runtime_peak_gate": "waived_by_user_not_pass",
+        "model": "EXT2025_MET_GLI",
+        "operator_approved": false,
+        "remote_utc": "2026-11-05T19:21:02.448892+00:00",
+        "smoke_gate": "waived_by_user_not_pass"
+      },
+      "sha256": "2be3d323850a3b1b7f758374a5ad97ab6e5cbd8c36c88e8234d639d30815c8cd"
+    }
+  },
+  "scientific_quality_pass": false,
+  "status": "2025_full103_successful_completion_current_prediction_SHA_acceptance"
+}
