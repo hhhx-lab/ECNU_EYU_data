@@ -1,5 +1,9 @@
 # 两外部METS模型同fixed103执行批次R1
 
+**4321579启动验收补充：Python STARTED已确认同JobID/合同，仍RUNNING/node214，无FAILED或最终成绩。** 当前输入校验中，评分完成后在同作业生成四路表；详见[当前执行记录](BIO_MET_EXECUTION_20261107.md)。下段缺STARTED仅是刚释放后的早期快照。
+
+**2026-11-07本次用户授权Bio同口径评分：CPU4321579已一次held核验、同ID释放0，早期快照RUNNING/node214。** 使用4319113的103完整七fold预测，原4319117三路逐例/216均值/216配对与CI复用不覆盖；最终四路288均值/432配对，原MET/GT/split/NA规则不改。服务器精确环境/来源/当前SHA与资源门通过；早期快照尚无Python STARTED/FAILED/COMPLETE，未出Bio新分数。执行与手动查询见[BIO评分记录](BIO_MET_EXECUTION_20261107.md)；未恢复监控、重提推理/安装或解锁104，下方“Bio评分未提交”为此前历史。
+
 **2026-11-07最新：Bio4319113已COMPLETED0:0，01:20:35/gpu17，103/103预测当前bytes/SHA通过；2025推理4310575与三路评分4319117仍已完成。** Bio尚无统一MET评分，不在原三路表，四路成绩待独立评分。只读快照无新FAILED/静态漂移，余513.957GiB非数值quota，用户VPN保留；未新提交/下载NIfTI/重拉旧三路报告。详见[11月7日STATUS](STATUS_20261107.md)和[完成复核](PROGRESS_COMPLETION_REVIEW_20261107.json)。下文Bio排队均为历史。
 
 UTC13:21年份/划分补正：我们使用2026 Task1发放入口列出的BraTS2025命名训练包，没有换用另一套去年数据；原manifest与2025镜像的1296病例ID全集一致。fixed103是seed42患者组划分的真实T2W val103，独立real-only test104未用于本表；原byte版本/2025实际训练fold仍未知。见[2026入口与split证据](COHORT_YEAR_AND_SPLIT_CLARIFICATION_20261106.md)。本轮仅本机查证，无新服务器状态或作业，旧分数/科学边界不变。

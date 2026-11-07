@@ -1,12 +1,37 @@
 {
-  "reviewed_at": "2026-11-07T07:30:55.459941+00:00",
+  "reviewed_at": "2026-11-07T08:07:23.469711+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
     {
+      "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/BIO_MET_EXECUTION_20261107.md",
+      "description": "Bio完整103预测同MET评分和四路汇总单CPU提交；原三路均值与配对CI保持",
+      "kind": "document",
+      "state": "新授权4321579一次held核验/同IDrelease0、RUNNING/node214，后续已确认同合同Python STARTED，无FAILED/PROGRESS_Bio/COMPLETE，当前输入校验中且无Bio新分数。消费4319113完整七fold103预测，原4319117三路216均值/216配对CI原样复用，最终288/432；同103参考/69患者组/原MET精确环境/bin/source与SHA核验，GT体素只由CPU作业评分读取，locked104不读。112AST/318tests316pass2历史skip、新9pass；当前QoS/容量门通过非数值quota，三个会话用户VPN均保留，无新推理/安装/MRI-model-NIfTI下载/删旧数据/监控恢复，原失败/公开训练暴露/科学三项保持。",
+      "reviewed_at": "2026-11-07T08:07:23.469711+00:00",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4321579",
+      "contract_sha256": "7b71f69302b690f086cbaa760ec8c5ab357487e170b367bd561eeec5cbc87b84",
+      "package_sha256": "3d3712ef6bbe7a25ae89c482ec96ac5792124ef0e91f58e9fe59a09ce9b5e534",
+      "evidence": [
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/BIO_MET_AUTHORIZATION_20261107.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/BIO_MET_PROTOCOL_20261107.md",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_bio_comparison_20261107T080223Z/SUBMISSION_PAYLOAD.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_bio_comparison_20261107T080223Z/HOLD_RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_bio_comparison_20261107T080223Z/RELEASE_RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/submit_bio_comparison_20261107T080223Z/INDEPENDENT_LOCAL_ACCEPTANCE.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_bio_comparison_20261107T080416Z/RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_bio_comparison_20261107T080716Z/RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261107T080656Z/VERIFICATION.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/verify_transport_20261107T080206Z/VERIFICATION.json"
+      ]
+    },
+    {
       "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/STATUS_20261107.md",
-      "description": "Bio全103推理已完成与当前SHA验收；原三路评分完成，Bio四路评分尚未提交",
+      "description": "前次Bio全103推理完成检查与SHA验收；同日后续新增评分见BIO_MET_EXECUTION记录",
       "kind": "document",
       "state": "Bio4319113 allocation/batch COMPLETED0:0、01:20:35/gpu17、103当前预测SHA通过；2025推理及三路MET完成，Bio没有新分数，不把工程完成升级为科学优越性。仅一次只读状态与压缩预测字节SHA、原三路轻量SHA检查，用户VPN保留，不重下载/提交或管理账号其他阵列。余513.957GiB非账号数值quota，两端UTC独立记录，公开训练暴露和锁定104保持。",
       "reviewed_at": "2026-11-07T07:30:55.459941+00:00",
