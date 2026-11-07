@@ -1,0 +1,158 @@
+{
+  "reviewed_at": "2026-11-07T07:30:55.459941+00:00",
+  "receipt": {
+    "artifact_status": "experimental_unvalidated",
+    "completed_utc": "2026-11-07T07:27:56.272809+00:00",
+    "formal_gate_status": "not_run_not_passed",
+    "operator_approved": false,
+    "own_vpn_stop_completed": false,
+    "preexisting_vpn_preserved": true,
+    "started_utc": "2026-11-07T07:27:28.106341+00:00",
+    "vpn_owned": false
+  },
+  "Bio_complete": {
+    "artifact_status": "experimental_unvalidated",
+    "cases": 103,
+    "contract_sha256": "a51e9d1a475d01e3f89a402279462b1cbdfbaddaf9fae3eca0f84e81be5b5eb4",
+    "elapsed_seconds": 4814.897025860846,
+    "formal_gate_status": "not_run_not_passed",
+    "job_id": "4319113",
+    "measured_runtime_peak_gate": "waived_by_user_not_pass",
+    "model": "EXT2026_BIO_INTEL_FULL",
+    "operator_approved": false,
+    "prediction_manifest_sha256": "e63602a5e0d03ec1118a704a7bb247c2565ffef3baae1c2537986ce5f47120ad",
+    "reference_labels_read": false,
+    "remote_utc": "2026-11-06T14:03:23.883060+00:00",
+    "smoke_gate": "waived_by_user_not_pass",
+    "status": "full103_inference_outputs_validated_not_scientific_quality_pass"
+  },
+  "Bio_prediction_total_bytes": 4249435,
+  "Bio_manifest_sha256": "e63602a5e0d03ec1118a704a7bb247c2565ffef3baae1c2537986ce5f47120ad",
+  "free_bytes": 551857160192,
+  "free_GiB": 513.95703125,
+  "remote_started_utc": "2026-11-07T07:16:13.528840+00:00",
+  "remote_finished_utc": "2026-11-07T07:16:27.082846+00:00",
+  "local_received_utc": "2026-11-07T07:27:56.269657+00:00",
+  "comparison_acceptance": "completed_accounting_and_output_SHA_pass",
+  "source_sha256": {
+    "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_jobs_readonly_no_duplicate_download_20261107T072728Z/RESULT.json": "156f1cd9a6f5989290fd115b06a53107b0e4f31e40fdbe7833478f9304626e2d",
+    "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_jobs_readonly_no_duplicate_download_20261107T072728Z/EXECUTED_SOURCE.json": "68d53f250238efa3551f24e62877bed9f4e9703f41ebd48150fbf683b5698fb2",
+    "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_jobs_readonly_no_duplicate_download_20261107T072728Z/LOCAL_OPERATION_RECEIPT.json": "ecda7bd6795ceb27ee89bff1232292e968976188a41e9df6c2666ef708feb8f2"
+  },
+  "local_validation": "PASS: source/3.10 AST, job/start/complete/manifest identity; remote current byte SHA checked; no voxel/GT reads",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "request": "检查一下服务器任务跑完了没",
+  "scope": "one_bounded_readonly_snapshot_known_three_jobs_and_own_account_queue_no_duplicate_completed_result_download",
+  "jobs": {
+    "Bio_Intel": {
+      "job_id": "4319113",
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "allocation_and_batch": true,
+      "elapsed": "01:20:35",
+      "node": "gpu17",
+      "prediction_cases": 103,
+      "prediction_bytes": 4249435,
+      "current_prediction_byte_SHA_verified": true,
+      "package_drift": [],
+      "new_FAILED": false,
+      "author_folds": {
+        "A": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "B": [
+          1,
+          3
+        ]
+      },
+      "scoring_completed": false,
+      "unified_four_model_comparison_available": false
+    },
+    "EXT2025": {
+      "job_id": "4310575",
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed": "00:18:27",
+      "node": "gpu19",
+      "prediction_cases_current": 103,
+      "completion_marker_verified": true,
+      "current_prediction_SHA_rehashed_this_snapshot": false,
+      "prior_SHA_acceptance_preserved": true
+    },
+    "three_model_MET": {
+      "job_id": "4319117",
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed": "01:13:43",
+      "node": "node203",
+      "models": [
+        "EXT2025",
+        "K1_175",
+        "original_E_200"
+      ],
+      "cases_each": 103,
+      "metric_columns": 72,
+      "current_lightweight_output_SHA_verified": true,
+      "completed_results_downloaded_again": false
+    }
+  },
+  "queue_boundary": {
+    "known_three_jobs_in_squeue": false,
+    "other_own_account_jobs_observed": true,
+    "other_GPU_array": "4317938",
+    "other_GPU_running_tasks": 10,
+    "other_GPU_pending_tasks": 9,
+    "other_CPU_array": "4321542",
+    "other_CPU_running_tasks": 8,
+    "other_job_parameters_markers_outputs_not_inspected": true,
+    "other_jobs_not_managed": true,
+    "does_not_claim_all_account_jobs_complete": true
+  },
+  "network": {
+    "initial_readonly_status": "aTrust online; public route changed; split status check failed",
+    "one_explicit_start_and_check_through_existing_session_succeeded": true,
+    "user_preexisting_session_preserved": true,
+    "credentials_only_authorized_env": true,
+    "no_retry_or_relogin_of_user_session": true
+  },
+  "logs": {
+    "Bio_inference_completed_103_and_original_postprocessing_summary": true,
+    "postprocessing_removed_RC_components": "15/43",
+    "postprocessing_summary_not_quality_score": true,
+    "new_key_failure_observed": false,
+    "no_claim_full_historical_logs_warning_free": true
+  },
+  "scientific_boundary": {
+    "fixed103_internal_validation_not_locked_test104": true,
+    "patient_groups": 69,
+    "external_training_exposure_unchanged": true,
+    "smoke_and_runtime_peak_gate": "waived_by_user_not_pass",
+    "completion_not_generation_or_segmentation_quality_pass": true,
+    "no_new_Bio_metrics": true
+  },
+  "storage": {
+    "filesystem_free_bytes": 551857160192,
+    "filesystem_free_GiB": 513.95703125,
+    "quota_returncode": 0,
+    "quota_numeric_output_available": false,
+    "not_account_quota_or_new_allocation_permission": true,
+    "no_old_data_removed": true
+  },
+  "actions": {
+    "remote_writes": false,
+    "jobs_submitted_released_cancelled": false,
+    "new_scoring_submitted": false,
+    "dependencies_installed": false,
+    "source_MRI_or_GT_voxels_read": false,
+    "checkpoints_loaded_or_downloaded": false,
+    "prediction_NIfTI_downloaded": false,
+    "prediction_NIfTI_compressed_bytes_SHA_read": true,
+    "monitoring_resumed": false
+  }
+}
