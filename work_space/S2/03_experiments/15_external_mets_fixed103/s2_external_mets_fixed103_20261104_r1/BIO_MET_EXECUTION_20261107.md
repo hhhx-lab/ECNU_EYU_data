@@ -1,5 +1,7 @@
 # Bio-Intel统一MET评分执行记录
 
+**2026-11-08完成验收：4321579 allocation/batch均COMPLETED0:0，00:22:57；103例/72指标、288均值/432配对及SHA通过，轻量结果已回Mac。** 旧216均值/216配对CI保持，独立统计复核通过；见[最新STATUS及两次有界查询说明](STATUS_20261108.md)与[四路结果](results/comparison_four_light_20261108T034412Z/README.md)。下方当前/启动/无成绩均为11月7日早期记录，不覆盖后续完成。已下载后不要再次执行同下载脚本，应使用本地验证器复核已有结果。
+
 ## 当前状态
 
 **后续启动验收已确认Python STARTED同JobID/合同SHA，4321579仍RUNNING/node214。** 最新squeue4:25、sacct allocation/batch各00:03:32/0:0；无FAILED/PROGRESS_Bio/COMPLETE，尚在输入校验阶段、没有Bio评分日志或新分数，四路表未完成。见[启动验收快照](operator/snapshot_bio_comparison_20261107T080716Z/RESULT.json)。下段为首次早期快照，不再代表当前缺STARTED。

@@ -22,6 +22,11 @@ def command(argv):
  p=subprocess.run(argv,capture_output=True,text=True,timeout=60)
  assert p.returncode==0,'snapshot command failed: '+p.stderr
  return p.stdout
+def queue_snapshot(job):
+ p=subprocess.run(['squeue','-h','-j',job,'-o','%i|%T|%M|%R'],capture_output=True,text=True,timeout=60)
+ retired=p.returncode==1 and not p.stdout.strip() and p.stderr.strip()=='slurm_load_jobs error: Invalid job id specified'
+ assert p.returncode==0 or retired,'snapshot queue failed: '+p.stderr
+ return dict(stdout=p.stdout,stderr=p.stderr,returncode=p.returncode,retired_id=retired)
 def read(path):
  if not path.is_file():return None
  assert path.stat().st_size<2*1024**2,'marker budget'
@@ -31,8 +36,9 @@ assert sha(root/'contract/COMPARISON_CONTRACT.json')==CONTRACT_SHA
 assert sha(root/'contract/PACKAGE_SHA256.json')==PACKAGE_SHA
 for name,value in json.loads((root/'contract/PACKAGE_SHA256.json').read_text())['files'].items():
  assert sha(root/name)==value,'Bio MET package drift'
+queue=queue_snapshot(JOB)
 result=dict(remote_started_utc=datetime.now(timezone.utc).isoformat(),job_id=JOB,
- squeue=command(['squeue','-h','-j',JOB,'-o','%i|%T|%M|%R']),
+ squeue=queue['stdout'],squeue_receipt=queue,
  sacct=command(['sacct','-n','-P','-j',JOB,'--format=JobID,JobName,State,ExitCode,Elapsed,NodeList']),
  markers={name:read(root/'reports'/name) for name in ('STARTED.json','FAILED.json','PROGRESS_Bio.json','PARENT_REUSE_VERIFICATION.json','COMPLETE.json')},
  logtails={},free_bytes=shutil.disk_usage(root).free,quota_stdout=command(['quota','-s']),
@@ -62,6 +68,8 @@ elif result['markers']['COMPLETE.json']:
  if done:result['download_files']={name:dict(path=str(root/name),**entry) for name,entry in selected.items()}
 elif not result['squeue'].strip() and not records:
  result['acceptance']='job_disappeared_without_success_evidence_do_not_retry'
+elif not result['squeue'].strip() and any(row[0]==JOB and row[2]=='COMPLETED' for row in records):
+ result['acceptance']='accounting_complete_without_COMPLETE_do_not_retry'
 if result['markers']['STARTED.json']:
  started=result['markers']['STARTED.json']['data'];assert started['job_id']==JOB and started['contract_sha256']==CONTRACT_SHA
 result['remote_finished_utc']=datetime.now(timezone.utc).isoformat()

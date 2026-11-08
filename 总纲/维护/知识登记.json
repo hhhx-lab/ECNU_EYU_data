@@ -1,9 +1,32 @@
 {
-  "reviewed_at": "2026-11-07T08:07:23.469711+00:00",
+  "reviewed_at": "2026-11-08T03:47:22.775028+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/STATUS_20261108.md",
+      "description": "Bio统一MET及四路汇总完成，轻量SHA与288均值/432配对统计独立验收",
+      "kind": "document",
+      "state": "4321579 allocation/batch COMPLETED0:0、00:22:57/node214，COMPLETE同合同、103扫描/72指标、288均值/432配对SHA通过。15轻量文件1193730bytes已回本地，旧216均值/216配对CI保持；独立重算均值及配对统计/共同finite/胜平负/患者等权，不独立重放bootstrap或MET体素。WT Dice2025/Bio/K1/原E0.703347/0.685620/0.630263/0.617613；Bio RC Dice0.710364(n15)但87阴性扫描31误报实例/17扫描。首次查询器精确squeue Invalid job误拒诊断保留，仅修本地查询器后第二有界查询完成；无远端写入/作业重提/模型MRI-NIfTI下载/安装/104解锁/监控，首自有VPN停止、后续用户VPN保留。remote COMPLETE11-07T08:14:24.536933、本地下载11-08T03:45:43.765885分记；508.603GiB为文件系统非数值quota，训练暴露/RC小样本/科学三项保持。",
+      "reviewed_at": "2026-11-08T03:47:22.775028+00:00",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "job_id": "4321579",
+      "contract_sha256": "7b71f69302b690f086cbaa760ec8c5ab357487e170b367bd561eeec5cbc87b84",
+      "package_sha256": "3d3712ef6bbe7a25ae89c482ec96ac5792124ef0e91f58e9fe59a09ce9b5e534",
+      "evidence": [
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/results/comparison_four_light_20261108T034412Z/README.md",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/results/comparison_four_light_20261108T034412Z/reports/COMPLETE.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/results/comparison_four_light_20261108T034412Z/DOWNLOAD_ACCEPTANCE.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/BIO_MET_COMPLETION_REVIEW_20261108.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/LOCAL_VERIFICATION_20261108.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_bio_comparison_20261108T034127Z/FAILED.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_bio_comparison_20261108T034412Z/RESULT.json",
+        "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/operator/snapshot_bio_comparison_20261108T034412Z/LOCAL_OPERATION_RECEIPT.json"
+      ]
+    },
     {
       "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/BIO_MET_EXECUTION_20261107.md",
       "description": "Bio完整103预测同MET评分和四路汇总单CPU提交；原三路均值与配对CI保持",

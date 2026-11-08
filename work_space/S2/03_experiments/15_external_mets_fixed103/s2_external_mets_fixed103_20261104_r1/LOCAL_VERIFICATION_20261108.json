@@ -1,0 +1,43 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "reviewed_utc": "2026-11-08T03:51:00Z",
+  "status": "local_query_regression_and_completed_light_statistics_pass",
+  "test_environment": "Conda brats2023_seg",
+  "access_and_CSV_environment": "Conda base",
+  "test_command": "conda run --no-capture-output -n brats2023_seg python -B -m unittest discover -s work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/tests",
+  "tests_run": 320,
+  "tests_passed": 318,
+  "historical_version_skips": 2,
+  "new_tests_passed": 2,
+  "test_elapsed_seconds": 4.626,
+  "Python_3_10_AST_sources_including_local_tests": 155,
+  "knowledge_JSON_parse_pass": true,
+  "new_status_and_result_markdown_links": 22,
+  "source_SHA256": {
+    "operator/snapshot_bio_comparison.py": "0398627650ea722634521b01920ac66922403e574d8c20fa02b3d031507b5fe6",
+    "operator/verify_bio_light.py": "a3e07fa5f163c8d1cfc4d41cb650afb4d275eeca678941ceba3d98949ee5de9e"
+  },
+  "light_download_files": 15,
+  "light_download_bytes": 1193730,
+  "local_SHA_recheck_pass": true,
+  "independent_mean_rows": 288,
+  "independent_common_finite_pair_statistic_rows": 432,
+  "old_216_mean_and_216_paired_rows_identical": true,
+  "bootstrap_CI_structure_checked": true,
+  "bootstrap_CI_independently_reproduced": false,
+  "MET_voxel_scoring_independently_reproduced": false,
+  "new_dependency_installation": false,
+  "remote_jobs_mutated": false,
+  "new_model_or_NIfTI_download": false,
+  "locked_test104_read": false,
+  "evidence": [
+    "BIO_MET_COMPLETION_REVIEW_20261108.json",
+    "operator/snapshot_bio_comparison_20261108T034127Z/FAILED.json",
+    "operator/snapshot_bio_comparison_20261108T034412Z/RESULT.json",
+    "operator/snapshot_bio_comparison_20261108T034412Z/LOCAL_OPERATION_RECEIPT.json",
+    "results/comparison_four_light_20261108T034412Z/DOWNLOAD_ACCEPTANCE.json",
+    "results/comparison_four_light_20261108T034412Z/reports/COMPLETE.json"
+  ]
+}

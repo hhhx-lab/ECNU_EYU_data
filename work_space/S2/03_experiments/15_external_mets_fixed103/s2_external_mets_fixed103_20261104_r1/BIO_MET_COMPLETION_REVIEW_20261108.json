@@ -1,0 +1,330 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "status": "local_light_SHA_and_288_means_432_pair_statistics_pass",
+  "reviewed_utc": "2026-11-08T03:47:22.775028+00:00",
+  "job_id": "4321579",
+  "download": "results/comparison_four_light_20261108T034412Z",
+  "light_files": 15,
+  "light_bytes": 1193730,
+  "old_216_means_and_216_pairs_identical": true,
+  "independent_mean_rows": 288,
+  "independent_pair_statistic_rows": 432,
+  "bootstrap_CI_independently_reproduced": false,
+  "bootstrap_CI_structure_checked": true,
+  "MRI_GT_predictions_models_read": false,
+  "remote_operations": false,
+  "RC_absent_scans": 87,
+  "RC_absent_false_positive_instances": {
+    "EXT2025": 0.0,
+    "K1_175": 4.0,
+    "original_E_200": 3.0,
+    "EXT2026_BIO_INTEL_FULL": 31.0
+  },
+  "RC_absent_scans_with_false_positives": {
+    "EXT2025": 0,
+    "K1_175": 4,
+    "original_E_200": 3,
+    "EXT2026_BIO_INTEL_FULL": 17
+  },
+  "selected_means": [
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_et",
+      "mean": "0.7065126172310324",
+      "finite_cases": "85"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "all_instance_fp_rc",
+      "mean": "0.019417475728155338",
+      "finite_cases": "103"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_rc",
+      "mean": "0.6989661801421144",
+      "finite_cases": "15"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_tc",
+      "mean": "0.7476622844563671",
+      "finite_cases": "86"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "lesionwise_dsc_mean_wt",
+      "mean": "0.7033467156655887",
+      "finite_cases": "87"
+    },
+    {
+      "model": "EXT2025",
+      "metric": "small_instance_f1_wt",
+      "mean": "0.33885852067873756",
+      "finite_cases": "46"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_et",
+      "mean": "0.6372711175573594",
+      "finite_cases": "85"
+    },
+    {
+      "model": "K1_175",
+      "metric": "all_instance_fp_rc",
+      "mean": "0.04854368932038835",
+      "finite_cases": "103"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_rc",
+      "mean": "0.32296975456101457",
+      "finite_cases": "15"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_tc",
+      "mean": "0.6880705144971574",
+      "finite_cases": "86"
+    },
+    {
+      "model": "K1_175",
+      "metric": "lesionwise_dsc_mean_wt",
+      "mean": "0.6302630901633124",
+      "finite_cases": "87"
+    },
+    {
+      "model": "K1_175",
+      "metric": "small_instance_f1_wt",
+      "mean": "0.26196191338854385",
+      "finite_cases": "46"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_et",
+      "mean": "0.6116520055642963",
+      "finite_cases": "85"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "all_instance_fp_rc",
+      "mean": "0.038834951456310676",
+      "finite_cases": "103"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_rc",
+      "mean": "0.3111874821351774",
+      "finite_cases": "15"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_tc",
+      "mean": "0.6577153471756587",
+      "finite_cases": "86"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "lesionwise_dsc_mean_wt",
+      "mean": "0.6176131342350145",
+      "finite_cases": "87"
+    },
+    {
+      "model": "original_E_200",
+      "metric": "small_instance_f1_wt",
+      "mean": "0.2946585812842902",
+      "finite_cases": "46"
+    },
+    {
+      "model": "EXT2026_BIO_INTEL_FULL",
+      "metric": "lesionwise_dsc_mean_et",
+      "mean": "0.6837293405543512",
+      "finite_cases": "85"
+    },
+    {
+      "model": "EXT2026_BIO_INTEL_FULL",
+      "metric": "all_instance_fp_rc",
+      "mean": "0.3106796116504854",
+      "finite_cases": "103"
+    },
+    {
+      "model": "EXT2026_BIO_INTEL_FULL",
+      "metric": "lesionwise_dsc_mean_rc",
+      "mean": "0.7103636750565951",
+      "finite_cases": "15"
+    },
+    {
+      "model": "EXT2026_BIO_INTEL_FULL",
+      "metric": "lesionwise_dsc_mean_tc",
+      "mean": "0.7307458216591047",
+      "finite_cases": "86"
+    },
+    {
+      "model": "EXT2026_BIO_INTEL_FULL",
+      "metric": "lesionwise_dsc_mean_wt",
+      "mean": "0.6856196261827278",
+      "finite_cases": "87"
+    },
+    {
+      "model": "EXT2026_BIO_INTEL_FULL",
+      "metric": "small_instance_f1_wt",
+      "mean": "0.32795008002201315",
+      "finite_cases": "46"
+    }
+  ],
+  "selected_WT_pairs": [
+    {
+      "first": "EXT2025",
+      "second": "K1_175",
+      "metric": "lesionwise_dsc_mean_wt",
+      "first_mean": "0.7033467156655887",
+      "second_mean": "0.6302630901633124",
+      "common_finite_cases": "87",
+      "first_common_mean": "0.7033467156655887",
+      "second_common_mean": "0.6302630901633124",
+      "raw_delta": "0.07308362550227637",
+      "direction": "higher",
+      "oriented_delta": "0.07308362550227637",
+      "wins": "59",
+      "ties": "1",
+      "losses": "27",
+      "bootstrap_iterations": "20000",
+      "seed": "20260831",
+      "patient_groups": "66",
+      "ci_low": "0.0235585369840473",
+      "ci_high": "0.12246869244673321",
+      "patient_equal_delta": "0.06042433559996179",
+      "patient_equal_ci_low": "0.011654423218794861",
+      "patient_equal_ci_high": "0.11123523376419249"
+    },
+    {
+      "first": "EXT2025",
+      "second": "original_E_200",
+      "metric": "lesionwise_dsc_mean_wt",
+      "first_mean": "0.7033467156655887",
+      "second_mean": "0.6176131342350145",
+      "common_finite_cases": "87",
+      "first_common_mean": "0.7033467156655887",
+      "second_common_mean": "0.6176131342350145",
+      "raw_delta": "0.08573358143057426",
+      "direction": "higher",
+      "oriented_delta": "0.08573358143057426",
+      "wins": "64",
+      "ties": "1",
+      "losses": "22",
+      "bootstrap_iterations": "20000",
+      "seed": "20260831",
+      "patient_groups": "66",
+      "ci_low": "0.03759073403401602",
+      "ci_high": "0.13283815942422603",
+      "patient_equal_delta": "0.07490157733125298",
+      "patient_equal_ci_low": "0.02114500602738779",
+      "patient_equal_ci_high": "0.12887807060284492"
+    },
+    {
+      "first": "K1_175",
+      "second": "original_E_200",
+      "metric": "lesionwise_dsc_mean_wt",
+      "first_mean": "0.6302630901633124",
+      "second_mean": "0.6176131342350145",
+      "common_finite_cases": "87",
+      "first_common_mean": "0.6302630901633124",
+      "second_common_mean": "0.6176131342350145",
+      "raw_delta": "0.012649955928297898",
+      "direction": "higher",
+      "oriented_delta": "0.012649955928297898",
+      "wins": "49",
+      "ties": "1",
+      "losses": "37",
+      "bootstrap_iterations": "20000",
+      "seed": "20260831",
+      "patient_groups": "66",
+      "ci_low": "-0.015058541131564315",
+      "ci_high": "0.040287114112861164",
+      "patient_equal_delta": "0.014477241731291205",
+      "patient_equal_ci_low": "-0.017079154986672857",
+      "patient_equal_ci_high": "0.045715363941511926"
+    },
+    {
+      "first": "EXT2025",
+      "second": "EXT2026_BIO_INTEL_FULL",
+      "metric": "lesionwise_dsc_mean_wt",
+      "first_mean": "0.7033467156655887",
+      "second_mean": "0.6856196261827278",
+      "common_finite_cases": "87",
+      "first_common_mean": "0.7033467156655887",
+      "second_common_mean": "0.6856196261827278",
+      "raw_delta": "0.01772708948286111",
+      "direction": "higher",
+      "oriented_delta": "0.01772708948286111",
+      "wins": "51",
+      "ties": "1",
+      "losses": "35",
+      "bootstrap_iterations": "20000",
+      "seed": "20260831",
+      "patient_groups": "66",
+      "ci_low": "-0.02084827217887299",
+      "ci_high": "0.05352418638336115",
+      "patient_equal_delta": "0.014013114216991824",
+      "patient_equal_ci_low": "-0.030401783987372536",
+      "patient_equal_ci_high": "0.05680385130842469"
+    },
+    {
+      "first": "K1_175",
+      "second": "EXT2026_BIO_INTEL_FULL",
+      "metric": "lesionwise_dsc_mean_wt",
+      "first_mean": "0.6302630901633124",
+      "second_mean": "0.6856196261827278",
+      "common_finite_cases": "87",
+      "first_common_mean": "0.6302630901633124",
+      "second_common_mean": "0.6856196261827278",
+      "raw_delta": "-0.055356536019415266",
+      "direction": "higher",
+      "oriented_delta": "-0.055356536019415266",
+      "wins": "25",
+      "ties": "1",
+      "losses": "61",
+      "bootstrap_iterations": "20000",
+      "seed": "20260831",
+      "patient_groups": "66",
+      "ci_low": "-0.09685563837416168",
+      "ci_high": "-0.014599912893268655",
+      "patient_equal_delta": "-0.04641122138296997",
+      "patient_equal_ci_low": "-0.09333477021928983",
+      "patient_equal_ci_high": "-0.0014546073841334212"
+    },
+    {
+      "first": "original_E_200",
+      "second": "EXT2026_BIO_INTEL_FULL",
+      "metric": "lesionwise_dsc_mean_wt",
+      "first_mean": "0.6176131342350145",
+      "second_mean": "0.6856196261827278",
+      "common_finite_cases": "87",
+      "first_common_mean": "0.6176131342350145",
+      "second_common_mean": "0.6856196261827278",
+      "raw_delta": "-0.06800649194771317",
+      "direction": "higher",
+      "oriented_delta": "-0.06800649194771317",
+      "wins": "19",
+      "ties": "1",
+      "losses": "67",
+      "bootstrap_iterations": "20000",
+      "seed": "20260831",
+      "patient_groups": "66",
+      "ci_low": "-0.10739539266374028",
+      "ci_high": "-0.030310291362068326",
+      "patient_equal_delta": "-0.06088846311426117",
+      "patient_equal_ci_low": "-0.10473760359776745",
+      "patient_equal_ci_high": "-0.01966171923207544"
+    }
+  ],
+  "evidence_SHA256": {
+    "results/comparison_four_light_20261108T034412Z/DOWNLOAD_ACCEPTANCE.json": "43343680ee514f88f1806eb5605ea6605603e4069deaf44f29e7ccad8ed82847",
+    "results/comparison_four_light_20261108T034412Z/reports/COMPLETE.json": "1f9b5cfc1e4746aff2a35a4cf66df4bf381acd24651ddf1d9e45ace9be40645b",
+    "results/comparison_four_light_20261108T034412Z/reports/MEANS_288.csv": "1bfb2f081d32909881f12eb4355eccb6576cfe0cceffb7a8a6783954587f10d4",
+    "results/comparison_four_light_20261108T034412Z/reports/PAIRED_ALL_432.csv": "191acfecf7a4fbb90d1ade6c4802d12ec631c1c979543eb458fc5aa6dd63e1ee",
+    "operator/verify_bio_light.py": "a3e07fa5f163c8d1cfc4d41cb650afb4d275eeca678941ceba3d98949ee5de9e"
+  }
+}
