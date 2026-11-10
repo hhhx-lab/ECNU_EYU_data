@@ -1,0 +1,3479 @@
+{
+  "verified_utc": "2026-11-10T07:44:58.585914+00:00",
+  "source_commit": "df4434f9d4aef5b7394ed03a4e877a8130c1b6cf",
+  "public_assets_verified": 45,
+  "public_assets_bytes": 31821359,
+  "successful_source_receipts": 241,
+  "unsuccessful_source_requests": [
+    {
+      "receipt": "brats/sources/api_message.html.source.json",
+      "url": "https://rest-docs.synapse.org/rest/GET/message/key/key/url.html",
+      "status": 403
+    },
+    {
+      "receipt": "brats/sources/forum2026.json.source.json",
+      "url": "https://repo-prod.prod.sagebase.org/repo/v1/entity/syn74274097/forum",
+      "status": 404
+    },
+    {
+      "receipt": "camyla/sources/hrfuse_repo.json.source.json",
+      "url": "https://api.github.com/repos/yifangao112/HRFuse-Net",
+      "status": 404
+    }
+  ],
+  "forums": [
+    {
+      "year": "2025",
+      "indexed_threads": 107,
+      "complete_selected_threads": 9,
+      "complete_replies": 50
+    },
+    {
+      "year": "2026",
+      "indexed_threads": 93,
+      "complete_selected_threads": 11,
+      "complete_replies": 61
+    }
+  ],
+  "third_party_pdf_count": 12,
+  "third_party_pdf_pages": 220,
+  "checked_local_links": [
+    {
+      "document": "REPORT.md",
+      "target": "camyla/MANUSCRIPTS.md"
+    },
+    {
+      "document": "REPORT.md",
+      "target": "../../../work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/results/comparison_four_light_20261108T034412Z/README.md"
+    },
+    {
+      "document": "README.md",
+      "target": "REPORT.md"
+    },
+    {
+      "document": "README.md",
+      "target": "REPORT.docx"
+    },
+    {
+      "document": "README.md",
+      "target": "REPORT.pdf"
+    },
+    {
+      "document": "README.md",
+      "target": "camyla/MANUSCRIPTS.md"
+    },
+    {
+      "document": "README.md",
+      "target": "camyla/manuscripts/10.pdf"
+    },
+    {
+      "document": "README.md",
+      "target": "ARCHIVE_MANIFEST.json"
+    },
+    {
+      "document": "README.md",
+      "target": "EXECUTION_AUDIT.json"
+    },
+    {
+      "document": "README.md",
+      "target": "camyla/PDF_TEXT_INVENTORY.json"
+    },
+    {
+      "document": "README.md",
+      "target": "DOCUMENT_QA.json"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "../REPORT.md"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "Camyla_system_paper.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/10.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/10.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "PROTEAS_dataset_descriptor.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/02.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/02.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/03.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/03.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/01.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/01.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/07.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/07.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/08.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/08.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/06.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/06.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/04.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/04.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/05.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/05.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "manuscripts/09.pdf"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "searchable_text/09.txt"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "PUBLIC_ASSET_MANIFEST.json"
+    },
+    {
+      "document": "camyla/MANUSCRIPTS.md",
+      "target": "PDF_TEXT_INVENTORY.json"
+    }
+  ],
+  "scope": "This batch only; excludes the two generated audit/manifest files to avoid self-reference",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 623,
+      "sha256": "85e1557bfb81c3bb54ed5848964c406ea9bcf504b0b7b9fb207b3d5ac093da5d"
+    },
+    {
+      "path": "DOCUMENT_QA.json",
+      "bytes": 3336,
+      "sha256": "7acf395d7d621a82ad0e0df853319b4c4514e11cece79cad33ea8f6bcb63cf2b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2671,
+      "sha256": "cccca1057b406a0a130d5105706cdebd12c7c74649d5a98f026022b226618588"
+    },
+    {
+      "path": "REPORT.docx",
+      "bytes": 52464,
+      "sha256": "aa58b9b391fbe7cd5ae32f7186ed6cc73ad9f8d19d30aadd1a2516fe0d57615f"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 40110,
+      "sha256": "6aa73e6f22568dd06039d78adb0a672ca54f2492f2c29a814a8a7c5a3b3e7759"
+    },
+    {
+      "path": "REPORT.pdf",
+      "bytes": 726718,
+      "sha256": "030f85d96569139ef0df67b766adc6f1a045afc489c97e13393d41386adc7f00"
+    },
+    {
+      "path": "brats/FORUM_2025_INDEX.json",
+      "bytes": 76976,
+      "sha256": "a7211a324508d1317604880b51b3c9689d5a6d419604826c1aa80d16dfd67ecb"
+    },
+    {
+      "path": "brats/FORUM_2026_INDEX.json",
+      "bytes": 67533,
+      "sha256": "1c48fb3b41d9ebd79dc8c6908a6ca81f5e1309ed2cd4b6ff3e7ab6b13c4606f6"
+    },
+    {
+      "path": "brats/code/evaluation2025/README.md",
+      "bytes": 3346,
+      "sha256": "53df7f5cbb7945f5544d0fdddeba5c7e738e9c30698b7a3710cc54b918132a78"
+    },
+    {
+      "path": "brats/code/evaluation2025/README.md.source.json",
+      "bytes": 834,
+      "sha256": "5e4df825ee1cb06acc907b6d7b22226416e252f5ec052c02cb021697b71be90f"
+    },
+    {
+      "path": "brats/code/evaluation2025/brats-configs/config_mets.yaml",
+      "bytes": 1613,
+      "sha256": "8bcb3365c656374d98e5b0d18ae5a5add0e880d0b499cc6158b44b51529a556d"
+    },
+    {
+      "path": "brats/code/evaluation2025/brats-configs/config_mets.yaml.source.json",
+      "bytes": 898,
+      "sha256": "a009d136e4ce5abfbad970882d3d8b4ce27901e3663eed4aa5cf64f19b4f3492"
+    },
+    {
+      "path": "brats/code/evaluation2026/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "brats/code/evaluation2026/LICENSE.source.json",
+      "bytes": 825,
+      "sha256": "6e14a1fd965a5d1c0e07c0204ee2574ea2c3e01fcac4dcc48e2df2198f58418a"
+    },
+    {
+      "path": "brats/code/evaluation2026/README.md",
+      "bytes": 8155,
+      "sha256": "4a02b0ae26a8b3ef8c68e87f12ac1797f698ea18cd0abd60933a588859fb0c61"
+    },
+    {
+      "path": "brats/code/evaluation2026/README.md.source.json",
+      "bytes": 829,
+      "sha256": "547c559825808e505b2ac6a509deff73964946eb17b8ba9a7bb357219ceba864"
+    },
+    {
+      "path": "brats/code/evaluation2026/brats_evaluation/configs/config_mets.yaml",
+      "bytes": 1612,
+      "sha256": "e91d1c88412c95a336642973d11046f4a6c08089fc9fa38f7cfa9e9f239d9842"
+    },
+    {
+      "path": "brats/code/evaluation2026/brats_evaluation/configs/config_mets.yaml.source.json",
+      "bytes": 925,
+      "sha256": "f9c3b37d2461dcd7ed7b4ec45622e5f9b5e40bdc91ac52eda6baddc784390d58"
+    },
+    {
+      "path": "brats/code/evaluation2026/brats_evaluation/metrics_parser.py",
+      "bytes": 15631,
+      "sha256": "9564c20ed453c26a8d5a2f74fafdeb08a8ff59a2fc05c4a8023801bfb746a49b"
+    },
+    {
+      "path": "brats/code/evaluation2026/brats_evaluation/metrics_parser.py.source.json",
+      "bytes": 906,
+      "sha256": "1eea5d59f879ca5b069346f851eb9e244972c5d113d090d4a9e4146ce40d6b46"
+    },
+    {
+      "path": "brats/sources/2025_threads_000.json",
+      "bytes": 10892,
+      "sha256": "388896c4249d2108166583842278aec2b50cdea07c70520315e7e8d791d340aa"
+    },
+    {
+      "path": "brats/sources/2025_threads_000.json.source.json",
+      "bytes": 832,
+      "sha256": "7124ad2bd7ac1eba0445385e500bb3f7863f24d52683db8c68199e9b8d6b7b39"
+    },
+    {
+      "path": "brats/sources/2025_threads_020.json",
+      "bytes": 10786,
+      "sha256": "2d83ab14bdfd8ef512cb5e800091b39da9ebb21de33e4694de784c4c587f14a4"
+    },
+    {
+      "path": "brats/sources/2025_threads_020.json.source.json",
+      "bytes": 834,
+      "sha256": "55ddf2b4746b5e5ffb4e02ac88ba524493704cec73bcd4914d8619d0bc50d2de"
+    },
+    {
+      "path": "brats/sources/2025_threads_040.json",
+      "bytes": 10786,
+      "sha256": "c1d0135bde885c9847cd4f0374f756589d12fbbbbfec68233291cae27b52707f"
+    },
+    {
+      "path": "brats/sources/2025_threads_040.json.source.json",
+      "bytes": 834,
+      "sha256": "03fca92cdf94e7d70f8f2e1645e124c565f4803d06de937df63e39db640431b1"
+    },
+    {
+      "path": "brats/sources/2025_threads_060.json",
+      "bytes": 10682,
+      "sha256": "2e2c45caf949c92249f993f739db89101412ba76bfec4cbd67df1862a1c7cb0b"
+    },
+    {
+      "path": "brats/sources/2025_threads_060.json.source.json",
+      "bytes": 834,
+      "sha256": "c13fe3a08db1564b832cdfd6fc243f3ee5c20920b57d6ff008857ea71255d13e"
+    },
+    {
+      "path": "brats/sources/2025_threads_080.json",
+      "bytes": 10891,
+      "sha256": "e5192c6f506f627d49cffcf0b5696dc2451816e4286ba3c69652c0e1c2201173"
+    },
+    {
+      "path": "brats/sources/2025_threads_080.json.source.json",
+      "bytes": 834,
+      "sha256": "d8b080edd8a6cc5b00c55ae22d2d5cb67b4e25eb8fda956b45f0ce4a26147938"
+    },
+    {
+      "path": "brats/sources/2025_threads_100.json",
+      "bytes": 3671,
+      "sha256": "9ce2ad552b2c514153ff90c5899dac0b921e9ad4fb5ea5c65cf4fa34dc57a073"
+    },
+    {
+      "path": "brats/sources/2025_threads_100.json.source.json",
+      "bytes": 834,
+      "sha256": "c6b18227eee7be60df9fdfe1cf2f86dcc3aa1ae1fced7dd8fccde98efbc9fd1d"
+    },
+    {
+      "path": "brats/sources/2026_threads_000.json",
+      "bytes": 10937,
+      "sha256": "c8798beeb1ca2b5f63c0ae969a52881c47fb52a33756c9d51d706744d81d76a2"
+    },
+    {
+      "path": "brats/sources/2026_threads_000.json.source.json",
+      "bytes": 832,
+      "sha256": "6b65f3d8d568e53a4f20bd5451ed4409da7cb2ff34e3871547e831c78aa38832"
+    },
+    {
+      "path": "brats/sources/2026_threads_020.json",
+      "bytes": 10959,
+      "sha256": "36f92c51bb78e0a73e22b65759d3a556f30ed0534be6d5408a620f5e39429a30"
+    },
+    {
+      "path": "brats/sources/2026_threads_020.json.source.json",
+      "bytes": 834,
+      "sha256": "a9b5a3bb941c7f95c8b5ebaf43cfbac158164619154c8471cb6df45cfc38b63f"
+    },
+    {
+      "path": "brats/sources/2026_threads_040.json",
+      "bytes": 10871,
+      "sha256": "07e85853ae9c8ded97d3f0a4e3362f34f473e7ee389348dbf3e850feec677974"
+    },
+    {
+      "path": "brats/sources/2026_threads_040.json.source.json",
+      "bytes": 834,
+      "sha256": "5f6fb5981f9cafbccb5d06c445bd39a7d0342e8a2c7953c85421c125a2d890a4"
+    },
+    {
+      "path": "brats/sources/2026_threads_060.json",
+      "bytes": 10930,
+      "sha256": "69f89b032738e28c1f69ddf055155350f0b126e59248221994cc43e9f1100662"
+    },
+    {
+      "path": "brats/sources/2026_threads_060.json.source.json",
+      "bytes": 834,
+      "sha256": "15a52905873989161d44e101f8817a0678111f42b85cc30897eac3ccdb9f9eb1"
+    },
+    {
+      "path": "brats/sources/2026_threads_080.json",
+      "bytes": 7140,
+      "sha256": "1eed4462e9139b42fd86091ca766cf4271d0390d2af080ddb696daf15c0ae118"
+    },
+    {
+      "path": "brats/sources/2026_threads_080.json.source.json",
+      "bytes": 832,
+      "sha256": "02025f7957e6321a55fd6911d33544acd620262b15f345a539d22abcfc5f80bc"
+    },
+    {
+      "path": "brats/sources/api_forum_threads.html",
+      "bytes": 6396,
+      "sha256": "ea8a2085bfea2c27f6a4044560688b812cee430713b6ae4229f404f97a291a6a"
+    },
+    {
+      "path": "brats/sources/api_forum_threads.html.source.json",
+      "bytes": 730,
+      "sha256": "4ae40fdeb33ebc1b8f6c4ffc379e57f981c40d908e9c903de593d18fa60b0ff0"
+    },
+    {
+      "path": "brats/sources/api_index.html",
+      "bytes": 306592,
+      "sha256": "258bd6078b3d82788a8540017318017e1247e288c979f26af88d0d1837d0aa08"
+    },
+    {
+      "path": "brats/sources/api_index.html.source.json",
+      "bytes": 685,
+      "sha256": "efea96527b46e372da543fded645fd9e29c24e6a9d193f8587be5f0bcb228d0a"
+    },
+    {
+      "path": "brats/sources/api_message.html.failed_response",
+      "bytes": 111,
+      "sha256": "a824bc7739e226e1b40ea0f8c4e4f4c6f796fc3b4abfa6e9abe3bd119a30d938"
+    },
+    {
+      "path": "brats/sources/api_message.html.source.json",
+      "bytes": 664,
+      "sha256": "fbf58f11c48dacab229c0a30434adc496265858f4622a1b8f6816b3f3e686ade"
+    },
+    {
+      "path": "brats/sources/api_project_forum.html",
+      "bytes": 4624,
+      "sha256": "fbcc7d8fb9713c7e994df019b6f377c399949e300945e3a3031d2f0b1a1e5722"
+    },
+    {
+      "path": "brats/sources/api_project_forum.html.source.json",
+      "bytes": 734,
+      "sha256": "360959d1a27a476c0e888a5e82f3aa000ee4fbda6d2f1a2a07e5845c5bd35c58"
+    },
+    {
+      "path": "brats/sources/api_replies.html",
+      "bytes": 6402,
+      "sha256": "20391afd0dfd3e8e2c25fd3738947a3092bee94ed36d96ef6b586455c960238e"
+    },
+    {
+      "path": "brats/sources/api_replies.html.source.json",
+      "bytes": 727,
+      "sha256": "6e7316950c11d1d8c79e570ce009a97533655e1c20aa069920b742c252c0a66b"
+    },
+    {
+      "path": "brats/sources/api_thread_message.html",
+      "bytes": 4747,
+      "sha256": "cf27c6a3467a142ba11fc00b2159118284fce80923d5610fb15d8dece4174c10"
+    },
+    {
+      "path": "brats/sources/api_thread_message.html.source.json",
+      "bytes": 723,
+      "sha256": "ad41a20c5d1c4cbd3479547769f9246bafcbb9fdb4a6e3dc138edafece17d0b6"
+    },
+    {
+      "path": "brats/sources/evaluation_commit.json",
+      "bytes": 99740,
+      "sha256": "a52844f3480777e371a8f74893884ef4f1c0904a3857c7c2a0593ef0fa5bafd8"
+    },
+    {
+      "path": "brats/sources/evaluation_commit.json.source.json",
+      "bytes": 752,
+      "sha256": "5e2e716083aba1eb1b59644b50bf2a8e245b893309b5622693b62a6b5d1edc06"
+    },
+    {
+      "path": "brats/sources/evaluator2025_commit.json",
+      "bytes": 7083,
+      "sha256": "e943e3523d2ed945c0850c57679aa5eeeafede24715081334d74bba421f97683"
+    },
+    {
+      "path": "brats/sources/evaluator2025_commit.json.source.json",
+      "bytes": 758,
+      "sha256": "bca69b3fa07420b437486e672349a738e0ba1cbab47f9960792ad248fb887bc0"
+    },
+    {
+      "path": "brats/sources/forum2025_project.json",
+      "bytes": 131,
+      "sha256": "ce2122fb04f1782725d0f4dfec3a7ba0d2d6d066105bf2d61c266dad45bbfe8c"
+    },
+    {
+      "path": "brats/sources/forum2025_project.json.source.json",
+      "bytes": 756,
+      "sha256": "2a77b9f576f0ff09bcd1a6723222f16b032c19d0eff6c3ff18be17d25c14850f"
+    },
+    {
+      "path": "brats/sources/forum2026.json.failed_response",
+      "bytes": 167,
+      "sha256": "ca2dad63f7b897f1e164d2eb8c5a80c7f79aca23f22aeb14019a636dd06af4af"
+    },
+    {
+      "path": "brats/sources/forum2026.json.source.json",
+      "bytes": 687,
+      "sha256": "e8dfab93eee3a76be4410b639ea3f88b59043645618d73c9f54b3b78298282a9"
+    },
+    {
+      "path": "brats/sources/forum2026_project.json",
+      "bytes": 131,
+      "sha256": "0995c9db3dff8d6e20e0f26a22729f60463d60f2e29e4d48eaabe766b5442bb6"
+    },
+    {
+      "path": "brats/sources/forum2026_project.json.source.json",
+      "bytes": 757,
+      "sha256": "c5b6765d5b0d64eb81af680302a781bea302a327007fc9b3a7360e746ca07417"
+    },
+    {
+      "path": "brats/sources/permranker_crossref.json",
+      "bytes": 186,
+      "sha256": "ce424f5f07b16fd5a702acc5bb8240552925fd9344e3c41e650d718d25530b79"
+    },
+    {
+      "path": "brats/sources/permranker_crossref.json.source.json",
+      "bytes": 727,
+      "sha256": "d387bdc974b8f90ebc8df3a0eefc54b80dfe511cfc47b0471e42c8b137a13515"
+    },
+    {
+      "path": "brats/sources/permranker_preview.html",
+      "bytes": 341253,
+      "sha256": "feb3f1e2e0bbaf5fe5a85f2abb04afaa64286627e34962aeb18b03eeafd12a65"
+    },
+    {
+      "path": "brats/sources/permranker_preview.html.source.json",
+      "bytes": 812,
+      "sha256": "eead01b02a5b617244ad70f8e33262cf34a6b4cbb01ac47c81a51b62da2ec870"
+    },
+    {
+      "path": "brats/sources/wiki2025_631058.json",
+      "bytes": 22853,
+      "sha256": "4fa3793114ac41e8abdf5fb85bbc9116126ddce5d015fde04b57519b3e9b16fc"
+    },
+    {
+      "path": "brats/sources/wiki2025_631058.json.source.json",
+      "bytes": 769,
+      "sha256": "9504be9b734e1ade03a9a091f9202fe476dbcd74ea4bba3980533e5e99e152ca"
+    },
+    {
+      "path": "brats/sources/wiki2026_639577.json",
+      "bytes": 5153,
+      "sha256": "6b66a8c6220c62c9b9e7f8c10053a099d30889d37b53dac28c7d8ff6d30e1e39"
+    },
+    {
+      "path": "brats/sources/wiki2026_639577.json.source.json",
+      "bytes": 767,
+      "sha256": "4a9f6675f3e0eb94be030a86f7f109b5ead52a9ef85b33898c90882a88cd5be3"
+    },
+    {
+      "path": "brats/sources/wiki2026_639583.json",
+      "bytes": 450,
+      "sha256": "fd69e9addd9902c29219f665dd889d2c39efe83d837fc09e942f2d748752a96e"
+    },
+    {
+      "path": "brats/sources/wiki2026_639583.json.source.json",
+      "bytes": 765,
+      "sha256": "3b0ba15b0be0ecd145b78e84091a513531fc3abddb83d6d8ef27492d0148eb4f"
+    },
+    {
+      "path": "brats/sources/wiki2026_639600.json",
+      "bytes": 5591,
+      "sha256": "21b51332331fff4affff086850562310ac14c16c365a3319be689a53a5f9de14"
+    },
+    {
+      "path": "brats/sources/wiki2026_639600.json.source.json",
+      "bytes": 767,
+      "sha256": "7d1412ebb6504a22caddab88f623b03779c313cb596e3920d08443e344b28a62"
+    },
+    {
+      "path": "brats/sources/wiki2026_639602.json",
+      "bytes": 3228,
+      "sha256": "8ad2b20cf41282b19c01e16528727ec11ef5f6b784af212cddd282b956078a84"
+    },
+    {
+      "path": "brats/sources/wiki2026_639602.json.source.json",
+      "bytes": 767,
+      "sha256": "43dcecc46f98007af3e879d636243ee984f225161daecad7311ca6a85add7aba"
+    },
+    {
+      "path": "brats/sources/wiki2026_640141.json",
+      "bytes": 2448,
+      "sha256": "f3882bc19f9c5a7f0a9870e72878c963262ad6c39f5fa6303b675a2a5257bffe"
+    },
+    {
+      "path": "brats/sources/wiki2026_640141.json.source.json",
+      "bytes": 767,
+      "sha256": "ea201ddcd1900006b5aeadfc5c2cb1ffc9cc0de71009d65521c093fa8d80af4f"
+    },
+    {
+      "path": "brats/threads/2025/11888/replies_000.json",
+      "bytes": 2292,
+      "sha256": "22bb0542d4a3fbb5cbc31efaf31d4a70deb864a0f679df4877b265cdbd404bb4"
+    },
+    {
+      "path": "brats/threads/2025/11888/replies_000.json.source.json",
+      "bytes": 838,
+      "sha256": "3434226fa67916c59e58451a2c023d982e338a184a3d0f947704be544ca5fee6"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34172.md",
+      "bytes": 225,
+      "sha256": "214da4462683b7613ee3ba13cd5dd1b27696fec467d64e5a138e3f5bb110aa5f"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34172.md.source.json",
+      "bytes": 753,
+      "sha256": "a240045d080372d69c83fde76267c972bdded7f508a2ac3b637790b430e0dcd2"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34172.md.transport.gz",
+      "bytes": 187,
+      "sha256": "efd4bb245708ffd44e038ba96c41dae81a6bd90536ea6482ee91a7a06c02524c"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34173.md",
+      "bytes": 353,
+      "sha256": "80810373951c842f4eb08403aa2fa88a938f90d6487840023466beecd5556fa9"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34173.md.source.json",
+      "bytes": 753,
+      "sha256": "bbb470fe3f13395b9a30b43d2002a919c70f1a1a38bc321512a8d974dd43ab86"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34173.md.transport.gz",
+      "bytes": 263,
+      "sha256": "cddc66785c429404422af982dccf8ee7bbb7ea008361f915275dbf08237b159e"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34634.md",
+      "bytes": 63,
+      "sha256": "6e73decf3ade710dcab4996cf0fa8dce4c26d557ca0eb1310250f1ce2f2b2b1a"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34634.md.source.json",
+      "bytes": 751,
+      "sha256": "fb6237bbb22119e507b9f75774458985dd15e172a0ce33668e8b214a6b9f0f40"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34634.md.transport.gz",
+      "bytes": 83,
+      "sha256": "c4487c8aef817ecaa93e7a0a6c640784e67587652632f2ee95472a24b157adc4"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34652.md",
+      "bytes": 233,
+      "sha256": "9bf42980d8dcc2fd18090180565b2a5e4dc735ea23f91c40050c0c799ce28dbf"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34652.md.source.json",
+      "bytes": 753,
+      "sha256": "90b590f249aac714d6f107208072a5913f020e4bcd23276c8972431c3b4959e4"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34652.md.transport.gz",
+      "bytes": 190,
+      "sha256": "8456af0baee857b81d8b003e3679e4fbe83e8942732969d4a56310b6f1f02037"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34653.md",
+      "bytes": 112,
+      "sha256": "d0ab9776ad001d0616a3801098949fec99fdbeac5358a98471bfc807e0ee4eb7"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34653.md.source.json",
+      "bytes": 753,
+      "sha256": "688f768ef80750b52fc934a5aa574e023c27008246be558733a4b184a17fa7a6"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34653.md.transport.gz",
+      "bytes": 123,
+      "sha256": "bd0447e0c1ea5cce5190eb56ac234ad7fa730a642929d25cf4b9f451f84f3ee2"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34672.md",
+      "bytes": 66,
+      "sha256": "47f407fb8a196471e40ba4ee377d01ba0aed17702b2f32b1c9b4fe0bf2b9940d"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34672.md.source.json",
+      "bytes": 751,
+      "sha256": "2c8e4fd5154fe5501018508c881d8898a8c112f8558ba301bf5f88226b773ca4"
+    },
+    {
+      "path": "brats/threads/2025/11888/reply_34672.md.transport.gz",
+      "bytes": 80,
+      "sha256": "a8b41ca39c0edb154be124123768d71bf1712582a7b0f2b3f9fd160577c121b8"
+    },
+    {
+      "path": "brats/threads/2025/11888/thread.md",
+      "bytes": 159,
+      "sha256": "918cd34645bc7566b6344c1eda3e887e9676af6bba036f0af99668b54d09d1e5"
+    },
+    {
+      "path": "brats/threads/2025/11888/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "cafacede77a659efbf5e619c5d0247028e4c9793eb1ba6cea94b470b55352385"
+    },
+    {
+      "path": "brats/threads/2025/11888/thread.md.transport.gz",
+      "bytes": 152,
+      "sha256": "67ac65a07906ae4b2903b7e76b33d7a86cb52293f05127c44a3b26be00ea66c3"
+    },
+    {
+      "path": "brats/threads/2025/11896/replies_000.json",
+      "bytes": 2670,
+      "sha256": "3cc14b94b43e175f84f6c0670a1e0056ddbdc7de352635429467ed9790e7454f"
+    },
+    {
+      "path": "brats/threads/2025/11896/replies_000.json.source.json",
+      "bytes": 838,
+      "sha256": "7419b8aac65ec71d12abd61a311fbb43580e16a92d7c9d88da488fb62c369683"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34245.md",
+      "bytes": 291,
+      "sha256": "7f15f9a5c7414134196bc6c3ac8562ca83ea2963c1a686ef000596a0456b6d8b"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34245.md.source.json",
+      "bytes": 753,
+      "sha256": "7928d0111c764fffc441ea6ada36d9b86880b1f994866ef4c32f5fd537eacde8"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34245.md.transport.gz",
+      "bytes": 233,
+      "sha256": "12de3fe0020ecd25b9bb11094f9cae27fc57080dd50f0df5fb33d5bd27129dc1"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34322.md",
+      "bytes": 172,
+      "sha256": "7bb5437b0ed59b47cca5ca82b9c07c57d38dff7f7a14891fb2f6a29c0d08c391"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34322.md.source.json",
+      "bytes": 753,
+      "sha256": "7439cbc581331e8ca5a30912fdfc64231a6830466115fabdc39be012b5329bb4"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34322.md.transport.gz",
+      "bytes": 155,
+      "sha256": "49272d6b28b64ec27127bc14f9e0fac616853fc44f45778d1456de6599dd3b24"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34336.md",
+      "bytes": 147,
+      "sha256": "c4d71b028a1f2c6c2dbd78e63cd6d64e8957a1bd3243bf734d451c5157b7fb6c"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34336.md.source.json",
+      "bytes": 753,
+      "sha256": "df61d39cc8d8803df32a2c766489247c2e25accb156125b7a89db1e4e5d24b42"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34336.md.transport.gz",
+      "bytes": 147,
+      "sha256": "640f6bafd228460f16e2100f7287e2fdf2ae5a36313b116e811e51d7df230b85"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34337.md",
+      "bytes": 448,
+      "sha256": "b7bedce93a7da1c8b68175a64f5d9774a120a6e0bb49a0c23881d3721a07b5d1"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34337.md.source.json",
+      "bytes": 753,
+      "sha256": "82c8faec72affd0b1684c6059e75f189ac19536a8bc11ed28f187691ffd4a6cf"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34337.md.transport.gz",
+      "bytes": 327,
+      "sha256": "5edf4131d3ba65a6e50427e5596f32cf23d28619a6e2c8bfe47b6076190fb5bb"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34927.md",
+      "bytes": 630,
+      "sha256": "dab5e2024a532592d952da6d8d783b2bbe4cb34ed6a175e59e27ca1b1b86a482"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34927.md.source.json",
+      "bytes": 753,
+      "sha256": "2acf4b73ae937b889e3ba3fb8091dea47e84bc069f8b8889ed1b5416cf37b0e8"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_34927.md.transport.gz",
+      "bytes": 414,
+      "sha256": "85705c34126e886c22e4246ba15891b30fdc2de14a8ceb54987cf8a88cb30c14"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_36017.md",
+      "bytes": 324,
+      "sha256": "8ccb0d68f48967b728050b87eda7cea32ffc1caf9798599d95aefb05366ad8bd"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_36017.md.source.json",
+      "bytes": 753,
+      "sha256": "3953f8b6a46c75114cb2fc2c0ec86ff289d07a4aa5f153a30527da1e4eaa6ef9"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_36017.md.transport.gz",
+      "bytes": 221,
+      "sha256": "b77928a16e0d289004275f9da6aedd305844517cef848a9fdf79cffd0bb2c18c"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_36045.md",
+      "bytes": 97,
+      "sha256": "a03a52c40c46dd7662380dcfb65ea97e997988d8e203ceaab39c35ea92bc516d"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_36045.md.source.json",
+      "bytes": 751,
+      "sha256": "b254398bb4b968e0e460591f9e312f9f949662f2ea849e4e792b68e571e0d138"
+    },
+    {
+      "path": "brats/threads/2025/11896/reply_36045.md.transport.gz",
+      "bytes": 96,
+      "sha256": "9efe2b951ea5498cb35d4ac84845c8458f9ad81df99d59ca0194515b7ace527f"
+    },
+    {
+      "path": "brats/threads/2025/11896/thread.md",
+      "bytes": 301,
+      "sha256": "da4deafdf2de11229e74fe2d2d18a1b944cac12dff1164b12689b114e1293dc8"
+    },
+    {
+      "path": "brats/threads/2025/11896/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "84eb2631f7477ab4fbe47c316cf4a1bae74cff40396cf164f3304df3f2b73c97"
+    },
+    {
+      "path": "brats/threads/2025/11896/thread.md.transport.gz",
+      "bytes": 227,
+      "sha256": "3231c68ac9952e34e00be8cc825131201dd3fdfd000bf42034c41721f474cade"
+    },
+    {
+      "path": "brats/threads/2025/11936/replies_000.json",
+      "bytes": 790,
+      "sha256": "937034cd1c8a8bdb3cd919b5702b762da81d436edcd71bd4e3d2a8b80a63c40a"
+    },
+    {
+      "path": "brats/threads/2025/11936/replies_000.json.source.json",
+      "bytes": 835,
+      "sha256": "fbcce230367ae0f9db7330b5f942861f488d93aef59dcc225710d3866662ec5b"
+    },
+    {
+      "path": "brats/threads/2025/11936/reply_34199.md",
+      "bytes": 586,
+      "sha256": "8f7c9eaa27d869d816b076c7c70069467870dfbe42c193003c3c0c8e7023f271"
+    },
+    {
+      "path": "brats/threads/2025/11936/reply_34199.md.source.json",
+      "bytes": 753,
+      "sha256": "31c723acf369202c8f67c1329117a738fee41dff86aa36be517693cec83dbac5"
+    },
+    {
+      "path": "brats/threads/2025/11936/reply_34199.md.transport.gz",
+      "bytes": 364,
+      "sha256": "e0c15da2dc471868e4305981ce06ca876ddf8045fde40a804705557f38187a8f"
+    },
+    {
+      "path": "brats/threads/2025/11936/reply_34200.md",
+      "bytes": 251,
+      "sha256": "644c3eb2e3ec68289eb231c883b5fde1c55fc95dc287283bcfd306619bbb4225"
+    },
+    {
+      "path": "brats/threads/2025/11936/reply_34200.md.source.json",
+      "bytes": 753,
+      "sha256": "b721b11d8477a10732869ea8d90b8a5a08b567602073bc7424ec3b7ce57381cd"
+    },
+    {
+      "path": "brats/threads/2025/11936/reply_34200.md.transport.gz",
+      "bytes": 187,
+      "sha256": "8fded61b484779e3efa868bb73cd60dd372dd2be63988eca5b9d731a99b3f7b2"
+    },
+    {
+      "path": "brats/threads/2025/11936/thread.md",
+      "bytes": 451,
+      "sha256": "d5c54dde213c818c0feef4e994127fbbf4e7dc02104e80c2fe55e565eba595c8"
+    },
+    {
+      "path": "brats/threads/2025/11936/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "dd930fec906da0194c6fd460299dcf23e43b4e86469c39e0132673bf324d64e7"
+    },
+    {
+      "path": "brats/threads/2025/11936/thread.md.transport.gz",
+      "bytes": 318,
+      "sha256": "3be440fc41f16daef79e6422a2203c298717daf1ca00ae779d65d2555b5a2dfa"
+    },
+    {
+      "path": "brats/threads/2025/11955/replies_000.json",
+      "bytes": 1164,
+      "sha256": "59a25d5bd4b2def1c626a4738f926b0378aaa9adffc4e32a3626c0e9b32c3a73"
+    },
+    {
+      "path": "brats/threads/2025/11955/replies_000.json.source.json",
+      "bytes": 838,
+      "sha256": "083179ec6a1a48c31c7ff9962f596c598aa0a0f43b159004c64ddcd7fe85e981"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34224.md",
+      "bytes": 710,
+      "sha256": "46230737d91914e3ca2aa4aa78bfa6e1b00c4095b59efacae54edaafbcc208b6"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34224.md.source.json",
+      "bytes": 753,
+      "sha256": "b812985272774f7047d288f1b46b8aefbb17aa826f62bad778f3b23bef533f7e"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34224.md.transport.gz",
+      "bytes": 440,
+      "sha256": "0ee52e104eff678d24c146696f0d980dcbec58bd14dc64494a51e42189821c8c"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34225.md",
+      "bytes": 314,
+      "sha256": "2d2d1e875ebb08d3e0dce9b4e7696eb4e712dd40ba45c9cd4948130886bd24e1"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34225.md.source.json",
+      "bytes": 753,
+      "sha256": "537bf8184b256b471ff965e10da97b9b7b31cdf380b8ee2e664c3356502b2abc"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34225.md.transport.gz",
+      "bytes": 215,
+      "sha256": "699ebda6e35d524d41d1897edc3478fd2dd80c93ca41afbb5ec3be674855ba6e"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34230.md",
+      "bytes": 411,
+      "sha256": "dc71c67cf8e96c3851bb8090d615119bd44c062b445b15cd0c883b9df0702bf7"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34230.md.source.json",
+      "bytes": 753,
+      "sha256": "e9dcbba3363cf7a8670deea1f19a066cc840d7617b961eec1dfa63beeef47393"
+    },
+    {
+      "path": "brats/threads/2025/11955/reply_34230.md.transport.gz",
+      "bytes": 297,
+      "sha256": "346dc617dcbe124827232a35f3ba9aa78ec0c7142964cbfd042a14451303764c"
+    },
+    {
+      "path": "brats/threads/2025/11955/thread.md",
+      "bytes": 116,
+      "sha256": "c2f29cd5c1a246e1c4305a224ee606d1596065b07133543f48073f9e7e4ed531"
+    },
+    {
+      "path": "brats/threads/2025/11955/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "f82cea8150da4fb5ce81f52f438d6bad9feb0ba85b118766b3afefbf4ccaf981"
+    },
+    {
+      "path": "brats/threads/2025/11955/thread.md.transport.gz",
+      "bytes": 118,
+      "sha256": "7af2997b1a4c7d197c420fc4c037ecf6e519c12d8883526763e9c03ef623dc99"
+    },
+    {
+      "path": "brats/threads/2025/12068/replies_000.json",
+      "bytes": 10942,
+      "sha256": "3d936af7b07509a13c822414afa3a7fc26a42359df7da5082f14b54f6d202d09"
+    },
+    {
+      "path": "brats/threads/2025/12068/replies_000.json.source.json",
+      "bytes": 840,
+      "sha256": "5c8151a0a788ccf5d49ce6ffd928750ed35827a5b551465b378baccb5b112683"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34663.md",
+      "bytes": 74,
+      "sha256": "fc3405dfe8640af134d69eaf42058f49279e32e4205122b6069f1cc952e5aac1"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34663.md.source.json",
+      "bytes": 751,
+      "sha256": "727cae14c1b7e7d415c09f229c48e640f83ae71dad50643fe0df0f2fdd0da3b0"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34663.md.transport.gz",
+      "bytes": 87,
+      "sha256": "4df671a1b1afd1b898364eb7a22440b6f531a98b56576f770abe3a4035339826"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34664.md",
+      "bytes": 185,
+      "sha256": "0ca3ec1c3ac3f0edc849e2b2f0a630805a160f97e201263c89f739fcdec800fe"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34664.md.source.json",
+      "bytes": 753,
+      "sha256": "456b5b24a3193b3a1e5ee2ad0a2559eb048c93b8ea30c4afe00bf3e192319dfc"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34664.md.transport.gz",
+      "bytes": 175,
+      "sha256": "ae562038d488f5af48e75e44da3d225a369077cac36d03df7503304608a7f631"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34665.md",
+      "bytes": 37,
+      "sha256": "bbf47c70b14699a258ddaf1ca36810cf86fd642df73bec592ee3889aa5ee01cf"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34665.md.source.json",
+      "bytes": 751,
+      "sha256": "b1e44290a85bdc58ff424106b3d93e755de22f0be7059231380295ed88511d23"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34665.md.transport.gz",
+      "bytes": 57,
+      "sha256": "e716087db49f790da872e282bdd15ee378da8d19b458dc3cd1eef9c87604051c"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34679.md",
+      "bytes": 772,
+      "sha256": "5e6d05f7e3e3a9db74e71148f4b6999329413a2fd621336ee35f1d6f3a77bad0"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34679.md.source.json",
+      "bytes": 753,
+      "sha256": "17e77a54c47a79bd0e707fe24c9e8bd3b7b475aecb187c3bde20451cfa0015fc"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34679.md.transport.gz",
+      "bytes": 494,
+      "sha256": "22b7ad047e1ea6f9538fadbff5641bc338628465f39dc4102637f08f70f1df16"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34682.md",
+      "bytes": 513,
+      "sha256": "4f59a61d3a15c4522ad4b801ea1dd6a25dc1c3ef3c10fcf5b1dd0efbd7b77b9c"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34682.md.source.json",
+      "bytes": 753,
+      "sha256": "8ed90ef04e6b336c8b6ac9e74b6e24296b6f2537822c8bed79d2a3b993a1e417"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34682.md.transport.gz",
+      "bytes": 328,
+      "sha256": "b20b249017e8128531664d62214a53c6ec2033fd5f5ab8138ba9d03ffb9a6a32"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34693.md",
+      "bytes": 184,
+      "sha256": "9044cae82af9c13b6d8cee0857569b78ce99acff25c85cadc0885da4cd995220"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34693.md.source.json",
+      "bytes": 753,
+      "sha256": "5c21e4a828717ccb1d0d66c1e23117754cfd94762246148b33e45cadf4934328"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34693.md.transport.gz",
+      "bytes": 150,
+      "sha256": "ff1e39e5d8d9261ed81be41908de5a27a67c05b378fd5374ecd3a7652ec4c142"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34714.md",
+      "bytes": 442,
+      "sha256": "89f42a46128b4bff7286fd935adfe028e600ba3ae5e8344b830c1dd6fa222fe9"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34714.md.source.json",
+      "bytes": 753,
+      "sha256": "4c110dc008c60a9ba15d3a972286f0b8767eb63529ed086b333994b9c33c397a"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34714.md.transport.gz",
+      "bytes": 282,
+      "sha256": "30c20458d2c7a8a01dd6cf7e56dccb211836cee0cefb7f0a6e9239b4836820bf"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34721.md",
+      "bytes": 302,
+      "sha256": "efbae48fb1f320dcae43b75d891e33e5242a071371783c2a0736660be34f55ad"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34721.md.source.json",
+      "bytes": 753,
+      "sha256": "e5100449a1d2163a33991daa4a9f554ce8a024166fa77d00e37fe7e1faf10107"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34721.md.transport.gz",
+      "bytes": 229,
+      "sha256": "1482d4df47f8fd6396c3942d7a567dfce5bc49f9886962fc369a81cadea30e1a"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34722.md",
+      "bytes": 86,
+      "sha256": "b708e1a4cee5cdf817016e3386ccd2e0e8c3afa3e0ae349470fa4680d1df8296"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34722.md.source.json",
+      "bytes": 751,
+      "sha256": "7ac2dbeb76005d82b8461b9c20d7378305e8fbcd7e51b4481b753ef7a0ffda05"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34722.md.transport.gz",
+      "bytes": 95,
+      "sha256": "9ba9bb3ccd2156162c518e8cef117a7a5e3ae373cb5c230039fff2e995f90ce7"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34745.md",
+      "bytes": 137,
+      "sha256": "e59838ccc15f0bd5bd140352a8552468b33f25cc0d95b251c18ab2be70eb2e94"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34745.md.source.json",
+      "bytes": 753,
+      "sha256": "9d61e797427f0f23f1bf18135a4ca5bee0616f274075c0015616e9765c720d42"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34745.md.transport.gz",
+      "bytes": 133,
+      "sha256": "fbfd5dd3e7860d9030f2370d63836b6a513ebd69e6ce9b5af28c8312d1f019ca"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34800.md",
+      "bytes": 386,
+      "sha256": "3f8ab05a137542a36bd43d9d67d490ce06c6bdab57868cadbdb779c0d2d73c2a"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34800.md.source.json",
+      "bytes": 753,
+      "sha256": "426af5ecb970db0151940390d09590e2d1821ebfd88833eca6eb8ee8fb89a6f6"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34800.md.transport.gz",
+      "bytes": 264,
+      "sha256": "24a87f6f381c450401a983fcfe503c7a6a4a03ae8f0ecf317c62a0d563043e81"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34848.md",
+      "bytes": 3794,
+      "sha256": "70d34b4fe390628fb6cfaf712198797eb3079906c424ad252712fcd6576b72a1"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34848.md.source.json",
+      "bytes": 755,
+      "sha256": "37d5bf0dcddc415aa6d407c682fbdd2afa7ad73d30bfe5648f2cc6e974f9a855"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34848.md.transport.gz",
+      "bytes": 1329,
+      "sha256": "30bb5a99aeef1ad0128e7f49a31cb6a5c8d82156eac70c8bdaa11e64d6eceef0"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34872.md",
+      "bytes": 297,
+      "sha256": "79814c856a3cdeefe7620cfabcf05db380626f1f008e97e6c628ae68ac207e04"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34872.md.source.json",
+      "bytes": 753,
+      "sha256": "2af3f661ea8b192df2734c591cfced03adcb52489a12aebdabc7ffc180f24c1d"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34872.md.transport.gz",
+      "bytes": 209,
+      "sha256": "c3bcc833ffdabab9f8c81202dcf1ffb1f822cc3dbdf112e167e35d063fbbf012"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34937.md",
+      "bytes": 250,
+      "sha256": "7b9fabf3224ff8fd3d14bc2f940251414058b8cfeab48678101373b89d48195f"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34937.md.source.json",
+      "bytes": 753,
+      "sha256": "0d5995f5e1f1a9c2f649ada72d06367953eb8332c0a5a27c2c42c0805c32ac72"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34937.md.transport.gz",
+      "bytes": 192,
+      "sha256": "2849e53bcef4bf1f838c2d165a54987f32807bdfaec97ee8b6187b4bdd3ef078"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34938.md",
+      "bytes": 180,
+      "sha256": "65239e699c683bfed32b6fb5e67244f73339f6c7da8125daa7069e8d0a6bf08a"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34938.md.source.json",
+      "bytes": 753,
+      "sha256": "a773a570f1edd2fdc82b19aa5febb577b4ebc47c834c2dd38fcca173dd9d8973"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34938.md.transport.gz",
+      "bytes": 173,
+      "sha256": "add672d7a1009c48e8ca90ca2d4b57e9ab5b886f295f3d54504f589d74560b53"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34939.md",
+      "bytes": 171,
+      "sha256": "8041a3c75b8534a7f1d61115af7d6e051e101cc0a50424d66e798ba1efed2787"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34939.md.source.json",
+      "bytes": 753,
+      "sha256": "b19707754f3b5cc27b276cc802d61afdfe7db37acacc019b41aa1c166baa5573"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34939.md.transport.gz",
+      "bytes": 137,
+      "sha256": "fb8d639a5f63f007c1fd143dfb66e8440999b49e3985bd07860bca815a66c7ae"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34960.md",
+      "bytes": 91,
+      "sha256": "6dd3bde95e19a6c4173ddaa4bc438e4774652b637ac1b50606dc86a4b7b4ef28"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34960.md.source.json",
+      "bytes": 752,
+      "sha256": "7792e20fbed5268569cc419705ad4e27a273d7e46018a7bbef9896dabb099385"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34960.md.transport.gz",
+      "bytes": 103,
+      "sha256": "fa0180ad0582766bde957541256e73114d58859a0085645ea625b4d5086e10fd"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34962.md",
+      "bytes": 199,
+      "sha256": "025c871d7911741eb8592a1a9bd9eac2f7ac068fbd49c0165896f0067928746f"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34962.md.source.json",
+      "bytes": 753,
+      "sha256": "4d67d34670659216c9fa7c07ebb1cfa4275f133c925d32cf0c655e292fb98e46"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34962.md.transport.gz",
+      "bytes": 178,
+      "sha256": "35a28352dcfe8dd6f9e10084fe15089f39d8ea82c6531e98bb184a65314469eb"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34964.md",
+      "bytes": 347,
+      "sha256": "61996c647bf3e0f50e85fd163a6342855fa83795e9a680c35d0003eca802d00e"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34964.md.source.json",
+      "bytes": 753,
+      "sha256": "65024b523083fe0c2accfefc8a55e8a90744ef887285946d5fc0148616da820c"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_34964.md.transport.gz",
+      "bytes": 279,
+      "sha256": "392f00fcf7f9c3331da2f87f72f0c5f2d9bb9f818c395451cabb12e9d5106666"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35004.md",
+      "bytes": 627,
+      "sha256": "755b27abacbb3314497a6ec904e6e536a2b172d4df1400694ad71b7fbad5270e"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35004.md.source.json",
+      "bytes": 753,
+      "sha256": "f74ef7eb4764e217e1a70fb9705fc00d1d87427374ea2bf44d0eb6dcc7ae0205"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35004.md.transport.gz",
+      "bytes": 371,
+      "sha256": "987800dd03ddfb80a523bd81144cae3a3d9ccaa49cce05ff88f51bfe463136d6"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35011.md",
+      "bytes": 380,
+      "sha256": "f817f677630a1e2bad9411bb967b9f1aee93699f5d470fd8a6fe81d1136284b7"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35011.md.source.json",
+      "bytes": 753,
+      "sha256": "381d79acb8126e8853bc33cc7e7d093a9b53d86b307f17987fa62bae6b40d49a"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35011.md.transport.gz",
+      "bytes": 255,
+      "sha256": "fbed6bd7739689dca86a2cb731c8b6b3346c431be6626dff2863528c36ef5b89"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35017.md",
+      "bytes": 956,
+      "sha256": "61a1e2e0a546cbc182af2277eb85155d66f7d4f0700798d18315d324fd3e66b5"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35017.md.source.json",
+      "bytes": 753,
+      "sha256": "bbb9d9a73a71961eaa92a827f4e5c9750dcc5000e9c08b6a6c1d904646d7df9f"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35017.md.transport.gz",
+      "bytes": 472,
+      "sha256": "93451887d7a427b826880ec0ee02f81815a735be7e74cd1ada0a27ec0845357d"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35028.md",
+      "bytes": 126,
+      "sha256": "46c8186388312aa179e7badccdcbfe36996169c952f069e16a657f333bf20c54"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35028.md.source.json",
+      "bytes": 753,
+      "sha256": "bfa2da96df7c9df8b95869c7f0319d4d4b706f5d3b84e89a80cbeb3043239b72"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35028.md.transport.gz",
+      "bytes": 119,
+      "sha256": "38721ccee21e8a44f6797d1e2ccccf70deb366a2cfaf836d97c9052cb1a1722f"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35029.md",
+      "bytes": 155,
+      "sha256": "c25a423ebb16fe86a366382752dff240d70486bb09f9dd73c5a645e6566568fb"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35029.md.source.json",
+      "bytes": 753,
+      "sha256": "648297134cdc5051ddb411883b4778e86a67def0387a0a60708a0f5cbe462309"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35029.md.transport.gz",
+      "bytes": 141,
+      "sha256": "d8108853955105b1979b713e21dc2ed562f7c4125a0ef820cfb9a3f2bf1b9539"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35059.md",
+      "bytes": 373,
+      "sha256": "4e9792dc8d9b86cf9af4a2a93a54c9521ae1db056f1290a270e9e7f175e32e67"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35059.md.source.json",
+      "bytes": 753,
+      "sha256": "0e594ee149f88fddca07921af713417262d9144f738841a29954f3502ac3517c"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35059.md.transport.gz",
+      "bytes": 257,
+      "sha256": "af7c0f8f8d7f26878bffc99be2ba9164c882dfdbb85f65fe752471049031ae86"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35066.md",
+      "bytes": 142,
+      "sha256": "f00cf5557de2c318d21f723643e6b7922de5b9363af1d7499d3bd2b59d56c801"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35066.md.source.json",
+      "bytes": 753,
+      "sha256": "e688a9da83899dd5c1f33a9cd858755692594eab39f24d568c515404bbbfcbe1"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35066.md.transport.gz",
+      "bytes": 141,
+      "sha256": "f97a9337a91240ec49a53dc80972ead838708834af7448a6f3cbbb9e1ba56341"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35080.md",
+      "bytes": 865,
+      "sha256": "d72e4bca2e9b17aa8fb64999ee34e7f704d1ae840c01915dbe0f70739a963da5"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35080.md.source.json",
+      "bytes": 753,
+      "sha256": "7f60b2cb019bd78a0e3403aebbaf9a062f97b3e16d133ea8186b3cf083d7e65d"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35080.md.transport.gz",
+      "bytes": 540,
+      "sha256": "9a137ee5e58e5b21845c2538291e51ddea2f25539abbe79347168dd537370abf"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35082.md",
+      "bytes": 96,
+      "sha256": "82e6ae7809d11a9382b4d126beff4dd7ffabd52089cb14360e6481257474e991"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35082.md.source.json",
+      "bytes": 752,
+      "sha256": "4236a9524f0e96ef11ac6baf9a5de8cba7ab56605245235496dd1245d64d8e4b"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35082.md.transport.gz",
+      "bytes": 101,
+      "sha256": "6713fa32147ffc9cfed24406f411572567bc8b5a0582f6b1b83f41c32ff6dabd"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35098.md",
+      "bytes": 125,
+      "sha256": "27e503d1860bca985651796649a08666857c2e87c48b98511620fa806340b2df"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35098.md.source.json",
+      "bytes": 753,
+      "sha256": "6abbd22acfe85952979d485ac251946cdc574fb85669fde33f73ea1a6a81d3c7"
+    },
+    {
+      "path": "brats/threads/2025/12068/reply_35098.md.transport.gz",
+      "bytes": 121,
+      "sha256": "53ef7f1a7f6814ff3425b2f5458ef108db7d1d7cb9280c994fb75e6ce6b3a2b7"
+    },
+    {
+      "path": "brats/threads/2025/12068/thread.md",
+      "bytes": 1816,
+      "sha256": "ec81d46f97a95e2031985c8d7cd6530f6b93bb75c947c2d741ff178de8aa363b"
+    },
+    {
+      "path": "brats/threads/2025/12068/thread.md.source.json",
+      "bytes": 736,
+      "sha256": "0ecadaf7cb17d35527da0304fb46a79cef0d2895b0d20ef41635d3e5112b600d"
+    },
+    {
+      "path": "brats/threads/2025/12068/thread.md.transport.gz",
+      "bytes": 934,
+      "sha256": "9fc738731297e1ba6d29b83cd67e3f1227811e31cda8b8db845bf1e02824bff1"
+    },
+    {
+      "path": "brats/threads/2025/12105/replies_000.json",
+      "bytes": 39,
+      "sha256": "67b5db8a3d375eea92c968f103130236d116b82382a6ea070deed0c26c1c24e4"
+    },
+    {
+      "path": "brats/threads/2025/12105/replies_000.json.source.json",
+      "bytes": 834,
+      "sha256": "37ab11078d6f6f8224afdff220afab54ea204d6bff4b87dd129904ba3686378a"
+    },
+    {
+      "path": "brats/threads/2025/12105/thread.md",
+      "bytes": 803,
+      "sha256": "dd21e17123b7c0a3109ad715f3857f405176bb075044ef8dba1f6da50f24cdb7"
+    },
+    {
+      "path": "brats/threads/2025/12105/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "11d6437147323b8ce018039648ab4a7395ccfdc7173eb142534001132e32c031"
+    },
+    {
+      "path": "brats/threads/2025/12105/thread.md.transport.gz",
+      "bytes": 450,
+      "sha256": "e63d8a280907f16f1f6aec093cbd54e98eb690bd2e08991445c42933096022e5"
+    },
+    {
+      "path": "brats/threads/2025/12465/replies_000.json",
+      "bytes": 39,
+      "sha256": "67b5db8a3d375eea92c968f103130236d116b82382a6ea070deed0c26c1c24e4"
+    },
+    {
+      "path": "brats/threads/2025/12465/replies_000.json.source.json",
+      "bytes": 834,
+      "sha256": "f7d5d92e1f3c13a13059079faadbf4c9f6adc41af5e672f756a75f706ccbecd3"
+    },
+    {
+      "path": "brats/threads/2025/12465/thread.md",
+      "bytes": 605,
+      "sha256": "8e1f6859208054e3027945267994e010495525da3a1450d911e901496ee1c545"
+    },
+    {
+      "path": "brats/threads/2025/12465/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "2234d4fd2130cab8a5472dec098dd1bbe0a8bc47f1e7af7394272c59583d5d4b"
+    },
+    {
+      "path": "brats/threads/2025/12465/thread.md.transport.gz",
+      "bytes": 361,
+      "sha256": "e47a6397a2e0066457b7fc77e7700049fc8f477d6660c9d7327df8b3e1f835e4"
+    },
+    {
+      "path": "brats/threads/2025/12508/replies_000.json",
+      "bytes": 414,
+      "sha256": "8e8e01cf2a2d333abda4a8be5803ffde626faca2f1dd67ac8dc71e1edc667879"
+    },
+    {
+      "path": "brats/threads/2025/12508/replies_000.json.source.json",
+      "bytes": 836,
+      "sha256": "82bf38e05f6a73301dd0b28470f1fd4dd717a56e747f77cffc1a355ad6ff8ae8"
+    },
+    {
+      "path": "brats/threads/2025/12508/reply_35917.md",
+      "bytes": 204,
+      "sha256": "6c806556a5d66d181e67af48dedfce504d75242e9e62bec8e7d3a4260e65a99d"
+    },
+    {
+      "path": "brats/threads/2025/12508/reply_35917.md.source.json",
+      "bytes": 753,
+      "sha256": "b3bf3da05159ab866d820b12824542d55dbe7e59176aaf0235406609ace9c569"
+    },
+    {
+      "path": "brats/threads/2025/12508/reply_35917.md.transport.gz",
+      "bytes": 169,
+      "sha256": "48e8ea382d1b1845665a29789dd397c6f1b6c6b5c45ef280dd2e5c10e1128e97"
+    },
+    {
+      "path": "brats/threads/2025/12508/thread.md",
+      "bytes": 146,
+      "sha256": "78b8b2e4dbe0a364c77c26340f1aa93f189f2a5ce77ffa53dca8ba4088f979b5"
+    },
+    {
+      "path": "brats/threads/2025/12508/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "5509c61079337d9a1b69302281ec13b7cd3e0f89a527f746cbaf3f9c9ea669a8"
+    },
+    {
+      "path": "brats/threads/2025/12508/thread.md.transport.gz",
+      "bytes": 122,
+      "sha256": "7da2388cb66d474c40a6f18c3002b300750f82d942d9a74ed543b2b73ec6b8cc"
+    },
+    {
+      "path": "brats/threads/2025/12510/replies_000.json",
+      "bytes": 790,
+      "sha256": "6c1afb9242015b63da6dcf8970b434f0b690bdc74589768295a4ea8c444bb8bc"
+    },
+    {
+      "path": "brats/threads/2025/12510/replies_000.json.source.json",
+      "bytes": 836,
+      "sha256": "ede9c8ad4651d3c47eac9467bd2814befa178dacc5425397fc12c08c0d835466"
+    },
+    {
+      "path": "brats/threads/2025/12510/reply_35918.md",
+      "bytes": 212,
+      "sha256": "9752e47f5d70228e12cc4d1c6460aea17f4710420c51d33981f48bafe8507aee"
+    },
+    {
+      "path": "brats/threads/2025/12510/reply_35918.md.source.json",
+      "bytes": 753,
+      "sha256": "c83010581c961b6458812cf12fadb551705b2bd47d17649b4c4e730f2c91e242"
+    },
+    {
+      "path": "brats/threads/2025/12510/reply_35918.md.transport.gz",
+      "bytes": 182,
+      "sha256": "0543f218460a1455ec8c8aa1826c23aad52ab08094aea0b1b7f83d5ea32f4be4"
+    },
+    {
+      "path": "brats/threads/2025/12510/reply_36066.md",
+      "bytes": 168,
+      "sha256": "4978e586ac0c62751c6eb156e43aba4cc319babf64bb9182b24d25c997fde689"
+    },
+    {
+      "path": "brats/threads/2025/12510/reply_36066.md.source.json",
+      "bytes": 753,
+      "sha256": "b86d377194fb02c7c199073d7bae6b39a6609c44ca6eed40b5a857f3631c01a6"
+    },
+    {
+      "path": "brats/threads/2025/12510/reply_36066.md.transport.gz",
+      "bytes": 146,
+      "sha256": "5aee62a7f0fb94abac653bfaed891f7ca646ee1131a51720f6227090a3670bdf"
+    },
+    {
+      "path": "brats/threads/2025/12510/thread.md",
+      "bytes": 272,
+      "sha256": "8c50b3db06d47262b209c3bf0410fb0f47fa63a3b655e82723ee205aca03088e"
+    },
+    {
+      "path": "brats/threads/2025/12510/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "aa9e0e621367a059263b95a589b67fe1ca3a424c0ad747a435dafb7647d16cb5"
+    },
+    {
+      "path": "brats/threads/2025/12510/thread.md.transport.gz",
+      "bytes": 210,
+      "sha256": "6637d08d943cb4620f847fd99f91f93680344f96b5a63e21d2be54aef9225d63"
+    },
+    {
+      "path": "brats/threads/2026/13146/replies_000.json",
+      "bytes": 15451,
+      "sha256": "70d544e693ed9fff68df5ecd72b4068001f1fc0f4cddca1003dc728a72ee04ea"
+    },
+    {
+      "path": "brats/threads/2026/13146/replies_000.json.source.json",
+      "bytes": 840,
+      "sha256": "164ff623a4298edb19dbedf56e8b970624d29ff75ee4239554d9ee4c688b27a5"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36296.md",
+      "bytes": 225,
+      "sha256": "83b97ed826e46c943b6f9adeaa601efd2a5f02bbf1c763c6e436fbd1d04ad8d6"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36296.md.source.json",
+      "bytes": 753,
+      "sha256": "dc8bbe1b26b994cacf462ee96b3bb15bf6a101a6af1ff3fc4ace6aec049b017a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36296.md.transport.gz",
+      "bytes": 185,
+      "sha256": "1f1dd55152e8acaeaef27824d5909676ed7eac72b504c77ada6b7a6f62d44aab"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36298.md",
+      "bytes": 208,
+      "sha256": "39f8d915a9f0bf2c3d731b9d05788f5b3616c68a43d319a08f463c7600f54340"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36298.md.source.json",
+      "bytes": 753,
+      "sha256": "0fb32c90b65be579118a8b1386e02c7c5001fbc00210b446b45a24f1c06b16bf"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36298.md.transport.gz",
+      "bytes": 174,
+      "sha256": "f2db8a98d89d428c0dbe9cda0e667af2549b27db714aee0a6f1f0b2c38d92bd3"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36303.md",
+      "bytes": 1270,
+      "sha256": "8775bfef25a316c4d45b401ffdc3b8cad4429a0791f1e1138e5726687197b24c"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36303.md.source.json",
+      "bytes": 754,
+      "sha256": "0de9491798b64c7b5731e1b6790a94e11a9ae0120405a8732bacf7eb4a9bb113"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36303.md.transport.gz",
+      "bytes": 611,
+      "sha256": "9d96ab28152282e1fd0034ae6ba5196969ac4a34356342608cbb16384cee1931"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36307.md",
+      "bytes": 295,
+      "sha256": "d9ab1ab47769e0e4db459b26a22bfb996a59878f823c129855fd0b7f92464499"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36307.md.source.json",
+      "bytes": 753,
+      "sha256": "132a81de2cf45a8ab3365ab3a62bbcb8c589d33807bf662081a11bc75cc24fc0"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36307.md.transport.gz",
+      "bytes": 212,
+      "sha256": "0623c993daffd72ad54c03cadc2633a0f44d826fac2c904d5d30610469bfac87"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36308.md",
+      "bytes": 95,
+      "sha256": "ca9e9bd78519863de746e629ac45256462996ae9d351c65610b56700b69723cf"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36308.md.source.json",
+      "bytes": 751,
+      "sha256": "15c015142e17eafe281afb0ccd61997860a017974ab2c421ab3469f6b073416c"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36308.md.transport.gz",
+      "bytes": 98,
+      "sha256": "35c4d7bfe01dbfb58999a7248604caf1a7298c1abd1bf7436996bc6eac68ace4"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36309.md",
+      "bytes": 627,
+      "sha256": "0691da9b12e497036baa763772e5a3d23d751e79ad846565d3edef04b2443952"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36309.md.source.json",
+      "bytes": 753,
+      "sha256": "c9b2796392f3c3bb5e02c49e29dedec44b315e577fb61219e041375c05d22b87"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36309.md.transport.gz",
+      "bytes": 399,
+      "sha256": "9b445db6b837d7a713a6ac9b8f4ac39a22f813597833d0f0a797002c98be4a09"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36310.md",
+      "bytes": 1071,
+      "sha256": "51b7ae13d91caf25cafbca5d892d75f58968c5ad1405fefcdf4b4e8cc25fe2a3"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36310.md.source.json",
+      "bytes": 754,
+      "sha256": "e4746b4c302b05f89e78e116fa519b19d35081a685f16a2a3735c50875859e9d"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36310.md.transport.gz",
+      "bytes": 583,
+      "sha256": "6ae7aa2534afb19f4067617c6779c3a36b4b66581a660cd540f75fcf83138b91"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36311.md",
+      "bytes": 356,
+      "sha256": "b096c9ee1409dbccf7bcbd56ac7f8cab273012a2f947626e601decf20a78c6e0"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36311.md.source.json",
+      "bytes": 753,
+      "sha256": "313abde58a182b1e8bacc35e807145eb70a09a9544d06eea2537b02912957fab"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36311.md.transport.gz",
+      "bytes": 270,
+      "sha256": "ad27cad1bc49c8f2555d0d991a3b3e5e2eb6fcb472b699de284b777ec2910631"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36312.md",
+      "bytes": 378,
+      "sha256": "a442b81a33c39e1ab344fad115f4e3c614f9ddf79cca283f8e51ff3d31cdcf1a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36312.md.source.json",
+      "bytes": 753,
+      "sha256": "f90398d9845e3613999b6a5386e55c8df4805793b58c11f3ffd4ce4785e67bfc"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36312.md.transport.gz",
+      "bytes": 259,
+      "sha256": "accf1148368d85bd43e6efde6b15f77ea53a5b735b1dddd62d8b466f08fb3a13"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36313.md",
+      "bytes": 850,
+      "sha256": "edffe48494a6ccf98ece0ca0d8b54df28b1b9e418098cc3f044528c028ba429b"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36313.md.source.json",
+      "bytes": 753,
+      "sha256": "6bff86ff25352cfe9dae252ed7a2722c557171386200295259f705f4557e1639"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36313.md.transport.gz",
+      "bytes": 515,
+      "sha256": "44c064aab511664bbc6386e032353d9eec1e84028c51a6ca913c50261ea204e7"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36314.md",
+      "bytes": 382,
+      "sha256": "eebb5ea71ee47f01892885a4393090b62713137d804962fdae48e6de947ff76e"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36314.md.source.json",
+      "bytes": 753,
+      "sha256": "e8060c5ef6384e99f52b0f2be6e464968cff55c43dea3b2b105ce345abf5911d"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36314.md.transport.gz",
+      "bytes": 263,
+      "sha256": "5f449159d43ff7858008ad30d3f08dd99f1da987c4413230b7c86085abc9f7f7"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36315.md",
+      "bytes": 564,
+      "sha256": "18db9106aa04ae5929a97651a44be377b043433a6bc1505577518b274987db19"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36315.md.source.json",
+      "bytes": 753,
+      "sha256": "4ae1795cd9ae7922eebd883e628cb964752f3be75466d02f6e08e119c6bce4ca"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36315.md.transport.gz",
+      "bytes": 386,
+      "sha256": "f1ea5f952213d21ead5e775c2cd4fdb06a0340d8d3f07dd91c1a2186b3b80de3"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36316.md",
+      "bytes": 465,
+      "sha256": "a28c45cd300f1887bdf50330f591b25e6b3e7000901de19720708b0e5ad05bc2"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36316.md.source.json",
+      "bytes": 753,
+      "sha256": "48792a746f0d2e3dab93b63c40be12b84656c2b231537eabb33108272876317e"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36316.md.transport.gz",
+      "bytes": 311,
+      "sha256": "5708f4de03adbab3940514eee1281c58e34b66f5de139516a53de608a1fe9f69"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36317.md",
+      "bytes": 106,
+      "sha256": "b393f6067f5e892adff3ca5569ce4d379ce2bf1d67a58977027d29498bf03f7e"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36317.md.source.json",
+      "bytes": 753,
+      "sha256": "57bf819504497369063bacbcc9b050a8e37377fa33d0672beb1d8d080d2326b0"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36317.md.transport.gz",
+      "bytes": 114,
+      "sha256": "540b3b8fc7a4b27e2958ad855b986c7ee7c32452cff4bc3546347846accf3618"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36321.md",
+      "bytes": 1182,
+      "sha256": "71504017b5fcf4d76a5cde2aaea8a841c4b47db28a7dc43a9661c8b0d143948b"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36321.md.source.json",
+      "bytes": 754,
+      "sha256": "ac7c76b4a04ab9ef9fdbcab320ef1b606e226a1e6ced46818886547cfc82fe93"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36321.md.transport.gz",
+      "bytes": 646,
+      "sha256": "5660b81a57386d6e33eea3e2a83445170d31ba50b81444fcbf3fb985f10d744f"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36324.md",
+      "bytes": 595,
+      "sha256": "c7ad3155fc0ee7e545a078698cfcef7dd29da6d445416a7198022ad5200e3b31"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36324.md.source.json",
+      "bytes": 753,
+      "sha256": "d60b39b8fdce915b3bb789d31b9d7e7ea3f06b01c813d2b05509c6f7a98eda71"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36324.md.transport.gz",
+      "bytes": 395,
+      "sha256": "18be0249398cff74d8ac5ed59114e8d4e88c80d05bd67471b3c8bf116c12f115"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36341.md",
+      "bytes": 391,
+      "sha256": "0b3a962865e11a06cb84657da92a4c517f5e059c16f9b27c3e6996cad0a19b64"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36341.md.source.json",
+      "bytes": 753,
+      "sha256": "b342085b6285cc106909da45d90b7cf35c8c6c938da17fee42ef7ba076bd86a7"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36341.md.transport.gz",
+      "bytes": 270,
+      "sha256": "c7b88afa44c3076b928660db064143dd0c5f6c25e1e93e11387cd53bad50513b"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36342.md",
+      "bytes": 355,
+      "sha256": "c9ed60217d76b7b0321a6b3bd1a4590516d29ed345ec32b4e03019a71099c150"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36342.md.source.json",
+      "bytes": 753,
+      "sha256": "136f0e78f5a7bc03361cd1954b2f807bdda27a043f26a6844161f3581b6f85d5"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36342.md.transport.gz",
+      "bytes": 254,
+      "sha256": "1b960259adddf560de0463e3235df0743efed807b7de52d677fd4741e02a283a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36343.md",
+      "bytes": 383,
+      "sha256": "0f06e254837c3a8c4c8d0ac7ad9b3f480115564a72ce787c45adff7e7bc737d1"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36343.md.source.json",
+      "bytes": 753,
+      "sha256": "b3b078b5eea35dcfab3b2738b22252fd377c54d18ce8289daeb561be116421af"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36343.md.transport.gz",
+      "bytes": 290,
+      "sha256": "9818b926189f4a6307b1ddfd9186ea1bc68bf136666b0dd309c034396100d083"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36346.md",
+      "bytes": 1429,
+      "sha256": "b64e6d035252d820342839c6ae762eb8ba624434791a9ddeba32cccc6cc5065d"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36346.md.source.json",
+      "bytes": 754,
+      "sha256": "0a69d24e984a3585ee62fd2f2c7667b0c8e49674a6725de2d4706b468ba15bc0"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36346.md.transport.gz",
+      "bytes": 704,
+      "sha256": "b673ab3d0778bba6f9eae981f4fdc894887af3383222b17d0e6d2c9d69ae51d8"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36347.md",
+      "bytes": 792,
+      "sha256": "25863523e8ba2a9734fdaf5e839a77147ba61b454713b635220d4f0ae5a9d19b"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36347.md.source.json",
+      "bytes": 753,
+      "sha256": "b1c032ebbea2c0a257ebf100c5b44912de4c8bf4ed028b08a1ca2db9824f90d0"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36347.md.transport.gz",
+      "bytes": 479,
+      "sha256": "8f1ec0b68e4011568fcd27745188c095e8368de493bffbb2b86df07e854d88b2"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36349.md",
+      "bytes": 366,
+      "sha256": "63acb6eca1f3957f7350e5e21281092e6cacc1493f74e364af9ed465ec70265c"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36349.md.source.json",
+      "bytes": 753,
+      "sha256": "d58e1a0a020029828da8b8b3b309548cf586277f591f57d2f24b2be74f474c95"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36349.md.transport.gz",
+      "bytes": 264,
+      "sha256": "fd613089aeea5d78736caf5f09ee3ab0868d479740768b46b4e98786d543f1fb"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36350.md",
+      "bytes": 313,
+      "sha256": "f4810e39ad6a358147a9c0235c7048339554dfa829773df1ea738aa1f263452a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36350.md.source.json",
+      "bytes": 753,
+      "sha256": "594ee530e6376866154d7d63b397de99b2fe7750e6ecdd5a210fb246841a652b"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36350.md.transport.gz",
+      "bytes": 229,
+      "sha256": "a75a68376b93a824550cb42a1c0395e4e74f22c3babccab56a02d8dd7701a10d"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36358.md",
+      "bytes": 1055,
+      "sha256": "e2cd6c7ed814e5fad0c88ee5b0ea9e7bedb6cdee7cde52ac3d8b16ee3ae1c915"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36358.md.source.json",
+      "bytes": 754,
+      "sha256": "48a4c9ac327b19e82c5d5e6d1f32ca7a4d532ffd44ff3ac5d10dbd6cd194e078"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36358.md.transport.gz",
+      "bytes": 634,
+      "sha256": "c810e809d9231509c3eba3f570293e50cf7035a93e6cb9ec31ec26749786e54d"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36359.md",
+      "bytes": 284,
+      "sha256": "a572c3d6b8b7f4fb8c4eb8d0ac25278ac5d06a3977aec5eff1c835d827a90265"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36359.md.source.json",
+      "bytes": 753,
+      "sha256": "e07b95e77789a5d8f31b2308bff030924b0d2c78a1bae1caa012a73254382f3e"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36359.md.transport.gz",
+      "bytes": 204,
+      "sha256": "5fa618917081e478a7293dd6f7318346ac200b43e67927f1c83ce4ca48e3aec5"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36380.md",
+      "bytes": 938,
+      "sha256": "47b5a4c5d0a28f0b5b59cbd5fe16d4921d33a02faeea754ae9650d85a725fcf9"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36380.md.source.json",
+      "bytes": 753,
+      "sha256": "5b4a2caff2d8fadc7a4bef6b9595f7b78d50e619e6e56000a052f17f6a0408a5"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36380.md.transport.gz",
+      "bytes": 532,
+      "sha256": "cf89a635fd013ec0a1198dfc5070dbd694af2f8e32cea8aee1e77bd33544f3d2"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36383.md",
+      "bytes": 711,
+      "sha256": "4f0caae4678c51fbd13d3b936df962a742d477da50e583546ef5ae95251251fb"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36383.md.source.json",
+      "bytes": 753,
+      "sha256": "dc750d919387f602ea2777a7ee169cc6623c0e567dbb1a9a199c205b93e65069"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36383.md.transport.gz",
+      "bytes": 442,
+      "sha256": "243208890ce5b80826b0517fe23d39122c4750f2a0a402225268f03bba7b88a7"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36384.md",
+      "bytes": 187,
+      "sha256": "19c27cea80604fdfa30a821d69c42cd4ae1c8f8919b5d58f43ff3a6a3d1fe5f9"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36384.md.source.json",
+      "bytes": 753,
+      "sha256": "81d15d731a629b1f5c4abd21f7e35eae6a506c557eb7b1e0b0908a9cfa0ff19e"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36384.md.transport.gz",
+      "bytes": 152,
+      "sha256": "c018166850c56d32b42990dc2c11d01f43b76a13861934f96f218ba49ecc415a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36392.md",
+      "bytes": 424,
+      "sha256": "ab2d9bbeda81fa8ea9d66778c8eed72281fc76e98186e34f9544d09552439eac"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36392.md.source.json",
+      "bytes": 753,
+      "sha256": "f45c18eaefb76100a1589bdd94cf988d587fe552e38fd437f85521fe1b8400f8"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36392.md.transport.gz",
+      "bytes": 283,
+      "sha256": "66239b970e7aea80dd196c51e5e49a02cdc53b133f16279c61a46c7cfd70faee"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36408.md",
+      "bytes": 836,
+      "sha256": "9066576ad800e1dc8bfbfb8e2007594e9e74e8b3bac5a7dbe1e9e8034cc729c7"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36408.md.source.json",
+      "bytes": 753,
+      "sha256": "655da3278da04204bb07c6e52c7b2a96e00a53c66a688a6aaa8925fb674f7178"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36408.md.transport.gz",
+      "bytes": 504,
+      "sha256": "8bc7de07b17ec7e8f945004ffc77f7a5a184b7aa71f6590a640049e57cfa0c8c"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36423.md",
+      "bytes": 1405,
+      "sha256": "5cd9626bbe69747cd64dcc698de7208f08ad8317c83190b7211afe1431097f8b"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36423.md.source.json",
+      "bytes": 754,
+      "sha256": "2f704022d4d8238f571d5bb7ed81a24c3ba3e51baeafb298126be863200f8e05"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36423.md.transport.gz",
+      "bytes": 740,
+      "sha256": "1ecf9735c4db3595c1f8a49756c3a7bfa4042326e626336b681cb7629642f6b2"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36449.md",
+      "bytes": 717,
+      "sha256": "a996d7195f9727b9909140e82221a3f18db69bdcef6605660dd4c8fc933bb4d6"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36449.md.source.json",
+      "bytes": 753,
+      "sha256": "8cebfd2c4ff9ed6518413aaa37b2cb8ac701ea639df8f8e9553d7e430f48ed76"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36449.md.transport.gz",
+      "bytes": 420,
+      "sha256": "ad7f5ca5a4a629e08a8362a028c5f9ecba111638d0bc00a08ead650cb82bc72a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36451.md",
+      "bytes": 550,
+      "sha256": "b76d08286b3da009e17eb873117ad30a2b31f4a66f5948774c733b159f353b0d"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36451.md.source.json",
+      "bytes": 753,
+      "sha256": "ead3db56e8fbcb38eba43eab5f6144b9794ca18871c95222e908570d5c86933c"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36451.md.transport.gz",
+      "bytes": 336,
+      "sha256": "e34b4ffa214d2a52839746be296cb2922f4e6039f2c66de9d404c7ad82fc0329"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36475.md",
+      "bytes": 943,
+      "sha256": "3887ab6a21bcb980ca3e79887c6a1f1f6911ddfd69318a30b33db2532772cf50"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36475.md.source.json",
+      "bytes": 753,
+      "sha256": "3ed4d2ae3683d1d314b468bd42241aaf51b48a8b482e1d725bf40a34d40af80c"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36475.md.transport.gz",
+      "bytes": 527,
+      "sha256": "a972ab5e00ed21afc9d7e327b599ba36ec48bd8713046658c48cea1d35722d18"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36476.md",
+      "bytes": 346,
+      "sha256": "52a444f1a37da6c20078c2d21bf1d779da4af97183472786b82386219277f963"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36476.md.source.json",
+      "bytes": 753,
+      "sha256": "6b361d9d4590b095fa266144f269d2a929e704f6466e37f74629e4cb0b826bb8"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36476.md.transport.gz",
+      "bytes": 267,
+      "sha256": "5508911971e1eba21149a4b0ce4b8892698abab2f00cb685b4e02a962aba75cd"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36481.md",
+      "bytes": 447,
+      "sha256": "49d50f2faa6f0141a1e4bdbf646fbfa8a90c98c17ba5045d3e47cad611affe85"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36481.md.source.json",
+      "bytes": 753,
+      "sha256": "7e99b736125a97f35675fd54a8107678e9a83cdd29ddcbf81250845c37cca091"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36481.md.transport.gz",
+      "bytes": 293,
+      "sha256": "e5f3b205e3590a69d59236a9b2ac0acb4f1c65cdbdc8e2f34eed82e8cde1d398"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36531.md",
+      "bytes": 438,
+      "sha256": "b1a11b7c20ea8baee139160f305a2159fd2ac60283c28d371bcddb9614c40e97"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36531.md.source.json",
+      "bytes": 753,
+      "sha256": "8ff20de6ad97d09411597271940bb398664d7f6d6ff5caa6278a203ffe7aff08"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36531.md.transport.gz",
+      "bytes": 308,
+      "sha256": "e370ef2f111e949fafb226745472762258fbfe9063e32854f906dac6f615f25c"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36535.md",
+      "bytes": 855,
+      "sha256": "1cd53f5fb99bce8a2b585147c330fe9387898c16eb89d7b4bbf2e982fb460e36"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36535.md.source.json",
+      "bytes": 753,
+      "sha256": "ba40aba2103e3adc10544f2019b9e54fb57436e280a8dbf87fa5daf7ad04c135"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36535.md.transport.gz",
+      "bytes": 490,
+      "sha256": "9e99d3fd7e8220f1995892e4cb179c4bd3ef326cba4cc38d953f6a021e8f9cfd"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36550.md",
+      "bytes": 518,
+      "sha256": "82e20a2427ff951b0dc7531c349a640b9660e94178e1d843977da7b0f3b02ba8"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36550.md.source.json",
+      "bytes": 753,
+      "sha256": "c28c293f3b86bd9be460940d104d2ccf5eb63f9db7ea2090bddc4d16acd58ce6"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36550.md.transport.gz",
+      "bytes": 317,
+      "sha256": "4bfb8ad8e2f802e2ba0e0943f21901edc17f993ca9d2ec7799d5e4d1006eb243"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36551.md",
+      "bytes": 282,
+      "sha256": "a226e8cc7619cfe1bb3d67eb2732764cc359f87021918eb84c1c9090e0c1223a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36551.md.source.json",
+      "bytes": 753,
+      "sha256": "31abfc585a7a5ccb551dbc53fb982db7263fb1169c31e1895f25c0e297d07ab4"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36551.md.transport.gz",
+      "bytes": 210,
+      "sha256": "287b8957624f2ba10f04d0c81f9c8c303c10c4e5d7ddbf31268bb675b3697ea2"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36559.md",
+      "bytes": 495,
+      "sha256": "da0f4f705c932b9c94d3f24bd8683cd811a58cf994460fb7d5f46cf0394e045a"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36559.md.source.json",
+      "bytes": 753,
+      "sha256": "db2388fe2c6a2b57d4365690c3227591f555a4c6f8d6666dc316d1dd920406b0"
+    },
+    {
+      "path": "brats/threads/2026/13146/reply_36559.md.transport.gz",
+      "bytes": 308,
+      "sha256": "5f5a9da055c61a0bb9a6a746255a19e072ee682120261169cca1adea62233667"
+    },
+    {
+      "path": "brats/threads/2026/13146/thread.md",
+      "bytes": 599,
+      "sha256": "95b2f7cf9421221111600a51203e844952ce85c48d2fa0cc09635b7c888353de"
+    },
+    {
+      "path": "brats/threads/2026/13146/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "e4b3481c477ae7bad6e8f9123918a53c2ea6c98339c2d56f69b41ae5b7d197af"
+    },
+    {
+      "path": "brats/threads/2026/13146/thread.md.transport.gz",
+      "bytes": 388,
+      "sha256": "357e6f39f517c55818d267dc6ce61b71055878385ec6eedbefe93ab4f07d1e29"
+    },
+    {
+      "path": "brats/threads/2026/13294/replies_000.json",
+      "bytes": 39,
+      "sha256": "67b5db8a3d375eea92c968f103130236d116b82382a6ea070deed0c26c1c24e4"
+    },
+    {
+      "path": "brats/threads/2026/13294/replies_000.json.source.json",
+      "bytes": 834,
+      "sha256": "26cce871d7f997bcd9ecfc85a3bcfb2e55a903d291764c645806bd7738beda7e"
+    },
+    {
+      "path": "brats/threads/2026/13294/thread.md",
+      "bytes": 864,
+      "sha256": "7a82ff44e0dc3201817f2219326b076300d5825abb8374f36ee03e0e73d49b8b"
+    },
+    {
+      "path": "brats/threads/2026/13294/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "fcdc4935676aa71a2739ba2d0581caa5d28b0283d84e2b94299a41eca41d7cf2"
+    },
+    {
+      "path": "brats/threads/2026/13294/thread.md.transport.gz",
+      "bytes": 489,
+      "sha256": "c8820baf58c841fb73e820bb18c40060663c480194888fedea3a8f69a5928652"
+    },
+    {
+      "path": "brats/threads/2026/13311/replies_000.json",
+      "bytes": 39,
+      "sha256": "67b5db8a3d375eea92c968f103130236d116b82382a6ea070deed0c26c1c24e4"
+    },
+    {
+      "path": "brats/threads/2026/13311/replies_000.json.source.json",
+      "bytes": 834,
+      "sha256": "8985b346d6a7aea6bdfa331ef500e7ecb547dc9fe3dfdd9415d89244b2035834"
+    },
+    {
+      "path": "brats/threads/2026/13311/thread.md",
+      "bytes": 884,
+      "sha256": "62e66321f51c323dbaf5d15ccf4a8a9d8cbaa474d5ad7729b7934b77169d2640"
+    },
+    {
+      "path": "brats/threads/2026/13311/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "07b717ebb3e467d9772dd020e8b1c813c04e37b24dd5f16cec9be5c12f82a6ba"
+    },
+    {
+      "path": "brats/threads/2026/13311/thread.md.transport.gz",
+      "bytes": 507,
+      "sha256": "c459c3ad7a067353bf75ced581542747e5f019c18a8e4ca0a46b4a8b4e5bb610"
+    },
+    {
+      "path": "brats/threads/2026/13409/replies_000.json",
+      "bytes": 1166,
+      "sha256": "2d67d07180a60dc7afc5260369434a6198d43d5747b7164156e3381a88034a31"
+    },
+    {
+      "path": "brats/threads/2026/13409/replies_000.json.source.json",
+      "bytes": 837,
+      "sha256": "ce6923da95e0af0d0bb58c759554da0466dc6d98da0d4428f81e9b6ae53feba3"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36339.md",
+      "bytes": 260,
+      "sha256": "e9a447ebfd2640dd4b0daae369ea89b9c97c79c2f04ad271ceebe835afc01f46"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36339.md.source.json",
+      "bytes": 753,
+      "sha256": "1a12b3e9d7da73887f385966de7132e37a34e41d9834db794a5f58c528b0814f"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36339.md.transport.gz",
+      "bytes": 189,
+      "sha256": "c23a1622b51a43194f5e66214fdc0eb0aea295b3696a6d895e9763599714494c"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36361.md",
+      "bytes": 643,
+      "sha256": "0aad1341c80b318fa52bbb9a535df53f3dc1074a13c696e62eb75ed40f53cb74"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36361.md.source.json",
+      "bytes": 753,
+      "sha256": "7f4f084add0a951b316197eecb711e1a8d81424719bc25af89658ca720f30dbe"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36361.md.transport.gz",
+      "bytes": 398,
+      "sha256": "df682c416af8a0231b4a06bb3ceb062d670c7c0990b0c4d935e6701b5f07dbb0"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36362.md",
+      "bytes": 182,
+      "sha256": "6fa90ffb5dd2ced5397d96b887f242c25fe2ef181c944271e255f7b456479b6b"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36362.md.source.json",
+      "bytes": 753,
+      "sha256": "841adfc7d6b67f1049fab658976ddefaf3c05b7f012afd22ceec10c696e8387c"
+    },
+    {
+      "path": "brats/threads/2026/13409/reply_36362.md.transport.gz",
+      "bytes": 151,
+      "sha256": "3f2bd5549df3eab75743dab8b5987a7b6adb2862ee0bd34e209206ffd417a711"
+    },
+    {
+      "path": "brats/threads/2026/13409/thread.md",
+      "bytes": 766,
+      "sha256": "b32decbcae3ba1765ee1cbe2d09b69f5907be22ee4764af2f44f040b2ccf52e2"
+    },
+    {
+      "path": "brats/threads/2026/13409/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "14756eae1d9643ced8674bcd6c0d4df337b2e87e4a96070a5c9c494c6be38fa7"
+    },
+    {
+      "path": "brats/threads/2026/13409/thread.md.transport.gz",
+      "bytes": 456,
+      "sha256": "798ad4229eb147342e2768f82e41ac9aba60cd9f640d4609c8c37a5917908116"
+    },
+    {
+      "path": "brats/threads/2026/13508/replies_000.json",
+      "bytes": 1166,
+      "sha256": "7f7820b6489be5ecb60507582ba2e958230530127127eaaf82d3293bec071a07"
+    },
+    {
+      "path": "brats/threads/2026/13508/replies_000.json.source.json",
+      "bytes": 838,
+      "sha256": "fa95de6988a86622bfb23f4b006ede5a9017bc366f72159564291a882fbe19ab"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36355.md",
+      "bytes": 785,
+      "sha256": "f4d6a6fddf6f4e4be98f706a6c57332c8edd1bf56db9dcec12a03743fd87f4fe"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36355.md.source.json",
+      "bytes": 753,
+      "sha256": "4bf4809518fa90aee4c8e8e8bdfdecd04845bd4f5dd2ca84fbb0555147576ae2"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36355.md.transport.gz",
+      "bytes": 466,
+      "sha256": "9b212bb414b30c544e367742de7f7724893823752728926780486953963143e3"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36360.md",
+      "bytes": 111,
+      "sha256": "602318c7a5ddca8beb35225c222c40b3fde30127bbc043902812e96fe8268391"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36360.md.source.json",
+      "bytes": 753,
+      "sha256": "d8a27bab71d2744272b8ee298b87e754cbb9f918e1f02dab191dde77875ea570"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36360.md.transport.gz",
+      "bytes": 120,
+      "sha256": "83364adb054cdf7a923021c532aa1f6c9785e34acd37243e2a7ba97666183a4e"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36364.md",
+      "bytes": 652,
+      "sha256": "a54d6285a48912616b8e2837292fe49e6273e25fd09d7988491e6132ff3031c2"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36364.md.source.json",
+      "bytes": 753,
+      "sha256": "10fc098bb1c9ca58b737172020cb699cc736696546052e37509a9f65eb4ebcc1"
+    },
+    {
+      "path": "brats/threads/2026/13508/reply_36364.md.transport.gz",
+      "bytes": 425,
+      "sha256": "4516c63c1a9a6381d14570cfab9a1a50d128cd143e4dab885f498430fd5be300"
+    },
+    {
+      "path": "brats/threads/2026/13508/thread.md",
+      "bytes": 409,
+      "sha256": "18c149366ca480195b06b65ac9de7c8fd41a014f2af70e0ebf116c2732c9da8e"
+    },
+    {
+      "path": "brats/threads/2026/13508/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "9a21d84adf481315c25f5480f799a274b7771ecf54f5e99e764e21cbf73bdcb6"
+    },
+    {
+      "path": "brats/threads/2026/13508/thread.md.transport.gz",
+      "bytes": 293,
+      "sha256": "4bf2fd69c68395e2200cb9ea26448289f5f502551494fefe3ab838d4854029d1"
+    },
+    {
+      "path": "brats/threads/2026/13631/replies_000.json",
+      "bytes": 2293,
+      "sha256": "0e21fd207274d33a33d7299b678657bf1dcffb64acb084fff3adc22ed8236aaa"
+    },
+    {
+      "path": "brats/threads/2026/13631/replies_000.json.source.json",
+      "bytes": 836,
+      "sha256": "ae856a73618a988b870bba8f8bca447daf9ccf459b484eb5151575f0a268516a"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36393.md",
+      "bytes": 241,
+      "sha256": "f7afad345104ef5e4d190a6e70ffc3aa6e62f0b04062548875c84de49f3b3085"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36393.md.source.json",
+      "bytes": 753,
+      "sha256": "d801713c6da741812a784ee46c9c20bc601e58f3aeb651cf325f465c2f6f612d"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36393.md.transport.gz",
+      "bytes": 190,
+      "sha256": "a3d1afdebd6015edcd47d5d6dce44cf9ae841baa64a86eea6c8dfe564883ed6b"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36395.md",
+      "bytes": 316,
+      "sha256": "1e9434feb0096795be7b9fdbec2ed1e3715ecd05aa0962ab767df2ade9af0e62"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36395.md.source.json",
+      "bytes": 753,
+      "sha256": "fec7567907f6db3024195369b7ffc35aa2b144f5ce6e686cdf16212580f7eb9f"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36395.md.transport.gz",
+      "bytes": 219,
+      "sha256": "d1ac4c3e123a9d2ebf12ed37c07bc3588810705bb5c12455b896630d7736dbbe"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36397.md",
+      "bytes": 663,
+      "sha256": "766b6b0c5fd3847718944baf71461439c0b8736d1eb3b2feb32d0649877d4d2c"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36397.md.source.json",
+      "bytes": 753,
+      "sha256": "d468f783f99f33868175b3fed0188b5fcf998ff4c31d17937183a23fe6b680e1"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36397.md.transport.gz",
+      "bytes": 428,
+      "sha256": "f6cba27ae8d0af1f4fcfe446199cadf3bc136eefcd432b3d392c97257b4e5618"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36398.md",
+      "bytes": 417,
+      "sha256": "a75bc59439b2c1da7e967ca0f17db34150a46769697a65063e9281bba8bb8316"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36398.md.source.json",
+      "bytes": 753,
+      "sha256": "67851c59ad7e16ea7a0139fe185a95caf1f05bfe278e72d4597f7acd40b656eb"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36398.md.transport.gz",
+      "bytes": 277,
+      "sha256": "e5a56a5a8a8e8706888ec25ced37529464de274a7b14de85147e017035382331"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36399.md",
+      "bytes": 526,
+      "sha256": "9adcd7117ed9ec39c4a2768194a4d0df63dc2c5ef0d24fb0bc28d1d5cb3f5ab5"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36399.md.source.json",
+      "bytes": 753,
+      "sha256": "8d7a2419797d6e1291473a424e6d621fb76efd9bf8d58a678540867f0241e741"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36399.md.transport.gz",
+      "bytes": 335,
+      "sha256": "3aab870bc62220f95ba04caa496a7b357c3c09c8b61182ea58e128b7cd1959fb"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36400.md",
+      "bytes": 72,
+      "sha256": "38c38440b082b1b710da4087f23ff6d99549cc1ff79bd1a362101ddb54402696"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36400.md.source.json",
+      "bytes": 751,
+      "sha256": "9cbe95da0b0622a80ce35979dd2163130875e29cfc023a64065147d6d494c2ba"
+    },
+    {
+      "path": "brats/threads/2026/13631/reply_36400.md.transport.gz",
+      "bytes": 88,
+      "sha256": "a6492a33b33cbc141b889fc20909e5bc511765cc8fa0f0a75b5605d35c63656e"
+    },
+    {
+      "path": "brats/threads/2026/13631/thread.md",
+      "bytes": 221,
+      "sha256": "bb5e27d050fa86049192c664c04a06a28e2735eebc3fe37ab0438a2682646b0d"
+    },
+    {
+      "path": "brats/threads/2026/13631/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "9bf1a83315940a86b11e28878ace0ab2ce5ca223ea108ca5750e14a6c4a78bfd"
+    },
+    {
+      "path": "brats/threads/2026/13631/thread.md.transport.gz",
+      "bytes": 192,
+      "sha256": "dc88a03caa3565fe4c16824f8f9c7b3f6f63c4d8153efbf95c7b909c9dacb26e"
+    },
+    {
+      "path": "brats/threads/2026/13893/replies_000.json",
+      "bytes": 414,
+      "sha256": "82885a736f3b03a3a06bdb5aa0264fbfafe6e54568f9c2f3d6680ea062d9040a"
+    },
+    {
+      "path": "brats/threads/2026/13893/replies_000.json.source.json",
+      "bytes": 836,
+      "sha256": "09f2611a9a412a4fb943ed90288dd47ddb08de5e05eecf537a580fda5bde31c4"
+    },
+    {
+      "path": "brats/threads/2026/13893/reply_36460.md",
+      "bytes": 500,
+      "sha256": "20c57fb90196ecdbbd84efcdc87c3bb0d6f75dbd465ef9889060aa5801b1bfc2"
+    },
+    {
+      "path": "brats/threads/2026/13893/reply_36460.md.source.json",
+      "bytes": 753,
+      "sha256": "9b9bcb072ed9fc198bb1cf1af29d6b7d983b93a99e28eaae991f2edad6d9f86b"
+    },
+    {
+      "path": "brats/threads/2026/13893/reply_36460.md.transport.gz",
+      "bytes": 316,
+      "sha256": "c5b61d476da2f6cfc00f4170311d2fbd0e46eb92c9ccc74dd19b6a0110aa4dba"
+    },
+    {
+      "path": "brats/threads/2026/13893/thread.md",
+      "bytes": 721,
+      "sha256": "ef71fc8a5847dd85adae358c87de10fe44656e8164c63ffde1da2c9e544a0846"
+    },
+    {
+      "path": "brats/threads/2026/13893/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "088a1c12f616327f0a5f6ddad18aeed60284773b3e58684c41910c871bf9b554"
+    },
+    {
+      "path": "brats/threads/2026/13893/thread.md.transport.gz",
+      "bytes": 400,
+      "sha256": "fc36b387fab02f9a8ef23ae516bb1b55422e01706ebcef7c3693953eee5605ad"
+    },
+    {
+      "path": "brats/threads/2026/13999/replies_000.json",
+      "bytes": 414,
+      "sha256": "b463bfe195720b3ce70950492178737c37b33167be50f6b0de2e9dac3f275200"
+    },
+    {
+      "path": "brats/threads/2026/13999/replies_000.json.source.json",
+      "bytes": 836,
+      "sha256": "0646fb5dbad3dfd95d0d9fb5abe0b8e6e7f77e27484e7e6d9b1aa3e9fe43a4ea"
+    },
+    {
+      "path": "brats/threads/2026/13999/reply_36509.md",
+      "bytes": 285,
+      "sha256": "24e2cca09d95e31d264462283083861782c66642d918c98cbeb636ccadc3bc25"
+    },
+    {
+      "path": "brats/threads/2026/13999/reply_36509.md.source.json",
+      "bytes": 753,
+      "sha256": "3108eb3029f45c535fd51dd897955d2a97b5b326bcfa627cf80a13c4663171e8"
+    },
+    {
+      "path": "brats/threads/2026/13999/reply_36509.md.transport.gz",
+      "bytes": 232,
+      "sha256": "2021754adfacc91b5f80579bdf14762db79096dfad78ecaf679fef59f1c80286"
+    },
+    {
+      "path": "brats/threads/2026/13999/thread.md",
+      "bytes": 486,
+      "sha256": "499718307817f489ce7a6221fc24193678cf9785e1465553d71a973063f6f401"
+    },
+    {
+      "path": "brats/threads/2026/13999/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "c21a38ffc3a767f8e6a8f55e77371fd638ec75fc30028a2ee3c21b3b592ce8df"
+    },
+    {
+      "path": "brats/threads/2026/13999/thread.md.transport.gz",
+      "bytes": 329,
+      "sha256": "db1e641587358c4c73b227414f5b1fcb5822b214ecfae0053f56d54108660165"
+    },
+    {
+      "path": "brats/threads/2026/14024/replies_000.json",
+      "bytes": 1166,
+      "sha256": "c2e7999b7901f1b9907ed0144a70529337f00a73d55820c824343d0aeca19ff8"
+    },
+    {
+      "path": "brats/threads/2026/14024/replies_000.json.source.json",
+      "bytes": 838,
+      "sha256": "439f8457138d29b54fc98c69a907b08160a54f985baf10b1886314b5131659b7"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36517.md",
+      "bytes": 385,
+      "sha256": "319fb5f149b976f0caf45a84100fde8c2711640c8bd193b75e42601b5d241195"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36517.md.source.json",
+      "bytes": 753,
+      "sha256": "14d076192238343a2b498ef6b315784e99ecc89628b605b93b45b14118c0d4a9"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36517.md.transport.gz",
+      "bytes": 243,
+      "sha256": "af1d6904384d35daf3940d797420ced6876679ddf13513c9416826ecd662fecb"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36547.md",
+      "bytes": 50,
+      "sha256": "6bb66b4bbbc2f939ed25259419ce632be56b6c5196dac4062482dbebb4f6da2b"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36547.md.source.json",
+      "bytes": 751,
+      "sha256": "d53205242737a43e2cb5f72d4cea8696c7224927fe26c13e9711ebb721a94af6"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36547.md.transport.gz",
+      "bytes": 70,
+      "sha256": "353b33b68eec89c20ffe143622b41dbd7cd1731bff9d916bc380852f868d7c55"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36558.md",
+      "bytes": 490,
+      "sha256": "bd1edc6d7e424af6861576d7e8e9f2973f9c7dc704d73e692803df984e67f836"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36558.md.source.json",
+      "bytes": 753,
+      "sha256": "2f2a789c6799569c1d98cf688c550a6fafb8b1bb100bebc5431350ce540a1c01"
+    },
+    {
+      "path": "brats/threads/2026/14024/reply_36558.md.transport.gz",
+      "bytes": 308,
+      "sha256": "0be1914e4bd84295c45843ebe015bdc2cab5ae5a47057d5c456966625ae21fe2"
+    },
+    {
+      "path": "brats/threads/2026/14024/thread.md",
+      "bytes": 2120,
+      "sha256": "25d243a7971dd0384a75a0b57268200b8eca69b28d32c226214288215ccdf21f"
+    },
+    {
+      "path": "brats/threads/2026/14024/thread.md.source.json",
+      "bytes": 736,
+      "sha256": "f9710ce9753f561bb999a2479d7d9765cd7a05b585f2cd9db74139046780b2d0"
+    },
+    {
+      "path": "brats/threads/2026/14024/thread.md.transport.gz",
+      "bytes": 952,
+      "sha256": "3f5ca187665b03a9d2e14f1acc20964530ffb54311f8a68e6fb53e4a71588cde"
+    },
+    {
+      "path": "brats/threads/2026/14058/replies_000.json",
+      "bytes": 790,
+      "sha256": "2c83da7b654e33c101a5e8646aad9fc6df91cc1870eec7a28390116d20dcdfe7"
+    },
+    {
+      "path": "brats/threads/2026/14058/replies_000.json.source.json",
+      "bytes": 835,
+      "sha256": "e45c7a2a676f49538c592bf912e72510604c938c8ab4e9769340c5fabbb34c0b"
+    },
+    {
+      "path": "brats/threads/2026/14058/reply_36525.md",
+      "bytes": 199,
+      "sha256": "62d0e4d883ce42144e3cc3e543a6a182844bdcb665a653ac49a941c130977fbe"
+    },
+    {
+      "path": "brats/threads/2026/14058/reply_36525.md.source.json",
+      "bytes": 753,
+      "sha256": "cba21a0d54afde1c3b0de9ccb8673833b6d7f755abb412aecaf21ae93c5f4271"
+    },
+    {
+      "path": "brats/threads/2026/14058/reply_36525.md.transport.gz",
+      "bytes": 170,
+      "sha256": "3d5b21b18ac2e0665a4ab8dd2642e8864f0cfe5945a09e3828fac738f4363167"
+    },
+    {
+      "path": "brats/threads/2026/14058/reply_36530.md",
+      "bytes": 128,
+      "sha256": "1b6b9fbf67b28eb0276b1d4daf11706050bcdfd5a1535a1740c896327ff81b96"
+    },
+    {
+      "path": "brats/threads/2026/14058/reply_36530.md.source.json",
+      "bytes": 753,
+      "sha256": "6fa14bd92a0e406ff20984deaefb9aae889dcbedef1b22b52b1af2d40be6010d"
+    },
+    {
+      "path": "brats/threads/2026/14058/reply_36530.md.transport.gz",
+      "bytes": 137,
+      "sha256": "3ab1971e9555b417e9a9e5ae7aafee395e350f99c0a09fb8f4a48fa187b227a0"
+    },
+    {
+      "path": "brats/threads/2026/14058/thread.md",
+      "bytes": 848,
+      "sha256": "2bc4482b9c87837d00ec2dd371a8aa272125e6653df9b01c41b47445fada065f"
+    },
+    {
+      "path": "brats/threads/2026/14058/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "03973b64c7bbfd05a2a38ddf04005482538866161299a118308d46c666dab23f"
+    },
+    {
+      "path": "brats/threads/2026/14058/thread.md.transport.gz",
+      "bytes": 507,
+      "sha256": "a38feab9add09224dc7815eae41614333164ca3eafe19ea043e694a5a9a3c95b"
+    },
+    {
+      "path": "brats/threads/2026/14124/replies_000.json",
+      "bytes": 414,
+      "sha256": "00115b9f63973feccaa1cc489be75f2b30760242105063b1777fba69c6e6cc6a"
+    },
+    {
+      "path": "brats/threads/2026/14124/replies_000.json.source.json",
+      "bytes": 836,
+      "sha256": "a896ce7f2f964d363fba606812722695ddf01ce8f24180376fe5d1ab00d40e00"
+    },
+    {
+      "path": "brats/threads/2026/14124/reply_36552.md",
+      "bytes": 482,
+      "sha256": "00a90c746a1c6d7ec74ea1a2259e14e01c8e0be1c511b47b1e49762bc1cbe3c6"
+    },
+    {
+      "path": "brats/threads/2026/14124/reply_36552.md.source.json",
+      "bytes": 753,
+      "sha256": "916e302410b7a7f6cbbab6a38013170d07e220318d7536dd6b812daf2cd5c1c9"
+    },
+    {
+      "path": "brats/threads/2026/14124/reply_36552.md.transport.gz",
+      "bytes": 339,
+      "sha256": "0c329e9524565445a7c2b441c96f3fcc1bb31f1fcde75446df30f9b2430c1ea2"
+    },
+    {
+      "path": "brats/threads/2026/14124/thread.md",
+      "bytes": 268,
+      "sha256": "caff8f7336c8b8e46c10be7ec3b34f72eb48b17d40e9059c7fbf746b8ec84473"
+    },
+    {
+      "path": "brats/threads/2026/14124/thread.md.source.json",
+      "bytes": 735,
+      "sha256": "a895491d0035ae1aaafe39ce2f10dda3a05ce30275e5622d4fcef77905756c7b"
+    },
+    {
+      "path": "brats/threads/2026/14124/thread.md.transport.gz",
+      "bytes": 199,
+      "sha256": "a0f290f1c57cedbfbac1dc10fc97bf44c0848c25d871e90fc6a682f646edd1d8"
+    },
+    {
+      "path": "brats/wiki/wiki2025_631058.md",
+      "bytes": 21281,
+      "sha256": "3a7b08520784b63d8ec1f6eb9f1d99b7ae78431185e615c07e9af5ef8272e974"
+    },
+    {
+      "path": "brats/wiki/wiki2026_639577.md",
+      "bytes": 4626,
+      "sha256": "ee8a48773e3065e33a0357c9a4dbc2a9b7ca757ae9fbad4a662a4abac580512a"
+    },
+    {
+      "path": "brats/wiki/wiki2026_639583.md",
+      "bytes": 176,
+      "sha256": "5cff15a70d80488148dd608d082982a6aa3fdfca0211363ed5c45858edb7e42e"
+    },
+    {
+      "path": "brats/wiki/wiki2026_639600.md",
+      "bytes": 5264,
+      "sha256": "e70b947f29271b33249033ffac5edb04501ea9727ef18a0bde8390afdb1f230d"
+    },
+    {
+      "path": "brats/wiki/wiki2026_639602.md",
+      "bytes": 2931,
+      "sha256": "0ed22aa36a61a57d1ba95de28a6c89085d0245db3f8713df57d1b645e25878e0"
+    },
+    {
+      "path": "brats/wiki/wiki2026_640141.md",
+      "bytes": 2150,
+      "sha256": "83c3b23cdce1f327768dc1b9120f4d7cc1633bb1ce7eff8e5ae26051288c9ca2"
+    },
+    {
+      "path": "camyla/Camyla_system_paper.pdf",
+      "bytes": 4025384,
+      "sha256": "64f226eebbef554693fa40ffb0257b4bc53251a489191c94c8c9045d4e3af2dc"
+    },
+    {
+      "path": "camyla/Camyla_system_paper.pdf.source.json",
+      "bytes": 837,
+      "sha256": "66ffe732cdd36df44ef516e827451890fdc83501b53ac54df7f556864ccba6c9"
+    },
+    {
+      "path": "camyla/MANUSCRIPTS.md",
+      "bytes": 6770,
+      "sha256": "ef37483ea05240b62a49070df9e4ef10a44322e0b90703dd474c9a9ed5dc6f69"
+    },
+    {
+      "path": "camyla/PDF_TEXT_INVENTORY.json",
+      "bytes": 4272,
+      "sha256": "1dbc671a3c1b41492d50214fa49d701bcfd59045775492da202ca50f3fc0ceea"
+    },
+    {
+      "path": "camyla/PROTEAS_dataset_descriptor.pdf",
+      "bytes": 1169642,
+      "sha256": "9106b041a162a390b4442ce254c8f985802368e27abf89978121290c6ae13c76"
+    },
+    {
+      "path": "camyla/PROTEAS_dataset_descriptor.pdf.source.json",
+      "bytes": 791,
+      "sha256": "27aa1ee4deac2826dfc9f5e786ce65fcc3972b436f18d0d77d3dd28f201b7269"
+    },
+    {
+      "path": "camyla/PUBLIC_ASSET_MANIFEST.json",
+      "bytes": 12571,
+      "sha256": "a83f1e368dcd92934b040400cc8970f951dd4d84d8a004274919f0428fcf382e"
+    },
+    {
+      "path": "camyla/manuscripts/01.pdf",
+      "bytes": 2406228,
+      "sha256": "f0c946f6cc300cb63796887c7ba2ca413bddb506ed29d918cbcc5af7a6077561"
+    },
+    {
+      "path": "camyla/manuscripts/01.pdf.source.json",
+      "bytes": 844,
+      "sha256": "8af24174f0be72c8d6e3a10ccfd56fec71b60b62195abeec2bd53fa6357da01c"
+    },
+    {
+      "path": "camyla/manuscripts/02.pdf",
+      "bytes": 2410241,
+      "sha256": "556fc220c46106706f5c502352fb5e555683acf39017da4ffa500443e509364f"
+    },
+    {
+      "path": "camyla/manuscripts/02.pdf.source.json",
+      "bytes": 844,
+      "sha256": "84c49ba5f35b71476680cf32ac74235feddfbf031de6b30743947fb656a0ab1e"
+    },
+    {
+      "path": "camyla/manuscripts/03.pdf",
+      "bytes": 3668092,
+      "sha256": "3af544b08fbee509d01b193e675ad61eb79ffceaddbc8942880d3fd538e9c0dc"
+    },
+    {
+      "path": "camyla/manuscripts/03.pdf.source.json",
+      "bytes": 844,
+      "sha256": "bd5ac5cf89a1c7796065edb4077ce2289ba3aa13d50df217fd43a20697edb19f"
+    },
+    {
+      "path": "camyla/manuscripts/04.pdf",
+      "bytes": 2917125,
+      "sha256": "e6cb9e8d94abc480a56c7285da5712a0257bef86da26628fd01d7bd0fbd8470e"
+    },
+    {
+      "path": "camyla/manuscripts/04.pdf.source.json",
+      "bytes": 844,
+      "sha256": "f6b01b61368ab275cc6fa1e2174c370f16e3a820d6149ea927c213a4eca047b5"
+    },
+    {
+      "path": "camyla/manuscripts/05.pdf",
+      "bytes": 2785946,
+      "sha256": "b00f08d817a2bcfbe01db7cd56c2deacab113d3410cf8122e9aa3188c013436b"
+    },
+    {
+      "path": "camyla/manuscripts/05.pdf.source.json",
+      "bytes": 844,
+      "sha256": "711a37eba5f855fdfd175647444f4c66d06b2b37a799d5bdbd2ed184d9b6a63b"
+    },
+    {
+      "path": "camyla/manuscripts/06.pdf",
+      "bytes": 2938267,
+      "sha256": "683fe8918dd1b86aebdc2b3289ae432e1598a73c4e14eac8b027e4f8bfb0a844"
+    },
+    {
+      "path": "camyla/manuscripts/06.pdf.source.json",
+      "bytes": 844,
+      "sha256": "325fb2edfcf4dd20c58fb1023786690df0a487890e83de10360a576a5e5567c4"
+    },
+    {
+      "path": "camyla/manuscripts/07.pdf",
+      "bytes": 2498766,
+      "sha256": "3f0245e8089d01b68f8af2c77ab2df2e3b4d02730e4c12a2f79537935635fbc7"
+    },
+    {
+      "path": "camyla/manuscripts/07.pdf.source.json",
+      "bytes": 844,
+      "sha256": "4715e960ef6ddee2cc044984b38f4a4e83b7734f43fadf986297fdc76032e741"
+    },
+    {
+      "path": "camyla/manuscripts/08.pdf",
+      "bytes": 2246152,
+      "sha256": "ea89b627702d95f625b5f5a2f379b2cae8cae3b02e485fb4fb2c01d248294a24"
+    },
+    {
+      "path": "camyla/manuscripts/08.pdf.source.json",
+      "bytes": 843,
+      "sha256": "2a51bf5219a25155344fc71f5bef2bf4a11f60e293223e380dbf5a482b6f5346"
+    },
+    {
+      "path": "camyla/manuscripts/09.pdf",
+      "bytes": 3506238,
+      "sha256": "16ff8d8e8133cd55e6793cc83f1afaeedeb33fab58497fafe589c7166efa33c2"
+    },
+    {
+      "path": "camyla/manuscripts/09.pdf.source.json",
+      "bytes": 844,
+      "sha256": "dee8a3c78f2011d953562cbc8667b037e458d9c865bc40ac0457e7a7c83493fe"
+    },
+    {
+      "path": "camyla/manuscripts/10.pdf",
+      "bytes": 2298191,
+      "sha256": "9cf256b8c22387f862a442a92cbdfd833b51d0d792f1dbe5a55d4c7301c15846"
+    },
+    {
+      "path": "camyla/manuscripts/10.pdf.source.json",
+      "bytes": 844,
+      "sha256": "f654e15d1f4dbb8cb3e440dd277aab76b58de2a83770adc1d732e39d83ac67d8"
+    },
+    {
+      "path": "camyla/searchable_text/01.txt",
+      "bytes": 85246,
+      "sha256": "3a14121bdec2f8445a8558f601edf1e1f08109025e2f690952c30b78f0e84f25"
+    },
+    {
+      "path": "camyla/searchable_text/02.txt",
+      "bytes": 74044,
+      "sha256": "2eeb9456eccb1a174bf06dca86133cd5bbb86bb99740f82ff379a4e24ca370a9"
+    },
+    {
+      "path": "camyla/searchable_text/03.txt",
+      "bytes": 69634,
+      "sha256": "0eb06262c04266860824bc3d880c87b56d2db4ae1fc142de020bdbf6c5a23137"
+    },
+    {
+      "path": "camyla/searchable_text/04.txt",
+      "bytes": 71930,
+      "sha256": "49fafb5c15556ca19aad50be215fc4ebee9202b1d8698019fefbb60f8525ee06"
+    },
+    {
+      "path": "camyla/searchable_text/05.txt",
+      "bytes": 75092,
+      "sha256": "1fa9cdaeb4fbde7f9b7f8410160701e0a8c282026844f76de1dd1ead9ce65976"
+    },
+    {
+      "path": "camyla/searchable_text/06.txt",
+      "bytes": 71339,
+      "sha256": "f277feceef66979fbde12e7daf844aa64a321eb466a993e82f37de3c061ac19f"
+    },
+    {
+      "path": "camyla/searchable_text/07.txt",
+      "bytes": 69719,
+      "sha256": "41c50c7931daadb519e8025c31135c2ab7a636e7687e34d2a58e77fc061d2c66"
+    },
+    {
+      "path": "camyla/searchable_text/08.txt",
+      "bytes": 80639,
+      "sha256": "f974fa32bc448410de9af66311f1017dcb9a0c9c7cbf3f8f55e3f68ee6995e9c"
+    },
+    {
+      "path": "camyla/searchable_text/09.txt",
+      "bytes": 72205,
+      "sha256": "9da02e16b85e4364f08ccf64abc02a886955264cc40bc3b8825f75396292c8d6"
+    },
+    {
+      "path": "camyla/searchable_text/10.txt",
+      "bytes": 74666,
+      "sha256": "47a54e0bc7cd8942d288ec2a60bcf7c845a7a692c727344788eec906dcdf7d9e"
+    },
+    {
+      "path": "camyla/searchable_text/Camyla_system_paper.txt",
+      "bytes": 249075,
+      "sha256": "12221e0b734401b597d9b8d21434762f07edd7165b7fb1580b8fb91b9aeaf0de"
+    },
+    {
+      "path": "camyla/searchable_text/PROTEAS_dataset_descriptor.txt",
+      "bytes": 49291,
+      "sha256": "ea1c7c8ca92b071a3882690fa8990e39a8af7740609e1dd21635f6b5e907f136"
+    },
+    {
+      "path": "camyla/sources/LICENSE",
+      "bytes": 11281,
+      "sha256": "aa17ffd36fc2a417c09d4163697f1dc1a253fcc7aff4bd9fb4812b751b83f970"
+    },
+    {
+      "path": "camyla/sources/LICENSE.source.json",
+      "bytes": 805,
+      "sha256": "84e03d915bf5aa559fe279c3f16b6a38e4794a51b9ac870e21026cce6f193596"
+    },
+    {
+      "path": "camyla/sources/README.md",
+      "bytes": 17435,
+      "sha256": "d71d1c643b12d761c829d949aba83e83084e254837ee6e44ae0dd97459d4f6cb"
+    },
+    {
+      "path": "camyla/sources/README.md.source.json",
+      "bytes": 812,
+      "sha256": "de6709b7c39829fdedfd4cac8b30dfcf4fb169ff3139a9abb737de012ce19466"
+    },
+    {
+      "path": "camyla/sources/README_zh.md",
+      "bytes": 17202,
+      "sha256": "2057e9b76ac6f7e9def3da8b413b3bf4a94211346b5468e1b46becf3d84687d2"
+    },
+    {
+      "path": "camyla/sources/README_zh.md.source.json",
+      "bytes": 821,
+      "sha256": "601ef1ca94f9c1562da241a56d9b9b0b5d59072d628130b7a9e8fb05d4473a21"
+    },
+    {
+      "path": "camyla/sources/commit.json",
+      "bytes": 12227,
+      "sha256": "04e8bb74188e8dd642a15e347d2e39c258f2d2e8cfb98caa22d84e0e9af1350d"
+    },
+    {
+      "path": "camyla/sources/commit.json.source.json",
+      "bytes": 734,
+      "sha256": "cdb464cfa14b8b218a9caddde585e082274e646e3dd1d22255380fec2d2eacd9"
+    },
+    {
+      "path": "camyla/sources/frozen_tree.json",
+      "bytes": 101752,
+      "sha256": "8d18967fda2d4ce029c3b8a9f46e8ac841f04259334aaa76b736f704ae7554e4"
+    },
+    {
+      "path": "camyla/sources/frozen_tree.json.source.json",
+      "bytes": 841,
+      "sha256": "e50fe6a29c9c4e106d6626ede8748df789ba696fda5aeb48419400e4d875120e"
+    },
+    {
+      "path": "camyla/sources/hrfuse_repo.json.failed_response",
+      "bytes": 132,
+      "sha256": "a298fd3d1a255b0eb21a952212460852e05ba9721d3445fb42d7ad054d88f94a"
+    },
+    {
+      "path": "camyla/sources/hrfuse_repo.json.source.json",
+      "bytes": 657,
+      "sha256": "c212106744378dd32994719f0d2ac54df452e4397d8f6e6a5f99fb01d8552f40"
+    },
+    {
+      "path": "camyla/sources/ideas/900.json",
+      "bytes": 2423,
+      "sha256": "c944dc9fe74df85375b2db514bc0fa5bd77fcc7852e1b7ba5c7d9cabd24d38ba"
+    },
+    {
+      "path": "camyla/sources/ideas/900.json.source.json",
+      "bytes": 825,
+      "sha256": "4f51ab28abe6e3ac9fc42efcf49a1c811e83309ea377bfcde4d7918ae44cfef3"
+    },
+    {
+      "path": "camyla/sources/ideas/901.json",
+      "bytes": 2834,
+      "sha256": "1812e4800de7137dad9943c8e2c36cff890ada387677ae1d276304c385c04f91"
+    },
+    {
+      "path": "camyla/sources/ideas/901.json.source.json",
+      "bytes": 825,
+      "sha256": "f5a32e8c053f863197d7abfd80909875b9af2b49a6dd7389a8c241c45f63c235"
+    },
+    {
+      "path": "camyla/sources/ideas/902.json",
+      "bytes": 2562,
+      "sha256": "c871f9e93013c5df1e1d5be535e9f304ce1709dcaa86dd9815294eddf4c220d2"
+    },
+    {
+      "path": "camyla/sources/ideas/902.json.source.json",
+      "bytes": 825,
+      "sha256": "2513307ce776a580e814ba0cf33fe4af0f9619bcb3fdfce0583bf79ab9d8dc3f"
+    },
+    {
+      "path": "camyla/sources/ideas/903.json",
+      "bytes": 2823,
+      "sha256": "d2cc61148aef9a1860f5423f1360f0547ff7cdd8b91554a31fc11dacfd820c92"
+    },
+    {
+      "path": "camyla/sources/ideas/903.json.source.json",
+      "bytes": 825,
+      "sha256": "3535a005b9c8c44793e65e949532d7a25e623794385a961fe76b23fb5b69eae9"
+    },
+    {
+      "path": "camyla/sources/ideas/904.json",
+      "bytes": 2578,
+      "sha256": "325c65b6d835f17f79a68c97f97300bc678640542bb46e4b4086c32774c5f131"
+    },
+    {
+      "path": "camyla/sources/ideas/904.json.source.json",
+      "bytes": 825,
+      "sha256": "b7a1b628d38fc27110eeda99e425cb1b70773d2629f16fbb876344f4e85adb07"
+    },
+    {
+      "path": "camyla/sources/ideas/905.json",
+      "bytes": 2597,
+      "sha256": "018f74e4fcdd2c990074c83cde6e3f8fd082422a6780afe93106c3f40af15861"
+    },
+    {
+      "path": "camyla/sources/ideas/905.json.source.json",
+      "bytes": 825,
+      "sha256": "bcf1563178acb00bc921401569ad028bfb6e948a8fdfdbc97a7492abb613b670"
+    },
+    {
+      "path": "camyla/sources/ideas/906.json",
+      "bytes": 2437,
+      "sha256": "af4020aaaeb3c60c0176ec39d775f7128a0f1d5c86b9fcc4aa961d36aa62de72"
+    },
+    {
+      "path": "camyla/sources/ideas/906.json.source.json",
+      "bytes": 825,
+      "sha256": "d639068f914af90cce574f0c4b28590bb380347f59ce78bc0250e616c2a1c65f"
+    },
+    {
+      "path": "camyla/sources/ideas/907.json",
+      "bytes": 2495,
+      "sha256": "6bb0dbf252435788101bfde3d17480ae1b3cc21bf448bf40cdfe618cc0f9bc09"
+    },
+    {
+      "path": "camyla/sources/ideas/907.json.source.json",
+      "bytes": 824,
+      "sha256": "49aca6d012d4fc4454e9e85a860ee5ed0f385d2e8b6f58191086b1d4627f150b"
+    },
+    {
+      "path": "camyla/sources/ideas/908.json",
+      "bytes": 2139,
+      "sha256": "13a77ca161e3348d6f5e6dd7a05f2379910845187464b46ed592e0261d80e85f"
+    },
+    {
+      "path": "camyla/sources/ideas/908.json.source.json",
+      "bytes": 825,
+      "sha256": "af8648f03b827b50810afb62b1dc12a0f9dcbaba7f1e509536f161e63763e179"
+    },
+    {
+      "path": "camyla/sources/ideas/909.json",
+      "bytes": 2469,
+      "sha256": "3b54569549dd529382999ced8f28687c210ee8bddb0467a6693d003399fcf2d9"
+    },
+    {
+      "path": "camyla/sources/ideas/909.json.source.json",
+      "bytes": 825,
+      "sha256": "e5c4203cdb33779d40ca35801947dfcbd41f41bc67fe5c563093d324d2f27a98"
+    },
+    {
+      "path": "camyla/sources/ideas/910.json",
+      "bytes": 2386,
+      "sha256": "9987ec9bd72ca4f4d2575ed59e0bcbf8a3abcff1802c1c556c65c37cbaf2f819"
+    },
+    {
+      "path": "camyla/sources/ideas/910.json.source.json",
+      "bytes": 825,
+      "sha256": "a15e481bb640368b32b0005e529039ccbad023366c12ad8893b701e191512a76"
+    },
+    {
+      "path": "camyla/sources/ideas/911.json",
+      "bytes": 2272,
+      "sha256": "d4f854661de786d3e76f8e79ed63adc7fafeb26bb3cbda03c794709e50d68c83"
+    },
+    {
+      "path": "camyla/sources/ideas/911.json.source.json",
+      "bytes": 825,
+      "sha256": "b93fe6a721d73820c08fe2d805a872542ee6858e16361c031d3edead67eb02d2"
+    },
+    {
+      "path": "camyla/sources/ideas/912.json",
+      "bytes": 2714,
+      "sha256": "10e7abae61a197acf382cf59b58c51e88ee8f5f38957e17332d94494d07507c8"
+    },
+    {
+      "path": "camyla/sources/ideas/912.json.source.json",
+      "bytes": 825,
+      "sha256": "43071b4425d6da006667bfe8caa9269532ff7b35b5a7a66419a996513943632c"
+    },
+    {
+      "path": "camyla/sources/ideas/913.json",
+      "bytes": 2524,
+      "sha256": "93ce6e76d6d342f199233a892d1a75cba7704dbd84898e4f0d1e503e951f3c0c"
+    },
+    {
+      "path": "camyla/sources/ideas/913.json.source.json",
+      "bytes": 825,
+      "sha256": "f07d16e89b9c7cc03f3392975210b7d2f3e594dd2436b0007917c7f9a5c569aa"
+    },
+    {
+      "path": "camyla/sources/ideas/914.json",
+      "bytes": 2299,
+      "sha256": "6f7144d11586839c3b629a915847c6dd9493e33a21376616bcba6f9c1c7d8459"
+    },
+    {
+      "path": "camyla/sources/ideas/914.json.source.json",
+      "bytes": 825,
+      "sha256": "b2f2552536278cfd0a60f76291ef14e646ea47969bac468522da6b3a117c79c2"
+    },
+    {
+      "path": "camyla/sources/ideas/915.json",
+      "bytes": 2430,
+      "sha256": "a070245e70d73bd32f9d31b0898b75049409e7f37e75c98c2d975fb88c7231a8"
+    },
+    {
+      "path": "camyla/sources/ideas/915.json.source.json",
+      "bytes": 825,
+      "sha256": "a95db23a765099fadb1109690be1dd72292362cfaa8079069fe4c63118e48c92"
+    },
+    {
+      "path": "camyla/sources/ideas/916.json",
+      "bytes": 2403,
+      "sha256": "b7aa7b32014d755d3fefe1e3f90e12b2b9826099f706f38b5a9d77c569a8166f"
+    },
+    {
+      "path": "camyla/sources/ideas/916.json.source.json",
+      "bytes": 825,
+      "sha256": "739842d7e8925e07a991c871ad5a060c466a157e90c03f17ad63536679fe0e92"
+    },
+    {
+      "path": "camyla/sources/ideas/918.json",
+      "bytes": 2521,
+      "sha256": "57ce3bbf19adb1490814a216ae84a5269bc3e573af5a0a1a863d3878bf716478"
+    },
+    {
+      "path": "camyla/sources/ideas/918.json.source.json",
+      "bytes": 825,
+      "sha256": "fa655d3deeb4b55f70703c1c3a56aee8e18520b8e367472c0cc4b272c19951fa"
+    },
+    {
+      "path": "camyla/sources/ideas/919.json",
+      "bytes": 2231,
+      "sha256": "fd5217e4a961388f8e50fe8dd6772efed5959cdc38ff8b99f1d5b6952d672960"
+    },
+    {
+      "path": "camyla/sources/ideas/919.json.source.json",
+      "bytes": 825,
+      "sha256": "b6c62c3a14b4ec4a6821c1fbf150998a5532b30c8d2d5c0e6a22b5eaf60c3d0b"
+    },
+    {
+      "path": "camyla/sources/ideas/920.json",
+      "bytes": 2634,
+      "sha256": "58b7332fdd2a3e3b278ed16047ed57a03656b47aee4770dca71da3418a43c054"
+    },
+    {
+      "path": "camyla/sources/ideas/920.json.source.json",
+      "bytes": 825,
+      "sha256": "cbe88f5e51316fac40746ebb3e001d93cfc9ccdb04c30291a73406b3d5917cfe"
+    },
+    {
+      "path": "camyla/sources/ideas/921.json",
+      "bytes": 1291,
+      "sha256": "eb30b82dfb51d587d0dd882f69df41826be9ff6b3935490116ffd597d4a75d3a"
+    },
+    {
+      "path": "camyla/sources/ideas/921.json.source.json",
+      "bytes": 825,
+      "sha256": "7c6f2dd04ddf503d560337ac59d8794964a44ff00100703defc5fbb8f21d75c0"
+    },
+    {
+      "path": "camyla/sources/ideas/922.json",
+      "bytes": 2404,
+      "sha256": "d78ca03df9d1223b7684cee8c009c7e537f082eebe8eb36f8d900a80f8901699"
+    },
+    {
+      "path": "camyla/sources/ideas/922.json.source.json",
+      "bytes": 825,
+      "sha256": "dce058b3a9cddbc0466abe98019952deb0546b8fb1fd1827645898a88780bc76"
+    },
+    {
+      "path": "camyla/sources/ideas/923.json",
+      "bytes": 2527,
+      "sha256": "38879e6f9d57882479d9003fb3ee7044c0787d3d46a988d26154afd0e453cc19"
+    },
+    {
+      "path": "camyla/sources/ideas/923.json.source.json",
+      "bytes": 825,
+      "sha256": "02bfa6baefa7f953bca99ca038cd9b61cd77fd47c1cbafc7ae93e58424c96b88"
+    },
+    {
+      "path": "camyla/sources/ideas/924.json",
+      "bytes": 2233,
+      "sha256": "0711ba7282b31763f96a5245634594600bfa8d9a242e14021e3fb46eb0c2edd1"
+    },
+    {
+      "path": "camyla/sources/ideas/924.json.source.json",
+      "bytes": 824,
+      "sha256": "8d82097b4b72c77edc3dc2b7739c48c2938fd57ef07cd9bb4aa742b094cac797"
+    },
+    {
+      "path": "camyla/sources/ideas/925.json",
+      "bytes": 2408,
+      "sha256": "37832025a23247e7c2b50b50f4c3c4e2bd0fabb95b298178c3bf4eb1403c0037"
+    },
+    {
+      "path": "camyla/sources/ideas/925.json.source.json",
+      "bytes": 825,
+      "sha256": "411464bb5baf1c049732887b9105f9367ed3354f46df4cfb3b7b5a1f2e36b3e7"
+    },
+    {
+      "path": "camyla/sources/ideas/926.json",
+      "bytes": 2112,
+      "sha256": "aed279532ab61b06c140f28f44aac4bb7033a1bb1d8afb0c619df49b15c66410"
+    },
+    {
+      "path": "camyla/sources/ideas/926.json.source.json",
+      "bytes": 825,
+      "sha256": "b74ed3bb9225ccc35a729191c52beae959200c7d52abb16d9bec204aca56d250"
+    },
+    {
+      "path": "camyla/sources/ideas/927.json",
+      "bytes": 2543,
+      "sha256": "ab68274ca80e5862d8748071fb5fae477ed5d678cedfe9c1be8d10d2efa29a49"
+    },
+    {
+      "path": "camyla/sources/ideas/927.json.source.json",
+      "bytes": 825,
+      "sha256": "e88e9e5b0187db22309a66663c5d391b27050724330bff180a87da1d2eda5c5c"
+    },
+    {
+      "path": "camyla/sources/ideas/928.json",
+      "bytes": 2193,
+      "sha256": "a84dbfd8065403e5290ce9d5b5d30af55d6885608c095364acbdc84fe5568f7c"
+    },
+    {
+      "path": "camyla/sources/ideas/928.json.source.json",
+      "bytes": 825,
+      "sha256": "93875e21158dc72bad5c7d5c8a0a7df586eeead49a89a853ef89af652ec58fa6"
+    },
+    {
+      "path": "camyla/sources/ideas/930.json",
+      "bytes": 2851,
+      "sha256": "ba03708c2fd7f00f691907a8a7898b5cd42ff380ac523a21d7908e229e9c5a36"
+    },
+    {
+      "path": "camyla/sources/ideas/930.json.source.json",
+      "bytes": 825,
+      "sha256": "2ceff492127e62fa73dd8188d07d95bbe36287ca1f3ba8d90ef47a082aaf27c6"
+    },
+    {
+      "path": "camyla/sources/ideas/931.json",
+      "bytes": 2280,
+      "sha256": "20b2754ab6e4eb101c69f2514bc31cee1dca0148f48c8e793a35ceba13fef5f7"
+    },
+    {
+      "path": "camyla/sources/ideas/931.json.source.json",
+      "bytes": 825,
+      "sha256": "4c79895ee47266bc986d0a0b4a7bdfb70463b1eacb06c17b129e61ddfc341994"
+    },
+    {
+      "path": "camyla/sources/ideas/932.json",
+      "bytes": 2198,
+      "sha256": "f059aa7a3c3b423d833c681bd75761d80072608c578485a237a2c612727f868e"
+    },
+    {
+      "path": "camyla/sources/ideas/932.json.source.json",
+      "bytes": 825,
+      "sha256": "29b277493b313a24fbeb077621ee9e09f1ae0902e8c38de110a6f42f3aeadbcf"
+    },
+    {
+      "path": "camyla/sources/issue_1_comments.json",
+      "bytes": 2214,
+      "sha256": "41720a7cccac350e989fd5c45274368350ecb04039a5215eddc3eacc455be691"
+    },
+    {
+      "path": "camyla/sources/issue_1_comments.json.source.json",
+      "bytes": 778,
+      "sha256": "300519e24745bf698a795fdb5465db8a9ec1d3e2d7f95cd976d7eeedee48c9a3"
+    },
+    {
+      "path": "camyla/sources/issue_3_comments.json",
+      "bytes": 2625,
+      "sha256": "cd5a0324ed3089d262bdff7055e35653612891ed6396e0ff7702c9b81ac5893b"
+    },
+    {
+      "path": "camyla/sources/issue_3_comments.json.source.json",
+      "bytes": 778,
+      "sha256": "9854747a01f0337a476ab9fea188b10f909dc2712e0c92d9772cb4a6f0c824bc"
+    },
+    {
+      "path": "camyla/sources/issues.json",
+      "bytes": 10502,
+      "sha256": "69c34c58fa14bfc715274e20d8e98b053620ba2e3e3f41f37e57dcad36cdc586"
+    },
+    {
+      "path": "camyla/sources/issues.json.source.json",
+      "bytes": 768,
+      "sha256": "57322601a8b7894de320c59609c805be34d4293ab58c9a248b678eee5fb12213"
+    },
+    {
+      "path": "camyla/sources/longitudinal_crossref.json",
+      "bytes": 45111,
+      "sha256": "1f580ba0886279c6c7f341d877b19efc674c74dd62404f90e4c47dd1a5a4e119"
+    },
+    {
+      "path": "camyla/sources/longitudinal_crossref.json.source.json",
+      "bytes": 962,
+      "sha256": "126352484815ba725d139963ea84482aee2de128a9483f70679a70aa4688e800"
+    },
+    {
+      "path": "camyla/sources/project_page.html",
+      "bytes": 26819,
+      "sha256": "e40878044f9052b768e44d85cee70794259daf1e4876a4646f0dc00f2a6be629"
+    },
+    {
+      "path": "camyla/sources/project_page.html.source.json",
+      "bytes": 697,
+      "sha256": "dd45657b48778d93366b349740e279ee95082ec761d944670a49d88e0d2ad67b"
+    },
+    {
+      "path": "camyla/sources/proteas_article.html",
+      "bytes": 375115,
+      "sha256": "d5fff75a8c4e27317a00b4ef7888b701254999abfd2236e38b7c152f389aff5b"
+    },
+    {
+      "path": "camyla/sources/proteas_article.html.source.json",
+      "bytes": 788,
+      "sha256": "3d36b7307f7873d43a707e505b723957a1024a2e2225632150c044fd5812d982"
+    },
+    {
+      "path": "camyla/sources/releases.json",
+      "bytes": 5,
+      "sha256": "2ba33ca0557f1bb5b7ba88d67f9d0093c7185a36ec51fe2b7bd9372d3e001d6d"
+    },
+    {
+      "path": "camyla/sources/releases.json.source.json",
+      "bytes": 746,
+      "sha256": "1a1c6b483a914df86d02779255e3a29547c5b04e1c474b6d30d21be07cef7252"
+    },
+    {
+      "path": "camyla/sources/repository_tree.json",
+      "bytes": 101752,
+      "sha256": "268ca1b1139aff71ddfd39cb2e6686a39fe10b7f3a8cde84766bec87a557f035"
+    },
+    {
+      "path": "camyla/sources/repository_tree.json.source.json",
+      "bytes": 773,
+      "sha256": "9afe2ec867897d5eb31f3f43070c68f7cbfe134f9980832514edd5e24f6bf18e"
+    },
+    {
+      "path": "tools/acquire.py",
+      "bytes": 2484,
+      "sha256": "879609571f59e5a2949108e69fbe1835c6e95d5b1b542cc320e013ea3712b7a2"
+    },
+    {
+      "path": "tools/build_report.py",
+      "bytes": 8703,
+      "sha256": "1fa52b7d79e4acee13d3c643729c14cc9df67007505d5f46a6f5c7ed7b5df00c"
+    },
+    {
+      "path": "tools/collect_camyla.py",
+      "bytes": 2606,
+      "sha256": "583d50bbb17b36ab839bc1a47b02bc8a803d8d69cfa795a50d06863aa5dbb1b3"
+    },
+    {
+      "path": "tools/collect_forum.py",
+      "bytes": 5346,
+      "sha256": "c7c758dfaee0106181c483a5f8fac46598406140d3bfbf25c477a499f830a738"
+    },
+    {
+      "path": "tools/collect_metric_sources.py",
+      "bytes": 1439,
+      "sha256": "ca7887225726e41403898ae8e2f3ca754071e916697e48e9ae87b2c3e5b70240"
+    },
+    {
+      "path": "tools/prepare_evidence.py",
+      "bytes": 2653,
+      "sha256": "06486b1bb0a4f4eb5ed61d6532320758f4b0db82e5b2133df264f817d016d010"
+    },
+    {
+      "path": "tools/print_report.mjs",
+      "bytes": 1836,
+      "sha256": "c88083b43d1976d6c6167dbd078a06fea3dda0116e98510a95d8dccbde0d3f6a"
+    },
+    {
+      "path": "tools/qa_report.py",
+      "bytes": 4247,
+      "sha256": "4b62ad8185183b0120ad5a163da8527f93e667ec751055567e0ddd588dd3d4f9"
+    },
+    {
+      "path": "tools/verify_archive.py",
+      "bytes": 6559,
+      "sha256": "10a9495e1dea20423f671737027d4815130803f89968c4e03bde24d1f22e1253"
+    }
+  ],
+  "archived_file_count": 657,
+  "archived_bytes": 37080812,
+  "current_local_filesystem_free_bytes": 149985796096,
+  "all_identity_checks_passed": true,
+  "scientific_validation_pass": false
+}

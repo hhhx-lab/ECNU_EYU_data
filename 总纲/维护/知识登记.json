@@ -1,9 +1,29 @@
 {
-  "reviewed_at": "2026-11-08T03:47:22.775028+00:00",
+  "reviewed_at": "2026-11-10T07:42:36+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "02_reference_materials/05_brats_metrics_camyla/20261110",
+      "description": "BraTS2025/2026 METS官方论坛评分修订与Camyla公开分割手稿深度调研，含脑转移瘤HRFuse专项复核",
+      "kind": "reference",
+      "reviewed_at": "2026-11-10T07:42:36+00:00",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "state": "107/93论坛主题完整元数据、9/11精选主题与50/61回复正文；2025validation改subjectwise、2026unranked及7/26检测分割双榜，最终精确rank实施未取得。显式27mm³/RC独立/FP与NA支持集，原0.0.8-panoptica2.1.0-27/.2合同和四路结果不改；官方2026沿用2025池/QC不证明所有byte或外部模型未暴露。Camyla冻结df4434f9d4aef5b7394ed03a4e877a8130c1b6cf的45官方资产31821359bytes逐大小SHA/Gitblob，系统+10手稿+PROTEAS共12PDF220页；40为两run生成总数，剩余30未公开取得。HRFuse无RC、代码404、44/40患者计数/主消融表/引用待闭合；方法参考不当可部署/SCI录用或性能独立pass。原创中文MD/DOCX/14页Chrome嵌入宋黑体PDF、7表3OfficeMath验收；未逐页视觉审读全部第三方PDF。Conda base/既有文档环境，无SSH/VPN/安装/医学影像权重/数据包/新评分/104访问，科学三项保持。",
+      "evidence": [
+        "02_reference_materials/05_brats_metrics_camyla/20261110/REPORT.md",
+        "02_reference_materials/05_brats_metrics_camyla/20261110/camyla/MANUSCRIPTS.md",
+        "02_reference_materials/05_brats_metrics_camyla/20261110/camyla/PUBLIC_ASSET_MANIFEST.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261110/brats/FORUM_2025_INDEX.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261110/brats/FORUM_2026_INDEX.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261110/ARCHIVE_MANIFEST.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261110/EXECUTION_AUDIT.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261110/DOCUMENT_QA.json"
+      ]
+    },
     {
       "path": "work_space/S2/03_experiments/15_external_mets_fixed103/s2_external_mets_fixed103_20261104_r1/STATUS_20261108.md",
       "description": "Bio统一MET及四路汇总完成，轻量SHA与288均值/432配对统计独立验收",

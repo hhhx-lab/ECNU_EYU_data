@@ -1,0 +1,71 @@
+{
+  "task": "2025/2026 BraTS METS validation/ranking forum research and Camyla public segmentation manuscript archive",
+  "research_date": "2026-11-10",
+  "local_base_commit": "07b21bc988644521026c11162af01dba1115c699",
+  "user_authorized_scope": "Read public sources, archive useful references under 02_reference_materials, and write a detailed Chinese report",
+  "access": {
+    "browser": "Chrome + Playwright MCP Bridge; user allowed connection",
+    "forum": "Public official Synapse API; all pages for selected threads",
+    "signed_message_urls_persisted": false,
+    "credentials_read_or_archived": false,
+    "paywall_bypassed": false,
+    "ECNU_or_VPN_access": false
+  },
+  "environments": {
+    "archive_and_catalog": "Existing Conda base; Python standard library",
+    "documents": "Existing /Users/hwaigc/.local/share/codex-doc-tools/.venv and node libraries; Pandoc, Poppler, Chrome",
+    "installed_dependencies": [],
+    "global_template_PATH_Git_fonts_or_configuration_modified": false
+  },
+  "preserved_failures_and_repairs": [
+    "User-supplied Camyla username yifangao12 returned 404; official repository located at yifangao112/Camyla",
+    "Initial Git commit/tree identity assertion stopped before asset downloading; subsequently used the explicit frozen tree",
+    "Incorrect initial Synapse API endpoint/documentation requests failed; public official endpoints used afterwards, failed response receipts retained",
+    "Synapse message URL response is messageUrl, not url; repaired collector; temporary signed URL never persisted",
+    "Gzip transport bytes were initially stored with .md suffix; retained wire .transport.gz and derived UTF-8 text with separate SHA identities",
+    "Report-only document build initially tried .font on numbering style; corrected style selection before final outputs",
+    "LibreOffice repeatedly substituted inappropriate Chinese fonts; no global repair attempted; PDF rebuilt from same source using existing Chrome and scoped embedded font subsets",
+    "Report QA initially used a 15pt inset as a physical-page limit and flagged the visible footer; corrected to actual page bounds, no document/data change",
+    "Archive verifier initial replies_*.json glob also matched .source.json receipts; refined exact metadata-page selection, original source files unchanged"
+  ],
+  "missing_materials": [
+    "Remaining 30 of 40 reported generated manuscripts",
+    "Public HRFuse-Net source repository and model checkpoints",
+    "Camyla full patient splits, per-case raw results and complete baseline reproduction bundles",
+    "Exact final official detection/segmentation rank matrices, weights and NA/tie aggregation implementation",
+    "Free full text of subscription-only PermRanker chapter",
+    "Complete external-model training-patient exposure audit for fixed103"
+  ],
+  "not_performed": [
+    "Remote job query/submission/release/cancel or model inference/training/scoring",
+    "MRI, patient records, model weights, Docker image or full dataset download",
+    "Locked104 access or change to existing fixed103 metrics/models/contracts",
+    "Independent reproduction of scientific performance claims",
+    "Page-by-page visual review of all 220 third-party PDF pages"
+  ],
+  "source_receipts_UTC_range": ["2026-11-10T07:03:17.031955+00:00", "2026-11-10T07:22:38.213566+00:00"],
+  "archive_identity_status": "passed_2026-11-10T07:44:58.585914+00:00",
+  "archive_manifest_SHA256": "871b0aca902ca20fb5bd4b05f5481cff25bc8453ea9292c46f35bc6a1b87a7c7",
+  "archive_acceptance": {
+    "frozen_Camyla_files": 45,
+    "frozen_Camyla_bytes": 31821359,
+    "successful_source_receipts": 241,
+    "unsuccessful_source_request_receipts": 3,
+    "archived_files_excluding_manifest_and_audit": 657,
+    "archived_bytes_excluding_manifest_and_audit": 37080812,
+    "third_party_PDF_files": 12,
+    "third_party_PDF_pages": 220,
+    "current_local_filesystem_free_bytes": 149985796096,
+    "validation": "All frozen Git blobs/bytes/SHA256, successful source receipt identities, gzip wire/decoded identities, selected forum metadata/body coverage, PDF text identities and local report links verified"
+  },
+  "catalog_verification_evidence": "Repository 总纲/当前索引.md and its linked 覆盖验收.json record the separately generated final physical-file/catalog check",
+  "mandatory_catalog_commands": [
+    "conda run --no-capture-output -n base python -B 总纲/维护/catalog.py build --reason BraTS两年评分论坛与Camyla公开分割手稿调研",
+    "conda run --no-capture-output -n base python -B 总纲/维护/catalog.py check"
+  ],
+  "temporary_document_artifacts": "Only this batch's /tmp/ecnu_refs_20261110_qa is disposable; font/template/HTML intermediates created in TemporaryDirectory and removed automatically",
+  "document_QA": "DOCUMENT_QA.json",
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed"
+}
