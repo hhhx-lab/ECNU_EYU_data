@@ -1,0 +1,179 @@
+{
+  "reviewed_at_utc": "2026-11-17T08:18:22.529153+00:00",
+  "scope": "BraTS METS validation 2023-2025",
+  "rows": [
+    {
+      "year": "2023",
+      "project": "syn51156910",
+      "evaluation_id": "9615344",
+      "name": "BraTS 2023: Segmentation - Brain Metastases",
+      "complete_round_list": true,
+      "round": {
+        "id": "230",
+        "etag": "17173dc4-b6a1-4fc2-87b7-e2c270f99da0",
+        "evaluationId": "9615344",
+        "roundStart": "2023-08-09T21:01:00.000Z",
+        "roundEnd": "2023-08-14T23:59:00.000Z",
+        "limits": [
+          {
+            "limitType": "DAILY",
+            "maximumSubmissions": 2
+          }
+        ]
+      },
+      "active_round_count": 0,
+      "explicit_closed_banner": true,
+      "current_standard_validation_submission": "closed_by_round_configuration",
+      "actual_upload_attempted": false,
+      "scoring_runner_liveness": "not_tested",
+      "authenticated_user_eligibility": "not_checked"
+    },
+    {
+      "year": "2024",
+      "project": "syn53708249",
+      "evaluation_id": "9615545",
+      "name": "BraTS 2024: Segmentation - Brain Metastases",
+      "complete_round_list": true,
+      "round": {
+        "id": "305",
+        "etag": "74c55600-2765-47c5-aa7c-9456e75ec978",
+        "evaluationId": "9615545",
+        "roundStart": "2024-07-10T19:00:00.000Z",
+        "roundEnd": "2024-08-07T23:59:00.000Z",
+        "limits": [
+          {
+            "limitType": "DAILY",
+            "maximumSubmissions": 2
+          }
+        ]
+      },
+      "active_round_count": 0,
+      "explicit_closed_banner": true,
+      "current_standard_validation_submission": "closed_by_round_configuration",
+      "actual_upload_attempted": false,
+      "scoring_runner_liveness": "not_tested",
+      "authenticated_user_eligibility": "not_checked"
+    },
+    {
+      "year": "2025",
+      "project": "syn64153130",
+      "evaluation_id": "9615901",
+      "name": "BraTS 2025 - Task 4: Pre- and Post-Treatment Brain Metastases",
+      "complete_round_list": true,
+      "round": {
+        "id": "395",
+        "etag": "b79bc88c-0f7f-40c4-9f50-4b0e7b3d13ff",
+        "evaluationId": "9615901",
+        "roundStart": "2025-05-28T20:15:00.000Z",
+        "roundEnd": "2025-08-07T23:59:00.000Z",
+        "limits": [
+          {
+            "limitType": "DAILY",
+            "maximumSubmissions": 1
+          }
+        ]
+      },
+      "active_round_count": 0,
+      "explicit_closed_banner": false,
+      "current_standard_validation_submission": "closed_by_round_configuration",
+      "actual_upload_attempted": false,
+      "scoring_runner_liveness": "not_tested",
+      "authenticated_user_eligibility": "not_checked"
+    }
+  ],
+  "active_only_control": {
+    "same_ids_for_true_and_false": [
+      "9615344",
+      "9615545",
+      "9615901"
+    ],
+    "used_as_open_evidence": false,
+    "cause": "not_investigated"
+  },
+  "source_count": 31,
+  "successful_sources": 30,
+  "unsuccessful_sources": [
+    {
+      "url": "https://repo-prod.prod.sagebase.org/repo/v1/evaluation/9615391",
+      "destination": "sources/2023/container_evaluation.json",
+      "started_utc": "2026-11-17T08:14:54.025424+00:00",
+      "received_utc": "2026-11-17T08:14:55.357322+00:00",
+      "success": false,
+      "returncode": 0,
+      "network": {
+        "http_code": 403,
+        "content_type": "application/json;charset=UTF-8",
+        "url_effective": "https://repo-prod.prod.sagebase.org/repo/v1/evaluation/9615391",
+        "size_download": 186,
+        "time_total": 1.321006,
+        "ssl_verify_result": 0
+      },
+      "stderr": "",
+      "response_path": "sources/2023/container_evaluation.json.failed_response",
+      "bytes": 186,
+      "sha256": "0e1549c0b6d43233ef1e2afe9315b2b998dbd1f49e0e02a4ad36372c0b7de107",
+      "method": "GET",
+      "read_only_request": true,
+      "request_body": null,
+      "anonymous": true,
+      "untrusted_external_reference": true,
+      "project_scientific_validation_pass": false
+    }
+  ],
+  "browser_observations": [
+    {
+      "path": "browser/2023_closed.json",
+      "url": "https://www.synapse.org/Synapse:syn51156910/wiki/622553",
+      "received_utc": "2026-11-17T08:14:54.354Z",
+      "bytes": 852,
+      "sha256": "6bf1e7df0600cc648b9ef90edeb8dba72f402c3f765cb2531ae0eca00500f039"
+    },
+    {
+      "path": "browser/2023_results.json",
+      "url": "https://www.synapse.org/Synapse:syn51156910/wiki/622343",
+      "received_utc": "2026-11-17T08:15:20.828Z",
+      "bytes": 2275,
+      "sha256": "d6a948d17b233d8959df80d2fd26713db5704328b5d79e9d7446728f58036d86"
+    },
+    {
+      "path": "browser/2024_closed.json",
+      "url": "https://www.synapse.org/Synapse:syn53708249/wiki/627504",
+      "received_utc": "2026-11-17T08:13:44.567Z",
+      "bytes": 906,
+      "sha256": "8582e5469ec7eb459c0cc5ba25577bc342acbad9b6ed3e93204fe4ab3362b900"
+    },
+    {
+      "path": "browser/2024_results.json",
+      "url": "https://www.synapse.org/Synapse:syn53708249/wiki/628815",
+      "received_utc": "2026-11-17T08:15:33.101Z",
+      "bytes": 2211,
+      "sha256": "ac3900f36dfe7ffb384ed835bc56dba15b6d6248a50caf7af8bf70792992ae22"
+    },
+    {
+      "path": "browser/2025_reopen_question.json",
+      "url": "https://www.synapse.org/Synapse:syn64153130/discussion/threadId=12508",
+      "received_utc": "2026-11-17T08:13:15.168Z",
+      "bytes": 1503,
+      "sha256": "5324aa866d72b37c2844732031f86108dfc61dfbc104ef1ff8b6b79de6bd92cd"
+    },
+    {
+      "path": "browser/2025_results.json",
+      "url": "https://www.synapse.org/Synapse:syn64153130/wiki/632724",
+      "received_utc": "2026-11-17T08:12:55.602Z",
+      "bytes": 5706,
+      "sha256": "bb1371bf2948ebc11278e796544efff361e09fe8327a371154e4b6175f2b07e3"
+    },
+    {
+      "path": "browser/search.json",
+      "url": "https://www.google.com.hk/search?q=BraTS+brain+metastases+validation+continuous+evaluation+submission+2024+2025",
+      "received_utc": "2026-11-17T08:14:11.178Z",
+      "bytes": 3591,
+      "sha256": "fcd01067ad5b473d071d11eeada58b01ff5de60f899c7cc7ec21bc0a6193b0e1"
+    }
+  ],
+  "identity_checks": "pass",
+  "no_upload_no_submission_no_ecnu_no_vpn_no_install": true,
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed"
+}

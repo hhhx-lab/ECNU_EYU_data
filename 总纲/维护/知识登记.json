@@ -1,9 +1,28 @@
 {
-  "reviewed_at": "2026-11-10T07:42:36+00:00",
+  "reviewed_at": "2026-11-17T08:18:22.529153+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability",
+      "description": "2023/2024/2025 BraTS METS官方validation旧榜及当前文件提交队列轮次可用性公开只读复核",
+      "kind": "reference",
+      "reviewed_at": "2026-11-17T08:18:22.529153+00:00",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "state": "三年旧榜Chrome实际渲染；9615344/9615545/9615901绑定官方METS/dashboard/contentSource，当前完整轮次仅一条且分别于2023-08-14/2024-08-07/2025-08-07 UTC23:59结束，无新轮次。2023/2024明确Challenge Closed/archived，2025赛后管理员称重开时间未定，未把旧公告单独当今天状态。GLI持续评测非METS；匿名canSubmit=false和activeOnly+IDs返回旧队列不单独当开放/关闭证据。31来源30成功及7公开浏览器观察SHA/两源码AST通过，辅助2023MLCube9615391匿名403保留停止，不绕认证或重试；未继续查容器队列。当前普通validation路径关闭，不证明runner永久删除或未来无法代评；未登录资格/上传/发帖/联系组织者。无ECNU/VPN/安装/MRI-GT-模型/Slurm或比赛提交/104读取；fixed103非官方validation179，训练暴露/旧结果及科学三项保持。",
+      "evidence": [
+        "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability/README.md",
+        "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability/REPORT.md",
+        "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability/AVAILABILITY_REVIEW.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability/SOURCE_INDEX.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability/sources/2023/rounds.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability/sources/2024/rounds.json",
+        "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability/sources/2025/rounds.json"
+      ]
+    },
     {
       "path": "02_reference_materials/05_brats_metrics_camyla/20261110",
       "description": "BraTS2025/2026 METS官方论坛评分修订与Camyla公开分割手稿深度调研，含脑转移瘤HRFuse专项复核",
