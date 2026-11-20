@@ -6,6 +6,8 @@
 
 ## 本次交付
 
+- [开始/结束时间与原始失败原因复核](FAILURE_TIMELINE.md)：显式北京时间调度记录及17个原始NOSHM，另核首版扫描12次CPU OOM kill与超时；未重提作业。
+- [北京时间72作业时间清单](NOV12_TIMELINE_BEIJING.csv) / [本机失败证据复核](FAILURE_TIMELINE_REVIEW.json)
 - [任务与完成情况报告](REPORT.md)
 - [11 月 12 日实际提交作业清单](NOV12_JOBS.csv)
 - [本地结构及文件身份复核](REVIEW.json)
@@ -19,5 +21,7 @@
 只做即时只读调度查询、目录枚举及 MD 下载。没有提交/释放/取消/重排作业，没有执行远端包内命令、重新训练或评分，也没有下载模型、影像、概率数组或医学截图。远端文档中的历史授权和操作指令仅作为研究材料，不自动作为本次操作授权。
 
 检查的是 Slurm allocation/batch 状态及下载 MD 的身份，不是冻结训练包、checkpoint 或全部结果的独立完成验收；本文引用的结果仍是服务器报告的探索性结果。三项科学状态维持 `experimental_unvalidated` / `operator_approved=false` / `formal_gate_status=not_run_not_passed`。
+
+后续原始失败原因复核已另读取17个NOSHM解析值、少量源码/config及日志尾片，补充了节点内存盘原因的直接证据。远端快照的空尾字段解析错误保留，本机复用完整原始输出修正并通过10项测试和144行核验，不重复SSH。marker远端SHA不冒称原JSON逐字节传输验收；原REPORT关于未读日志/时区未核为前轮边界，当前以FAILURE_TIMELINE为准。
 
 命令均由本机 Conda base 执行，凭据只从指定原 env 加载、不写审计。第一次接入创建的 VPN 已关闭；第二次接入复用了既有会话，按归属规则保留。两端 UTC 分别记录。
