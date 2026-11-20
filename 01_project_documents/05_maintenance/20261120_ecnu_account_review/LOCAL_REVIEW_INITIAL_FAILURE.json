@@ -1,0 +1,13 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "operator_approved": false,
+  "formal_gate_status": "not_run_not_passed",
+  "stage": "local_accounting_review_before_csv_or_review_output",
+  "message": "Initial local verifier incorrectly required failed allocation and batch states to be identical.",
+  "observed_job": "4388852",
+  "allocation": {"state": "TIMEOUT", "exit_code": "0:0"},
+  "batch": {"state": "OUT_OF_MEMORY", "exit_code": "0:125"},
+  "resolution": "Keep both original failure states; require COMPLETED0:0 allocation and batch only for successful jobs. Recheck the same local snapshot without another remote query.",
+  "remote_retry": false,
+  "job_changes": false
+}

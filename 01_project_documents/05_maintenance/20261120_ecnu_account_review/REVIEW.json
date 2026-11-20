@@ -1,0 +1,74 @@
+{
+  "acceptance_sha256": "86620353723ae68dcbce72e715043e8bcd41cc8da817f7bb2b7fda3376d935eb",
+  "accounting_snapshot_sha256": "3704e6249e1c170d132fb6c5386f8e5811bca1d7c8c901e5d13c15dccc2b87c2",
+  "allocation_count": 72,
+  "allocation_states": {
+    "COMPLETED": 54,
+    "FAILED": 17,
+    "TIMEOUT": 1
+  },
+  "artifact_status": "experimental_unvalidated",
+  "batches": [
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_p3_f0_second_member_20261111_r1",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_p3_wave2_20261104_r5",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_p4_oof_postproc_20261111_r3",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_audit_20261111_r1",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_audit_20261112_r2",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_generator_probe_20261112_r1",
+    "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+  ],
+  "download": {
+    "destination": "/Users/hwaigc/\u6bd4\u8d5b+\u8bfe\u9898/ECNU_EYU_data/01_project_documents/05_maintenance/20261120_ecnu_account_review/markdown_20261120T092929Z",
+    "file_count": 57,
+    "local_accepted_utc": "2026-11-20T09:33:19.906463+00:00",
+    "remote_checked_utc": "2026-11-20T09:21:36.592750+00:00",
+    "total_bytes": 324533
+  },
+  "failed_allocation_batch_differences": [
+    {
+      "allocation": {
+        "exit_code": "0:0",
+        "state": "TIMEOUT"
+      },
+      "batch": {
+        "exit_code": "0:125",
+        "state": "OUT_OF_MEMORY"
+      },
+      "job_id": "4388852"
+    }
+  ],
+  "formal_gate_status": "not_run_not_passed",
+  "image_data_downloaded": false,
+  "jobs_csv_sha256": "6b8c7810d5f992000f7ca1803a36d21771cecd58a25b435af3af5c1a8a493f9e",
+  "models_downloaded": false,
+  "no_job_changes": true,
+  "operator_approved": false,
+  "project_completion_not_accepted_from_scheduler_alone": true,
+  "rc_train": {
+    "completed0": 8,
+    "failed75": 17,
+    "not_started_reason": "node_shared_memory_shortage_as_recorded_in_server_summary",
+    "planned": 25,
+    "version_states": {
+      "B0": {
+        "COMPLETED": 5
+      },
+      "B0p": {
+        "FAILED": 5
+      },
+      "BL": {
+        "FAILED": 5
+      },
+      "BU": {
+        "FAILED": 5
+      },
+      "BUL": {
+        "COMPLETED": 3,
+        "FAILED": 2
+      }
+    }
+  },
+  "reviewed_at": "2026-11-20T09:37:05.518872+00:00",
+  "status": "metadata_and_markdown_review_pass",
+  "verification_level": "scheduler_allocation_and_batch_plus_downloaded_markdown_not_runtime_or_metric_replay"
+}

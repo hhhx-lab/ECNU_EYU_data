@@ -1,9 +1,29 @@
 {
-  "reviewed_at": "2026-11-17T08:18:22.529153+00:00",
+  "reviewed_at": "2026-11-20T09:37:05.518872+00:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "01_project_documents/05_maintenance/20261120_ecnu_account_review",
+      "description": "共享ECNU账号其他执行者11月12日RC关联任务定位、服务器MD及已有汇总回传",
+      "kind": "document",
+      "reviewed_at": "2026-11-20T09:37:05.518872+00:00",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "state": "用户指定11/12与RC主题，7关联目录72allocation：54COMPLETED0:0且batch同为完成，17FAILED75:0，首版RC扫描allocation TIMEOUT0:0/batch OOM0:125。RC训练8/25（B0五折/BUL前三折）完成，其余17回传状态表记内存盘不足/not_started；非loss发散，不以汇总0称整批完成。补充核查/生成探查、F0第二成员/P4/L追加已调度结束；生成器报告闸门阴性为质量结论而非程序失败。本次只验MD身份及metadata，不重放冻结包/marker/模型预测或科学结论。57MD324533bytes两端SHA通过，重复MD/全账号原始调度留本机索引；首轮本地误要求失败两层状态相同已修，原失败保留，不再SSH。余454.164GiB非数值quota；首自有VPN停止、后续既有会话保留。无作业变化/模型医学图下载/安装/新评分/104读取；旧四路成绩与科学三项不改。",
+      "evidence": [
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/README.md",
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/REPORT.md",
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/NOV12_JOBS.csv",
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/REVIEW.json",
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/LOCAL_REVIEW_INITIAL_FAILURE.json",
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/operator/nov12_markdown_20261120T092929Z/DOWNLOAD_ACCEPTANCE.json",
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/operator/nov12_markdown_20261120T092929Z/RESULT.json",
+        "01_project_documents/05_maintenance/20261120_ecnu_account_review/operator/nov12_markdown_20261120T092929Z/LOCAL_OPERATION_RECEIPT.json"
+      ]
+    },
     {
       "path": "02_reference_materials/05_brats_metrics_camyla/20261117_validation_availability",
       "description": "2023/2024/2025 BraTS METS官方validation旧榜及当前文件提交队列轮次可用性公开只读复核",
