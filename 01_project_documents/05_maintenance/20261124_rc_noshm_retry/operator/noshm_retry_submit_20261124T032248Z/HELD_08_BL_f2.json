@@ -1,0 +1,92 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false,
+  "status": "held_verified",
+  "submission": {
+    "args": {
+      "BL_f2": [
+        "BL_f2"
+      ],
+      "summary": []
+    },
+    "artifact_status": "experimental_unvalidated",
+    "exclude": [
+      "gpu12"
+    ],
+    "formal_gate_status": "not_run_not_passed",
+    "free_space_gb_at_submit": 441.181640625,
+    "jobs": {
+      "BL_f2": "4452772",
+      "summary": "4452773"
+    },
+    "label": "noshm_BL_f2_1",
+    "manifest_sha256": "1a112a398b93fa9eb56c98bb7f81028e9b471c96e50450bdeeb3be01938c3e3b",
+    "noshm_of": "BL_f2",
+    "operator_approved": false,
+    "options": {
+      "BL_f2": [
+        "--job-name=rcb_BL_f2",
+        "--partition=a100",
+        "--gres=gpu:1",
+        "--cpus-per-task=16",
+        "--mem=128G",
+        "--time=1-00:00:00",
+        "--no-requeue",
+        "--exclude=gpu12",
+        "--dependency=afterany:4452766",
+        "--kill-on-invalid-dep=yes"
+      ],
+      "summary": [
+        "--job-name=rcb_sum",
+        "--dependency=afterany:4452772",
+        "--kill-on-invalid-dep=yes"
+      ]
+    },
+    "previous_job": "4389563",
+    "rewritten_dependencies": {},
+    "scontrol": {
+      "BL_f2": "JobId=4452772 JobName=rcb_BL_f2 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterany:4452766(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=1-00:00:00 TimeMin=N/A SubmitTime=2026-11-24T11:12:14 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-24T11:12:14 Partition=a100 AllocNode:Sid=10.11.100.253:50039 ReqNodeList=(null) ExcNodeList=gpu12 NodeList=(null) NumNodes=1-1 NumCPUs=16 NumTasks=1 CPUs/Task=16 ReqB:S:C:T=0:0:*:* TRES=cpu=16,mem=128G,node=1,billing=16,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=16 MinMemoryNode=128G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm/30_train.slurm BL_f2 WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_BL_f2_4452772.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_BL_f2_4452772.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0",
+      "summary": "JobId=4452773 JobName=rcb_sum UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=0 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=JobHeldUser Dependency=afterany:4452772(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=00:30:00 TimeMin=N/A SubmitTime=2026-11-24T11:12:14 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-24T11:12:14 Partition=cpu_96G AllocNode:Sid=10.11.100.253:50039 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:* TRES=cpu=1,mem=4G,node=1,billing=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=4G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm/90_summary.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_sum_4452773.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_sum_4452773.out Power= KillOInInvalidDependent=Yes NtasksPerTRES:0"
+    },
+    "script_sha256": {
+      "BL_f2": "1ab65a061c7326bc908260ff81001cb7323189adf973fc514282e2666eedbda2",
+      "summary": "57216d7dc81677d3c4b31db325307ddb06c2d81bbeb22f85afe7902b624cf446"
+    },
+    "scripts": {
+      "BL_f2": "slurm/30_train.slurm",
+      "summary": "slurm/90_summary.slurm"
+    },
+    "status": "submitted_held",
+    "status_before": {
+      "B0_f0": "complete",
+      "B0_f1": "complete",
+      "B0_f2": "complete",
+      "B0_f3": "complete",
+      "B0_f4": "complete",
+      "B0p_f0": "queued",
+      "B0p_f1": "queued",
+      "B0p_f2": "queued",
+      "B0p_f3": "noshm",
+      "B0p_f4": "noshm",
+      "BL_f0": "queued",
+      "BL_f1": "queued",
+      "BL_f2": "noshm",
+      "BL_f3": "noshm",
+      "BL_f4": "noshm",
+      "BUL_f0": "complete",
+      "BUL_f1": "complete",
+      "BUL_f2": "complete",
+      "BUL_f3": "noshm",
+      "BUL_f4": "noshm",
+      "BU_f0": "queued",
+      "BU_f1": "queued",
+      "BU_f2": "noshm",
+      "BU_f3": "noshm",
+      "BU_f4": "noshm"
+    },
+    "submitted_at_utc": "2026-11-24T03:13:11.659280+00:00"
+  },
+  "submit_output_tail": "\nzqchen@59.78.189.132's password: \nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nHELD noshm_BL_f2_1: {'BL_f2': '4452772', 'summary': '4452773'}\naudit /public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/evidence/SUBMISSION_noshm_BL_f2_1.json, then: python operator/release.py noshm_BL_f2_1\n",
+  "utc": "2026-11-24T03:25:01.595853+00:00"
+}

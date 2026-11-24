@@ -1,9 +1,25 @@
 {
-  "reviewed_at": "2026-11-20T10:54:20+00:00",
+  "reviewed_at": "2026-11-24T11:43:02+08:00",
   "artifact_status": "experimental_unvalidated",
   "operator_approved": false,
   "formal_gate_status": "not_run_not_passed",
   "units": [
+    {
+      "path": "01_project_documents/05_maintenance/20261124_rc_noshm_retry",
+      "description": "11月12日RC NOSHM失败的17折按冻结提交器排除旧失败节点后首次重排及即时队列核验",
+      "kind": "document",
+      "reviewed_at": "2026-11-24T11:43:02+08:00",
+      "artifact_status": "experimental_unvalidated",
+      "operator_approved": false,
+      "formal_gate_status": "not_run_not_passed",
+      "state": "17个原attempt0折均因节点/dev/shm不足在训练启动前失败，原失败记录保留。按冻结包原submit/release流程每折提交并释放一个新作业，排除各折旧失败节点，训练合同、数据、模型、依赖链不变。新训练JobID 4452757、4452760、4452762、4452764、4452766、4452768、4452770、4452772、4452774、4452776、4452778、4452780、4452782、4452784、4452786、4452788、4452790，另有17个配套汇总作业。远端UTC 2026-11-24T03:23:01.605907Z快照显示训练及汇总均PENDING、0 RUNNING，无新STARTED/NOSHM；仅证明已重新入队，不代表开始训练或/dev/shm问题解决。文件系统余量与共享内存盘分开核算。首折本机包装器停止与同一held任务恢复释放均留审计；不改远端包、不启用fallback、不续训或处理其他用户作业。未读影像、标签、checkpoint或预测；无科学质量验收。",
+      "evidence": [
+        "01_project_documents/05_maintenance/20261124_rc_noshm_retry/REPORT.md",
+        "01_project_documents/05_maintenance/20261124_rc_noshm_retry/operator/noshm_retry_submit_20261124T032248Z/FINAL_RESULT.json",
+        "01_project_documents/05_maintenance/20261124_rc_noshm_retry/operator/noshm_retry_verify_20261124T033424Z/RESULT.json",
+        "01_project_documents/05_maintenance/20261124_rc_noshm_retry/operator/noshm_retry_recover_20261124T031957Z/RELEASED_01_B0p_f0.json"
+      ]
+    },
     {
       "path": "01_project_documents/05_maintenance/20261120_ecnu_account_review",
       "description": "共享ECNU账号其他执行者11月12日RC任务定位、MD回传及北京时间/原始失败原因核查",

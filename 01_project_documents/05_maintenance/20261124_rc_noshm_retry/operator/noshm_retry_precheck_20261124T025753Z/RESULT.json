@@ -1,0 +1,917 @@
+{
+  "a100_nodes": "gpu9|mixed|gpu:NVIDIAA100-PCIE-40GB:2|16/32/0/48\ngpu11|mixed|gpu:NVIDIAA100-PCIE-40GB:2|8/40/0/48\ngpu12|mixed|gpu:NVIDIAA100-PCIE-40GB:2|16/32/0/48\ngpu13|mixed|gpu:NVIDIAA100-PCIE-40GB:2|12/36/0/48\ngpu14|mixed|gpu:NVIDIAA100-PCIE-40GB:2|16/32/0/48\ngpu15|mixed|gpu:NVIDIAA100-PCIE-40GB:2|8/40/0/48\ngpu16|mixed|gpu:NVIDIAA100-PCIE-40GB:2|12/36/0/48\ngpu17|mixed|gpu:NVIDIAA100-PCIE-40GB:2|5/43/0/48\ngpu18|mixed|gpu:NVIDIAA100-PCIE-40GB:2|9/39/0/48\ngpu19|mixed|gpu:NVIDIAA100-PCIE-40GB:2|12/36/0/48\ngpu22|mixed|gpu:NVIDIAA100-PCIE-40GB:2|16/32/0/48\n",
+  "artifact_status": "experimental_unvalidated",
+  "boundaries": {
+    "no_image_or_checkpoint_reads": true,
+    "no_job_changes": true,
+    "no_remote_file_writes": true,
+    "read_only_remote": true
+  },
+  "errors": [],
+  "experiment_id": "s2_rc_train_batch1_20261112_r1",
+  "formal_gate_status": "not_run_not_passed",
+  "history_rcb_and_original": [
+    {
+      "elapsed": "06:31:12",
+      "end": "2026-11-15T20:07:11",
+      "exit_code": "0:0",
+      "job_id": "4389551",
+      "name": "rcb_B0_f0",
+      "partition": "a100",
+      "start": "2026-11-15T13:35:59",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:34",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "06:33:17",
+      "end": "2026-11-16T02:40:31",
+      "exit_code": "0:0",
+      "job_id": "4389552",
+      "name": "rcb_B0_f1",
+      "partition": "a100",
+      "start": "2026-11-15T20:07:14",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:35",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "06:36:08",
+      "end": "2026-11-16T09:16:58",
+      "exit_code": "0:0",
+      "job_id": "4389553",
+      "name": "rcb_B0_f2",
+      "partition": "a100",
+      "start": "2026-11-16T02:40:50",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:35",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "06:36:42",
+      "end": "2026-11-16T15:54:38",
+      "exit_code": "0:0",
+      "job_id": "4389554",
+      "name": "rcb_B0_f3",
+      "partition": "a100",
+      "start": "2026-11-16T09:17:56",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:35",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "06:34:56",
+      "end": "2026-11-16T22:29:45",
+      "exit_code": "0:0",
+      "job_id": "4389555",
+      "name": "rcb_B0_f4",
+      "partition": "a100",
+      "start": "2026-11-16T15:54:49",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:35",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:07",
+      "end": "2026-11-15T15:56:06",
+      "exit_code": "75:0",
+      "job_id": "4389556",
+      "name": "rcb_B0p_f0",
+      "partition": "a100",
+      "start": "2026-11-15T15:35:59",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:35",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:01",
+      "end": "2026-11-15T16:16:09",
+      "exit_code": "75:0",
+      "job_id": "4389557",
+      "name": "rcb_B0p_f1",
+      "partition": "a100",
+      "start": "2026-11-15T15:56:08",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:35",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T16:36:19",
+      "exit_code": "75:0",
+      "job_id": "4389558",
+      "name": "rcb_B0p_f2",
+      "partition": "a100",
+      "start": "2026-11-15T16:16:17",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:36",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T16:56:29",
+      "exit_code": "75:0",
+      "job_id": "4389559",
+      "name": "rcb_B0p_f3",
+      "partition": "a100",
+      "start": "2026-11-15T16:36:27",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:36",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T17:16:38",
+      "exit_code": "75:0",
+      "job_id": "4389560",
+      "name": "rcb_B0p_f4",
+      "partition": "a100",
+      "start": "2026-11-15T16:56:36",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:36",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:07",
+      "end": "2026-11-15T15:56:06",
+      "exit_code": "75:0",
+      "job_id": "4389561",
+      "name": "rcb_BL_f0",
+      "partition": "a100",
+      "start": "2026-11-15T15:35:59",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:36",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:01",
+      "end": "2026-11-15T16:16:09",
+      "exit_code": "75:0",
+      "job_id": "4389562",
+      "name": "rcb_BL_f1",
+      "partition": "a100",
+      "start": "2026-11-15T15:56:08",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:36",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T16:36:19",
+      "exit_code": "75:0",
+      "job_id": "4389563",
+      "name": "rcb_BL_f2",
+      "partition": "a100",
+      "start": "2026-11-15T16:16:17",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:36",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T16:56:29",
+      "exit_code": "75:0",
+      "job_id": "4389564",
+      "name": "rcb_BL_f3",
+      "partition": "a100",
+      "start": "2026-11-15T16:36:27",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:37",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T17:16:38",
+      "exit_code": "75:0",
+      "job_id": "4389565",
+      "name": "rcb_BL_f4",
+      "partition": "a100",
+      "start": "2026-11-15T16:56:36",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:37",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:07",
+      "end": "2026-11-15T15:56:06",
+      "exit_code": "75:0",
+      "job_id": "4389566",
+      "name": "rcb_BU_f0",
+      "partition": "a100",
+      "start": "2026-11-15T15:35:59",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:37",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:01",
+      "end": "2026-11-15T16:16:09",
+      "exit_code": "75:0",
+      "job_id": "4389567",
+      "name": "rcb_BU_f1",
+      "partition": "a100",
+      "start": "2026-11-15T15:56:08",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:37",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T16:36:19",
+      "exit_code": "75:0",
+      "job_id": "4389568",
+      "name": "rcb_BU_f2",
+      "partition": "a100",
+      "start": "2026-11-15T16:16:17",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:37",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T16:56:29",
+      "exit_code": "75:0",
+      "job_id": "4389569",
+      "name": "rcb_BU_f3",
+      "partition": "a100",
+      "start": "2026-11-15T16:36:27",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:38",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:02",
+      "end": "2026-11-15T17:16:38",
+      "exit_code": "75:0",
+      "job_id": "4389570",
+      "name": "rcb_BU_f4",
+      "partition": "a100",
+      "start": "2026-11-15T16:56:36",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:38",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "05:37:28",
+      "end": "2026-11-15T21:15:28",
+      "exit_code": "0:0",
+      "job_id": "4389571",
+      "name": "rcb_BUL_f0",
+      "partition": "a100",
+      "start": "2026-11-15T15:38:00",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:38",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "05:36:58",
+      "end": "2026-11-16T02:52:47",
+      "exit_code": "0:0",
+      "job_id": "4389572",
+      "name": "rcb_BUL_f1",
+      "partition": "a100",
+      "start": "2026-11-15T21:15:49",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:38",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "05:35:23",
+      "end": "2026-11-16T08:28:13",
+      "exit_code": "0:0",
+      "job_id": "4389573",
+      "name": "rcb_BUL_f2",
+      "partition": "a100",
+      "start": "2026-11-16T02:52:50",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:38",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:07",
+      "end": "2026-11-16T08:49:01",
+      "exit_code": "75:0",
+      "job_id": "4389574",
+      "name": "rcb_BUL_f3",
+      "partition": "a100",
+      "start": "2026-11-16T08:28:54",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:38",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:20:01",
+      "end": "2026-11-16T09:09:55",
+      "exit_code": "75:0",
+      "job_id": "4389575",
+      "name": "rcb_BUL_f4",
+      "partition": "a100",
+      "start": "2026-11-16T08:49:54",
+      "state": "FAILED",
+      "submit": "2026-11-12T23:36:39",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    },
+    {
+      "elapsed": "00:00:03",
+      "end": "2026-11-16T22:30:27",
+      "exit_code": "0:0",
+      "job_id": "4389576",
+      "name": "rcb_sum",
+      "partition": "cpu_96G",
+      "start": "2026-11-16T22:30:24",
+      "state": "COMPLETED",
+      "submit": "2026-11-12T23:36:39",
+      "work_dir": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1"
+    }
+  ],
+  "local_received_utc": "2026-11-24T02:58:00.356980+00:00",
+  "manifest_entries": 31,
+  "manifest_sha256": "1a112a398b93fa9eb56c98bb7f81028e9b471c96e50450bdeeb3be01938c3e3b",
+  "markers": {
+    "B0p_f0": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T07:56:06.779060+00:00",
+        "error": "NoShm('/dev/shm has 44 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 44 GB, 21 checks)')",
+        "job_id": "4389556",
+        "name": "RUN_B0p_f0_NOSHM_4389556.json",
+        "node": "gpu15",
+        "sha256": "bb5708f9634b0577e1f862815d5520b54fbd9ff13ce80b0b47ecc31df679b884",
+        "started_utc": "2026-11-15T07:36:06.353705+00:00",
+        "status": "noshm"
+      }
+    ],
+    "B0p_f1": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:16:09.797252+00:00",
+        "error": "NoShm('/dev/shm has 44 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 44 GB, 21 checks)')",
+        "job_id": "4389557",
+        "name": "RUN_B0p_f1_NOSHM_4389557.json",
+        "node": "gpu15",
+        "sha256": "cfe3a480d88dd7ac0ac07df204f0e3bd34c1e519cb029aed1e206bc16a73d8a2",
+        "started_utc": "2026-11-15T07:56:09.381880+00:00",
+        "status": "noshm"
+      }
+    ],
+    "B0p_f2": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:36:19.075218+00:00",
+        "error": "NoShm('/dev/shm has 44 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 44 GB, 21 checks)')",
+        "job_id": "4389558",
+        "name": "RUN_B0p_f2_NOSHM_4389558.json",
+        "node": "gpu15",
+        "sha256": "e0416b71004233000d8dee81f8ba6e8bb5d0c6ff7f4c8ba33ec54457e1235da1",
+        "started_utc": "2026-11-15T08:16:18.667722+00:00",
+        "status": "noshm"
+      }
+    ],
+    "B0p_f3": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:56:29.056805+00:00",
+        "error": "NoShm('/dev/shm has 44 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 44 GB, 21 checks)')",
+        "job_id": "4389559",
+        "name": "RUN_B0p_f3_NOSHM_4389559.json",
+        "node": "gpu15",
+        "sha256": "19771647798bcb11a707f67d39d053dfb4cfd2e9a985d6f7d0a72b1af3250584",
+        "started_utc": "2026-11-15T08:36:28.644090+00:00",
+        "status": "noshm"
+      }
+    ],
+    "B0p_f4": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T09:16:38.367426+00:00",
+        "error": "NoShm('/dev/shm has 44 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 44 GB, 21 checks)')",
+        "job_id": "4389560",
+        "name": "RUN_B0p_f4_NOSHM_4389560.json",
+        "node": "gpu15",
+        "sha256": "f15d23394f5e34e03807a3f2d6e1fd19a79961d59fe3a9f11bbd8623a11bf935",
+        "started_utc": "2026-11-15T08:56:37.968469+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BL_f0": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T07:56:06.436270+00:00",
+        "error": "NoShm('/dev/shm has 17 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 17 GB, 21 checks)')",
+        "job_id": "4389561",
+        "name": "RUN_BL_f0_NOSHM_4389561.json",
+        "node": "gpu12",
+        "sha256": "9f82bef225fc6b05b455b8ec85607d3feb67039c4a6b8f1e7906f4cc4695758f",
+        "started_utc": "2026-11-15T07:36:06.112809+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BL_f1": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:16:09.643292+00:00",
+        "error": "NoShm('/dev/shm has 17 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 17 GB, 21 checks)')",
+        "job_id": "4389562",
+        "name": "RUN_BL_f1_NOSHM_4389562.json",
+        "node": "gpu12",
+        "sha256": "93cc55002a16dc9b30f2f78cad449131c447caff0e4309c0d153658e53a1635e",
+        "started_utc": "2026-11-15T07:56:09.357042+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BL_f2": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:36:18.951809+00:00",
+        "error": "NoShm('/dev/shm has 17 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 17 GB, 21 checks)')",
+        "job_id": "4389563",
+        "name": "RUN_BL_f2_NOSHM_4389563.json",
+        "node": "gpu12",
+        "sha256": "fa686299483ce0b57631400747d442de9812274861cb61b2a82d85899db75add",
+        "started_utc": "2026-11-15T08:16:18.660554+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BL_f3": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:56:28.947189+00:00",
+        "error": "NoShm('/dev/shm has 17 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 17 GB, 21 checks)')",
+        "job_id": "4389564",
+        "name": "RUN_BL_f3_NOSHM_4389564.json",
+        "node": "gpu12",
+        "sha256": "4dd13cc1f41f21baac92f5c9a1c9ac6ce3d1fde56a968c075894d521d633e84f",
+        "started_utc": "2026-11-15T08:36:28.652747+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BL_f4": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T09:16:38.234202+00:00",
+        "error": "NoShm('/dev/shm has 17 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 17 GB, 21 checks)')",
+        "job_id": "4389565",
+        "name": "RUN_BL_f4_NOSHM_4389565.json",
+        "node": "gpu12",
+        "sha256": "2a8ecdea3c907c3d492582cc46e691ee5cbad6db96aac5be5e76227d10857493",
+        "started_utc": "2026-11-15T08:56:37.944748+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BUL_f3": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-16T00:49:01.428646+00:00",
+        "error": "NoShm('/dev/shm has 3 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 3 GB, 21 checks)')",
+        "job_id": "4389574",
+        "name": "RUN_BUL_f3_NOSHM_4389574.json",
+        "node": "gpu13",
+        "sha256": "0dcaa87a54e5059be35e901d419050819f29876a1661ac08683eaa36f4f003a9",
+        "started_utc": "2026-11-16T00:29:01.048259+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BUL_f4": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-16T01:09:55.765453+00:00",
+        "error": "NoShm('/dev/shm has 3 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 3 GB, 21 checks)')",
+        "job_id": "4389575",
+        "name": "RUN_BUL_f4_NOSHM_4389575.json",
+        "node": "gpu13",
+        "sha256": "f9dff64329bdd635fa6aba9326b616ff84e29f1e778685d8c9df5c14b2f2efc8",
+        "started_utc": "2026-11-16T00:49:55.413853+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BU_f0": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T07:56:06.719194+00:00",
+        "error": "NoShm('/dev/shm has 3 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 3 GB, 21 checks)')",
+        "job_id": "4389566",
+        "name": "RUN_BU_f0_NOSHM_4389566.json",
+        "node": "gpu13",
+        "sha256": "fb4e8dcdcb24e9ba6e1c44fa5a08acf8b2feefe9b4262f0c5b9379fa0f49fa33",
+        "started_utc": "2026-11-15T07:36:06.350550+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BU_f1": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:16:09.693517+00:00",
+        "error": "NoShm('/dev/shm has 3 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 3 GB, 21 checks)')",
+        "job_id": "4389567",
+        "name": "RUN_BU_f1_NOSHM_4389567.json",
+        "node": "gpu13",
+        "sha256": "79d57f25251edd58f5599bdb4b297fe4bc5e7f058245f5f121c2f4b95c5df18b",
+        "started_utc": "2026-11-15T07:56:09.329259+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BU_f2": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:36:19.002497+00:00",
+        "error": "NoShm('/dev/shm has 3 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 3 GB, 21 checks)')",
+        "job_id": "4389568",
+        "name": "RUN_BU_f2_NOSHM_4389568.json",
+        "node": "gpu13",
+        "sha256": "f608fab6f5a6d54d8319f0174f339b7bacf7f0713fa8a5f25521a4c3cd617046",
+        "started_utc": "2026-11-15T08:16:18.653640+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BU_f3": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T08:56:28.984905+00:00",
+        "error": "NoShm('/dev/shm has 3 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 3 GB, 21 checks)')",
+        "job_id": "4389569",
+        "name": "RUN_BU_f3_NOSHM_4389569.json",
+        "node": "gpu13",
+        "sha256": "6f8c9868cd0bff5e5aa9de3ec0a815d1893d8ccd6a30eee53d047f289bfbcdda",
+        "started_utc": "2026-11-15T08:36:28.640121+00:00",
+        "status": "noshm"
+      }
+    ],
+    "BU_f4": [
+      {
+        "attempt": 0,
+        "child_returncode": null,
+        "ended_utc": "2026-11-15T09:16:38.246419+00:00",
+        "error": "NoShm('/dev/shm has 3 GB free after waiting 1200 s; need 42 GB + 20 GB margin (lowest seen 3 GB, 21 checks)')",
+        "job_id": "4389570",
+        "name": "RUN_BU_f4_NOSHM_4389570.json",
+        "node": "gpu13",
+        "sha256": "09553bd93f364d08d55b866c4303da32f22153e48ed8659b2daeae04fc39235b",
+        "started_utc": "2026-11-15T08:56:37.918701+00:00",
+        "status": "noshm"
+      }
+    ]
+  },
+  "operator_approved": false,
+  "queue_rcb": [],
+  "remote_started_utc": "2026-11-24T02:46:10.948513+00:00",
+  "remote_utc": "2026-11-24T02:46:12.987018+00:00",
+  "root": "/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1",
+  "run_contract": {
+    "max_concurrent": 5,
+    "resources": {
+      "ft": {
+        "cpus": 16,
+        "mem": "128G",
+        "n_proc_DA": 12,
+        "partition": "a100",
+        "time": "1-00:00:00"
+      },
+      "smoke": {
+        "cpus": 28,
+        "mem": "160G",
+        "n_proc_DA": 4,
+        "partition": "cpu_192G",
+        "time": "06:00:00"
+      }
+    },
+    "runs": {
+      "B0p_f0": {
+        "after_any": [],
+        "after_ok": [],
+        "arm": "B0p",
+        "case_lists": true,
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.4,
+        "fold": 0,
+        "name": "B0p_f0",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCB0p"
+      },
+      "B0p_f1": {
+        "after_any": [
+          "B0p_f0"
+        ],
+        "after_ok": [],
+        "arm": "B0p",
+        "case_lists": true,
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.4,
+        "fold": 1,
+        "name": "B0p_f1",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCB0p"
+      },
+      "B0p_f2": {
+        "after_any": [
+          "B0p_f1"
+        ],
+        "after_ok": [],
+        "arm": "B0p",
+        "case_lists": true,
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.4,
+        "fold": 2,
+        "name": "B0p_f2",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCB0p"
+      },
+      "B0p_f3": {
+        "after_any": [
+          "B0p_f2"
+        ],
+        "after_ok": [],
+        "arm": "B0p",
+        "case_lists": true,
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.4,
+        "fold": 3,
+        "name": "B0p_f3",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCB0p"
+      },
+      "B0p_f4": {
+        "after_any": [
+          "B0p_f3"
+        ],
+        "after_ok": [],
+        "arm": "B0p",
+        "case_lists": true,
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.4,
+        "fold": 4,
+        "name": "B0p_f4",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCB0p"
+      },
+      "BL_f0": {
+        "after_any": [],
+        "after_ok": [],
+        "arm": "BL",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.8,
+        "fold": 0,
+        "name": "BL_f0",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBL"
+      },
+      "BL_f1": {
+        "after_any": [
+          "BL_f0"
+        ],
+        "after_ok": [],
+        "arm": "BL",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.8,
+        "fold": 1,
+        "name": "BL_f1",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBL"
+      },
+      "BL_f2": {
+        "after_any": [
+          "BL_f1"
+        ],
+        "after_ok": [],
+        "arm": "BL",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.8,
+        "fold": 2,
+        "name": "BL_f2",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBL"
+      },
+      "BL_f3": {
+        "after_any": [
+          "BL_f2"
+        ],
+        "after_ok": [],
+        "arm": "BL",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.8,
+        "fold": 3,
+        "name": "BL_f3",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBL"
+      },
+      "BL_f4": {
+        "after_any": [
+          "BL_f3"
+        ],
+        "after_ok": [],
+        "arm": "BL",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.8,
+        "fold": 4,
+        "name": "BL_f4",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBL"
+      },
+      "BUL_f3": {
+        "after_any": [
+          "BUL_f2"
+        ],
+        "after_ok": [],
+        "arm": "BUL",
+        "case_lists": true,
+        "cohort": "ucsd",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.8,
+        "fold": 3,
+        "name": "BUL_f3",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBUL"
+      },
+      "BUL_f4": {
+        "after_any": [
+          "BUL_f3"
+        ],
+        "after_ok": [],
+        "arm": "BUL",
+        "case_lists": true,
+        "cohort": "ucsd",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.8,
+        "fold": 4,
+        "name": "BUL_f4",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBUL"
+      },
+      "BU_f0": {
+        "after_any": [],
+        "after_ok": [],
+        "arm": "BU",
+        "case_lists": true,
+        "cohort": "ucsd",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.2,
+        "fold": 0,
+        "name": "BU_f0",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBU"
+      },
+      "BU_f1": {
+        "after_any": [
+          "BU_f0"
+        ],
+        "after_ok": [],
+        "arm": "BU",
+        "case_lists": true,
+        "cohort": "ucsd",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.2,
+        "fold": 1,
+        "name": "BU_f1",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBU"
+      },
+      "BU_f2": {
+        "after_any": [
+          "BU_f1"
+        ],
+        "after_ok": [],
+        "arm": "BU",
+        "case_lists": true,
+        "cohort": "ucsd",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.2,
+        "fold": 2,
+        "name": "BU_f2",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBU"
+      },
+      "BU_f3": {
+        "after_any": [
+          "BU_f2"
+        ],
+        "after_ok": [],
+        "arm": "BU",
+        "case_lists": true,
+        "cohort": "ucsd",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.2,
+        "fold": 3,
+        "name": "BU_f3",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBU"
+      },
+      "BU_f4": {
+        "after_any": [
+          "BU_f3"
+        ],
+        "after_ok": [],
+        "arm": "BU",
+        "case_lists": true,
+        "cohort": "ucsd",
+        "dataset": "268",
+        "epochs": 300,
+        "est_hours": 5.2,
+        "fold": 4,
+        "name": "BU_f4",
+        "plans": "m",
+        "resources": "ft",
+        "trainer": "nnUNetTrainerRCBU"
+      }
+    },
+    "shm": {
+      "child_grace_s": 10,
+      "copy_threads": 8,
+      "free_margin_gb": 20,
+      "max_noshm_resubmits": 3,
+      "mem_headroom_gb": 48,
+      "noshm_exit_code": 75,
+      "prefix": "/dev/shm/s2rcb_",
+      "wait_max_s": 1200,
+      "wait_poll_s": 60
+    }
+  },
+  "sources": {
+    "MANIFEST.sha256": {
+      "bytes": 2711,
+      "sha256": "1a112a398b93fa9eb56c98bb7f81028e9b471c96e50450bdeeb3be01938c3e3b",
+      "text": "0e8c8c01a4c1930c9942737d089944b5ecedafe57a4cbc8b7817e1fc301304de  CHANGELOG.md\nac36754f480a96a3fc8e1d8f768fe85da875e8969b24723e91f7883548ecb858  PROTOCOL.md\n978135b1a66a73bd0cdcb3d2aff39a79476b0825b4182eb548ae4e2be825696d  README.md\n376eccc0ab1a1ce7ce2be9092bdc7516092867143bbfc0f933757452fcca59ad  RUN.json\ned19ce8672009770dbb4b285d232bccb778798be7b196af241ca75a28e7789ef  UNDO.md\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  evidence/.keep\n5e9ecc8312e51e18cedd798e0fd63871f8897f48e073a20e7789674a586920f1  operator/make_manifest.py\n0eb1fdc1c31a64bef33767a22c35b02887d90ffcf1eeaaff43e290297bb279e6  operator/release.py\ncf974ad3e2e738f79a42cf6de56f8af46f6bda1b42ce4ee6dc2f7c1b99b69416  operator/submit.py\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  results/.keep\n3adafafe76c416117d71225fb219516773e7b8d58694a641437a28128cb1afb0  runtime/common.py\nb980fd4e2dd5771dabda0092b5d6664b2717e768aacea83ab93c522aa181a4ac  runtime/cpu_smoke.py\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  runtime/ext/p3_nnunet/__init__.py\nb779d87c04a0d32e91e3240334307574abd5482a58160761d9e97fc6fdd86998  runtime/ext/p3_nnunet/p3_trainers.py\ne7af395b19fd9d56dfd030ea8f98457c69a10b9d4a592553ccc7b7a3ee7ee63c  runtime/ext/p3_nnunet/rc_losses.py\ne556eb7ca128f9d3c4bf4bc4339883bfc0e0329f6ec22e764bd66f55200ef8b7  runtime/ext/p3_nnunet/rc_sampling.py\nc8eea83f0ff3ca36ec5101191444d0c32be7fdc5a1ab2b215d263a170826c581  runtime/ext/p3_nnunet/rc_trainers.py\n9d90b7c82a0ea692392a645ce8a38bdd3dc3f0d0217668665ad8e34c4cb15af9  runtime/launch_run.py\n22b4d453180dbc7df0bdfbb68ade82481007b7efab6804aeaf6f16816fa33f69  runtime/mp_selfcheck.py\nba7598e57a5ed35b4714b050346b32e5ac2e01214cf81f88751c541d33e8278f  runtime/p3.py\nd7567b3a77fd1052602603fff90b1c7dc7bec75ce22cf1e8b642f0bf57d601af  runtime/preflight.py\nf1ca7f4ac7fe60f12e9753f932f410059b76006ccb6da330b8cf8e7342b2cf08  runtime/roundtrip.py\nfd3d9323203e54c074ddcda3bc0c6ff7e9fc79a434dacab9d59bab23962385f4  runtime/summarize.py\n9f645f783f03b54284a83a90a1b23bab53b4f04f0ca707127640ac3f86fc29c6  slurm/00_preflight.slurm\nec0ad6225473658e9ba02d8dd2d393bd0c659d88fbcbca7dcce49b6645bc1c27  slurm/10_smoke.slurm\n1ab65a061c7326bc908260ff81001cb7323189adf973fc514282e2666eedbda2  slurm/30_train.slurm\n57216d7dc81677d3c4b31db325307ddb06c2d81bbeb22f85afe7902b624cf446  slurm/90_summary.slurm\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  slurm_logs/.keep\ne296fcd34b43f47a3a6748e3363e079ef5823490804283c3490e0a4a8ad0ce72  tests/test_local.py\ndb6cf881224dee4d1f4b5b958e4d7069d13ae7f6af02cd3c041b070049c9e62e  tests/test_rc_losses.py\neb3b1c4ed709aff5617c038590269b9b8ec393cd8ba74bacfcc1b224dcc95b35  tests/test_rc_trainers.py\n"
+    },
+    "operator/release.py": {
+      "bytes": 1711,
+      "sha256": "0eb1fdc1c31a64bef33767a22c35b02887d90ffcf1eeaaff43e290297bb279e6",
+      "text": "\"\"\"Login-node tool: release the held jobs of one submission after its record has been audited. Releases only the\nrecorded job IDs, only while every one of them is still a user-held pending job and the slurm scripts are\nbyte-identical to the record.   release.py <label>\n\"\"\"\n\nfrom __future__ import annotations\n\nimport subprocess\nimport sys\nfrom pathlib import Path\n\nsys.path.insert(0, str(Path(__file__).resolve().parents[1] / \"runtime\"))\nimport common as C  # noqa: E402\n\nlabel = sys.argv[1]\nrecord_path = C.ROOT / \"evidence\" / f\"SUBMISSION_{label}.json\"\nreleased_path = C.ROOT / \"evidence\" / f\"RELEASE_{label}.json\"\nC.require(record_path.exists(), f\"no submission record for {label}\")\nC.require(not released_path.exists(), f\"{label} already released\")\nrecord = C.read_json(record_path)\nfor key, script in record[\"scripts\"].items():\n    C.require(C.sha256_file(C.ROOT / script) == record[\"script_sha256\"][key], f\"script changed since submission: {script}\")\nfor key, job in record[\"jobs\"].items():\n    info = subprocess.run([\"scontrol\", \"show\", \"job\", \"-o\", job], capture_output=True, text=True, check=True).stdout\n    C.require(\"JobState=PENDING\" in info and \"Reason=JobHeldUser\" in info, f\"{key} job {job} is not user-held: {info[:200]}\")\nids = list(record[\"jobs\"].values())\nsubprocess.run([\"scontrol\", \"release\", \",\".join(ids)], check=True)\nafter = {k: subprocess.run([\"scontrol\", \"show\", \"job\", \"-o\", j], capture_output=True, text=True).stdout.strip()\n         for k, j in record[\"jobs\"].items()}\nC.write_json(released_path, dict(C.META, status=\"released\", label=label, released_at_utc=C.utc_now(),\n                                 jobs=record[\"jobs\"], scontrol_after_release=after))\nprint(\"released\", ids)\n"
+    },
+    "operator/submit.py": {
+      "bytes": 12296,
+      "sha256": "cf974ad3e2e738f79a42cf6de56f8af46f6bda1b42ce4ee6dc2f7c1b99b69416",
+      "text": "\"\"\"Login-node tool: submit one stage of this package, HELD (team rule: sbatch --hold, audit the record, then release\nwith operator/release.py <label>). Run only after the user approved that stage.\n\n    submit.py stage1 [--dry-run]   preflight (CPU) -> CPU smoke of the five trainers (afterok)\n    submit.py batch [--dry-run]    the 25 training runs (one chain per arm: fold k waits, afterany, for fold k-1 of the\n                                   same arm, so at most 5 GPUs are held at a time), then the status summary (afterany)\n    submit.py resume NAME          next attempt of a run whose last attempt FAILED or was CANCELLED (needs the user's\n                                   approval each time)\n    submit.py noshm NAME           run NAME again after its latest job found no /dev/shm space within the 20-minute wait\n                                   (RUN_<NAME>_NOSHM_<job>), excluding those nodes; pending runs of the same chain get\n                                   their dependency rewritten (p3.plan_noshm); at most shm.max_noshm_resubmits times\n                                   per run; refuses anything that is not a recorded no-shm end\n    submit.py summary              a status summary job alone\n\nDerived from s2_p3_wave2_20261104_r5/operator/submit.py. Changed: no GPU smoke and no conditional runs; `batch`\nreplaces `wave2`; --dry-run (checks everything and prints the sbatch commands, calls no sbatch, writes nothing);\njob names start with rcb_. Each real call appends every job id to evidence/SUBMISSION_<label>_TRAIL.txt as soon as\nsbatch returns, then writes evidence/SUBMISSION_<label>.json (exclusive), so a partial submission can still be\ncancelled precisely.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport os\nimport shutil\nimport subprocess\nimport sys\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom typing import Dict, List\n\nsys.path.insert(0, str(Path(__file__).resolve().parents[1] / \"runtime\"))\nimport common as C  # noqa: E402\nimport p3 as P  # noqa: E402\n\nRUN = P.RUN\nEVIDENCE = C.ROOT / \"evidence\"\nMIN_FREE_GB = RUN[\"min_free_gb\"]\nTRAIN, SUMMARY = \"slurm/30_train.slurm\", \"slurm/90_summary.slurm\"\n\n\nclass Submission:  # r5's, unchanged\n    def __init__(self, label: str):\n        self.label = label\n        self.record = EVIDENCE / f\"SUBMISSION_{label}.json\"\n        self.trail = EVIDENCE / f\"SUBMISSION_{label}_TRAIL.txt\"\n        C.require(not self.record.exists() and not self.trail.exists(), f\"{label} already submitted\")\n        self.jobs: Dict[str, str] = {}\n        self.scripts: Dict[str, str] = {}\n        self.args: Dict[str, List[str]] = {}\n        self.options: Dict[str, List[str]] = {}\n\n    def sbatch(self, key: str, script: str, args: List[str], options: List[str]) -> str:\n        cmd = [\"sbatch\", \"--parsable\", \"--hold\", *options, script, *args]\n        job = subprocess.run(cmd, cwd=C.ROOT, capture_output=True, text=True, check=True).stdout.strip().split(\";\")[0]\n        with self.trail.open(\"a\", encoding=\"utf-8\") as handle:\n            handle.write(f\"{key} {job}\\n\")\n        self.jobs[key] = job\n        self.scripts[key] = script\n        self.args[key], self.options[key] = list(args), list(options)\n        return job\n\n    def finish(self, free_gb: float, extra: Dict) -> None:\n        sha = {key: C.sha256_file(C.ROOT / script) for key, script in self.scripts.items()}\n        scontrol = {k: subprocess.run([\"scontrol\", \"show\", \"job\", \"-o\", j], capture_output=True, text=True).stdout.strip()\n                    for k, j in self.jobs.items()}\n        C.write_json(self.record, dict(C.META, status=\"submitted_held\", label=self.label, submitted_at_utc=C.utc_now(),\n                                       manifest_sha256=C.sha256_file(C.ROOT / \"MANIFEST.sha256\"), jobs=self.jobs,\n                                       scripts=self.scripts, script_sha256=sha, free_space_gb_at_submit=free_gb,\n                                       args=self.args, options=self.options,\n                                       scontrol=scontrol, **extra))\n        print(f\"HELD {self.label}: {self.jobs}\\naudit {self.record}, then: python operator/release.py {self.label}\")\n\n\nclass DryRun:\n    def __init__(self, label: str):\n        self.label, self.jobs = label, {}\n\n    def sbatch(self, key: str, script: str, args: List[str], options: List[str]) -> str:\n        self.jobs[key] = f\"DRY{len(self.jobs) + 1}\"\n        print(f\"{key}: sbatch --parsable --hold {' '.join(options)} {script} {' '.join(args)}\")\n        return self.jobs[key]\n\n    def finish(self, free_gb: float, extra: Dict) -> None:\n        print(f\"DRY RUN OK ({self.label}): {len(self.jobs)} jobs would be submitted held; free {free_gb:.0f} GB; \"\n              f\"nothing submitted\")\n\n\ndef preamble(kind: str) -> float:\n    C.verify_manifest()\n    for script in sorted((C.ROOT / \"slurm\").glob(\"*.slurm\")):\n        subprocess.run([\"bash\", \"-n\", str(script)], check=True)\n    free_gb = shutil.disk_usage(C.ROOT).free / 2 ** 30\n    C.require(free_gb >= MIN_FREE_GB[kind], f\"only {free_gb:.0f} GB free, need {MIN_FREE_GB[kind]}\")\n    if kind != \"stage1\":\n        manifest = C.sha256_file(C.ROOT / \"MANIFEST.sha256\")\n        for name in (\"PREFLIGHT.json\", \"SMOKE_COMPLETE.json\"):\n            record = C.read_json(EVIDENCE / name)\n            C.require(record[\"status\"] == \"pass\" and record[\"manifest_sha256\"] == manifest, f\"{name} is not a pass for this manifest\")\n    return free_gb\n\n\ndef resource_options(spec: Dict) -> List[str]:\n    res = P.resources(spec)\n    # --no-requeue: a requeued run would hit its own STARTED record; reruns go through `resume` with approval\n    return [f\"--job-name=rcb_{spec['name']}\", f\"--partition={res['partition']}\", \"--gres=gpu:1\",\n            f\"--cpus-per-task={res['cpus']}\", f\"--mem={res['mem']}\", f\"--time={res['time']}\", \"--no-requeue\"]\n\n\ndef dependency_value(after_ok: List[str], after_any: List[str]) -> str:\n    parts = ([f\"afterok:{':'.join(after_ok)}\"] if after_ok else []) + ([f\"afterany:{':'.join(after_any)}\"] if after_any else [])\n    return \",\".join(parts)\n\n\ndef dependency(after_ok: List[str], after_any: List[str]) -> List[str]:\n    value = dependency_value(after_ok, after_any)\n    return [f\"--dependency={value}\", \"--kill-on-invalid-dep=yes\"] if value else []\n\n\ndef submissions() -> List[Dict]:\n    records = [C.read_json(p) for p in EVIDENCE.glob(\"SUBMISSION_*.json\")]\n    return sorted(records, key=lambda r: r[\"submitted_at_utc\"])\n\n\ndef latest_jobs() -> Dict[str, str]:\n    \"\"\"Latest job id per key (run name, 'preflight', 'smoke', 'summary') over every submission record.\"\"\"\n    latest: Dict[str, str] = {}\n    for record in submissions():\n        latest.update(record[\"jobs\"])\n    return latest\n\n\ndef live_jobs() -> Dict[str, str]:\n    out = subprocess.run([\"squeue\", \"-h\", \"-u\", os.environ[\"USER\"], \"-o\", \"%A %T\"], capture_output=True, text=True,\n                         check=True).stdout\n    return dict(line.split() for line in out.splitlines() if line.strip())\n\n\ndef attempts(name: str) -> int:\n    n = 0\n    while (EVIDENCE / P.evidence_name(\"train\", name, \"STARTED\", n)).exists():\n        n += 1\n    return n\n\n\ndef run_status(name: str, latest: Dict[str, str], live: Dict[str, str]) -> str:\n    n = attempts(name)\n    if n and (EVIDENCE / P.evidence_name(\"train\", name, \"COMPLETE\", n - 1)).exists():\n        return \"complete\"\n    if name not in latest:\n        return \"unsubmitted\"\n    job = latest[name]\n    if job in live:\n        return \"queued\" if live[job] == \"PENDING\" else \"running\"\n    if (EVIDENCE / f\"RUN_{name}_NOSHM_{job}.json\").exists():\n        return \"noshm\"\n    if n and any((EVIDENCE / P.evidence_name(\"train\", name, w, n - 1)).exists() for w in (\"FAILED\", \"CANCELLED\")):\n        return \"failed\"\n    return \"gone\"\n\n\ndef label(kind: str) -> str:\n    return f\"{kind}_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}\"\n\n\ndef stage1(dry: bool) -> None:\n    free_gb = preamble(\"stage1\")\n    C.require(not any((EVIDENCE / n).exists() for n in (\"PREFLIGHT.json\", \"PREFLIGHT_FAILED.json\", \"RC_CASE_LISTS.json\",\n                                                       \"SMOKE_STARTED.json\")), \"stage 1 already ran in this package\")\n    s = (DryRun if dry else Submission)(\"stage1\")\n    pre = s.sbatch(\"preflight\", \"slurm/00_preflight.slurm\", [], [])\n    s.sbatch(\"smoke\", \"slurm/10_smoke.slurm\", [], [\"--no-requeue\"] + dependency([pre], []))\n    s.finish(free_gb, {})\n\n\ndef batch(dry: bool) -> None:\n    free_gb = preamble(\"batch\")\n    C.require(not any(EVIDENCE.glob(\"RUN_*_STARTED.json\")) and not any(EVIDENCE.glob(\"SUBMISSION_batch*.json\")),\n              \"the training runs were already submitted\")\n    P.check_wave2_graph(RUN[\"runs\"], RUN[\"slots\"], RUN[\"max_concurrent\"])\n    s = (DryRun if dry else Submission)(\"batch\")\n    for spec in RUN[\"runs\"]:  # in RUN.json order, so every dependency already has a job id\n        ok = [s.jobs[n] for n in spec[\"after_ok\"]]\n        any_ = [s.jobs[n] for n in spec[\"after_any\"]]\n        s.sbatch(spec[\"name\"], TRAIN, [spec[\"name\"]], resource_options(spec) + dependency(ok, any_))\n    s.sbatch(\"summary\", SUMMARY, [], [\"--job-name=rcb_sum\"] + dependency([], list(s.jobs.values())))\n    s.finish(free_gb, {\"slots\": RUN[\"slots\"]})\n\n\ndef resume(name: str) -> None:\n    free_gb = preamble(\"resume\")\n    spec = P.spec_of(\"train\", name)\n    n = attempts(name)\n    C.require(n > 0, f\"{name} never started\")\n    C.require(any((EVIDENCE / P.evidence_name(\"train\", name, w, n - 1)).exists() for w in (\"FAILED\", \"CANCELLED\")),\n              f\"attempt {n - 1} of {name} has no FAILED or CANCELLED record (still running?)\")\n    s = Submission(f\"resume_{name}_A{n}\")\n    s.sbatch(name, TRAIN, [name, \"--resume\"], resource_options(spec))\n    s.finish(free_gb, {\"attempt\": n})\n\n\ndef noshm(name: str) -> None:\n    free_gb = preamble(\"noshm\")\n    specs = P.train_specs()\n    C.require(name in specs, f\"unknown run {name}\")\n    latest, live = latest_jobs(), live_jobs()\n    C.require(name in latest, f\"{name} was never submitted\")\n    job = latest[name]\n    C.require((EVIDENCE / f\"RUN_{name}_NOSHM_{job}.json\").exists(), f\"job {job} of {name} has no NOSHM record\")\n    done = len(list(EVIDENCE.glob(f\"SUBMISSION_noshm_{name}_*.json\")))\n    C.require(done < RUN[\"shm\"][\"max_noshm_resubmits\"], f\"{name} already resubmitted {done} times for /dev/shm\")\n    status = {r: run_status(r, latest, live) for r in specs}\n    resubmit, update = P.plan_noshm(list(specs.values()), name, status)\n    exclude = sorted({C.read_json(p)[\"node\"] for p in EVIDENCE.glob(f\"RUN_{name}_NOSHM_*.json\")})\n    s = Submission(f\"noshm_{name}_{done + 1}\")\n\n    def job_of(run: str) -> str:\n        return s.jobs.get(run) or latest[run]\n\n    for run, ok, any_ in resubmit:\n        args = [run] + ([\"--resume\"] if attempts(run) > 0 else [])\n        options = resource_options(specs[run]) + ([f\"--exclude={','.join(exclude)}\"] if run == name else [])\n        s.sbatch(run, TRAIN, args, options + dependency([job_of(d) for d in ok], [job_of(d) for d in any_]))\n    rewritten = {}\n    for run, ok, any_ in update:\n        value = dependency_value([job_of(d) for d in ok], [job_of(d) for d in any_])\n        subprocess.run([\"scontrol\", \"update\", f\"JobId={latest[run]}\", f\"Dependency={value}\"], check=True)\n        rewritten[run] = {\"job\": latest[run], \"dependency\": value}\n    s.sbatch(\"summary\", SUMMARY, [], [\"--job-name=rcb_sum\"] + dependency([], list(s.jobs.values())))\n    s.finish(free_gb, {\"noshm_of\": name, \"previous_job\": job, \"exclude\": exclude, \"status_before\": status,\n                       \"rewritten_dependencies\": rewritten})\n\n\ndef summary() -> None:\n    free_gb = preamble(\"summary\")\n    s = Submission(label(\"summary\"))\n    s.sbatch(\"summary\", SUMMARY, [], [\"--job-name=rcb_sum\"])\n    s.finish(free_gb, {})\n\n\nif __name__ == \"__main__\":\n    argv = sys.argv[1:]\n    dry = \"--dry-run\" in argv\n    argv = [a for a in argv if a != \"--dry-run\"]\n    kind = argv[0] if argv else \"\"\n    if kind == \"stage1\" and len(argv) == 1:\n        stage1(dry)\n    elif kind == \"batch\" and len(argv) == 1:\n        batch(dry)\n    elif kind == \"resume\" and len(argv) == 2 and not dry:\n        resume(argv[1])\n    elif kind == \"noshm\" and len(argv) == 2 and not dry:\n        noshm(argv[1])\n    elif kind == \"summary\" and len(argv) == 1 and not dry:\n        summary()\n    else:\n        raise SystemExit(__doc__)\n"
+    },
+    "runtime/launch_run.py": {
+      "bytes": 31415,
+      "sha256": "9d90b7c82a0ea692392a645ce8a38bdd3dc3f0d0217668665ad8e34c4cb15af9",
+      "text": "\"\"\"One nnU-Net training run of this package on one A100.\n\nDerived from s2_p3_wave2_20261104_r5/runtime/launch_run.py (the launcher of M, L and LES). Changed for the RC\ntraining comparison:\n- gate: PREFLIGHT pass, SMOKE_COMPLETE pass (here the CPU smoke of the five trainers), the case lists unchanged\n  since the preflight, and the fold's M record in the r5 package (pinned, read only) instead of a run of this package;\n- run_training: every run gets the M checkpoint of its fold (SHA256 checked against RUN.json) and, where the arm\n  uses them, the case lists, through the environment (p3.rc_env); no -pretrained_weights, no continuation;\n- verify_outputs: the trainer's record of the loaded weights, the first learning rate, the sampling record (B0p),\n  the validation cases (BU, BUL: exactly the fold's UCSD cases); then the intermediate checkpoints named in RUN.json\n  delete_after_success are removed (only after every check passed);\n- RUN.json shm.wait_max_s is 20 minutes here (r5: 2 hours);\n- the smoke stage is the CPU smoke (cpu_smoke.py uses run_training and verify_outputs of this file): no GPU\n  monitor and no CUDA memory log when no GPU is given, the smoke split validates the two cases the preflight chose.\nThe /dev/shm smoke-split and cancel-probe code of r5 is left in place and is not used by any job of this package.\n\nReal run (slurm/30_train.slurm execs this):  launch_run.py --run NAME [--resume]\n    1. checks: package manifest, PREFLIGHT pass (it pins Dataset268 and writes the case lists), SMOKE_COMPLETE pass,\n       the fold's M record and checkpoint in the r5 package, no STARTED record yet for this attempt,\n       exactly one A100 visible;\n    2. removes /dev/shm folders of this package whose slurm job no longer exists (a SIGKILLed job cannot clean up);\n    3. storage (r5), before anything is recorded as started: waits up to shm.wait_max_s (20 min) for enough free /dev/shm\n       (other users' jobs fill it; slurm cannot see it), then copies the dataset to <shm.prefix><job> in /dev/shm and checks the\n       pinned files. Still too full after the wait (or full during the copy): runs with nfs_fallback (the lesion member)\n       read the dataset from NFS through a view (step 3b); every other run writes RUN_<name>_NOSHM_<job>.json and exits\n       with shm.noshm_exit_code, leaving no STARTED record, so operator/submit.py noshm can submit it again on another\n       node (user's standing approval: at most shm.max_noshm_resubmits times per run);\n    3b. NFS view: results/<stage>/nfs_views/<name>_a<attempt>/nnUNet_preprocessed/<dataset>/ with copies of the\n       top-level JSON files and symlinks to the dataset's data and gt folders (nothing is written to the shared tree);\n    4. writes the exclusive STARTED record, so the same run (attempt) cannot start twice;\n    5. runs nnUNetv2_train in its own session (trainer, plans, fold, --npz) while sampling GPU and CPU use;\n    6. checks the outputs: checkpoint_final epoch and trainer, validation summary, one .nii.gz/.npz/.pkl per validation\n       case, the CUDA memory log, the trainer's record of the loaded M weights, the first learning rate, and (r3) the\n       label round trip with the dataset.json and plans.json nnU-Net saved next to the model (what inference will use);\n    7. always: SIGTERM to the training's process group, the /dev/shm copy removed, a COMPLETE / FAILED / CANCELLED record.\n    SIGTERM / SIGINT / SIGHUP (scancel, time limit) jump to step 7; KillWait on this cluster is 30 s.\n    --resume (operator/resume.sh, only with the user's approval): next attempt of a FAILED or CANCELLED run in the same\n    results folder, with nnU-Net's --c when the run left a checkpoint.\n\nProbe (smoke only):  launch_run.py --probe JOBTAG \u2014 the /dev/shm copy (20 cases) and step 7 around a sleeping child,\nso smoke.py can signal it the way scancel does and check that the copy is gone.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport errno\nimport os\nimport shutil\nimport signal\nimport subprocess\nimport sys\nimport threading\nimport time\nimport traceback\nfrom pathlib import Path\nfrom typing import Any, Dict, List, Optional, Tuple\n\nimport common as C\nimport p3 as P\nimport roundtrip\n\nRUN = P.RUN\nHANDLED = (signal.SIGTERM, signal.SIGINT, signal.SIGHUP)\n\n\nclass Cancelled(Exception):\n    pass\n\n\nclass NoShm(Exception):\n    \"\"\"/dev/shm stayed too full for the whole wait, or filled up during the copy.\"\"\"\n\n\nclass Guard:\n    \"\"\"The first termination signal becomes Cancelled in the main thread; once cleanup starts, signals are ignored so\n    that the cleanup itself cannot be interrupted.\"\"\"\n\n    def __init__(self) -> None:\n        self.received: Optional[str] = None\n        self.cleaning = False\n        for sig in HANDLED:\n            signal.signal(sig, self.handle)\n\n    def handle(self, signum, frame) -> None:\n        if self.received is None:\n            self.received = signal.Signals(signum).name\n        if not self.cleaning:\n            raise Cancelled(self.received)\n\n    def begin_cleanup(self) -> None:\n        self.cleaning = True\n        for sig in HANDLED:\n            signal.signal(sig, signal.SIG_IGN)\n\n\n# ---------------------------------------------------------------- node, GPU, monitors\n\ndef gpu_identity() -> Dict[str, str]:\n    visible = os.environ.get(\"CUDA_VISIBLE_DEVICES\", \"\")\n    C.require(visible != \"\" and \",\" not in visible, f\"expected one visible GPU, CUDA_VISIBLE_DEVICES={visible!r}\")\n    out = subprocess.run([\"nvidia-smi\", \"--query-gpu=index,name,uuid\", \"--format=csv,noheader\"], capture_output=True,\n                         text=True, timeout=120).stdout\n    rows = [line.split(\", \") for line in out.splitlines() if line.strip()]\n    mine = rows if len(rows) == 1 else [r for r in rows if r[0] == visible]\n    C.require(len(mine) == 1 and \"A100\" in mine[0][1], f\"cannot identify one A100: {out}\")\n    return {\"index\": mine[0][0], \"name\": mine[0][1], \"uuid\": mine[0][2], \"cuda_visible_devices\": visible,\n            \"node\": os.environ.get(\"SLURMD_NODENAME\", \"\"), \"affinity\": sorted(os.sched_getaffinity(0))}\n\n\ndef start_gpu_monitor(path: Path, uuid: str, interval: int) -> subprocess.Popen:\n    handle = path.open(\"w\", encoding=\"utf-8\")\n    return subprocess.Popen([\"nvidia-smi\", \"-i\", uuid, \"--query-gpu=timestamp,uuid,utilization.gpu,memory.used,power.draw\",\n                             \"--format=csv,noheader,nounits\", \"-l\", str(interval)], stdout=handle,\n                            stderr=subprocess.STDOUT, start_new_session=True)\n\n\nclass CpuSampler(threading.Thread):\n    \"\"\"CPU seconds of every process in the training's session (trainer, augmentation workers, export pool).\"\"\"\n\n    def __init__(self, session: int, interval: float):\n        super().__init__(daemon=True)\n        self.session, self.interval = session, interval\n        self.tick = os.sysconf(\"SC_CLK_TCK\")\n        self.stop = threading.Event()\n        self.last: Dict[int, int] = {}\n        self.series: List[List[float]] = []\n\n    def sample(self) -> None:\n        for entry in os.scandir(\"/proc\"):\n            if not entry.name.isdigit():\n                continue\n            try:\n                with open(f\"/proc/{entry.name}/stat\") as handle:\n                    head, _, tail = handle.read().rpartition(\")\")\n                fields = tail.split()\n                if int(fields[3]) == self.session:\n                    self.last[int(entry.name)] = int(fields[11]) + int(fields[12])\n            except (OSError, ValueError, IndexError):\n                continue\n        self.series.append([time.time(), sum(self.last.values()) / self.tick, len(self.last)])\n\n    def run(self) -> None:\n        while not self.stop.is_set():\n            self.sample()\n            self.stop.wait(self.interval)\n\n    def cores(self) -> Optional[float]:\n        if len(self.series) < 2 or self.series[-1][0] <= self.series[0][0]:\n            return None\n        return (self.series[-1][1] - self.series[0][1]) / (self.series[-1][0] - self.series[0][0])\n\n\n# ---------------------------------------------------------------- /dev/shm\n\ndef sweep_stale(own_job: str) -> Dict[str, Any]:\n    \"\"\"Remove /dev/shm folders of this package (owned by us) whose slurm job is gone. Nothing is removed when squeue\n    cannot be read.\"\"\"\n    shm = Path(\"/dev/shm\")\n    ours = sorted(e.name for e in os.scandir(shm) if P.shm_job_id(e.name) is not None\n                  and e.stat(follow_symlinks=False).st_uid == os.getuid())\n    query = subprocess.run([\"squeue\", \"-h\", \"-o\", \"%A\"], capture_output=True, text=True, timeout=120)\n    if query.returncode != 0:\n        return {\"ours\": ours, \"removed\": [], \"skipped\": f\"squeue exited {query.returncode}\"}\n    live = [int(x) for x in query.stdout.split() if x.isdigit()]\n    removed = []\n    for name in P.stale_entries(ours, int(own_job), live):\n        shutil.rmtree(shm / name, ignore_errors=True)\n        removed.append({\"name\": name, \"removed\": not (shm / name).exists()})\n    return {\"ours\": ours, \"removed\": removed}\n\n\ndef pinned_top_files(dataset: str) -> Dict[str, str]:\n    return RUN[\"datasets\"][dataset][\"top_level_files_sha256\"]  # 267 built by r2, 268 by r4; checked by the preflight\n\n\ndef write_smoke_split(dest: Path) -> Dict[str, Any]:\n    \"\"\"The smoke trains on the real fold-0 training cases and validates only the first few fold-0 validation cases.\"\"\"\n    splits = C.read_json(dest / \"splits_final.json\")\n    os.remove(dest / \"splits_final.json\")  # our own copy in /dev/shm\n    return _smoke_split(splits, dest)\n\n\ndef write_smoke_split_from(src: Path, dest: Path) -> Dict[str, Any]:\n    return _smoke_split(C.read_json(src / \"splits_final.json\"), dest)\n\n\ndef _smoke_split(splits: List[Dict[str, Any]], dest: Path) -> Dict[str, Any]:\n    fold = RUN[\"smoke\"][\"fold\"]\n    chosen = P.case_lists()[\"smoke_val\"]  # one UCSD case with a cavity, one case of another source (preflight)\n    val = sorted(chosen[\"ucsd\"] + chosen[\"other\"])\n    C.require(set(val) <= set(splits[fold][\"val\"]) and len(val) == len(set(val)),\n              \"the smoke validation cases are not in the smoke fold's validation part\")\n    smoke = [{\"train\": sorted(splits[fold][\"train\"]), \"val\": val}]\n    C.write_json(dest / \"splits_final.json\", smoke, mode=0o640)\n    return {\"train\": len(smoke[0][\"train\"]), \"val\": smoke[0][\"val\"], \"sha256\": C.sha256_file(dest / \"splits_final.json\")}\n\n\ndef wait_for_shm(need_gb: float) -> Dict[str, Any]:\n    \"\"\"Poll /dev/shm until need + margin GB are free; NoShm after shm.wait_max_s. A cancel signal ends the sleep.\"\"\"\n    spec = RUN[\"shm\"]\n    started, checks, lowest = time.time(), 0, None\n    while True:\n        free_gb = shutil.disk_usage(\"/dev/shm\").free / 2 ** 30\n        checks += 1\n        lowest = free_gb if lowest is None else min(lowest, free_gb)\n        waited = time.time() - started\n        if free_gb >= need_gb + spec[\"free_margin_gb\"]:\n            return {\"free_gb\": free_gb, \"waited_s\": waited, \"checks\": checks, \"lowest_free_gb\": lowest}\n        if waited >= spec[\"wait_max_s\"]:\n            raise NoShm(f\"/dev/shm has {free_gb:.0f} GB free after waiting {waited:.0f} s; need {need_gb:.0f} GB \"\n                        f\"+ {spec['free_margin_gb']} GB margin (lowest seen {lowest:.0f} GB, {checks} checks)\")\n        time.sleep(spec[\"wait_poll_s\"])\n\n\ndef prepare_shm(stage: str, dataset: str, root: Path, case_subset: Optional[List[str]] = None) -> Dict[str, Any]:\n    spec = RUN[\"shm\"]\n    C.require(str(root).startswith(spec[\"prefix\"]), f\"unexpected shm path {root}\")\n    need_gb = P.dataset_bytes(dataset) / 2 ** 30 if case_subset is None else 1.0\n    mem_gb = int(os.environ.get(\"SLURM_MEM_PER_NODE\", \"0\")) / 1024\n    C.require(mem_gb >= need_gb + spec[\"mem_headroom_gb\"], f\"job memory {mem_gb:.0f} GB too small for the copy\")\n    wait = wait_for_shm(need_gb)\n    dest = root / \"nnUNet_preprocessed\" / P.dataset_name(dataset)\n    try:\n        info = P.copy_dataset(P.PRE / P.dataset_name(dataset), dest, spec[\"copy_threads\"], case_subset)\n    except OSError as error:\n        if error.errno != errno.ENOSPC:\n            raise\n        shutil.rmtree(root, ignore_errors=True)\n        raise NoShm(f\"/dev/shm filled up during the copy: {error!r}\") from error\n    info.update(free_gb_before=wait[\"free_gb\"], shm_wait=wait, path=str(dest), mode=\"shm\")\n    for name, digest in pinned_top_files(dataset).items():\n        C.require(C.sha256_file(dest / name) == digest, f\"{name} in the /dev/shm copy differs from its pin\")\n    if stage == \"smoke\":\n        info[\"smoke_split\"] = write_smoke_split(dest)\n    return info\n\n\ndef prepare_nfs_view(stage: str, spec: Dict[str, Any], attempt: int) -> Tuple[Path, Dict[str, Any]]:\n    \"\"\"nnUNet_preprocessed view on NFS: copied top-level JSON files, symlinks to the shared data and gt folders.\"\"\"\n    view = C.ROOT / \"results\" / stage / \"nfs_views\" / f\"{spec['name']}_a{attempt}\" / \"nnUNet_preprocessed\"\n    src, dest = P.PRE / P.dataset_name(spec[\"dataset\"]), view / P.dataset_name(spec[\"dataset\"])\n    C.require(not dest.exists(), f\"NFS view exists: {dest}\")\n    dest.mkdir(parents=True)\n    for path in src.iterdir():\n        if path.is_file():\n            with (dest / path.name).open(\"xb\") as handle:\n                handle.write(path.read_bytes())\n    for folder in P.SHM_DIRS:\n        os.symlink(src / folder, dest / folder)\n    for name, digest in pinned_top_files(spec[\"dataset\"]).items():\n        C.require(C.sha256_file(dest / name) == digest, f\"{name} in the NFS view differs from its pin\")\n    info: Dict[str, Any] = {\"mode\": \"nfs\", \"path\": str(dest)}\n    if stage == \"smoke\":\n        os.remove(dest / \"splits_final.json\")  # the view's own copy\n        info[\"smoke_split\"] = write_smoke_split_from(src, dest)\n    return view, info\n\n\ndef acquire_storage(stage: str, spec: Dict[str, Any], root: Path, attempt: int) -> Tuple[Path, Dict[str, Any]]:\n    \"\"\"/dev/shm copy (waiting for space), NFS view for storage == nfs (smoke test of the fallback), or NFS view after\n    NoShm for nfs_fallback runs. NoShm propagates for every other run.\"\"\"\n    if spec.get(\"storage\") == \"nfs\":\n        return prepare_nfs_view(stage, spec, attempt)\n    try:\n        return root / \"nnUNet_preprocessed\", prepare_shm(stage, spec[\"dataset\"], root)\n    except NoShm as error:\n        if not spec.get(\"nfs_fallback\"):\n            raise\n        view, info = prepare_nfs_view(stage, spec, attempt)\n        return view, dict(info, mode=\"nfs_fallback\", shm_error=str(error))\n\n\ndef shared_data_untouched(dataset: str) -> Dict[str, Any]:\n    \"\"\"After a run that read the shared tree through an NFS view: the data and gt folders still hold exactly the\n    expected entries (Dataset268: symlinks only).\"\"\"\n    folder = P.PRE / P.dataset_name(dataset)\n    out = {}\n    for sub, expected in ((P.DATA_ID, 3 * RUN[\"datasets\"][dataset][\"cases\"]),\n                          (\"gt_segmentations\", RUN[\"datasets\"][dataset][\"cases\"])):\n        entries = list(os.scandir(folder / sub))\n        out[sub] = len(entries)\n        C.require(len(entries) == expected, f\"{sub} of {dataset} has {len(entries)} entries, expected {expected}\")\n        if dataset == \"268\":\n            C.require(all(e.is_symlink() for e in entries), f\"{sub} of Dataset268 holds a non-link entry\")\n    return out\n\n\ndef stop_child(proc: Optional[subprocess.Popen], grace: float) -> Optional[int]:\n    if proc is None:\n        return None\n    for sig, wait in ((signal.SIGTERM, grace), (signal.SIGKILL, 10)):\n        try:\n            os.killpg(proc.pid, sig)  # the whole session: augmentation workers and export pool included\n        except ProcessLookupError:\n            pass\n        try:\n            proc.wait(timeout=wait)\n            break\n        except subprocess.TimeoutExpired:\n            continue\n    return proc.returncode\n\n\ndef cleanup(holder: Dict[str, Any], roots: List[Path]) -> Dict[str, Any]:\n    \"\"\"Order matters within KillWait: signal the training, free the RAM, then wait for the processes.\"\"\"\n    started = time.time()\n    proc = holder.get(\"proc\")\n    if proc is not None and proc.poll() is None:\n        try:\n            os.killpg(proc.pid, signal.SIGTERM)\n        except ProcessLookupError:\n            pass\n    removed = {}\n    for root in roots:\n        for _ in range(2):\n            shutil.rmtree(root, ignore_errors=True)\n            if not root.exists():\n                break\n        removed[str(root)] = not root.exists()\n    out = {\"shm_removed\": removed, \"shm_removed_after_s\": time.time() - started,\n           \"child_returncode\": stop_child(proc, RUN[\"shm\"][\"child_grace_s\"])}\n    for key in (\"monitor\",):\n        if holder.get(key) is not None:\n            stop_child(holder[key], 2)\n    if holder.get(\"sampler\") is not None:\n        holder[\"sampler\"].stop.set()\n    out[\"seconds\"] = time.time() - started\n    return out\n\n\n# ---------------------------------------------------------------- one training\n\ndef gate(stage: str, spec: Dict[str, Any]) -> str:\n    manifest = C.verify_manifest()\n    pre = C.read_json(C.ROOT / \"evidence\" / \"PREFLIGHT.json\")\n    C.require(pre[\"status\"] == \"pass\" and pre[\"manifest_sha256\"] == manifest, \"preflight did not pass for this manifest\")\n    if stage == \"train\":\n        smoke = C.read_json(C.ROOT / \"evidence\" / \"SMOKE_COMPLETE.json\")\n        C.require(smoke[\"status\"] == \"pass\" and smoke[\"manifest_sha256\"] == manifest, \"smoke did not pass\")\n    C.require(C.sha256_file(P.CASE_LISTS) == pre[\"case_lists\"][\"sha256\"], \"case lists changed since the preflight\")\n    source = P.source_checkpoint(P.fold_of(stage, spec))\n    C.require(C.sha256_file(Path(RUN[\"source_package\"][\"root\"]) / \"MANIFEST.sha256\") == RUN[\"source_package\"][\"manifest_sha256\"],\n              \"the r5 package's manifest differs from its pin\")\n    C.require(C.sha256_file(source[\"record\"]) == source[\"record_sha256\"], f\"r5 record of {source['run']} differs from its pin\")\n    C.require(C.read_json(source[\"record\"])[\"status\"] == \"pass\", f\"r5 run {source['run']} did not complete\")\n    return manifest\n\n\ndef run_training(stage: str, spec: Dict[str, Any], preprocessed: Path, attempt: int, resume: bool,\n                 holder: Dict[str, Any], gpu: Optional[Dict[str, str]], cores: Optional[List[int]] = None) -> Dict[str, Any]:\n    rdir = P.run_dir(stage, spec[\"name\"])\n    C.require(attempt > 0 or not rdir.exists(), f\"results folder already exists: {rdir}\")\n    rdir.mkdir(parents=True, exist_ok=attempt > 0)\n    record: Dict[str, Any] = {}\n    source = P.source_checkpoint(P.fold_of(stage, spec))\n    C.require(source[\"path\"].is_file(), f\"M checkpoint missing: {source['path']}\")\n    digest = C.sha256_file(source[\"path\"])\n    C.require(digest == source[\"sha256\"], f\"M checkpoint of {source['run']} differs from its pin\")\n    record[\"source\"] = {\"run\": source[\"run\"], \"checkpoint\": str(source[\"path\"]), \"sha256\": digest}\n    fold = P.fold_dir(stage, spec)\n    use_c = resume and any((fold / f).is_file() for f in (\"checkpoint_latest.pth\", \"checkpoint_final.pth\"))\n    cmd = P.command(stage, spec, use_c, None)\n    if cores:\n        cmd = [\"taskset\", \"-c\", \",\".join(str(c) for c in cores)] + cmd\n    env = P.job_env(dict(os.environ), stage, spec, preprocessed, P.rc_env(spec, P.fold_of(stage, spec), source[\"path\"]))\n    for key in P.CACHE_KEYS:\n        Path(env[key]).mkdir(parents=True, exist_ok=True)\n    P.RAW_EMPTY.mkdir(parents=True, exist_ok=True)\n    if gpu is not None:  # None: the CPU smoke\n        holder[\"monitor\"] = start_gpu_monitor(rdir / f\"gpu_a{attempt}.csv\", gpu[\"uuid\"], RUN[\"monitor\"][\"gpu_interval_s\"])\n    record.update(command=cmd, used_resume_flag=use_c, cores=cores,\n                  env={k: env[k] for k in sorted(env) if k.startswith((\"nnUNet_\", \"P3_\", \"RC_\", \"OMP_\", \"PYTHONPATH\"))})\n    started = time.time()\n    with (rdir / f\"stdout_a{attempt}.log\").open(\"w\", encoding=\"utf-8\") as log:\n        proc = subprocess.Popen(cmd, env=env, stdout=log, stderr=subprocess.STDOUT, cwd=rdir, start_new_session=True)\n        holder[\"proc\"] = proc\n        sampler = CpuSampler(proc.pid, RUN[\"monitor\"][\"cpu_sample_s\"])\n        holder[\"sampler\"] = sampler\n        sampler.start()\n        while proc.poll() is None:\n            time.sleep(2)\n        sampler.stop.set()\n        sampler.join()\n        sampler.sample()\n    record.update(returncode=proc.returncode, wall_s=time.time() - started, cpu_cores_mean=sampler.cores())\n    stop_child(proc, 5)  # stray workers of a finished training, if any\n    stop_child(holder.pop(\"monitor\", None), 2)\n    return record\n\n\ndef verify_outputs(stage: str, spec: Dict[str, Any], attempt: int, storage_mode: str = \"shm\") -> Dict[str, Any]:\n    import torch\n\n    fold = P.fold_dir(stage, spec)\n    checkpoint = torch.load(fold / \"checkpoint_final.pth\", map_location=\"cpu\", weights_only=False)\n    out: Dict[str, Any] = {\"checkpoint_epoch\": checkpoint[\"current_epoch\"], \"checkpoint_trainer\": checkpoint[\"trainer_name\"],\n                           \"checkpoint_sha256\": C.sha256_file(fold / \"checkpoint_final.pth\")}\n    C.require(checkpoint[\"current_epoch\"] == spec[\"epochs\"], f\"checkpoint epoch {checkpoint['current_epoch']}\")\n    C.require(checkpoint[\"trainer_name\"] == spec[\"trainer\"], f\"checkpoint trainer {checkpoint['trainer_name']}\")\n    validation, n = fold / \"validation\", P.val_count(stage, spec)\n    counts = {ext: len(list(validation.glob(f\"*{ext}\"))) for ext in (\".nii.gz\", \".npz\", \".pkl\")}\n    out[\"validation_files\"] = counts\n    C.require(all(v == n for v in counts.values()), f\"validation files {counts}, expected {n} each\")\n    summary = C.read_json(validation / \"summary.json\")  # nnU-Net writes NaN for a region absent from every case\n    dice = {\"foreground_mean\": summary[\"foreground_mean\"][\"Dice\"],\n            \"per_class_or_region\": {k: v[\"Dice\"] for k, v in summary[\"mean\"].items()}}\n    out[\"nnunet_validation_dice\"] = C.finite(dice)\n    out[\"nnunet_dice_undefined\"] = sorted(k for k, v in dice[\"per_class_or_region\"].items() if v != v)\n    out[\"nnunet_n_pred_n_ref\"] = {k: [v[\"n_pred\"], v[\"n_ref\"]] for k, v in summary[\"mean\"].items()}\n    out[\"label_roundtrip\"] = model_label_roundtrip(spec, fold.parent)\n    logs = P.parse_training_logs([p.read_text(encoding=\"utf-8\") for p in sorted(fold.glob(\"training_log_*.txt\"))])\n    C.require(logs[\"training_done\"] and logs[\"validation_complete\"], \"training log incomplete\")\n    out[\"log\"] = {\"epochs_logged\": len(logs[\"epoch_seconds\"]), \"learning_rate_first\": logs[\"learning_rates\"][:1],\n                  \"learning_rate_last\": logs[\"learning_rates\"][-1:], \"validation_seconds\": logs[\"validation_seconds\"],\n                  \"epoch_seconds\": logs[\"epoch_seconds\"]}\n    if stage == \"train\":\n        with (fold / \"p3_cuda_memory.jsonl\").open(encoding=\"utf-8\") as handle:\n            out[\"cuda_memory\"] = P.memory_peak(handle)\n    else:  # the CPU smoke: the trainer writes this log on CUDA only\n        C.require(not (fold / \"p3_cuda_memory.jsonl\").exists(), \"a CUDA memory log in the CPU smoke\")\n        out[\"cuda_memory\"] = None\n    source = P.source_checkpoint(P.fold_of(stage, spec))\n    audit = C.read_json(fold / \"rc_source_weights.json\")\n    C.require(audit[\"sha256\"] == source[\"sha256\"] and audit[\"source_epoch\"] == source[\"epochs\"]\n              and audit[\"optimizer\"] == \"new\" and audit[\"keys_loaded\"] > 0, f\"record of the loaded weights: {audit}\")\n    out[\"source_weights\"] = audit\n    C.require(logs[\"learning_rates\"][:1] == [RUN[\"fine_tune\"][\"initial_lr\"]], f\"first learning rate {logs['learning_rates'][:1]}\")\n    if spec[\"trainer\"] == RUN[\"fine_tune\"][\"sampling_trainer\"]:\n        sampling = C.read_json(fold / \"rc_sampling.json\")\n        C.require(sampling[\"weight\"] == RUN[\"fine_tune\"][\"rc_weight\"] and sampling[\"heavy_cases\"] > 0\n                  and sampling[\"share_weighted\"] > sampling[\"share_natural\"], f\"sampling record: {sampling}\")\n        out[\"sampling\"] = sampling\n    exported = sorted(p.name[:-len(\".nii.gz\")] for p in validation.glob(\"*.nii.gz\"))\n    if stage == \"smoke\":\n        C.require(exported == P.smoke_val_cases(spec), f\"smoke validation cases {exported}\")\n        out[\"validation_cases\"] = exported\n    elif spec.get(\"cohort\") == \"ucsd\":\n        C.require(exported == sorted(P.cohort_val_cases(spec[\"fold\"])), \"validation cases are not the fold's UCSD cases\")\n        out[\"validation_cohort\"] = {\"cohort\": \"ucsd\", \"cases\": len(exported)}\n    if storage_mode != \"shm\":\n        out[\"shared_data_untouched\"] = shared_data_untouched(spec[\"dataset\"])\n    if stage == \"train\":  # last, after every check: only the final weights are kept (plan v3 section 5.7)\n        removed = {}\n        for name in RUN[\"delete_after_success\"]:\n            C.require(name != \"checkpoint_final.pth\" and \"/\" not in name, f\"refusing to delete {name}\")\n            if (fold / name).is_file():\n                removed[name] = (fold / name).stat().st_size\n                (fold / name).unlink()\n        out[\"intermediate_checkpoints_removed\"] = removed\n    return out\n\n\ndef model_label_roundtrip(spec: Dict[str, Any], model_dir: Path) -> Dict[str, Any]:\n    \"\"\"The dataset.json / plans.json nnU-Net saved next to the model must carry the dataset's label order and pass the\n    label round trip on the preflight's cases (r2: Dataset265's sorted keys scrambled every exported region map).\"\"\"\n    saved, used = C.read_json(model_dir / \"dataset.json\"), C.read_json(P.PRE / P.dataset_name(spec[\"dataset\"]) / \"dataset.json\")\n    C.require(list(saved[\"labels\"].items()) == list(used[\"labels\"].items())\n              and saved.get(\"regions_class_order\") == used.get(\"regions_class_order\"),\n              \"the model's dataset.json differs from the dataset's (labels or their order)\")\n    cases = C.read_json(C.ROOT / \"evidence\" / \"PREFLIGHT.json\")[\"label_roundtrip\"][\"cases\"]\n    result = roundtrip.check(saved, C.read_json(model_dir / \"plans.json\"),\n                             P.PRE / P.dataset_name(spec[\"dataset\"]) / P.DATA_ID, cases)\n    C.require(result[\"passed\"], f\"label round trip failed with the model's dataset.json: {result}\")\n    return result\n\n\n# ---------------------------------------------------------------- entry points\n\ndef attempts_so_far(name: str) -> int:\n    n = 0\n    while (C.ROOT / \"evidence\" / P.evidence_name(\"train\", name, \"STARTED\", n)).exists():\n        n += 1\n    return n\n\n\ndef main_train(name: str, resume: bool) -> int:\n    spec = P.spec_of(\"train\", name)\n    attempt = attempts_so_far(name) if resume else 0\n    if resume:\n        C.require(attempt > 0, f\"{name} never started; submit it normally\")\n        previous = C.ROOT / \"evidence\"\n        C.require(not (previous / P.evidence_name(\"train\", name, \"COMPLETE\", attempt - 1)).exists(), \"already complete\")\n        C.require(any((previous / P.evidence_name(\"train\", name, what, attempt - 1)).exists()\n                      for what in (\"FAILED\", \"CANCELLED\")), \"previous attempt has no FAILED or CANCELLED record\")\n    job = os.environ[\"SLURM_JOB_ID\"]\n    manifest = gate(\"train\", spec)\n    started_name = P.evidence_name(\"train\", name, \"STARTED\", attempt)\n    C.require(not (C.ROOT / \"evidence\" / started_name).exists(), f\"{started_name} exists\")\n    gpu = gpu_identity()\n    guard, holder = Guard(), {}\n    root = P.shm_root(job)\n    pre: Dict[str, Any] = {\"run\": name, \"attempt\": attempt, \"gpu\": gpu, \"manifest_sha256\": manifest,\n                           \"started_utc\": C.utc_now()}\n    try:  # r5: storage before the STARTED record, so a node without /dev/shm space leaves the attempt unused\n        pre[\"sweep\"] = sweep_stale(job)\n        preprocessed, pre[\"storage\"] = acquire_storage(\"train\", spec, root, attempt)\n    except (NoShm, Cancelled, Exception) as error:\n        guard.begin_cleanup()\n        pre.update(error=repr(error), traceback=traceback.format_exc(), cleanup=cleanup(holder, [root]),\n                   ended_utc=C.utc_now())\n        kind = \"NOSHM\" if isinstance(error, NoShm) else \"PRESTART_CANCELLED\" if isinstance(error, Cancelled) \\\n            else \"PRESTART_FAILED\"\n        C.evidence(f\"RUN_{name}_{kind}_{job}.json\", kind.lower(), node=gpu[\"node\"], **pre)\n        return RUN[\"shm\"][\"noshm_exit_code\"] if kind == \"NOSHM\" else 1\n    record: Dict[str, Any] = dict(pre, spec=spec)\n    status = \"failed\"\n    try:  # STARTED inside the try: a signal right after it still reaches the cleanup below\n        C.evidence(started_name, \"started\", manifest_sha256=manifest, spec=spec, gpu=gpu, resume=resume,\n                   storage=pre[\"storage\"])  # exclusive: a second start of this attempt fails here\n        record[\"training\"] = run_training(\"train\", spec, preprocessed, attempt, resume, holder, gpu)\n        if record[\"training\"][\"returncode\"] == 0:\n            record[\"outputs\"] = verify_outputs(\"train\", spec, attempt, pre[\"storage\"][\"mode\"])\n            status = \"complete\"\n        else:\n            record[\"error\"] = f\"nnUNetv2_train exited {record['training']['returncode']}\"\n    except Cancelled as signal_name:\n        status, record[\"signal\"] = \"cancelled\", str(signal_name)\n    except Exception as error:  # recorded; the job fails and afterok dependants are cancelled by slurm\n        record.update(error=repr(error), traceback=traceback.format_exc())\n    finally:\n        guard.begin_cleanup()\n        record[\"cleanup\"] = cleanup(holder, [root])\n        record[\"ended_utc\"] = C.utc_now()\n        what = {\"complete\": \"COMPLETE\", \"cancelled\": \"CANCELLED\"}.get(status, \"FAILED\")\n        C.evidence(P.evidence_name(\"train\", name, what, attempt), \"pass\" if status == \"complete\" else status, **record)\n    return 0 if status == \"complete\" else 1\n\n\ndef main_probe(tag: str) -> int:\n    \"\"\"Copy 20 cases to /dev/shm, start a sleeping child in its own session, wait for a signal, clean up.\"\"\"\n    job = os.environ[\"SLURM_JOB_ID\"]\n    guard, holder = Guard(), {}\n    root = P.shm_root(job, tag)\n    out_dir = C.ROOT / \"results\" / \"smoke\" / \"cancel_probe\"\n    record: Dict[str, Any] = {\"root\": str(root), \"started_utc\": C.utc_now()}\n    status = \"failed\"\n    try:\n        splits = C.read_json(P.PRE / P.dataset_name(\"265\") / \"splits_final.json\")\n        cases = sorted(splits[0][\"val\"])[: RUN[\"smoke\"][\"cancel_probe\"][\"cases\"]]\n        record[\"shm_copy\"] = prepare_shm(\"probe\", \"265\", root, case_subset=cases)\n        holder[\"proc\"] = subprocess.Popen([sys.executable, \"-c\", f\"import time; time.sleep({RUN['smoke']['cancel_probe']['sleep_s']})\"],\n                                          start_new_session=True)\n        C.write_json(out_dir / \"PROBE_READY.json\", {\"probe_pid\": os.getpid(), \"child_pid\": holder[\"proc\"].pid,\n                                                    \"root\": str(root)})\n        holder[\"proc\"].wait()\n        record[\"error\"] = \"the sleeping child ended without a signal\"\n    except Cancelled as signal_name:\n        status, record[\"signal\"] = \"cancelled\", str(signal_name)\n    except Exception as error:\n        record.update(error=repr(error), traceback=traceback.format_exc())\n    finally:\n        guard.begin_cleanup()\n        record[\"cleanup\"] = cleanup(holder, [root])\n        record[\"ended_utc\"] = C.utc_now()\n        C.write_json(out_dir / \"PROBE_RESULT.json\", dict(record, status=status))\n    return 143 if status == \"cancelled\" else 1\n\n\ndef main() -> None:\n    parser = argparse.ArgumentParser()\n    group = parser.add_mutually_exclusive_group(required=True)\n    group.add_argument(\"--run\")\n    group.add_argument(\"--probe\")\n    parser.add_argument(\"--resume\", action=\"store_true\")\n    args = parser.parse_args()\n    sys.exit(main_probe(args.probe) if args.probe else main_train(args.run, args.resume))\n\n\nif __name__ == \"__main__\":\n    main()\n"
+    },
+    "runtime/p3.py": {
+      "bytes": 18059,
+      "sha256": "ba7598e57a5ed35b4714b050346b32e5ac2e01214cf81f88751c541d33e8278f",
+      "text": "\"\"\"Shared logic of the RC training package, first batch: run specs, paths, nnU-Net command and environment, the\n/dev/shm copy, log parsing and projections. Nothing here imports torch or nnU-Net, so the local unit tests run\nwithout them.\n\nDerived from s2_p3_wave2_20261104_r5/runtime/p3.py. Changed:\n- every run starts from the M checkpoint of its fold in the r5 package (source_checkpoint; read only, pinned in\n  RUN.json source_package), not from a run of this package;\n- rc_env: the variables the RC trainers read (the M checkpoint; the case lists for B0', BU and BUL);\n- val_count: runs with \"cohort\": \"ucsd\" validate the UCSD cases of the fold only (count from the case lists);\n- no conditional runs; the trainers' smoke-only variables are added to P3_ENV;\n- the smoke stage is a CPU smoke (cpu_smoke.py): its command carries \"-device cpu\", its environment the two\n  smoke-only overrides (2 epochs of a few iterations), and it validates the two cases the preflight chose\n  (smoke_val_cases).\n\"\"\"\n\nfrom __future__ import annotations\n\nimport os\nimport re\nimport shutil\nimport statistics\nimport time\nfrom concurrent.futures import ThreadPoolExecutor\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Any, Dict, Iterable, List, Optional, Sequence\n\nimport common as C\n\nRUN = C.load_run()\nTREE = Path(RUN[\"tree\"])\nRAW, PRE = TREE / \"nnUNet_raw\", TREE / \"nnUNet_preprocessed\"\nCONFIG = RUN[\"configuration\"]\nDATA_ID = RUN[\"data_identifier\"]\nEXT = C.ROOT / \"runtime\" / \"ext\"\nRAW_EMPTY = C.ROOT / \"nnunet_env\" / \"raw_empty\"\nSTAGES = (\"smoke\", \"train\")\nSHM_DIRS = (\"gt_segmentations\", DATA_ID)  # the only folders of a preprocessed dataset; everything else is top-level JSON\nCACHE_KEYS = (\"MPLCONFIGDIR\", \"TRITON_CACHE_DIR\", \"TORCHINDUCTOR_CACHE_DIR\", \"XDG_CACHE_HOME\", \"CUDA_CACHE_PATH\")\n# The variables that select a run's behaviour inside the trainers; real runs must not inherit any of them.\nP3_ENV = (\"P3_SMOKE_EPOCHS\", \"P3_CONTINUE_FROM\", \"P3_CONTINUE_SOURCE_EPOCH\", \"P3_CONTINUE_SOURCE_SHA256\",\n          \"RC_SMOKE_ITERATIONS\", \"RC_SOURCE_CHECKPOINT\", \"RC_SOURCE_EPOCH\", \"RC_SOURCE_SHA256\", \"RC_CASE_LISTS\",\n          \"RC_CASE_LISTS_SHA256\")\nCASE_LISTS = C.ROOT / \"evidence\" / \"RC_CASE_LISTS.json\"  # written once by the preflight, never changed afterwards\n\n# nnU-Net's print_to_log_file writes \"<datetime>: \" + each argument followed by one space; str(datetime) drops the\n# fraction when the microseconds happen to be 0.\nTS = r\"\\d{4}-\\d\\d-\\d\\d \\d\\d:\\d\\d:\\d\\d(?:\\.\\d+)?\"\nSTAMP = re.compile(rf\"^({TS}): \")\nEPOCH_START = re.compile(rf\"^({TS}): Epoch (\\d+)\\s*$\")\nEPOCH_TIME = re.compile(rf\"^{TS}: Epoch time: ([0-9.]+) s\\s*$\")\nLEARNING_RATE = re.compile(rf\"^{TS}: Current learning rate: ([0-9.eE+-]+)\\s*$\")\n\n\n# ---------------------------------------------------------------- specs and paths\n\ndef dataset_name(dataset: str) -> str:\n    return RUN[\"datasets\"][dataset][\"name\"]\n\n\ndef plans_name(spec: Dict[str, Any]) -> str:\n    return RUN[\"plans\"][spec[\"plans\"]]\n\n\ndef train_specs(include_conditional: bool = True) -> Dict[str, Dict[str, Any]]:\n    runs = list(RUN[\"runs\"]) + (list(RUN.get(\"conditional_runs\", [])) if include_conditional else [])\n    return {r[\"name\"]: r for r in runs}\n\n\ndef smoke_specs() -> Dict[str, Dict[str, Any]]:\n    return {r[\"name\"]: r for r in RUN[\"smoke\"][\"runs\"]}\n\n\ndef spec_of(stage: str, name: str) -> Dict[str, Any]:\n    C.require(stage in STAGES, f\"unknown stage {stage}\")\n    specs = smoke_specs() if stage == \"smoke\" else train_specs()\n    C.require(name in specs, f\"unknown {stage} run {name}\")\n    return specs[name]\n\n\ndef fold_of(stage: str, spec: Dict[str, Any]) -> int:\n    return RUN[\"smoke\"][\"fold\"] if stage == \"smoke\" else spec[\"fold\"]\n\n\ndef run_dir(stage: str, name: str) -> Path:\n    return C.ROOT / \"results\" / stage / name\n\n\ndef fold_dir(stage: str, spec: Dict[str, Any]) -> Path:\n    return (run_dir(stage, spec[\"name\"]) / \"nnUNet_results\" / dataset_name(spec[\"dataset\"])\n            / f\"{spec['trainer']}__{plans_name(spec)}__{CONFIG}\" / f\"fold_{fold_of(stage, spec)}\")\n\n\ndef checkpoint_final(stage: str, name: str) -> Path:\n    return fold_dir(stage, spec_of(stage, name)) / \"checkpoint_final.pth\"\n\n\ndef val_count(stage: str, spec: Dict[str, Any]) -> int:\n    if stage == \"smoke\":\n        return len(smoke_val_cases(spec))\n    if spec.get(\"cohort\") == \"ucsd\":\n        return len(cohort_val_cases(spec[\"fold\"]))\n    return RUN[\"fold_sizes\"][spec[\"fold\"]]\n\n\n# ---------------------------------------------------------------- the M checkpoints (r5 package) and the case lists\n\ndef source_checkpoint(fold: int) -> Dict[str, Any]:\n    \"\"\"The fold's M after 1000 epochs in the r5 package: path and the SHA256 pinned in RUN.json. Read only.\"\"\"\n    source = RUN[\"source_package\"]\n    pin = source[\"runs\"][str(fold)]\n    root = Path(source[\"root\"])\n    path = (root / \"results\" / \"train\" / pin[\"run\"] / \"nnUNet_results\" / dataset_name(source[\"dataset\"])\n            / f\"{source['trainer']}__{RUN['plans'][source['plans']]}__{CONFIG}\" / f\"fold_{fold}\" / \"checkpoint_final.pth\")\n    return {\"run\": pin[\"run\"], \"path\": path, \"sha256\": pin[\"checkpoint_sha256\"], \"epochs\": source[\"epochs\"],\n            \"record\": root / \"evidence\" / pin[\"record\"], \"record_sha256\": pin[\"record_sha256\"],\n            \"validation\": path.parent / \"validation\"}\n\n\ndef case_lists() -> Dict[str, Any]:\n    return C.read_json(CASE_LISTS)\n\n\ndef cohort_val_cases(fold: int) -> List[str]:\n    \"\"\"The UCSD cases of the fold's validation part, as the preflight recorded them.\"\"\"\n    return case_lists()[\"ucsd_val_by_fold\"][str(fold)]\n\n\ndef smoke_val_cases(spec: Dict[str, Any]) -> List[str]:\n    \"\"\"Validation cases of the CPU smoke, chosen by the preflight from the smoke fold's validation part: one UCSD case\n    with a cavity and one case of another source. The UCSD-only arms must export the UCSD case alone.\"\"\"\n    chosen = case_lists()[\"smoke_val\"]\n    return sorted(chosen[\"ucsd\"] if spec.get(\"cohort\") == \"ucsd\" else chosen[\"ucsd\"] + chosen[\"other\"])\n\n\ndef rc_env(spec: Dict[str, Any], fold: int, checkpoint: Path) -> Dict[str, str]:\n    \"\"\"What the RC trainers read from the environment: the M checkpoint for every run; the case lists only for the\n    arms that use them (B0' for the cavity cases, BU and BUL for the UCSD cases).\"\"\"\n    source = source_checkpoint(fold)\n    env = {\"RC_SOURCE_CHECKPOINT\": str(checkpoint), \"RC_SOURCE_EPOCH\": str(source[\"epochs\"]),\n           \"RC_SOURCE_SHA256\": source[\"sha256\"]}\n    if spec.get(\"case_lists\"):\n        env.update(RC_CASE_LISTS=str(CASE_LISTS), RC_CASE_LISTS_SHA256=C.sha256_file(CASE_LISTS))\n    return env\n\n\ndef resources(spec: Dict[str, Any]) -> Dict[str, Any]:\n    return RUN[\"resources\"][spec[\"resources\"]]\n\n\ndef evidence_name(stage: str, name: str, what: str, attempt: int = 0) -> str:\n    tag = \"\" if attempt == 0 else f\"_A{attempt}\"\n    return f\"{'SMOKE' if stage == 'smoke' else 'RUN'}_{name}{tag}_{what}.json\"\n\n\ndef source_run(spec: Dict[str, Any]) -> Optional[str]:\n    return spec.get(\"pretrained_from\") or spec.get(\"continue_from\")\n\n\n# ---------------------------------------------------------------- command and environment\n\ndef command(stage: str, spec: Dict[str, Any], resume: bool, pretrained: Optional[Path]) -> List[str]:\n    cmd = [str(Path(RUN[\"environments\"][\"nnunet_bin\"]) / \"nnUNetv2_train\"), spec[\"dataset\"], CONFIG,\n           str(fold_of(stage, spec)), \"-tr\", spec[\"trainer\"], \"-p\", plans_name(spec), \"-num_gpus\", \"1\", \"--npz\"]\n    if resume:\n        cmd.append(\"--c\")\n    elif pretrained is not None:\n        cmd += [\"-pretrained_weights\", str(pretrained)]\n    if stage == \"smoke\":  # the CPU smoke; a real run never carries -device (nnU-Net's default is cuda)\n        cmd += [\"-device\", \"cpu\"]\n    return cmd\n\n\ndef job_env(base: Dict[str, str], stage: str, spec: Dict[str, Any], preprocessed: Path,\n            continuation: Optional[Dict[str, str]] = None) -> Dict[str, str]:\n    env = {k: v for k, v in base.items() if k not in P3_ENV and not k.startswith(\"nnUNet_\")}\n    env.update(RUN[\"environments\"][\"job_env\"])\n    cache = run_dir(stage, spec[\"name\"]) / \"cache\"\n    env.update({\n        \"nnUNet_raw\": str(RAW_EMPTY),\n        \"nnUNet_preprocessed\": str(preprocessed),\n        \"nnUNet_results\": str(run_dir(stage, spec[\"name\"]) / \"nnUNet_results\"),\n        \"nnUNet_extTrainer\": str(EXT),\n        \"nnUNet_n_proc_DA\": str(resources(spec)[\"n_proc_DA\"]),\n        # workers started with \"spawn\" (validation export) must be able to import the trainer module again; the\n        # package's runtime folder (common.py, p3.py) is deliberately not on the training's path\n        \"PYTHONPATH\": str(EXT),\n        **{key: str(cache / key.lower()) for key in CACHE_KEYS},\n    })\n    if continuation:\n        env.update(continuation)\n    if stage == \"smoke\":\n        env[\"P3_SMOKE_EPOCHS\"] = str(spec[\"epochs\"])\n        env[\"RC_SMOKE_ITERATIONS\"] = str(RUN[\"smoke\"][\"iterations\"])\n    return env\n\n\n# ---------------------------------------------------------------- /dev/shm\n\ndef shm_root(job_id: str, tag: str = \"\") -> Path:\n    return Path(RUN[\"shm\"][\"prefix\"] + str(job_id) + tag)\n\n\ndef shm_job_id(name: str) -> Optional[int]:\n    \"\"\"Job id encoded in a /dev/shm entry made by this package (<prefix><job>[_tag]); None for anything else.\"\"\"\n    prefix = Path(RUN[\"shm\"][\"prefix\"]).name\n    if not name.startswith(prefix):\n        return None\n    digits = re.match(r\"(\\d+)\", name[len(prefix):])\n    return int(digits.group(1)) if digits else None\n\n\ndef stale_entries(names: Iterable[str], own_job: int, live_jobs: Iterable[int]) -> List[str]:\n    \"\"\"Our /dev/shm folders whose job is neither this one nor still known to slurm as alive.\"\"\"\n    live = set(live_jobs) | {own_job}\n    return sorted(n for n in names if shm_job_id(n) is not None and shm_job_id(n) not in live)\n\n\ndef dataset_bytes(dataset: str) -> int:\n    spec = RUN[\"datasets\"][\"265\"]  # Dataset267 holds the same arrays; its .pkl files differ by a few bytes\n    return spec[\"data_bytes\"] + spec[\"gt_bytes\"]\n\n\ndef copy_dataset(src: Path, dest: Path, threads: int, case_subset: Optional[Sequence[str]] = None) -> Dict[str, Any]:\n    \"\"\"Real copies (symlinks followed) of a preprocessed dataset, each file's size checked. With case_subset only those\n    cases' data files are copied (cancel probe).\"\"\"\n    C.require(not dest.exists(), f\"copy target exists: {dest}\")\n    folders = sorted(p.name for p in src.iterdir() if p.is_dir())\n    C.require(folders == sorted(SHM_DIRS), f\"unexpected folders in {src}: {folders}\")\n    files = [p.name for p in src.iterdir() if p.is_file()]\n    for folder in SHM_DIRS:\n        (dest / folder).mkdir(parents=True)\n        names = sorted(p.name for p in (src / folder).iterdir())\n        if case_subset is not None:\n            names = [n for n in names if n.split(\".\", 1)[0].replace(\"_seg\", \"\") in set(case_subset)]\n        files += [f\"{folder}/{n}\" for n in names]\n    started = time.time()\n\n    def one(relative: str) -> int:\n        shutil.copyfile(src / relative, dest / relative)\n        size = os.stat(src / relative).st_size\n        C.require(os.stat(dest / relative).st_size == size, f\"copy size mismatch: {relative}\")\n        return size\n\n    pool = ThreadPoolExecutor(threads)\n    try:\n        total = sum(pool.map(one, files))\n    finally:\n        # on a cancel signal only the files already being copied finish; queued copies are dropped\n        pool.shutdown(wait=True, cancel_futures=True)\n    seconds = time.time() - started\n    return {\"files\": len(files), \"bytes\": total, \"seconds\": seconds, \"mb_per_s\": total / 2 ** 20 / max(seconds, 1e-9)}\n\n\n# ---------------------------------------------------------------- logs\n\ndef _stamp(line: str) -> Optional[float]:\n    match = STAMP.match(line)\n    if not match:\n        return None\n    text = match.group(1)\n    return datetime.strptime(text, \"%Y-%m-%d %H:%M:%S.%f\" if \".\" in text else \"%Y-%m-%d %H:%M:%S\").timestamp()\n\n\ndef parse_training_logs(texts: Sequence[str]) -> Dict[str, Any]:\n    \"\"\"Epoch numbers, epoch times, learning rates and the final-validation duration from nnU-Net training_log_*.txt\n    files (in time order).\"\"\"\n    epochs, seconds, rates = [], [], []\n    done_at = validated_at = None\n    for text in texts:\n        for line in text.splitlines():\n            if EPOCH_START.match(line):\n                epochs.append(int(EPOCH_START.match(line).group(2)))\n            elif EPOCH_TIME.match(line):\n                seconds.append(float(EPOCH_TIME.match(line).group(1)))\n            elif LEARNING_RATE.match(line):\n                rates.append(float(LEARNING_RATE.match(line).group(1)))\n            elif line.rstrip().endswith(\": Training done.\"):\n                done_at = _stamp(line)\n            elif line.rstrip().endswith(\": Validation complete\"):\n                validated_at = _stamp(line)\n    validation_s = validated_at - done_at if done_at is not None and validated_at is not None else None\n    return {\"epochs\": epochs, \"epoch_seconds\": seconds, \"learning_rates\": rates, \"training_done\": done_at is not None,\n            \"validation_complete\": validated_at is not None, \"validation_seconds\": validation_s}\n\n\ndef steady_median(epoch_seconds: Sequence[float], steady_from: int) -> Optional[float]:\n    steady = list(epoch_seconds[steady_from:])\n    return statistics.median(steady) if steady else None\n\n\ndef memory_peak(lines: Iterable[str]) -> Dict[str, Optional[float]]:\n    import json\n\n    records = [json.loads(line) for line in lines if line.strip()]\n    if not records:\n        return {\"max_allocated_mib\": None, \"max_reserved_mib\": None, \"epochs_logged\": 0}\n    return {\"max_allocated_mib\": max(r[\"max_allocated_mib\"] for r in records),\n            \"max_reserved_mib\": max(r[\"max_reserved_mib\"] for r in records), \"epochs_logged\": len(records)}\n\n\ndef gpu_util(text: str) -> Dict[str, Optional[float]]:\n    \"\"\"nvidia-smi --query-gpu=timestamp,uuid,utilization.gpu,memory.used,power.draw --format=csv,noheader,nounits\"\"\"\n    util, used = [], []\n    for line in text.splitlines():\n        parts = [p.strip() for p in line.split(\",\")]\n        if len(parts) != 5:\n            continue\n        try:\n            util.append(float(parts[2]))\n            used.append(float(parts[3]))\n        except ValueError:\n            continue\n    return {\"samples\": len(util), \"util_mean\": statistics.fmean(util) if util else None,\n            \"mem_used_max_mib\": max(used) if used else None}\n\n\ndef projected_hours(epoch_s: float, epochs: int, val_case_s: Optional[float], val_cases: int) -> float:\n    return (epoch_s * epochs + (val_case_s or 0.0) * val_cases) / 3600\n\n\ndef cost_yuan(hours: float, cpus: int) -> Dict[str, float]:\n    price = RUN[\"prices\"]\n    return {\"gpu_only\": hours * price[\"a100_card_hour_yuan\"],\n            \"with_cpu\": hours * (price[\"a100_card_hour_yuan\"] + cpus * price[\"cpu_core_hour_yuan\"])}\n\n\n# ---------------------------------------------------------------- wave-2 dependency graph\n\ndef check_wave2_graph(runs: Sequence[Dict[str, Any]], slots: Sequence[Sequence[str]], max_concurrent: int) -> None:\n    \"\"\"Every dependency names an earlier run; the slots cover every run once and each slot member waits for the one\n    before it, so no more than len(slots) runs can hold a GPU at the same time.\"\"\"\n    names = [r[\"name\"] for r in runs]\n    C.require(len(names) == len(set(names)), \"duplicate run names\")\n    seen = set()\n    for r in runs:\n        for dep in r[\"after_ok\"] + r[\"after_any\"]:\n            C.require(dep in seen, f\"{r['name']} depends on {dep}, which is not submitted before it\")\n        source = source_run(r)\n        if source:\n            C.require(source in r[\"after_ok\"], f\"{r['name']} must wait (afterok) for its source run {source}\")\n        seen.add(r[\"name\"])\n    flat = [n for slot in slots for n in slot]\n    C.require(sorted(flat) == sorted(names), \"slots must cover every wave-2 run exactly once\")\n    C.require(len(slots) <= max_concurrent, \"more slots than allowed concurrent GPUs\")\n    by_name = {r[\"name\"]: r for r in runs}\n    for slot in slots:\n        for before, after in zip(slot, slot[1:]):\n            deps = by_name[after][\"after_ok\"] + by_name[after][\"after_any\"]\n            C.require(before in deps, f\"{after} does not wait for {before} in its slot\")\n\n\n# ---------------------------------------------------------------- no-shm resubmission (r5)\n\nLIVE = (\"queued\", \"running\")\n\n\ndef plan_noshm(runs: Sequence[Dict[str, Any]], name: str, status: Dict[str, str]):\n    \"\"\"What operator/submit.py noshm does after run `name` ended without /dev/shm space (status 'noshm').\n\n    resubmit: `name` plus every run, in RUN.json order, that slurm cancelled before it started ('gone') because an\n              afterok dependency is being resubmitted; their dependencies point to the new jobs, to runs still in the\n              queue, and drop runs that already finished (afterok needs those to be 'complete').\n    update:   runs still pending ('queued') with a dependency on a resubmitted run get their dependency list rewritten\n              the same way, so the slot order (at most 8 GPUs) holds.\n    Each entry is (run, after_ok run names, after_any run names).\"\"\"\n    C.require(status.get(name) == \"noshm\", f\"{name} did not end with a no-shm record\")\n    chosen: List[str] = []\n    for r in runs:\n        if r[\"name\"] == name or (status.get(r[\"name\"]) == \"gone\" and any(d in chosen for d in r[\"after_ok\"])):\n            chosen.append(r[\"name\"])\n\n    def deps(r: Dict[str, Any]):\n        ok = []\n        for d in r[\"after_ok\"]:\n            if d in chosen or status.get(d) in LIVE:\n                ok.append(d)\n            else:\n                C.require(status.get(d) == \"complete\", f\"{r['name']} needs {d}, which is {status.get(d)}\")\n        any_ = [d for d in r[\"after_any\"] if d in chosen or status.get(d) in LIVE]\n        return r[\"name\"], ok, any_\n\n    resubmit = [deps(r) for r in runs if r[\"name\"] in chosen]\n    update = [deps(r) for r in runs if r[\"name\"] not in chosen and status.get(r[\"name\"]) == \"queued\"\n              and any(d in chosen for d in r[\"after_ok\"] + r[\"after_any\"])]\n    return resubmit, update\n"
+    },
+    "slurm/30_train.slurm": {
+      "bytes": 1258,
+      "sha256": "1ab65a061c7326bc908260ff81001cb7323189adf973fc514282e2666eedbda2",
+      "text": "#!/bin/bash\n#SBATCH --job-name=rcb_train\n#SBATCH --partition=a100\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --gres=gpu:1\n#SBATCH --cpus-per-task=16\n#SBATCH --mem=128G\n#SBATCH --time=1-00:00:00\n#SBATCH --output=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/%x_%j.out\n#SBATCH --error=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/%x_%j.err\n\n# RC training batch 1, job 30 (one A100): one training run, name in $1 (optional $2 = --resume). operator/submit.py passes the run's job name, cpus, memory and time limit from RUN.json; the launcher removes its /dev/shm copy on any exit.\nset -euo pipefail\numask 027\nROOT=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1\nPY=/public/home/zqchen/.conda/envs/segmamba/bin/python\nmodule purge\nmodule load apps/envs/miniconda3/25.5.1\nmodule load compiler/cuda/12.1\nexport PYTHONDONTWRITEBYTECODE=1 MKL_THREADING_LAYER=GNU\ncd \"$ROOT\"\nexport PYTHONPATH=\"$ROOT/runtime\"\nnvidia-smi --query-gpu=name,memory.total,driver_version --format=csv\nexec \"$PY\" -B \"$ROOT/runtime/launch_run.py\" --run \"$1\" ${2:+\"$2\"}\n"
+    }
+  },
+  "status": "pass",
+  "submitter_static_terms": {
+    "--dry-run": true,
+    "--hold": true,
+    "after_any": true,
+    "def noshm": true,
+    "exclude_nodes": false,
+    "excluded": false
+  },
+  "user": "zqchen"
+}

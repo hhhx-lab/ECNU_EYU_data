@@ -1,0 +1,54 @@
+{
+  "artifact_status": "experimental_unvalidated",
+  "formal_gate_status": "not_run_not_passed",
+  "operator_approved": false,
+  "result": {
+    "excluded_node": "gpu15",
+    "label": "noshm_B0p_f4_1",
+    "new_job": "4452784",
+    "original_job": "4389560",
+    "release_audit": {
+      "jobs": {
+        "B0p_f4": "4452784",
+        "summary": "4452785"
+      },
+      "label": "noshm_B0p_f4_1",
+      "release": {
+        "artifact_status": "experimental_unvalidated",
+        "formal_gate_status": "not_run_not_passed",
+        "jobs": {
+          "B0p_f4": "4452784",
+          "summary": "4452785"
+        },
+        "label": "noshm_B0p_f4_1",
+        "operator_approved": false,
+        "released_at_utc": "2026-11-24T03:14:54.504970+00:00",
+        "scontrol_after_release": {
+          "B0p_f4": "JobId=4452784 JobName=rcb_B0p_f4 UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=None Dependency=afterany:4452776(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=1-00:00:00 TimeMin=N/A SubmitTime=2026-11-24T11:13:51 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-24T11:13:51 Partition=a100 AllocNode:Sid=10.11.100.253:54553 ReqNodeList=(null) ExcNodeList=gpu15 NodeList=(null) NumNodes=1-1 NumCPUs=16 NumTasks=1 CPUs/Task=16 ReqB:S:C:T=0:0:*:* TRES=cpu=16,mem=128G,node=1,billing=16,gres/gpu=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=16 MinMemoryNode=128G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm/30_train.slurm B0p_f4 WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_B0p_f4_4452784.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_B0p_f4_4452784.out Power= KillOInInvalidDependent=Yes TresPerNode=gpu:1,gpu:1 NtasksPerTRES:0",
+          "summary": "JobId=4452785 JobName=rcb_sum UserId=zqchen(2159) GroupId=users(100) MCS_label=N/A Priority=1200 Nice=0 Account=zqchen QOS=user_zqchen JobState=PENDING Reason=None Dependency=afterany:4452784(unfulfilled) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=00:30:00 TimeMin=N/A SubmitTime=2026-11-24T11:13:51 EligibleTime=Unknown AccrueTime=Unknown StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-24T11:13:51 Partition=cpu_96G AllocNode:Sid=10.11.100.253:54553 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) NumNodes=1-1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:* TRES=cpu=1,mem=4G,node=1,billing=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=4G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm/90_summary.slurm WorkDir=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1 StdErr=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_sum_4452785.err StdIn=/dev/null StdOut=/public/home/zqchen/projects/ECNU_EYU_data/work_space/S2/experimental_unvalidated/s2_rc_train_batch1_20261112_r1/slurm_logs/rcb_sum_4452785.out Power= KillOInInvalidDependent=Yes NtasksPerTRES:0"
+        },
+        "status": "released"
+      },
+      "release_command_tail": "\nzqchen@59.78.189.132's password: \nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nperl: warning: Setting locale failed.\nperl: warning: Please check that your locale settings:\n\tLANGUAGE = (unset),\n\tLC_ALL = \"C.UTF-8\",\n\tLC_CTYPE = \"C.UTF-8\",\n\tLANG = \"C.UTF-8\"\n    are supported and installed on your system.\nperl: warning: Falling back to the standard locale (\"C\").\nreleased ['4452784', '4452785']\n",
+      "training_job_state_output": [
+        "zqchen@59.78.189.132's password:",
+        "bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)",
+        "/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)",
+        "perl: warning: Setting locale failed.",
+        "perl: warning: Please check that your locale settings:",
+        "LANGUAGE = (unset),",
+        "LC_ALL = \"C.UTF-8\",",
+        "LC_CTYPE = \"C.UTF-8\",",
+        "LANG = \"C.UTF-8\"",
+        "are supported and installed on your system.",
+        "perl: warning: Falling back to the standard locale (\"C\").",
+        "4452784|rcb_B0p_f4|a100|PENDING|0:00|(Dependency)|",
+        "4452784|rcb_B0p_f4|a100|PENDING|0:0|2026-11-24T11:13:51|Unknown|Unknown|00:00:00|None assigned"
+      ]
+    },
+    "run": "B0p_f4",
+    "summary_job": "4452785"
+  },
+  "status": "released",
+  "utc": "2026-11-24T03:26:47.315420+00:00"
+}

@@ -13,5 +13,6 @@
 - [09_epoch175_official_met](09_epoch175_official_met)
 - [10_g1r4_endpoint](10_g1r4_endpoint)
 - [11_table7_microf1](11_table7_microf1)
+- [12_k1245_rc_aware](12_k1245_rc_aware)
 
-整理说明仅帮助定位，不改变任何原实验的批准或失败状态。新说明为experimental_unvalidated。
+11/12 RC 五版本训练重排的即时状态见[维护记录](../../../01_project_documents/05_maintenance/20261124_rc_noshm_retry/REPORT.md)。定位说明不改变原实验的批准或失败状态；新说明为experimental_unvalidated。
