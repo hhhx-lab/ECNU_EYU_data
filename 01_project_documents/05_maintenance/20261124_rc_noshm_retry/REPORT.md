@@ -6,7 +6,7 @@
 
 原 17 个折均因节点 `/dev/shm` 空闲不足，在训练启动前以 `FAILED 75:0` 退出。本次按冻结包 `s2_rc_train_batch1_20261112_r1` 的 `operator/submit.py noshm` 逐折新建一次 held 作业，排除各折此前失败节点；逐条核验冻结包 SHA、run 身份、排除节点、资源参数、held 状态后，使用原 `operator/release.py` 放行。
 
-**重排已成功：17 个训练 JobID 和 17 个配套汇总 JobID 均已提交并释放。尚未进入训练：最近一次远端只读快照显示 17/17 个训练作业均为 `PENDING`、0 个 `RUNNING`，没有新 `STARTED` 或新 `NOSHM` marker。** 因此，内存盘问题尚未被实测证明解决；本次措施是避开每折原来失败的节点，不是修改节点配置或降低内存门。
+**重排已成功：17 个训练 JobID 和 17 个配套汇总 JobID 均已提交并释放。** 2026-11-24 04:44:43 UTC 的最新只读快照显示 17/17 个训练作业仍为 `PENDING`、0 个 `RUNNING`、0 个终态失败或完成；其中 4 个首折作业等待 `Priority`，其余 13 个训练作业和 17 个汇总作业等待 `Dependency`。没有新 `STARTED` 或新 `NOSHM` marker。因此，内存盘问题尚未被实测证明解决；本次措施是避开每折原来失败的节点，不是修改节点配置或降低内存门。
 
 ## 根因与处理
 
@@ -47,6 +47,7 @@
 - 本机提交操作：UTC `2026-11-24T03:22:48.742543Z` 至 `03:27:39.031819Z`。第一次 B0p_f0 held 任务因本机标签格式检查错误而停止在释放之前；随后单独读取并验证原始 held 记录，释放同一 JobID `4452757`，未重复提交。该停止审计保留。
 - 最新远端状态快照：UTC `2026-11-24T03:23:01.605907Z`；17 个训练作业全为 PENDING、0 RUNNING；17 个汇总作业全为 PENDING；每个 run 仅见旧 NOSHM marker，未见新 STARTED/NOSHM。服务器目录空间约 441.18 GiB。
 - 本机状态核验开始/收到：UTC `2026-11-24T03:34:24.154345Z` / `03:34:48.928328Z`。与远端 UTC 分别记录，不据此声称两台机器时钟已同步。
-- 远端状态只读回执：[即时核验](operator/noshm_retry_verify_20261124T033424Z/RESULT.json)；提交/释放审计：[全部 17 折](operator/noshm_retry_submit_20261124T032248Z/FINAL_RESULT.json)；首折 held 恢复：[恢复回执](operator/noshm_retry_recover_20261124T031957Z/RELEASED_01_B0p_f0.json)；原始失败原因与逐折历史：[11 月 20 日失败时间线](../20261120_ecnu_account_review/FAILURE_TIMELINE.md)。
+- 最新远端状态快照：UTC `2026-11-24T04:44:43.658417Z`；本机核查开始/收到：UTC `2026-11-24T04:56:20.788857Z` / `04:56:31.291147Z`。17 个训练作业仍为 PENDING、0 RUNNING、0 FAILED/CANCELLED/TIMEOUT/OUT_OF_MEMORY；4 个首折为 `Priority`，其余训练折和17个汇总作业为 `Dependency`。服务器目录空间仍为 `441.1787109375 GiB`，每个 run 仍仅见旧 NOSHM marker，无新 STARTED/NOSHM。
+- 远端状态只读回执：[最新即时核验](operator/noshm_retry_verify_20261124T045620Z/RESULT.json)；前次核验：[即时核验](operator/noshm_retry_verify_20261124T033424Z/RESULT.json)；提交/释放审计：[全部 17 折](operator/noshm_retry_submit_20261124T032248Z/FINAL_RESULT.json)；首折 held 恢复：[恢复回执](operator/noshm_retry_recover_20261124T031957Z/RELEASED_01_B0p_f0.json)；原始失败原因与逐折历史：[11 月 20 日失败时间线](../20261120_ecnu_account_review/FAILURE_TIMELINE.md)。
 
 全过程未读取影像体素、标签、checkpoint 或预测文件，未更改远端冻结包/Slurm 源码、未管理其他用户作业、未删除旧失败记录。训练结果、内存盘通过、模型质量与科学门均未验收。
